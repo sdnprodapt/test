@@ -1,0 +1,120 @@
+[
+    {
+        "parameters": {
+            "data": {
+                "vpls-connection-information": {
+                    "instance": {
+                        "instance-display-error": "",
+                        "interface-flags": ""
+                    }
+                }
+            }
+        }, 
+        "type": "bpprov.translators.dict.Merge"
+    },
+    {
+        "parameters": {
+            "choice": [
+                {
+                    "do": {
+                        "parameters": {
+                            "choice": [
+                                {
+                                    "do": {
+                                        "parameters": {
+                                            "overwrite": true,
+                                            "mapping": {
+                                                "$..*.interface-flags-description": "$..*.interface-status",
+                                                "$..*.interface-flags": "$..*.interface-id"
+                                            }
+                                        },
+                                        "type": "bpprov.translators.dict.ReMap"
+                                    },
+                                    "when": "${$..*.connection} contains \"local-interface\""
+                                }
+                            ]
+                        }, 
+                        "type": "bpprov.translators.route.Branch"
+                    }, 
+                    "when": "${$..*.reference-site} contains \"connection\""
+                }
+            ]
+        }, 
+        "type": "bpprov.translators.route.Branch"
+    },
+    {
+        "parameters": {
+            "mapping": {
+                "lastError": "$..*.instance-display-error", 
+                "localIface": "$..*.interface-name", 
+                "vcId": "$..*.local-site-id", 
+                "vcStatus": "$..*.interface-flags-description",
+                "labelStack": "$..*.interface-flags"
+            }
+        }, 
+        "type": "bpprov.translators.dict.ReMap"
+    }, 
+    {
+        "parameters": {
+            "maps": [
+                {
+                    "field": "${vcId}", 
+                    "maps": [
+                        {
+                            "destination": "\\1", 
+                            "name": "Virtual ID", 
+                            "source": "^.*\\((\\d+)\\)"
+                        }
+                    ]
+                }, 
+                {
+                    "field": "${localIface}", 
+                    "maps": [
+                        {
+                            "destination": "FAC_\\1-0-\\2-\\3-\\4.\\5", 
+                            "name": "Interface", 
+                            "source": "^(\\w+)-(\\d+)/(\\d+)/(\\d+).(\\d+)"
+                        }
+                    ]
+                }
+            ]
+        }, 
+        "type": "bpprov.translators.mapper.PathMap"
+    }, 
+    {
+        "parameters": {
+            "choice": {
+                "Up": {
+                    "parameters": {
+                        "data": {
+                            "vcStatus": "up"
+                        }, 
+                        "favored": true
+                    }, 
+                    "type": "bpprov.translators.dict.Merge"
+                }
+            }, 
+            "field": "${vcStatus}", 
+            "otherwise": {
+                "parameters": {
+                    "data": {
+                        "vcStatus": "down"
+                    }, 
+                    "favored": true
+                }, 
+                "type": "bpprov.translators.dict.Merge"
+            }
+        }, 
+        "type": "bpprov.translators.route.Case"
+    },
+    {
+        "parameters": {
+            "data": {
+                "labelLocal": "", 
+                "statPacketRx": 0, 
+                "statPacketTx": 0
+            }
+        }, 
+        "type": "bpprov.translators.dict.Merge"
+    }
+]

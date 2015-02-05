@@ -1,0 +1,35 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [],
+    "endpoint-parameters": {
+        "command": {
+            "name": "get-configuration"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "routerId": "configuration.routing-options.router-id"
+                }
+            }
+        }, {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "show-router-id.tmpl",
+                "as_object": true
+            }
+        }, {
+            "type": "bpprov.translators.aggregator.Command",
+            "parameters": {
+                "command": "/commands/show-serial-number.json",
+                "correlations": [
+                    { "to": "${-1.serialNumber}", "from": "${nodeSerialNumber}" }
+                ]
+            }
+        }
+    ]
+}

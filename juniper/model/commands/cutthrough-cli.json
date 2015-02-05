@@ -1,0 +1,11 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "cli",
+    "endpoint-parameters": {
+        "template": "cutthrough-cli.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

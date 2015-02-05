@@ -1,0 +1,8 @@
+{
+{% for fpc in data['fpc'] %}
+	"{{fpc.slot}}": {
+		"slot": "{{fpc.slot}}",
+		"state": "{{fpc.state}}"
+	}{% if not loop.last %}, {% endif %}
+{% endfor %}
+}

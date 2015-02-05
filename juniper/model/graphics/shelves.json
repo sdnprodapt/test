@@ -1,0 +1,175 @@
+[
+  {
+    "textures": [
+      {
+        "imageFile": "/images/demo-a/asr903front.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -2.0, 
+          "bottom": -2.0, 
+          "left": -2.0
+        }, 
+        "side": "front"
+      }, 
+      {
+        "imageFile": "/images/demo-a/asr903top.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -2.0, 
+          "bottom": -2.0, 
+          "left": -2.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "/images/commonside.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -2.0, 
+          "bottom": -2.0, 
+          "left": -2.0
+        }, 
+        "side": "left"
+      }, 
+      {
+        "imageFile": "/images/commonside.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -2.0, 
+          "bottom": -2.0, 
+          "left": -2.0
+        }, 
+        "side": "right"
+      }
+    ], 
+    "center": {
+      "y": 65.0, 
+      "x": 221.0, 
+      "z": 134.0
+    }, 
+    "fruSlots": [
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 2.0, 
+          "x": 3.5, 
+          "z": 2.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 3.0, 
+          "x": 3.5, 
+          "z": -8.0
+        }, 
+        "location": "0-0", 
+        "allowedFrus": [
+          "UNSPECIFIED"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 22.5, 
+          "x": 3.5, 
+          "z": 2.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 23.0, 
+          "x": 3.5, 
+          "z": -8.0
+        }, 
+        "location": "0-1", 
+        "allowedFrus": [
+          "UNSPECIFIED"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 43.0, 
+          "x": 3.5, 
+          "z": 2.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 43.0, 
+          "x": 3.5, 
+          "z": -8.0
+        }, 
+        "location": "0-2", 
+        "allowedFrus": [
+          "UNSPECIFIED"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 63.5, 
+          "x": 3.5, 
+          "z": 2.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 63.0, 
+          "x": 3.5, 
+          "z": -8.0
+        }, 
+        "location": "0-3", 
+        "allowedFrus": [
+          "UNSPECIFIED"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 84.0, 
+          "x": 3.5, 
+          "z": 2.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 83.0, 
+          "x": 3.5, 
+          "z": -8.0
+        }, 
+        "location": "0-4", 
+        "allowedFrus": [
+          "UNSPECIFIED"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 104.5, 
+          "x": 3.5, 
+          "z": 2.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 103.0, 
+          "x": 3.5, 
+          "z": -8.0
+        }, 
+        "location": "0-5", 
+        "allowedFrus": [
+          "UNSPECIFIED"
+        ], 
+        "side": "front"
+      }
+    ], 
+    "subType": 0, 
+    "dimensions": {
+      "width": 442.0, 
+      "depth": 268.0, 
+      "height": 130.0
+    }, 
+    "name": "Demo-A",
+    "id": "Demo-A"
+  }
+]

@@ -1,0 +1,26 @@
+{
+    "JuniperMX240": {
+        "dir": "mx240",
+        "displayName": "MX240"
+    },
+    "JuniperMX480": {
+        "dir": "mx480",
+        "displayName": "MX480"
+    },
+    "JuniperMX960": {
+        "dir": "mx960",
+        "displayName": "MX960"
+    },
+    "JuniperMX2010": {
+        "dir": "mx2010",
+        "displayName": "MX2010"
+    },
+    "JuniperPTX3000": {
+        "dir": "ptx3000",
+        "displayName": "PTX3000"
+    },
+    "JuniperEX4200_48T": {
+        "dir": "ex4200_48t",
+        "displayName": "EX4200-48T"
+    }
+}

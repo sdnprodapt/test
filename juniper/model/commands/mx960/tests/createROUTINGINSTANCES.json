@@ -1,0 +1,71 @@
+{
+    "createROUTINGINSTANCES": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass": "OID_CLASS_ROUTINGINSTANCES",
+            "oidAid": "FAC_ge-0-11-1-1.0-NS_12345-34562",
+            "attrVals": [
+                ["description", "Cyan test"],
+                ["mac_table_size", "1000"],
+                ["interface_mac_limit", "100"]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<routing-instances>",
+                "<instance>",
+                    "<name>NS_12345</name>",
+                    "<description>Cyan test</description>",
+                    "<instance-type>vpls</instance-type>",
+                    "<interface>",
+                        "<name>ge-11/1/1.0</name>",
+                    "</interface>",
+                    "<route-distinguisher>",
+                        "<rd-type>6461:12345</rd-type>",
+                    "</route-distinguisher>",
+                    "<vrf-target>",
+                        "<import>target:6461:12345</import>",
+                        "<export>target:6461:12345</export>",
+                    "</vrf-target>",
+                    "<forwarding-options>",
+                        "<family>",
+                            "<vpls>",
+                                "<flood>",
+                                    "<input>Flood_only</input>",
+                                "</flood>",
+                            "</vpls>",
+                        "</family>",
+                    "</forwarding-options>",
+                    "<protocols>",
+                        "<vpls>",
+                            "<mac-table-size>",
+                                "<limit>1000</limit>",
+                            "</mac-table-size>",
+                            "<interface-mac-limit>",
+                                "<limit>100</limit>",
+                            "</interface-mac-limit>",
+                            "<no-tunnel-services/>",
+                            "<site>",
+                            "<name>NS_12345</name>",
+                                "<site-identifier>34562</site-identifier>",
+                                "<interface>",
+                                    "<name>ge-11/1/1.0</name>",
+                                "</interface>",
+                            "</site>",
+                        "</vpls>",
+                    "</protocols>",
+                "</instance>",
+            "</routing-instances>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

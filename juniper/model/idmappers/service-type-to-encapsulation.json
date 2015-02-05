@@ -1,0 +1,11 @@
+{
+    "maps": [{
+        "name": "P2P EPL Encapsulation",
+        "source": "P2P EPL",
+        "destination": "ethernet-ccc"
+    }, {
+        "name": "MP ELAN Encapsulation",
+        "source": "MP ELAN",
+        "destination": "ethernet-vpls"
+    }]
+}

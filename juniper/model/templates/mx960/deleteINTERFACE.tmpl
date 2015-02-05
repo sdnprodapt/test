@@ -1,0 +1,17 @@
+{%- set interface, unit = data.oidAid.split('.') -%}
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+	<config>
+	    <configuration>
+	        <interfaces>
+	            <interface operation="delete">
+	                <name>{{ interface }}</name>
+	            </interface>
+	        </interfaces>
+	    </configuration>
+	</config>
+    </edit-config>
+</rpc>

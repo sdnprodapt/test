@@ -1,0 +1,153 @@
+{% set description = data['description'] %}
+{% set cards = data['chassis'] %}
+{% set serialNumber = data['serialNumber'] %}
+{% set fpc_slot_name = "FPC" %}
+{% set mic_slot_name = "MIC" %}
+{% set pic_slot_name = "PIC" %}
+{% set routing_engine_slot_name = "Routing Engine" %}
+{% set port_slot_name = "Xcvr" %}
+{% set re_slot_map = 999 %}
+{% set location_list = {
+	'slot': 0,
+	'mic': 0,
+	'pic': 0,
+	'port': 0
+} %}
+{% set speed_type_dict = {
+    '1G': 'ge-',
+    '10G': 'xe-',
+    '100G': 'et-',
+    '1000mbps': 'ge-',
+    '10Gbps': 'xe-',
+    '100Gbps': 'et-'
+} %}
+{% set slot_type_list = {
+	'fim_slot': 'FIM slots',
+	'sub_slot': 'SUBSLOT',
+	'next_slot': 'NEXTSLOT'
+} %}
+{% set slot_holder_key = {'key': slot_type_list.fim_slot} %}
+{% set slot_port_key = {'key': 'slot'} %}
+
+{
+	"0": {
+		"name": "0",
+		"serialNumber": "{{ serialNumber }}",
+		"shelves": {
+			"0": {
+				"name": "0",
+				"slots": {
+					{% for card in cards if card['name'].startswith(fpc_slot_name) or card['name'].startswith(mic_slot_name) or card['name'].startswith(pic_slot_name) or card['name'].startswith(routing_engine_slot_name) or card['name'].startswith(port_slot_name) recursive %}
+						{% set slot_holder_key = {'key': slot_type_list.fim_slot} %}
+						{% if card['name'].startswith(routing_engine_slot_name) %}
+							{% set slot_location = re_slot_map + card['name']|replace(routing_engine_slot_name, '')|trim|int + 1 %}
+						{% elif card['name'].startswith(fpc_slot_name) %}
+							{% set slot_location = card['name']|replace(fpc_slot_name, '')|trim|int %}
+						{% else %}
+							{% set slot_location = loop.index0 %}
+						{% endif %}
+
+						{% if card['name'].startswith(fpc_slot_name) %}
+							{% do location_list.update({'slot': card['name'].split()[1]}) %}
+							{% do location_list.update({'mic': 0}) %}
+						{% elif card['name'].startswith(mic_slot_name) %}
+							{% do location_list.update({'mic': card['name'].split()[1]}) %}
+						{% elif card['name'].startswith(pic_slot_name) %}
+							{% do location_list.update({'pic': card['name'].split()[1]}) %}
+						{% elif card['name'].startswith(port_slot_name) %}
+							{% do location_list.update({'port': card['name'].split()[1]}) %}
+						{% endif %}
+
+						{% if description.startswith('PTX') and card['name'].startswith(fpc_slot_name) %}
+							{% do slot_holder_key.update({"key": slot_type_list.next_slot}) %}
+						{% elif card['chassis-sub-module'] %}
+							{% if card['chassis-sub-module']['name'] %}
+								{% if card['chassis-sub-module']['name'].startswith(mic_slot_name) %}
+									{% do slot_holder_key.update({"key": slot_type_list.sub_slot}) %}
+								{% endif %}
+							{% else %}
+								{% set slots_list = card['chassis-sub-module']|map(attribute='name')|join(', ')|string %}
+								{% if mic_slot_name in slots_list %}
+									{% do slot_holder_key.update({"key": slot_type_list.sub_slot}) %}
+								{% endif %}
+							{% endif %}
+                        {% endif %}
+
+						{% if card['chassis-sub-sub-sub-module'] %}
+							{% if card['chassis-sub-sub-sub-module']['name'] %}
+								{% if card['chassis-sub-sub-sub-module']['name'].startswith(port_slot_name) %}
+									{% do slot_port_key.update({"key": "ports"}) %}
+								{% endif %}
+							{% else %}
+								{% set ports_list = card['chassis-sub-sub-sub-module']|map(attribute='name')|join(', ')|string %}
+								{% if ports_list.startswith(port_slot_name) %}
+									{% do slot_port_key.update({"key": "ports"}) %}
+								{% endif %}
+							{% endif %}
+						{% elif card['chassis-sub-sub-module'] %}
+							{% if card['chassis-sub-sub-module']['name'] %}
+								{% if card['chassis-sub-sub-module']['name'].startswith(port_slot_name) %}
+									{% do slot_port_key.update({"key": "ports"}) %}
+								{% endif %}
+							{% else %}
+								{% set ports_list = card['chassis-sub-sub-module']|map(attribute='name')|join(', ')|string %}
+								{% if ports_list.startswith(port_slot_name) %}
+									{% do slot_port_key.update({"key": "ports"}) %}
+								{% endif %}
+							{% endif %}
+						{% else %}
+							{% do slot_port_key.update({"key": "slots"}) %}
+						{% endif %}
+
+						{% if card['name'].startswith(port_slot_name) %}
+							{% set port_location = ["0", location_list.slot, location_list.mic, location_list.pic, location_list.port]|join('/') %}
+							{% set portSpeed = card['description'].split('-')[1] %}
+							{% set ethernetType = speed_type_dict[portSpeed]|default(speed_type_dict['1G']) %}
+							{% set port_location = '%s%s' % (ethernetType, port_location) %}
+
+							"{{ port_location }}": {
+								"name": "{{ card['name'] }}",
+								"description": "{{ card['description'] }}"
+							}{% if not loop.last %}, {% endif %}
+						{% else %}
+							"{{ slot_location }}": {
+								"name": "{{ card['name'] }}",
+								"pid": "{{ description }}-{{ card['model-number']|default('') }}",
+								"location": "{{ slot_location }}",
+								"description": "{{ card['description']|default('') }}",
+								"holderType": "{{ slot_holder_key.key }}",
+								{% if slot_port_key.key == "slots" %}
+									"ports": {"-1": {}},
+								{% endif %}
+								{% if not card['name'].startswith(port_slot_name) %}
+								"{{ slot_port_key.key }}": {% if card['chassis-sub-module'] %}
+									{% if card['chassis-sub-module']['name'] %}
+										{ {{ loop([card['chassis-sub-module']]) }} }
+									{% else %}
+										{ {{ loop(card['chassis-sub-module']) }} }
+									{% endif %}
+								{% elif card['chassis-sub-sub-module'] %}
+									{% if card['chassis-sub-sub-module']['name'] %}
+										{ {{ loop([card['chassis-sub-sub-module']]) }} }
+									{% else %}
+										{ {{ loop(card['chassis-sub-sub-module']) }} }
+									{% endif %}
+								{% elif card['chassis-sub-sub-sub-module'] %}
+									{% if card['chassis-sub-sub-sub-module']['name'] %}
+										{ {{ loop([card['chassis-sub-sub-sub-module']]) }} }
+									{% else %}
+										{ {{ loop(card['chassis-sub-sub-sub-module']) }} }
+									{% endif %}
+								{% else %}
+									{"-1": {}}
+								{% endif %},
+							{% endif %}
+							"serialNumber": "{{ card['serial-number']|default('') }}"
+							}{% if not loop.last %}, {% endif %}
+						{% endif %}
+					{% endfor %}
+				}
+			}
+		}
+	}
+}

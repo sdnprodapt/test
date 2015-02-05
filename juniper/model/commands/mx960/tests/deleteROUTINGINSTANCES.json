@@ -1,0 +1,27 @@
+{
+    "deleteROUTINGINSTANCES": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_ROUTINGINSTANCES",
+            "oidAid": "FAC_ge-0-11-1-1.0-NS_12345-34562"
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+                "<routing-instances>",
+                "<instance operation=\"delete\">",
+                    "<name>NS_12345</name>",
+                "</instance>",
+                "</routing-instances>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

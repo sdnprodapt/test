@@ -1,0 +1,20 @@
+{
+    "patterns": [
+        {
+            "command": "<get[\\w-]>", 
+            "match-reason": "<error-message>(.*?)</error-message>", 
+            "onError": [], 
+            "pattern": "<error-severity>error</error-severity>"
+        }, 
+        {
+            "command": "<config>", 
+            "match-reason": "<error-message>(.*?)</error-message>", 
+            "onError": [
+                {
+                    "write": "<rpc><discard-changes/></rpc>"
+                }
+            ], 
+            "pattern": "<error-severity>error</error-severity>"
+        }
+    ]
+}

@@ -1,4 +1,1 @@
-bp-ea-juniperng
-===============
-
-Juniper REST based Adapter
+Juniper Rest based Adapter

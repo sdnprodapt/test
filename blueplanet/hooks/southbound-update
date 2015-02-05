@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import subprocess
+
+subprocess.call('/opt/cyan/juniper/bin/python /opt/cyan/juniper/bin/juniper-southbound-update'.split(' '))
+

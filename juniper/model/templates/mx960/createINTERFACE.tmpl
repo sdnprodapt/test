@@ -1,0 +1,33 @@
+{%- set interface, unit = data.oidAid.split('.') -%}
+{%- set filter_tag_table = {"ethernet-ccc": "ccc", "ethernet-vpls": "vpls"} -%}
+{%- set filter_tag = filter_tag_table[data.attrVals.encapsulation] -%}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+	<interfaces>
+		<interface>
+			<name>{{ interface }}</name>
+			<description>{{ data.attrVals.description }}</description>
+			<mtu>{{ data.attrVals.mtu }}</mtu>
+			<encapsulation>{{ data.attrVals.encapsulation }}</encapsulation>
+			<unit>
+				<name>{{ unit }}</name>
+					 <description>{{ data.attrVals.description }}</description>
+				{%- for group in data.attrVals.apply_groups_except -%}
+					<apply-groups-except>{{ group }}</apply-groups-except>
+				{%- endfor -%}
+				{%- if data.attrVals.family_filter != "" -%}
+					<family>
+						<{{ filter_tag }}>
+							<filter>
+								<input>{{ data.attrVals.family_filter }}</input>
+							</filter>
+						</{{ filter_tag }}>
+					</family>
+				{%- endif -%}
+			</unit>
+		</interface>
+	</interfaces>
+</configuration></config>
+</edit-config>
+</rpc>

@@ -1,0 +1,36 @@
+{% set ports = data['ports'] %}
+{% set port_name = 'ae' %}
+{% set fac_prefix =  "OID_CLASS_PTP:FAC_" %}
+{
+{% for port in ports if (port['name']|string|trim).startswith(port_name) recursive %}
+	{% set name = port['name']|string|trim %}
+	{% set speed = port['speed']|string|trim %}
+	{% set unit_val = '' %}
+	{% set eth_type = 'ge-' %}
+
+    {% if not speed.startswith('Unspecified') %}
+		{% set speed_val = (speed|truncate(speed|length-4, True))|replace('...', '') %}
+		{% set unit_val = speed.replace(speed_val, '')|lower %}
+		{% set speed_val = speed_val|int %}
+		{% if unit_val == 'mbps' %}
+	        {% set eth_type = 'ge-' %}
+		{% elif unit_val == 'gbps' %}
+		    {% if speed_val < 100 %}
+			    {% set eth_type = 'xe-' %}
+			{% elif speed_val >= 100 %}
+				{% set eth_type = 'et-' %}
+			{% endif %}
+		{% endif %}
+    {% endif %}
+
+	"{{ name|replace('ae', 'ae/0/0/0/0/') }}": {
+		"name": "{{ name }}",
+		"oid": "{{fac_prefix}}{{ name|replace('ae', 'ae-0-0-0-') }}",
+		"eth_type": "{{ eth_type }}",
+		"link_level_type": "{{ port['link-level-type']|string|trim|default('') }}",
+		"speed": "{{ port['speed']|string|trim|default('') }}",
+		"mtu": "{{ port['mtu']|string|trim|default('') }}",
+		"hardware_physical_address": "{{ port['hardware-physical-address']|string|trim|default('') }}"
+	}{% if not loop.last %}, {% endif %}
+{% endfor %}
+}

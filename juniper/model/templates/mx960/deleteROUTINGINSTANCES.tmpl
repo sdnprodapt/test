@@ -1,0 +1,19 @@
+{%- set facility, instance, siteId  = data.oidAid.split(' ') -%}
+{%- set interface, unit = facility.split('.') -%}
+{%- set instanceNumber = instance|replace("NS_", "") -%}
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+	<config>
+	    <configuration>
+	        <routing-instances>
+	            <instance operation="delete">
+	                <name>{{ instance }}</name>
+	            </instance>
+	        </routing-instances>
+	    </configuration>
+	</config>
+    </edit-config>
+</rpc>

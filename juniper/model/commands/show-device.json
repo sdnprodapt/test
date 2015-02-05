@@ -1,0 +1,51 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-version.json"
+    ],
+    "endpoint-parameters": {
+        "command": {
+            "name": "get-software-information"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "nodeType": "$..*.product-model",
+                    "iosVersion": "$..*.comment"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.mapper.PathMap",
+            "parameters": {
+                "maps": [{
+                    "field": "${nodeType}",
+                    "filemap": "/idmappers/short-node-name-to-nb.json"
+                }]
+            }
+        },
+        {
+            "type": "bpprov.translators.mapper.IdMap",
+            "parameters": {
+                "maps": [{
+                    "source": "^[\\w\\s]+\\[([\\w.]+)\\]",
+                    "destination": "JUNOS \\1"
+                }]
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Command",
+            "parameters": {
+                "command": "/commands/show-serial-number.json",
+                "merge": [
+                    { "to": "nodeSerialNumber", "from": "nodeSerialNumber" }
+                ]
+            }
+        }
+    ]
+}

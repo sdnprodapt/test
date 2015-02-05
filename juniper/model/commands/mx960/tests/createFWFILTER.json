@@ -1,0 +1,198 @@
+{
+    "Happy Path VPLS Filter": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FWFILTER",
+            "oidAid" : "FWFILTER-vpls-CyanTest",
+            "attrVals" : [
+                ["intf_specific", ""],
+                ["terms", [{"name": "1",
+                           "then_policer": "CyanTest",
+                           "then_loss_priority": "high",
+                           "then_forwarding_class": "Basic_VPN",
+                           "then_accept": null
+                          }]]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<family>",
+            "<vpls>",
+            "<filter>",
+            "<name>CyanTest</name>",
+            "<interface-specific/>",
+            "<term>",
+            "<name>1</name>",
+            "<then>",
+            "<policer>CyanTest</policer>",
+            "<loss-priority>high</loss-priority>",
+            "<forwarding-class>Basic_VPN</forwarding-class>",
+            "<accept/>",
+            "</then>",
+            "</term>",
+            "</filter>",
+            "</vpls>",
+            "</family>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    },
+    "Happy Path VPLS Filter Single Rate Three Color Policer": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FWFILTER",
+            "oidAid" : "FWFILTER-vpls-CyanTest",
+            "attrVals" : [
+                ["intf_specific", ""],
+                ["terms", [{"name": "1",
+                           "then_3cpolicer": "single-rate CyanTest3C",
+                           "then_loss_priority": "high",
+                           "then_forwarding_class": "Basic_VPN",
+                           "then_accept": null
+                          }]]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<family>",
+            "<vpls>",
+            "<filter>",
+            "<name>CyanTest</name>",
+            "<interface-specific/>",
+            "<term>",
+            "<name>1</name>",
+            "<then>",
+            "<three-color-policer>",
+            "<single-rate>CyanTest3C</single-rate>",
+            "</three-color-policer>",
+            "<loss-priority>high</loss-priority>",
+            "<forwarding-class>Basic_VPN</forwarding-class>",
+            "<accept/>",
+            "</then>",
+            "</term>",
+            "</filter>",
+            "</vpls>",
+            "</family>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    },
+    "Happy Path VPLS Filter Two Rate Three Color Policer": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FWFILTER",
+            "oidAid" : "FWFILTER-vpls-CyanTest",
+            "attrVals" : [
+                ["intf_specific", ""],
+                ["terms", [{"name": "1",
+                           "then_3cpolicer": "two-rate CyanTest3C",
+                           "then_loss_priority": "high",
+                           "then_forwarding_class": "Basic_VPN",
+                           "then_accept": null
+                          }]]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<family>",
+            "<vpls>",
+            "<filter>",
+            "<name>CyanTest</name>",
+            "<interface-specific/>",
+            "<term>",
+            "<name>1</name>",
+            "<then>",
+            "<three-color-policer>",
+            "<two-rate>CyanTest3C</two-rate>",
+            "</three-color-policer>",
+            "<loss-priority>high</loss-priority>",
+            "<forwarding-class>Basic_VPN</forwarding-class>",
+            "<accept/>",
+            "</then>",
+            "</term>",
+            "</filter>",
+            "</vpls>",
+            "</family>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    },
+    "Happy Path CCC Filter": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FWFILTER",
+            "oidAid" : "FWFILTER-ccc-CyanTest",
+            "attrVals" : [
+                ["intf_specific", ""],
+                ["terms", [{"name": "1",
+                           "then_policer": "CyanTest",
+                           "then_loss_priority": "high",
+                           "then_forwarding_class": "Basic_VPN",
+                           "then_accept": null
+                          }]]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<family>",
+            "<ccc>",
+            "<filter>",
+            "<name>CyanTest</name>",
+            "<interface-specific/>",
+            "<term>",
+            "<name>1</name>",
+            "<then>",
+            "<policer>CyanTest</policer>",
+            "<loss-priority>high</loss-priority>",
+            "<forwarding-class>Basic_VPN</forwarding-class>",
+            "<accept/>",
+            "</then>",
+            "</term>",
+            "</filter>",
+            "</ccc>",
+            "</family>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

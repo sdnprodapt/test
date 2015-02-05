@@ -1,0 +1,59 @@
+[
+  {
+    "textures": [
+      {
+        "imageFile": "/images/demo-a/asr903front.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }, 
+      {
+        "imageFile": "/images/demo-a/asr903top.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "/images/commonside.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "left"
+      }, 
+      {
+        "imageFile": "/images/commonside.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "right"
+      }
+    ], 
+    "subType": 0, 
+    "center": {
+      "y": 65.0, 
+      "x": 221.0, 
+      "z": 134.0
+    }, 
+    "name": "Demo-A", 
+    "id": "Demo-A", 
+    "dimensions": {
+      "width": 442.0, 
+      "depth": 268.0, 
+      "height": 130.0
+    }
+  }
+]

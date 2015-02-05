@@ -1,0 +1,54 @@
+{%- set facility, instance, siteId  = data.oidAid.split(' ') -%}
+{%- set interface, unit = facility.split('.') -%}
+{%- set instanceNumber = instance|replace("NS_", "") -%}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+            <routing-instances>
+                <instance>
+                    <name>{{ instance }}</name>
+                    <description>{{ data.attrVals.description }}</description>
+                    <instance-type>vpls</instance-type>
+                    <interface>
+                        <name>{{ interface }}.{{ unit }}</name>
+                    </interface>
+                    <route-distinguisher>
+                        <rd-type>6461:{{ instanceNumber }}</rd-type>
+                    </route-distinguisher>
+                    <vrf-target>
+                        <import>target:6461:{{ instanceNumber }}</import>
+                        <export>target:6461:{{ instanceNumber }}</export>
+                    </vrf-target>
+                    <forwarding-options>
+                        <family>
+                            <vpls>
+                                <flood>
+                                    <input>Flood_only</input>
+                                </flood>
+                            </vpls>
+                        </family>
+                    </forwarding-options>
+                    <protocols>
+                        <vpls>
+                            <mac-table-size>
+                                <limit>{{ data.attrVals.mac_table_size }}</limit>
+                            </mac-table-size>
+                            <interface-mac-limit>
+                                <limit>{{ data.attrVals.interface_mac_limit }}</limit>
+                            </interface-mac-limit>
+                            <no-tunnel-services/>
+                            <site>
+                                <name>{{ instance }}</name>
+                                <site-identifier>{{ siteId }}</site-identifier>
+                                <interface>
+                                    <name>{{ interface }}.{{ unit }}</name>
+                                </interface>
+                            </site>
+                        </vpls>
+                    </protocols>
+                </instance>
+            </routing-instances>
+            </configuration>
+        </config>
+    </edit-config>
+</rpc>

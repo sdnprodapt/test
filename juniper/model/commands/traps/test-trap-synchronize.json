@@ -1,0 +1,11 @@
+{
+    "type": "bpprov.runners.simple.Event",
+    "endpoint-parameters": {},
+    "in-path": [{
+        "type": "bpprov.translators.template.Json",
+        "parameters": {
+            "template": "traps/test-trap-synchronize.tmpl",
+            "as_object": true
+        }
+    }]
+}

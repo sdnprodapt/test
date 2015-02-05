@@ -1,0 +1,49 @@
+{
+    "Happy Path": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_L2CIRCUIT",
+            "oidAid" : "FAC_ge-0-11-3-0.0-10.200.0.23",
+            "attrVals" : [
+                ["vcid", "NS_12345"],
+                ["description", "Test ELINE"]
+            ]
+        },
+        "out-expect": ["<rpc message-id=\"0\"><get-configuration></get-configuration></rpc>", [
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+                "<configuration>",
+                "<protocols>",
+                "<l2circuit>",
+                "<neighbor>",
+                    "<name>10.200.0.23</name>",
+                    "<interface>",
+                        "<name>ge-11/3/0.0</name>",
+                        "<virtual-circuit-id>12345</virtual-circuit-id>",
+                        "<description>Test ELINE</description>",
+                    "</interface>",
+                "</neighbor>",
+                "</l2circuit>",
+                "</protocols>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/13.3R3/junos\">",
+            "<configuration junos:commit-seconds=\"1414418764\" junos:commit-localtime=\"2014-10-27 10:06:04 EDT\" junos:commit-user=\"akim\">",
+            "<routing-options>",
+            "<router-id>10.200.0.23</router-id>",
+            "</routing-options>",
+            "</configuration>",
+            "<cli>",
+            "<banner></banner>",
+            "</cli>",
+            "</rpc-reply>"
+        ], [
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

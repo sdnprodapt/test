@@ -1,0 +1,148 @@
+{
+    "Happy Path single rate, no color attribute ": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FW3CPOLICER",
+            "oidAid" : "FW3CPOLICER-CyanTest3C",
+            "attrVals" : [["cir" , "300m"],
+                          ["cbs", "625k"],
+                          ["ebs", "100k"]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<three-color-policer>",
+            "<name>CyanTest3C</name>",
+            "<single-rate>",
+            "<color-blind/>",
+            "<committed-information-rate>300m</committed-information-rate>",
+            "<committed-burst-size>625k</committed-burst-size>",
+            "<peak-burst-size>725k</peak-burst-size>",
+            "</single-rate>",
+            "</three-color-policer>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    },
+    "Happy Path single rate, with color attribute ": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FW3CPOLICER",
+            "oidAid" : "FW3CPOLICER-CyanTest3C",
+            "attrVals" : [["cir" , "300m"],
+                          ["cbs", "625k"],
+                          ["ebs", "100k"],
+                          ["color_mode", "aware"]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<three-color-policer>",
+            "<name>CyanTest3C</name>",
+            "<single-rate>",
+            "<color-aware/>",
+            "<committed-information-rate>300m</committed-information-rate>",
+            "<committed-burst-size>625k</committed-burst-size>",
+            "<peak-burst-size>725k</peak-burst-size>",
+            "</single-rate>",
+            "</three-color-policer>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    },
+    "Happy Path two rate, no color attribute ": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FW3CPOLICER",
+            "oidAid" : "FW3CPOLICER-CyanTest3C",
+            "attrVals" : [["cir" , "300m"],
+                          ["cbs", "625k"],
+                          ["eir", "100m"],
+                          ["ebs", "100k"]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<three-color-policer>",
+            "<name>CyanTest3C</name>",
+            "<two-rate>",
+            "<color-blind/>",
+            "<committed-information-rate>300m</committed-information-rate>",
+            "<committed-burst-size>625k</committed-burst-size>",
+            "<peak-information-rate>400m</peak-information-rate>",
+            "<peak-burst-size>725k</peak-burst-size>",
+            "</two-rate>",
+            "</three-color-policer>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    },
+    "Happy Path two rate, with color attribute ": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FW3CPOLICER",
+            "oidAid" : "FW3CPOLICER-CyanTest3C",
+            "attrVals" : [["cir" , "300m"],
+                          ["cbs", "625k"],
+                          ["eir", "100m"],
+                          ["ebs", "100k"],
+                          ["color_mode", "blind"]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<three-color-policer>",
+            "<name>CyanTest3C</name>",
+            "<two-rate>",
+            "<color-blind/>",
+            "<committed-information-rate>300m</committed-information-rate>",
+            "<committed-burst-size>625k</committed-burst-size>",
+            "<peak-information-rate>400m</peak-information-rate>",
+            "<peak-burst-size>725k</peak-burst-size>",
+            "</two-rate>",
+            "</three-color-policer>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

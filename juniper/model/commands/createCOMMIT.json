@@ -1,0 +1,13 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/createCOMMIT.json"
+    ],
+    "endpoint-parameters": {
+        "template": "commit.tmpl"
+    },
+    "in-path": [
+    ],
+    "out-path": [
+    ]
+}

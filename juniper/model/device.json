@@ -1,0 +1,49 @@
+{
+    "JuniperMX240": {
+        "family": "JuniperMX240",
+        "dir": "mx240/mx240",
+        "error": "errors/mx240.json",
+        "version": [
+            ""
+        ]
+    },
+    "JuniperMX480": {
+        "family": "JuniperMX480",
+        "dir": "mx480/mx480",
+        "error": "errors/mx480.json",
+        "version": [
+            ""
+        ]
+    },
+    "JuniperMX960": {
+        "family": "JuniperMX960",
+        "dir": "mx960/mx960",
+        "error": "errors/mx960.json",
+        "version": [
+            ""
+        ]
+    },
+    "JuniperMX2010": {
+        "family": "JuniperMX2010",
+        "dir": "mx2010/mx2010",
+        "error": "errors/mx2010.json",
+        "version": [
+            ""
+        ]
+    },
+    "JuniperPTX3000": {
+        "family": "JuniperPTX3000",
+        "dir": "ptx3000/ptx3000",
+        "error": "errors/ptx3000.json",
+        "version": [
+            ""
+        ]
+    },
+    "ex4200-48t": {
+        "family": "JuniperEX4200_48T",
+        "dir": "ex4200_48t/ex4200_48t",
+        "version": [
+            ""
+        ]
+    }
+}

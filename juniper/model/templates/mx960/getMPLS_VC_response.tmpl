@@ -1,0 +1,25 @@
+{% if data[0]['labelStack'] != "" %}
+    {% set labelStack = data[0]['vcId'] ~ " " ~ data[0]['labelStack'] %}
+{% else %}
+    {% set labelStack = data[0]['labelStack'] %}
+{% endif %}
+{% set isPathTraceAvailable = data[0]['isPathTraceAvailable']|string|trim %}
+{% set labelLocal = data[0]['labelLocal']|string|trim %}
+{% set statPacketTx = data[0]['statPacketTx']|string|trim %}
+{% set localIface = data[0]['localIface']|string|trim %}
+{% set lastError = data[0]['lastError']|string|trim %}
+{% set statPacketRx = data[0]['statPacketRx']|string|trim %}
+{% set vcId = data[0]['vcId']|string|trim %}
+{% set vcStatus = data[0]['vcStatus']|string|trim %}
+
+{
+    "labelStack": "{{ labelStack }}",
+    "isPathTraceAvailable": "{{ isPathTraceAvailable }}",
+    "labelLocal": "{{ labelLocal }}",
+    "statPacketTx": "{{ statPacketTx }}",
+    "localIface": "{{ localIface }}",
+    "lastError": "{{ lastError }}",
+    "statPacketRx": "{{ statPacketRx }}",
+    "vcId": "{{ vcId }}",
+    "vcStatus": "{{ vcStatus }}"
+}

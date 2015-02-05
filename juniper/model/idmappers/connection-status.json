@@ -1,0 +1,119 @@
+{
+    "maps": [
+        {
+            "destination": "encapsulation invalid", 
+            "name": "encapsulation invalid", 
+            "source": "EI"
+        }, 
+        {
+            "destination": "interface h/w not present", 
+            "name": "interface h/w not present", 
+            "source": "NP"
+        }, 
+        {
+            "destination": "mtu mismatch", 
+            "name": "mtu mismatch", 
+            "source": "MM"
+        }, 
+        {
+            "destination": "down", 
+            "name": "down", 
+            "source": "Dn"
+        }, 
+        {
+            "destination": "encapsulation mismatch", 
+            "name": "encapsulation mismatch", 
+            "source": "EM"
+        }, 
+        {
+            "destination": "Virtual circuit Down", 
+            "name": "Virtual circuit Down", 
+            "source": "VC-Dn"
+        }, 
+        {
+            "destination": "control-word mismatch", 
+            "name": "control-word mismatch", 
+            "source": "CM"
+        }, 
+        {
+            "destination": "operational", 
+            "name": "operational", 
+            "source": "Up"
+        }, 
+        {
+            "destination": "vlan id mismatch", 
+            "name": "vlan id mismatch", 
+            "source": "VM"
+        }, 
+        {
+            "destination": "Call admission control failure", 
+            "name": "Call admission control failure", 
+            "source": "CF"
+        }, 
+        {
+            "destination": "no outgoing label", 
+            "name": "no outgoing label", 
+            "source": "OL"
+        }, 
+        {
+            "destination": "TDM incompatible bitrate", 
+            "name": "TDM incompatible bitrate", 
+            "source": "IB"
+        }, 
+        {
+            "destination": "intf encaps not CCC/TCC", 
+            "name": "intf encaps not CCC/TCC", 
+            "source": "NC"
+        }, 
+        {
+            "destination": "TDM misconfiguration", 
+            "name": "TDM misconfiguration", 
+            "source": "TM"
+        }, 
+        {
+            "destination": "Backup Connection", 
+            "name": "Backup Connection", 
+            "source": "BK"
+        }, 
+        {
+            "destination": "Standby Connection", 
+            "name": "Standby Connection", 
+            "source": "ST"
+        }, 
+        {
+            "destination": "rcvd cell-bundle size bad", 
+            "name": "rcvd cell-bundle size bad", 
+            "source": "CB"
+        }, 
+        {
+            "destination": "Static Pseudowire", 
+            "name": "Static Pseudowire", 
+            "source": "SP"
+        }, 
+        {
+            "destination": "local site signaled down", 
+            "name": "local site signaled down", 
+            "source": "LD"
+        }, 
+        {
+            "destination": "remote site standby", 
+            "name": "remote site standby", 
+            "source": "RS"
+        }, 
+        {
+            "destination": "remote site signaled down", 
+            "name": "remote site signaled down", 
+            "source": "RD"
+        }, 
+        {
+            "destination": "Hot-standby Connection", 
+            "name": "Hot-standby Connection", 
+            "source": "HS"
+        }, 
+        {
+            "destination": "unknown", 
+            "name": "unknown", 
+            "source": "XX"
+        }
+    ]
+}

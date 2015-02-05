@@ -1,0 +1,15 @@
+{% set junk, family, name = data.oidAid.split('-') %}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <firewall>
+        <family>
+            <{{ family }}>
+                <filter operation="delete">
+                    <name>{{ name }}</name>
+                </filter>
+            </{{ family }}>
+        </family>
+    </firewall>
+</configuration></config>
+</edit-config></rpc>

@@ -1,0 +1,41 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx960/tests/createCOS.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx960/createCOS.tmpl"
+    },
+    "in-path": [],
+    "out-path": [
+        {
+            "parameters": {
+                "labels": [
+                    "attrVals"
+                ]
+            },
+            "type": "bpprov.translators.list.ToNestedDict"
+        },
+        {
+            "parameters": {
+                "data": {
+                    "attrVals": {
+                    "scheduler_map": "VPN-without-QOS"
+                    }
+                }
+            },
+            "type": "bpprov.translators.dict.Merge"
+        },
+        {
+            "type": "bpprov.translators.mapper.IdMap",
+            "parameters": {
+                "maps": [
+                    {
+                        "source": "^FAC_(\\S+)-(\\d+)-(\\d+)-(\\d+)-(\\d+).(\\d+)",
+                        "destination": "\\1-\\3/\\4/\\5"
+                    }
+                ]
+            }
+        }
+    ]
+}

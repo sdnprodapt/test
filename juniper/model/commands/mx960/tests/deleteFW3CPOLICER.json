@@ -1,0 +1,27 @@
+{
+    "Happy Path": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FW3CPOLICER",
+            "oidAid" : "FW3CPOLICER-CyanTest3C"
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<three-color-policer operation=\"delete\">",
+            "<name>CyanTest3C</name>",
+            "</three-color-policer>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

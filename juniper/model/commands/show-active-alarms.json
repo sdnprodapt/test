@@ -1,0 +1,14 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "command": {
+            "name": ""
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

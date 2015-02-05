@@ -1,0 +1,12 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "out-path": [
+    ],
+    "in-path": [{
+        "type": "bpprov.translators.importer.JsonContents",
+        "parameters": {
+            "file": "templates/show-supportedRates.tmpl"
+        }
+    }]
+}

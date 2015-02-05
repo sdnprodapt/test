@@ -1,0 +1,23 @@
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <firewall>
+        <policer>
+            <name>{{ data.oidAid.split('-')[1] }}</name>
+            {% if 'cir' in data.attrVals %}
+            <if-exceeding>
+                <bandwidth-limit>{{ data.attrVals.cir }}</bandwidth-limit>
+                {% if 'cbs' in data.attrVals %}
+                <burst-size-limit>{{ data.attrVals.cbs }}</burst-size-limit>
+                {% endif %}
+            </if-exceeding>
+            {% endif %}
+            <then>
+                {% if data.attrVals.then == 'discard' %}
+                <discard/>
+                {% endif %}
+            </then>
+        </policer>
+    </firewall>
+</configuration></config>
+</edit-config></rpc>
