@@ -1,0 +1,38 @@
+{
+    "Happy Path": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_FWPOLICER",
+            "oidAid" : "FWPOLICER-CyanTest",
+            "attrVals" : [["cir" , "300m"],
+                          ["cbs", "625k"],
+                          ["then", "discard"]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<firewall>",
+            "<policer>",
+            "<name>CyanTest</name>",
+            "<if-exceeding>",
+            "<bandwidth-limit>300m</bandwidth-limit>",
+            "<burst-size-limit>625k</burst-size-limit>",
+            "</if-exceeding>",
+            "<then>",
+            "<discard/>",
+            "</then>",
+            "</policer>",
+            "</firewall>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

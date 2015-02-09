@@ -1,0 +1,25 @@
+{
+    "manhole": {
+        "active": true, 
+        "port": 9997
+    },
+    "jinja-environment": {
+        "extensions": [
+            "jinja2.ext.do"
+        ]
+    },
+    "test": {
+        "endpoints": {
+            "netconf": {
+                "type": "bpprov.components.xml.XmlEndpoint",
+                "parameters": {
+                    "hostname": "h1",
+                    "hostport": 1,
+                    "username": "u1",
+                    "password": "p1",
+                    "transport": "bpprov.components.xml_transport.TestTransport"
+                }
+            }
+        }
+    }
+}

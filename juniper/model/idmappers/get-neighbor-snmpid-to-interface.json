@@ -1,0 +1,47 @@
+{
+    "maps": [{
+        "name": "on MX960-1",
+        "source": "825",
+        "destination": "FAC_xe-0-2-3-0"
+    }, {
+        "name": "on MX960-5",
+        "source": "648",
+        "destination": "FAC_xe-0-10-0-1"
+    }, {
+        "name": "on MX960-2",
+        "source": "4618",
+        "destination": "FAC_xe-0-2-0-0"
+    }, {
+        "name": "on MX960-5",
+        "source": "646",
+        "destination": "FAC_xe-0-10-0-0"
+    }, {
+        "name": "on MX2010",
+        "source": "558",
+        "destination": "FAC_xe-0-1-0-0"
+    }, {
+        "name": "on MX960-2",
+        "source": "636",
+        "destination": "FAC_xe-0-2-3-0"
+    }, {
+        "name": "on MX960-2",
+        "source": "637",
+        "destination": "FAC_xe-0-2-3-1"
+    }, {
+        "name": "on MX960-1",
+        "source": "762",
+        "destination": "FAC_xe-0-1-0-0"
+    }, {
+        "name": "on ex24f-2",
+        "source": "572",
+        "destination": "FAC_xe-0-0-0-0"
+    }, {
+        "name": "on MX960-1",
+        "source": "821",
+        "destination": "FAC_xe-0-2-1-0"
+    }, {
+        "name": "on MX2010",
+        "source": "534",
+        "destination": "FAC_xe-0-0-1-0"
+    }]
+}

@@ -1,0 +1,29 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-chassis-fpc.json"
+    ],
+    "endpoint-parameters": {
+        "command": {
+            "name": "get-fpc-information"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "fpc": "fpc-information.fpc"
+                }
+            }
+        }, {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "show-chassis-fpc.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

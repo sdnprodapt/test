@@ -1,0 +1,27 @@
+{
+    "Happy Path": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_COSVPLS",
+            "oidAid" : "COSVPLS-CyanTest1"
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+                "<class-of-service>",
+                "<routing-instances operation=\"delete\">",
+                    "<name>CyanTest1</name>",
+                "</routing-instances>",
+                "</class-of-service>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

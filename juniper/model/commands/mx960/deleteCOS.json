@@ -1,0 +1,23 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx960/tests/deleteCOS.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx960/deleteCOS.tmpl"
+    },
+    "in-path": [],
+    "out-path": [
+        {
+            "type": "bpprov.translators.mapper.IdMap",
+            "parameters": {
+                "maps": [
+                    {
+                        "source": "^FAC_(\\S+)-(\\d+)-(\\d+)-(\\d+)-(\\d+).(\\d+)",
+                        "destination": "\\1-\\3/\\4/\\5"
+                    }
+                ]
+            }
+        }
+    ]
+}

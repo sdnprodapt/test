@@ -1,0 +1,30 @@
+{
+    "Happy Path": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_COS",
+            "oidAid" : "FAC_ge-0-11-3-0.0"
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+                "<class-of-service>",
+                "<interfaces>",
+                "<interface>",
+                    "<name>ge-11/3/0</name>",
+                    "<scheduler-map operation=\"delete\"></scheduler-map>",
+                "</interface>",
+                "</interfaces>",
+                "</class-of-service>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

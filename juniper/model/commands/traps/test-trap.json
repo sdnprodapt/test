@@ -1,0 +1,32 @@
+{
+    "type": "bpprov.runners.simple.Event",
+    "endpoint-parameters": {},
+    "in-path": [{
+        "type": "bpprov.translators.route.Case",
+        "parameters": {
+            "field": "${sysLocationInstance}",
+            "choice": {
+                "set-alarm": {
+                    "type": "bpprov.translators.branch.RunnerCommand",
+                    "parameters": { "command": "traps/test-trap-alarm-set.json" }
+                },
+                "clear-alarm": {
+                    "type": "bpprov.translators.branch.RunnerCommand",
+                    "parameters": { "command": "traps/test-trap-alarm-cleared.json" }
+                },
+                "synchronize": {
+                    "type": "bpprov.translators.branch.RunnerCommand",
+                    "parameters": { "command": "traps/test-trap-synchronize.json" }
+                },
+                "synchronize-alarms": {
+                    "type": "bpprov.translators.branch.RunnerCommand",
+                    "parameters": { "command": "traps/test-trap-synchronize-alarms.json" }
+                }
+            },
+            "otherwise": {
+                "type": "bpprov.translators.importer.JsonContents",
+                "parameters": { "file": "data/trap-ignore.json" }
+            }
+        }
+    }]
+}

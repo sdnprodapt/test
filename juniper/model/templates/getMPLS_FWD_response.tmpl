@@ -1,0 +1,81 @@
+{% set fwdtblinfo = data['fwdtblinfo'] %}
+{% set outputData = {
+    "label": "",
+    "iface": "",
+    "nextHop": "",
+    "outgoing": "",
+    "tunnelId": ""
+} %}
+
+{% if fwdtblinfo['route-table'] is mapping %}
+    {% for rt in fwdtblinfo['route-table']['rt-entry'] recursive %}
+        {% set tunnelId = rt['rt-destination']|string|trim %}
+        {% if '#text' in tunnelId %}
+            {% set tunnelId = rt['rt-destination']['#text']|string|trim %}
+        {% endif %}
+        {% if rt and rt['nh'] %}
+            {% set nh = rt['nh'] %}
+            {% set label = nh['nh-index']|string|trim %}
+            {% set iface = nh['via']|string|trim %}
+            {% set outgoing = nh['nh-type']|string|trim %}
+            {% set nextHop = nh['to']|string|trim %}
+            {% if '#text' in nextHop %}
+                {% set nextHop = nh['to']['#text']|string|trim %}
+            {% endif %}
+            {% if 'ge-' in iface or 'xe-' in iface or 'et-' in iface %}
+                {% set iface = "FAC_" + iface.replace('-', '-0-').replace('/', '-') %}
+                {% do outputData.update({"label": label}) %}
+                {% do outputData.update({"iface": iface}) %}
+                {% do outputData.update({"nextHop": nextHop}) %}
+                {% do outputData.update({"outgoing": outgoing}) %}
+                {% do outputData.update({"tunnelId": tunnelId}) %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    [{
+		"outgoing": "{{ outputData.outgoing }}",
+		"iface": "{{ outputData.iface }}",
+		"tunnelId": "{{ outputData.tunnelId }}",
+		"nextHop": "{{ outputData.nextHop }}",
+		"label": "{{ outputData.label }}"
+	}]
+{% else %}
+	{
+        {% set isFirst = {'isFirst': 'True'} %}
+        "data": [
+            {% for routetbl in fwdtblinfo['route-table'] recursive %}
+                {% if routetbl and routetbl['rt-entry'] %}
+                    {% for rt in routetbl['rt-entry'] recursive %}
+                        {% set parentLoop = loop %}
+                        {% set tunnelId = rt['rt-destination']|string|trim %}
+                        {% if '#text' in tunnelId %}
+                            {% set tunnelId = rt['rt-destination']['#text']|string|trim %}
+                        {% endif %}
+                        {% if rt and rt['nh'] %}
+                            {% set nh = rt['nh'] %}
+                            {% set label = nh['nh-index']|string|trim %}
+                            {% set iface = nh['via']|string|trim %}
+                            {% set outgoing = nh['nh-type']|string|trim %}
+                            {% set nextHop = nh['to']|string|trim %}
+                            {% if '#text' in nextHop %}
+                                {% set nextHop = nh['to']['#text']|string|trim %}
+                            {% endif %}
+                            {% if 'ge-' in iface or 'xe-' in iface or 'et-' in iface %}
+                                {% set iface = "FAC_" + iface.replace('-', '-0-').replace('/', '-') %}
+                                {% if isFirst.isFirst == 'False' %},{% endif %}
+                                {% do isFirst.update({'isFirst': 'False'}) %}
+                                {
+                                    "label": "{{ label }}",
+                                    "iface": "{{ iface }}",
+                                    "nextHop": "{{ nextHop }}",
+                                    "outgoing": "{{ outgoing }}",
+                                    "tunnelId": "{{ tunnelId }}"
+                                }
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        ]
+    }
+{% endif %}

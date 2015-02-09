@@ -1,0 +1,23 @@
+{%- set facility, neighbor = data.oidAid.split(' ') -%}
+{%- set interface, unit = facility.split('.') -%}
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+	<config>
+	    <configuration>
+	        <protocols>
+	            <l2circuit>
+	                <neighbor>
+	                    <name>{{ neighbor }}</name>
+	                    <interface operation="delete">
+	                        <name>{{ interface }}.{{ unit }}</name>
+	                    </interface>
+	                </neighbor>
+	            </l2circuit>
+	        </protocols>
+	    </configuration>
+	</config>
+    </edit-config>
+</rpc>

@@ -1,0 +1,8 @@
+{%- set service_type = data.context.service_type -%}
+{%- set service_id = data.context.service_id -%}
+<rpc>
+    <get-vpls-connection-information>
+        <instance>NS_{{ service_id }}</instance>
+        <extensive/>
+    </get-vpls-connection-information>
+</rpc>

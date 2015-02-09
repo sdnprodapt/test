@@ -1,0 +1,64 @@
+{
+    "endpoint-parameters": {
+        "template": "getNEIGHBOR.tmpl"
+    }, 
+    "in-path": [
+        {
+            "parameters": {
+                "xpath": "$..*.lldp-neighbor-information",
+                "allowedLabels": ["lldp-remote-port-id", "lldp-remote-system-name", "lldp-local-port-id"]
+            }, 
+            "type": "bpprov.translators.dict.ToList"
+        }, 
+        {
+            "parameters": {
+                "maps": [
+                    {
+                        "destination": "remoteIface", 
+                        "source": "^lldp-remote-port-id"
+                    }, 
+                    {
+                        "destination": "deviceId", 
+                        "source": "^lldp-remote-system-name"
+                    }, 
+                    {
+                        "destination": "FAC_\\1-0-\\2-\\3-\\4", 
+                        "source": "^(\\w+)-(\\d+)/(\\d+)/(\\d+)"
+
+                    },
+                    {
+                        "destination": "localIface", 
+                        "source": "^lldp-local-port-id"
+                    }
+                ]
+            }, 
+            "type": "bpprov.translators.mapper.IdMap"
+        },
+        {
+            "type": "bpprov.translators.mapper.PathMap",
+            "parameters": {
+                "maps": [{
+                    "field": "${$..*.remoteIface}",
+                    "filemap": "/idmappers/get-neighbor-snmpid-to-interface.json"
+                }]
+            }
+        },
+        {
+            "type": "bpprov.translators.list.AssignDefaults",
+            "parameters": {
+                "matches": [
+                    "${$..} missing \"deviceId\""
+                ],
+                "compareType": "comparator",
+                "defaults": {
+                    "deviceId": ""
+                }
+            }
+        }
+    ], 
+    "out-path": [], 
+    "tests": [
+        "commands/tests/getNEIGHBOR.json"
+    ], 
+    "type": "bpprov.runners.simple.Sequence"
+}

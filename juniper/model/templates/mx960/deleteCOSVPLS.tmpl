@@ -1,0 +1,11 @@
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <class-of-service>
+        <routing-instances operation="delete">
+            <name>{{ data.oidAid.split('-')[1] }}</name>
+        </routing-instances>
+    </class-of-service>
+</configuration></config>
+</edit-config>
+</rpc>

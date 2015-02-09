@@ -1,0 +1,23 @@
+{
+    "maps": [{
+        "name": "EX4200-48T",
+        "source": "(?i)ex4200_48t",
+        "destination": "JuniperEX4200-48T"
+    }, {
+        "name": "MX960",
+        "source": "(?i)mx960",
+        "destination": "JuniperMX960"
+    }, {
+        "name": "MX480",
+        "source": "(?i)mx480",
+        "destination": "JuniperMX480"
+    }, {
+        "name": "MX2010",
+        "source": "(?i)mx2010",
+        "destination": "JuniperMX2010"
+    }, {
+        "name": "PTX3000",
+        "source": "(?i)ptx3000",
+        "destination": "JuniperPTX3000"
+    }]
+}

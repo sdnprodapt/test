@@ -1,0 +1,10 @@
+{
+    "endpoint": "cli",
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

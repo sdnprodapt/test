@@ -1,0 +1,30 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx960/tests/createCOSVPLS.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx960/createCOSVPLS.tmpl"
+    },
+    "in-path": [],
+    "out-path": [
+        {
+            "parameters": {
+                "labels": [
+                    "attrVals"
+                ]
+            },
+            "type": "bpprov.translators.list.ToNestedDict"
+        },
+        {
+            "parameters": {
+                "data": {
+                    "attrVals": {
+                        "classifiers_exp": "Backbone-EXP"
+                    }
+                }
+            },
+            "type": "bpprov.translators.dict.Merge"
+        }
+    ]
+}

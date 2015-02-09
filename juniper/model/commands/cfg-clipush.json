@@ -1,0 +1,11 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "cli",
+    "endpoint-parameters": {
+        "template": "cfg-clipush.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

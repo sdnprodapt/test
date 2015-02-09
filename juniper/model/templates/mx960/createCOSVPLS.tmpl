@@ -1,0 +1,18 @@
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <class-of-service>
+        <routing-instances>
+            <name>{{ data.oidAid.split('-')[1] }}</name>
+            <classifiers>
+            {% if 'classifiers_exp' in data.attrVals %}
+                <exp>
+                    <classifier-name>{{data.attrVals.classifiers_exp}}</classifier-name>
+                </exp>
+            {% endif %}
+            </classifiers>
+        </routing-instances>
+    </class-of-service>
+</configuration></config>
+</edit-config>
+</rpc>

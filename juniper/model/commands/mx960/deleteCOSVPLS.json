@@ -1,0 +1,11 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx960/tests/deleteCOSVPLS.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx960/deleteCOSVPLS.tmpl"
+    },
+    "in-path": [],
+    "out-path": []
+}

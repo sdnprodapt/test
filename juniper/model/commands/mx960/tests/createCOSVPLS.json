@@ -1,0 +1,31 @@
+{
+    "Happy Path": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass" : "OID_CLASS_COSVPLS",
+            "oidAid" : "COSVPLS-NS_12345",
+            "attrVals" : [[ "classifiers_exp" , "Backbone-EXP" ]]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+            "<class-of-service>",
+            "<routing-instances>",
+            "<name>NS_12345</name>",
+            "<classifiers>",
+            "<exp><classifier-name>Backbone-EXP</classifier-name></exp>",
+            "</classifiers>",
+            "</routing-instances>",
+            "</class-of-service>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

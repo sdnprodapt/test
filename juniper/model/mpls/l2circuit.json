@@ -1,0 +1,105 @@
+[
+    {
+        "parameters": {
+            "mapping": {
+                "lastError": "$..*.connection-status", 
+                "localIface": "$..*.connection-id", 
+                "vcId": "$..*.connection-id", 
+                "vcStatus": "$..*.connection-status"
+            }
+        }, 
+        "type": "bpprov.translators.dict.ReMap"
+    }, 
+    {
+        "parameters": {
+            "maps": [
+                {
+                    "field": "${vcId}", 
+                    "maps": [
+                        {
+                            "destination": "\\1", 
+                            "name": "Virtual ID", 
+                            "source": "^.*\\(vc (\\d+)\\)"
+                        }
+                    ]
+                }, 
+                {
+                    "field": "${localIface}", 
+                    "maps": [
+                        {
+                            "destination": "FAC_\\1-0-\\2-\\3-\\4", 
+                            "name": "Interface", 
+                            "source": "^(\\w+)-(\\d+)/(\\d+)/(\\d+).*"
+                        }
+                    ]
+                }
+            ]
+        }, 
+        "type": "bpprov.translators.mapper.PathMap"
+    }, 
+    {
+        "parameters": {
+            "choice": {
+                "Up": {
+                    "parameters": {
+                        "data": {
+                            "vcStatus": "up"
+                        }, 
+                        "favored": true
+                    }, 
+                    "type": "bpprov.translators.dict.Merge"
+                }
+            }, 
+            "field": "${vcStatus}", 
+            "otherwise": {
+                "parameters": {
+                    "data": {
+                        "vcStatus": "down"
+                    }, 
+                    "favored": true
+                }, 
+                "type": "bpprov.translators.dict.Merge"
+            }
+        }, 
+        "type": "bpprov.translators.route.Case"
+    }, 
+    {
+        "parameters": {
+            "choice": {
+                "Up": {
+                    "parameters": {
+                        "data": {
+                            "lastError": ""
+                        }, 
+                        "favored": true
+                    }, 
+                    "type": "bpprov.translators.dict.Merge"
+                }
+            }, 
+            "field": "${lastError}", 
+            "otherwise": {
+                "parameters": {
+                    "maps": [
+                        {
+                            "field": "${lastError}", 
+                            "filemap": "/idmappers/connection-status.json"
+                        }
+                    ]
+                }, 
+                "type": "bpprov.translators.mapper.PathMap"
+            }
+        }, 
+        "type": "bpprov.translators.route.Case"
+    }, 
+    {
+        "parameters": {
+            "data": {
+                "labelLocal": "", 
+                "labelStack": "", 
+                "statPacketRx": "", 
+                "statPacketTx": ""
+            }
+        }, 
+        "type": "bpprov.translators.dict.Merge"
+    }
+]

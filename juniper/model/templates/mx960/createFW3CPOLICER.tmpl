@@ -1,0 +1,42 @@
+{% set cir = data.attrVals.cir[:-1]|int %}
+{% set cbs = data.attrVals.cbs[:-1]|int %}
+{% set eir = data.attrVals.get('eir', "0k")[:-1]|int %}
+{% set ebs = data.attrVals.get('ebs', "0k")[:-1]|int %}
+{% set rateUnits = data.attrVals.cir[-1] %}
+{% set sizeUnits = data.attrVals.cbs[-1] %}
+{% set peakInformationRate = cir + eir %}
+{% set peakBurstSize = cbs + ebs %}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <firewall>
+        <three-color-policer>
+            <name>{{ data.oidAid.split('-')[1] }}</name>
+            {% if eir == 0 %}
+            <single-rate>
+                {% if 'color_mode' not in data.attrVals or data.attrVals.color_mode == 'blind' %}
+                <color-blind/>
+                {% else %}
+                <color-aware/>
+                {% endif %}
+                <committed-information-rate>{{ data.attrVals.cir }}</committed-information-rate>
+                <committed-burst-size>{{ data.attrVals.cbs }}</committed-burst-size>
+                <peak-burst-size>{{ "%d%s" % (peakBurstSize, sizeUnits) }}</peak-burst-size>
+            </single-rate>
+            {% else %}
+            <two-rate>
+                {% if 'color_mode' not in data.attrVals or data.attrVals.color_mode == 'blind' %}
+                <color-blind/>
+                {% else %}
+                <color-aware/>
+                {% endif %}
+                <committed-information-rate>{{ data.attrVals.cir }}</committed-information-rate>
+                <committed-burst-size>{{ data.attrVals.cbs }}</committed-burst-size>
+                <peak-information-rate>{{ "%d%s" % (peakInformationRate, rateUnits) }}</peak-information-rate>
+                <peak-burst-size>{{ "%d%s" % (peakBurstSize, sizeUnits) }}</peak-burst-size>
+            </two-rate>
+            {% endif %}
+        </three-color-policer>
+    </firewall>
+</configuration></config>
+</edit-config></rpc>

@@ -1,0 +1,46 @@
+{% set junk, family, name = data.oidAid.split('-') %}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <firewall>
+        <family>
+            <{{ family }}>
+                <filter>
+                    <name>{{ name }}</name>
+                    {% if 'intf_specific' in data.attrVals %}
+                    <interface-specific/>
+                    {% endif %}
+                    {% for term in data.attrVals.terms %}
+                    <term>
+                        <name>{{ term.name }}</name>
+                        <then>
+                            {% if 'then_policer' in term %}
+                            <policer>{{ term.then_policer }}</policer>
+                            {% endif %}
+                            {% if 'then_3cpolicer' in term %}
+                            <three-color-policer>
+                                {% if 'single' in term.then_3cpolicer %}
+                                <single-rate>{{ term.then_3cpolicer.split(' ')[1] }}</single-rate>
+                                {% else %}
+                                <two-rate>{{ term.then_3cpolicer.split(' ')[1] }}</two-rate>
+                                {% endif %}
+                            </three-color-policer>
+                            {% endif %}
+                            {% if 'then_loss_priority' in term %}
+                            <loss-priority>{{ term.then_loss_priority }}</loss-priority>
+                            {% endif %}
+                            {% if 'then_forwarding_class' in term %}
+                            <forwarding-class>{{ term.then_forwarding_class }}</forwarding-class>
+                            {% endif %}
+                            {% if 'then_accept' in term %}
+                            <accept/>
+                            {% endif %}
+                        </then>
+                    </term>
+                    {% endfor %}
+                </filter>
+            </{{ family }}>
+        </family>
+    </firewall>
+</configuration></config>
+</edit-config></rpc>

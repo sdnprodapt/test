@@ -1,0 +1,48 @@
+{
+    "ELAN createINTERFACE": {
+        "type": "netconf",
+        "device": { "nodeType": "JuniperMX960" },
+        "out-params": {
+            "oidClass": "OID_CLASS_INTERFACE",
+            "oidAid": "FAC_ge-0-11-3-0.0",
+            "attrVals": [
+                ["description", "Cyan test"],
+                ["mtu", "8800"],
+                ["encapsulation", "ethernet-vpls"],
+                ["family_filter", "vpls_CyanTest"],
+                ["apply_groups_except", ["uRPF_interface", "ARP_interface"]]
+            ]
+        },
+        "out-expect": [[
+            "<rpc><edit-config>",
+            "<target><candidate/></target>",
+            "<config>",
+            "<configuration>",
+                "<interfaces>",
+                "<interface>",
+                    "<name>ge-11/3/0</name>",
+                    "<description>Cyan test</description>",
+                    "<mtu>8800</mtu>",
+                    "<encapsulation>ethernet-vpls</encapsulation>",
+                    "<unit>",
+                        "<name>0</name>",
+                    "<description>Cyan test</description>",
+                        "<apply-groups-except>uRPF_interface</apply-groups-except>",
+                        "<apply-groups-except>ARP_interface</apply-groups-except>",
+                        "<family>",
+                            "<vpls>",
+                            "<filter><input>vpls_CyanTest</input></filter>",
+                            "</vpls>",
+                        "</family>",
+                    "</unit>",
+                "</interface>",
+                "</interfaces>",
+            "</configuration>",
+            "</config>",
+            "</edit-config></rpc>"
+        ]],
+        "in-params": [[
+            "<rpc-reply><ok/></rpc-reply>"
+        ]]
+    }
+}

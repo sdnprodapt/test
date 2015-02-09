@@ -1,0 +1,106 @@
+{
+    "endpoint-parameters": {
+        "template": "mx960/getMPLS_VC.tmpl"
+    }, 
+    "in-path": [
+        {
+            "parameters": {
+                "choice": [
+                    {
+                        "do": {
+                            "parameters": {
+                                "file": "/mpls/l2circuit.json"
+                            }, 
+                            "type": "bpprov.translators.importer.Json"
+                        }, 
+                        "when": "${$..} contains \"l2circuit-connection-information\""
+                    },
+                    {
+                        "do": {
+                            "parameters": {
+                                "file": "/mpls/vpls.json"
+                            }, 
+                            "type": "bpprov.translators.importer.Json"
+                        }, 
+                        "when": "${$..} contains \"vpls-connection-information\""
+                    }
+                ]
+            }, 
+            "type": "bpprov.translators.route.Branch"
+        },
+        {
+            "parameters": {
+                "xpath": "."
+            },
+            "type": "bpprov.translators.dict.ToList"
+        },
+        {
+            "type": "bpprov.translators.list.AssignDefaults",
+            "parameters": {
+                "matches": [
+                    "${$..} missing \"isPathTraceAvailable\""
+                ],
+                "compareType": "comparator",
+                "defaults": {
+                    "isPathTraceAvailable": false
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "mx960/getMPLS_VC_response.tmpl",
+                "as_object": true
+            }
+        },
+        {
+            "parameters": {
+                "paths": [
+                    {
+                        "path": "${vcId}",
+                        "type": "integer"
+                    },
+                    {
+                        "path": "${isPathTraceAvailable}",
+                        "type": "boolean"
+                    },
+                    {
+                        "path": "${statPacketTx}",
+                        "type": "integer"
+                    },
+                    {
+                        "path": "${statPacketRx}",
+                        "type": "integer"
+                    }
+                ]
+            },
+            "type": "bpprov.translators.types.StringConvert"
+        }
+    ], 
+    "out-path": [
+        {
+            "parameters": {
+                "labels": [
+                    "attrVals",
+                    "context"
+                ]
+            }, 
+            "type": "bpprov.translators.list.ToNestedDict"
+        }, 
+        {
+            "parameters": {
+                "maps": [
+                    {
+                        "destination": "\\1-\\3/\\4/\\5.\\6", 
+                        "source": "^FAC_(\\S+)-(\\d+)-(\\d+)-(\\d+)-(\\d+).(\\d+)"
+                    }
+                ]
+            }, 
+            "type": "bpprov.translators.mapper.IdMap"
+        }
+    ], 
+    "tests": [
+        "commands/mx960/tests/getMPLS_VC.json"
+    ], 
+    "type": "bpprov.runners.simple.Sequence"
+}

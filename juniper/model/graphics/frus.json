@@ -1,0 +1,457 @@
+[
+  {
+    "textures": [
+      {
+        "imageFile": "/images/demo-a/a900ima8s.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "subType": 0, 
+    "name": "Demo-A-IMA8S", 
+    "id": "Demo-A-IMA8S", 
+    "fruTypeCode": "UNSPECIFIED", 
+    "center": {
+      "y": 10.0, 
+      "x": 81.5, 
+      "z": 10.0
+    }, 
+    "ports": [
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 29.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-0", 
+        "label": "Port 0"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 43.75, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-1", 
+        "label": "Port 1"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 58.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-2", 
+        "label": "Port 2"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 72.25, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-3", 
+        "label": "Port 3"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 89.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-4", 
+        "label": "Port 4"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 103.25, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-5", 
+        "label": "Port 5"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 117.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-6", 
+        "label": "Port 6"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 131.75, 
+          "z": 0.0
+        }, 
+        "connectorType": "SFP", 
+        "location": "FP_GigabitEthernet-7", 
+        "label": "Port 7"
+      }
+    ], 
+    "seatPosition": {
+      "y": 0.0, 
+      "x": 0.0, 
+      "z": 0.0
+    }, 
+    "dimensions": {
+      "width": 163.0, 
+      "depth": 20.0, 
+      "height": 20.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "/images/demo-a/a900ima1x.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "subType": 0, 
+    "name": "Demo-A-IMA1X", 
+    "id": "Demo-A-IMA1X", 
+    "fruTypeCode": "UNSPECIFIED", 
+    "center": {
+      "y": 10.0, 
+      "x": 81.5, 
+      "z": 10.0
+    }, 
+    "ports": [
+      {
+        "dimensions": {
+          "width": 17.0, 
+          "depth": 20.0, 
+          "height": 8.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 101.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "XFP", 
+        "location": "FP_TenGigabitEthernet-0", 
+        "label": "Port 0"
+      }
+    ], 
+    "seatPosition": {
+      "y": 0.0, 
+      "x": 0.0, 
+      "z": 0.0
+    }, 
+    "dimensions": {
+      "width": 163.0, 
+      "depth": 20.0, 
+      "height": 20.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "/images/demo-a/a900ima8t.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "subType": 0, 
+    "name": "Demo-A-IMA8T", 
+    "id": "Demo-A-IMA8T", 
+    "fruTypeCode": "UNSPECIFIED", 
+    "center": {
+      "y": 10.0, 
+      "x": 81.5, 
+      "z": 10.0
+    }, 
+    "ports": [
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 28.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-0", 
+        "label": "Port 0"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 42.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-1", 
+        "label": "Port 1"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 57.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-2", 
+        "label": "Port 2"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 71.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-3", 
+        "label": "Port 3"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 90.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-4", 
+        "label": "Port 4"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 104.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-5", 
+        "label": "Port 5"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 119.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-6", 
+        "label": "Port 6"
+      }, 
+      {
+        "dimensions": {
+          "width": 13.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 13.0, 
+          "x": 133.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "RJ45", 
+        "location": "FP_GigabitEthernet-7", 
+        "label": "Port 7"
+      }
+    ], 
+    "seatPosition": {
+      "y": 0.0, 
+      "x": 0.0, 
+      "z": 0.0
+    }, 
+    "dimensions": {
+      "width": 163.0, 
+      "depth": 20.0, 
+      "height": 20.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "/images/demo-a/a900ima4os.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "subType": 0, 
+    "name": "Demo-A-IMA4OS", 
+    "id": "Demo-A-IMA4OS", 
+    "fruTypeCode": "UNSPECIFIED", 
+    "center": {
+      "y": 10.0, 
+      "x": 81.5, 
+      "z": 10.0
+    }, 
+    "ports": [
+      {
+        "dimensions": {
+          "width": 28.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 36.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "UNKNOWN", 
+        "location": "FP_GigabitEthernet-0", 
+        "label": "Port 0"
+      }, 
+      {
+        "dimensions": {
+          "width": 28.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 65.0, 
+          "z": 0.0
+        }, 
+        "connectorType": "UNKNOWN", 
+        "location": "FP_GigabitEthernet-1", 
+        "label": "Port 1"
+      }, 
+      {
+        "dimensions": {
+          "width": 28.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 95.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "UNKNOWN", 
+        "location": "FP_GigabitEthernet-2", 
+        "label": "Port 2"
+      }, 
+      {
+        "dimensions": {
+          "width": 28.0, 
+          "depth": 20.0, 
+          "height": 10.0
+        }, 
+        "center": {
+          "y": 10.0, 
+          "x": 124.5, 
+          "z": 0.0
+        }, 
+        "connectorType": "UNKNOWN", 
+        "location": "FP_GigabitEthernet-3", 
+        "label": "Port 3"
+      }
+    ], 
+    "seatPosition": {
+      "y": 0.0, 
+      "x": 0.0, 
+      "z": 0.0
+    }, 
+    "dimensions": {
+      "width": 163.0, 
+      "depth": 20.0, 
+      "height": 20.0
+    }
+  }
+]

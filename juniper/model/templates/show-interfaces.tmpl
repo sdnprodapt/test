@@ -1,0 +1,24 @@
+{% set ports = data['ports'] %}
+{% set xe_port = 'xe-' %}
+{% set ge_port = 'ge-' %}
+{% set et_port = 'et-' %}
+{% set fac_prefix =  "OID_CLASS_PTP:FAC_" %}
+{
+{% for port in ports
+	if (port['name']|string|trim).startswith(xe_port) or
+	(port['name']|string|trim).startswith(ge_port) or
+	(port['name']|string|trim).startswith(et_port) recursive %}
+	{% set name =  port['name']|string|trim %}
+	{% set speed =  port['speed']|string|trim %}
+    {% set strip_len = (name|length)-3 %}
+	{% set eth_type = (name|truncate((name|length)-strip_len, True))|replace('...', '') %}
+	"{{ loop.index0 }}": {
+		"name": "{{ name }}",
+		"oid": "{{fac_prefix}}{{ eth_type }}0-{{ (name|replace(eth_type, ''))|replace('/','-')}}",
+		"link_level_type": "{{ port['link-level-type']|trim|default('') }}",
+		"speed": "{{ speed }}",
+		"mtu": "{{ port['mtu']|trim|default('') }}",
+		"hardware_physical_address": "{{ port['hardware-physical-address']|trim|default('') }}"
+	}{% if not loop.last %}, {% endif %}
+{% endfor %}
+}

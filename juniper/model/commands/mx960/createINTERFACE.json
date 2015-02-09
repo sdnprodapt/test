@@ -1,0 +1,46 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx960/tests/createINTERFACE-ELAN.json",
+        "commands/mx960/tests/createINTERFACE-ELINE.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx960/createINTERFACE.tmpl"
+    },
+    "in-path": [],
+    "out-path": [
+        {
+            "parameters": {
+                "labels": [
+                    "attrVals"
+                ],
+                "maxDepth": 1
+            },
+            "type": "bpprov.translators.list.ToNestedDict"
+        },
+        {
+            "parameters": {
+                "data": {
+                    "attrVals": {
+                        "mtu": "9100",
+                        "apply_groups_except": ["uRPF_interface", "ARP_interface"],
+                        "encapsulation": "",
+                        "family_filter": ""
+                    }
+                }
+            },
+            "type": "bpprov.translators.dict.Merge"
+        },
+        {
+            "type": "bpprov.translators.mapper.IdMap",
+            "parameters": {
+                "maps": [
+                    {
+                        "source": "^FAC_(\\S+)-(\\d+)-(\\d+)-(\\d+)-(\\d+).(\\d+)",
+                        "destination": "\\1-\\3/\\4/\\5.\\6"
+                    }
+                ]
+            }
+        }
+    ]
+}

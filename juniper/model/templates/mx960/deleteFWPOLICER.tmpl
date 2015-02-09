@@ -1,0 +1,10 @@
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <firewall>
+        <policer operation="delete">
+            <name>{{ data.oidAid.split('-')[1] }}</name>
+        </policer>
+    </firewall>
+</configuration></config>
+</edit-config></rpc>

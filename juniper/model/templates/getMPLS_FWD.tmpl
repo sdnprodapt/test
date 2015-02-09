@@ -1,0 +1,7 @@
+{%- set service_type = data.context.service_type -%}
+{%- set service_id = data.context.service_id -%}
+<rpc>
+    <get-forwarding-table-information>
+        <table>NS_{{ service_id }}</table>
+    </get-forwarding-table-information>
+</rpc>

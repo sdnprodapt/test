@@ -1,0 +1,11 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx960/tests/deleteFW3CPOLICER.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx960/deleteFW3CPOLICER.tmpl"
+    },
+    "in-path": [],
+    "out-path": []
+}

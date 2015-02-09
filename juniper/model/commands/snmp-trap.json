@@ -1,0 +1,9 @@
+{
+    "type": "bpprov.runners.simple.Event",
+    "tests": [
+        "commands/tests/snmp-trap.json"
+    ],
+    "endpoint-parameters": {},
+    "in-path": [
+    ]
+}

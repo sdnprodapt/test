@@ -1,0 +1,27 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/getMPLS_FWD.json"
+    ],
+    "endpoint-parameters": {
+        "template": "getMPLS_FWD.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "fwdtblinfo": "forwarding-table-information"
+                }
+            }
+        }, {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "getMPLS_FWD_response.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

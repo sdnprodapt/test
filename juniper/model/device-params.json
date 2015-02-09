@@ -1,0 +1,6 @@
+{
+    "netconf": {
+        "commandTimeout": 30
+    }, 
+    "snmp": {}
+}

@@ -1,0 +1,11 @@
+{
+    "maps": [{
+        "name": "P2P EPL Family Filter",
+        "source": "P2P EPL",
+        "destination": "ccc_edge_filter"
+    }, {
+        "name": "MP ELAN Family Filter",
+        "source": "MP ELAN",
+        "destination": "vpls_edge_filter"
+    }]
+}
