@@ -5,8 +5,8 @@
         "out-params": {
         },
         "out-expect": [
-            "<rpc message-id=\"0\"><get-software-information></get-software-information></rpc>",
-            "<rpc message-id=\"1\"><get-chassis-inventory></get-chassis-inventory></rpc>"
+            "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\"><get-software-information></get-software-information></rpc>",
+            "<rpc message-id=\"1\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\"><get-chassis-inventory></get-chassis-inventory></rpc>"
         ],
         "in-params": [[
             "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/13.3R3/junos\" message-id=\"0\">",

@@ -5,7 +5,7 @@
         "out-params": {
         },
         "out-expect": [
-            "<rpc message-id=\"0\"><get-fpc-information></get-fpc-information></rpc>"
+            "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\"><get-fpc-information></get-fpc-information></rpc>"
         ],
         "in-params": [[
             "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/13.3I0/junos\">",
