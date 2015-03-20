@@ -13,10 +13,10 @@
       "alarmStatus": "Indeterminate",
       "holderState": "INSTALLED_AND_EXPECTED",
       "nativeEMSName": ""
-    },
+    }
       {% for shelf in data[rack]["shelves"] %}
         {% for slot in data[rack]["shelves"][shelf]["slots"] %}
-            {
+            ,{
               "id": "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot }}",
               "name": "{{ shelf + "-" + slot }}",
               "userLabel": "{{ shelf + "-" + slot }}",
@@ -29,8 +29,8 @@
               "alarmStatus": "Indeterminate",
               "holderState": "INSTALLED_AND_EXPECTED",
               "nativeEMSName": ""
-            }{% if not loop.last %},{% endif %}
-         {% endfor %}{% if not loop.last %},{% endif %}
-     {% endfor %}{% if not loop.last %},{% endif %}
+            }
+         {% endfor %}
+     {% endfor %}
   {% endfor %}
 ]

@@ -1,7 +1,7 @@
 {
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/tests/show-inventory.json"
+        "commands/tests/show-equipment-holders.json"
     ],
     "endpoint-parameters": {
         "command": {
@@ -29,7 +29,7 @@
         }, {
             "type": "bpprov.translators.template.Json",
             "parameters": {
-                "template": "show-equipment.tmpl",
+                "template": "show-equipment-holders.tmpl",
                 "as_object": true
             }
         }

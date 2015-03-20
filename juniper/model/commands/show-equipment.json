@@ -1,7 +1,7 @@
 {
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/tests/show-inventory.json"
+        "commands/tests/show-equipment.json"
     ],
     "endpoint-parameters": {
         "command": {
