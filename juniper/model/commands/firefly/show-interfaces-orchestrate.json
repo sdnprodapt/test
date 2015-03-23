@@ -5,7 +5,9 @@
         "commands/tests/show-interfaces.json"
     ],
     "endpoint-parameters": {
-        "template": "get-interface-information.tmpl"
+        "command": {
+            "name": "get-interface-information"
+        }
     },
     "out-path": [
     ],
