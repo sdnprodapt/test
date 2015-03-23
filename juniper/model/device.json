@@ -45,5 +45,10 @@
         "version": [
             ""
         ]
+    },
+    "JuniperFireflyPerimeter": {
+        "family": "JuniperFireflyPerimeter",
+        "dir": "firefly",
+        "version": [""]
     }
 }
