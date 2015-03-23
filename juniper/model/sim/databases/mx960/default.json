@@ -1,0 +1,9 @@
+{
+    "interfaces": [],
+    "class-of-serivces": [],
+    "l2circuits": [],
+    "firewalls": [],
+    "firewall-filters": [],
+    "firewall-policers": [],
+    "routing-instances": []
+}

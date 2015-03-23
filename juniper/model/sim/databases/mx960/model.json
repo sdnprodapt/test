@@ -1,0 +1,81 @@
+{
+    "interfaces": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string"},
+            { "name": "enabled", "type": "boolean", "default": true },
+            { "name": "description", "type": "string" },
+            { "name": "mtu", "type": "integer" },
+            { "name": "encapsulation", "type": "string" },
+            { "name": "scheduler-map", "type": "string" },
+            { "name": "unit-name", "type": "string" },
+            { "name": "unit-description", "type": "string" },
+            { "name": "unit-family-filter-tag", "type": "string" },
+            { "name": "unit-family-filter-input", "type": "string" },
+            { "name": "unit-apply-groups-accept", "type": "string" }
+        ]
+    },
+    "l2circuits": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "if-name", "type": "string" },
+            { "name": "if-virtual-circuit-id", "type": "string" },
+            { "name": "if-description", "type": "string" }
+        ]
+    },
+    "firewalls": {
+        "index": "name",
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "rate", "type": "string", "default": "single-rate" },
+            { "name": "color-aware", "type": "boolean", "default": false },
+            { "name": "cir", "type": "integer" },
+            { "name": "cbs", "type": "integer" },
+            { "name": "pbs", "type": "integer" },
+            { "name": "pir", "type": "integer" }
+        ]
+    },
+    "firewall-filters": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "family", "type": "string" },
+            { "name": "filter-interface-specific", "type": "boolean" },
+            { "name": "filter-term-name", "type": "string" },
+            { "name": "filter-term-policer", "type": "string" },
+            { "name": "filter-term-three-color", "type": "string" },
+            { "name": "filter-term-loss-prio", "type": "string" },
+            { "name": "filter-term-forwarding-class", "type": "string" },
+            { "name": "filter-term-action", "type": "string" }
+        ]
+    },
+    "firewall-policers": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "if-condition", "type": "string" },
+            { "name": "bandwidth-limit", "type": "string" },
+            { "name": "burst-size-limit", "type": "string" },
+            { "name": "then-action", "type": "string" }
+        ]
+    },
+    "routing-instances": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "description", "type": "string" },
+            { "name": "interface-name", "type": "string" },
+            { "name": "route-distinguisher-rd-type", "type": "string" },
+            { "name": "vrf-target-import", "type": "string" },
+            { "name": "vrf-target-export", "type": "string" },
+            { "name": "forwarding-options-family-vpls-flood-input", "type": "string" },
+            { "name": "protocols-vpls-mac-table-size-limit", "type": "integer" },
+            { "name": "protocols-vpls-interface-mac-limit", "type": "integer" },
+            { "name": "protocols-vpls-tunnel-services", "type": "boolean", "default": false },
+            { "name": "protocols-vpls-site-name", "type": "string" },
+            { "name": "protocols-vpls-site-id", "type": "string" },
+            { "name": "protocols-vpls-site-interface-name", "type": "string" }
+        ]
+    }
+}
