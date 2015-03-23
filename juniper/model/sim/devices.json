@@ -1,0 +1,17 @@
+{
+    "mx960": {
+        "id": "MX960",
+        "dir": "mx960",
+        "username": "admin",
+        "password": "admin",
+        "transports": [{
+            "name": "netconf",
+            "type": "bpprov.sim.transports.ssh.Ssh",
+            "parameters": {
+                "banner": "This is a netconf sim",
+                "prompt": "",
+                "port": "2222"
+            }
+        }]
+    }
+}

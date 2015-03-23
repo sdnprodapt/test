@@ -1,0 +1,30 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/class-of-serivce/interfaces/scheduler-map[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-serivce/interfaces/interface/name", "[0].text"]
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/class-of-serivce",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-serivce/interfaces/interface/name", "[0].text"]
+                }, {
+                    "name": "scheduler-map",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-serivce/interfaces/interface/scheduler-map", "[0].text"]
+                }]
+            }
+        }
+    }]
+}

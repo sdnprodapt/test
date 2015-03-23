@@ -1,0 +1,11 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor",
+        "class": "bpprov.sim.commands.db.UpdateObject",
+        "parameters": {
+            "data": {
+                "path": "l2circuits"
+            }
+        }
+    }]
+}

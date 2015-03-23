@@ -10,7 +10,7 @@
                 ["description", "Test ELINE"]
             ]
         },
-        "out-expect": ["<rpc message-id=\"0\"><get-configuration></get-configuration></rpc>", [
+        "out-expect": ["<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\"><get-configuration></get-configuration></rpc>", [
             "<rpc><edit-config>",
             "<target><candidate/></target>",
             "<config>",

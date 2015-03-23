@@ -1,0 +1,79 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/interfaces@operation=\"delete\"",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces"
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/disable@operation=\"delete\"",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+                }],
+                "values": [{
+                    "name": "enabled",
+                    "value": true
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/disable",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+                }],
+                "values": [{
+                    "name": "enabled",
+                    "value": false
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+                }, {
+                    "name": "description",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/description", "[0].text"]
+                }, {
+                    "name": "mtu",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/mtu", "[0].text"]
+                }, {
+                    "name": "encapsulation",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/encapsulation", "[0].text"]
+                }, {
+                    "name": "unit-name",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/unit/name", "[0].text"]
+                }, {
+                    "name": "unit-description",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/unit/description", "[0].text"]
+                }, {
+                    "name": "unit-apply-groups-accept",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/unit/apply-groups-accept", "[0].text"]
+                }, {
+                    "name": "unit-family-filter-tag",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/unit/family", "[0].tag"]
+                }, {
+                    "name": "unit-family-filter-input",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/unit/family/*/filter/input", "[0].text"]
+                }]
+            }
+        }
+    }]
+}
