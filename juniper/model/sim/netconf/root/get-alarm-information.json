@@ -1,0 +1,10 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-alarm-information",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-alarm-information.tmpl"
+        }
+    }]
+}

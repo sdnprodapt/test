@@ -1,0 +1,10 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-chassis-inventory",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-chassis.tmpl"
+        }
+    }]
+}

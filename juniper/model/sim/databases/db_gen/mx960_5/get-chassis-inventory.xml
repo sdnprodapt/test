@@ -1,0 +1,346 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/13.3R4/junos">
+  <chassis-inventory xmlns="http://xml.juniper.net/junos/13.3R4/junos-chassis">
+    <chassis junos:style="inventory">
+      <name>Chassis</name>
+      <serial-number>JN11FFD59AFA</serial-number>
+      <description>MX960</description>
+      <chassis-module>
+        <name>Midplane</name>
+        <version>REV 01</version>
+        <part-number>710-030012</part-number>
+        <serial-number>ACAB6732</serial-number>
+        <description>MX960 Backplane</description>
+        <clei-code>COM8T00CRB</clei-code>
+        <model-number>CHAS-BP-MX960-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>FPM Board</name>
+        <version>REV 03</version>
+        <part-number>710-014974</part-number>
+        <serial-number>ABBV5321</serial-number>
+        <description>Front Panel Display</description>
+        <model-number>CRAFT-MX960-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>PDM</name>
+        <version>Rev 03</version>
+        <part-number>740-013110</part-number>
+        <serial-number>QCS154550J6</serial-number>
+        <description>Power Distribution Module</description>
+      </chassis-module>
+      <chassis-module>
+        <name>PEM 0</name>
+        <version>Rev 07</version>
+        <part-number>740-029344</part-number>
+        <serial-number>QCS1613V0K8</serial-number>
+        <description>DC 4.1kW Power Entry Module</description>
+        <model-number>PWR-MX960-4100-DC-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>PEM 1</name>
+        <version>Rev 07</version>
+        <part-number>740-029344</part-number>
+        <serial-number>QCS1613V0K9</serial-number>
+        <description>DC 4.1kW Power Entry Module</description>
+        <model-number>PWR-MX960-4100-DC-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>PEM 2</name>
+        <version>Rev 07</version>
+        <part-number>740-029344</part-number>
+        <serial-number>QCS1613V15E</serial-number>
+        <description>DC 4.1kW Power Entry Module</description>
+        <model-number>PWR-MX960-4100-DC-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>PEM 3</name>
+        <version>Rev 07</version>
+        <part-number>740-029344</part-number>
+        <serial-number>QCS1613V15U</serial-number>
+        <description>DC 4.1kW Power Entry Module</description>
+        <model-number>PWR-MX960-4100-DC-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>Routing Engine 0</name>
+        <version>REV 07</version>
+        <part-number>740-031116</part-number>
+        <serial-number>9009107058</serial-number>
+        <description>RE-S-1800x4</description>
+        <clei-code>COUCALDBAB</clei-code>
+        <model-number>RE-S-1800X4-16G-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>Routing Engine 1</name>
+        <version>REV 07</version>
+        <part-number>740-031116</part-number>
+        <serial-number>9009107054</serial-number>
+        <description>RE-S-1800x4</description>
+        <clei-code>COUCALDBAB</clei-code>
+        <model-number>RE-S-1800X4-16G-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 0</name>
+        <version>REV 14</version>
+        <part-number>750-031391</part-number>
+        <serial-number>ABBV4586</serial-number>
+        <description>Enhanced MX SCB</description>
+        <clei-code>COUCARCBAA</clei-code>
+        <model-number>SCBE-MX-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 1</name>
+        <version>REV 14</version>
+        <part-number>750-031391</part-number>
+        <serial-number>ABBV4593</serial-number>
+        <description>Enhanced MX SCB</description>
+        <clei-code>COUCARCBAA</clei-code>
+        <model-number>SCBE-MX-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>CB 2</name>
+        <version>REV 14</version>
+        <part-number>750-031391</part-number>
+        <serial-number>ABBV4566</serial-number>
+        <description>Enhanced MX SCB</description>
+        <clei-code>COUCARCBAA</clei-code>
+        <model-number>SCBE-MX-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>FPC 0</name>
+        <version>REV 25</version>
+        <part-number>750-031089</part-number>
+        <serial-number>ABBV7944</serial-number>
+        <description>MPC Type 2 3D</description>
+        <clei-code>COUIBBDBAA</clei-code>
+        <model-number>MX-MPC2-3D</model-number>
+        <chassis-sub-module>
+          <name>CPU</name>
+          <version>REV 08</version>
+          <part-number>711-030884</part-number>
+          <serial-number>ABBV6736</serial-number>
+          <description>MPC PMB 2G </description>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>MIC 0</name>
+          <version>REV 26</version>
+          <part-number>750-028392</part-number>
+          <serial-number>ABBW1638</serial-number>
+          <description>3D 20x 1GE(LAN) SFP</description>
+          <clei-code>COUIA15BAA</clei-code>
+          <model-number>MIC-3D-20GE-SFP</model-number>
+          <chassis-sub-sub-module>
+            <name>PIC 0</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>10x 1GE(LAN) SFP</description>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>PIC 1</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>10x 1GE(LAN) SFP</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>MIC 1</name>
+          <version>REV 26</version>
+          <part-number>750-028392</part-number>
+          <serial-number>ABBV1593</serial-number>
+          <description>3D 20x 1GE(LAN) SFP</description>
+          <clei-code>COUIA15BAA</clei-code>
+          <model-number>MIC-3D-20GE-SFP</model-number>
+          <chassis-sub-sub-module>
+            <name>PIC 2</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>10x 1GE(LAN) SFP</description>
+            <chassis-sub-sub-sub-module>
+              <name>Xcvr 0</name>
+              <part-number>NON-JNPR</part-number>
+              <serial-number>0000000000055682</serial-number>
+              <description>SFP-T</description>
+            </chassis-sub-sub-sub-module>
+            <chassis-sub-sub-sub-module>
+              <name>Xcvr 1</name>
+              <version/>
+              <part-number>NON-JNPR</part-number>
+              <serial-number>PF43DZ6</serial-number>
+              <description>SFP-T</description>
+            </chassis-sub-sub-sub-module>
+            <chassis-sub-sub-sub-module>
+              <name>Xcvr 9</name>
+              <version>REV 01</version>
+              <part-number>740-011782</part-number>
+              <serial-number>PC31AJX</serial-number>
+              <description>SFP-SX</description>
+            </chassis-sub-sub-sub-module>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>PIC 3</name>
+            <part-number>BUILTIN</part-number>
+            <serial-number>BUILTIN</serial-number>
+            <description>10x 1GE(LAN) SFP</description>
+            <chassis-sub-sub-sub-module>
+              <name>Xcvr 9</name>
+              <version>REV 01</version>
+              <part-number>740-011782</part-number>
+              <serial-number>P8J1T6U</serial-number>
+              <description>SFP-SX</description>
+            </chassis-sub-sub-sub-module>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+      </chassis-module>
+      <chassis-module>
+        <name>FPC 1</name>
+        <version>REV 22</version>
+        <part-number>750-022765</part-number>
+        <serial-number>ABBD7630</serial-number>
+        <description>DPCE 20x 1GE + 2x 10GE R</description>
+        <model-number>DPCE-R-20GE-2XGE</model-number>
+        <chassis-sub-module>
+          <name>CPU</name>
+          <version>REV 04</version>
+          <part-number>710-022351</part-number>
+          <serial-number>ABBE1927</serial-number>
+          <description>DPC PMB</description>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 0</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>10x 1GE(LAN)</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 0</name>
+            <version>REV 01</version>
+            <part-number>740-011782</part-number>
+            <serial-number>PC31BTX</serial-number>
+            <description>SFP-SX</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 1</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>10x 1GE(LAN)</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 9</name>
+            <version>REV 02</version>
+            <part-number>740-011613</part-number>
+            <serial-number>AM0925SBKZ2</serial-number>
+            <description>SFP-SX</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 2</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>1x 10GE(LAN/WAN)</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 0</name>
+            <version>REV 03</version>
+            <part-number>740-014289</part-number>
+            <serial-number>C938BQ03Q</serial-number>
+            <description>XFP-10G-SR</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 3</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>1x 10GE(LAN/WAN)</description>
+        </chassis-sub-module>
+      </chassis-module>
+      <chassis-module>
+        <name>FPC 10</name>
+        <version>REV 17</version>
+        <part-number>750-037355</part-number>
+        <serial-number>CABA3354</serial-number>
+        <description>MPC4E 3D 2CGE+8XGE</description>
+        <clei-code>IPU3A4DHAA</clei-code>
+        <model-number>MPC4E-3D-2CGE-8XGE</model-number>
+        <chassis-sub-module>
+          <name>CPU</name>
+          <version>REV 08</version>
+          <part-number>711-035209</part-number>
+          <serial-number>CABA9616</serial-number>
+          <description>HMPC PMB 2G </description>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 0</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>4x10GE SFPP</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 0</name>
+            <version>V01</version>
+            <part-number>740-SFP+SR</part-number>
+            <serial-number>CLS10295230</serial-number>
+            <description>SFP+-10G-SR</description>
+          </chassis-sub-sub-module>
+          <chassis-sub-sub-module>
+            <name>Xcvr 1</name>
+            <version>V01</version>
+            <part-number>740-SFP+SR</part-number>
+            <serial-number>CLS10295238</serial-number>
+            <description>SFP+-10G-SR</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 1</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>1X100GE CFP</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 0</name>
+            <version>REV 01</version>
+            <part-number>740-035329</part-number>
+            <serial-number>UP2077W</serial-number>
+            <description>CFP-100G-SR10</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 2</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>4x10GE SFPP</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 0</name>
+            <version>V01</version>
+            <part-number>740-SFP+SR</part-number>
+            <serial-number>LS10302028</serial-number>
+            <description>SFP+-10G-SR</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+        <chassis-sub-module>
+          <name>PIC 3</name>
+          <part-number>BUILTIN</part-number>
+          <serial-number>BUILTIN</serial-number>
+          <description>1X100GE CFP</description>
+          <chassis-sub-sub-module>
+            <name>Xcvr 0</name>
+            <version>REV 01</version>
+            <part-number>740-035329</part-number>
+            <serial-number>UNJ069S</serial-number>
+            <description>CFP-100G-SR10</description>
+          </chassis-sub-sub-module>
+        </chassis-sub-module>
+      </chassis-module>
+      <chassis-module>
+        <name>Fan Tray 0</name>
+        <version>REV 08</version>
+        <part-number>740-031521</part-number>
+        <serial-number>ACAD8710</serial-number>
+        <description>Enhanced Fan Tray</description>
+        <model-number>FFANTRAY-MX960-HC-S</model-number>
+      </chassis-module>
+      <chassis-module>
+        <name>Fan Tray 1</name>
+        <version>REV 08</version>
+        <part-number>740-031521</part-number>
+        <serial-number>ACAD8732</serial-number>
+        <description>Enhanced Fan Tray</description>
+        <model-number>FFANTRAY-MX960-HC-S</model-number>
+      </chassis-module>
+    </chassis>
+  </chassis-inventory>
+</rpc-reply>

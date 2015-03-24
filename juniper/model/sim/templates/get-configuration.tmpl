@@ -1,0 +1,49 @@
+{% import 'dbmacros.tmpl' as dbmacros %}
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/13.3R3/junos" message-id="{{ message_id }}">
+  <configuration junos:commit-seconds="1414418764" junos:commit-localtime="2014-10-27 10:06:04 EDT" junos:commit-user="root">
+    <routing-options>
+        <router-id>{{ db.deviceInfo[0]['router-id'] }}</router-id>
+    </routing-options>
+    <interfaces>
+        {%- for iface in db.interfaces %}
+        {{ dbmacros.render_config_interface(iface, db)|indent(8) }}
+        {%- endfor %}
+    </interfaces>
+    <class-of-service>
+        <interfaces>
+        {%- for cos in db.cosInterfaces %}
+            {{ dbmacros.render_class_of_service_interface(cos)|indent(12) }}
+        {%- endfor %}
+        </interfaces>
+    {%- for cos in db.cosRoutingInstances %}
+        {{ dbmacros.render_class_of_service_routing_instance(cos)|indent(8) }}
+    {%- endfor %}
+    </class-of-service>
+    <firewall>
+        {%- for firewall in db.firewalls %}
+        {{ dbmacros.render_firewall_three_color(firewall)|indent(8) }}
+        {%- endfor %}
+        {%- for firewall in db.firewallFilters %}
+        {{ dbmacros.render_firewall_family(firewall)|indent(8) }}
+        {%- endfor %}
+        {%- for firewall in db.firewallPolicers %}
+        {{ dbmacros.render_firewall_policer(firewall)|indent(8) }}
+        {%- endfor %}
+    </firewall>
+    <routing-instances>
+        {%- for instance in db.routingInstances %}
+        {{ dbmacros.render_routing_instance(instance)|indent(8) }}
+        {%- endfor %}
+    </routing-instances>
+    <protcols>
+        <l2circuit>
+            {%- for group in db.l2circuitInterfaces|groupby('circuit-name') %} {# Need all the unique circuit names in circuitInterfaces #}
+            {{ dbmacros.render_l2circuit(group)|indent(12) }}
+            {%- endfor %}
+        </l2circuit>
+    </protcols>
+  </configuration>
+  <cli>
+  <banner></banner>
+  </cli>
+</rpc-reply>

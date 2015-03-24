@@ -1,3 +1,6 @@
 {
-    
+   "manhole": {
+        "active": true,
+        "port": 9997
+    }
 }

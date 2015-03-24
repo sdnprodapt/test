@@ -1,0 +1,20 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-config/filter/configuration/firewall/three-color-policer/name",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [{
+                "name": "policer",
+                "xpath": ["/rpc/get-config/filter/configuration/firewall/three-color-policer/name", "[0].text"]
+            }],
+            "template": "get-config.firewall.three-color-policer.tmpl"
+        } 
+    }, {
+        "pattern": "/rpc/get-config/filter/configuration/firewall/three-color-policer",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-config.firewall.three-color-policer.tmpl"
+        } 
+    }]
+}

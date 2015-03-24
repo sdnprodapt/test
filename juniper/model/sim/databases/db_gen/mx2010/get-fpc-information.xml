@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><rpc-reply message-id="urn:uuid:05d95952-bd22-11e4-9803-000c29674873">
+<fpc-information style="brief">
+<fpc>
+<slot>0</slot>
+<state>Online</state>
+<temperature celsius="36">36</temperature>
+<cpu-total>9</cpu-total>
+<cpu-interrupt>0</cpu-interrupt>
+<memory-dram-size>2048</memory-dram-size>
+<memory-heap-utilization>11</memory-heap-utilization>
+<memory-buffer-utilization>15</memory-buffer-utilization>
+</fpc>
+<fpc>
+<slot>1</slot>
+<state>Online</state>
+<temperature celsius="33">33</temperature>
+<cpu-total>9</cpu-total>
+<cpu-interrupt>0</cpu-interrupt>
+<memory-dram-size>2048</memory-dram-size>
+<memory-heap-utilization>10</memory-heap-utilization>
+<memory-buffer-utilization>14</memory-buffer-utilization>
+</fpc>
+<fpc>
+<slot>2</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>3</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>4</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>5</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>6</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>7</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>8</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>9</slot>
+<state>Empty</state>
+</fpc>
+</fpc-information>
+</rpc-reply>

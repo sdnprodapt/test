@@ -1,4 +1,5 @@
 {
+    "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
         "commands/tests/show-version.json"
@@ -45,6 +46,12 @@
                 "merge": [
                     { "to": "nodeSerialNumber", "from": "nodeSerialNumber" }
                 ]
+            }
+        }, {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "show-device.tmpl",
+                "as_object": true
             }
         }
     ]
