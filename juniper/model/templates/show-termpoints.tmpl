@@ -1,0 +1,50 @@
+{% set ports = data['ports'] %}
+{% set xe_port = 'xe-' %}
+{% set ge_port = 'ge-' %}
+{% set et_port = 'et-' %}
+{% set fac_prefix =  "OID_CLASS_PTP:FAC_" %}
+[
+
+{% for port in ports
+    if (port['name']|string|trim).startswith(xe_port) or
+    (port['name']|string|trim).startswith(ge_port) or
+    (port['name']|string|trim).startswith(et_port) recursive %}
+    {% set ptp =  port['name']|string|trim|replace("-","-0-", 1) %}
+    {% set label =  port['name']|string|trim %}
+    {% set speed =  port['speed']|string|trim %}
+    {% set strip_len = (name|length)-3 %}
+    {% set eth_type = (name|truncate((name|length)-strip_len, True))|replace('...', '') %}
+        {
+          "id": "{{ ptp.replace("/", "-").replace(" ","-") }}",
+          "name": "{{ ptp.replace("/", "-").replace(" ","-") }}",
+          "userLabel": "{{ label }}",
+          "owner": "",
+          "containedCTPs": [],
+          "oids": [],
+          "adminState": "AdminAutoInService",
+          "serviceState": "IN_SERVICE",
+          "direction": "D_NA",
+          "alarmStatus": "Indeterminate",
+          "connectionState": "NA",
+          "nativeEmsName": "",
+          "type": "TPT_PTP",
+          "tpMappingMode": "TM_NA",
+          "transmissionParams": 
+                [
+                    {% for LR in ["LR_PHYSICAL_OPTICAL", "LR_DSR_Gigabit_Ethernet", "LR_DSR_10Gigabit_Ethernet",
+                                  "LR_Ethernet", "LR_ERP", "LR_CLIENT_ERP"] if not ((ptp.startswith(xe_port) and LR == "LR_DSR_Gigabit_Ethernet") or 
+                              (ptp.startswith(ge_port) and LR == "LR_DSR_10Gigabit_Ethernet"))%}
+                        {
+                        "layer": "{{LR}}",
+                        "layerInUse": false,
+                        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT",
+                        "thisLayerActive": "ACTIVE",
+                        "serviceState": "IN_SERVICE",
+                        "location": "{{ ptp.replace("/", "-").replace(" ","-") }}",
+                        "alarmReporting": "on"
+                        }{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+          }{% if not loop.last %},{% endif %}
+  {% endfor %}
+]

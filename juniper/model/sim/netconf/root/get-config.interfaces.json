@@ -1,0 +1,20 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-config/filter/configuration/interfaces/interface",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [{
+                "name": "iface",
+                "xpath": ["/rpc/get-config/filter/configuration/interfaces/interface/name", "[0].text"]
+            }],
+            "template": "get-config.interfaces.tmpl"
+        } 
+    }, {
+        "pattern": "/rpc/get-config/filter/configuration/interfaces",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-config.interfaces.tmpl"
+        }
+    }]
+}

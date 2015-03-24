@@ -1,0 +1,37 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/firewall/policer[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "firewallPolicers",
+            "indexFields": [{
+                "name": "name",
+                "xpath": ["/rpc/edit-config/config/configuration/firewall/policer/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/firewall/policer",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "firewallPolicers",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/policer/name", "[0].text"]
+                }, {
+                    "name": "if-condition",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/policer/if-exceeding", "[0].tag"]
+                }, {
+                    "name": "bandwidth-limit",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/policer/if-exceeding/bandwidth-limit", "[0].text"]
+                }, {
+                    "name": "burst-size-limit",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/policer/if-exceeding/burst-size-limit", "[0].text"]
+                }, {
+                    "name": "then-action",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/policer/then/*", "[0].tag"]
+                }]
+            }
+        }
+    }]
+}

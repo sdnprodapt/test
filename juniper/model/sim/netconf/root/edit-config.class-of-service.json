@@ -1,0 +1,53 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/class-of-service/interfaces/scheduler-map[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "cosInterface",
+            "indexFields": [{
+                "name": "interface",
+                "xpath": ["/rpc/edit-config/config/configuration/class-of-service/interfaces/interface/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/class-of-service/routing-instances[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "cosRoutingInstances",
+            "indexFields": [{
+                "name": "routingInstance",
+                "xpath": ["/rpc/edit-config/config/configuration/class-of-service/routing-instances/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/class-of-service/routing-instances",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "cosRoutingInstances",
+                "fields": [{
+                    "name": "routingInstance",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-service/routing-instances/name", "[0].text"]
+                }, {
+                    "name": "classifierName",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-service/routing-instances/classifiers/exp/classifier-name", "[0].text"]
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/class-of-service/interfaces",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "cosInterfaces",
+                "fields": [{
+                    "name": "interface",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-service/interfaces/interface/name", "[0].text"]
+                }, {
+                    "name": "schedulerMap",
+                    "xpath": ["/rpc/edit-config/config/configuration/class-of-service/interfaces/interface/scheduler-map", "[0].text"]
+                }]
+            }
+        }
+    }]
+}

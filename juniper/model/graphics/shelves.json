@@ -2,174 +2,1766 @@
   {
     "textures": [
       {
-        "imageFile": "/images/demo-a/asr903front.png", 
+        "imageFile": "hardware/juniper/ex4200_48t/ex4200-48t-top.png", 
         "margins": {
-          "top": -2.0, 
-          "right": -2.0, 
-          "bottom": -2.0, 
-          "left": -2.0
-        }, 
-        "side": "front"
-      }, 
-      {
-        "imageFile": "/images/demo-a/asr903top.png", 
-        "margins": {
-          "top": -2.0, 
-          "right": -2.0, 
-          "bottom": -2.0, 
-          "left": -2.0
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
         }, 
         "side": "top"
       }, 
       {
-        "imageFile": "/images/commonside.png", 
+        "imageFile": "hardware/juniper/ex4200_48t/ex4200-48t-rear.png", 
         "margins": {
-          "top": -2.0, 
-          "right": -2.0, 
-          "bottom": -2.0, 
-          "left": -2.0
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
         }, 
-        "side": "left"
+        "side": "back"
       }, 
       {
-        "imageFile": "/images/commonside.png", 
+        "imageFile": "hardware/juniper/ex4200_48t/ex4200-48t-front.png", 
         "margins": {
-          "top": -2.0, 
-          "right": -2.0, 
-          "bottom": -2.0, 
-          "left": -2.0
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
         }, 
-        "side": "right"
+        "side": "front"
       }
     ], 
     "center": {
-      "y": 65.0, 
+      "y": 22.0, 
       "x": 221.0, 
-      "z": 134.0
+      "z": -208.5
     }, 
     "fruSlots": [
       {
         "direction": "up", 
         "seatedPosition": {
           "y": 2.0, 
-          "x": 3.5, 
-          "z": 2.0
+          "x": 2.0, 
+          "z": 419.0
         }, 
         "entryDirection": "forward", 
         "entryPosition": {
-          "y": 3.0, 
-          "x": 3.5, 
-          "z": -8.0
+          "y": 2.0, 
+          "x": 2.0, 
+          "z": -2.0
         }, 
         "location": "0-0", 
         "allowedFrus": [
-          "UNSPECIFIED"
-        ], 
-        "side": "front"
-      }, 
-      {
-        "direction": "up", 
-        "seatedPosition": {
-          "y": 22.5, 
-          "x": 3.5, 
-          "z": 2.0
-        }, 
-        "entryDirection": "forward", 
-        "entryPosition": {
-          "y": 23.0, 
-          "x": 3.5, 
-          "z": -8.0
-        }, 
-        "location": "0-1", 
-        "allowedFrus": [
-          "UNSPECIFIED"
-        ], 
-        "side": "front"
-      }, 
-      {
-        "direction": "up", 
-        "seatedPosition": {
-          "y": 43.0, 
-          "x": 3.5, 
-          "z": 2.0
-        }, 
-        "entryDirection": "forward", 
-        "entryPosition": {
-          "y": 43.0, 
-          "x": 3.5, 
-          "z": -8.0
-        }, 
-        "location": "0-2", 
-        "allowedFrus": [
-          "UNSPECIFIED"
-        ], 
-        "side": "front"
-      }, 
-      {
-        "direction": "up", 
-        "seatedPosition": {
-          "y": 63.5, 
-          "x": 3.5, 
-          "z": 2.0
-        }, 
-        "entryDirection": "forward", 
-        "entryPosition": {
-          "y": 63.0, 
-          "x": 3.5, 
-          "z": -8.0
-        }, 
-        "location": "0-3", 
-        "allowedFrus": [
-          "UNSPECIFIED"
-        ], 
-        "side": "front"
-      }, 
-      {
-        "direction": "up", 
-        "seatedPosition": {
-          "y": 84.0, 
-          "x": 3.5, 
-          "z": 2.0
-        }, 
-        "entryDirection": "forward", 
-        "entryPosition": {
-          "y": 83.0, 
-          "x": 3.5, 
-          "z": -8.0
-        }, 
-        "location": "0-4", 
-        "allowedFrus": [
-          "UNSPECIFIED"
-        ], 
-        "side": "front"
-      }, 
-      {
-        "direction": "up", 
-        "seatedPosition": {
-          "y": 104.5, 
-          "x": 3.5, 
-          "z": 2.0
-        }, 
-        "entryDirection": "forward", 
-        "entryPosition": {
-          "y": 103.0, 
-          "x": 3.5, 
-          "z": -8.0
-        }, 
-        "location": "0-5", 
-        "allowedFrus": [
-          "UNSPECIFIED"
+          "MX240RECARD"
         ], 
         "side": "front"
       }
     ], 
+
+    "name": "JuniperEX4200_48T", 
     "subType": 0, 
+    "id": "JuniperEX4200_48T", 
+    "ports": [], 
     "dimensions": {
       "width": 442.0, 
-      "depth": 268.0, 
-      "height": 130.0
+      "depth": 417.0, 
+      "height": 44.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "hardware/juniper/mx240/mx240-top.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx240/mx240-rear.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -24.0, 
+          "bottom": -4.0, 
+          "left": -24.0
+        }, 
+        "side": "back"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx240/mx240-front.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -24.0, 
+          "bottom": -10.0, 
+          "left": -24.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "center": {
+      "y": 110.5, 
+      "x": 222.5, 
+      "z": -195.0
     }, 
-    "name": "Demo-A",
-    "id": "Demo-A"
+    "fruSlots": [
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 68.0, 
+          "x": 65.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1001", 
+        "allowedFrus": [
+          "MX240LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 35.0, 
+          "x": 65.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1000", 
+        "allowedFrus": [
+          "MX240LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }
+    ], 
+
+    "name": "JuniperMX240", 
+    "subType": 0, 
+    "id": "JuniperMX240", 
+    "ports": [], 
+    "dimensions": {
+      "width": 445.0, 
+      "depth": 390.0, 
+      "height": 221.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "hardware/juniper/mx480/mx480-top.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx480/mx480-rear.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -24.0, 
+          "bottom": -4.0, 
+          "left": -24.0
+        }, 
+        "side": "back"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx480/mx480-front.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -24.0, 
+          "bottom": -10.0, 
+          "left": -24.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "center": {
+      "y": 178.0, 
+      "x": 222.5, 
+      "z": -195.0
+    }, 
+    "fruSlots": [
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 68.0, 
+          "x": 75.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1001", 
+        "allowedFrus": [
+          "MX480LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 35.0, 
+          "x": 75.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1000", 
+        "allowedFrus": [
+          "MX480LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }
+    ], 
+
+    "name": "JuniperMX480", 
+    "subType": 0, 
+    "id": "JuniperMX480", 
+    "ports": [], 
+    "dimensions": {
+      "width": 445.0, 
+      "depth": 390.0, 
+      "height": 356.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "hardware/juniper/mx960/mx960-top.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx960/mx960-rear.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -24.0, 
+          "bottom": -4.0, 
+          "left": -24.0
+        }, 
+        "side": "back"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx960/mx960-front.png", 
+        "margins": {
+          "top": -2.0, 
+          "right": -24.0, 
+          "bottom": -10.0, 
+          "left": -24.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "center": {
+      "y": 353.0, 
+      "x": 222.5, 
+      "z": -195.0
+    }, 
+    "fruSlots": [
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 279.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1001", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 151.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-3-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 183.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-4-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 87.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 119.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-2-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 466.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-11-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 55.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-0-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 402.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-9-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 434.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-10-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 338.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-7-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 370.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-8-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 247.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1000", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 466.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-11-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 370.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-8", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 338.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-7", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 306.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-6", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 215.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-5", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 183.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-4", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 151.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-3", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 119.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-2", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 87.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 55.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 183.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-4-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 151.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-3-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 119.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-2-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 87.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 55.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-0-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 466.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-11", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 434.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-10", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 402.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-9", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 306.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-6-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 215.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-5-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 370.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-8-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 338.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-7-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 434.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-10-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 180.0, 
+          "x": 402.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-9-SUBSLOT-0-1", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 306.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-6-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 377.0, 
+          "x": 215.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-5-SUBSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }
+    ], 
+
+    "name": "JuniperMX960", 
+    "subType": 0, 
+    "id": "JuniperMX960", 
+    "ports": [], 
+    "dimensions": {
+      "width": 445.0, 
+      "depth": 390.0, 
+      "height": 706.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "hardware/juniper/mx2010/mx2010-top.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx2010/mx2010-rear.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "back"
+      }, 
+      {
+        "imageFile": "hardware/juniper/mx2010/mx2010-front.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "center": {
+      "y": 755.5, 
+      "x": 222.5, 
+      "z": -195.0
+    }, 
+    "fruSlots": [
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 357.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-8", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 323.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-7", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 289.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-6", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 255.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-5", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 221.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-4", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 187.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-3", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 153.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-2", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 119.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 85.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-0", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 872.0, 
+          "x": 119.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1001", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 872.0, 
+          "x": 85.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1000", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 392.0, 
+          "x": 391.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-9", 
+        "allowedFrus": [
+          "MX2010LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }
+    ], 
+
+    "name": "JuniperMX2010", 
+    "subType": 0, 
+    "id": "JuniperMX2010", 
+    "ports": [], 
+    "dimensions": {
+      "width": 445.0, 
+      "depth": 390.0, 
+      "height": 1511.0
+    }
+  }, 
+  {
+    "textures": [
+      {
+        "imageFile": "hardware/juniper/ptx3000/ptx3000-top.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "top"
+      }, 
+      {
+        "imageFile": "hardware/juniper/ptx3000/ptx3000-rear.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "back"
+      }, 
+      {
+        "imageFile": "hardware/juniper/ptx3000/ptx3000-front.png", 
+        "margins": {
+          "top": 0.0, 
+          "right": 0.0, 
+          "bottom": 0.0, 
+          "left": 0.0
+        }, 
+        "side": "front"
+      }
+    ], 
+    "center": {
+      "y": 489.0, 
+      "x": 223.5, 
+      "z": -135.0
+    }, 
+    "fruSlots": [
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 432.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-6-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 354.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-4-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 276.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-2-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 198.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-0-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 395.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-6", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 317.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-4", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 239.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-2", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 161.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-0", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 647.0, 
+          "x": 83.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1000", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 666.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-12-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 588.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-10-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 510.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-8-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 707.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-14", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 629.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-12", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 551.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-10", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 473.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-8", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 83.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-1001", 
+        "allowedFrus": [
+          "PTX3000LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }, 
+      {
+        "direction": "up", 
+        "seatedPosition": {
+          "y": 212.0, 
+          "x": 744.0, 
+          "z": -273.0
+        }, 
+        "entryDirection": "forward", 
+        "entryPosition": {
+          "y": 137.0, 
+          "x": -15.0, 
+          "z": 0.0
+        }, 
+        "location": "0-14-NEXTSLOT-0-0", 
+        "allowedFrus": [
+          "MX960LINECARD", 
+          "MX240LINECARD"
+        ], 
+        "side": "front"
+      }
+    ], 
+
+    "name": "JuniperPTX3000", 
+    "subType": 0, 
+    "id": "JuniperPTX3000", 
+    "ports": [], 
+    "dimensions": {
+      "width": 447.0, 
+      "depth": 270.0, 
+      "height": 978.0
+    }
   }
 ]

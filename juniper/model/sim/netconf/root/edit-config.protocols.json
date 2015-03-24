@@ -1,0 +1,34 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor/interface[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "l2circuitInterfaces",
+            "indexFields": [{
+                "name": "circuit-name",
+                "xpath": ["/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor/name", "[0].text"]
+            }, {
+                "name": "if-name",
+                "xpath": ["/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor/interface/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "l2circuitInterfaces",
+                "fields": [{
+                    "name": "circuit-name",
+                    "xpath": ["/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor/name", "[0].text"]
+                }, {
+                    "name": "if-name",
+                    "xpath": ["/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor/interface/name", "[0].text"]
+                }, {
+                    "name": "virtual-circuit-id",
+                    "xpath": ["/rpc/edit-config/config/configuration/protocols/l2circuit/neighbor/interface/virtual-circuit-id", "[0].text"]
+                }]
+            }
+        }
+    }]
+}

@@ -1,0 +1,10 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-fpc-information",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-fpc-information.tmpl"
+        }
+    }]
+}

@@ -1,0 +1,23 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-config/filter/configuration/firewall/family/*/name",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [{
+                "name": "filter",
+                "xpath": ["/rpc/get-config/filter/configuration/firewall/family/*/name", "[0].text"]
+            }, {
+                "name": "family",
+                "xpath": ["/rpc/get-config/filter/configuration/firewall/family/*", "[0].tag"]
+            }],
+            "template": "get-config.firewall.filter.tmpl"
+        } 
+    }, {
+        "pattern": "/rpc/get-config/filter/configuration/firewall/family",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-config.firewall.filter.tmpl"
+        } 
+    }]
+}

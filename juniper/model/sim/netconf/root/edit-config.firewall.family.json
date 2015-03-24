@@ -1,0 +1,61 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/firewall/family/*/filter[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "firewallFilters",
+            "indexFields": [{
+                "name": "name",
+                "xpath": ["/rpc/edit-config/config/configuration/firewall/family/*/filter/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/firewall/family/*/filter",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "parsers": [{
+                "table": "firewallFilters",
+                "nodeXPath": "/rpc/edit-config/config/configuration/firewall/family/*/filter",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["name", "[0].text"]
+                }, {
+                    "name": "family",
+                    "xpath": ["ancestor::family/*", "[0].tag"]
+                }, {
+                    "name": "interface-specific",
+                    "xpath": ["interface-specific", " != None"]
+                }],
+                "parsers": [{
+                    "table": "firewallFilterTerms",
+                    "nodeXPath": "term",
+                    "fields": [{
+                        "name": "firewallName",
+                        "xpath": ["ancestor::filter/name", "[0].text"]
+                    }, {
+                        "name": "name",
+                        "xpath": ["name", "[0].text"]
+                    }, {
+                        "name": "policer",
+                        "xpath": ["then/policer", "[0].text"]
+                    }, {
+                        "name": "threeColorRate",
+                        "xpath": ["three-color-policer/*", "[0].tag"]
+                    }, {
+                        "name": "threeColorPolicer",
+                        "xpath": ["three-color-policer/*", "[0].text"]
+                    }, {
+                        "name": "lossPrio",
+                        "xpath": ["then/loss-priority", "[0].text"]
+                    }, {
+                        "name": "forwardingClass",
+                        "xpath": ["then/forwarding-class", "[0].text"]
+                    }, {
+                        "name": "action",
+                        "xpath": ["then/accept", "[0].tag"]
+                    }]
+                }]
+            }]
+        }
+    }]
+}

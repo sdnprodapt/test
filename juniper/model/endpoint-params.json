@@ -1,12 +1,7 @@
 {
-    "cli": {
+    "netconf": {
         "commandTimeout": 30,
-        "heartbeatInterval": 30,
-        "reconnectPeriod": 30,
-        "connectTimeout": 30,
-        "prompt": "[A-Za-z0-9\\-@()\\~:]+[>#\\$]",
-        "postLoginCommands": [
-        ]
+        "rx_delimiter": "]]>]]>\n" 
     },
     "snmp": {
     },

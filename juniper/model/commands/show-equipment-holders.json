@@ -1,10 +1,38 @@
 {
-    "endpoint": "cli",
+    "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-equipment-holders.json"
+    ],
     "endpoint-parameters": {
+        "command": {
+            "name": "get-chassis-inventory"
+        }
     },
     "out-path": [
     ],
     "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "chassis": "chassis-inventory.chassis.chassis-module",
+                    "description": "chassis-inventory.chassis.description",
+                    "serialNumber": "chassis-inventory.chassis.serial-number"
+                }
+            }
+        }, {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "show-equipment-details.tmpl",
+                "as_object": true
+            }
+        }, {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "show-equipment-holders.tmpl",
+                "as_object": true
+            }
+        }
     ]
 }

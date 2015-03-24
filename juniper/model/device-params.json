@@ -1,6 +1,7 @@
 {
     "netconf": {
-        "commandTimeout": 30
+        "commandTimeout": 30,
+        "rx_delimiter": "]]>]]>\n"
     }, 
     "snmp": {}
 }

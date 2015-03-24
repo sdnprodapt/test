@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/12.3R7/junos">
+  <fpc-information xmlns="http://xml.juniper.net/junos/12.3R7/junos-chassis" junos:style="brief">
+    <fpc>
+      <slot>0</slot>
+      <state>Online</state>
+      <temperature junos:celsius="33">33</temperature>
+      <cpu-total>10</cpu-total>
+      <cpu-interrupt>0</cpu-interrupt>
+      <memory-dram-size>2048</memory-dram-size>
+      <memory-heap-utilization>17</memory-heap-utilization>
+      <memory-buffer-utilization>14</memory-buffer-utilization>
+    </fpc>
+    <fpc>
+      <slot>1</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>2</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>3</slot>
+      <state>Online</state>
+      <temperature junos:celsius="27">27</temperature>
+      <cpu-total>11</cpu-total>
+      <cpu-interrupt>0</cpu-interrupt>
+      <memory-dram-size>1024</memory-dram-size>
+      <memory-heap-utilization>26</memory-heap-utilization>
+      <memory-buffer-utilization>29</memory-buffer-utilization>
+    </fpc>
+    <fpc>
+      <slot>4</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>5</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>6</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>7</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>8</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>9</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>10</slot>
+      <state>Empty</state>
+    </fpc>
+    <fpc>
+      <slot>11</slot>
+      <state>Online</state>
+      <temperature junos:celsius="30">30</temperature>
+      <cpu-total>7</cpu-total>
+      <cpu-interrupt>0</cpu-interrupt>
+      <memory-dram-size>1024</memory-dram-size>
+      <memory-heap-utilization>27</memory-heap-utilization>
+      <memory-buffer-utilization>29</memory-buffer-utilization>
+    </fpc>
+  </fpc-information>
+</rpc-reply>

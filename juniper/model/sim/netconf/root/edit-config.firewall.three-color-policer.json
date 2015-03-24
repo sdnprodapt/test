@@ -1,0 +1,73 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/firewall/three-color-policer[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "firewalls",
+            "indexFields": [{
+                "name": "name",
+                "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/firewall/three-color-policer/single-rate",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "firewalls",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/name", "[0].text"]
+                }, {
+                    "name": "rate",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/single-rate", "[0].tag"]
+                }, {
+                    "name": "color-aware",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/color-aware", "!= []"]
+                }, {
+                    "name": "cir",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/committed-information-rate", "[0].text"]
+                }, {
+                    "name": "cbs",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/committed-burst-size", "[0].text"]
+                }, {
+                    "name": "pbs",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/peak-burst-size", "[0].text"]
+                }, {
+                    "name": "pir",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/peak-information-rate", "[0].text"]
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/firewall/three-color-policer/two-rate",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "firewalls",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/name", "[0].text"]
+                }, {
+                    "name": "rate",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/two-rate", "[0].tag"]
+                }, {
+                    "name": "color-aware",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/color-aware", "!= []"]
+                }, {
+                    "name": "cir",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/committed-information-rate", "[0].text"]
+                }, {
+                    "name": "cbs",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/committed-burst-size", "[0].text"]
+                }, {
+                    "name": "pbs",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/peak-burst-size", "[0].text"]
+                }, {
+                    "name": "pir",
+                    "xpath": ["/rpc/edit-config/config/configuration/firewall/three-color-policer/*/peak-information-rate", "[0].text"]
+                }]
+            }
+        }
+    }]
+}

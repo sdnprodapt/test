@@ -1,0 +1,173 @@
+{
+    "mx960": {
+        "id": "MX960",
+        "dir": "mx960",
+        "username": "admin",
+        "password": "admin",
+        "responseTemplate": "rpc-reply.ok.tmpl",
+        "transports": [{
+            "name": "netconf",
+            "type": "bpprov.sim.transports.ssh.Ssh",
+            "parameters": {
+                "banner": [
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+                    "<hello>",
+                    "  <capabilities>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:candidate:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:confirmed-commit:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:validate:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:url:1.0?protocol=http,ftp,file</capability>",
+                    "    <capability>http://xml.juniper.net/netconf/junos/1.0</capability>",
+                    "    <capability>http://xml.juniper.net/dmi/system/1.0</capability>",
+                    "  </capabilities>",
+                    "  <session-id>{{session_id}}</session-id>",
+                    "</hello>",
+                    "]]>]]>",
+                    "",
+                    ""
+                ],
+                "prompt": "",
+                "port": "7777",
+                "delimiter": "]]>]]>\n",
+                "errorTemplate": "error.tmpl"
+            }
+        }],
+        "netconfFilenameRules": [{
+                "pattern": "/rpc/edit-config/config/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/edit-config/config/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/get-config/filter/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/get-config/filter/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/*",
+                "parts": [[ "/rpc/*", "[0].tag"]]
+            }]
+    },
+    "mx2010": {
+        "id": "MX2010",
+        "dir": "mx2010",
+        "username": "admin",
+        "password": "admin",
+        "responseTemplate": "rpc-reply.ok.tmpl",
+        "transports": [{
+            "name": "netconf",
+            "type": "bpprov.sim.transports.ssh.Ssh",
+            "parameters": {
+                "banner": [
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+                    "<hello>",
+                    "  <capabilities>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:candidate:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:confirmed-commit:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:validate:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:url:1.0?protocol=http,ftp,file</capability>",
+                    "    <capability>http://xml.juniper.net/netconf/junos/1.0</capability>",
+                    "    <capability>http://xml.juniper.net/dmi/system/1.0</capability>",
+                    "  </capabilities>",
+                    "  <session-id>{{session_id}}</session-id>",
+                    "</hello>",
+                    "]]>]]>",
+                    "",
+                    ""
+                ],
+                "prompt": "",
+                "port": "7777",
+                "delimiter": "]]>]]>\n",
+                "errorTemplate": "error.tmpl"
+            }
+        }],
+        "netconfFilenameRules": [{
+                "pattern": "/rpc/edit-config/config/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/edit-config/config/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/get-config/filter/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/get-config/filter/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/*",
+                "parts": [[ "/rpc/*", "[0].tag"]]
+            }]
+    },
+    "ptx": {
+        "id": "PTX",
+        "dir": "ptx",
+        "username": "admin",
+        "password": "admin",
+        "responseTemplate": "rpc-reply.ok.tmpl",
+        "transports": [{
+            "name": "netconf",
+            "type": "bpprov.sim.transports.ssh.Ssh",
+            "parameters": {
+                "banner": [
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+                    "<hello>",
+                    "  <capabilities>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:base:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:candidate:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:confirmed-commit:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:validate:1.0</capability>",
+                    "    <capability>urn:ietf:params:xml:ns:netconf:capability:url:1.0?protocol=http,ftp,file</capability>",
+                    "    <capability>http://xml.juniper.net/netconf/junos/1.0</capability>",
+                    "    <capability>http://xml.juniper.net/dmi/system/1.0</capability>",
+                    "  </capabilities>",
+                    "  <session-id>{{session_id}}</session-id>",
+                    "</hello>",
+                    "]]>]]>",
+                    "",
+                    ""
+                ],
+                "prompt": "",
+                "port": "7777",
+                "delimiter": "]]>]]>\n",
+                "errorTemplate": "error.tmpl"
+            }
+        }],
+        "netconfFilenameRules": [{
+                "pattern": "/rpc/edit-config/config/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/edit-config/config/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/config/configuration/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/get-config/filter/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/get-config/filter/configuration",
+                "parts": [[ "/rpc/*", "[0].tag"],
+                          [ "/rpc/*/filter/configuration/*", "[0].tag"]]
+            }, {
+                "pattern": "/rpc/*",
+                "parts": [[ "/rpc/*", "[0].tag"]]
+            }]
+    }
+}

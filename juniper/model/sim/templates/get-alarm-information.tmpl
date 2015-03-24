@@ -1,0 +1,15 @@
+{% from 'dbmacros.tmpl' import render_alarm %}
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos" message-id="{{ message_id }}">
+    <alarm-information xmlns="http://xml.juniper.net/junos/12.1X44/junos-alarm">
+        <alarm-summary>
+            {%- if db.alarms|length > 0 %}
+            <active-alarm-count>{{ db.alarms|length }}</active-alarm-count>
+            {%- else %}
+            <no-active-alarms/>
+            {%- endif %}
+        </alarm-summary>
+        {%- for alarm in db.alarms %}
+        {{ render_alarm(alarm)|indent(4) }}
+        {%- endfor %}
+    </alarm-information>
+</rpc-reply>

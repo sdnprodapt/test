@@ -1,0 +1,58 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/routing-instances/instance[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "routingInstances",
+            "indexFields": [{
+                "name": "name",
+                "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/routing-instances",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "routingInstances",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/name", "[0].text"]
+                }, {
+                    "name": "interface-name",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/interface/name", "[0].text"]
+                }, {
+                    "name": "route-distinguisher-rd-type",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/route-distinguisher/rd-type", "[0].text"]
+                }, {
+                    "name": "vrf-target-import",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/vrf-target/import", "[0].text"]
+                }, {
+                    "name": "vrf-target-export",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/vrf-target/export", "[0].text"]
+                }, {
+                    "name": "forwarding-options-family-vpls-flood-input",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/forwarding-options/family/vpls/flood/input", "[0].text"]
+                }, {
+                    "name": "protocols-vpls-mac-table-size-limit",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/protocols/vpls/mac-table-size/limit", "[0].text"]
+                }, {
+                    "name": "protocols-vpls-interface-mac-limit",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/protocols/vpls/interface-mac-limit/limit", "[0].text"]
+                }, {
+                    "name": "protocols-vpls-tunnel-services",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/protocols/vpls", "[0].find('no-tunnel-services') is None"]
+                }, {
+                    "name": "protocols-vpls-site-name",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/protocols/vpls/site/name", "[0].text"]
+                }, {
+                    "name": "protocols-vpls-site-id",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/protocols/vpls/site/site-identifier", "[0].text"]
+                }, {
+                    "name": "protocols-vpls-site-interface-name",
+                    "xpath": ["/rpc/edit-config/config/configuration/routing-instances/instance/protocols/vpls/site/interface/name", "[0].text"]
+                }]
+            }
+        }
+    }]
+}

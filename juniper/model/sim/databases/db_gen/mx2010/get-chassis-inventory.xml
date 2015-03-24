@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply message-id="urn:uuid:0906deb0-bd22-11e4-9803-000c29674873">
+    <chassis-inventory>
+        <chassis style="inventory">
+            <name>Chassis</name>
+            <serial-number>JN122A2D1AFK</serial-number>
+            <description>MX2010</description>
+            <chassis-module>
+                <name>Midplane</name>
+                <version>REV 35</version>
+                <part-number>750-044636</part-number>
+                <serial-number>ABAC3586</serial-number>
+                <description>Lower Backplane</description>
+                <clei-code>IPMU810ARA</clei-code>
+                <model-number>CHAS-BP-MX2010-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Midplane 1</name>
+                <version>REV 02</version>
+                <part-number>711-044557</part-number>
+                <serial-number>ABAB9046</serial-number>
+                <description>Upper Backplane</description>
+            </chassis-module>
+            <chassis-module>
+                <name>PMP</name>
+                <version>REV 04</version>
+                <part-number>711-032426</part-number>
+                <serial-number>ACAJ2700</serial-number>
+                <description>Power Midplane</description>
+            </chassis-module>
+            <chassis-module>
+                <name>FPM Board</name>
+                <version>REV 09</version>
+                <part-number>760-044634</part-number>
+                <serial-number>ABCF2616</serial-number>
+                <description>Front Panel Display</description>
+                <clei-code>IPMYA4EJRA</clei-code>
+                <model-number>MX2010-CRAFT-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 0</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403YF</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 1</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403YD</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 2</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403Y0</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 3</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403Y1</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 4</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403Y2</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 5</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403XW</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 6</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403XP</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 7</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32403XY</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PSM 8</name>
+                <version>REV 01</version>
+                <part-number>740-050037</part-number>
+                <serial-number>1EDB32504J5</serial-number>
+                <description>DC 52V Power Supply Module</description>
+                <clei-code>IPUPAKRKAA</clei-code>
+                <model-number>MX2000-PSM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PDM 0</name>
+                <version>REV 03</version>
+                <part-number>740-045234</part-number>
+                <serial-number>1EFA3250828</serial-number>
+                <description>DC Power Dist Module</description>
+                <clei-code>IPUPAJSKAA</clei-code>
+                <model-number>MX2000-PDM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>PDM 1</name>
+                <version>REV 03</version>
+                <part-number>740-045234</part-number>
+                <serial-number>1EFA3250836</serial-number>
+                <description>DC Power Dist Module</description>
+                <clei-code>IPUPAJSKAA</clei-code>
+                <model-number>MX2000-PDM-DC-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 0</name>
+                <version>REV 03</version>
+                <part-number>740-041821</part-number>
+                <serial-number>9009158882</serial-number>
+                <description>RE-S-1800x4</description>
+                <clei-code>IPUCBA7CTA</clei-code>
+                <model-number>RE-MX2000-1800X4-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Routing Engine 1</name>
+                <version>REV 03</version>
+                <part-number>740-041821</part-number>
+                <serial-number>9009158183</serial-number>
+                <description>RE-S-1800x4</description>
+                <clei-code>IPUCBA7CTA</clei-code>
+                <model-number>RE-MX2000-1800X4-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 0</name>
+                <version>REV 24</version>
+                <part-number>750-040257</part-number>
+                <serial-number>CABK2251</serial-number>
+                <description>Control Board</description>
+                <clei-code>IPUCBA7CTA</clei-code>
+                <model-number>RE-MX2000-1800X4-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>CB 1</name>
+                <version>REV 24</version>
+                <part-number>750-040257</part-number>
+                <serial-number>CABN3220</serial-number>
+                <description>Control Board</description>
+                <clei-code>IPUCBA7CTA</clei-code>
+                <model-number>RE-MX2000-1800X4-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SPMB 0</name>
+                <version>REV 02</version>
+                <part-number>711-041855</part-number>
+                <serial-number>ABCP7149</serial-number>
+                <description>PMB Board</description>
+            </chassis-module>
+            <chassis-module>
+                <name>SPMB 1</name>
+                <version>REV 02</version>
+                <part-number>711-041855</part-number>
+                <serial-number>ABCP7130</serial-number>
+                <description>PMB Board</description>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 0</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCJ2627</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 1</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCJ2632</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 2</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCN7686</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 3</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCJ2633</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 4</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCE1493</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 5</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCJ2614</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 6</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCJ2629</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>SFB 7</name>
+                <version>REV 06</version>
+                <part-number>711-044466</part-number>
+                <serial-number>ABCJ2729</serial-number>
+                <description>Switch Fabric Board</description>
+                <clei-code>IPUCBA6CAA</clei-code>
+                <model-number>MX2000-SFB-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>FPC 0</name>
+                <version>REV 21</version>
+                <part-number>750-037358</part-number>
+                <serial-number>CAAZ2836</serial-number>
+                <description>MPC4E 3D 32XGE</description>
+                <clei-code>IPU3A4EHAA</clei-code>
+                <model-number>MPC4E-3D-32XGE-SFPP</model-number>
+                <chassis-sub-module>
+                    <name>CPU</name>
+                    <version>REV 08</version>
+                    <part-number>711-035209</part-number>
+                    <serial-number>CABA9513</serial-number>
+                    <description>HMPC PMB 2G </description>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 0</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>8X10GE SFPP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>M1310101805</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 1</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10321111</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 2</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>M1310101810</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 4</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10303320</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 6</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10303295</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 1</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>8X10GE SFPP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>M1310080830</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 1</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10321211</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 2</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10321107</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 2</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>8X10GE SFPP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>CLS10294939</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 1</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>CLS10282952</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 7</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10321112</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 3</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>8X10GE SFPP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10321203</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 1</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>LS10321110</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+            </chassis-module>
+            <chassis-module>
+                <name>FPC 1</name>
+                <version>REV 18</version>
+                <part-number>750-037355</part-number>
+                <serial-number>CABS5171</serial-number>
+                <description>MPC4E 3D 2CGE+8XGE</description>
+                <clei-code>IPU3A4DHAA</clei-code>
+                <model-number>MPC4E-3D-2CGE-8XGE</model-number>
+                <chassis-sub-module>
+                    <name>CPU</name>
+                    <version>REV 08</version>
+                    <part-number>711-035209</part-number>
+                    <serial-number>CABX1682</serial-number>
+                    <description>HMPC PMB 2G </description>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 0</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>4x10GE SFPP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>V01</version>
+                        <part-number>740-SFP+SR</part-number>
+                        <serial-number>CLS10282956</serial-number>
+                        <description>SFP+-10G-SR</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 1</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>1X100GE CFP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>REV 01</version>
+                        <part-number>740-032210</part-number>
+                        <serial-number>CMN002L</serial-number>
+                        <description>CFP-100G-LR4</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 2</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>4x10GE SFPP</description>
+                </chassis-sub-module>
+                <chassis-sub-module>
+                    <name>PIC 3</name>
+                    <part-number>BUILTIN</part-number>
+                    <serial-number>BUILTIN</serial-number>
+                    <description>1X100GE CFP</description>
+                    <chassis-sub-sub-module>
+                        <name>Xcvr 0</name>
+                        <version>4    V</version>
+                        <part-number>NON-JNPR</part-number>
+                        <serial-number>FNS18030VVM</serial-number>
+                        <description>CFP-100G-LR4</description>
+                    </chassis-sub-sub-module>
+                </chassis-sub-module>
+            </chassis-module>
+            <chassis-module>
+                <name>ADC 0</name>
+                <version>REV 17</version>
+                <part-number>750-043596</part-number>
+                <serial-number>ABCA0967</serial-number>
+                <description>Adapter Card</description>
+                <clei-code>IPUCBA8CAA</clei-code>
+                <model-number>MX2000-LC-ADAPTER</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>ADC 1</name>
+                <version>REV 17</version>
+                <part-number>750-043596</part-number>
+                <serial-number>ABCA0994</serial-number>
+                <description>Adapter Card</description>
+                <clei-code>IPUCBA8CAA</clei-code>
+                <model-number>MX2000-LC-ADAPTER</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Fan Tray 0</name>
+                <version>REV 06</version>
+                <part-number>760-046960</part-number>
+                <serial-number>ACAY1813</serial-number>
+                <description>172mm FanTray - 6 Fans</description>
+                <clei-code>IPUCBA5CAA</clei-code>
+                <model-number>MX2000-FANTRAY-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Fan Tray 1</name>
+                <version>REV 06</version>
+                <part-number>760-046960</part-number>
+                <serial-number>ACAY1815</serial-number>
+                <description>172mm FanTray - 6 Fans</description>
+                <clei-code>IPUCBA5CAA</clei-code>
+                <model-number>MX2000-FANTRAY-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Fan Tray 2</name>
+                <version>REV 06</version>
+                <part-number>760-046960</part-number>
+                <serial-number>ACAY1839</serial-number>
+                <description>172mm FanTray - 6 Fans</description>
+                <clei-code>IPUCBA5CAA</clei-code>
+                <model-number>MX2000-FANTRAY-S</model-number>
+            </chassis-module>
+            <chassis-module>
+                <name>Fan Tray 3</name>
+                <version>REV 06</version>
+                <part-number>760-046960</part-number>
+                <serial-number>ACAY1811</serial-number>
+                <description>172mm FanTray - 6 Fans</description>
+                <clei-code>IPUCBA5CAA</clei-code>
+                <model-number>MX2000-FANTRAY-S</model-number>
+            </chassis-module>
+        </chassis>
+    </chassis-inventory>
+</rpc-reply>

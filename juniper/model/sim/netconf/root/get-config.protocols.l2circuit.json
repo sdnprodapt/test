@@ -1,0 +1,20 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-config/filter/configuration/protocols/l2circuit/name",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [{
+                "name": "circuit",
+                "xpath": ["/rpc/get-config/filter/configuration/protocols/l2circuit/name", "[0].text"]
+            }],
+            "template": "get-config.protocols.l2circuit.tmpl"
+        } 
+    }, {
+        "pattern": "/rpc/get-config/filter/configuration/protocols/l2circuit",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-config.protocols.l2circuit.tmpl"
+        } 
+    }]
+}

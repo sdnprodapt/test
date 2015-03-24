@@ -12,10 +12,11 @@ pyparsing==2.0.2
 beautifulsoup4==4.3.2
 xmltodict==0.9.0
 six==1.8.0
+pyang==1.4.1
+textfsm==0.2.1
+jsonpath==0.54
+lxml==3.4.2
 #packages not directly pip installable
-https://pyang.googlecode.com/files/pyang-1.4.1.tar.gz
-http://www.ultimate.com/phil/python/download/jsonpath-0.54.tar.gz
-https://textfsm.googlecode.com/files/textfsm-0.2.1.tar.gz
 git+git://github.cyanoptics.com/ea/bp-prov.git#egg=bpprov
 
 # easdk

@@ -1,0 +1,99 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/interface[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "interfaces",
+            "indexFields": [{
+                "name": "name",
+                "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/interface/disable[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+                }, {
+                    "name": "enabled",
+                    "value": true
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/interface/disable",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "data": {
+                "path": "interfaces",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+                }, {
+                    "name": "enabled",
+                    "value": false
+                }]
+            }
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "parsers": [{
+                "table": "interfaces",
+                "nodeXPath": "/rpc/edit-config/config/configuration/interfaces/interface",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["name", "[0].text"]
+                }, {
+                    "name": "description",
+                    "xpath": ["description", "[0].text"]
+                }, {
+                    "name": "mtu",
+                    "xpath": ["mtu", "[0].text"]
+                }, {
+                    "name": "encapsulation",
+                    "xpath": ["encapsulation", "[0].text"]
+                }],
+                "parsers": [{
+                    "table": "interfaceUnits",
+                    "nodeXPath": "unit",
+                    "fields": [{
+                        "name": "interfaceName",
+                        "xpath": ["ancestor::interface/name", "[0].text"]
+                    }, {
+                        "name": "unit-name",
+                        "xpath": ["name", "[0].text"]
+                    }, {
+                        "name": "unit-description",
+                        "xpath": ["description", "[0].text"]
+                    }, {
+                        "name": "unit-family-filter-tag",
+                        "xpath": ["family/*", "[0].tag"]
+                    }, {
+                        "name": "unit-family-filter-input",
+                        "xpath": ["family/*/filter/input", "[0].text"]
+                    }],
+                    "parsers": [{
+                        "table": "unitApplyGroups",
+                        "nodeXPath": "apply-groups-except",
+                        "fields": [{
+                            "name": "interfaceName",
+                            "xpath": ["ancestor::interface/name", "[0].text"]
+                        }, {
+                            "name": "unitName",
+                            "xpath": ["ancestor::unit/name", "[0].text"]
+                        }, {
+                            "name": "applyGroup",
+                            "xpath": [".", "[0].text"]
+                        }]
+                    }]
+                }]
+            }]
+        }
+    }]
+}
