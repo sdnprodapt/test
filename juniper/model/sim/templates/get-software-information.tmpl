@@ -1,0 +1,14 @@
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/13.3R3/junos" message-id="{{ message_id }}">
+  <software-information>
+    <host-name>{{ db.deviceInfo[0]['host-name'] }}</host-name>
+    <product-model>{{ db.deviceInfo[0]['product-model'] }}</product-model>
+    <product-name>{{ db.deviceInfo[0]['product-name'] }}</product-name>
+    <junos-version>{{ db.deviceInfo[0]['junos-version'] }}</junos-version>
+    {% for pkg in db.packageInfo %}
+    <package-information>
+      <name>{{ pkg['name'] }}</name>
+      <comment>{{ pkg['comment'] }}</comment>
+    </package-information>
+    {% endfor %}
+  </software-information>
+</rpc-reply>

@@ -15,6 +15,7 @@ six==1.8.0
 pyang==1.4.1
 textfsm==0.2.1
 jsonpath==0.54
+lxml==3.4.2
 #packages not directly pip installable
 git+git://github.cyanoptics.com/ea/bp-prov.git#egg=bpprov
 

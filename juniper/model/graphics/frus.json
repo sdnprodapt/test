@@ -18,7 +18,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "PTX3000LINECARD", 
-    "internals": [], 
+
     "name": "PTX3000-P1-PTX-2-100GE-CFP", 
     "subType": 0, 
     "id": "PTX3000-P1-PTX-2-100GE-CFP", 
@@ -84,7 +84,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-MX-MPC2-3D", 
     "subType": 0, 
     "id": "MX960-MX-MPC2-3D", 
@@ -119,7 +119,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-RE-S-1300-2048-S", 
     "subType": 0, 
     "id": "MX960-RE-S-1300-2048-S", 
@@ -200,7 +200,7 @@
       "z": 20.0
     }, 
     "fruTypeCode": "MX480LINECARD", 
-    "internals": [], 
+
     "name": "MX480-RE-S-1300-2048-S", 
     "subType": 0, 
     "id": "MX480-RE-S-1300-2048-S", 
@@ -281,7 +281,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "PTX3000LINECARD", 
-    "internals": [], 
+
     "name": "PTX3000-P1-PTX-24-10G-W-SFPP", 
     "subType": 0, 
     "id": "PTX3000-P1-PTX-24-10G-W-SFPP", 
@@ -677,7 +677,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-DPC-R-4XGE-XFP", 
     "subType": 0, 
     "id": "MX960-DPC-R-4XGE-XFP", 
@@ -773,7 +773,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-DPC-R-40GE-SFP", 
     "subType": 0, 
     "id": "MX960-DPC-R-40GE-SFP", 
@@ -1409,7 +1409,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "PTX3000LINECARD", 
-    "internals": [], 
+
     "name": "PTX3000-P1-PTX-24-10GE-SFPP", 
     "subType": 0, 
     "id": "PTX3000-P1-PTX-24-10GE-SFPP", 
@@ -1805,7 +1805,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX2010LINECARD", 
-    "internals": [], 
+
     "name": "MX2010-RE-MX2000-1800X4-S", 
     "subType": 0, 
     "id": "MX2010-RE-MX2000-1800X4-S", 
@@ -1916,7 +1916,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-DPCE-R-4XGE-XFP", 
     "subType": 0, 
     "id": "MX960-DPCE-R-4XGE-XFP", 
@@ -2012,7 +2012,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "PTX3000LINECARD", 
-    "internals": [], 
+
     "name": "PTX3000-RE-DUO-C2600-16G-S", 
     "subType": 0, 
     "id": "PTX3000-RE-DUO-C2600-16G-S", 
@@ -2063,7 +2063,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-DPCE-R-20GE-2XGE", 
     "subType": 0, 
     "id": "MX960-DPCE-R-20GE-2XGE", 
@@ -2429,7 +2429,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "PTX3000LINECARD", 
-    "internals": [], 
+
     "name": "PTX3000-FPC-SFF-PTX-P1-A", 
     "subType": 0, 
     "id": "PTX3000-FPC-SFF-PTX-P1-A", 
@@ -2464,7 +2464,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-MPC4E-3D-2CGE-8XGE", 
     "subType": 0, 
     "id": "MX960-MPC4E-3D-2CGE-8XGE", 
@@ -2650,7 +2650,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-MIC-3D-20GE-SFP", 
     "subType": 0, 
     "id": "MX960-MIC-3D-20GE-SFP", 
@@ -2986,7 +2986,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-MIC-3D-4XGE-XFP", 
     "subType": 0, 
     "id": "MX960-MIC-3D-4XGE-XFP", 
@@ -3082,7 +3082,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX2010-MPC4E-3D-32XGE-SFPP", 
     "subType": 0, 
     "id": "MX2010-MPC4E-3D-32XGE-SFPP", 
@@ -3598,7 +3598,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-DPCE-R-40GE-SFP", 
     "subType": 0, 
     "id": "MX960-DPCE-R-40GE-SFP", 
@@ -4234,7 +4234,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX960LINECARD", 
-    "internals": [], 
+
     "name": "MX960-RE-S-1800X4-16G-S", 
     "subType": 0, 
     "id": "MX960-RE-S-1800X4-16G-S", 
@@ -4315,7 +4315,7 @@
       "z": -137.5
     }, 
     "fruTypeCode": "MX2010LINECARD", 
-    "internals": [], 
+
     "name": "MX2010-MPC4E-3D-2CGE-8XGE", 
     "subType": 0, 
     "id": "MX2010-MPC4E-3D-2CGE-8XGE", 
@@ -4501,7 +4501,7 @@
       "z": 20.0
     }, 
     "fruTypeCode": "MX240LINECARD", 
-    "internals": [], 
+
     "name": "MX240-RE-S-1300-2048-S", 
     "subType": 0, 
     "id": "MX240-RE-S-1300-2048-S", 

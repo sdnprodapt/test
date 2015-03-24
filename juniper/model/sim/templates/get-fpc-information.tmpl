@@ -1,0 +1,18 @@
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/13.3I0/junos" message-id="{{ message_id }}">
+  <fpc-information xmlns="http://xml.juniper.net/junos/13.3I0/junos-chassis" junos:style="brief">
+    {% for fpc in db.fpcInfo %}
+    <fpc>
+      <slot>{{ fpc['slot'] }}</slot>
+      <state>{{ fpc['state'] }}</state>
+      {%- if fpc['state'] != 'Empty' %}
+      <temperature junos:celsius="{{ fpc['temperature'] }}">{{ fpc['temperature'] }}</temperature>
+      <cpu-total>{{ fpc['cpu-total'] }}</cpu-total>
+      <cpu-interrupt>{{ fpc['cpu-interrupt'] }}</cpu-interrupt>
+      <memory-dram-size>{{ fpc['dram-size'] }}</memory-dram-size>
+      <memory-heap-utilization>{{ fpc['heap-utilization'] }}</memory-heap-utilization>
+      <memory-buffer-utilization>{{ fpc['buffer-utilization'] }}</memory-buffer-utilization>
+      {%- endif %}
+    </fpc>
+    {% endfor %}
+  </fpc-information>
+</rpc-reply>

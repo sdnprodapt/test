@@ -58,7 +58,7 @@
         "side": "front"
       }
     ], 
-    "internals": [], 
+
     "name": "JuniperEX4200_48T", 
     "subType": 0, 
     "id": "JuniperEX4200_48T", 
@@ -149,7 +149,7 @@
         "side": "front"
       }
     ], 
-    "internals": [], 
+
     "name": "JuniperMX240", 
     "subType": 0, 
     "id": "JuniperMX240", 
@@ -240,7 +240,7 @@
         "side": "front"
       }
     ], 
-    "internals": [], 
+
     "name": "JuniperMX480", 
     "subType": 0, 
     "id": "JuniperMX480", 
@@ -1051,7 +1051,7 @@
         "side": "front"
       }
     ], 
-    "internals": [], 
+
     "name": "JuniperMX960", 
     "subType": 0, 
     "id": "JuniperMX960", 
@@ -1342,7 +1342,7 @@
         "side": "front"
       }
     ], 
-    "internals": [], 
+
     "name": "JuniperMX2010", 
     "subType": 0, 
     "id": "JuniperMX2010", 
@@ -1753,7 +1753,7 @@
         "side": "front"
       }
     ], 
-    "internals": [], 
+
     "name": "JuniperPTX3000", 
     "subType": 0, 
     "id": "JuniperPTX3000", 

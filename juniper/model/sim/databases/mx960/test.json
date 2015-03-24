@@ -1,0 +1,123 @@
+{
+    "interfaces": [{
+        "name": "ge-1/1/0",
+        "enabled": true,
+        "description": "Some interface",
+        "mtu": "1400",
+        "encapsulation": "ethernet-vpls",
+        "scheduler-map": "",
+        "unit-name": "0",
+        "unit-description": "Some unit",
+        "unit-family-filter-tag": "vpls",
+        "unit-family-filter-input": "vpls_Test",
+        "unit-apply-groups-except": "ARP_interface"
+    }, {
+        "name": "ge-1/1/1",
+        "enabled": true,
+        "description": "Some other interface",
+        "mtu": "1400",
+        "encapsulation": "ethernet-vpls",
+        "scheduler-map": "",
+        "unit-name": "0",
+        "unit-description": "Some unit",
+        "unit-family-filter-tag": "vpls",
+        "unit-family-filter-input": "vpls_Test",
+        "unit-apply-groups-except": ""
+    }],
+    "l2circuits": [{
+        "name": "test-circuit1",
+        "if-name": "test-if.0",
+        "if-virtual-circuit-id": "circuitid",
+        "if-description": "description"
+    }],
+    "firewalls": [{
+        "name": "test-firewall1",
+        "rate": "single-rate",
+        "color-aware": false,
+        "cir": "1m",
+        "cbs": "500k",
+        "pir": "",
+        "pbs": "10m"
+    }, {
+        "name": "test-firewall2",
+        "rate": "two-rate",
+        "color-aware": true,
+        "cir": "1m",
+        "cbs": "500k",
+        "pir": "1m",
+        "pbs": "10m"
+    }],
+    "firewall-filters": [{
+        "name": "test-filter1",
+        "family": "inet",
+        "filter-interface-specific": true,
+        "filter-term-name": "termname",
+        "filter-term-policer": "term-policer",
+        "filter-term-three-color": "tcp",
+        "filter-term-three-color-rate": "two-rate",
+        "filter-term-loss-prio": "lossprio",
+        "filter-term-forwarding-class": "fwdcls",
+        "filter-term-action": "accept"
+    }, {
+        "name": "test-filter2",
+        "family": "inet",
+        "filter-interface-specific": true,
+        "filter-term-name": "termname",
+        "filter-term-forwarding-class": "fwdcls",
+        "filter-term-action": "accept"
+    }, {
+        "name": "test-filter3",
+        "family": "inet6",
+        "filter-interface-specific": false,
+        "filter-term-name": "termname",
+        "filter-term-three-color": "tcp",
+        "filter-term-three-color-rate": "single-rate",
+        "filter-term-action": "accept"
+    }],
+    "firewall-policers": [{
+        "name": "test-policer1",
+        "if-condition": "if-exceding",
+        "bandwidth-limit": "5m",
+        "burst-size-limit": "1m",
+        "then-action": "discard"
+    }, {
+        "name": "test-policer2",
+        "if-condition": "if-exceding",
+        "bandwidth-limit": "5m",
+        "burst-size-limit": "",
+        "then-action": "discard"
+    }],
+    "routing-instances": [{
+        "name": "testri1",
+        "description": "ri desc",
+        "instance-type": "instancetype",
+        "interface-name": "ifname",
+        "route-distinguisher-rd-type": "rdtype",
+        "vrf-target-import": "i",
+        "vrf-target-export": "e",
+        "forwarding-options-family-vpls-flood-input": "Flood_input",
+        "protocols-vpls-mac-table-size-limit": "1000",
+        "protocols-vpls-interface-mac-limit": "1000",
+        "protocols-vpls-tunnel-services": false,
+        "protocols-vpls-site-name": "sitename",
+        "protocols-vpls-site-id": "siteid",
+        "protocols-vpls-site-interface-name": "siteifname",
+        "classifiers": ""
+    }, {
+        "name": "testri2",
+        "description": "ri desc",
+        "instance-type": "instancetype",
+        "interface-name": "ifname",
+        "route-distinguisher-rd-type": "rdtype",
+        "vrf-target-import": "i",
+        "vrf-target-export": "e",
+        "forwarding-options-family-vpls-flood-input": "Flood_input",
+        "protocols-vpls-mac-table-size-limit": "1000",
+        "protocols-vpls-interface-mac-limit": "1000",
+        "protocols-vpls-tunnel-services": true,
+        "protocols-vpls-site-name": "sitename",
+        "protocols-vpls-site-id": "siteid",
+        "protocols-vpls-site-interface-name": "siteifname",
+        "classifiers": ""
+    }]
+}

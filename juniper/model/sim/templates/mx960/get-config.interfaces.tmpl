@@ -1,0 +1,13 @@
+{% from 'dbmacros.tmpl' import render_config_interface %}
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/12.1X44/junos" message-id="{{ message_id }}">
+<data>
+<configuration xmlns="http://xml.juniper.net/xnm/1.1/xnm" junos:commit-seconds="1420244965" junos:commit-localtime="2015-01-03 00:29:25 UTC" junos:commit-user="root">
+    <interfaces>
+        {%- set ifaces =  db.configInterfaces if line.iface is undefined else db.configInterfaces|selectattr("name", "equalto", line.iface) %}
+        {%- for iface in ifaces %}
+        {{ render_config_interface(iface)|indent(8) }}
+        {%- endfor %}
+    </interfaces>
+</configuration>
+</data>
+</rpc-reply>

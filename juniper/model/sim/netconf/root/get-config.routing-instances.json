@@ -1,0 +1,20 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-config/filter/configuration/routing-instances/instance/name",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [{
+                "name": "instance",
+                "xpath": ["/rpc/get-config/filter/configuration/routing-instances/instance/name", "[0].text"]
+            }],
+            "template": "get-config.routing-instances.tmpl"
+        } 
+    }, {
+        "pattern": "/rpc/get-config/filter/configuration/routing-instances",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "get-config.routing-instances.tmpl"
+        } 
+    }]
+}

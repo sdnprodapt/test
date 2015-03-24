@@ -21,3 +21,7 @@ AUTHOR = 'Cyan'
 STATIC_PATHS = {
         '/images/': os.path.join(os.path.dirname(__file__), 'model/graphics/images'),
             }
+
+ENDPOINTS = (
+        'netconf'
+        )

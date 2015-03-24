@@ -1,0 +1,37 @@
+{% macro render_if(thing, tag) -%}
+{%- if thing %}
+<{{ tag }}>{{ thing }}</{{ tag }}>
+{%- endif %}
+{%- endmacro %}
+
+{% macro render_chassis_module(module, tag) -%}
+{% if module -%}
+<{{ tag }}>
+  <name>{{ module['name'] }}</name>
+  {{- render_if(module['version'], 'version')|indent(2) -}}
+  {{ render_if(module['part-number'], 'part-number')|indent(2) -}}
+  {{ render_if(module['serial-number'], 'serial-number')|indent(2) -}}
+  {{ render_if(module['description'], 'description')|indent(2) -}}
+  {{ render_if(module['model-number'], 'model-number')|indent(2) -}}
+  {%- set parent_name = ':'.join([module['parentName'], module['name']]) if module['parentName'] != '' else module['name'] -%}
+  {%- set tag_split = tag.split('-') -%}
+  {%- set next_tag = '-'.join([tag_split[0]] + tag_split[1:-1] + ['sub'] + [tag_split[-1]]) -%}
+  {%- for submod in db.chassisModules|selectattr('parentName', 'equalto', parent_name) %}
+  {{ render_chassis_module(submod, next_tag)|indent(2) }}
+  {%- endfor %}
+</{{ tag }}>
+{%- endif %}
+{%- endmacro %}
+
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/13.3R3/junos" message-id="{{ message_id }}">
+  <chassis-inventory xmlns="http://xml.juniper.net/junos/13.3R3/junos-chassis">
+    <chassis junos:style="inventory">
+      <name>{{ db.deviceInfo[0]['name'] }}</name>
+      <serial-number>{{ db.deviceInfo[0]['serial-number'] }}</serial-number>
+      <description>{{ db.deviceInfo[0]['description'] }}</description>
+      {%- for module in db.chassisModules|selectattr('parentName', 'equalto', '') %}
+      {{ render_chassis_module(module, 'chassis-module')|indent(6) }}
+      {%- endfor %}
+    </chassis>
+  </chassis-inventory>
+</rpc-reply>

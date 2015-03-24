@@ -1,0 +1,183 @@
+{%- macro render_routing_instance(instance) -%}
+<instance>
+    <name>{{ instance['name'] }}</name>
+    <description>{{ instance['description'] }}</description>
+    <instance-type>{{ instance['instance-type'] }}</instance-type>
+    <interface>
+        <name>{{ instance['interface-name'] }}</name>
+    </interface>
+    <route-distinguisher>
+        <rd-type>{{ instance['route-distinguisher-rd-type'] }}</rd-type>
+    </route-distinguisher>
+    <vrf-target>
+        <import>{{ instance['vrf-target-import'] }}</import>
+        <export>{{ instance['vrf-target-export'] }}</export>
+    </vrf-target>
+    <forwarding-options>
+        <family>
+            <vpls>
+                <flood>
+                    <input>{{ instance['forwarding-options-family-vpls-flood-input'] }}</input>
+                </flood>
+            </vpls>
+        </family>
+    </forwarding-options>
+    <protocols>
+        <vpls>
+            <mac-table-size>
+                <limit>{{ instance['protocols-vpls-mac-table-size-limit'] }}</limit>
+            </mac-table-size>
+            <interface-mac-limit>
+                <limit>{{ instance['protocols-vpls-interface-mac-limit'] }}</limit>
+            </interface-mac-limit>
+            {%- if not instance['protocols-vpls-tunnel-services'] %}
+            <no-tunnel-services/>
+            {%- endif %}
+            <site>
+                <name>{{ instance['protocols-vpls-site-name'] }}</name>
+                <site-identifier>{{ instance['protocols-vpls-site-id'] }}</site-identifier>
+                <interface>
+                    <name>{{ instance['protocols-vpls-site-interface-name'] }}</name>
+                </interface>
+            </site>
+        </vpls>
+    </protocols>
+</instance>
+{%- endmacro -%}
+
+{% macro render_l2circuit(circuit_group) -%}
+<neighbor>
+    <name>{{ circuit_group.grouper }}</name>
+    {%- for iface in circuit_group.list %}
+    <interface>
+        <name>{{ iface['if-name'] }}</name>
+        <virtual-circuit-id>{{ iface['virtual-circuit-id'] }}</virtual-circuit-id>
+        {%- if iface['encapsulation-type'] %}
+        <encapsulation-type>{{ iface['encapsulation-type'] }}</encapsulation-type>
+        {%- endif %}
+    </interface>
+    {%- endfor %}
+</neighbor>
+{%- endmacro -%}
+
+{% macro render_firewall_policer(firewall) -%}
+<policer>
+    <name>{{ firewall['name'] }}</name>
+    <{{ firewall['if-condition'] }}>
+        <bandwidth-limit>{{ firewall['bandwidth-limit'] }}</bandwidth-limit>
+        {%- if firewall['burst-size-limit'] and firewall['burst-size-limit'] != '' %}
+        <burst-size-limit>{{ firewall['burst-size-limit'] }}</burst-size-limit>
+        {%- endif %}
+    </{{ firewall['if-condition'] }}>
+    <then>
+        <{{ firewall['then-action'] }}/>
+    </then>
+</policer>
+{%- endmacro -%}
+
+{% macro render_firewall_family(firewall) -%}
+<family>
+    <{{ firewall['family'] }}>
+        <name>{{ firewall['name'] }}</name>
+        {%- if firewall['filter-interface-specific'] %}
+        <interface-specific/>
+        {%- endif %}
+        <term>
+            <name>{{ firewall['filter-term-name'] }}</name>
+            <then>
+                {%- if firewall['filter-term-policer'] and firewall['filter-term-policer'] != '' %}
+                <policer>{{ firewall['filter-term-policer'] }}</policer>
+                {%- endif %}
+                {%- if firewall['filter-term-three-color'] and firewall['filter-term-three-color'] != '' %}
+                <three-color-policer>
+                    <{{ firewall['filter-term-three-color-rate'] }}>{{ firewall['filter-term-three-color'] }}</{{ firewall['filter-term-three-color-rate'] }}>
+                </three-color-policer>
+                {%- endif %}
+                {%- if firewall['filter-term-loss-prio'] and firewall['filter-term-loss-prio'] != '' %}
+                <loss-priority>{{ firewall['filter-term-loss-prio'] }}</loss-priority>
+                {%- endif %}
+                {%- if firewall['filter-term-forwarding-class'] and firewall['filter-term-forwarding-class'] != '' %}
+                <forwarding-class>{{ firewall['filter-term-forwarding-class'] }}</forwarding-class>
+                {%- endif %}
+                {% if firewall['filter-term-action'] and firewall['filter-term-action'] != '' %}<{{ firewall['filter-term-action'] }}/>{% endif %}
+            </then>
+        </term>
+    </{{ firewall['family'] }}>
+</family>
+{%- endmacro -%}
+
+{% macro render_firewall_three_color(firewall) -%}
+<three-color-policer>
+    <name>{{ firewall['name'] }}</name>
+    <{{ firewall['rate'] }}>
+        {%- if firewall['color-aware'] %}
+        <color-aware/>
+        {%- else %}
+        <color-blind/>
+          {%- endif %}
+        {%- if firewall['rate'] == 'single-rate' %}
+        <committed-information-rate>{{ firewall['cir'] }}</committed-information-rate>
+        <committed-burst-size>{{ firewall['cbs'] }}</committed-burst-size>
+        <peak-burst-size>{{ firewall['pbs'] }}</peak-burst-size>
+        {%- elif firewall['rate'] == 'two-rate' %}
+        <committed-information-rate>{{ firewall['cir'] }}</committed-information-rate>
+        <committed-burst-size>{{ firewall['cbs'] }}</committed-burst-size>
+        <peak-information-rate>{{ firewall['pir'] }}</peak-information-rate>
+        <peak-burst-size>{{ firewall['pbs'] }}</peak-burst-size>
+        {%- endif %}
+    </{{ firewall['rate'] }}>
+</three-color-policer>
+{%- endmacro -%}
+
+{% macro render_class_of_service_interface(cos) -%}
+<interface>
+    <name>{{ cos['interface'] }}</name>
+    <scheduler-map>{{ cos['schedulerMap'] }}</scheduler-map>
+</interface>
+{%- endmacro -%}
+
+{% macro render_class_of_service_routing_instance(cos) -%}
+<routing-instances>
+    <name>{{ cos['routingInstance'] }}</name>
+    <classifiers>
+        <exp>
+            <classifier-name>{{ cos['classifierName'] }}</classifier-name>
+        </exp>
+    </classifiers>
+</routing-instances>
+{%- endmacro -%}
+
+{% macro render_config_interface(iface, db) -%}
+<interface>
+    <name>{{ iface['name'] }}</name>
+    <description>{{ iface['description'] }}</description>
+    <mtu>{{ iface['mtu'] }}</mtu>
+    {#- <encapsulation>{{ iface['encapsulation'] }}</encapsulation> #}
+    {%- for unit in db.interfaceUnits|selectattr('interfaceName', 'equalto', iface['name']) %}
+    <unit>
+        <name>{{ unit['unit-name'] }}</name>
+        <description>{{ unit['description'] }}</description>
+        {%- for applyGroup in db.unitApplyGroups|selectattr('unitName', 'equalto', unit['unit-name']) %}
+        <apply-groups-accept>{{ applyGroup['applyGroup'] }}</apply-groups-accept>
+        {%- endfor %}
+        <family>
+            <{{ unit['unit-family-filter-tag'] }}>
+                <filter>
+                    <input>{{ unit['unit-family-filter-input'] }}</input>
+                </filter>
+            </{{ unit['unit-family-filter-tag'] }}>
+        </family>
+    </unit>
+    {%- endfor %}
+</interface>
+{%- endmacro -%}
+
+{% macro render_alarm(alarm) -%}
+<alarm-detail>
+    <alarm-time>{{ alarm['time'] }}</alarm-time>
+    <alarm-class>{{ alarm['class'] }}</alarm-class>
+    <alarm-description>{{ alarm['description'] }}</alarm-description>
+    <alarm-short-description>{{ alarm['short-description'] }}</alarm-short-description>
+    <alarm-type>{{ alarm['type'] }}</alarm-type>
+</alarm-detail>
+{%- endmacro -%}
