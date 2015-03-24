@@ -40,7 +40,7 @@
                         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT",
                         "thisLayerActive": "ACTIVE",
                         "serviceState": "IN_SERVICE",
-                        "location": "{{ ptp.replace("/", "-").replace(" ","-") }}",
+                        "location": "{{ ['FP', ptp.split('/')[-2], ptp.split('/')[-1]]|join('-') }}",
                         "alarmReporting": "on"
                         }{% if not loop.last %},{% endif %}
                     {% endfor %}

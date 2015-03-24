@@ -8005,455 +8005,3535 @@
             "</rpc-reply>"
          ]
       ],
-      "in-expect":{
-         "0":{
-            "name":"xe-0/0/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-0-0-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d8:00"
-         },
-         "1":{
-            "name":"xe-0/1/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-0-1-0",
-            "link_level_type":"Flexible-Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9100",
-            "hardware_physical_address":"00:1d:b5:22:d8:29"
-         },
-         "2":{
-            "name":"xe-0/2/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-0-2-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d8:52"
-         },
-         "3":{
-            "name":"xe-0/3/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-0-3-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d8:7b"
-         },
-         "4":{
-            "name":"xe-1/0/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-1-0-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d8:a5"
-         },
-         "5":{
-            "name":"xe-1/1/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-1-1-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d8:ce"
-         },
-         "6":{
-            "name":"xe-1/2/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-1-2-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d8:f7"
-         },
-         "7":{
-            "name":"xe-1/3/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-1-3-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d9:20"
-         },
-         "8":{
-            "name":"xe-2/0/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-0-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d9:4a"
-         },
-         "9":{
-            "name":"xe-2/0/1",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-0-1",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d9:4b"
-         },
-         "10":{
-            "name":"xe-2/1/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-1-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d9:73"
-         },
-         "11":{
-            "name":"xe-2/1/1",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-1-1",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d9:74"
-         },
-         "12":{
-            "name":"xe-2/2/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-2-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d9:9c"
-         },
-         "13":{
-            "name":"xe-2/2/1",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-2-1",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d9:9d"
-         },
-         "14":{
-            "name":"xe-2/3/0",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-3-0",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:d9:c5"
-         },
-         "15":{
-            "name":"xe-2/3/1",
-            "oid":"OID_CLASS_PTP:FAC_xe-0-2-3-1",
-            "link_level_type":"Ethernet",
-            "speed":"10Gbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:d9:c6"
-         },
-         "16":{
-            "name":"ge-11/0/0",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-0",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:df:17"
-         },
-         "17":{
-            "name":"ge-11/0/1",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-1",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:df:18"
-         },
-         "18":{
-            "name":"ge-11/0/2",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-2",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:df:19"
-         },
-         "19":{
-            "name":"ge-11/0/3",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-3",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:df:1a"
-         },
-         "20":{
-            "name":"ge-11/0/4",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-4",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:df:1b"
-         },
-         "21":{
-            "name":"ge-11/0/5",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-5",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:1c"
-         },
-         "22":{
-            "name":"ge-11/0/6",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-6",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:1d"
-         },
-         "23":{
-            "name":"ge-11/0/7",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-7",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:1e"
-         },
-         "24":{
-            "name":"ge-11/0/8",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-8",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:1f"
-         },
-         "25":{
-            "name":"ge-11/0/9",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-0-9",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:20"
-         },
-         "26":{
-            "name":"ge-11/1/0",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-0",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:40"
-         },
-         "27":{
-            "name":"ge-11/1/1",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-1",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:41"
-         },
-         "28":{
-            "name":"ge-11/1/2",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-2",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:42"
-         },
-         "29":{
-            "name":"ge-11/1/3",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-3",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:43"
-         },
-         "30":{
-            "name":"ge-11/1/4",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-4",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:44"
-         },
-         "31":{
-            "name":"ge-11/1/5",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-5",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:45"
-         },
-         "32":{
-            "name":"ge-11/1/6",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-6",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:46"
-         },
-         "33":{
-            "name":"ge-11/1/7",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-7",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:47"
-         },
-         "34":{
-            "name":"ge-11/1/8",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-8",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:48"
-         },
-         "35":{
-            "name":"ge-11/1/9",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-1-9",
-            "link_level_type":"Flexible-Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9100",
-            "hardware_physical_address":"00:1d:b5:22:df:49"
-         },
-         "36":{
-            "name":"ge-11/2/0",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-0",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9192",
-            "hardware_physical_address":"00:1d:b5:22:df:69"
-         },
-         "37":{
-            "name":"ge-11/2/1",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-1",
-            "link_level_type":"Flexible-Ethernet",
-            "speed":"1000mbps",
-            "mtu":"9100",
-            "hardware_physical_address":"00:1d:b5:22:df:6a"
-         },
-         "38":{
-            "name":"ge-11/2/2",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-2",
-            "link_level_type":"Ethernet-CCC",
-            "speed":"1000mbps",
-            "mtu":"9100",
-            "hardware_physical_address":"00:1d:b5:22:df:6b"
-         },
-         "39":{
-            "name":"ge-11/2/3",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-3",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:6c"
-         },
-         "40":{
-            "name":"ge-11/2/4",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-4",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:6d"
-         },
-         "41":{
-            "name":"ge-11/2/5",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-5",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:6e"
-         },
-         "42":{
-            "name":"ge-11/2/6",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-6",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:6f"
-         },
-         "43":{
-            "name":"ge-11/2/7",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-7",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:70"
-         },
-         "44":{
-            "name":"ge-11/2/8",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-8",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:71"
-         },
-         "45":{
-            "name":"ge-11/2/9",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-2-9",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:72"
-         },
-         "46":{
-            "name":"ge-11/3/0",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-0",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:92"
-         },
-         "47":{
-            "name":"ge-11/3/1",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-1",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:93"
-         },
-         "48":{
-            "name":"ge-11/3/2",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-2",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:94"
-         },
-         "49":{
-            "name":"ge-11/3/3",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-3",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:95"
-         },
-         "50":{
-            "name":"ge-11/3/4",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-4",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:96"
-         },
-         "51":{
-            "name":"ge-11/3/5",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-5",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:97"
-         },
-         "52":{
-            "name":"ge-11/3/6",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-6",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:98"
-         },
-         "53":{
-            "name":"ge-11/3/7",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-7",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:99"
-         },
-         "54":{
-            "name":"ge-11/3/8",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-8",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:9a"
-         },
-         "55":{
-            "name":"ge-11/3/9",
-            "oid":"OID_CLASS_PTP:FAC_ge-0-11-3-9",
-            "link_level_type":"Ethernet",
-            "speed":"1000mbps",
-            "mtu":"1514",
-            "hardware_physical_address":"00:1d:b5:22:df:9b"
-         }
+      "in-expect":[
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-0-0-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
       }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-0/0/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-0-0-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-0-1-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-0/1/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-0-1-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-0-2-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-0/2/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-0-2-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-0-3-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-0/3/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-0-3-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-1-0-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-1/0/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-1-0-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-1-1-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-1/1/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-1-1-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-1-2-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-1/2/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-1-2-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-1-3-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-1/3/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-1-3-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-0-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/0/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-0-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-0-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/0/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-0-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-1-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/1/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-1-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-1-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/1/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-1-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-2-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/2/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-2-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-2-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/2/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-2-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-3-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/3/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-3-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "xe-0-2-3-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_10Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "xe-2/3/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "xe-0-2-3-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-2", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/2", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-2", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-3", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/3", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-3", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-4", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/4", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-4", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-5", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/5", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-5", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-6", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/6", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-6", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-7", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/7", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-7", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-8", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/8", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-8", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-0-9", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/0/9", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-0-9", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-2", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/2", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-2", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-3", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/3", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-3", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-4", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/4", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-4", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-5", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/5", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-5", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-6", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/6", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-6", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-7", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/7", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-7", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-8", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/8", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-8", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-1-9", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/1/9", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-1-9", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-2", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/2", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-2", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-3", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/3", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-3", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-4", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/4", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-4", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-5", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/5", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-5", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-6", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/6", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-6", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-7", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/7", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-7", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-8", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/8", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-8", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-2-9", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/2/9", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-2-9", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-0", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/0", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-0", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-1", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/1", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-1", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-2", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/2", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-2", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-3", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/3", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-3", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-4", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/4", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-4", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-5", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/5", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-5", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-6", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/6", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-6", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-7", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/7", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-7", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-8", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/8", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-8", 
+    "connectionState": "NA"
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "direction": "D_NA", 
+    "tpMappingMode": "TM_NA", 
+    "name": "ge-0-11-3-9", 
+    "alarmStatus": "Indeterminate", 
+    "type": "TPT_PTP", 
+    "transmissionParams": [
+      {
+        "layer": "LR_PHYSICAL_OPTICAL", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_CLIENT_ERP", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }
+    ], 
+    "oids": [], 
+    "userLabel": "ge-11/3/9", 
+    "adminState": "AdminAutoInService", 
+    "nativeEmsName": "", 
+    "owner": "", 
+    "containedCTPs": [], 
+    "id": "ge-0-11-3-9", 
+    "connectionState": "NA"
+  }
+]
    }
 }

@@ -1,6 +1,9 @@
 {
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-termpoints.json"
+    ],
     "endpoint-parameters": {
         "command": {
             "name": "get-interface-information"

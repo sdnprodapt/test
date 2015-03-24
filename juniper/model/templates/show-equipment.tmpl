@@ -14,9 +14,7 @@
       "expectedEquipmentObjectType": "{{ rackData.get("pid", "NA") }}",
       "containedEquipmentHolders": [
         {% for shelf, shelfData in rackData["shelves"].iteritems() if not shelf == ""%}
-           {% for slot, slotData in shelfData["slots"].iteritems() if not slot == ""%}
-                "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot }}",
-            {% endfor %}
+             "{{ "equipmentHolder_" + rack + "_" + shelf }}",
         {% endfor %}
       ],
       "id": "{{ "equipment_" + rack}}",
@@ -25,21 +23,44 @@
       "serviceState": "IN_SERVICE"
     }
       {% for shelf, shelfData in rackData["shelves"].iteritems() if not shelf == "" %}
+        ,{
+          "containingEquipmentHolder": "{{ "equipmentHolder_" + rack + "_" + shelf}}",
+          "name": "{{ "0-" + shelf }}",
+          "installedEquipmentObjectType": "{{ shelfData.get("pid", "NA") }}",
+          "installedVersion": "",
+          "supportedTps": [
+          ],
+          "alarmReportingIndicator": false,
+          "userLabel": "{{ "0-" + shelf }}",
+          "owner": "",
+          "installedSerialNumber": "{{ shelfData.get("serialNumber", "NA") }}",
+          "installedPartNumber": "{{ shelfData.get("pid", "NA") }}",
+          "expectedEquipmentObjectType": "{{ shelfData.get("pid", "NA") }}",
+          "containedEquipmentHolders": [
+            {% for slot, slotData in shelfData["slots"].iteritems() if not slot == ""%}
+                "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot }}",
+            {% endfor %}
+          ],
+          "id": "{{ "equipment_" + rack + "_" + shelf }}",
+          "nativeEMSName": "",
+          "alarmStatus": "Indeterminate",
+          "serviceState": "IN_SERVICE"
+        }
         {% for slot, slotData in shelfData["slots"].iteritems() if not slot == ""%}
             ,{
               "containingEquipmentHolder": "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot}}",
-              "name": "{{ shelf + "-" + slot }}",
+              "name": "{{ "0-" + slot }}",
               "installedEquipmentObjectType": "{{ slotData.get("pid", "NA") }}",
               "installedVersion": "",
               "supportedTps": [
                 {% for ptp, portData in slotData["ports"].iteritems() %}
                     {% if not ptp == "" %}
-                        "{{ ptp.replace("/", "-").replace(" ","-") }}"{% if not loop.last %},{% endif %}
+                        "{{ [ptp.split('/')[0], shelf, slot, ptp.split('/')[-1]]|join('-') }}"{% if not loop.last %},{% endif %}
                     {% endif %}
                 {% endfor %}
               ],
               "alarmReportingIndicator": false,
-              "userLabel": "{{ shelf + "-" + slot }}",
+              "userLabel": "{{ "0-" + slot }}",
               "owner": "",
               "installedSerialNumber": "{{ slotData.get("serialNumber", "NA") }}",
               "installedPartNumber": "{{ slotData.get("pid", "NA") }}",
