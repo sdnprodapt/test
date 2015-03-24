@@ -3,8 +3,6 @@
         "commandTimeout": 30,
         "rx_delimiter": "]]>]]>\n" 
     },
-    "netconf": {
-    },
     "snmp": {
     },
     "null": {

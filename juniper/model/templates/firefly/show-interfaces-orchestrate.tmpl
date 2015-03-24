@@ -1,8 +1,7 @@
 {% set ports = data['ports'] %}
-{% set allowed_ports = { 'xe', 'ge', 'et', 'lt' } %}
+{% set allowed_ports = ['xe', 'ge', 'et', 'lt', 'sp'] %}
 [
-{% for port in ports
-    if port['name']|string|trim.split('-', 1)[0] in allowed_ports recursive %}
+{% for port in ports if port['name'].strip().split('-', 1)[0] in allowed_ports recursive %}
     {% set name = port['name']|string|trim %}
     {% set speed = port['speed']|string|trim %}
     {% set strip_len = (name|length)-3 %}
@@ -14,11 +13,16 @@
         "admin_status": {{ 'true' if port['admin-status'] == 'up' else 'false' }},
         "oper_status": {{ 'true' if port['oper-status'] == 'up' else 'false' }},
         "mtu": "{{ port['mtu']|trim|default('') }}",
-        "mac_address": "{{ port['current-physical-address']|trim|default('') }}"
-    }{% if not loop.last or ports['logical-interface'] %}, {% endif %}
+        {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
+        {# Some devices have xml formatting information on their mac address and this gets around that #}
+        "mac_address": "{{ mac['#text']|trim or mac|trim }}"
+    {# Suuuper hacky #}
+    {% set vports = port['logical-interface'] if port['logical-interface'].__class__ == [].__class__ else
+                    [port['logical-interface']] if port['logical-interface'].__class__ == {}.__class__ else [] %}
+    }{% if not loop.last or vports|length > 0 %},{% endif %}
     {% if port['logical-interface']|default([]) %}
         {% set outer_loop = loop %}
-        {% for vport in port['logical-interface'] %}
+        {% for vport in vports %}
             {
                 "name": "{{ vport['name']|string|trim }}",
                 "physical_interface": "{{ name }}", {# This field only here for logical interfces to give a reference to their parent phycsial interfaces #}
