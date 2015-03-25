@@ -44,7 +44,7 @@
                 }, {
                     "name": "filter-term-action",
                     "xpath": ["/rpc/edit-config/config/configuration/firewall/family/*/filter/term-action", "[0].text"]
-                }, ]
+                } ]
             }
         }
     }]

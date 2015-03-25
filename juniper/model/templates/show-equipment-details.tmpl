@@ -33,6 +33,7 @@
 	"0": {
 		"name": "0",
 		"serialNumber": "{{ serialNumber }}",
+		"pid": "{{ "Juniper" + description }}",
 		"shelves": {
 			{% for card in cards if card['name'].startswith(fpc_slot_name) or card['name'].startswith(mic_slot_name) or card['name'].startswith(pic_slot_name) or card['name'].startswith(routing_engine_slot_name) or card['name'].startswith(port_slot_name) recursive %}
 				{% set slot_holder_key = {'key': slot_type_list.fim_slot} %}

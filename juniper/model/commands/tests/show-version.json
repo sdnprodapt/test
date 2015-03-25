@@ -550,9 +550,13 @@
             "</rpc-reply>"
         ]],
         "in-expect": {
-            "nodeType": "JuniperMX960",
-            "iosVersion": "JUNOS 13.3R3.6",
-            "nodeSerialNumber": "JN1160284AFA"
-        }
+              "swImage": "JUNOS 13.3R3.6", 
+              "swVersion": "JUNOS 13.3R3.6", 
+              "swType": "JuniperMX960", 
+              "serialNumber": "JN1160284AFA", 
+              "elementType": "JuniperMX960", 
+              "type": "JuniperMX960", 
+              "deviceVersion": "JuniperMX960"
+            }
     }
 }
