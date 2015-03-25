@@ -21,7 +21,7 @@
     }, {
         "type": "bpprov.translators.template.Json",
         "parameters": {
-            "template": "firefly/show-interfaces-orchestrate.tmpl",
+            "template": "firefly/get-interfaces.tmpl",
             "as_object": true
         }
     }]
