@@ -2,7 +2,8 @@
     Inputs:
         interface: name of the interface to add/modify the security zone
         security-zone: name of the security zone to modify
-        system-services: list of services to add to the 
+        system-services: list of services to add to the zone
+        screen: name of the security screen for the zone. [optional]
 #}
 
 <rpc>
@@ -12,7 +13,9 @@
         <zones>
             <security-zone>
                 <name>{{ data['security-zone'] }}</name>
-                <screen>{{ data['security-zone'] }}-screen</screen>
+                {% if data['screen'] %}
+                <screen>{{ data['screen'] }}</screen>
+                {% endif %}
                 <interfaces>
                     <name>{{ data['interface'] }}</name>
                     <host-inbound-traffic>
