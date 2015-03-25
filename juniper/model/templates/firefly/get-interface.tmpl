@@ -1,0 +1,34 @@
+{#
+    Inputs:
+        interface: name of the interface to get
+#}
+{% set info = data['interface-information']%}
+{
+{% if 'logical-interface' in info %}
+    {%set vport = info['logical-interface'] %}
+    {% set iface, unit = vport['name'].strip().split('.', 1) if '.' in vport['name'] else (vport['name'].strip(), '') %}
+    {# virtual vport #}
+    "name": "{{ vport['name']|string|trim }}",
+    "physical_interface": "{{ iface }}",
+    "link_level_type": "virtual", {# This shows that this device is a logical-interface #}
+    "mtu": "{{ vport['address-family']['mtu'] }}",
+{% elif 'physical-interface' in info %}
+    {% set port = info['physical-interface'] %}
+    {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
+    {# regular port #}
+    "name": "{{ port['name']|trim }}",
+    "link_level_type": "{{ port['link-level-type']|trim|default('') }}",
+    "speed": "{{ port['speed'] }}",
+    {# If admin-status is ever not a dict, this will be a problem #}
+    "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
+    "oper_status": {{ 'true' if 'up' in port['oper-status'] else 'false' }},
+    "mtu": "{{ port['mtu']|trim|default('') }}",
+    {# Some devices have xml formatting information on their mac address and this gets around that #}
+    {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
+    "mac_address": "{{ mac['#text']|trim or mac|trim }}"
+{% else %}
+    {# this is so the route translator doesnt screw up and cause a 500 error #}
+    "link_level_type": "error",
+    "rpc-error": "Interface not found"
+{% endif %}
+}
