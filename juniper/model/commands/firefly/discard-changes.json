@@ -1,0 +1,15 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "command": {
+            "name": "discard-changes"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

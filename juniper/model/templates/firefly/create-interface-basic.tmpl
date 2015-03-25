@@ -1,0 +1,25 @@
+{#
+    Inputs:
+        interface: name of the interface to craete the logical interface on
+        unit: name of the logical interface unit
+#}
+
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <interfaces>
+        <interface>
+            <name>{{ data['interface'] }}</name>
+            <unit>
+                <name>{{ data['unit'] }}</name>
+                <family>
+                    <inet>
+                        <dhcp/>
+                    </inet>
+                </family>
+            </unit>
+        </interface>
+    </interfaces>
+</configuration></config>
+</edit-config>
+</rpc>

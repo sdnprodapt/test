@@ -1,0 +1,31 @@
+{#
+    Inputs:
+        interface: name of the interface to add/modify the security zone
+        security-zone: name of the security zone to modify
+        system-services: list of services to add to the 
+#}
+
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <security>
+        <zones>
+            <security-zone>
+                <name>{{ data['security-zone'] }}</name>
+                <screen>{{ data['security-zone'] }}-screen</screen>
+                <interfaces>
+                    <name>{{ data['interface'] }}</name>
+                    <host-inbound-traffic>
+                        {% for service in data['system-services'] %}
+                        <system-services>
+                            <name>{{ service }}</name>
+                        </system-services>
+                        {% endfor %}
+                    </host-inbound-traffic>
+                </interfaces>
+            </security-zone>
+        </zones>
+    </security>
+</configuration></config>
+</edit-config>
+</rpc>

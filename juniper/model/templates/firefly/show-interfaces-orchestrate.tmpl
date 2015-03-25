@@ -4,14 +4,13 @@
 {% for port in ports if port['name'].strip().split('-', 1)[0] in allowed_ports recursive %}
     {% set name = port['name']|string|trim %}
     {% set speed = port['speed']|string|trim %}
-    {% set strip_len = (name|length)-3 %}
-    {% set eth_type = (name|truncate((name|length)-strip_len, True))|replace('...', '') %}
     {
         "name": "{{ name }}",
         "link_level_type": "{{ port['link-level-type']|trim|default('') }}",
         "speed": "{{ speed }}",
-        "admin_status": {{ 'true' if port['admin-status'] == 'up' else 'false' }},
-        "oper_status": {{ 'true' if port['oper-status'] == 'up' else 'false' }},
+        {# If admin-status is ever not a dict, this will be a problem #}
+        "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
+        "oper_status": {{ 'true' if 'up' in port['oper-status'] else 'false' }},
         "mtu": "{{ port['mtu']|trim|default('') }}",
         {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
         {# Some devices have xml formatting information on their mac address and this gets around that #}
@@ -30,8 +29,8 @@
                 "mtu": "{{ vport['address-family']['mtu'] }}",
                 {# For now these parameters will be the same as the parent physical port #}
                 "speed": "{{ speed }}",
-                "admin_status": {{ 'true' if port['admin-status'] == 'up' else 'false' }},
-                "oper_status": {{ 'true' if port['oper-status'] == 'up' else 'false' }}
+                "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
+                "oper_status": {{ 'true' if 'up' in port['oper-status'] else 'false' }}
             }{% if not loop.last or not outer_loop.last %},{% endif %}
         {% endfor %}
     {% endif %}
