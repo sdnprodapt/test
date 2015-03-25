@@ -1,6 +1,5 @@
 import json
 import argparse
-import sys
 import re
 from lxml import etree
 from collections import OrderedDict
@@ -10,6 +9,7 @@ parser.add_argument('dir', type=str, help='directory to read xml data from')
 
 args = parser.parse_args()
 
+
 def load_xml(xml_file):
     it = etree.iterparse(xml_file)
     for _, el in it:
@@ -18,6 +18,7 @@ def load_xml(xml_file):
         except:
             pass
     return it.root
+
 
 def get_path_value(element, path, default=None):
     v = element.xpath(path)
@@ -60,7 +61,8 @@ try:
     deviceInfo['junos-version'] = software_version.xpath('//junos-version')[0].text
 except:
     # If the junos-version doesn't exist try and read it from the first package information
-    deviceInfo['junos-version'] = re.match(r'.*\[(.*)\]$', software_version.xpath('//package-information/comment/text()')[0]).group(1)
+    deviceInfo['junos-version'] = re.match(r'.*\[(.*)\]$',
+                                           software_version.xpath('//package-information/comment/text()')[0]).group(1)
 
 db['deviceInfo'].append(deviceInfo)
 
@@ -70,6 +72,7 @@ for pkg in package_info:
         'name': pkg.findtext('name'),
         'comment': pkg.findtext('comment')
     })
+
 
 def get_chassis_module(module, parent_name, path):
     # 'chassis-module'
@@ -127,9 +130,9 @@ for iface in ifaces:
         'interface-flapped': iface.findtext('interface-flapped'),
         'link-level-type': get_path_value(iface, 'link-level-type/text()', default=''),
         'mtu': get_path_value(iface, 'mtu/text()', default=''),
-        'hw-address': get_path_value(iface, 'hardware-physical-address/text()', default='') 
+        'hw-address': get_path_value(iface, 'hardware-physical-address/text()', default='')
     }
-    
+
     device_flags = []
     for flag in iface.xpath('if-device-flags/*'):
         if flag.tag != 'internal-flags':
