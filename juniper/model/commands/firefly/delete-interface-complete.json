@@ -1,0 +1,71 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-interfaces.json"
+    ],
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [{
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "delete-interface.json",
+            "input": {
+                "templateType": "json-dict",
+                "data": {
+                    "interface": "{{ data.interface }}"
+                }
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data/ok",
+                    "to": "/data/interface-results"
+                }, {
+                    "from": "/data/rpc-error",
+                    "to": "/data/interface-results"
+                }]
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "delete-security-zone.json",
+            "input": {
+                "templateType": "json-dict",
+                "data": {
+                    "interface": "{{ data.interface }}",
+                    "security-zone": "{{ data['security-zone'] if 'security-zone' in data else 'untrust' }}"
+                }
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data/ok",
+                    "to": "/data/security-zone-results"
+                }, {
+                    "from": "/data/rpc-error",
+                    "to": "/data/security-zone-results"
+                }]
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "commit.json",
+            "input": {
+                "templateType": "json-dict",
+                "data": {}
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data/ok",
+                    "to": "/data/commit-results"
+                }, {
+                    "from": "/data/rpc-error",
+                    "to": "/data/commit-results"
+                }]
+            }
+        }
+    }]
+}

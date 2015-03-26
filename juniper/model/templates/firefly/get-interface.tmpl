@@ -5,8 +5,8 @@
 {% set info = data['interface-information']%}
 {
 {% if 'logical-interface' in info %}
-    {%set vport = info['logical-interface'] %}
-    {% set iface, unit = vport['name'].strip().split('.', 1) if '.' in vport['name'] else (vport['name'].strip(), '') %}
+    {% set vport = info['logical-interface'] %}
+    {% set iface, unit = vport['name'].strip().split('.', 1) %}
     {# virtual vport #}
     "name": "{{ vport['name']|string|trim }}",
     "physical_interface": "{{ iface }}",
@@ -28,7 +28,6 @@
     "mac_address": "{{ mac['#text']|trim or mac|trim }}"
 {% else %}
     {# this is so the route translator doesnt screw up and cause a 500 error #}
-    "link_level_type": "error",
-    "rpc-error": "Interface not found"
+    "link_level_type": "error"
 {% endif %}
 }

@@ -1,0 +1,78 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-interfaces.json"
+    ],
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [{
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "create-interface-basic.json",
+            "input": {
+                "templateType": "json-dict",
+                "header": {},
+                "data": {
+                    "interface": "{{ data.interface }}",
+                    "unit": "{{ data.unit }}"
+                }
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data/ok",
+                    "to": "/data/interface-results"
+                }, {
+                    "from": "/data/rpc-error",
+                    "to": "/data/interface-results"
+                }]
+            },
+            "error": {
+                "type": "log"  
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "create-security-zone.json",
+            "input": {
+                "templateType": "file",
+                "header": "empty-dict.tmpl",
+                "data": "firefly/create-security-zone-in.tmpl"
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data/ok",
+                    "to": "/data/security-zone-results"
+                }, {
+                    "from": "/data/rpc-error",
+                    "to": "/data/security-zone-results"
+                }]
+            },
+            "error": {
+                "type": "log"  
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "commit.json",
+            "input": {
+                "templateType": "json-dict",
+                "header": {},
+                "data": {}
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data/ok",
+                    "to": "/data/commit-results"
+                }]
+            },
+            "error": {
+                "type": "log"  
+            }
+        }
+    }]
+}
