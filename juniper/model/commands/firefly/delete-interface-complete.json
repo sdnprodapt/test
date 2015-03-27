@@ -20,10 +20,7 @@
             },
             "output": {
                 "patches": [{
-                    "from": "/data/ok",
-                    "to": "/data/interface-results"
-                }, {
-                    "from": "/data/rpc-error",
+                    "from": "/data",
                     "to": "/data/interface-results"
                 }]
             }
@@ -41,31 +38,84 @@
             },
             "output": {
                 "patches": [{
-                    "from": "/data/ok",
-                    "to": "/data/security-zone-results"
-                }, {
-                    "from": "/data/rpc-error",
+                    "from": "/data",
                     "to": "/data/security-zone-results"
                 }]
             }
         }
     }, {
-        "type": "bpprov.translators.aggregator.Call",
+        "type": "bpprov.translators.route.Branch",
         "parameters": {
-            "command": "commit.json",
-            "input": {
-                "templateType": "json-dict",
-                "data": {}
-            },
-            "output": {
-                "patches": [{
-                    "from": "/data/ok",
-                    "to": "/data/commit-results"
-                }, {
-                    "from": "/data/rpc-error",
-                    "to": "/data/commit-results"
-                }]
+            "choice": [{
+                "when": "${interface-results} contains \"rpc-error\"",
+                "do": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "discard-changes.json",
+                        "output": {
+                            "patches": [{
+                                "from": "/data",
+                                "to": "/data/discard-results"
+                            }]
+                        }
+                    }
+                }
+            }, {
+                "when": "${security-zone-results} contains \"rpc-error\"",
+                "do": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "discard-changes.json",
+                        "output": {
+                            "patches": [{
+                                "from": "/data",
+                                "to": "/data/discard-results"
+                            }]
+                        }
+                    }
+                }
+            }],
+            "otherwise": {
+                "type": "bpprov.translators.aggregator.Call",
+                "parameters": {
+                    "command": "commit.json",
+                    "input": {
+                        "templateType": "json-dict",
+                        "data": {}
+                    },
+                    "output": {
+                        "patches": [{
+                            "from": "/data",
+                            "to": "/data/commit-results"
+                        }]
+                    },
+                    "error": {
+                        "type": "log"  
+                    }
+                }
             }
+        }
+    }, {
+        "type": "bpprov.translators.route.Branch",
+        "parameters": {
+            "choice": [{
+                "when": "${.} contains \"commit-results\"",
+                "do": {
+                    "type": "bpprov.translators.route.Branch",
+                    "parameters": {
+                        "choice": [{
+                            "when": "${commit-results} contains \"rpc-error\"",
+                            "do": {
+                                "type": "bpprov.translators.branch.RunnerCommand",
+                                "parameters": {
+                                    "command": "discard-changes.json",
+                                    "preserveData": true
+                                }
+                            }
+                        }]
+                    }
+                }
+            }]
         }
     }]
 }

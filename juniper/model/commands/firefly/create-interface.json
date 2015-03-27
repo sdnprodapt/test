@@ -14,7 +14,6 @@
             "command": "create-interface-basic.json",
             "input": {
                 "templateType": "json-dict",
-                "header": {},
                 "data": {
                     "interface": "{{ data.interface }}",
                     "unit": "{{ data.unit }}"
@@ -22,15 +21,9 @@
             },
             "output": {
                 "patches": [{
-                    "from": "/data/ok",
-                    "to": "/data/interface-results"
-                }, {
-                    "from": "/data/rpc-error",
+                    "from": "/data",
                     "to": "/data/interface-results"
                 }]
-            },
-            "error": {
-                "type": "log"  
             }
         }
     }, {
@@ -39,40 +32,90 @@
             "command": "create-security-zone.json",
             "input": {
                 "templateType": "file",
-                "header": "empty-dict.tmpl",
                 "data": "firefly/create-security-zone-in.tmpl"
             },
             "output": {
                 "patches": [{
-                    "from": "/data/ok",
-                    "to": "/data/security-zone-results"
-                }, {
-                    "from": "/data/rpc-error",
+                    "from": "/data",
                     "to": "/data/security-zone-results"
                 }]
-            },
-            "error": {
-                "type": "log"  
             }
         }
     }, {
-        "type": "bpprov.translators.aggregator.Call",
+        "type": "bpprov.translators.route.Branch",
         "parameters": {
-            "command": "commit.json",
-            "input": {
-                "templateType": "json-dict",
-                "header": {},
-                "data": {}
-            },
-            "output": {
-                "patches": [{
-                    "from": "/data/ok",
-                    "to": "/data/commit-results"
-                }]
-            },
-            "error": {
-                "type": "log"  
+            "choice": [{
+                "when": "${interface-results} contains \"rpc-error\"",
+                "do": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "discard-changes.json",
+                        "output": {
+                            "patches": [{
+                                "from": "/data",
+                                "to": "/data/discard-results"
+                            }]
+                        }
+                    }
+                }
+            }, {
+                "when": "${security-zone-results} contains \"rpc-error\"",
+                "do": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "discard-changes.json",
+                        "output": {
+                            "patches": [{
+                                "from": "/data",
+                                "to": "/data/discard-results"
+                            }]
+                        }
+                    }
+                }
+            }],
+            "otherwise": {
+                "type": "bpprov.translators.aggregator.Call",
+                "parameters": {
+                    "command": "commit.json",
+                    "input": {
+                        "templateType": "json-dict",
+                        "data": {}
+                    },
+                    "output": {
+                        "patches": [{
+                            "from": "/data",
+                            "to": "/data/commit-results"
+                        }]
+                    }
+                }
             }
+        }
+    }, {
+        "type": "bpprov.translators.route.Branch",
+        "parameters": {
+            "choice": [{
+                "when": "${.} contains \"commit-results\"",
+                "do": {
+                    "type": "bpprov.translators.route.Branch",
+                    "parameters": {
+                        "choice": [{
+                            "when": "${commit-results} contains \"rpc-error\"",
+                            "do": {
+                                "type": "bpprov.translators.aggregator.Call",
+                                "parameters": {
+                                    "command": "discard-changes.json",
+                                    "output": {
+                                        "patches": [{
+                                            "from": "/data",
+                                            "to": "/data/discard-results"
+                                        }]
+                                    }
+                                }
+                            }
+                        }]
+                    }
+                }
+            }]
         }
     }]
 }
