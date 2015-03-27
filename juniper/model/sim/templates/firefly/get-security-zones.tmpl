@@ -1,0 +1,24 @@
+{% import 'dbmacros.tmpl' as dbmacros %}
+<rpc-reply xmlns:junos="http://xml.juniper.net/junos/13.3R3/junos" message-id="{{ message_id }}">
+  <configuration junos:commit-seconds="1414418764" junos:commit-localtime="2014-10-27 10:06:04 EDT" junos:commit-user="root">
+    <security>
+        <zones>
+        {% set zones = db.securityZones|selectattr('name', 'equalto', line.zone) if line.zone else db.securityZones %}
+        {%- for zone in zones %}
+            {%- if not line.interface or '.' in line.interface %}
+                {%- set interfaces_t = db.securityZoneInterfaces|selectattr('zone', 'equalto', zone['name']) %}
+                {%- set interfaces = interfaces_t|selectattr('interface', 'equalto', line.interface) if line.interface else interfaces_t %}
+            {{ dbmacros.render_security_zone(zone, interfaces)|indent(12) }}
+            {%- else %}
+            {{ dbmacros.render_security_zone(zone, [])|indent(12) }}
+                {%- for iface in db.securityZoneInterfaces|selectattr('zone', 'equalto', zone['name']) %}
+                    {%- if iface['interface'].startswith(line.interface) %}
+            {{ dbmacros.render_security_zone_interface(iface)|indent(12) }}
+                    {%- endif %}
+                {%- endfor %}
+            {%- endif %}
+        {%- endfor %}
+        </zones>
+    </security>
+  </configuration>
+</rpc-reply>

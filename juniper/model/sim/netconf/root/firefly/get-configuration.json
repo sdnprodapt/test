@@ -1,0 +1,23 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/get-configuration/configuration/security/zones/security-zone",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [{
+                "name": "zone",
+                "xpath": ["/rpc/get-configuration/configuration/security/zones/security-zone/name", "[0].text"]
+            }, {
+                "name": "interface",
+                "xpath": ["/rpc/get-configuration/configuration/security/zones/security-zone/interfaces/name", "[0].text"]
+            }],
+            "template": "firefly/get-security-zones.tmpl"
+        }
+    }, {
+        "pattern": "/rpc/get-configuration",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "firefly/get-configuration.tmpl"
+        }
+    }]
+}

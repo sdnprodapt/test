@@ -181,3 +181,30 @@
     <alarm-type>{{ alarm['type'] }}</alarm-type>
 </alarm-detail>
 {%- endmacro -%}
+
+{% macro render_security_zone_interface(zone_if) -%}
+<interfaces>
+    <name>{{ zone_if['interface'] }}</name>
+    <host-inbound-traffic>
+    {%- for service in ['http', 'https', 'ssh', 'telnet', 'dhcp', 'ping', 'netconf'] %}
+        {%- if zone_if['service_'+service] %}
+        <system-services>
+            <name>{{ service }}</name>
+        </system-services>
+        {%- endif %}
+    {%- endfor %}
+    </host-inbound-traffic>
+</interfaces>
+{%- endmacro %}
+
+{% macro render_security_zone(zone, interfaces) -%}
+<security-zone>
+    <name>{{ zone['name'] }}</name>
+    {%- if zone['screen'] %}
+    <screen>{{ zone['screen'] }}</screen>
+    {%- endif %}
+    {%- for interface in interfaces %}
+    {{ render_security_zone_interface(interface)|indent(4) }}
+    {%- endfor %}
+</security-zone>
+{%- endmacro %}
