@@ -1,0 +1,14 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/tests/show-interfaces.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/disable-interface.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}
