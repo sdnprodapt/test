@@ -24,7 +24,7 @@
                     "type": "bpprov.translators.template.Json",
                     "parameters": {
                         "templateType": "inline",
-                        "template": "{\"rpc-error\": {\"error-info\": \"Interface not found\"}}"
+                        "template": "{\"statusCode\": \"404\", \"reason\": \"Interface not found\"}"
                     }
                 },
                 "virtual": {
@@ -35,7 +35,7 @@
                             "templateType": "json-dict",
                             "header": {},
                             "data": {
-                                "interface": "{{ data.physical_interface }}"
+                                "name": "{{ data.physical_interface }}"
                             }
                         },
                         "output": {
@@ -52,9 +52,6 @@
                                 "from": "/data/speed",
                                 "to": "/data/speed"
                             }]
-                        },
-                        "error": {
-                            "type": "log"  
                         }
                     }
                 }

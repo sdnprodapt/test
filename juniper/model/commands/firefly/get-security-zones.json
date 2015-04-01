@@ -23,7 +23,7 @@
                     "type": "bpprov.translators.template.Json",
                     "parameters": {
                         "templateType": "inline",
-                        "template": "{\"rpc-error\": {\"error-info\": \"Security zone not found\"}}"
+                        "template": "{\"statusCode\": \"404\", \"reason\": \"Security zone not found\"}"
                     }
                 }
             }],

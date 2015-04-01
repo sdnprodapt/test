@@ -15,8 +15,8 @@
             "input": {
                 "templateType": "json-dict",
                 "data": {
-                    "interface": "{{ data.interface }}",
-                    "unit": "{{ data.unit }}"
+                    "interface": "{{ data.name.split('.')[0] }}",
+                    "unit": "{{ data.name.split('.')[1] }}"
                 }
             },
             "output": {
