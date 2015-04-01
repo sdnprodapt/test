@@ -24,7 +24,7 @@
                     "type": "bpprov.translators.template.Json",
                     "parameters": {
                         "templateType": "inline",
-                        "template": "[]"
+                        "template": "{\"rpc-error\": {\"error-info\": \"Interface not found\"}}"
                     }
                 },
                 "virtual": {

@@ -1,26 +1,26 @@
 [
-{% if data['configuration'] %}
-{% set data_zones = data.configuration.security.zones['security-zone'] %}
-{% set zones = data_zones if data_zones.__class__ == [].__class__ else
-                [data_zones] if data_zones.__class__ == {}.__class__ else [] %}
-{% for zone in zones %}
+{%- if data['configuration'] -%}
+{%- set data_zones = data.configuration.security.zones['security-zone'] -%}
+{%- set zones = data_zones if data_zones.__class__ == [].__class__ else
+                [data_zones] if data_zones.__class__ == {}.__class__ else [] -%}
+{%- for zone in zones -%}
 {
     "name": "{{ zone.name }}",
-    {% set interfaces = zone['interfaces'] if zone['interfaces'].__class__ == [].__class__ else
-                        [zone['interfaces']] if zone['interfaces'].__class__ == {}.__class__ else [] %}
+    {%- set interfaces = zone['interfaces'] if zone['interfaces'].__class__ == [].__class__ else
+                        [zone['interfaces']] if zone['interfaces'].__class__ == {}.__class__ else [] -%}
     "interfaces": [
-    {% for iface in interfaces %}
+    {%- for iface in interfaces -%}
     {
         "name": "{{ iface.name }}",
         "inbound-traffic-services": [
-            {% for service in iface['host-inbound-traffic']['system-services'] %}
-            "{{ service.name }}"{% if not loop.last %},{% endif %}
-            {% endfor %}
+            {% for service in iface['host-inbound-traffic']['system-services'] -%}
+            "{{ service.name }}"{%- if not loop.last -%},{%- endif -%}
+            {% endfor -%}
         ]
-    }{% if not loop.last %},{% endif %}
-    {% endfor %}
+    }{%- if not loop.last -%},{%- endif -%}
+    {%- endfor -%}
     ]
-}{% if not loop.last %},{% endif %}
-{% endfor %}
-{% endif %}
+}{%- if not loop.last -%},{% endif -%}
+{%- endfor -%}
+{%- endif -%}
 ]

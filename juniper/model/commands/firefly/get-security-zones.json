@@ -12,7 +12,28 @@
         "type": "bpprov.translators.template.Json",
         "parameters": {
             "template": "firefly/get-security-zones.tmpl",
-            "as_object": true
+            "as_object": false
+        }
+    }, {
+        "type": "bpprov.translators.route.Branch",
+        "parameters": {
+            "choice": [{
+                "when": "${.} == \"[]\"",
+                "do": {
+                    "type": "bpprov.translators.template.Json",
+                    "parameters": {
+                        "templateType": "inline",
+                        "template": "{\"rpc-error\": {\"error-info\": \"Security zone not found\"}}"
+                    }
+                }
+            }],
+            "otherwise": {
+                "type": "bpprov.translators.template.Json",
+                "parameters": {
+                    "templateType": "inline",
+                    "template": "{{ data }}"
+                }
+            }
         }
     }]
 }
