@@ -2,9 +2,9 @@
   <interface-information>
 {%- if '.' in line.interface %}
     {%- set interface, unit = line.interface.split('.', 1) %}
-    {%- set found = False %}
+    {%- set found = [] %}
     {%- for logical_interface in db.logicalInterfaces|selectattr('interfaceName', 'equalto', interface)|selectattr('index', 'equalto', unit|int) %}
-    {%- set found = True %}
+    {% do found.append('.') %}
     <logical-interface>
       <name>{{ logical_interface['interfaceName'] }}.{{ logical_interface['index'] }}</name>
       <local-index>{{ logical_interface['local-index'] }}</local-index>
@@ -54,7 +54,7 @@
       {%- endfor %}
     </logical-interface>
     {%- endfor %}
-    {% if not found %}
+    {% if found|length == 0 %}
     <rpc-error>
       <error-severity>error</error-severity>
       <source-daemon>ifinfo</source-daemon>
@@ -62,9 +62,9 @@
     </rpc-error>
     {% endif %}
 {%- else %}
-    {%- set found = False %}
+    {%- set found = [] %}
     {% for interface in db.interfaces|selectattr('name', 'equalto', line.interface) %}
-    {%- set found = True%}
+    {% do found.append('.') %}
     <physical-interface>
       <name>{{ interface['name'] }}</name>
       <admin-status format="Enabled">{% if interface['admin-status'] %}up{% else %}down{% endif %}</admin-status>
@@ -122,6 +122,7 @@
         {%- endfor %}
       </traffic-statistics>
       {%- for logical_interface in db.logicalInterfaces|selectattr('interfaceName', 'equalto', interface['name']) %}
+      {% do found.append('.') %}
       <logical-interface>
         <name>{{ logical_interface['index'] }}</name>
         <local-index>{{ logical_interface['local-index'] }}</local-index>
@@ -173,7 +174,7 @@
       {%- endfor %}
     </physical-interface>
     {%- endfor %}
-    {% if not found %}
+    {% if found|length == 0 %}
     <rpc-error>
       <error-severity>error</error-severity>
       <source-daemon>ifinfo</source-daemon>
