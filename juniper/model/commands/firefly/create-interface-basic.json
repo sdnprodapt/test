@@ -6,8 +6,24 @@
     "endpoint-parameters": {
         "template": "firefly/create-interface-basic.tmpl"
     },
-    "out-path": [
-    ],
+    "out-path": [{
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "get-interface.json",
+            "input": {
+                "templateType": "json-dict",
+                "data": {
+                    "name": "{{ data.interface }}{% if 'unit' in data %}.{{ data.unit }}{% endif %}"
+                }
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data",
+                    "to": "/data/get-results"
+                }]
+            }
+        }
+    }],
     "in-path": [
     ]
 }
