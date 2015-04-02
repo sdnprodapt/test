@@ -13,18 +13,21 @@
             {% if 'admin_status' in data %}
                 {% if data.admin_status == 'True' %}
             <disable operation="delete"/>
-                {% else %}
+                {% elif data.admin_status == 'False' %}
             <disable/>
                 {% endif %}
             {% endif %}
 
             {# if the interface does not exist, create it #}
-            {% if data['get-results']['statusCode'] == '404' %}
+            {% if data['get-results']['statusCode'] == '404' or data['get-results']['mtu'] != data['mtu'] %}
             <unit>
                 <name>{{ data['unit'] }}</name>
                 <family>
                     <inet>
                         <dhcp/>
+                        {% if data.mtu != '' %}
+                        <mtu>{{ data.mtu }}</mtu>
+                        {% endif %}
                     </inet>
                 </family>
             </unit>

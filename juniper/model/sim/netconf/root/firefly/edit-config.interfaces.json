@@ -67,10 +67,10 @@
                         }]
                     }, {
                         "table": "logicalInterfaceAddressFamilies",
-                        "nodeXPath": "family",
+                        "nodeXPath": "family/*",
                         "fields": [{
                             "name": "familyName",
-                            "xpath": ["*", "[0].tag"]
+                            "xpath": [".", "[0].tag"]
                         }, {
                             "name": "logicalInterface",
                             "xpath": ["ancestor::unit/name", "[0].text"]
@@ -79,10 +79,24 @@
                             "xpath": ["ancestor::interface/name", "[0].text"]
                         }, {
                             "name": "dhcp",
-                            "xpath": ["inet/dhcp", " != []"]
-                        }, {
-                            "name": "mtu",
-                            "xpath": ["*/mtu", "[0].text"]
+                            "xpath": ["dhcp", " != []"]
+                        }],
+                        "parsers": [{
+                            "table": "logicalInterfaceAddressFamilies",
+                            "nodeXPath": "mtu",
+                            "fields": [{
+                                "name": "familyName",
+                                "xpath": ["ancestor::family/*", "[0].tag"]
+                            }, {
+                                "name": "logicalInterface",
+                                "xpath": ["ancestor::unit/name", "[0].text"]
+                            }, {
+                                "name": "interfaceName",
+                                "xpath": ["ancestor::interface/name", "[0].text"]
+                            }, {
+                                "name": "mtu",
+                                "xpath": [".", "[0].text"]
+                            }]
                         }]
                     }]
                 }]
@@ -122,25 +136,39 @@
                         "xpath": [".", "[0].text"]
                     }]
                 }, {
-                    "table": "logicalInterfaceAddressFamilies",
-                    "nodeXPath": "family",
-                    "fields": [{
-                        "name": "familyName",
-                        "xpath": ["*", "[0].tag"]
-                    }, {
-                        "name": "logicalInterface",
-                        "xpath": ["ancestor::unit/name", "[0].text"]
-                    }, {
-                        "name": "interfaceName",
-                        "xpath": ["ancestor::interface/name", "[0].text"]
-                    }, {
-                        "name": "dhcp",
-                        "xpath": ["inet/dhcp", " != []"]
-                    }, {
-                            "name": "mtu",
-                            "xpath": ["*/mtu", "[0].text"]
+                        "table": "logicalInterfaceAddressFamilies",
+                        "nodeXPath": "family/*",
+                        "fields": [{
+                            "name": "familyName",
+                            "xpath": [".", "[0].tag"]
+                        }, {
+                            "name": "logicalInterface",
+                            "xpath": ["ancestor::unit/name", "[0].text"]
+                        }, {
+                            "name": "interfaceName",
+                            "xpath": ["ancestor::interface/name", "[0].text"]
+                        }, {
+                            "name": "dhcp",
+                            "xpath": ["dhcp", " != []"]
+                        }],
+                        "parsers": [{
+                            "table": "logicalInterfaceAddressFamilies",
+                            "nodeXPath": "mtu",
+                            "fields": [{
+                                "name": "familyName",
+                                "xpath": ["ancestor::family/*", "[0].tag"]
+                            }, {
+                                "name": "logicalInterface",
+                                "xpath": ["ancestor::unit/name", "[0].text"]
+                            }, {
+                                "name": "interfaceName",
+                                "xpath": ["ancestor::interface/name", "[0].text"]
+                            }, {
+                                "name": "mtu",
+                                "xpath": [".", "[0].text"]
+                            }]
+                        }]
                     }]
-                }]
             }]
         }
     }]
