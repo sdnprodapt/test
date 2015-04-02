@@ -80,6 +80,9 @@
                         }, {
                             "name": "dhcp",
                             "xpath": ["inet/dhcp", " != []"]
+                        }, {
+                            "name": "mtu",
+                            "xpath": ["*/mtu", "[0].text"]
                         }]
                     }]
                 }]
@@ -133,6 +136,9 @@
                     }, {
                         "name": "dhcp",
                         "xpath": ["inet/dhcp", " != []"]
+                    }, {
+                            "name": "mtu",
+                            "xpath": ["*/mtu", "[0].text"]
                     }]
                 }]
             }]
