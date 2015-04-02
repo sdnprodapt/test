@@ -31,14 +31,14 @@
           "tpMappingMode": "TM_NA",
           "transmissionParams": 
                 [
-                    {% for LR in ["LR_PHYSICAL_OPTICAL", "LR_DSR_Gigabit_Ethernet", "LR_DSR_10Gigabit_Ethernet",
-                                  "LR_Ethernet", "LR_ERP", "LR_CLIENT_ERP"] if not ((ptp.startswith(xe_port) and LR == "LR_DSR_Gigabit_Ethernet") or 
+                    {% for LR in ["LR_PHYSICAL_OPTICAL", "LR_Optical_Channel", "LR_DSR_Gigabit_Ethernet", "LR_DSR_10Gigabit_Ethernet",
+                                  "LR_DSR_100Gigabit_Ethernet", "LR_Ethernet", "LR_CLIENT_ERP"] if not ((ptp.startswith(xe_port) and LR == "LR_DSR_Gigabit_Ethernet") or 
                               (ptp.startswith(ge_port) and LR == "LR_DSR_10Gigabit_Ethernet"))%}
                         {
                         "layer": "{{LR}}",
                         "layerInUse": false,
                         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT",
-                        "thisLayerActive": "ACTIVE",
+                        "thisLayerActive": "{{ "INACTIVE" if LR in ["LR_DSR_100Gigabit_Ethernet", "LR_CLIENT_ERP"] else "ACTIVE" }}" ,
                         "serviceState": "IN_SERVICE",
                         "location": "{{ ['FP', ptp.split('/')[-2], ptp.split('/')[-1]]|join('-') }}",
                         "alarmReporting": "on"

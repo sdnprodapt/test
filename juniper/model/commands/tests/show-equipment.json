@@ -175,9 +175,48 @@
     "installedSerialNumber": "YX1015", 
     "installedPartNumber": "MX960-MIC-3D-20GE-SFP", 
     "expectedEquipmentObjectType": "MX960-MIC-3D-20GE-SFP", 
-    "containedEquipmentHolders": [], 
+    "containedEquipmentHolders": [
+      "equipmentHolder_0_0_1_1", 
+      "equipmentHolder_0_0_1_0"
+    ], 
     "owner": "", 
     "id": "equipment_0_0_1", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "containingEquipmentHolder": "equipmentHolder_0_0_1_1", 
+    "name": "1-1", 
+    "alarmStatus": "Indeterminate", 
+    "installedEquipmentObjectType": "MX960-", 
+    "installedVersion": "", 
+    "supportedTps": [], 
+    "alarmReportingIndicator": false, 
+    "userLabel": "1-1", 
+    "installedSerialNumber": "BUILTIN", 
+    "installedPartNumber": "MX960-", 
+    "expectedEquipmentObjectType": "MX960-", 
+    "containedEquipmentHolders": [], 
+    "owner": "", 
+    "id": "equipment_0_0_1_1", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "containingEquipmentHolder": "equipmentHolder_0_0_1_0", 
+    "name": "1-0", 
+    "alarmStatus": "Indeterminate", 
+    "installedEquipmentObjectType": "MX960-", 
+    "installedVersion": "", 
+    "supportedTps": [], 
+    "alarmReportingIndicator": false, 
+    "userLabel": "1-0", 
+    "installedSerialNumber": "BUILTIN", 
+    "installedPartNumber": "MX960-", 
+    "expectedEquipmentObjectType": "MX960-", 
+    "containedEquipmentHolders": [], 
+    "owner": "", 
+    "id": "equipment_0_0_1_0", 
     "nativeEMSName": ""
   }, 
   {
@@ -193,9 +232,54 @@
     "installedSerialNumber": "ZA6317", 
     "installedPartNumber": "MX960-MIC-3D-4XGE-XFP", 
     "expectedEquipmentObjectType": "MX960-MIC-3D-4XGE-XFP", 
-    "containedEquipmentHolders": [], 
+    "containedEquipmentHolders": [
+      "equipmentHolder_0_0_0_1", 
+      "equipmentHolder_0_0_0_0"
+    ], 
     "owner": "", 
     "id": "equipment_0_0_0", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "containingEquipmentHolder": "equipmentHolder_0_0_0_1", 
+    "name": "0-1", 
+    "alarmStatus": "Indeterminate", 
+    "installedEquipmentObjectType": "MX960-", 
+    "installedVersion": "", 
+    "supportedTps": [
+      "xe-0-0-1-1", 
+      "xe-0-0-1-0"
+    ], 
+    "alarmReportingIndicator": false, 
+    "userLabel": "0-1", 
+    "installedSerialNumber": "BUILTIN", 
+    "installedPartNumber": "MX960-", 
+    "expectedEquipmentObjectType": "MX960-", 
+    "containedEquipmentHolders": [], 
+    "owner": "", 
+    "id": "equipment_0_0_0_1", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "serviceState": "IN_SERVICE", 
+    "containingEquipmentHolder": "equipmentHolder_0_0_0_0", 
+    "name": "0-0", 
+    "alarmStatus": "Indeterminate", 
+    "installedEquipmentObjectType": "MX960-", 
+    "installedVersion": "", 
+    "supportedTps": [
+      "xe-0-0-0-0", 
+      "xe-0-0-0-1"
+    ], 
+    "alarmReportingIndicator": false, 
+    "userLabel": "0-0", 
+    "installedSerialNumber": "BUILTIN", 
+    "installedPartNumber": "MX960-", 
+    "expectedEquipmentObjectType": "MX960-", 
+    "containedEquipmentHolders": [], 
+    "owner": "", 
+    "id": "equipment_0_0_0_0", 
     "nativeEMSName": ""
   }, 
   {

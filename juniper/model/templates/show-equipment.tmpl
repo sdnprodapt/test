@@ -65,12 +65,46 @@
               "installedSerialNumber": "{{ slotData.get("serialNumber", "NA") }}",
               "installedPartNumber": "{{ slotData.get("pid", "NA") }}",
               "expectedEquipmentObjectType": "{{ slotData.get("pid", "NA") }}",
-              "containedEquipmentHolders": [],
-              "id": "{{ "equipment_" + rack + "_" + shelf + "_" + slot }}",
+              "containedEquipmentHolders": [
+                {% if "slots" in slotData %}
+                    {% for subSlot, subSlotData in slotData["slots"].iteritems() if not subSlot == ""%}
+                        "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot + "_" + subSlot}}",
+                    {% endfor %}
+                {% endif %}
+              ],
+              "id": "{{ "equipment_" + rack + "_" + shelf + "_" + slot}}",
               "nativeEMSName": "",
               "alarmStatus": "Indeterminate",
               "serviceState": "IN_SERVICE"
             }
+            {% if "slots" in slotData %}
+                {% for subSlot, subSlotData in slotData["slots"].iteritems() if not subSlot == ""%}
+                    ,{
+                      "containingEquipmentHolder": "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot + "_" + subSlot}}",
+                      "name": "{{ slot + "-" + subSlot }}",
+                      "installedEquipmentObjectType": "{{ subSlotData.get("pid", "NA") }}",
+                      "installedVersion": "",
+                      "supportedTps": [
+                        {% for ptp, portData in subSlotData["ports"].iteritems() %}
+                            {% if not ptp == "" %}
+                                "{{ [ptp.split('/')[0], shelf, subSlot, ptp.split('/')[-1]]|join('-') }}"{% if not loop.last %},{% endif %}
+                            {% endif %}
+                        {% endfor %}
+                      ],
+                      "alarmReportingIndicator": false,
+                      "userLabel": "{{ slot + "-" + subSlot }}",
+                      "owner": "",
+                      "installedSerialNumber": "{{ subSlotData.get("serialNumber", "NA") }}",
+                      "installedPartNumber": "{{ subSlotData.get("pid", "NA") }}",
+                      "expectedEquipmentObjectType": "{{ subSlotData.get("pid", "NA") }}",
+                      "containedEquipmentHolders": [],
+                      "id": "{{ "equipment_" + rack + "_" + shelf + "_" + slot + "_" + subSlot}}",
+                      "nativeEMSName": "",
+                      "alarmStatus": "Indeterminate",
+                      "serviceState": "IN_SERVICE"
+                    }
+                {% endfor %}
+            {% endif %}
         {% endfor %}
       {% endfor %}
     {% endfor %}

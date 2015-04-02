@@ -8024,10 +8024,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -8042,19 +8060,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -8087,10 +8096,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -8105,19 +8132,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -8150,10 +8168,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -8168,19 +8204,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -8213,10 +8240,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -8231,19 +8276,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -8276,10 +8312,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -8294,19 +8348,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -8339,10 +8384,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -8357,19 +8420,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -8402,10 +8456,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -8420,19 +8492,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -8465,10 +8528,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -8483,19 +8564,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -8528,10 +8600,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -8546,19 +8636,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -8591,10 +8672,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-1", 
         "alarmReporting": "on"
@@ -8609,19 +8708,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-1", 
         "alarmReporting": "on"
@@ -8654,10 +8744,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -8672,19 +8780,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -8717,10 +8816,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-1", 
         "alarmReporting": "on"
@@ -8735,19 +8852,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-1", 
         "alarmReporting": "on"
@@ -8780,10 +8888,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -8798,19 +8924,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -8843,10 +8960,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-1", 
         "alarmReporting": "on"
@@ -8861,19 +8996,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-1", 
         "alarmReporting": "on"
@@ -8906,10 +9032,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -8924,19 +9068,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -8969,10 +9104,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_10Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-1", 
         "alarmReporting": "on"
@@ -8987,19 +9140,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-1", 
         "alarmReporting": "on"
@@ -9032,10 +9176,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -9050,19 +9212,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-0", 
         "alarmReporting": "on"
@@ -9095,10 +9248,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-1", 
         "alarmReporting": "on"
@@ -9113,19 +9284,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-1", 
         "alarmReporting": "on"
@@ -9158,10 +9320,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-2", 
         "alarmReporting": "on"
@@ -9176,19 +9356,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-2", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-2", 
         "alarmReporting": "on"
@@ -9221,10 +9392,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-3", 
         "alarmReporting": "on"
@@ -9239,19 +9428,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-3", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-3", 
         "alarmReporting": "on"
@@ -9284,10 +9464,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-4", 
         "alarmReporting": "on"
@@ -9302,19 +9500,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-4", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-4", 
         "alarmReporting": "on"
@@ -9347,10 +9536,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-5", 
         "alarmReporting": "on"
@@ -9365,19 +9572,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-5", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-5", 
         "alarmReporting": "on"
@@ -9410,10 +9608,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-6", 
         "alarmReporting": "on"
@@ -9428,19 +9644,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-6", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-6", 
         "alarmReporting": "on"
@@ -9473,10 +9680,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-7", 
         "alarmReporting": "on"
@@ -9491,19 +9716,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-7", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-7", 
         "alarmReporting": "on"
@@ -9536,10 +9752,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-8", 
         "alarmReporting": "on"
@@ -9554,19 +9788,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-8", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-8", 
         "alarmReporting": "on"
@@ -9599,10 +9824,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-0-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-9", 
         "alarmReporting": "on"
@@ -9617,19 +9860,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-0-9", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-0-9", 
         "alarmReporting": "on"
@@ -9662,10 +9896,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -9680,19 +9932,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-0", 
         "alarmReporting": "on"
@@ -9725,10 +9968,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-1", 
         "alarmReporting": "on"
@@ -9743,19 +10004,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-1", 
         "alarmReporting": "on"
@@ -9788,10 +10040,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-2", 
         "alarmReporting": "on"
@@ -9806,19 +10076,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-2", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-2", 
         "alarmReporting": "on"
@@ -9851,10 +10112,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-3", 
         "alarmReporting": "on"
@@ -9869,19 +10148,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-3", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-3", 
         "alarmReporting": "on"
@@ -9914,10 +10184,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-4", 
         "alarmReporting": "on"
@@ -9932,19 +10220,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-4", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-4", 
         "alarmReporting": "on"
@@ -9977,10 +10256,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-5", 
         "alarmReporting": "on"
@@ -9995,19 +10292,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-5", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-5", 
         "alarmReporting": "on"
@@ -10040,10 +10328,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-6", 
         "alarmReporting": "on"
@@ -10058,19 +10364,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-6", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-6", 
         "alarmReporting": "on"
@@ -10103,10 +10400,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-7", 
         "alarmReporting": "on"
@@ -10121,19 +10436,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-7", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-7", 
         "alarmReporting": "on"
@@ -10166,10 +10472,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-8", 
         "alarmReporting": "on"
@@ -10184,19 +10508,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-8", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-8", 
         "alarmReporting": "on"
@@ -10229,10 +10544,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-1-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-9", 
         "alarmReporting": "on"
@@ -10247,19 +10580,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-1-9", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-1-9", 
         "alarmReporting": "on"
@@ -10292,10 +10616,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -10310,19 +10652,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-0", 
         "alarmReporting": "on"
@@ -10355,10 +10688,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-1", 
         "alarmReporting": "on"
@@ -10373,19 +10724,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-1", 
         "alarmReporting": "on"
@@ -10418,10 +10760,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-2", 
         "alarmReporting": "on"
@@ -10436,19 +10796,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-2", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-2", 
         "alarmReporting": "on"
@@ -10481,10 +10832,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-3", 
         "alarmReporting": "on"
@@ -10499,19 +10868,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-3", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-3", 
         "alarmReporting": "on"
@@ -10544,10 +10904,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-4", 
         "alarmReporting": "on"
@@ -10562,19 +10940,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-4", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-4", 
         "alarmReporting": "on"
@@ -10607,10 +10976,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-5", 
         "alarmReporting": "on"
@@ -10625,19 +11012,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-5", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-5", 
         "alarmReporting": "on"
@@ -10670,10 +11048,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-6", 
         "alarmReporting": "on"
@@ -10688,19 +11084,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-6", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-6", 
         "alarmReporting": "on"
@@ -10733,10 +11120,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-7", 
         "alarmReporting": "on"
@@ -10751,19 +11156,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-7", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-7", 
         "alarmReporting": "on"
@@ -10796,10 +11192,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-8", 
         "alarmReporting": "on"
@@ -10814,19 +11228,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-8", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-8", 
         "alarmReporting": "on"
@@ -10859,10 +11264,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-2-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-9", 
         "alarmReporting": "on"
@@ -10877,19 +11300,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-2-9", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-2-9", 
         "alarmReporting": "on"
@@ -10922,10 +11336,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-0", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -10940,19 +11372,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-0", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-0", 
         "alarmReporting": "on"
@@ -10985,10 +11408,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-1", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-1", 
         "alarmReporting": "on"
@@ -11003,19 +11444,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-1", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-1", 
         "alarmReporting": "on"
@@ -11048,10 +11480,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-2", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-2", 
         "alarmReporting": "on"
@@ -11066,19 +11516,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-2", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-2", 
         "alarmReporting": "on"
@@ -11111,10 +11552,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-3", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-3", 
         "alarmReporting": "on"
@@ -11129,19 +11588,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-3", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-3", 
         "alarmReporting": "on"
@@ -11174,10 +11624,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-4", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-4", 
         "alarmReporting": "on"
@@ -11192,19 +11660,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-4", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-4", 
         "alarmReporting": "on"
@@ -11237,10 +11696,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-5", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-5", 
         "alarmReporting": "on"
@@ -11255,19 +11732,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-5", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-5", 
         "alarmReporting": "on"
@@ -11300,10 +11768,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-6", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-6", 
         "alarmReporting": "on"
@@ -11318,19 +11804,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-6", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-6", 
         "alarmReporting": "on"
@@ -11363,10 +11840,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-7", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-7", 
         "alarmReporting": "on"
@@ -11381,19 +11876,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-7", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-7", 
         "alarmReporting": "on"
@@ -11426,10 +11912,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-8", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-8", 
         "alarmReporting": "on"
@@ -11444,19 +11948,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-8", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-8", 
         "alarmReporting": "on"
@@ -11489,10 +11984,28 @@
         "alarmReporting": "on"
       }, 
       {
+        "layer": "LR_Optical_Channel", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }, 
+      {
         "layer": "LR_DSR_Gigabit_Ethernet", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
         "thisLayerActive": "ACTIVE", 
+        "serviceState": "IN_SERVICE", 
+        "location": "FP-3-9", 
+        "alarmReporting": "on"
+      }, 
+      {
+        "layer": "LR_DSR_100Gigabit_Ethernet", 
+        "layerInUse": false, 
+        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-9", 
         "alarmReporting": "on"
@@ -11507,19 +12020,10 @@
         "alarmReporting": "on"
       }, 
       {
-        "layer": "LR_ERP", 
-        "layerInUse": false, 
-        "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
-        "serviceState": "IN_SERVICE", 
-        "location": "FP-3-9", 
-        "alarmReporting": "on"
-      }, 
-      {
         "layer": "LR_CLIENT_ERP", 
         "layerInUse": false, 
         "potentialFutureSetupIndicator": "RSU_POINT_TO_POINT", 
-        "thisLayerActive": "ACTIVE", 
+        "thisLayerActive": "INACTIVE", 
         "serviceState": "IN_SERVICE", 
         "location": "FP-3-9", 
         "alarmReporting": "on"
