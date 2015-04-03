@@ -1,0 +1,14 @@
+# from the docker container, git@ will not work for the initial clone
+#    (unless you installed your credentials) so use https in that case.  
+#    You might later 'git remote set-url origin <git@>' if you want to
+#    easily commit from the mapped volume
+
+#-e git+git@github.cyanoptics.com:easdk/cyml.git@<branch>#egg=cyml
+#-e git+git@github.cyanoptics.com:easdk/cymlrest.git@<branch>#egg=cymlrest
+#-e git+git@github.cyanoptics.com:easdk/bp-eamodels.git@<branch>#egg=bpeamodels
+#-e git+git@github.cyanoptics.com:easdk/easdk-python.git@<branch>#egg=easdk
+
+#-e git+https://github.cyanoptics.com/easdk/cyml.git@<branch>#egg=cyml
+#-e git+https://github.cyanoptics.com/easdk/cymlrest.git@<branch>#egg=cymlrest
+#-e git+https://github.cyanoptics.com/easdk/bp-eamodels.git@<branch>#egg=bpeamodels
+#-e git+https://github.cyanoptics.com/easdk/easdk-python.git@master#egg=easdk

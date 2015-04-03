@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+'''
+This is an EXAMPLE hook to connect a sim to an ea.
+'''
+
+import os
+import requests
+import json
+import time
+
+HOOK_SB_INTERFACE_STR = 'BP_HOOK_SOUTHBOUND_INTERFACE'
+HOOK_SB_DATA_STR = 'BP_HOOK_SOUTHBOUND_DATA'
+JUNIPER_SIM_STR = 'junipersim'
+
+EA_URL='http://0.0.0.0:8080/api/v1/sessions'
+
+POST_DATA = '{"authentication": {"netconf": {"username": "admin", "password": "admin"}'\
+            '}, "connection": '\
+            '{"hostname": "%(ip)s", "netconf": {"hostport": %(port)s} '\
+            '},'\
+            '"typeGroup": "/typeGroups/Juniper", "id": "%(_id)s"}'
+
+print os.environ
+
+if HOOK_SB_INTERFACE_STR in os.environ and HOOK_SB_DATA_STR in os.environ:
+    print 'Found valid environ data'
+
+    if os.environ[HOOK_SB_INTERFACE_STR] == JUNIPER_SIM_STR:
+        print 'junipersim interface'
+
+        interface_data = json.loads(os.environ[HOOK_SB_DATA_STR])
+        print 'interface_data', interface_data
+        interface_data['_id'] = 'SIM_' + interface_data['ip'].replace('.', '')
+
+        if interface_data['state'] == 'up':
+            time.sleep(1)
+            print 'state up'
+            print 'URL: %s\n<<< %s >>>' % (EA_URL, POST_DATA % interface_data,)
+            res = requests.post(
+                    EA_URL,
+                    data=POST_DATA % interface_data,
+                    headers={'Content-Type': 'application/json'})
+            print res
+        else:
+            print 'state down'
+            res = requests.delete(
+                    EA_URL + '/%s' % (interface_data['_id'],))
+            print res
