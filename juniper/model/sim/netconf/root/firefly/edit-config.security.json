@@ -31,7 +31,7 @@
                 }],
                 "parsers": [{
                     "table": "securityZoneInterfaces",
-                    "nodeXPath": "/rpc/edit-config/config/configuration/security/zones/security-zone/interfaces",
+                    "nodeXPath": "interfaces",
                     "fields": [{
                         "name": "zone",
                         "xpath": ["ancestor::security-zone/name", "[0].text"]
