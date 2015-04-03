@@ -1,9 +1,9 @@
 HIDE ?= @
 VENV := env
-EA_NAME := $(shell python setup.py --name)
+PACKAGE := $(shell python setup.py --name)
 
 PROJECT_DIR ?= $(shell pwd)
-MODEL_DIR := $(PROJECT_DIR)/$(EA_NAME)/model
+MODEL_DIR := $(PROJECT_DIR)/$(PACKAGE)/model
 SIM_DIR := $(MODEL_DIR)/sim
 
 PIP := $(VENV)/bin/pip
@@ -53,12 +53,10 @@ help:
 	@echo "  dutest       TeamCity target, for unittest, runs dtest"
 	@echo "  ditest       TeamCity target, for integration tests"
 
-test: python-unit-test test-model-validate test-model-commands test-model-error test-sim test-flake8
-
-utest: python-unit-test
-
+# virtualenv related commands
+#
 .prepare-venv:
-	# Workaround for pyang uninstall
+# Workaround for pyang uninstall
 	$(HIDE)rm -rf $(VENV)/lib/python2.7/site-packages/pyang*
 	$(HIDE)virtualenv $(VENV)
 	$(HIDE)$(PIP) install --upgrade -i $(PYPI) -r requirements.txt --src .src
@@ -68,18 +66,20 @@ prepare-venv: .prepare-venv
 	$(HIDE)$(PIP) install -r requirements-src.txt --src .src --exists-action i
 
 requirements:
-	$(HIDE)$(PIP) uninstall -y $(EA_NAME)
+	$(HIDE)$(PIP) uninstall -y $(PACKAGE)
 	$(HIDE)$(PIP) freeze > requirements.txt
 	$(HIDE)$(PIP) install -e .
 
 release:
 	$(HIDE)$(VENV)/bin/bpfrelease --organization ea --repository $(GIT_REPO_NAME) --project .
 
-python-unit-test:
+test: utest test-model-commands test-model-validate test-model-error test-sim test-flake8
+
+utest:
 	$(HIDE)$(VENV)/bin/nosetests -v
 
 test-flake8:
-	$(HIDE)$(VENV)/bin/flake8 $(EA_NAME)
+	$(HIDE)$(VENV)/bin/flake8 $(PACKAGE)
 
 test-model-validate:
 	$(HIDE)$(VENV)/bin/bpprov-cli validate $(MODEL_DIR)
@@ -94,10 +94,10 @@ test-sim:
 	$(HIDE)$(VENV)/bin/bpprov-cli test-sim $(SIM_DIR)
 
 coverage:
-	$(HIDE)$(VENV)/bin/nosetests --with-coverage --cover-erase --cover-package $(EA_NAME)
+	$(HIDE)$(VENV)/bin/nosetests --with-coverage --cover-erase --cover-package $(PACKAGE)
 
 BP_DEB_DIR := $(PROJECT_DIR)/blueplanet/extern
-BP_DEB_BASE := $(BP_DEB_DIR)/python-$(EA_NAME)
+BP_DEB_BASE := $(BP_DEB_DIR)/python-$(PACKAGE)
 
 bp-app:
 	$(eval VERSION := $(shell python setup.py --version))
@@ -111,10 +111,10 @@ bp-app:
 	rm -f $(BP_DEB_BASE)*.deb
 # package virtualenv into debian and place in extern
 	cd $(BP_DEB_DIR); \
-		fpm -s dir -t deb -n python-$(EA_NAME) -v $(VERSION) --iteration $(ITERATION) \
-		$(PROJECT_DIR)/$(VENV)/=/opt/cyan/$(EA_NAME)
+		fpm -s dir -t deb -n python-$(PACKAGE) -v $(VERSION) --iteration $(ITERATION) \
+		$(PROJECT_DIR)/$(VENV)/=/opt/cyan/$(PACKAGE)
 # restore development environment
-	$(PIP) uninstall -y $(EA_NAME)
+	$(PIP) uninstall -y $(PACKAGE)
 	$(PIP) install --no-deps -e .
 # make the blueplanet application
 	$(BPFPM) -f --debian blueplanet/extern --config blueplanet/project.cfg \
@@ -128,13 +128,13 @@ PASS_THROUGH_ENV := $(if $(EXTRA_ENV),$(shell python -c 'print "--env "," --env 
 DOCKER_RUN := docker run $(DOCKER_RUN_ARGS) $(PASS_THROUGH_ENV)
 DOCKER_BUILD_EXTRA ?=
 DOCKER_BUILD := docker build $(DOCKER_BUILD_EXTRA)
-DOCKER_CMD ?= $(EA_NAME) --configpath /tmp 
-DOCKER_IMAGE ?= cyan/$(EA_NAME)
-DOCKER_IMAGE_BASE := cyan/$(EA_NAME)-base
-DOCKER_IMAGE_SIM := cyan/$(EA_NAME)-sim
+DOCKER_CMD ?= $(PACKAGE) --configpath /tmp 
+DOCKER_IMAGE ?= cyan/$(PACKAGE)
+DOCKER_IMAGE_BASE := cyan/$(PACKAGE)-base
+DOCKER_IMAGE_SIM := cyan/$(PACKAGE)-sim
 DOCKERFILE_EA := docker/ea
 DOCKERFILE_SIM := docker/sim
-DOCKER_CONTAINER := $(EA_NAME)
+DOCKER_CONTAINER := $(PACKAGE)
 DOCKER_PUBLISH ?= -p 8184:8080
 DOCKER_MOUNT :=
 DOCKER_SRC := /bp2/src
@@ -142,7 +142,7 @@ DOCKER_BP2_IGNORE_ENV := \
 	-e "BP2_IGNORE=True"
 DOCKER_BP2_IGNORE_RUN := $(DOCKER_RUN) $(DOCKER_BP2_IGNORE_ENV)
 DOCKER_APP_ENV ?=
-DMODEL_DIR := $(EA_NAME)/model
+DMODEL_DIR := $(PACKAGE)/model
 DSIM_DIR := $(DMODEL_DIR)/sim
 
 NAME_MAP := --name="$(DOCKER_CONTAINER)"
@@ -212,10 +212,10 @@ interact: finalize-mount
 dtest: dcoverage dtest-model-commands dtest-model-validate dtest-model-error dtest-sim dtest-flake8
 
 dtest-flake8: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) flake8 $(EA_NAME)
+	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) flake8 $(PACKAGE)
 
 dcoverage: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) nosetests -v --with-coverage --cover-erase --cover-package $(EA_NAME)
+	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) nosetests -v --with-coverage --cover-erase --cover-package $(PACKAGE)
 
 dtest-model-validate: finalize-mount
 	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli validate $(DMODEL_DIR) 
