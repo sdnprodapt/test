@@ -6,6 +6,7 @@
     ],
     "endpoint-parameters": {
     },
+    "out-schema": "firefly/out-create-interface.json",
     "out-path": [
     ],
     "in-path": [{

@@ -7,6 +7,7 @@
     "endpoint-parameters": {
         "template": "firefly/filter-interface.tmpl"
     },
+    "out-schema": "firefly/out-get-interface.json",
     "out-path": [
     ],
     "in-path": [{

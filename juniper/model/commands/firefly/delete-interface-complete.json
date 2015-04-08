@@ -6,6 +6,7 @@
     ],
     "endpoint-parameters": {
     },
+    "out-schema": "firefly/out-delete-interface-complete.json",
     "out-path": [
     ],
     "in-path": [{
@@ -90,7 +91,7 @@
                         }]
                     },
                     "error": {
-                        "type": "log"  
+                        "type": "log"
                     }
                 }
             }

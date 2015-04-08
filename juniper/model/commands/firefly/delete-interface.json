@@ -6,6 +6,7 @@
     "endpoint-parameters": {
         "template": "firefly/delete-interface.tmpl"
     },
+    "out-schema": "firefly/out-delete-interface.json",
     "out-path": [
     ],
     "in-path": [

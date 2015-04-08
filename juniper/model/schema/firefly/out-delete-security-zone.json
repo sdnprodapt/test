@@ -1,0 +1,10 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "delete-security-zone out parameters schema",
+    "type": "object",
+    "properties": {
+        "interface": {"type": "string", "description": "The name of the interface to get"},
+        "security-zone": {"type": "string", "description": "Name of the security zone that the interface is on", "default": "untrust"}
+    },
+    "required": ["interface"]
+}

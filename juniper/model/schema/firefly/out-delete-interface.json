@@ -1,0 +1,9 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "delete-interface out parameters schema",
+    "type": "object",
+    "properties": {
+        "interface": {"type": "string", "description": "The name of the interface to delete"}
+    },
+    "required": ["interface"]
+}
