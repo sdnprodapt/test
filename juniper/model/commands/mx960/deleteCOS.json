@@ -1,4 +1,5 @@
 {
+    "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
         "commands/mx960/tests/deleteCOS.json"
