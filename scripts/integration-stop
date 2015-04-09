@@ -1,0 +1,4 @@
+#!/bin/bash
+
+./scripts/docker-stop-sims
+docker rm -f eajuniper

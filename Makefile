@@ -14,7 +14,7 @@ PYPI ?= 'https://pypi.cyanoptics.com/simple/'
 GIT_REPO_NAME ?= $(shell basename `git remote show -n origin | grep Fetch | cut -d. -f3`)
 all: help
 
-clean: 
+clean:
 	rm -rf *.deb
 	rm -rf blueplanet/extern
 	rm -rf build
@@ -23,7 +23,7 @@ clean:
 	rm -rf *.pyc
 	rm -rf env
 
-help: 
+help:
 	@echo "  help         this list"
 	@echo "  clean        delete temporary files"
 	@echo " --------------------------------------------------------"
@@ -128,7 +128,7 @@ PASS_THROUGH_ENV := $(if $(EXTRA_ENV),$(shell python -c 'print "--env "," --env 
 DOCKER_RUN := docker run $(DOCKER_RUN_ARGS) $(PASS_THROUGH_ENV)
 DOCKER_BUILD_EXTRA ?=
 DOCKER_BUILD := docker build $(DOCKER_BUILD_EXTRA)
-DOCKER_CMD ?= $(PACKAGE) --configpath /tmp 
+DOCKER_CMD ?= $(PACKAGE) --configpath /tmp
 DOCKER_IMAGE ?= cyan/$(PACKAGE)
 DOCKER_IMAGE_BASE := cyan/$(PACKAGE)-base
 DOCKER_IMAGE_SIM := cyan/$(PACKAGE)-sim
@@ -183,7 +183,7 @@ image-sim: image-base
 image-sim-dev: image-base-dev
 	$(DOCKER_BUILD) -t $(DOCKER_IMAGE_SIM) $(DOCKERFILE_SIM)
 
-# if we have a /bp2/.dev, then this is a dev image 
+# if we have a /bp2/.dev, then this is a dev image
 DEV_CHECK = /bin/bash -c 'if [ -f /bp2/.dev ]; then echo "$(DEV_VOLUME_MOUNT)"; fi'
 dev-check:
 	$(eval DEV_CHECK_OUT := $(shell $(DOCKER_RUN) $(DOCKER_BP2_IGNORE) $(DOCKER_IMAGE) $(DEV_CHECK)))
@@ -218,7 +218,7 @@ dcoverage: finalize-mount
 	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) nosetests -v --with-coverage --cover-erase --cover-package $(PACKAGE)
 
 dtest-model-validate: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli validate $(DMODEL_DIR) 
+	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli validate $(DMODEL_DIR)
 
 dtest-model-commands: finalize-mount
 	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli test $(DMODEL_DIR)
@@ -236,3 +236,8 @@ dconfigure: image
 dutest: dtest
 
 ditest:
+	$(HIDE)./scripts/integration-start
+	$(HIDE)sleep 4
+	$(HIDE)$(VENV)/bin/python $(PACKAGE)/tests/test_integration.py
+	$(HIDE)./scripts/integration-log
+	$(HIDE)./scripts/integration-stop
