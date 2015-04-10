@@ -238,6 +238,6 @@ dutest: dtest
 ditest:
 	$(HIDE)./scripts/integration-start
 	$(HIDE)sleep 4
-	$(HIDE)$(VENV)/bin/python $(PACKAGE)/tests/test_integration.py
+	$(HIDE)$(VENV)/bin/python $(PACKAGE)/tests/test_integration.py || true
 	$(HIDE)./scripts/integration-log
 	$(HIDE)./scripts/integration-stop

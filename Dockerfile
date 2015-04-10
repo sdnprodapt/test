@@ -2,6 +2,8 @@ FROM dockerreg.cyanoptics.com/cyan/trusty-python:0.1.0-4
 
 RUN pip install --upgrade pip==6.0.8
 
+RUN apt-get install -y -q libxslt1.1
+
 ADD bp2/hooks /bp2/hooks
 
 WORKDIR /bp2/src/
