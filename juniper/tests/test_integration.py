@@ -30,6 +30,7 @@ SIMS = {
 ADAPTER_SETTINGS_FILE = '/tmp/eajuniper'
 ADAPTER_API = 'http://localhost:8080/api/v1'
 
+
 class RestApi(object):
     """
     Supports basic communication with a HTTP/REST interface.
@@ -107,6 +108,7 @@ def poll_session(timeout, poll_time, api, uri, states=(u'CONNECTING', u'SYNCHRON
 
     return (session, t >= timeout)
 
+
 class BaseTest(unittest.TestCase):
     def setUp(self):
         if not getattr(self, 'device', None):
@@ -176,7 +178,8 @@ class BaseTest(unittest.TestCase):
 
     def oid_create_delete_test(self, oid_class, object_name, parameters, create=True, delete=True):
         if create:
-            command, expected = self.get_command_and_expected('createObject', oid_class, object_name, parameters=parameters)
+            command, expected = self.get_command_and_expected('createObject', oid_class,
+                                                              object_name, parameters=parameters)
             result = self.api.post('{}/oidOperation'.format(self.device_uri), command)
             self.assertDictEqual(result, expected)
 
@@ -224,12 +227,12 @@ class MX960Test(BaseTest):
     def test_oid_FWFILTER(self):
         params = [["intf_specific", "true"],
                   ["terms", [{
-                    "name": "t1",
-                    "then_3cpolicer": "single-rate test",
-                    "then_loss_priority": "loss_prio",
-                    "then_forwarding_class": "fwd_class",
-                    "then_accept": "true"
-                  }]]]
+                   "name": "t1",
+                   "then_3cpolicer": "single-rate test",
+                   "then_loss_priority": "loss_prio",
+                   "then_forwarding_class": "fwd_class",
+                   "then_accept": "true"
+                   }]]]
         self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', params)
 
     def test_oid_FWPOLICER(self):
@@ -257,12 +260,12 @@ class MX960Test(BaseTest):
         self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', params, delete=False)
         params = [["intf_specific", "true"],
                   ["terms", [{
-                    "name": "t1",
-                    "then_3cpolicer": "single-rate test",
-                    "then_loss_priority": "loss_prio",
-                    "then_forwarding_class": "fwd_class",
-                    "then_accept": "true"
-                  }]]]
+                   "name": "t1",
+                   "then_3cpolicer": "single-rate test",
+                   "then_loss_priority": "loss_prio",
+                   "then_forwarding_class": "fwd_class",
+                   "then_accept": "true"
+                   }]]]
         self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', params, delete=False)
         params = [["encapsulation", "ethernet-ccc"],
                   ["description", "test"],
@@ -299,12 +302,12 @@ class MX960Test(BaseTest):
         self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', params, delete=False)
         params = [["intf_specific", "true"],
                   ["terms", [{
-                    "name": "t1",
-                    "then_policer": "test_policer",
-                    "then_loss_priority": "loss_prio",
-                    "then_forwarding_class": "fwd_class",
-                    "then_accept": "true"
-                  }]]]
+                   "name": "t1",
+                   "then_policer": "test_policer",
+                   "then_loss_priority": "loss_prio",
+                   "then_forwarding_class": "fwd_class",
+                   "then_accept": "true"
+                   }]]]
         self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', params, delete=False)
         params = [["encapsulation", "ethernet-ccc"],
                   ["description", "test"],
