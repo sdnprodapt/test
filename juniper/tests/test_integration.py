@@ -142,23 +142,20 @@ class BaseTest(unittest.TestCase):
         self.session = session
         self.device_uri = self.session['children'][0]
 
-        self.maxDiff = None
-
     def tearDown(self):
         self.api.delete(self.session_uri)
         sessions = self.api.get('sessions')
         self.assertEqual(sessions['itemsAvailable'], 0)
 
-    def get_command_and_expected(self, cmd_type, oid_class, object_name, parameters=None, oid_class_in_id=True):
+    def get_command_and_expected(self, cmd_type, oid_class, object_name, parameters=None):
         """
         if parameters is None, no parameters are present
         """
-        oid_id_fmt = "OID_CLASS_{cls}:{cls}-{name}" if oid_class_in_id else "OID_CLASS_{cls}:{name}"
         command = {
             "type": cmd_type,
             "parameters": [
                 "OID_CLASS_{}".format(oid_class),
-                oid_id_fmt.format(cls=oid_class, name=object_name)
+                "OID_CLASS_{cls}:{name}".format(cls=oid_class, name=object_name)
             ]
         }
 
@@ -166,7 +163,7 @@ class BaseTest(unittest.TestCase):
             "message": 'Command Executed',
             "data": [
                 "Command Executed",
-                oid_id_fmt.format(cls=oid_class, name=object_name)
+                "OID_CLASS_{cls}:{name}".format(cls=oid_class, name=object_name)
             ],
             "success": True
         }
@@ -177,18 +174,14 @@ class BaseTest(unittest.TestCase):
 
         return command, expected
 
-    def oid_create_delete_test(self, oid_class, object_name, parameters, oid_class_in_id=True, create=True, delete=True):
+    def oid_create_delete_test(self, oid_class, object_name, parameters, create=True, delete=True):
         if create:
-            command, expected = self.get_command_and_expected('createObject', oid_class,
-                                                              object_name, parameters=parameters,
-                                                              oid_class_in_id=oid_class_in_id)
+            command, expected = self.get_command_and_expected('createObject', oid_class, object_name, parameters=parameters)
             result = self.api.post('{}/oidOperation'.format(self.device_uri), command)
             self.assertDictEqual(result, expected)
 
         if delete:
-            command, expected = self.get_command_and_expected('deleteObject', oid_class,
-                                                              object_name, parameters=None,
-                                                              oid_class_in_id=oid_class_in_id)
+            command, expected = self.get_command_and_expected('deleteObject', oid_class, object_name, parameters=None)
             result = self.api.post('{}/oidOperation'.format(self.device_uri), command)
             self.assertDictEqual(result, expected)
 
@@ -204,18 +197,18 @@ class MX960Test(BaseTest):
                   ["mtu", "4321"],
                   ["apply_groups_accept", ["uRPF_interface", "ARP_interface"]],
                   ["family_filter", "test-filter"]]
-        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', params, oid_class_in_id=False)
+        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', params,)
 
     def test_oid_COS(self):
         params = [["scheduler_map", "test-map"]]
-        self.oid_create_delete_test('COS', 'test1', params, oid_class_in_id=False)
+        self.oid_create_delete_test('COS', 'test1', params,)
 
     def test_oid_COSVPLS(self):
         params = [["classifiers_exp", "classifier"]]
-        self.oid_create_delete_test('COSVPLS', 'test1', params)
+        self.oid_create_delete_test('COSVPLS', 'COSVPLS-test1', params)
 
     def test_oid_DISABLEINTERFACE(self):
-        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], oid_class_in_id=False)
+        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]])
 
     def test_oid_COMMIT(self):
         self.oid_create_delete_test('COMMIT', '', [[]], delete=False)
@@ -226,7 +219,7 @@ class MX960Test(BaseTest):
                   ["eir", "1m"],
                   ["ebs", "50k"],
                   ["color_mode", "aware"]]
-        self.oid_create_delete_test('FW3CPOLICER', 'test_policer', params)
+        self.oid_create_delete_test('FW3CPOLICER', 'FW3CPOLICER-test_policer', params)
 
     def test_oid_FWFILTER(self):
         params = [["intf_specific", "true"],
@@ -237,31 +230,31 @@ class MX960Test(BaseTest):
                     "then_forwarding_class": "fwd_class",
                     "then_accept": "true"
                   }]]]
-        self.oid_create_delete_test('FWFILTER', 'inet-filter1', params)
+        self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', params)
 
     def test_oid_FWPOLICER(self):
         params = [["cir", "5m"],
                   ["cbs", "100k"],
                   ["then", "discard"]]
-        self.oid_create_delete_test('FWPOLICER', 'test_policer', params)
+        self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', params)
 
     def test_oid_L2CIRCUIT(self):
         params = [["vcid", "NS_12345"],
                   ["description", "test circuit"]]
-        self.oid_create_delete_test('L2CIRCUIT', 'FAC_ge-0-0-0-0.0-10.12.23.24', params, oid_class_in_id=False)
+        self.oid_create_delete_test('L2CIRCUIT', 'FAC_ge-0-0-0-0.0-10.12.23.24', params)
 
     def test_oid_ROUTINGINSTANCES(self):
         params = [["mac_table_size", "100"],
                   ["interface_mac_limit", "10"],
                   ["description", "test routing instance"]]
-        self.oid_create_delete_test('ROUTINGINSTANCES', 'FAC_ge-0-0-0-0.0-NS_12345-123', params, oid_class_in_id=False)
+        self.oid_create_delete_test('ROUTINGINSTANCES', 'FAC_ge-0-0-0-0.0-NS_12345-123', params)
 
     def test_oid_P2P_EPL(self):
         # FWPOLICER -> FWFILTER -> INTERFACE -> L2CIRCUIT -> deleteDISABLEINTERFACE -> COS -> COMMIT
         params = [["cir", "5m"],
                   ["cbs", "100k"],
                   ["then", "discard"]]
-        self.oid_create_delete_test('FWPOLICER', 'test_policer', params, delete=False)
+        self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', params, delete=False)
         params = [["intf_specific", "true"],
                   ["terms", [{
                     "name": "t1",
@@ -270,41 +263,40 @@ class MX960Test(BaseTest):
                     "then_forwarding_class": "fwd_class",
                     "then_accept": "true"
                   }]]]
-        self.oid_create_delete_test('FWFILTER', 'inet-filter1', params, delete=False)
+        self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', params, delete=False)
         params = [["encapsulation", "ethernet-ccc"],
                   ["description", "test"],
                   ["mtu", "4321"],
                   ["apply_groups_accept", ["uRPF_interface", "ARP_interface"]],
                   ["family_filter", "filter1"]]
-        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', params, oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', params, delete=False)
         params = [["vcid", "NS_12345"],
                   ["description", "test circuit"]]
-        self.oid_create_delete_test('L2CIRCUIT', 'FAC_ge-0-0-0-0.0-10.12.23.24', params, oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('L2CIRCUIT', 'FAC_ge-0-0-0-0.0-10.12.23.24', params, delete=False)
         # delete the disable, which enables the interface
-        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], oid_class_in_id=False, create=False)
+        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], create=False)
         params = [["scheduler_map", "test-map"]]
-        self.oid_create_delete_test('COS', 'test1', params, oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('COS', 'test1', params, delete=False)
         self.oid_create_delete_test('COMMIT', '', [[]], delete=False)
 
         # deprovisioning
-        self.oid_create_delete_test('COS', 'test1', params, oid_class_in_id=False, create=False)
+        self.oid_create_delete_test('COS', 'test1', params, create=False)
         # create the disable, which disables the interface
-        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], oid_class_in_id=False, delete=False)
-        self.oid_create_delete_test('L2CIRCUIT', 'FAC_ge-0-0-0-0.0-10.12.23.24', None, oid_class_in_id=False, create=False)
-        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', None, oid_class_in_id=False, create=False)
-        self.oid_create_delete_test('FWFILTER', 'inet-filter1', None, create=False)
-        self.oid_create_delete_test('FWPOLICER', 'test_policer', None, create=False)
+        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], delete=False)
+        self.oid_create_delete_test('L2CIRCUIT', 'FAC_ge-0-0-0-0.0-10.12.23.24', None, create=False)
+        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', None, create=False)
+        self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', None, create=False)
+        self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', None, create=False)
         self.oid_create_delete_test('COMMIT', '', [[]], delete=False)
-
 
     def test_oid_MP_ELAN(self):
         # deleteDISABLEINTERFACE -> FWPOLICER -> FWFILTER -> INTERFACE -> ROUTINGINSTANCES -> COS -> COSVPLS -> COMMIT
         # delete the disable, which enables the interface
-        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], oid_class_in_id=False, create=False)
+        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], create=False)
         params = [["cir", "5m"],
                   ["cbs", "100k"],
                   ["then", "discard"]]
-        self.oid_create_delete_test('FWPOLICER', 'test_policer', params, delete=False)
+        self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', params, delete=False)
         params = [["intf_specific", "true"],
                   ["terms", [{
                     "name": "t1",
@@ -313,33 +305,32 @@ class MX960Test(BaseTest):
                     "then_forwarding_class": "fwd_class",
                     "then_accept": "true"
                   }]]]
-        self.oid_create_delete_test('FWFILTER', 'inet-filter1', params, delete=False)
+        self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', params, delete=False)
         params = [["encapsulation", "ethernet-ccc"],
                   ["description", "test"],
                   ["mtu", "4321"],
                   ["apply_groups_accept", ["uRPF_interface", "ARP_interface"]],
                   ["family_filter", "filter1"]]
-        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', params, oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', params, delete=False)
         params = [["mac_table_size", "100"],
                   ["interface_mac_limit", "10"],
                   ["description", "test routing instance"]]
-        self.oid_create_delete_test('ROUTINGINSTANCES', 'FAC_ge-0-0-0-0.0-NS_12345-123', params, oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('ROUTINGINSTANCES', 'FAC_ge-0-0-0-0.0-NS_12345-123', params, delete=False)
         params = [["scheduler_map", "test-map"]]
-        self.oid_create_delete_test('COS', 'test1', params, oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('COS', 'test1', params, delete=False)
         params = [["classifiers_exp", "classifier"]]
-        self.oid_create_delete_test('COSVPLS', 'testvpls1', params, delete=False)
+        self.oid_create_delete_test('COSVPLS', 'COSVPLS-testvpls1', params, delete=False)
         self.oid_create_delete_test('COMMIT', '', [[]], delete=False)
 
-
         # deprovisioning
-        self.oid_create_delete_test('COSVPLS', 'testvpls1', None, create=False)
-        self.oid_create_delete_test('COS', 'test1', None, oid_class_in_id=False, create=False)
-        self.oid_create_delete_test('ROUTINGINSTANCES', 'FAC_ge-0-0-0-0.0-NS_12345-123', None, oid_class_in_id=False, create=False)
-        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', None, oid_class_in_id=False, create=False)
-        self.oid_create_delete_test('FWFILTER', 'inet-filter1', None, create=False)
-        self.oid_create_delete_test('FWPOLICER', 'test_policer', None, create=False)
+        self.oid_create_delete_test('COSVPLS', 'COSVPLS-testvpls1', None, create=False)
+        self.oid_create_delete_test('COS', 'test1', None, create=False)
+        self.oid_create_delete_test('ROUTINGINSTANCES', 'FAC_ge-0-0-0-0.0-NS_12345-123', None, create=False)
+        self.oid_create_delete_test('INTERFACE', 'FAC_ge-0-0-0-0.0', None, create=False)
+        self.oid_create_delete_test('FWFILTER', 'FWFILTER-inet-filter1', None, create=False)
+        self.oid_create_delete_test('FWPOLICER', 'FWPOLICER-test_policer', None, create=False)
         # create the disable, which disables the interface
-        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], oid_class_in_id=False, delete=False)
+        self.oid_create_delete_test('DISABLEINTERFACE', 'FAC_ge-0-0-0-0.0', [[]], delete=False)
         self.oid_create_delete_test('COMMIT', '', [[]], delete=False)
 
 
