@@ -119,60 +119,18 @@
             }]
         }
     }, {
-        "type": "bpprov.translators.route.Branch",
+        "type": "bpprov.translators.call.Function",
         "parameters": {
-            "choice": [{
-                "when": "${.} contains \"commit-results\"",
-                "do": {
-                    "type": "bpprov.translators.route.Branch",
-                    "parameters": {
-                        "choice": [{
-                            "when": "${commit-results} contains \"rpc-error\"",
-                            "do": {
-                                "type": "bpprov.translators.dict.ReMap",
-                                "parameters": {
-                                    "mapping": {
-                                        "rpc-error.commit": "commit-results"
-                                    },
-                                    "overwrite": true
-                                }
-                            }
-                        }]
-                    }
-                }
-            }]
-        }
-    }, {
-        "type": "bpprov.translators.route.Branch",
-        "parameters": {
-            "choice": [{
-                "when": "${interface-results} contains \"rpc-error\"",
-                "do": {
-                    "type": "bpprov.translators.dict.ReMap",
-                    "parameters": {
-                        "mapping": {
-                            "rpc-error.create-interface": "interface-results"
-                        },
-                        "overwrite": true
-                    }
-                }
-            }]
-        }
-    }, {
-        "type": "bpprov.translators.route.Branch",
-        "parameters": {
-            "choice": [{
-                "when": "${security-zone-results} contains \"rpc-error\"",
-                "do": {
-                    "type": "bpprov.translators.dict.ReMap",
-                    "parameters": {
-                        "mapping": {
-                            "rpc-error.create-security-zone": "security-zone-results"
-                        },
-                        "overwrite": true
-                    }
-                }
-            }]
+            "function": "juniper.firefly.firefly_errors",
+            "args": {
+                "error_key": "rpc-error",
+                "fields": {
+                    "commit": "commit-results",
+                    "interface": "interface-results",
+                    "security-zone": "security-zone-results"
+                },
+                "errors": ["rpc-error"]
+            }
         }
     }]
 }
