@@ -1,0 +1,10 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/discard-changes",
+        "class": "bpprov.sim.commands.netconf.NetconfGetConfig",
+        "parameters": {
+            "args": [],
+            "template": "rpc-reply.ok.tmpl"
+        }
+    }]
+}
