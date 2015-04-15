@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+FINAL_MOUNT=
+#FINAL_MOUNT="-v $(pwd):/bp2/src"
+#FINAL_MOUNT="-v /vagrant/$(pwd | xargs basename):/bp2/src"
+PORT_MAP=
+#PORT_MAP="-p 60000:8080"
+CMD="docker run -d $PORT_MAP $FINAL_MOUNT \
+    cyan/juniper-sim \
+    bpprov-sim juniper/model/sim $1 netconf.port=22 --db=${2-default} --interface=0.0.0.0 --log-level=${3-INFO}"
+echo $CMD
+CID=$($CMD)
+echo $CID | cut -c1-12
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${CID}

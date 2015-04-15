@@ -10,7 +10,7 @@
 	        <protocols>
 	            <l2circuit>
 	                <neighbor>
-	                    <name>{{ data.routerId }}</name>
+	                    <name>{{ neighbor }}</name>
 	                    <interface>
 	                        <name>{{ interface }}.{{ unit }}</name>
 	                        <virtual-circuit-id>{{ data.attrVals.vcid|replace("NS_", "") }}</virtual-circuit-id>
