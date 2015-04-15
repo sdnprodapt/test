@@ -2,7 +2,6 @@
     "endpoint": "null",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/tests/show-interfaces.json"
     ],
     "endpoint-parameters": {
     },
