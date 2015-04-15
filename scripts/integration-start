@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sims="mx960"
+for sim in $sims; do
+    ./scripts/docker-start-sim $sim mx960_1 DEBUG > /tmp/$sim
+done
+
+docker run -d --name eajuniper cyan/juniper /bin/sh -c "juniper"
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' eajuniper > /tmp/eajuniper
+echo eajuniper >> /tmp/eajuniper

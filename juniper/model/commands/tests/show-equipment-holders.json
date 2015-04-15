@@ -119,6 +119,34 @@
   {
     "holderType": "slot", 
     "acceptableEquipmentTypeList": [], 
+    "name": "1-1", 
+    "alarmStatus": "Indeterminate", 
+    "holderState": "INSTALLED_AND_EXPECTED", 
+    "alarmReportingIndicator": false, 
+    "expectedOrInstalledEquipment": "equipment_0_0_1_1", 
+    "userLabel": "1-1", 
+    "containingEquipment": "equipment_0_0_1", 
+    "owner": "", 
+    "id": "equipmentHolder_0_0_1_1", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "holderType": "slot", 
+    "acceptableEquipmentTypeList": [], 
+    "name": "1-0", 
+    "alarmStatus": "Indeterminate", 
+    "holderState": "INSTALLED_AND_EXPECTED", 
+    "alarmReportingIndicator": false, 
+    "expectedOrInstalledEquipment": "equipment_0_0_1_0", 
+    "userLabel": "1-0", 
+    "containingEquipment": "equipment_0_0_1", 
+    "owner": "", 
+    "id": "equipmentHolder_0_0_1_0", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "holderType": "slot", 
+    "acceptableEquipmentTypeList": [], 
     "name": "0-0", 
     "alarmStatus": "Indeterminate", 
     "holderState": "INSTALLED_AND_EXPECTED", 
@@ -128,6 +156,34 @@
     "containingEquipment": "equipment_0_0", 
     "owner": "", 
     "id": "equipmentHolder_0_0_0", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "holderType": "slot", 
+    "acceptableEquipmentTypeList": [], 
+    "name": "0-1", 
+    "alarmStatus": "Indeterminate", 
+    "holderState": "INSTALLED_AND_EXPECTED", 
+    "alarmReportingIndicator": false, 
+    "expectedOrInstalledEquipment": "equipment_0_0_0_1", 
+    "userLabel": "0-1", 
+    "containingEquipment": "equipment_0_0_0", 
+    "owner": "", 
+    "id": "equipmentHolder_0_0_0_1", 
+    "nativeEMSName": ""
+  }, 
+  {
+    "holderType": "slot", 
+    "acceptableEquipmentTypeList": [], 
+    "name": "0-0", 
+    "alarmStatus": "Indeterminate", 
+    "holderState": "INSTALLED_AND_EXPECTED", 
+    "alarmReportingIndicator": false, 
+    "expectedOrInstalledEquipment": "equipment_0_0_0_0", 
+    "userLabel": "0-0", 
+    "containingEquipment": "equipment_0_0_0", 
+    "owner": "", 
+    "id": "equipmentHolder_0_0_0_0", 
     "nativeEMSName": ""
   }, 
   {
@@ -229,6 +285,7 @@
     "nativeEMSName": ""
   }
 ]
+
 , 
         "in-params": [
             [

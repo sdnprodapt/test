@@ -1,0 +1,94 @@
+#!/usr/bin/env python
+import sys
+import subprocess
+import shlex
+import argparse
+
+def fail(message, *args):
+    print >> sys.stderr, 'Error:', message % args
+    sys.exit(1)
+
+
+def info(message, *args):
+    print >> sys.stderr, message % args
+
+
+def info_message(message):
+    print >> sys.stderr, message
+
+
+verbose = False
+dry_run = False
+
+def skate_or_die(command, force=False, hide=False):
+    if (verbose or dry_run) and not hide:
+        info(command)
+    if dry_run and not force:
+        return
+    try:
+        output = subprocess.check_output(shlex.split(command))
+    except subprocess.CalledProcessError:
+        fail('ERROR: %s', command)
+    if verbose:
+        info_message(output)
+    return output
+
+def get_current_branch():
+    out = skate_or_die('git branch --no-color', force=True, hide=True)
+    lines = out.split('\n')
+    for line in lines:
+        first, star, rest = line.partition('* ')
+        if star == '* ':
+            return rest
+    else:
+        fail('could not determine current branch')
+
+def restore_branch(branch):
+    if 'detached from' not in branch:
+        skate_or_die('git checkout {}'.format(branch))
+    elif verbose:
+        info('will not restore to %s', branch)
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--skip_image', '-s', action='store_true', help='do not rebuild the image')
+    parser.add_argument('--no_latest', '-n', action='store_true', help='do not move the "latest" tag')
+    parser.add_argument('--verbose', '-v', action='store_true')
+    parser.add_argument('--dry_run', '-d', action='store_true')
+    parser.add_argument('--target', '-t', type=str, help='make target (default: image)', default="image")
+    parser.add_argument('image', type=str, help='image name, e.g. cyan/myapp')
+    parser.add_argument('version', type=str, help='release version, e.g. 1.0.0')
+    args = parser.parse_args()
+
+    version = args.version
+    image = args.image
+    global verbose
+    verbose = args.verbose
+    global dry_run
+    dry_run = args.dry_run
+
+    skate_or_die('docker login --password="superuser" --username="superuser" '
+                 '--email="bp2@cyaninc.com" dockerreg.cyanoptics.com')
+
+    branch = get_current_branch()
+
+    if not args.skip_image:
+        skate_or_die('git checkout {}'.format(version))
+        skate_or_die('make {} DOCKER_BUILD_EXTRA="--no-cache=true --force-rm=true"'.format(args.target))
+    elif verbose:
+        info('skipping image rebuild')
+
+    skate_or_die('docker tag -f {image} dockerreg.cyanoptics.com/{image}:{version}'.format(image=image, version=version))
+    skate_or_die('docker push dockerreg.cyanoptics.com/{image}:{version}'.format(image=image, version=version))
+
+    if not args.no_latest:
+        skate_or_die('docker tag -f {image} dockerreg.cyanoptics.com/{image}:{version}'.format(image=image, version='latest'))
+        skate_or_die('docker push dockerreg.cyanoptics.com/{image}:{version}'.format(image=image, version='latest'))
+    elif verbose:
+        info('skipping tagging {image}:{version} as latest'.format(image=image, version=version))
+
+    restore_branch(branch)
+
+
+if __name__ == '__main__':
+    main()

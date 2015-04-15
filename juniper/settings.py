@@ -2,6 +2,7 @@
 # Copyright(c) 2014, Cyan, Inc. All rights reserved.
 
 import os
+from easdk import default_settings
 
 DEFAULT_CONFIG_DIRPATH = os.path.join(os.path.dirname(__file__), 'config/dev')
 DEFAULT_PORT = 8080
@@ -25,3 +26,11 @@ STATIC_PATHS = {
 ENDPOINTS = (
         'netconf'
         )
+
+ROOT_CLS = 'juniper.schema.ea.Root'
+
+CAPABILITIES_DOMAINS = list(default_settings.CAPABILITIES_DOMAINS) + \
+    ['juniper.domain.oidoperation.OidOperationDomain']
+
+ACCESSORS = list(default_settings.ACCESSORS) + \
+    [('juniper.access.oidoperation.OidOperationAccess', {})]

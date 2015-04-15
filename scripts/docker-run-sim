@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#FINAL_MOUNT="-v $(pwd):/bp2/src"
+#FINAL_MOUNT="-v /vagrant/$(pwd | xargs basename):/bp2/src"
+FINAL_MOUNT=
+CMD="docker run -ti --rm $FINAL_MOUNT \
+    cyan/juniper-sim \
+    bpprov-sim juniper/model/sim $1 netconf.port=22 --interface=0.0.0.0"
+echo $CMD
+$CMD

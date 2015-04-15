@@ -44,7 +44,25 @@
               "holderState": "INSTALLED_AND_EXPECTED",
               "nativeEMSName": ""
             }
-         {% endfor %}
+         {% if "slots" in data[rack]["shelves"][shelf]["slots"][slot] %}
+            {% for subSlot in data[rack]["shelves"][shelf]["slots"][slot]["slots"] %}
+                ,{
+                  "id": "{{ "equipmentHolder_" + rack + "_" + shelf + "_" + slot + "_" + subSlot}}",
+                  "name": "{{ slot + "-" + subSlot }}",
+                  "userLabel": "{{ slot + "-" + subSlot }}",
+                  "owner": "",
+                  "alarmReportingIndicator": false,
+                  "containingEquipment": "{{ "equipment_" + rack + "_" + shelf + "_" + slot}}",
+                  "holderType": "slot",
+                  "expectedOrInstalledEquipment": "{{ "equipment_" + rack + "_" + shelf + "_" + slot + "_" + subSlot}}",
+                  "acceptableEquipmentTypeList": [],
+                  "alarmStatus": "Indeterminate",
+                  "holderState": "INSTALLED_AND_EXPECTED",
+                  "nativeEMSName": ""
+                }
+             {% endfor %}
+         {% endif %}
+       {% endfor %}
      {% endfor %}
   {% endfor %}
 ]
