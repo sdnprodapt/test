@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+# Copyright(c) 2015, Cyan, Inc. All rights reserved.
+
+import json
+import os
+import subprocess
+from pprint import pprint as pp
+
+
+SOUTHBOUND_FP = '/tmp/southbound.json'
+
+
+def read_southbound_data():
+    try:
+        fd = open(SOUTHBOUND_FP)
+    except IOError:
+        print "no existing file", SOUTHBOUND_FP
+        sb_data = {}
+    else:
+        sb_data = json.loads(fd.read())
+
+    return sb_data
+
+
+def write_southbound_data(sb_data):
+    with open(SOUTHBOUND_FP, 'w') as fd:
+        fd.write(json.dumps(sb_data))
+
+
+def rabbitmq(sb_data, interface, data):
+    # {
+    #     'uri': 'amqpc://guest:guest@172.16.17.239:5672',
+    # ...
+    # }
+    curr = sb_data.get('rabbitmq', None)
+    new = data[0]['uri'] if data else None
+    print 'rabbitmq {} -> {} [{}]'.format(curr, new, 'up' if new else 'down')
+    if new:
+        sb_data['rabbitmq'] = new
+    else:
+        sb_data.pop('rabbitmq', None)
+
+
+def southbound_update():
+    interface = os.environ['BP_HOOK_SOUTHBOUND_INTERFACE']
+    data = json.loads(os.environ['BP_HOOK_SOUTHBOUND_DATA'])
+    sb_data = read_southbound_data()
+    if interface == 'rabbitmq':
+        rabbitmq(sb_data, interface, data)
+    write_southbound_data(sb_data)
+    subprocess.call('pkill -1 -x juniper'.split(' '))
+
+
+def main():
+    print 'southbound-update called with:'
+    for k, v in os.environ.iteritems():
+            print '    {}: {}'.format(k, v)
+    _data = os.environ.get('BP_HOOK_SOUTHBOUND_DATA')
+    print 'parsed BP_HOOK_SOUTHBOUND_DATA:'
+    if _data:
+        data = json.loads(os.environ.get('BP_HOOK_SOUTHBOUND_DATA', 'NONE'))
+        pp(data)
+    else:
+        print '    NONE'
+
+    southbound_update()
+
+
+if __name__ == '__main__':
+    main()

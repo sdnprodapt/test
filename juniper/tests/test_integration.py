@@ -375,8 +375,22 @@ if __name__ == '__main__':
         ADAPTER_API = 'http://{}:{}/api/v1'.format(host, port)
         print('EA at {}'.format(ADAPTER_API))
 
-    # Delete any sessions that the adapter knows about, just incase
     api = RestApi(ADAPTER_API)
+    tries = 15
+    while tries > 0:
+        try:
+            sessions = api.get('sessions')
+        except:
+            tries = tries - 1
+            sleep(1)
+            continue
+        else:
+            break
+
+    if tries == 0:
+        raise IOError("Failed to establish connection to adapter at {}".format(ADAPTER_API))
+
+    # Delete any sessions that the adapter knows about, just incase
     sessions = api.get('sessions')
     for session in sessions['items']:
         api.delete('sessions/{}'.format(session['id']))

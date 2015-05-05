@@ -236,8 +236,11 @@ dconfigure: image
 dutest: dtest
 
 ditest:
-	$(HIDE)./scripts/integration-start
-	$(HIDE)sleep 4
-	$(HIDE)$(VENV)/bin/python $(PACKAGE)/tests/test_integration.py || true
-	$(HIDE)./scripts/integration-log
-	$(HIDE)./scripts/integration-stop
+	$(HIDE)$(PROJECT_DIR)/scripts/integration-start
+	$(HIDE)$(VENV)/bin/python $(PACKAGE)/tests/test_integration.py
+
+ditest-log:
+	$(HIDE)$(PROJECT_DIR)/scripts/integration-log
+
+ditest-stop:
+	$(HIDE)$(PROJECT_DIR)/scripts/integration-stop
