@@ -13,7 +13,13 @@ BPPROV_MODEL_DIRPATH = os.path.join(os.path.dirname(__file__), 'model')
 
 TYPE_GROUP = 'Juniper'
 
-ELEMENT_TYPES = ['JuniperMX240', 'JuniperMX480', 'JuniperMX960', 'JuniperMX2010', 'JuniperPTX3000', 'JuniperEX4200_48T']
+ELEMENT_TYPES = ['JuniperMX240',
+                 'JuniperMX480',
+                 'JuniperMX960',
+                 'JuniperMX2010',
+                 'JuniperPTX3000',
+                 'JuniperEX4200_48T',
+                 'JuniperFireflyPerimeter']
 
 VENDOR = 'cyan'
 

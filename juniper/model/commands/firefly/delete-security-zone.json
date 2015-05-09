@@ -1,0 +1,14 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/delete-security-zone.tmpl"
+    },
+    "out-schema": "firefly/out-delete-security-zone.json",
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

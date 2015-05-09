@@ -1,0 +1,28 @@
+{#
+    Input:
+        security-zone: Optional security-zone to get
+            If security-zone is missing, all security zones will be returned
+        interface: Optional interface name to get security-zones for
+            If security zone is missing interface will be ignored
+#}
+
+<rpc>
+    <get-configuration>
+        <configuration>
+            <security>
+                <zones>
+                    <security-zone>
+                        {% if data.get('security-zone') %}
+                        <name>{{ data['security-zone'] }}</name>
+                            {% if data.get('interface') %}
+                            <interfaces>
+                                <name>{{ data['interface'] }}</name>
+                            </interfaces>
+                            {% endif %}
+                        {% endif %}
+                    </security-zone>
+                </zones>
+            </security>
+        </configuration>
+    </get-configuration>
+</rpc>

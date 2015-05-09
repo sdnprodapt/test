@@ -22,5 +22,9 @@
     "JuniperEX4200_48T": {
         "dir": "ex4200_48t",
         "displayName": "EX4200-48T"
+    },
+    "JuniperFireflyPerimeter": {
+        "dir": "firefly",
+        "displayName": "FireflyPerimeter"
     }
 }

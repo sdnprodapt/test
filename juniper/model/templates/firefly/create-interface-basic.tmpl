@@ -1,0 +1,39 @@
+{#
+    Inputs:
+        interface: name of the interface to craete the logical interface on
+        unit: name of the logical interface unit
+#}
+
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <interfaces>
+        <interface>
+            <name>{{ data['interface'] }}</name>
+            {% if 'admin_status' in data %}
+                {% if data.admin_status == 'True' %}
+            <disable operation="delete"/>
+                {% elif data.admin_status == 'False' %}
+            <disable/>
+                {% endif %}
+            {% endif %}
+
+            {# if the interface does not exist, create it #}
+            {% if data['get-results']['statusCode'] == '404' or (data['get-results']['mtu'] != '' and data['get-results']['mtu'] != data['mtu']) %}
+            <unit>
+                <name>{{ data['unit'] }}</name>
+                <family>
+                    <inet>
+                        <dhcp/>
+                        {% if data.mtu != '' %}
+                        <mtu>{{ data.mtu }}</mtu>
+                        {% endif %}
+                    </inet>
+                </family>
+            </unit>
+            {% endif %}
+        </interface>
+    </interfaces>
+</configuration></config>
+</edit-config>
+</rpc>

@@ -1,0 +1,67 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/security/zones/security-zone/interfaces[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "securityZoneInterfaces",
+            "indexFields": [{
+                "name": "zone",
+                "xpath": ["/rpc/edit-config/config/configuration/security/zones/security-zone/name", "[0].text"]
+            }, {
+                "name": "interface",
+                "xpath": ["/rpc/edit-config/config/configuration/security/zones/security-zone/interfaces/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/security/zones/security-zone",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "parsers": [{
+                "table": "securityZones",
+                "nodeXPath": "/rpc/edit-config/config/configuration/security/zones/security-zone",
+                "fields": [{
+                    "name": "name",
+                    "xpath": ["name", "[0].text"]
+                }, {
+                    "name": "screen",
+                    "xpath": ["screen", "[0].text"]
+                }, {
+                    "name": "tcprst",
+                    "xpath": ["tcprst", " != []"]
+                }],
+                "parsers": [{
+                    "table": "securityZoneInterfaces",
+                    "nodeXPath": "interfaces",
+                    "fields": [{
+                        "name": "zone",
+                        "xpath": ["ancestor::security-zone/name", "[0].text"]
+                    }, {
+                        "name": "interface",
+                        "xpath": ["name", "[0].text"]
+                    }, {
+                        "name": "service_http",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='http']", " != []"]
+                    }, {
+                        "name": "service_https",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='https']", " != []"]
+                    }, {
+                        "name": "service_ssh",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='ssh']", " != []"]
+                    }, {
+                        "name": "service_telnet",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='telnet']", " != []"]
+                    }, {
+                        "name": "service_dhcp",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='dhcp']", " != []"]
+                    }, {
+                        "name": "service_ping",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='ping']", " != []"]
+                    }, {
+                        "name": "service_netconf",
+                        "xpath": ["host-inbound-traffic/system-services/name[text()='netconf']", " != []"]
+                    }]
+                }]
+            }]
+        }
+    }]
+}

@@ -19,5 +19,9 @@
         "name": "PTX3000",
         "source": "(?i)ptx3000",
         "destination": "JuniperPTX3000"
+    }, {
+        "name": "JuniperFireflyPerimeter",
+        "source": "(?i)firefly-perimeter",
+        "destination": "JuniperFireflyPerimeter"
     }]
 }

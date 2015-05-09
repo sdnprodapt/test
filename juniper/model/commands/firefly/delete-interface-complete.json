@@ -1,0 +1,135 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+    },
+    "out-schema": "firefly/out-delete-interface-complete.json",
+    "out-path": [
+    ],
+    "in-path": [{
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "delete-interface.json",
+            "input": {
+                "templateType": "json-dict",
+                "data": {
+                    "interface": "{{ data.name }}"
+                }
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data",
+                    "to": "/data/interface-results"
+                }]
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.Call",
+        "parameters": {
+            "command": "delete-security-zone.json",
+            "input": {
+                "templateType": "json-dict",
+                "data": {
+                    "interface": "{{ data.name }}",
+                    "security-zone": "{{ data['security-zone'] if 'security-zone' in data else 'untrust' }}"
+                }
+            },
+            "output": {
+                "patches": [{
+                    "from": "/data",
+                    "to": "/data/security-zone-results"
+                }]
+            }
+        }
+    }, {
+        "type": "bpprov.translators.route.Branch",
+        "parameters": {
+            "choice": [{
+                "when": "${interface-results} contains \"rpc-error\"",
+                "do": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "discard-changes.json",
+                        "output": {
+                            "patches": [{
+                                "from": "/data",
+                                "to": "/data/discard-results"
+                            }]
+                        }
+                    }
+                }
+            }, {
+                "when": "${security-zone-results} contains \"rpc-error\"",
+                "do": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "discard-changes.json",
+                        "output": {
+                            "patches": [{
+                                "from": "/data",
+                                "to": "/data/discard-results"
+                            }]
+                        }
+                    }
+                }
+            }],
+            "otherwise": {
+                "type": "bpprov.translators.aggregator.Call",
+                "parameters": {
+                    "command": "commit.json",
+                    "input": {
+                        "templateType": "json-dict",
+                        "data": {}
+                    },
+                    "output": {
+                        "patches": [{
+                            "from": "/data",
+                            "to": "/data/commit-results"
+                        }]
+                    },
+                    "error": {
+                        "type": "log"
+                    }
+                }
+            }
+        }
+    }, {
+        "type": "bpprov.translators.route.Branch",
+        "parameters": {
+            "choice": [{
+                "when": "${.} contains \"commit-results\"",
+                "do": {
+                    "type": "bpprov.translators.route.Branch",
+                    "parameters": {
+                        "choice": [{
+                            "when": "${commit-results} contains \"rpc-error\"",
+                            "do": {
+                                "type": "bpprov.translators.branch.RunnerCommand",
+                                "parameters": {
+                                    "command": "discard-changes.json",
+                                    "preserveData": true
+                                }
+                            }
+                        }]
+                    }
+                }
+            }]
+        }
+    }, {
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "juniper.firefly.firefly_errors",
+            "args": {
+                "error_key": "rpc-error",
+                "fields": {
+                    "commit": "commit-results",
+                    "interface": "interface-results",
+                    "security-zone": "security-zone-results"
+                },
+                "errors": ["rpc-error"]
+            }
+        }
+    }]
+}

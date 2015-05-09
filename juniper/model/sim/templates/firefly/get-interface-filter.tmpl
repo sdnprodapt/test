@@ -1,0 +1,186 @@
+<rpc-reply message-id="{{ message_id }}">
+  <interface-information>
+{%- if '.' in line.interface %}
+    {%- set interface, unit = line.interface.split('.', 1) %}
+    {%- set found = [] %}
+    {%- for logical_interface in db.logicalInterfaces|selectattr('interfaceName', 'equalto', interface)|selectattr('index', 'equalto', unit|int) %}
+    {% do found.append('.') %}
+    <logical-interface>
+      <name>{{ logical_interface['interfaceName'] }}.{{ logical_interface['index'] }}</name>
+      <local-index>{{ logical_interface['local-index'] }}</local-index>
+      <snmp-index>{{ logical_interface['snmp-index'] }}</snmp-index>
+      <encapsulation>{{ logical_interface['encapsulation'] }}</encapsulation>
+      {%- if logical_interface['logical-interface-bandwidth'] != '' %}
+      <logical-interface-bandwidth>{{ logical_interface['logical-interface-bandwidth'] }}</logical-interface-bandwidth>
+      {%- endif %}
+      <traffic-statistics style="brief">
+        {%- set stats = ['stat-input-packets', 'stat-input-bps', 'stat-input-pps',
+                        'stat-output-packets', 'stat-output-bps', 'stat-output-pps'] %}
+        {%- for stat in stats %}
+        {%- if logical_interface[stat] and logical_interface[stat] != -1 %}
+        <{{ stat.replace('stat-', '') }}>{{ logical_interface[stat] }}</{{ stat.replace('stat-', '') }}>
+        {%- endif %}
+        {%- endfor %}
+      </traffic-statistics>
+      {%- if logical_interface['filter-information'] %}
+      <filter-information/>
+      {%- endif %}
+      {%- for address_family in db.logicalInterfaceAddressFamilies|selectattr('interfaceName', 'equalto', logical_interface['interfaceName'])|selectattr('logicalInterface', 'equalto', logical_interface['index']) %}
+      <address-family>
+        <address-family-name>{{ address_family['familyName'] }}</address-family-name>
+        {%- if address_family['dhcp'] %}
+        <dhcp/>
+        {%- endif %}
+        <mtu>{{ address_family['mtu'] }}</mtu>
+        {%- if address_family['ifa-destination'] != '' %}
+        <interface-address>
+          {%- if address_family['ifa-flags'] != '' %}
+          <ifa-flags>
+            {%- for flag in address_family['ifa-flags'].split(';') %}
+            <{{flag}}/>
+            {%- endfor %}
+          </ifa-flags>
+          {%- else %}
+          <ifa-flags/>
+          {%- endif %}
+          <ifa-destination>{{ address_family['ifa-destination'] }}</ifa-destination>
+          <ifa-local>{{ address_family['ifa-local'] }}</ifa-local>
+          {%- if address_family['ifa-broadcast'] != '' %}
+          <ifa-broadcast>{{ address_family['ifa-broadcast'] }}</ifa-broadcast>
+          {%- endif %}
+        </interface-address>
+        {%- endif %}
+      </address-family>
+      {%- endfor %}
+    </logical-interface>
+    {%- endfor %}
+    {% if found|length == 0 %}
+    <rpc-error>
+      <error-severity>error</error-severity>
+      <source-daemon>ifinfo</source-daemon>
+      <error-message>device {{ line.interface }} not found</error-message>
+    </rpc-error>
+    {% endif %}
+{%- else %}
+    {%- set found = [] %}
+    {% for interface in db.interfaces|selectattr('name', 'equalto', line.interface) %}
+    {% do found.append('.') %}
+    <physical-interface>
+      <name>{{ interface['name'] }}</name>
+      <admin-status format="Enabled">{% if interface['admin-status'] %}up{% else %}down{% endif %}</admin-status>
+      <oper-status>{% if interface['oper-status'] %}up{% else %}down{% endif %}</oper-status>
+      <local-index>{{ interface['local-index'] }}</local-index>
+      <snmp-index>{{ interface['snmp-index'] }}</snmp-index>
+      {%- if interface['speed'] != '' %}
+      <speed>{{ interface['speed'] }}</speed>
+      {%- endif %}
+      {%- if interface['if-device-flags'] != '' %}
+      <if-device-flags>
+        {%- for flag in interface['if-device-flags'].split(';') %}
+        <{{flag}}/>
+        {%- endfor %}
+      </if-device-flags>
+      {%- else %}
+      <if-device-flags/>
+      {%- endif %}
+      {%- if interface['if-media-flags'] != '' %}
+      <if-media-flags>
+        {%- for flag in interface['if-media-flags'].split(';') %}
+        <{{flag}}/>
+        {%- endfor %}
+      </if-media-flags>
+      {%- else %}
+      <if-media-flags/>
+      {%- endif %}
+      {%- if interface['if-config-flags'] != '' %}
+      <if-config-flags>
+        {%- for flag in interface['if-config-flags'].split(';') %}
+        <{{flag}}/>
+        {%- endfor %}
+      </if-config-flags>
+      {%- else %}
+      <if-config-flags/>
+      {%- endif %}
+      {%- if interface['mtu'] != '' %}
+      <mtu>{{ interface['mtu'] }}</mtu>
+      {%- endif %}
+      {%- if interface['link-level-type'] != '' %}
+      <link-level-type>{{ interface['link-level-type'] }}</link-level-type>
+      {%- endif %}
+      {%- if interface['hw-address'] != '' %}
+      <current-physical-address>{{ interface['hw-address'] }}</current-physical-address>
+      <hardware-physical-address>{{ interface['hw-address'] }}</hardware-physical-address>
+      {%- endif %}
+      <interface-flapped seconds="0">{{ interface['interface-flapped'] }}</interface-flapped>
+      <traffic-statistics style="brief">
+        {%- set stats = ['stat-input-packets', 'stat-input-bps', 'stat-input-pps',
+                        'stat-output-packets', 'stat-output-bps', 'stat-output-pps'] %}
+        {%- for stat in stats %}
+        {%- if interface[stat] != -1 %}
+        <{{ stat.replace('stat-', '') }}>{{ interface[stat] }}</{{ stat.replace('stat-', '') }}>
+        {%- endif %}
+        {%- endfor %}
+      </traffic-statistics>
+      {%- for logical_interface in db.logicalInterfaces|selectattr('interfaceName', 'equalto', interface['name']) %}
+      {% do found.append('.') %}
+      <logical-interface>
+        <name>{{ logical_interface['index'] }}</name>
+        <local-index>{{ logical_interface['local-index'] }}</local-index>
+        <snmp-index>{{ logical_interface['snmp-index'] }}</snmp-index>
+        <encapsulation>{{ logical_interface['encapsulation'] }}</encapsulation>
+        {%- if logical_interface['logical-interface-bandwidth'] != '' %}
+        <logical-interface-bandwidth>{{ logical_interface['logical-interface-bandwidth'] }}</logical-interface-bandwidth>
+        {%- endif %}
+        <traffic-statistics style="brief">
+          {%- set stats = ['stat-input-packets', 'stat-input-bps', 'stat-input-pps',
+                          'stat-output-packets', 'stat-output-bps', 'stat-output-pps'] %}
+          {%- for stat in stats %}
+          {%- if logical_interface[stat] and logical_interface[stat] != -1 %}
+          <{{ stat.replace('stat-', '') }}>{{ logical_interface[stat] }}</{{ stat.replace('stat-', '') }}>
+          {%- endif %}
+          {%- endfor %}
+        </traffic-statistics>
+        {%- if logical_interface['filter-information'] %}
+        <filter-information/>
+        {%- endif %}
+        {%- for address_family in db.logicalInterfaceAddressFamilies|selectattr('interfaceName', 'equalto', logical_interface['interfaceName'])|selectattr('logicalInterface', 'equalto', logical_interface['index']) %}
+        <address-family>
+          <address-family-name>{{ address_family['familyName'] }}</address-family-name>
+          {%- if address_family['dhcp'] %}
+          <dhcp/>
+          {%- endif %}
+          <mtu>{{ address_family['mtu'] }}</mtu>
+          {%- if address_family['ifa-destination'] != '' %}
+          <interface-address>
+            {%- if address_family['ifa-flags'] != '' %}
+            <ifa-flags>
+              {%- for flag in address_family['ifa-flags'].split(';') %}
+              <{{flag}}/>
+              {%- endfor %}
+            </ifa-flags>
+            {%- else %}
+            <ifa-flags/>
+            {%- endif %}
+            <ifa-destination>{{ address_family['ifa-destination'] }}</ifa-destination>
+            <ifa-local>{{ address_family['ifa-local'] }}</ifa-local>
+            {%- if address_family['ifa-broadcast'] != '' %}
+            <ifa-broadcast>{{ address_family['ifa-broadcast'] }}</ifa-broadcast>
+            {%- endif %}
+          </interface-address>
+          {%- endif %}
+        </address-family>
+        {%- endfor %}
+      </logical-interface>
+      {%- endfor %}
+    </physical-interface>
+    {%- endfor %}
+    {% if found|length == 0 %}
+    <rpc-error>
+      <error-severity>error</error-severity>
+      <source-daemon>ifinfo</source-daemon>
+      <error-message>device {{ line.interface }} not found</error-message>
+    </rpc-error>
+    {% endif %}
+{% endif %}
+  </interface-information>
+</rpc-reply>

@@ -1,0 +1,39 @@
+{% set ports = data['ports'] %}
+{% set allowed_ports = ['xe', 'ge', 'et', 'lt', 'sp'] %}
+[
+{% for port in ports if port['name'].strip().split('-', 1)[0] in allowed_ports recursive %}
+    {% set name = port['name']|string|trim %}
+    {% set speed = port['speed']|string|trim %}
+    {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
+    {
+        "name": "{{ name }}",
+        "link_level_type": "{{ port['link-level-type']|trim|default('') }}",
+        "speed": "{{ speed }}",
+        {# If admin-status is ever not a dict, this will be a problem #}
+        "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
+        "oper_status": {{ 'true' if 'up' in port['oper-status'] else 'false' }},
+        "mtu": "{{ port['mtu']|trim|default('') }}",
+        {# Some devices have xml formatting information on their mac address and this gets around that #}
+        "mac_address": "{{ mac['#text']|trim or mac|trim }}"
+    {# Suuuper hacky #}
+    {% set vports = port['logical-interface'] if port['logical-interface'].__class__ == [].__class__ else
+                    [port['logical-interface']] if port['logical-interface'].__class__ == {}.__class__ else [] %}
+    }{% if not loop.last or vports|length > 0 %},{% endif %}
+    {% if port['logical-interface']|default([]) %}
+        {% set outer_loop = loop %}
+        {% for vport in vports %}
+            {
+                "name": "{{ vport['name']|string|trim }}",
+                "physical_interface": "{{ name }}", {# This field only here for logical interfces to give a reference to their parent phycsial interfaces #}
+                "link_level_type": "virtual", {# This shows that this device is a logical-interface #}
+                "mtu": "{{ vport['address-family']['mtu'] }}",
+                {# For now these parameters will be the same as the parent physical port #}
+                "speed": "{{ speed }}",
+                "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
+                "oper_status": {{ 'true' if 'up' in port['oper-status'] else 'false' }},
+                "mac_address": "{{ mac['#text']|trim or mac|trim }}"
+            }{% if not loop.last or not outer_loop.last %},{% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+]

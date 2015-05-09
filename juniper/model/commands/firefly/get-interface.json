@@ -1,0 +1,62 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/filter-interface.tmpl"
+    },
+    "out-schema": "firefly/out-get-interface.json",
+    "out-path": [
+    ],
+    "in-path": [{
+        "type": "bpprov.translators.template.Json",
+        "parameters": {
+            "template": "firefly/get-interface.tmpl",
+            "as_object": true
+        }
+    }, {
+        "type": "bpprov.translators.route.Case",
+        "parameters": {
+            "field": "${link_level_type}",
+            "choice": {
+                "error": {
+                    "type": "bpprov.translators.template.Json",
+                    "parameters": {
+                        "templateType": "inline",
+                        "template": "{\"statusCode\": \"404\", \"reason\": \"Interface not found\"}"
+                    }
+                },
+                "virtual": {
+                    "type": "bpprov.translators.aggregator.Call",
+                    "parameters": {
+                        "command": "get-interface.json",
+                        "input": {
+                            "templateType": "json-dict",
+                            "header": {},
+                            "data": {
+                                "name": "{{ data.physical_interface }}"
+                            }
+                        },
+                        "output": {
+                            "patches": [{
+                                "from": "/data/mac_address",
+                                "to": "/data/mac_address"
+                            }, {
+                                "from": "/data/admin_status",
+                                "to": "/data/admin_status"
+                            }, {
+                                "from": "/data/oper_status",
+                                "to": "/data/oper_status"
+                            }, {
+                                "from": "/data/speed",
+                                "to": "/data/speed"
+                            }]
+                        }
+                    }
+                }
+            },
+            "otherwise": { "type": "bpprov.translators.list.Null" }
+        }
+    }]
+}

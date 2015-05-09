@@ -1,0 +1,175 @@
+{
+    "parsers": [{
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/interface[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "interfaces",
+            "indexFields": [{
+                "name": "name",
+                "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/interface/unit[@operation='delete']",
+        "class": "bpprov.sim.commands.netconf.NetconfDeleteConfig",
+        "parameters": {
+            "path": "logicalInterfaces",
+            "indexFields": [{
+                "name": "index",
+                "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/unit/name", "[0].text"]
+            }, {
+                "name": "interfaceName",
+                "xpath": ["/rpc/edit-config/config/configuration/interfaces/interface/name", "[0].text"]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces/interface/disable",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "parsers": [{
+                "table": "interfaces",
+                "nodeXPath": "/rpc/edit-config/config/configuration/interfaces/interface",
+                "fields": [{
+                        "name": "name",
+                        "xpath": ["name", "[0].text"]
+                    }, {
+                    "name": "admin-status",
+                    "xpath": ["disable", "[0].get('operation') == 'delete'"]
+                }],
+                "parsers": [{
+                    "table": "logicalInterfaces",
+                    "nodeXPath": "unit",
+                    "fields": [{
+                        "name": "interfaceName",
+                        "xpath": ["ancestor::interface/name", "[0].text"]
+                    }, {
+                        "name": "index",
+                        "xpath": ["name", "[0].text"]
+                    }, {
+                        "name": "snmp-index",
+                        "value": "123"
+                    }, {
+                        "name": "local-index",
+                        "value": "123"
+                    }],
+                    "parsers": [{
+                        "table": "unitApplyGroups",
+                        "nodeXPath": "apply-groups-except",
+                        "fields": [{
+                            "name": "interfaceName",
+                            "xpath": ["ancestor::interface/name", "[0].text"]
+                        }, {
+                            "name": "unitName",
+                            "xpath": ["ancestor::unit/name", "[0].text"]
+                        }, {
+                            "name": "applyGroup",
+                            "xpath": [".", "[0].text"]
+                        }]
+                    }, {
+                        "table": "logicalInterfaceAddressFamilies",
+                        "nodeXPath": "family/*",
+                        "fields": [{
+                            "name": "familyName",
+                            "xpath": [".", "[0].tag"]
+                        }, {
+                            "name": "logicalInterface",
+                            "xpath": ["ancestor::unit/name", "[0].text"]
+                        }, {
+                            "name": "interfaceName",
+                            "xpath": ["ancestor::interface/name", "[0].text"]
+                        }, {
+                            "name": "dhcp",
+                            "xpath": ["dhcp", " != []"]
+                        }],
+                        "parsers": [{
+                            "table": "logicalInterfaceAddressFamilies",
+                            "nodeXPath": "mtu",
+                            "fields": [{
+                                "name": "familyName",
+                                "xpath": ["ancestor::family/*", "[0].tag"]
+                            }, {
+                                "name": "logicalInterface",
+                                "xpath": ["ancestor::unit/name", "[0].text"]
+                            }, {
+                                "name": "interfaceName",
+                                "xpath": ["ancestor::interface/name", "[0].text"]
+                            }, {
+                                "name": "mtu",
+                                "xpath": [".", "[0].text"]
+                            }]
+                        }]
+                    }]
+                }]
+            }]
+        }
+    }, {
+        "pattern": "/rpc/edit-config/config/configuration/interfaces",
+        "class": "bpprov.sim.commands.netconf.NetconfEditConfig",
+        "parameters": {
+            "parsers": [{
+                "table": "logicalInterfaces",
+                "nodeXPath": "/rpc/edit-config/config/configuration/interfaces/interface/unit",
+                "fields": [{
+                    "name": "interfaceName",
+                    "xpath": ["ancestor::interface/name", "[0].text"]
+                }, {
+                    "name": "index",
+                    "xpath": ["name", "[0].text"]
+                }, {
+                    "name": "snmp-index",
+                    "value": "123"
+                }, {
+                    "name": "local-index",
+                    "value": "123"
+                }],
+                "parsers": [{
+                    "table": "unitApplyGroups",
+                    "nodeXPath": "apply-groups-except",
+                    "fields": [{
+                        "name": "interfaceName",
+                        "xpath": ["ancestor::interface/name", "[0].text"]
+                    }, {
+                        "name": "unitName",
+                        "xpath": ["ancestor::unit/name", "[0].text"]
+                    }, {
+                        "name": "applyGroup",
+                        "xpath": [".", "[0].text"]
+                    }]
+                }, {
+                        "table": "logicalInterfaceAddressFamilies",
+                        "nodeXPath": "family/*",
+                        "fields": [{
+                            "name": "familyName",
+                            "xpath": [".", "[0].tag"]
+                        }, {
+                            "name": "logicalInterface",
+                            "xpath": ["ancestor::unit/name", "[0].text"]
+                        }, {
+                            "name": "interfaceName",
+                            "xpath": ["ancestor::interface/name", "[0].text"]
+                        }, {
+                            "name": "dhcp",
+                            "xpath": ["dhcp", " != []"]
+                        }],
+                        "parsers": [{
+                            "table": "logicalInterfaceAddressFamilies",
+                            "nodeXPath": "mtu",
+                            "fields": [{
+                                "name": "familyName",
+                                "xpath": ["ancestor::family/*", "[0].tag"]
+                            }, {
+                                "name": "logicalInterface",
+                                "xpath": ["ancestor::unit/name", "[0].text"]
+                            }, {
+                                "name": "interfaceName",
+                                "xpath": ["ancestor::interface/name", "[0].text"]
+                            }, {
+                                "name": "mtu",
+                                "xpath": [".", "[0].text"]
+                            }]
+                        }]
+                    }]
+            }]
+        }
+    }]
+}
