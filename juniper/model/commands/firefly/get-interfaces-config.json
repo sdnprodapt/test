@@ -1,0 +1,39 @@
+{
+  "endpoint": "netconf",
+  "type": "bpprov.runners.simple.Sequence",
+  "tests": [
+  ],
+  "endpoint-parameters": {
+    "template": "firefly/get-interfaces-config-command.tmpl"
+  },
+  "out-path": [
+  ],
+  "in-path": [{
+    "type": "bpprov.translators.template.Json",
+    "parameters": {
+      "template": "firefly/get-interfaces-config.tmpl",
+      "as_object": false
+    }
+  }, {
+    "type": "bpprov.translators.route.Branch",
+    "parameters": {
+      "choice": [{
+        "when": "${.} == \"[]\"",
+        "do": {
+          "type": "bpprov.translators.template.Json",
+          "parameters": {
+            "templateType": "inline",
+            "template": "{\"statusCode\": \"404\", \"reason\": \"Interface not found\"}"
+          }
+        }
+      }],
+      "otherwise": {
+        "type": "bpprov.translators.template.Json",
+        "parameters": {
+          "templateType": "inline",
+          "template": "{{ data }}"
+        }
+      }
+    }
+  }]
+}

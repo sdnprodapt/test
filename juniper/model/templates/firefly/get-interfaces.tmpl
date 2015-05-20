@@ -31,7 +31,23 @@
                 "speed": "{{ speed }}",
                 "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
                 "oper_status": {{ 'true' if 'up' in port['oper-status'] else 'false' }},
-                "mac_address": "{{ mac['#text']|trim or mac|trim }}"
+                "mac_address": "{{ mac['#text']|trim or mac|trim }}",
+                {% set allowed_families = ['inet'] %}
+                {% set address_families = vport['address-family'] if vport['address-family'].__class__ == [].__class__ else
+                    [vport['address-family']] if vport['address-family'].__class__ == {}.__class__ else [] %}
+                "ipv4_addresses": [
+                    {% for fam in address_families %}
+                        {% if fam['address-family-name'] in allowed_families and fam['interface-address'] %}
+                            {% set ifc_addrs = fam['interface-address'] if fam['interface-address'].__class__ == [].__class__ else
+                                [fam['interface-address']] if fam['interface-address'].__class__ == {}.__class__ else [] %}
+                            {% for addr in ifc_addrs %}
+                                {% set address = '{}/{}'.format(addr['ifa-local'], '32') %}
+                                {% if not loop.first %},{% endif %}"{{ address }}"
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                ],
+                "zone": "{{ vport['logical-interface-zone-name']|string|trim|default('') }}"
             }{% if not loop.last or not outer_loop.last %},{% endif %}
         {% endfor %}
     {% endif %}

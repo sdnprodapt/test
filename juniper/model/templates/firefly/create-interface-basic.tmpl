@@ -18,20 +18,23 @@
                 {% endif %}
             {% endif %}
 
-            {# if the interface does not exist, create it #}
-            {% if data['get-results']['statusCode'] == '404' or (data['get-results']['mtu'] != '' and data['get-results']['mtu'] != data['mtu']) %}
             <unit>
                 <name>{{ data['unit'] }}</name>
                 <family>
                     <inet>
-                        <dhcp/>
-                        {% if data.mtu != '' %}
+                        {% if data['ipv4_addresses'] %}
+                            {% for addr in data['ipv4_addresses'] %}
+                            <address>
+                                <name>{{ addr }}</name>
+                            </address>
+                            {% endfor %}
+                        {% endif %}
+                        {% if data.mtu %}
                         <mtu>{{ data.mtu }}</mtu>
                         {% endif %}
                     </inet>
                 </family>
             </unit>
-            {% endif %}
         </interface>
     </interfaces>
 </configuration></config>

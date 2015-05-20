@@ -1,0 +1,19 @@
+[
+    {%- if data['configuration'] %}
+        {
+        {%- set routing_options = data.configuration['routing-options'] %}
+        {%- set static_routes = routing_options.static.route if routing_options.static.route.__class__ == [].__class__ else
+                        [routing_options.static.route] if routing_options.static.route.__class__ == {}.__class__ else [] %}
+        "name": "Global Routing Instance",
+        "static_routes":
+            [
+            {%- for route in static_routes %}
+                {
+                "destination": "{{ route.name }}",
+                "next_hop":"{{ route['next-hop'] }}"
+                }{% if not loop.last %},{% endif %}
+            {%- endfor %}
+            ]
+        }
+    {%- endif %}
+]

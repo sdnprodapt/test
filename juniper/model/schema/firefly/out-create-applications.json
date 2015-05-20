@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "create-applications out parameters schema",
+    "type": "object",
+    "properties": {
+        "applications": {
+            "title": "Applications",
+            "description": "Applications to be created",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Name of the application",
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "application_protocol": {
+                        "description": "Application layer protocol",
+                        "title": "Application Protocol",
+                        "type": "string"
+                    },
+                    "protocol": {
+                        "description": "Transport layer protocol",
+                        "title": "Protocol",
+                        "type": "string"
+                    },
+                    "source_port": {
+                        "description": "Source port (numerical or named)",
+                        "title": "Source Port",
+                        "type": "string"
+                    },
+                    "destination_port": {
+                        "description": "Destination port (numerical or named)",
+                        "title": "Destination Port",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the application",
+                        "title": "Description",
+                        "type": "string"
+                    },
+                    "icmp_type": {
+                        "description": "ICMP type",
+                        "title": "ICMP Type",
+                        "type": "string"
+                    },
+                    "icmp_code": {
+                        "description": "ICMP code",
+                        "title": "ICMP Code",
+                        "type": "string"
+                    }
+                },
+                "required": ["name"]
+            }
+        }
+    }
+}

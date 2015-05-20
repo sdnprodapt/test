@@ -12,6 +12,23 @@
     "physical_interface": "{{ iface }}",
     "link_level_type": "virtual", {# This shows that this device is a logical-interface #}
     "mtu": "{{ vport['address-family']['mtu'] }}",
+    {% set allowed_families = ['inet'] %}
+    {% set address_families = vport['address-family'] if vport['address-family'].__class__ == [].__class__ else
+        [vport['address-family']] if vport['address-family'].__class__ == {}.__class__ else [] %}
+    {% if address_families %}
+    "ipv4_addresses": [
+        {% for fam in address_families %}
+            {% if fam['address-family-name'] in allowed_families and fam['interface-address'] %}
+                {% set ifc_addrs = fam['interface-address'] if fam['interface-address'].__class__ == [].__class__ else
+                    [fam['interface-address']] if fam['interface-address'].__class__ == {}.__class__ else [] %}
+                {% for addr in ifc_addrs %}
+                    {% set address = '{}/{}'.format(addr['ifa-local'], '32') %}
+                    {% if not loop.first %},{% endif %}"{{ address }}"
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    ],
+    {% endif %}
 {% elif 'physical-interface' in info %}
     {% set port = info['physical-interface'] %}
     {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}

@@ -1,0 +1,24 @@
+[
+{%- if data['configuration'] -%}
+{%- set data_interfaces = data.configuration.interfaces.interface['interface'] -%}
+{%- set interfaces = data_interfaces if data_interfaces.__class__ == [].__class__ else
+                [data_interfaces] if data_interfaces.__class__ == {}.__class__ else [] -%}
+{%- for interface in interfacess -%}
+    {
+    {% set name = interface['name']|string|trim %}
+    "name": "{{ interface.name }}",
+    {%- set subifcs = interface['unit'] if interface['unit'].__class__ == [].__class__ else
+                        [interface['unit']] if interface['unit'].__class__ == {}.__class__ else [] -%}
+    }{%- if not loop.last -%},{% endif -%}
+    {% if interface['unit']|default([]) %}
+        {% set outer_loop = loop %}
+        {% for subifc in subifcs %}
+            {
+            "name": "{{ '{}.{}'.format(name, subifc['name']|string|trim) }}",
+            "physical_interface": "{{ name }}"
+            }
+        {% endfor %}
+    {% endif %}
+{%- endfor -%}
+{%- endif -%}
+]

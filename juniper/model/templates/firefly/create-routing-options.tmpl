@@ -1,0 +1,28 @@
+{#
+    Inputs:
+        static_routes: static routes to be created
+#}
+
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+        <config>
+            <configuration>
+                <routing-options>
+                {% if data.get('static_routes') %}
+                    <static>
+                        {% for route in data['static_routes'] %}
+                        <route>
+                            <name>{{ route['destination'] }}</name>
+                            <next-hop>{{ route['next_hop'] }}</next-hop>
+                        </route>
+                        {% endfor %}
+                    </static>
+                {% endif %}
+                </routing-options>
+            </configuration>
+        </config>
+    </edit-config>
+</rpc>

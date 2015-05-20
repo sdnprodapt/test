@@ -1,0 +1,41 @@
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+        <config>
+            <configuration>
+                <applications>
+                {% if data.get('applications') %}
+                    {% for application in data['applications'] %}
+                    <application>
+                        <name>{{ application['name'] }}</name>
+                        {% if application['application_protocol'] %}
+                            <application-protocol>{{ application['application_protocol'] }}</application-protocol>
+                        {% endif %}
+                        {% if application['protocol'] %}
+                            <protocol>{{ application['protocol'] }}</protocol>
+                        {% endif %}
+                        {% if application['source_port'] %}
+                            <source-port>{{ application['source_port'] }}</source-port>
+                        {% endif %}
+                        {% if application['destination_port'] %}
+                            <destination-port>{{ application['destination_port'] }}</destination-port>
+                        {% endif %}
+                        {% if application['description'] %}
+                            <description>{{ application['description'] }}</description>
+                        {% endif %}
+                        {% if application['icmp_type'] %}
+                            <icmp-type>{{ application['icmp_type'] }}</icmp-type>
+                         {% endif %}
+                         {% if application['icmp_code'] %}
+                            <icmp-code>{{ application['icmp_code'] }}</icmp-code>
+                         {% endif %}
+                    </application>
+                    {% endfor %}
+                {% endif %}
+                </applications>
+            </configuration>
+        </config>
+    </edit-config>
+</rpc>

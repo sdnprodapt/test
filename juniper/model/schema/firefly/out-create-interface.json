@@ -14,6 +14,12 @@
             "description": "Value to set the mtu to. A blank or ommitting the parameter string will do nothing",
             "default": ""
         },
+        "ipv4_addresses": {
+            "title": "IP Addresses",
+            "description": "IP Addresses on this interface",
+            "type": "array",
+            "items": {"type": "string"}
+        },
         "security-zone": {"type": "string", "description": "Name of the security zone to put the interface on", "default": "untrust"},
         "screen": {"type": "string", "description": "Option security screen to apply to the zone"},
         "system-services": {

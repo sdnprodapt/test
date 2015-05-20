@@ -1,0 +1,33 @@
+[
+    {%- if data['configuration'] -%}
+    {%- set data_apps = data.configuration.applications.application -%}
+    {%- set applications = data_apps if data_apps.__class__ == [].__class__ else
+                    [data_apps] if data_apps.__class__ == {}.__class__ else [] -%}
+    {%- for application in applications -%}
+        {
+            "name": "{{ application.name }}",
+            {% if application.get('application-protocol') %}
+                "application_protocol": "{{ application['application-protocol'] }}",
+            {% endif %}
+            {% if application.get('protocol') %}
+                "protocol": "{{ application['protocol'] }}",
+            {% endif %}
+            {% if application.get('source-port') %}
+                "source_port": "{{ application['source-port'] }}",
+            {% endif %}
+            {% if application.get('destination-port') %}
+                "destination_port": "{{ application['destination-port'] }}",
+            {% endif %}
+            {% if application.get('icmp-type') %}
+                "icmp_type": "{{ application['icmp-type'] }}",
+            {% endif %}
+            {% if application.get('icmp-code') %}
+                "icmp-code": "{{ application['icmp-code'] }}",
+            {% endif %}
+            {% if application.get('description') %}
+                "description": "{{ application['description'] }}",
+            {% endif %}
+        },
+    {%- endfor -%}
+    {%- endif -%}
+]

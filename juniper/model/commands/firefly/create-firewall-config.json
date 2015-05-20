@@ -5,36 +5,36 @@
     ],
     "endpoint-parameters": {
     },
-    "out-schema": "firefly/out-create-interface.json",
+    "out-schema": "firefly/out-create-firewall.json",
     "out-path": [
     ],
     "in-path": [{
         "type": "bpprov.translators.aggregator.Call",
         "parameters": {
-            "command": "create-interface-basic.json",
+            "command": "create-security-configs.json",
             "input": {
                 "templateType": "file",
-                "data": "firefly/create-interface-basic-in.tmpl"
+                "data": "firefly/create-security-configs-in.tmpl"
             },
             "output": {
                 "patches": [{
                     "from": "/data",
-                    "to": "/data/interface-results"
+                    "to": "/data/security-results"
                 }]
             }
         }
     }, {
         "type": "bpprov.translators.aggregator.Call",
         "parameters": {
-            "command": "create-security-zone.json",
+            "command": "create-applications.json",
             "input": {
                 "templateType": "file",
-                "data": "firefly/create-security-zone-in.tmpl"
+                "data": "firefly/create-applications-in.tmpl"
             },
             "output": {
                 "patches": [{
                     "from": "/data",
-                    "to": "/data/security-zone-results"
+                    "to": "/data/applications-results"
                 }]
             }
         }
@@ -42,7 +42,7 @@
         "type": "bpprov.translators.route.Branch",
         "parameters": {
             "choice": [{
-                "when": "${interface-results} contains \"rpc-error\"",
+                "when": "${security-results} contains \"rpc-error\"",
                 "do": {
                     "type": "bpprov.translators.aggregator.Call",
                     "parameters": {
@@ -56,7 +56,7 @@
                     }
                 }
             }, {
-                "when": "${security-zone-results} contains \"rpc-error\"",
+                "when": "${applications-results} contains \"rpc-error\"",
                 "do": {
                     "type": "bpprov.translators.aggregator.Call",
                     "parameters": {
@@ -122,8 +122,8 @@
                 "error_key": "rpc-error",
                 "fields": {
                     "commit": "commit-results",
-                    "interface": "interface-results",
-                    "security-zone": "security-zone-results"
+                    "security": "security-results",
+                    "applications": "applications-results"
                 },
                 "errors": ["rpc-error"]
             }
