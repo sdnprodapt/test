@@ -1,0 +1,32 @@
+{
+{% if data.get('applications') %}
+    "applications":[
+    {% for application in data['applications'] %}
+        {
+        {% if application.get('application_protocol') %}
+            "application_protocol": "{{ application['application_protocol'] }}",
+        {% endif %}
+        {% if application.get('protocol') %}
+            "protocol": "{{ application['protocol'] }}",
+        {% endif %}
+        {% if application.get('source_port') %}
+            "source_port": "{{ application['source_port'] }}",
+        {% endif %}
+        {% if application.get('destination_port') %}
+            "destination_port": "{{ application['destination_port'] }}",
+        {% endif %}
+        {% if application.get('description') %}
+            "description": "{{ application['description'] }}",
+        {% endif %}
+        {% if application.get('icmp_type') %}
+            "icmp_type": "{{ application['icmp_type'] }}",
+        {% endif %}
+        {% if application.get('icmp_code') %}
+            "icmp_code": "{{ application['icmp_code'] }}",
+        {% endif %}
+            "name": "{{ application['name'] }}"
+        }{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ]
+{% endif %}
+}

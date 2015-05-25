@@ -1,0 +1,82 @@
+{
+{% if data.get('security_zones') %}
+    "security_zones": [
+    {% for security_zone in data['security_zones'] %}
+        {
+        {% if security_zone.get('addresses') %}
+            "addresses": [
+            {% for addr in security_zone['addresses'] %}
+                {
+                    "name":"{{addr['name']}}",
+                    "ip_prefix": "{{addr['ip_prefix']}}"
+                }{% if not loop.last %},{% endif %}
+            {% endfor %}
+            ],
+        {% endif %}
+        {% if security_zone.get('interfaces') %}
+            "interfaces": [
+            {% for interface in security_zone['interfaces'] %}
+                "{{interface}}"{% if not loop.last %},{% endif %}
+            {% endfor %}
+            ],
+        {% endif %}
+            "name": "{{security_zone['name']}}"
+        }{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ]{% if data.get('policies') %},{% endif %}
+{% endif %}
+
+{% if data.get('policies') %}
+    "policies": [
+    {% for policy in data['policies'] %}
+        {
+        {% if policy.get('policies') %}
+            "policies": [
+            {% for sec_policy in policy['policies']%}
+                {
+                    "name": "{{sec_policy['name']}}",
+                    "match": {
+                {% if sec_policy['match'].get('source_addresses') %}
+                        "source_addresses": [
+                    {% for src_addr in sec_policy['match']['source_addresses'] %}
+                            "{{src_addr}}"{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                    {% if sec_policy['match'].get('destination_addresses') or sec_policy['match'].get('applications') %}
+                        ],
+                    {% else %}
+                        ]
+                    {% endif %}
+                {% endif %}
+
+                {% if sec_policy['match'].get('destination_addresses') %}
+                        "destination_addresses": [
+                    {% for dst_addr in sec_policy['match']['destination_addresses'] %}
+                            "{{dst_addr}}"{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                    {% if sec_policy['match'].get('applications') %}
+                        ],
+                    {% else %}
+                        ]
+                    {% endif %}
+                {% endif %}
+
+                {% if sec_policy['match'].get('applications') %}
+                        "applications": [
+                    {% for application in sec_policy['match']['applications'] %}
+                            "{{application}}"{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                        ]
+                {% endif %}
+                    },
+                    "then": "{{sec_policy['then']}}"
+                }{% if not loop.last %},{% endif %}
+            {% endfor %}
+            ],
+        {% endif %}
+            "from_zone_name": "{{policy['from_zone_name']}}",
+            "to_zone_name": "{{policy['to_zone_name']}}"
+        }{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ]
+{% endif %}
+}

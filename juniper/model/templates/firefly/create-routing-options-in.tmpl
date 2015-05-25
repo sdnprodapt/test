@@ -1,0 +1,12 @@
+{
+{% if data.get('static_routes') %}
+    "static_routes": [
+    {% for route in data['static_routes']%}
+        {
+            "destination": "{{route['destination']}}",
+            "next_hop": "{{route['next_hop']}}"
+        }{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ]
+{% endif %}
+}
