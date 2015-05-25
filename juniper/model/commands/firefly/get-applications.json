@@ -9,31 +9,13 @@
     "out-path": [
     ],
     "in-path": [{
+        "type": "bpprov.translators.dict.Listify",
+        "parameters": {"paths": ["configuration.applications.application"]}
+    },{
         "type": "bpprov.translators.template.Json",
         "parameters": {
             "template": "firefly/get-applications.tmpl",
-            "as_object": false
-        }
-    }, {
-        "type": "bpprov.translators.route.Branch",
-        "parameters": {
-            "choice": [{
-                "when": "${.} == \"[]\"",
-                "do": {
-                    "type": "bpprov.translators.template.Json",
-                    "parameters": {
-                        "templateType": "inline",
-                        "template": "{\"statusCode\": \"404\", \"reason\": \"Applications not found\"}"
-                    }
-                }
-            }],
-            "otherwise": {
-                "type": "bpprov.translators.template.Json",
-                "parameters": {
-                    "templateType": "inline",
-                    "template": "{{ data }}"
-                }
-            }
+            "as_object": true
         }
     }]
 }

@@ -1,7 +1,7 @@
 {#
     Inputs:
         interface: name of the interface to add/modify the security zone
-        security-zone: name of the security zone to modify
+        security_zone: name of the security zone to modify
 #}
 
 <rpc>
@@ -10,7 +10,7 @@
     <security>
         <zones>
             <security-zone>
-                <name>{{ data['security-zone'] }}</name>
+                <name>{{ data['security_zone'] }}</name>
                 <interfaces operation="delete">
                     <name>{{ data['interface'] }}</name>
                 </interfaces>

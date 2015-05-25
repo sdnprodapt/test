@@ -1,13 +1,13 @@
 [
 {%- if data['configuration'] -%}
 {%- set data_zones = data.configuration.security.zones['security-zone'] -%}
-{%- set zones = data_zones if data_zones.__class__ == [].__class__ else
+{%- set security_zones = data_zones if data_zones.__class__ == [].__class__ else
                 [data_zones] if data_zones.__class__ == {}.__class__ else [] -%}
-{%- for zone in zones -%}
+{%- for security_zone in security_zones -%}
 {
-    "name": "{{ zone.name }}",
-    {%- set interfaces = zone['interfaces'] if zone['interfaces'].__class__ == [].__class__ else
-                        [zone['interfaces']] if zone['interfaces'].__class__ == {}.__class__ else [] -%}
+    "name": "{{ security_zone.name }}",
+    {%- set interfaces = security_zone['interfaces'] if security_zone['interfaces'].__class__ == [].__class__ else
+                        [security_zone['interfaces']] if security_zone['interfaces'].__class__ == {}.__class__ else [] -%}
     "interfaces": [
     {%- for iface in interfaces -%}
     {

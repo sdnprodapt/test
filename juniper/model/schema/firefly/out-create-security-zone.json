@@ -4,9 +4,9 @@
     "type": "object",
     "properties": {
         "interface": {"type": "string", "description": "The name of the logical interface to create the security zone for"},
-        "security-zone": {"type": "string", "description": "Name of the security zone to put the interface on", "default": "untrust"},
+        "security_zone": {"type": "string", "description": "Name of the security zone to put the interface on", "default": "untrust"},
         "screen": {"type": "string", "description": "Option security screen to apply to the zone"},
-        "system-services": {"type": "array", "items": {"type": "string"}, "description": "List of services that the securoty zone for the interface will allow"}
+        "system_services": {"type": "array", "items": {"type": "string"}, "description": "List of services that the securoty zone for the interface will allow"}
     },
-    "required": ["interface", "security-zone", "system-services"]
+    "required": ["interface", "security_zone", "system_services"]
 }

@@ -1,0 +1,187 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "create-security-zone out parameters schema",
+    "type": "object",
+    "properties":{
+        "name":{
+            "description":"Name of the firewall config",
+            "title":"Name",
+            "type":"string"
+        },
+        "policies":{
+            "description":"Inter-zone policies defined for firewall service",
+            "title":"Inter-zone Policies",
+            "type":"array",
+            "items":{
+                "type":"object",
+                "properties":{
+                    "from_zone_name":{
+                        "description":"The security zone for traffic from which this policy is applied",
+                        "title":"From Zone",
+                        "type":"string"
+                    },
+                    "to_zone_name":{
+                        "description":"The security zone for traffic to which this policy is applied",
+                        "title":"To Zone",
+                        "type":"string"
+                    },
+                    "policies":{
+                        "description":"Security policies applied for this inter-zone policy",
+                        "title":"Security Policies",
+                        "type":"array",
+                        "items":{
+                            "type":"object",
+                            "properties":{
+                                "name":{
+                                    "description":"Name of the security policy",
+                                    "title":"Name",
+                                    "type":"string"
+                                },
+                                "match":{
+                                    "description":"Match clause of the security policy",
+                                    "title":"Match",
+                                    "type":"object",
+                                    "properties":{
+                                        "source_addresses":{
+                                            "description":"Named source addresses for matching",
+                                            "title":"Source Addresses",
+                                            "type":"array",
+                                            "items":{
+                                                "type":"string"
+                                            }
+                                        },
+                                        "destination_addresses":{
+                                            "description":"Named destination addresses for matching",
+                                            "title":"Destination Addresses",
+                                            "type":"array",
+                                            "items":{
+                                                "type":"string"
+                                            }
+                                        },
+                                        "applications":{
+                                            "item":{
+                                                "type":"string"
+                                            },
+                                            "description":"Application names for matching",
+                                            "title":"Applications",
+                                            "type":"array"
+                                        }
+                                    }
+                                },
+                                "then":{
+                                    "description":"Action of the security policy",
+                                    "title":"Then",
+                                    "type":"string",
+                                    "enum":[
+                                        "permit",
+                                        "reject",
+                                        "deny"
+                                    ]
+                                }
+                            },
+                            "required": ["name", "match", "then"]
+                        }
+                    }
+                },
+                "required": ["from_zone_name", "to_zone_name"]
+            }
+        },
+        "security_zones":{
+            "description":"Security zones defined for firewall service",
+            "title":"Security Zones",
+            "type":"array",
+            "items":{
+                "type":"object",
+                "properties":{
+                    "interfaces":{
+                        "description":"Interfaces belong to this security zone",
+                        "title":"Interfaces",
+                        "type":"array",
+                        "items":{
+                            "type":"string"
+                        }
+                    },
+                    "addresses":{
+                        "description":"Addresses defined for this security zone",
+                        "title":"Addresses",
+                        "type":"array",
+                        "items":{
+                            "type":"object",
+                            "properties":{
+                                "ip_prefix":{
+                                    "description":"IP Prefix for this address",
+                                    "title":"IP Prefix",
+                                    "type":"string"
+                                },
+                                "name":{
+                                    "description":"Name for this address",
+                                    "title":"Name",
+                                    "type":"string"
+                                }
+                            },
+                            "required": ["name", "ip_prefix"]
+                        }
+                    },
+                    "name":{
+                        "description":"Name of the security zone",
+                        "title":"Name",
+                        "type":"string"
+                    }
+                },
+                "required": ["name"]
+            }
+        },
+        "applications":{
+            "description":"Applications for security matching",
+            "title":"Applications",
+            "type":"array",
+            "items":{
+                "type":"object",
+                "properties":{
+                    "icmp_type":{
+                        "description":"ICMP type",
+                        "title":"ICMP Type",
+                        "type":"string"
+                    },
+                    "protocol":{
+                        "description":"Transport layer protocol",
+                        "title":"Protocol",
+                        "type":"string"
+                    },
+                    "application_protocol":{
+                        "description":"Application layer protocol",
+                        "title":"Application Protocol",
+                        "type":"string"
+                    },
+                    "destination_port":{
+                        "description":"Destination port (numerical or named)",
+                        "title":"Destination Port",
+                        "type":"string"
+                    },
+                    "source_port":{
+                        "description":"Source port (numerical or named)",
+                        "title":"Source Port",
+                        "type":"string"
+                    },
+                    "name":{
+                        "description":"Name of the appliance",
+                        "title":"Name",
+                        "type":"string"
+                    },
+                    "description":{
+                        "description":"Description of the application",
+                        "title":"Description",
+                        "type":"string"
+                    },
+                    "icmp_code":{
+                        "description":"ICMP code",
+                        "title":"ICMP Code",
+                        "type":"string"
+                    }
+                },
+                "required": ["name"]
+            }
+        }
+    },
+    "requred": ["name"]
+}

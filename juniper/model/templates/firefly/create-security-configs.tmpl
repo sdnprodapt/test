@@ -6,14 +6,14 @@
         <config>
             <configuration>
                 <security>
-                {% if data.get('zones') %}
+                {% if data.get('security_zones') %}
                     <zones>
-                        {% for zone in data['zones'] %}
+                        {% for security_zone in data['security_zones'] %}
                         <security-zone>
-                            <name>{{ zone['name'] }}</name>
-                            {% if zone.get('addresses') %}
+                            <name>{{ security_zone['name'] }}</name>
+                            {% if security_zone.get('addresses') %}
                                 <address-book>
-                                {% for addr in zone['addresses'] %}
+                                {% for addr in security_zone['addresses'] %}
                                     <address>
                                         <name>{{ addr['name'] }}</name>
                                         <ip-prefix>{{ addr['ip_prefix'] }}</ip-prefix>
@@ -21,8 +21,8 @@
                                 {% endfor %}
                                 </address-book>
                             {% endif %}
-                            {% if zone.get('interfaces') %}
-                                {% for interface in zone['interfaces'] %}
+                            {% if security_zone.get('interfaces') %}
+                                {% for interface in security_zone['interfaces'] %}
                                     <interfaces>
                                         <name>{{ interface }}</name>
                                     </interfaces>

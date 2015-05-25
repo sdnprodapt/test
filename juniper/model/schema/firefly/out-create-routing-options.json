@@ -5,7 +5,7 @@
     "properties": {
         "static_routes": {
             "title": "Static Routes",
-            "description": "Static routing table of this Virtual Router",
+            "description": "Static routing table",
             "type": "array",
             "items": {
                 "type": "object",

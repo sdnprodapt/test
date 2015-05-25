@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "interface": {"type": "string", "description": "The name of the interface to remove from security zone"},
-        "security-zone": {"type": "string", "description": "Name of the security zone that the interface is on", "default": "untrust"}
+        "security_zone": {"type": "string", "description": "Name of the security zone that the interface is on", "default": "untrust"}
     },
     "required": ["interface"]
 }

@@ -15,7 +15,7 @@
       "output": {
         "patches": [{
           "from": "/data",
-          "to": "/data/routing-options-results"
+          "to": "/data/get-results"
         }]
       }
     }

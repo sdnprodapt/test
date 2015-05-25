@@ -3,9 +3,9 @@
     {% set security = data.configuration.security %}
     {% set policies = security.policies.policy if security.policies.policy.__class__ == [].__class__ else
                 [security.policies.policy] if security.policies.policy.__class__ == {}.__class__ else [] %}
-    {% set zones = security.zones['security-zone'] if security.zones['security-zone'].__class__ == [].__class__ else
+    {% set security_zones = security.zones['security-zone'] if security.zones['security-zone'].__class__ == [].__class__ else
                 [security.zones['security-zone']] if security.zones['security-zone'].__class__ == {}.__class__ else [] %}
-    "name": "Firewall Service",
+    "name": "Firewall",
     {% if policies %}
         "policies":
             [
@@ -66,14 +66,14 @@
             ],
     {% endif %}
 
-    {% if zones %}
-        "zones":
+    {% if security_zones %}
+        "security_zones":
             [
-            {%- for zone in zones -%}
+            {%- for security_zone in security_zones -%}
                 {
-                "name": "{{ zone.name }}",
-                {%- set interfaces = zone['interfaces'] if zone['interfaces'].__class__ == [].__class__ else
-                                    [zone['interfaces']] if zone['interfaces'].__class__ == {}.__class__ else [] -%}
+                "name": "{{ security_zone.name }}",
+                {%- set interfaces = security_zone['interfaces'] if security_zone['interfaces'].__class__ == [].__class__ else
+                                    [security_zone['interfaces']] if security_zone['interfaces'].__class__ == {}.__class__ else [] -%}
                 {% if interfaces %}
                 "interfaces": [
                 {%- for iface in interfaces -%}
@@ -81,8 +81,8 @@
                 {%- endfor -%}
                 ],
                 {% endif %}
-                {%- set addresses = zone['address-book'] if zone['address-book'].__class__ == [].__class__ else
-                                    [zone['address-book']] if zone['address-book'].__class__ == {}.__class__ else [] -%}
+                {%- set addresses = security_zone['address-book'] if security_zone['address-book'].__class__ == [].__class__ else
+                                    [security_zone['address-book']] if security_zone['address-book'].__class__ == {}.__class__ else [] -%}
                 {% if addresses %}
                     "addresses": [
                     {% for address in addresses %}

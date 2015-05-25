@@ -1,8 +1,8 @@
 {#
     Input:
-        security-zone: Optional security-zone to get
-            If security-zone is missing, all security zones will be returned
-        interface: Optional interface name to get security-zones for
+        security_zone: Optional security-zone to get
+            If security_zone is missing, all security zones will be returned
+        interface: Optional interface name to get security_zone for
             If security zone is missing interface will be ignored
 #}
 
@@ -12,8 +12,8 @@
             <security>
                 <zones>
                     <security-zone>
-                        {% if data.get('security-zone') %}
-                        <name>{{ data['security-zone'] }}</name>
+                        {% if data.get('security_zone') %}
+                        <name>{{ data['security_zone'] }}</name>
                             {% if data.get('interface') %}
                             <interfaces>
                                 <name>{{ data['interface'] }}</name>

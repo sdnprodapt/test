@@ -1,8 +1,8 @@
 {#
     Inputs:
         interface: name of the interface to add/modify the security zone
-        security-zone: name of the security zone to modify
-        system-services: list of services to add to the zone
+        security_zone: name of the security zone to modify
+        system_services: list of services to add to the zone
         screen: name of the security screen for the zone. [optional]
 #}
 
@@ -12,14 +12,14 @@
     <security>
         <zones>
             <security-zone>
-                <name>{{ data['security-zone'] }}</name>
+                <name>{{ data['security_zone'] }}</name>
                 {% if data['screen'] %}
                 <screen>{{ data['screen'] }}</screen>
                 {% endif %}
                 <interfaces>
                     <name>{{ data['interface'] }}</name>
                     <host-inbound-traffic>
-                        {% for service in data['system-services'] %}
+                        {% for service in data['system_services'] %}
                         <system-services>
                             <name>{{ service }}</name>
                         </system-services>

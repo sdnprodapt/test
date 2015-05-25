@@ -3,11 +3,6 @@
     "title": "create-routing-options out parameters schema",
     "type": "object",
     "properties": {
-        "name": {
-            "description": "",
-            "title": "Name",
-            "type": "string"
-        },
         "policies": {
             "description": "Inter-zone policies defined for firewall service",
             "title": "Inter-zone Policies",
@@ -87,7 +82,7 @@
                 "required": ["from_zone_name", "to_zone_name"]
             }
         },
-        "zones": {
+        "security_zones": {
             "description": "Security zones defined for firewall service",
             "title": "Security Zones",
             "type": "array",
@@ -133,6 +128,5 @@
                 "required": ["name"]
             }
         }
-    },
-    "required": ["name"]
+    }
 }

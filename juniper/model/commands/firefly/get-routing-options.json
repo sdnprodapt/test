@@ -9,6 +9,9 @@
   "out-path": [
   ],
   "in-path": [{
+    "type": "bpprov.translators.dict.Listify",
+    "parameters": {"paths": ["configuration.routing-options.static.route"]}
+  },{
     "type": "bpprov.translators.template.Json",
     "parameters": {
       "template": "firefly/get-routing-options.tmpl",

@@ -22,12 +22,15 @@
                 {% set ifc_addrs = fam['interface-address'] if fam['interface-address'].__class__ == [].__class__ else
                     [fam['interface-address']] if fam['interface-address'].__class__ == {}.__class__ else [] %}
                 {% for addr in ifc_addrs %}
-                    {% set address = '{}/{}'.format(addr['ifa-local'], '32') %}
+                    {% set getprefix = addr.get('ifa-destination') and '/' in addr['ifa-destination'] %}
+                    {% set prefixl = addr['ifa-destination'].split('/')[1] if getprefix else '32' %}
+                    {% set address = '{}/{}'.format(addr['ifa-local'], prefixl) %}
                     {% if not loop.first %},{% endif %}"{{ address }}"
                 {% endfor %}
             {% endif %}
         {% endfor %}
     ],
+    "security_zone": "{{ vport['logical-interface-zone-name']|string|trim|default('') }}",
     {% endif %}
 {% elif 'physical-interface' in info %}
     {% set port = info['physical-interface'] %}
