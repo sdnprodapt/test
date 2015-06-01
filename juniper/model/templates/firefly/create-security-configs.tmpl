@@ -11,8 +11,8 @@
                         {% for security_zone in data['security_zones'] %}
                         <security-zone>
                             <name>{{ security_zone['name'] }}</name>
-                            {% if security_zone.get('addresses') %}
-                                <address-book>
+                            {% if security_zone.get('addresses') is defined %}
+                                <address-book operation="replace">
                                 {% for addr in security_zone['addresses'] %}
                                     <address>
                                         <name>{{ addr['name'] }}</name>
@@ -32,36 +32,36 @@
                         {% endfor %}
                     </zones>
                 {% endif %}
-                {% if data.get('policies') %}
-                <policies>
-                    {% for policy in data['policies'] %}
-                    <policy operation="replace">
-                        <from-zone-name>{{ policy['from_zone_name'] }}</from-zone-name>
-                        <to-zone-name>{{ policy['to_zone_name'] }}</to-zone-name>
-                        {% if policy.get('policies') %}
-                            {% for sec_policy in policy['policies']%}
-                                <policy>
-                                    <name>{{ sec_policy['name'] }}</name>
-                                    <match>
-                                        {% for src_addr in sec_policy['match']['source_addresses'] %}
-                                            <source-address>{{ src_addr }}</source-address>
-                                        {% endfor %}
-                                        {% for dst_addr in sec_policy['match']['destination_addresses'] %}
-                                            <destination-address>{{ dst_addr }}</destination-address>
-                                        {% endfor %}
-                                        {% for application in sec_policy['match']['applications'] %}
-                                            <application>{{ application }}</application>
-                                        {% endfor %}
-                                    </match>
-                                    <then>
-                                        <{{sec_policy['then']}}/>
-                                    </then>
-                                </policy>
-                            {% endfor %}
-                        {% endif %}
-                    </policy>
-                    {% endfor %}
-                </policies>
+                {% if data.get('policies') is defined %}
+                    <policies operation="replace">
+                        {% for policy in data['policies'] %}
+                        <policy operation="replace">
+                            <from-zone-name>{{ policy['from_zone_name'] }}</from-zone-name>
+                            <to-zone-name>{{ policy['to_zone_name'] }}</to-zone-name>
+                            {% if policy.get('policies') %}
+                                {% for sec_policy in policy['policies']%}
+                                    <policy>
+                                        <name>{{ sec_policy['name'] }}</name>
+                                        <match>
+                                            {% for src_addr in sec_policy['match']['source_addresses'] %}
+                                                <source-address>{{ src_addr }}</source-address>
+                                            {% endfor %}
+                                            {% for dst_addr in sec_policy['match']['destination_addresses'] %}
+                                                <destination-address>{{ dst_addr }}</destination-address>
+                                            {% endfor %}
+                                            {% for application in sec_policy['match']['applications'] %}
+                                                <application>{{ application }}</application>
+                                            {% endfor %}
+                                        </match>
+                                        <then>
+                                            <{{sec_policy['then']}}/>
+                                        </then>
+                                    </policy>
+                                {% endfor %}
+                            {% endif %}
+                        </policy>
+                        {% endfor %}
+                    </policies>
                 {% endif %}
                 </security>
             </configuration>

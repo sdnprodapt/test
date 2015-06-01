@@ -15,7 +15,7 @@
             "input": {
                 "templateType": "json-dict",
                 "data": {
-                    "interface": "{{ data.name }}"
+                    "name": "{{ data.name }}"
                 }
             },
             "output": {
@@ -33,7 +33,7 @@
                 "templateType": "json-dict",
                 "data": {
                     "interface": "{{ data.name }}",
-                    "security-zone": "{{ data['security-zone'] if 'security-zone' in data else 'untrust' }}"
+                    "security_zone": "{{ data['security_zone'] if 'security_zone' in data else 'untrust' }}"
                 }
             },
             "output": {

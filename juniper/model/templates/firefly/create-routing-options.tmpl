@@ -11,8 +11,8 @@
         <config>
             <configuration>
                 <routing-options>
-                {% if data.get('static_routes') %}
-                    <static>
+                {% if data.get('static_routes') is defined %}
+                    <static operation="replace">
                         {% for route in data['static_routes'] %}
                         <route>
                             <name>{{ route['destination'] }}</name>

@@ -5,7 +5,7 @@
         </target>
         <config>
             <configuration>
-                <applications>
+                <applications operation="replace">
                 {% if data.get('applications') %}
                     {% for application in data['applications'] %}
                     <application>
