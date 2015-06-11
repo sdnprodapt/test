@@ -6,7 +6,7 @@ beautifulsoup4==4.3.2
 bpeamodels==1.1.0
 bpfpm==0.1.4
 bpfrelease==0.2.4
-bpprov==0.13.0
+bpprov==1.0.0
 cffi==0.9.1
 coverage==3.7.1
 cryptography==0.8
