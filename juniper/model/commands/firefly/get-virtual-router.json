@@ -2,19 +2,24 @@
     "endpoint": "null",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/get-virtual-router.json"
     ],
     "endpoint-parameters": {},
-    "out-path": [{
-        "type": "bpprov.translators.aggregator.Call",
-        "parameters": {
-            "command": "get-routing-options.json",
-            "output": {
-                "patches": [{
-                    "from": "/data",
-                    "to": "/data"
-                }]
+    "out-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-routing-options.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data"
+                        }
+                    ]
+                }
             }
         }
-    }],
+    ],
     "in-path": []
 }

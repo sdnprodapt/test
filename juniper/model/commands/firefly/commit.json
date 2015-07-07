@@ -8,8 +8,6 @@
             "name": "commit"
         }
     },
-    "out-path": [
-    ],
-    "in-path": [
-    ]
+    "out-path": [],
+    "in-path": []
 }

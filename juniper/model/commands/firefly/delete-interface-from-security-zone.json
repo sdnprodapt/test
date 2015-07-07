@@ -1,0 +1,13 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/delete-interface-from-security-zone.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/delete-interface-from-security-zone.tmpl"
+    },
+    "out-schema": "firefly/out-delete-interface-from-security-zone.json",
+    "out-path": [],
+    "in-path": []
+}

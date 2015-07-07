@@ -2,6 +2,7 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/get-interfaces.json"
     ],
     "endpoint-parameters": {
         "command": {
@@ -10,18 +11,21 @@
     },
     "out-path": [
     ],
-    "in-path": [{
-        "type": "bpprov.translators.dict.ReMap",
-        "parameters": {
-            "mapping": {
-                "ports": "interface-information.physical-interface"
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "ports": "interface-information.physical-interface"
+                }
             }
-         }
-    }, {
-        "type": "bpprov.translators.template.Json",
-        "parameters": {
-            "template": "firefly/get-interfaces.tmpl",
-            "as_object": true
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "firefly/get-interfaces.tmpl",
+                "as_object": true
+            }
         }
-    }]
+    ]
 }

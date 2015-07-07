@@ -1,0 +1,89 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "ge-0/0/2.0"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/2</name>",
+                "<unit operation=\"delete\">",
+                "<name>0</name>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Interface not found": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "ge-0/0/5.0"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<unit operation=\"delete\">",
+                "<name>0</name>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<rpc-error>",
+                "<error-severity>warning</error-severity>",
+                "<error-path>[edit interfaces ge-0/0/5]</error-path>",
+                "<error-message>statement not found: unit 0</error-message>",
+                "</rpc-error>",
+                "<load-error-count>1</load-error-count>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

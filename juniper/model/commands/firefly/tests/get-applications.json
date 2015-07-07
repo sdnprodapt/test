@@ -1,0 +1,64 @@
+{
+    "Multiple Applications": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<applications>",
+                "</applications>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"3\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1435115932\" junos:changed-localtime=\"2015-06-24 03:18:52 UTC\">",
+                "<applications>",
+                "<application>",
+                "<name>AppMatch_1</name>",
+                "<protocol>tcp</protocol>",
+                "<destination-port>100-200</destination-port>",
+                "</application>",
+                "<application>",
+                "<name>AppTest_2</name>",
+                "<protocol>udp</protocol>",
+                "<source-port>355</source-port>",
+                "<destination-port>150</destination-port>",
+                "</application>",
+                "</applications>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": [
+            {
+                "destination_port": "100-200",
+                "protocol": "tcp",
+                "name": "AppMatch_1"
+            },
+            {
+                "source_port": "355",
+                "destination_port": "150",
+                "protocol": "udp",
+                "name": "AppTest_2"
+            }
+        ]
+    },
+    "No Application": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"3\">",
+                "<configuration/>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": []
+    }
+}

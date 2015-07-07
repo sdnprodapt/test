@@ -1,0 +1,113 @@
+{
+    "Multiple Applications": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "applications": [
+                {
+                    "destination_port": "100-200",
+                    "protocol": "tcp",
+                    "name": "AppMatch_1"
+                },
+                {
+                    "source_port": "355",
+                    "destination_port": "150",
+                    "protocol": "udp",
+                    "name": "AppTest_2"
+                }
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<applications operation=\"replace\">",
+                "<application>",
+                "<name>AppMatch_1</name>",
+                "<protocol>tcp</protocol>",
+                "<destination-port>100-200</destination-port>",
+                "</application>",
+                "<application>",
+                "<name>AppTest_2</name>",
+                "<protocol>udp</protocol>",
+                "<source-port>355</source-port>",
+                "<destination-port>150</destination-port>",
+                "</application>",
+                "</applications>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Incorrect Application": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "applications": [
+                {
+                    "destination_port": "100-200",
+                    "protocol": "tcq",
+                    "name": "AppMatch_1"
+                }
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<applications operation=\"replace\">",
+                "<application>",
+                "<name>AppMatch_1</name>",
+                "<protocol>tcq</protocol>",
+                "<destination-port>100-200</destination-port>",
+                "</application>",
+                "</applications>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"5\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-info>",
+                "<bad-element>tcq</bad-element>",
+                "</error-info>",
+                "<error-message>number: 'tcq': Value must be a number from 0 to 255</error-message>",
+                "</rpc-error>",
+                "<load-error-count>1</load-error-count>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

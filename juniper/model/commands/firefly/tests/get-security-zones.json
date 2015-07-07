@@ -1,0 +1,343 @@
+{
+    "Everything": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {},
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1435115932\" junos:changed-localtime=\"2015-06-24 03:18:52 UTC\">",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<tcp-rst />",
+                "<address-book>",
+                "<address>",
+                "<name>Addr_Dst2</name>",
+                "<ip-prefix>192.168.16.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "<security-zone>",
+                "<name>untrust</name>",
+                "<address-book>",
+                "<address>",
+                "<name>Addr_Src2</name>",
+                "<ip-prefix>192.168.106.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<screen>untrust-screen</screen>",
+                "<interfaces>",
+                "<name>ge-0/0/2.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": [
+            {
+                "interfaces": [
+                    {
+                        "inbound-traffic-services": [
+                            "http",
+                            "https",
+                            "ssh",
+                            "telnet",
+                            "dhcp",
+                            "ping",
+                            "netconf"
+                        ],
+                        "name": "ge-0/0/1.0"
+                    }
+                ],
+                "name": "trust"
+            },
+            {
+                "interfaces": [
+                    {
+                        "name": "ge-0/0/2.0"
+                    }
+                ],
+                "name": "untrust"
+            }
+        ]
+    },
+    "Specify Zone": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {"security_zone": "trust"},
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1435115932\" junos:changed-localtime=\"2015-06-24 03:18:52 UTC\">",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<tcp-rst />",
+                "<address-book>",
+                "<address>",
+                "<name>Addr_Dst2</name>",
+                "<ip-prefix>192.168.16.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "<interfaces>",
+                "<name>ge-0/0/2.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": [
+            {
+                "interfaces": [
+                    {
+                        "inbound-traffic-services": [
+                            "http",
+                            "https",
+                            "ssh",
+                            "telnet",
+                            "dhcp",
+                            "ping",
+                            "netconf"
+                        ],
+                        "name": "ge-0/0/1.0"
+                    },
+                    {
+                        "name": "ge-0/0/2.0"
+                    }
+                ],
+                "name": "trust"
+            }
+        ]
+    },
+    "Specify Zone and Interface": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "security_zone": "trust",
+            "interface": "ge-0/0/1.0"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1435115932\" junos:changed-localtime=\"2015-06-24 03:18:52 UTC\">",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<tcp-rst />",
+                "<address-book>",
+                "<address>",
+                "<name>Addr_Dst2</name>",
+                "<ip-prefix>192.168.16.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<interfaces>",
+                "<name>ge-0/0/2.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": [
+            {
+                "interfaces": [
+                    {
+                        "name": "ge-0/0/2.0"
+                    }
+                ],
+                "name": "trust"
+            }
+        ]
+    },
+    "Specify Zone and Wrong Interface": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "security_zone": "trust",
+            "interface": "ge-0/0/3.0"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/3.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"2\">",
+                "<configuration/>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "reason": "Security zone not found",
+            "statusCode": "404"
+        }
+    },
+    "Specify Wrong Zone": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "security_zone": "youtrust"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>youtrust</name>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"2\">",
+                "<configuration/>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "reason": "Security zone not found",
+            "statusCode": "404"
+        }
+    }
+}

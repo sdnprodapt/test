@@ -12,11 +12,13 @@
     {%- for iface in interfaces -%}
     {
         "name": "{{ iface.name }}",
+        {%- if 'host-inbound-traffic' in iface -%}
         "inbound-traffic-services": [
             {% for service in iface['host-inbound-traffic']['system-services'] -%}
             "{{ service.name }}"{%- if not loop.last -%},{%- endif -%}
             {% endfor -%}
         ]
+        {%- endif -%}
     }{%- if not loop.last -%},{%- endif -%}
     {%- endfor -%}
     ]

@@ -2,13 +2,12 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/create-security-zone.json"
     ],
     "endpoint-parameters": {
         "template": "firefly/create-security-zone.tmpl"
     },
     "out-schema": "firefly/out-create-security-zone.json",
-    "out-path": [
-    ],
-    "in-path": [
-    ]
+    "out-path": [],
+    "in-path": []
 }

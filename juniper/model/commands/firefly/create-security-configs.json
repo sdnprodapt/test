@@ -1,25 +1,13 @@
 {
-  "endpoint": "netconf",
-  "type": "bpprov.runners.simple.Sequence",
-  "tests": [
-  ],
-  "endpoint-parameters": {
-    "template": "firefly/create-security-configs.tmpl"
-  },
-  "out-schema": "firefly/out-create-security-configs.json",
-  "out-path": [{
-    "type": "bpprov.translators.aggregator.Call",
-    "parameters": {
-      "command": "get-security-configs.json",
-      "input": {},
-      "output": {
-        "patches": [{
-          "from": "/data",
-          "to": "/data/routing-options-results"
-        }]
-      }
-    }
-  }],
-  "in-path": [
-  ]
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/create-security-configs.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/create-security-configs.tmpl"
+    },
+    "out-schema": "firefly/out-create-security-configs.json",
+    "in-path": [],
+    "out-path": []
 }

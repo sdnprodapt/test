@@ -1,0 +1,77 @@
+{
+    "patterns": [
+
+        {
+            "command": "<get-interface-information>",
+            "match-reason": "<error-message>\\s*(.*?)\\s*</error-message>",
+            "onError": [],
+            "pattern": "<error-severity>\\s*error\\s*</error-severity>[\\s\\S]*not found",
+            "error-dict": {"statusCode": 404}
+        },
+        {
+            "command": "<get-interface-information>",
+            "match-reason": "<error-message>\\s*(.*?)\\s*</error-message>",
+            "onError": [],
+            "pattern": "<error-severity>\\s*error\\s*</error-severity>",
+            "error-dict": {"statusCode": 400}
+        },
+        {
+            "command": "<get-configuration>[\\s\\S]*security-zone[\\s\\S]*name",
+            "override-reason": "Security zone not found",
+            "onError": [],
+            "pattern": "<configuration>\\s*</configuration>",
+            "error-dict": {"statusCode": 404}
+        },
+        {
+            "command": "<get[\\w-].+>",
+            "match-reason": "<error-message>\\s*(.*?)\\s*</error-message>",
+            "onError": [],
+            "pattern": "<error-severity>\\s*error\\s*</error-severity>",
+            "error-dict": {"statusCode": 400}
+        },
+        {
+            "command": "<edit-config>[\\s\\S]*<security-zone>[\\s\\S]*<system-services>",
+            "pattern": "<error-severity>\\s*error\\s*</error-severity>",
+            "match-all-reasons": "<bad-element>\\s*(.*?)\\s*</bad-element>|<error-message>\\s*(.*?)\\s*</error-message>",
+            "onError": [
+                {
+                    "write": "<rpc><discard-changes/></rpc>"
+                }
+            ],
+            "error-dict": {"statusCode": 400}
+        },
+        {
+            "command": "<edit-config>[\\s\\S]*<interfaces>[\\s\\S]*<unit operation=\"delete\">",
+            "pattern": "<error-severity>\\s*warning\\s*</error-severity>[\\s\\S]*statement not found",
+            "override-reason": "Interface not found",
+            "onError": [
+                {
+                    "write": "<rpc><discard-changes/></rpc>"
+                }
+            ],
+            "error-dict": {"statusCode": 404}
+        },
+        {
+            "command": "<edit-config>",
+            "pattern": "<error-severity>\\s*error\\s*</error-severity>",
+            "match-reason": "<error-message>\\s*(.*?)\\s*</error-message>",
+            "onError": [
+                {
+                    "write": "<rpc><discard-changes/></rpc>"
+                }
+            ],
+            "error-dict": {"statusCode": 400}
+        },
+        {
+            "command": "<commit>",
+            "match-all-reasons": "<error-message>\\s*(.*?)\\s*</error-message>",
+            "onError": [
+                {
+                    "write": "<rpc><discard-changes/></rpc>"
+                }
+            ],
+            "pattern": "<error-severity>\\s*error\\s*</error-severity>",
+            "error-dict": {"statusCode": 400}
+        }
+    ]
+}

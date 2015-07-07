@@ -2,13 +2,12 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/delete-interface.json"
     ],
     "endpoint-parameters": {
         "template": "firefly/delete-interface.tmpl"
     },
     "out-schema": "firefly/out-delete-interface.json",
-    "out-path": [
-    ],
-    "in-path": [
-    ]
+    "out-path": [],
+    "in-path": []
 }

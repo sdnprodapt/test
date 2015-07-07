@@ -1,0 +1,360 @@
+{
+    "With Policies and Appliances": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<security>",
+                "</security>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<applications>",
+                "</applications>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<security>",
+                "<screen>",
+                "<ids-option>",
+                "<name>untrust-screen</name>",
+                "<icmp>",
+                "<ping-death/>",
+                "</icmp>",
+                "<ip>",
+                "<source-route-option/>",
+                "<tear-drop/>",
+                "</ip>",
+                "<tcp>",
+                "<syn-flood>",
+                "<alarm-threshold>1024</alarm-threshold>",
+                "<attack-threshold>200</attack-threshold>",
+                "<source-threshold>1024</source-threshold>",
+                "<destination-threshold>2048</destination-threshold>",
+                "<undocumented>",
+                "<queue-size>2000</queue-size>",
+                "</undocumented>",
+                "<timeout>20</timeout>",
+                "</syn-flood>",
+                "<land/>",
+                "</tcp>",
+                "</ids-option>",
+                "</screen>",
+                "<policies>",
+                "<policy>",
+                "<from-zone-name>untrust</from-zone-name>",
+                "<to-zone-name>trust</to-zone-name>",
+                "<policy>",
+                "<name>Policy_0</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>junos-dns-udp</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "<policy>",
+                "<name>Policy_1</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>AppMatch_1</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "<policy>",
+                "<name>Policy_2</name>",
+                "<match>",
+                "<source-address>Addr_Src2</source-address>",
+                "<destination-address>Addr_Dst2</destination-address>",
+                "<application>any</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "<policy>",
+                "<name>Policy_3</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>any</application>",
+                "</match>",
+                "<then>",
+                "<deny/>",
+                "</then>",
+                "</policy>",
+                "</policy>",
+                "<policy>",
+                "<from-zone-name>trust</from-zone-name>",
+                "<to-zone-name>untrust</to-zone-name>",
+                "<policy>",
+                "<name>Policy_4</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>any</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "</policy>",
+                "</policies>",
+                "<zones>",
+                "<functional-zone>",
+                "<management>",
+                "<interfaces>",
+                "<name>ge-0/0/0.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>all</name>",
+                "</system-services>",
+                "<protocols>",
+                "<name>all</name>",
+                "</protocols>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</management>",
+                "</functional-zone>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<tcp-rst/>",
+                "<address-book>",
+                "<address>",
+                "<name>Addr_Dst2</name>",
+                "<ip-prefix>192.168.16.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "<security-zone>",
+                "<name>untrust</name>",
+                "<address-book>",
+                "<address>",
+                "<name>Addr_Src2</name>",
+                "<ip-prefix>192.168.106.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<screen>untrust-screen</screen>",
+                "<interfaces>",
+                "<name>ge-0/0/2.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"3\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1435115932\" junos:changed-localtime=\"2015-06-24 03:18:52 UTC\">",
+                "<applications>",
+                "<application>",
+                "<name>AppMatch_1</name>",
+                "<protocol>tcp</protocol>",
+                "<destination-port>100-200</destination-port>",
+                "</application>",
+                "<application>",
+                "<name>AppTest_2</name>",
+                "<protocol>udp</protocol>",
+                "<source-port>355</source-port>",
+                "<destination-port>150</destination-port>",
+                "</application>",
+                "</applications>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "security_zones": [
+                {
+                    "interfaces": ["ge-0/0/1.0"],
+                    "name": "trust",
+                    "addresses": [
+                        {
+                            "ip_prefix": "192.168.16.0/24",
+                            "name": "Addr_Dst2"
+                        }
+                    ]
+                },
+                {
+                    "interfaces": ["ge-0/0/2.0"],
+                    "name": "untrust",
+                    "addresses": [
+                        {
+                            "ip_prefix": "192.168.106.0/24",
+                            "name": "Addr_Src2"
+                        }
+                    ]
+                }
+            ],
+            "name": "Firewall",
+            "policies": [
+                {
+                    "to_zone_name": "trust",
+                    "policies": [
+                        {
+                            "then": "permit",
+                            "name": "Policy_0",
+                            "match": {
+                                "applications": ["junos-dns-udp"],
+                                "source_addresses": ["any"],
+                                "destination_addresses": ["any"]
+                            }
+                        },
+                        {
+                            "then": "permit",
+                            "name": "Policy_1",
+                            "match": {
+                                "applications": ["AppMatch_1"],
+                                "source_addresses": ["any"],
+                                "destination_addresses": ["any"]
+                            }
+                        },
+                        {
+                            "then": "permit",
+                            "name": "Policy_2",
+                            "match": {
+                                "applications": ["any"],
+                                "source_addresses": ["Addr_Src2"],
+                                "destination_addresses": ["Addr_Dst2"]
+                            }
+                        },
+                        {
+                            "then": "deny",
+                            "name": "Policy_3",
+                            "match": {
+                                "applications": ["any"],
+                                "source_addresses": ["any"],
+                                "destination_addresses": ["any"]
+                            }
+                        }
+                    ],
+                    "from_zone_name": "untrust"
+                },
+                {
+                    "to_zone_name": "untrust",
+                    "policies": [
+                        {
+                            "then": "permit",
+                            "name": "Policy_4",
+                            "match": {
+                                "applications": ["any"],
+                                "source_addresses": ["any"],
+                                "destination_addresses": ["any"]
+                            }
+                        }
+                    ],
+                    "from_zone_name": "trust"
+                }
+            ],
+            "applications": [
+                {
+                    "destination_port": "100-200",
+                    "protocol": "tcp",
+                    "name": "AppMatch_1"
+                },
+                {
+                    "source_port": "355",
+                    "destination_port": "150",
+                    "protocol": "udp",
+                    "name": "AppTest_2"
+                }
+            ]
+        }
+    },
+    "Empty": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<security>",
+                "<screen>",
+                "<ids-option>",
+                "<name>untrust-screen</name>",
+                "<icmp>",
+                "<ping-death/>",
+                "</icmp>",
+                "<ip>",
+                "<source-route-option/>",
+                "<tear-drop/>",
+                "</ip>",
+                "<tcp>",
+                "<syn-flood>",
+                "<alarm-threshold>1024</alarm-threshold>",
+                "<attack-threshold>200</attack-threshold>",
+                "<source-threshold>1024</source-threshold>",
+                "<destination-threshold>2048</destination-threshold>",
+                "<undocumented>",
+                "<queue-size>2000</queue-size>",
+                "</undocumented>",
+                "<timeout>20</timeout>",
+                "</syn-flood>",
+                "<land/>",
+                "</tcp>",
+                "</ids-option>",
+                "</screen>",
+                "<policies/>",
+                "<zones/>",
+                "</security>",
+                "</configuration>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"3\">",
+                "<configuration/>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "name": "Firewall",
+            "applications": []
+        }
+    }
+}

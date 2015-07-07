@@ -2,6 +2,7 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/disable-interface.json"
     ],
     "endpoint-parameters": {
         "template": "firefly/disable-interface.tmpl"

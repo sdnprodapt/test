@@ -1,0 +1,293 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "policies": [
+                {
+                    "to_zone_name": "trust",
+                    "policies": [
+                        {
+                            "then": "permit",
+                            "name": "Policy_0",
+                            "match": {
+                                "applications": [
+                                    "junos-dns-udp"
+                                ],
+                                "source_addresses": [
+                                    "any"
+                                ],
+                                "destination_addresses": [
+                                    "any"
+                                ]
+                            }
+                        },
+                        {
+                            "then": "permit",
+                            "name": "Policy_1",
+                            "match": {
+                                "applications": [
+                                    "AppMatch_1"
+                                ],
+                                "source_addresses": [
+                                    "any"
+                                ],
+                                "destination_addresses": [
+                                    "any"
+                                ]
+                            }
+                        },
+                        {
+                            "then": "permit",
+                            "name": "Policy_2",
+                            "match": {
+                                "applications": [
+                                    "any"
+                                ],
+                                "source_addresses": [
+                                    "Addr_Src2"
+                                ],
+                                "destination_addresses": [
+                                    "Addr_Dst2"
+                                ]
+                            }
+                        },
+                        {
+                            "then": "deny",
+                            "name": "Policy_3",
+                            "match": {
+                                "applications": [
+                                    "any"
+                                ],
+                                "source_addresses": [
+                                    "any"
+                                ],
+                                "destination_addresses": [
+                                    "any"
+                                ]
+                            }
+                        }
+                    ],
+                    "from_zone_name": "untrust"
+                },
+                {
+                    "to_zone_name": "untrust",
+                    "policies": [
+                        {
+                            "then": "permit",
+                            "name": "Policy_4",
+                            "match": {
+                                "applications": [
+                                    "any"
+                                ],
+                                "source_addresses": [
+                                    "any"
+                                ],
+                                "destination_addresses": [
+                                    "any"
+                                ]
+                            }
+                        }
+                    ],
+                    "from_zone_name": "trust"
+                }
+            ],
+            "security_zones": [
+                {
+                    "interfaces": [
+                        "ge-0/0/1.0"
+                    ],
+                    "name": "trust",
+                    "addresses": [
+                        {
+                            "ip_prefix": "192.168.16.0/24",
+                            "name": "Addr_Dst2"
+                        }
+                    ]
+                },
+                {
+                    "interfaces": [
+                        "ge-0/0/2.0"
+                    ],
+                    "name": "untrust",
+                    "addresses": [
+                        {
+                            "ip_prefix": "192.168.106.0/24",
+                            "name": "Addr_Src2"
+                        }
+                    ]
+                }
+            ],
+            "applications": [
+                {
+                    "destination_port": "100-200",
+                    "protocol": "tcp",
+                    "name": "AppMatch_1"
+                },
+                {
+                    "source_port": "355",
+                    "destination_port": "150",
+                    "protocol": "udp",
+                    "name": "AppTest_2"
+                }
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<applications operation=\"replace\">",
+                "<application>",
+                "<name>AppMatch_1</name>",
+                "<protocol>tcp</protocol>",
+                "<destination-port>100-200</destination-port>",
+                "</application>",
+                "<application>",
+                "<name>AppTest_2</name>",
+                "<protocol>udp</protocol>",
+                "<source-port>355</source-port>",
+                "<destination-port>150</destination-port>",
+                "</application>",
+                "</applications>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<address-book operation=\"replace\">",
+                "<address>",
+                "<name>Addr_Dst2</name>",
+                "<ip-prefix>192.168.16.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "<security-zone>",
+                "<name>untrust</name>",
+                "<address-book operation=\"replace\">",
+                "<address>",
+                "<name>Addr_Src2</name>",
+                "<ip-prefix>192.168.106.0/24</ip-prefix>",
+                "</address>",
+                "</address-book>",
+                "<interfaces>",
+                "<name>ge-0/0/2.0</name>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "<policies operation=\"replace\">",
+                "<policy operation=\"replace\">",
+                "<from-zone-name>untrust</from-zone-name>",
+                "<to-zone-name>trust</to-zone-name>",
+                "<policy>",
+                "<name>Policy_0</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>junos-dns-udp</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "<policy>",
+                "<name>Policy_1</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>AppMatch_1</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "<policy>",
+                "<name>Policy_2</name>",
+                "<match>",
+                "<source-address>Addr_Src2</source-address>",
+                "<destination-address>Addr_Dst2</destination-address>",
+                "<application>any</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "<policy>",
+                "<name>Policy_3</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>any</application>",
+                "</match>",
+                "<then>",
+                "<deny/>",
+                "</then>",
+                "</policy>",
+                "</policy>",
+                "<policy operation=\"replace\">",
+                "<from-zone-name>trust</from-zone-name>",
+                "<to-zone-name>untrust</to-zone-name>",
+                "<policy>",
+                "<name>Policy_4</name>",
+                "<match>",
+                "<source-address>any</source-address>",
+                "<destination-address>any</destination-address>",
+                "<application>any</application>",
+                "</match>",
+                "<then>",
+                "<permit/>",
+                "</then>",
+                "</policy>",
+                "</policy>",
+                "</policies>",
+                "</security>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+            "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+            "<commit>",
+            "</commit>",
+            "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

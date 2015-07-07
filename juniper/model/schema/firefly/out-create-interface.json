@@ -25,7 +25,7 @@
         "system_services": {
             "type": "array",
             "items": {"type": "string"},
-            "description": "List of services that the securoty zone for the interface will allow",
+            "description": "List of services that the security zone for the interface will allow",
             "default": ["http", "https", "ssh", "telnet", "netconf", "ping"]
         }
     },

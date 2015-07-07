@@ -2,28 +2,34 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/get-firewall.json"
     ],
     "endpoint-parameters": {
         "template": "firefly/get-security-configs-command.tmpl"
     },
     "out-path": [
     ],
-    "in-path": [{
-        "type": "bpprov.translators.template.Json",
-        "parameters": {
-            "template": "firefly/get-security-configs.tmpl",
-            "as_object": true
-        }
-    }, {
-        "type": "bpprov.translators.aggregator.Call",
-        "parameters": {
-            "command": "get-applications.json",
-            "output": {
-                "patches": [{
-                    "from": "/data",
-                    "to": "/data/applications"
-                }]
+    "in-path": [
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "firefly/get-security-configs.tmpl",
+                "as_object": true
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-applications.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/applications"
+                        }
+                    ]
+                }
             }
         }
-    }]
+    ]
 }

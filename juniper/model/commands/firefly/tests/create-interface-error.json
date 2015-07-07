@@ -1,0 +1,282 @@
+{
+    "Wrong MTU": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "mtu": "150000",
+            "security_zone": "trustme",
+            "name": "ge-0/0/5.0",
+            "ipv4_addresses": [
+                "192.168.16.1/24"
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>192.168.16.1/24</name>",
+                "</address>",
+                "<mtu>150000</mtu>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trustme</name>",
+                "<interfaces>",
+                "<name>ge-0/0/5.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"9\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<source-daemon>",
+                "dcd",
+                "</source-daemon>",
+                "<error-path>",
+                "[edit interfaces ge-0/0/5 unit 0 family]",
+                "</error-path>",
+                "<error-info>",
+                "<bad-element>",
+                "inet",
+                "</bad-element>",
+                "</error-info>",
+                "<error-message>",
+                " Family MTU 150000 is too large relative to device MTU 1514; Protocol overhead should be 14",
+                "</error-message>",
+                "</rpc-error>",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-message>",
+                "configuration check-out failed",
+                "</error-message>",
+                "</rpc-error>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Wrong Interface Name": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "mtu": "1500",
+            "security_zone": "trustme",
+            "name": "ge-0/0/5/7.0",
+            "ipv4_addresses": [
+                "192.168.16.1/24"
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5/7</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>192.168.16.1/24</name>",
+                "</address>",
+                "<mtu>1500</mtu>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-message>",
+                "invalid trailing input '/7' for 'ge-0/0/5/7'",
+                "</error-message>",
+                "</rpc-error>",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-info>",
+                "<bad-element>interface</bad-element>",
+                "</error-info>",
+                "<error-message>statement creation failed</error-message>",
+                "</rpc-error>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Wrong system service": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "ge-0/0/5.0",
+            "system_services": ["http", "pong"]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>untrust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/5.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>pong</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-info>",
+                "<bad-element>pong</bad-element>",
+                "</error-info>",
+                "<error-message>invalid value</error-message>",
+                "</rpc-error>",
+                "<load-error-count>1</load-error-count>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

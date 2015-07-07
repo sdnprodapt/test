@@ -2,38 +2,44 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/get-security-zones.json"
     ],
     "endpoint-parameters": {
         "template": "firefly/get-security-zones-command.tmpl"
     },
     "out-path": [
     ],
-    "in-path": [{
-        "type": "bpprov.translators.template.Json",
-        "parameters": {
-            "template": "firefly/get-security-zones.tmpl",
-            "as_object": false
-        }
-    }, {
-        "type": "bpprov.translators.route.Branch",
-        "parameters": {
-            "choice": [{
-                "when": "${.} == \"[]\"",
-                "do": {
+    "in-path": [
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "firefly/get-security-zones.tmpl",
+                "as_object": false
+            }
+        },
+        {
+            "type": "bpprov.translators.route.Branch",
+            "parameters": {
+                "choice": [
+                    {
+                        "when": "${.} == \"[]\"",
+                        "do": {
+                            "type": "bpprov.translators.template.Json",
+                            "parameters": {
+                                "templateType": "inline",
+                                "template": "{\"statusCode\": \"404\", \"reason\": \"Security zone not found\"}"
+                            }
+                        }
+                    }
+                ],
+                "otherwise": {
                     "type": "bpprov.translators.template.Json",
                     "parameters": {
                         "templateType": "inline",
-                        "template": "{\"statusCode\": \"404\", \"reason\": \"Security zone not found\"}"
+                        "template": "{{ data }}"
                     }
-                }
-            }],
-            "otherwise": {
-                "type": "bpprov.translators.template.Json",
-                "parameters": {
-                    "templateType": "inline",
-                    "template": "{{ data }}"
                 }
             }
         }
-    }]
+    ]
 }

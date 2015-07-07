@@ -2,24 +2,12 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/firefly/tests/create-applications.json"
     ],
     "endpoint-parameters": {
         "template": "firefly/create-applications.tmpl"
     },
     "out-schema": "firefly/out-create-applications.json",
-    "out-path": [{
-        "type": "bpprov.translators.aggregator.Call",
-        "parameters": {
-            "command": "get-applications.json",
-            "input": {},
-            "output": {
-                "patches": [{
-                    "from": "/data",
-                    "to": "/data/applications-results"
-                }]
-            }
-        }
-    }],
-    "in-path": [
-    ]
+    "in-path": [],
+    "out-path": []
 }

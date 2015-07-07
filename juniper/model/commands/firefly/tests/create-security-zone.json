@@ -1,0 +1,165 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "interface": "ge-0/0/1.0",
+            "security_zone": "trust",
+            "system_services": [
+                "http",
+                "https",
+                "ssh",
+                "telnet",
+                "dhcp",
+                "ping",
+                "netconf"
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Incorrect Service": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "interface": "ge-0/0/1.0",
+            "security_zone": "trust",
+            "system_services": [
+                "http",
+                "https",
+                "ssh",
+                "telnet",
+                "dhcp",
+                "pong",
+                "netconf"
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/1.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>pong</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-info>",
+                "<bad-element>pong</bad-element>",
+                "</error-info>",
+                "<error-message>invalid value</error-message>",
+                "</rpc-error>",
+                "<rpc-error>",
+                "<error-severity>warning</error-severity>",
+                "<error-message>mgd: statement must contain additional statements</error-message>",
+                "</rpc-error>",
+                "<load-error-count>1</load-error-count>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}
