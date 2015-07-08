@@ -3,6 +3,7 @@ Version 2.0.0.dev0
 
 - Added BP2 support
 - Added MX960 provisioning integration tests
+- Added Firefly support
 
 ### Bug fixes
 
