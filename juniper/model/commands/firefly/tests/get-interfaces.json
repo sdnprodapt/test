@@ -1092,9 +1092,7 @@
             {
                 "name": "sp-0/0/0.0",
                 "oper_status": true,
-                "ipv4_addresses": [
-                ],
-                "mtu": "",
+                "mtu": "9192",
                 "admin_status": true,
                 "link_level_type": "virtual",
                 "security_zone": "Null",

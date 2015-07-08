@@ -1,20 +1,26 @@
 {
-    "endpoint": "netconf",
+    "endpoint": "null",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
         "commands/firefly/tests/get-firewall.json"
     ],
     "endpoint-parameters": {
-        "template": "firefly/get-security-configs-command.tmpl"
     },
     "out-path": [
     ],
     "in-path": [
         {
-            "type": "bpprov.translators.template.Json",
+            "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "template": "firefly/get-security-configs.tmpl",
-                "as_object": true
+                "command": "get-security-configs.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data"
+                        }
+                    ]
+                }
             }
         },
         {

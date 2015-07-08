@@ -12,6 +12,15 @@
     ],
     "in-path": [
         {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {
+                "paths": [
+                    "interface-information.logical-interface.address-family",
+                    "interface-information.logical-interface.address-family..interface-address"
+                ]
+            }
+        },
+        {
             "type": "bpprov.translators.template.Json",
             "parameters": {
                 "template": "firefly/get-interface.tmpl",

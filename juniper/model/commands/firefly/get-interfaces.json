@@ -21,6 +21,16 @@
             }
         },
         {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {
+                "paths": [
+                    "ports..logical-interface",
+                    "ports..logical-interface..address-family",
+                    "ports..logical-interface..address-family..interface-address"
+                ]
+            }
+        },
+        {
             "type": "bpprov.translators.template.Json",
             "parameters": {
                 "template": "firefly/get-interfaces.tmpl",

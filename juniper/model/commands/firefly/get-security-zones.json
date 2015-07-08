@@ -11,6 +11,15 @@
     ],
     "in-path": [
         {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {
+                "paths": [
+                    "configuration.security.zones.security-zone",
+                    "configuration.security.zones.security-zone..interfaces"
+                ]
+            }
+        },
+        {
             "type": "bpprov.translators.template.Json",
             "parameters": {
                 "template": "firefly/get-security-zones.tmpl",
