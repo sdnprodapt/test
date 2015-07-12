@@ -1,0 +1,21 @@
+{
+    "product": "urn:cyaninc:bp:product:firefly_firewall",
+    "resource": "juniper.resourceTypes.Firewall",
+    "type": "bpprov",
+    "provider_resource_id_field": "name",
+    "label_field": "name",
+    "commands": {
+        "get": {
+            "command": "get-firewall.json"
+        },
+        "put": {
+            "command": "create-firewall.json"
+        },
+        "post": {
+            "command": "create-firewall.json"
+        },
+        "delete": {
+            "command": "delete-firewall.json"
+        }
+    }
+}

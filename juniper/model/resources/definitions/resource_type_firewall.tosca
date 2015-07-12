@@ -1,0 +1,232 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "Firewall Service"
+package     = juniper
+version     = "1.0"
+description = "This document defines resource type Firewall Service"
+authors     = [ "Jay Hsu (jhsu@cyaninc.com)" ]
+
+imports {
+  Container = tosca.capabilityTypes.Container
+  Vnf = tosca.resourceTypes.VirtualNetworkFunction
+}
+
+resourceTypes {
+
+  Firewall {
+    derivedFrom = Vnf
+    title = "Juniper Firewall"
+    description = """
+      This resource type represents a Juniper Firewall Service.
+    """
+
+    properties {
+
+      device {
+        title = "Device"
+        description = "Device name of this Firewall service"
+        type = string
+      }
+
+      name {
+        title = "Name"
+        description = ""
+        type = string
+      }
+
+      security_zones {
+        title = "Security Zones"
+        description = "Security zones defined for firewall service"
+        type = array
+        optional = true
+        items {
+          type = object
+          properties {
+            name {
+              title = "Name"
+              description = "Name of the security zone"
+              type = string
+            }
+
+            interfaces {
+              title = "Interfaces"
+              description = "Interfaces belong to this security zone"
+              type = array
+              items.type = string
+            }
+
+            addresses {
+              title = "Addresses"
+              description = "Addresses defined for this security zone"
+              type = array
+              optional = true
+              items {
+                type = object
+                properties {
+                  name {
+                    title = "Name"
+                    description = "Name for this address"
+                    type = string
+                  }
+                  ip_prefix {
+                    title = "IP Prefix"
+                    description = "IP Prefix for this address"
+                    type = string
+                    format = ipv4-prefix
+                  }
+                }
+              }
+            }
+
+          }
+        }
+      }
+
+      policies {
+        title = "Inter-zone Policies"
+        description = "Inter-zone policies defined for firewall service"
+        type = array
+        optional = true
+        items {
+          type = object
+          properties = {
+            from_zone_name {
+              title = "From Zone"
+              description = "The security zone for traffic from which this policy is applied"
+              type = string
+            }
+
+            to_zone_name {
+              title = "To Zone"
+              description = "The security zone for traffic to which this policy is applied"
+              type = string
+            }
+
+            policies {
+              title = "Security Policies"
+              description = "Security policies applied for this inter-zone policy"
+              type = array
+              items {
+                type = object
+                properties {
+                  name {
+                    title = "Name"
+                    description = "Name of the security policy"
+                    type = string
+                  }
+
+                  match {
+                    title = "Match"
+                    description = "Match clause of the security policy"
+                    type = object
+                    properties {
+                      source_addresses {
+                        title = "Source Addresses"
+                        description = "Named source addresses for matching"
+                        type = array
+                        items.type = string
+                        optional = true
+                      }
+
+                      destination_addresses {
+                        title = "Destination Addresses"
+                        description = "Named destination addresses for matching"
+                        type = array
+                        items.type = string
+                        optional = true
+                      }
+
+                      applications {
+                        title = "Applications"
+                        description = "Application names for matching"
+                        type = array
+                        item.type = string
+                        optional = true
+                      }
+                    }
+                  }
+                  then {
+                    title = "Then"
+                    description = "Action of the security policy"
+                    type = string
+                    enum = ["permit", "reject", "deny"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      applications {
+        title = "Applications"
+        description = "Applications for security matching"
+        type = array
+        optional = true
+        items {
+          type = object
+          properties {
+            name {
+              title = "Name"
+              description = "Name of the appliance"
+              type = string
+            }
+            application_protocol {
+              title = "Application Protocol"
+              description = "Application layer protocol"
+              type = string
+              optional = true
+            }
+            protocol {
+              title = "Protocol"            
+              description = "Transport layer protocol"
+              type = string
+              optional = true
+            }
+            source_port {
+              title = "Source Port"
+              description= "Source port (numerical or named)"
+              type = string
+              optional = true
+            }
+            destination_port {
+              title = "Destination Port"
+              description = "Destination port (numerical or named)"
+              type = string
+              optional = true
+            }
+            description {
+              title = "Description"
+              description = "Description of the application"
+              type = string
+              optional = true
+            }
+            icmp_type {
+              title = "ICMP Type"
+              description = "ICMP type"
+              type = string
+              optional = true
+            }
+            icmp_code {
+              title = "ICMP Code"
+              description = "ICMP code"
+              type = string
+              optional = true
+            }
+          }
+        }
+      }
+
+    }
+
+    requirements {
+      fw_device {
+        title = "Device"
+        description = "A firewall is hosted on a device."
+        type = Container
+        minimum = 1
+        maximum = 1
+        containerTypes = [juniper.resourceTypes.Device]
+      }
+    }
+  }
+}

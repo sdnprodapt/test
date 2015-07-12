@@ -1,0 +1,139 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "Experimental Juniper device resource type definition"
+package = juniper 
+version = "1.0"
+description = "This document defines an experimental Juniper device type."
+authors = ["Torin Sandall (tsandall@cyaninc.com)"]
+
+imports {
+  Vnf = tosca.resourceTypes.VirtualNetworkFunction
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  Device {
+    derivedFrom = Vnf
+    title = "Device"
+    description = """
+    A network device.
+    """
+
+    properties {
+
+      elementType {
+        type = string
+        title = "Element Type"
+        description = ""
+        optional = false
+      }
+
+      typeGroup {
+        type = string
+        title = "Type Group"
+        description = ""
+        optional = false
+      }
+
+      authentication {
+        type = object
+        title = "Authentication Info"
+        description = ""
+        optional = true
+        properties {
+          netconf {
+            type = object
+            title = "NETCONF Authentication"
+            description = ""
+            optional = true
+            properties {
+              username {
+                type = string
+                title = "Username"
+                description = ""
+                optional = false
+              }
+              password {
+                type = string
+                title = "Password"
+                description = ""
+                optional = false
+              }
+            }
+          }
+        }
+      }
+
+      connection {
+        type = object
+        title = "Connection Info"
+        description = ""
+        optional = false
+        properties {
+          hostname {
+            type = string
+            title = "Host Name"
+            description = ""
+            optional = false
+          }
+          netconf {
+            type = object
+            title = "NETCONF Connection Info"
+            description = ""
+            optional = true
+            properties {
+              hostport {
+                type = integer
+                title = "NETCONF Port"
+                description = ""
+                optional = false
+              }
+            }
+          }
+        }
+      }
+
+      deviceVersion {
+        type = string
+        title = "Device Version"
+        description = ""
+        optional = true
+      }
+
+      serialNumber {
+        type = string
+        title = "Serial Number"
+        description = ""
+        optional = true
+      }
+
+      swImage {
+        type = string
+        title = "Software Image"
+        description = ""
+        optional = true
+      }
+
+      swVersion {
+        type = string
+        title = "Software Version"
+        description = ""
+        optional = true
+      }
+
+      swType {
+        type = string
+        title = "Software Type"
+        description = ""
+        optional = true
+      }
+
+      type {
+        type = string
+        title = "Type"
+        description = ""
+        optional = true
+      }
+    }
+  }
+}

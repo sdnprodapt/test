@@ -1,0 +1,21 @@
+{
+    "product": "urn:cyaninc:bp:product:firefly_vr",
+    "resource": "juniper.resourceTypes.VirtualRouter",
+    "type": "bpprov",
+    "provider_resource_id_field": "name",
+    "label_field": "name",
+    "commands": {
+        "get": {
+            "command": "get-virtual-router.json"
+        },
+        "put": {
+            "command": "create-virtual-router.json"
+        },
+        "post": {
+            "command": "create-virtual-router.json"
+        },
+        "delete": {
+            "command": "delete-virtual-router.json"
+        }
+    }
+}

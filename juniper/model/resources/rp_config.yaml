@@ -1,0 +1,104 @@
+# The "id" is used to uniquely identify the RP implementation. The RP uses the
+# identifier to identify itself when communicating with bpocore. A UUID or
+# fully qualified URN is recommended.
+id: 807f05b4ff924a18bf61827e8d63b8b3
+
+# The organization which maintains the RP. This is included when the RP is
+# registered against bpocore. A URL is recommended.
+vendor: http://cyaninc.com
+
+# The vendor's license for the RP. This is included when the RP is registered
+# against bpocore. A URL is recommended.
+license: http://cyaninc.com/license
+
+# Contact information for the maintainer/owner of the RP implementation. This
+# is included when the RP is registered against bpocore.
+contacts:
+    - name: Jay Hsu
+      email: jay.hsu@cyaninc.com
+
+# Maximum of 32 characters. Used for presentation purposes when a human
+# readable name is required.
+title: Juniper Firefly Perimeter
+
+# Used for presentation purposes when a long form human readable description
+# of the RP is required.
+description: Managing Interfaces, Virtual Routers, Firewall and NAT configuration on Juniper Firefly Perimeter VNF
+
+# The "version" should follow semantic versioning. Currently ignored.
+version: 0.0.1
+
+# Location where RP specific definitions are stored. E.g, type definitions, UI
+# schema, etc. This value can be absolute or relative to this file however it
+# must be resolvable when deployed. If this value is null then no definitions
+# will be onboarded.
+definitions: ./definitions
+
+# Domain definitions specify the types of domains supported by this RP.
+# Developers must define their own domains. See
+# https://github.cyanoptics.com/Orchestrate/rpsdk-python for more details. The
+# RP should support at least one domain type.
+domains:
+  - id: "urn:cyaninc:bp:domain:firefly"
+    title: "Juniper Firefly"                                      # max 32 chars
+    description: "Domain for managing Juniper Firefly devices"
+
+    # domain specific properties which define what the user must enter when
+    # they create a new domain of this type inside Planet Orchestrate. Values
+    # for these properties will be passed to the RP when domains are created
+    # or updated.
+    properties:
+      - name: ea_url
+        title: "EA API URL"
+        description: "Specify the HTTP(S) URL of the EA API"
+        type: url
+      - name: keyid
+        title: "API Key"
+        description: "Specify the API key to authenticate against EA APIs with"
+        type: string
+      - name: secret
+        title: "API Secret"
+        description: "Specify the API secret to authenticate against EA APIs with"
+        type: string
+
+    # specifies configuration for resource types managed in this domain,
+    # currently only the id must be specified but in this future may be
+    # extended to help drive specialization in the synchronization framework
+    resource_types:
+      - id: "juniper.resourceTypes.Device"
+      - id: "juniper.resourceTypes.Interface"
+      - id: "juniper.resourceTypes.VirtualRouter"
+      - id: "juniper.resourceTypes.Firewall"
+
+# Relationship definitions specify how relationships between resources managed
+# by this RP are formed. See
+# https://github.cyanoptics.com/Orchestrate/rpsdk-python for more details.
+relationships:
+  - sourceTypeId: "juniper.resourceTypes.Interface"        # resource types involved in relationship
+    targetTypeId: "juniper.resourceTypes.Device"
+    capabilityName: host                                                 # identifies endpoint names in relationship
+    requirementName: contained
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
+    fieldKind: "provider"                                                # identicates what the field represent
+    fieldLocator: "device"                                               # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.Interface"
+    targetTypeId: "juniper.resourceTypes.Interface"
+    capabilityName: virtual_interfaces                                   # identifies endpoint names in relationship
+    requirementName: physical_interface
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
+    fieldKind: "provider"                                                # identicates what the field represent
+    fieldLocator: "physical_interface"                                   # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.VirtualRouter"
+    targetTypeId: "juniper.resourceTypes.Device"
+    capabilityName: vr_host                                              # identifies endpoint names in relationship
+    requirementName: vr_device
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
+    fieldKind: "provider"                                                # identicates what the field represent
+    fieldLocator: "device"                                               # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.Firewall"
+    targetTypeId: "juniper.resourceTypes.Device"
+    capabilityName: fw_host                                              # identifies endpoint names in relationship
+    requirementName: fw_device
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
+    fieldKind: "provider"                                                # identicates what the field represent
+    fieldLocator: "device"                                               # the field in the resource properties identifying the far end

@@ -1,0 +1,89 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "Virtual Router"
+package     = juniper
+version     = "1.0"
+description = "This document defines a Virtual Router resource type"
+authors     = [ "Jay Hsu (jhsu@cyaninc.com)" ]
+
+imports {
+  Vnf = tosca.resourceTypes.VirtualNetworkFunction
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  VirtualRouter {
+    derivedFrom = Vnf
+    title = "Virtual Router"
+    description = """
+      This resource type represents a Virtual Router.
+    """
+
+    properties {
+      device {
+        title = "Device Name"
+        description = "Name of the device of this Virtual Router"
+        type = string
+      }
+
+      name {
+        title = "Name"
+        description = "Name of this Virtual Router"
+        type = string
+      }
+
+      interfaces {
+        title = "Interfaces"
+        description = "Interfaces belong to this Virtual Router"
+        type = array
+        items.type = string
+        optional = true
+      }
+
+      static_routes {
+        title = "Static Routes"
+        description = "Static routing table of this Virtual Router"
+        type = array
+        items {
+          type = object
+          properties = {
+            destination {
+              title = "Destination Prefix"
+              description = "Destination prefix of this static route (e.g. 192.168.1.0/24)"
+              type = string
+              format = ipv4-prefix
+            }
+
+            next_hop = {
+              title = "Next Hop"
+              description = "Next Hop of this static route (e.g. 10.20.30.40)"
+              type = string
+              format = ipv4-address
+            }
+          }
+        }
+        optional = true
+      }
+    }
+
+    capabilities {
+      routing {
+        title = "Routing"
+        description = "A virtual router can perform routing for interfaces."
+        type = Container
+        containeeTypes = [juniper.resourceTypes.Interface]
+      }
+    }
+
+    requirements {
+      vr_device {
+        title = "Device"
+        description = "A virtual router is hosted on a device."
+        type = Container
+        minimum = 1
+        maximum = 1
+        containerTypes = [juniper.resourceTypes.Device]
+      }
+    }
+  }
+}

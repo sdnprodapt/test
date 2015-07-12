@@ -1,0 +1,8 @@
+{
+    "resource_types": [
+        "resources/definitions/resource_type_device.tosca",
+        "resources/definitions/resource_type_firewall.tosca",
+        "resources/definitions/resource_type_virtualrouter.tosca",
+        "resources/definitions/resource_type_interface.tosca"
+    ]
+}

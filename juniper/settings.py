@@ -11,6 +11,12 @@ EA_NAME = 'juniper'
 
 BPPROV_MODEL_DIRPATH = os.path.join(os.path.dirname(__file__), 'model')
 
+RESOURCES_DIR = os.path.join(BPPROV_MODEL_DIRPATH, 'resources')
+DEFINITIONS_DIR = os.path.join(RESOURCES_DIR, 'definitions')
+RP_CONFIG = os.path.join(RESOURCES_DIR, 'rp_config.yaml')
+# RP_DEPLOY_SETTINGS = os.path.join(RESOURCES_DIR, 'deploy_settings.yaml')
+RP_BIND_PORT = 9191
+
 TYPE_GROUP = 'Juniper'
 
 ELEMENT_TYPES = ['JuniperMX240',

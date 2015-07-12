@@ -1,0 +1,25 @@
+{
+    "product": "urn:cyaninc:bp:product:interface",
+    "resource": "juniper.resourceTypes.Interface",
+    "type": "bpprov",
+    "provider_resource_id_field": "name",
+    "device_namespace_props": ["physical_interface"],
+    "label_field": "name",
+    "commands": {
+        "list": {
+            "command": "get-interfaces.json"
+        },
+        "get": {
+            "command": "get-interface.json"
+        },
+        "put": {
+            "command": "create-interface.json"
+        },
+        "post": {
+            "command": "create-interface.json"
+        },
+        "delete": {
+            "command": "delete-interface-auto.json"
+        }
+    }
+}
