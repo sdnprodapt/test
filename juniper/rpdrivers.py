@@ -416,7 +416,6 @@ class EasdkDeviceListDriver(RpSdkResourceListDriver):
     def list_resources(self):
         result = []
         for device in self.root.devices.values():
-            # import ipdb; ipdb.set_trace()
             session = device.session
             obj = self.helper.merge_device_session_info(_device(device), _session(session))
             result.append(self.helper.get_resource(obj, True))
@@ -443,7 +442,7 @@ class EasdkDeviceCudDriver(RpSdkResourceCudDriver):
                       ['authentication', 'connection', 'typeGroup', 'id', 'description']
                       if key in resource.properties}
         if resource.providerResourceId is not None:
-            properties['id'] = resource.provide.ResourceId
+            properties['id'] = resource.providerResourceId
 
         yield self.session_access.preCreate(properties, None)
         session = self.session_access.doCreate(properties, None, self.root.sessions)
