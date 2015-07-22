@@ -1,4 +1,4 @@
-Juniper Rest based Adapter
+Juniper Firefly Resource Adapter
 
 ## virtualenv
 
@@ -6,21 +6,16 @@ Juniper Rest based Adapter
 
 * To run the adapter in development environment:
 ```
-git clone git@github.cyanoptics.com:ea/bp-ea-juniperng.git bp-ea-juniperng
-cd bp-ea-juniperng
+git clone git@github.cyanoptics.com:orchestrate/bp-ra-firefly.git bp-ra-firefly
+cd bp-ra-firefly
 make prepare-venv
 source env/bin/activate
-juniper
+bprafirefly
 ```
 
 * Running Tests:
 ```
 make test
-```
-
-* Building app:
-```
-make bp-app
 ```
 
 ### Running simulator

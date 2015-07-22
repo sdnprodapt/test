@@ -71,7 +71,7 @@ requirements:
 	$(HIDE)$(PIP) install -e .
 
 release:
-	$(HIDE)$(VENV)/bin/bpfrelease --organization ea --repository $(GIT_REPO_NAME) --project .
+	$(HIDE)$(VENV)/bin/bpfrelease --organization ra --repository $(GIT_REPO_NAME) --project .
 
 test: utest test-model-commands test-model-validate test-model-error test-sim test-flake8
 
@@ -99,28 +99,6 @@ coverage:
 BP_DEB_DIR := $(PROJECT_DIR)/blueplanet/extern
 BP_DEB_BASE := $(BP_DEB_DIR)/python-$(PACKAGE)
 
-bp-app:
-	$(eval VERSION := $(shell python setup.py --version))
-	$(eval ITERATION := $(shell python iteration.py))
-# Uninstall development egg ...
-	$(PYTHON) setup.py develop -u
-# ... and install real one
-	$(PIP) install --no-deps .
-	mkdir -p $(BP_DEB_DIR)
-# remove any old debians, we wouldn't want to package up old and new together
-	rm -f $(BP_DEB_BASE)*.deb
-# package virtualenv into debian and place in extern
-	cd $(BP_DEB_DIR); \
-		fpm -s dir -t deb -n python-$(PACKAGE) -v $(VERSION) --iteration $(ITERATION) \
-		$(PROJECT_DIR)/$(VENV)/=/opt/cyan/$(PACKAGE)
-# restore development environment
-	$(PIP) uninstall -y $(PACKAGE)
-	$(PIP) install --no-deps -e .
-# make the blueplanet application
-	$(BPFPM) -f --debian blueplanet/extern --config blueplanet/project.cfg \
-		--hooks blueplanet/hooks --map blueplanet/init/=/etc/init --semantic-version $(VERSION) --iteration $(ITERATION)
-
-
 # docker related commands
 #
 DOCKER_RUN_ARGS ?= -ti --rm
@@ -132,7 +110,7 @@ DOCKER_CMD ?= $(PACKAGE) --configpath /tmp
 DOCKER_IMAGE ?= cyan/$(PACKAGE)
 DOCKER_IMAGE_BASE := cyan/$(PACKAGE)-base
 DOCKER_IMAGE_SIM := cyan/$(PACKAGE)-sim
-DOCKERFILE_EA := docker/ea
+DOCKERFILE_RA := docker/ra
 DOCKERFILE_SIM := docker/sim
 DOCKER_CONTAINER := $(PACKAGE)
 DOCKER_PUBLISH ?= -p 8184:8080
@@ -172,10 +150,10 @@ image-base-dev: image-base
 	docker rm $(DOCKER_CONTAINER)
 
 image: image-base
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_EA)
+	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_RA)
 
 image-dev: image-base-dev
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_EA)
+	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_RA)
 
 image-sim: image-base
 	$(DOCKER_BUILD) -t $(DOCKER_IMAGE_SIM) $(DOCKERFILE_SIM)

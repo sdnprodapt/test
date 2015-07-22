@@ -49,18 +49,6 @@ Juniper Rest based Adapter""",
     entry_points={
         'console_scripts': [
             'juniper = juniper.main:main',
-            'juniper-backup = juniper.hooks.backup:main',
-            'juniper-config = juniper.hooks.config:main',
-            'juniper-peer-update = juniper.hooks.peer_update:main',
-            'juniper-post-install = juniper.hooks.post_install:main',
-            'juniper-post-upgrade = juniper.hooks.post_upgrade:main',
-            'juniper-pre-upgrade = juniper.hooks.pre_upgrade:main',
-            'juniper-restore = juniper.hooks.restore:main',
-            'juniper-start = juniper.hooks.start:main',
-            'juniper-stop = juniper.hooks.stop:main',
-            'juniper-southbound-update = juniper.hooks.southbound_update:main',
-            'juniper-bp-interface-publish = juniper.hooks.interface.publish:main',
-            'juniper-bp-interface-depart = juniper.hooks.interface.depart:main',
             ]
         },
     tests_require=[
