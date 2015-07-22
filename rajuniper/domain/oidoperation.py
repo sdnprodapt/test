@@ -7,7 +7,7 @@ from cymlrest.models.restapi import ResourceCollection, RestApi
 
 from cyml.meta import CLS
 
-from bpeamodels.schema.domain import Domain
+from bpramodels.schema.domain import Domain
 
 
 class OidOperation(Object):

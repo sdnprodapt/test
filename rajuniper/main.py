@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # Copyright(c) 2014, Cyan, Inc. All rights reserved.
 
-from easdk.utils.setuplogging import setupDaemonLogging, setupLogging
+from rasdk.utils.setuplogging import setupDaemonLogging, setupLogging
 
-from easdk.conf import settings
-settings.configure('juniper.settings')
+from rasdk.conf import settings
+settings.configure('rajuniper.settings')
 
-from easdk.controller import Controller
+from rasdk.controller import Controller
 
 from twisted.internet import reactor, defer
 
@@ -14,7 +14,7 @@ from rpsdk.highlevel import RpSdkStatelessController, RpSdkHighLevelServer, decl
 from rpsdk.model import RpSdkSettings, RpSdkDeploymentSettings
 from rpsdk.utils.cyclonehelpers import Api
 from rpsdk.onboarding import onboard_types
-from juniper.rp import GenericEaDriverFactory
+from rajuniper.rp import GenericRaDriverFactory
 
 import argparse
 import os
@@ -107,10 +107,10 @@ def get_deploy_settings():
 
 
 def main():
-    parser = argparse.ArgumentParser(description='juniper main entry point')
+    parser = argparse.ArgumentParser(description='rajuniper main entry point')
     parser.add_argument('--logfile', '-l', type=str, help='log filename for daemonlogger')
     parser.add_argument('--configpath', '-c', default=settings.DEFAULT_CONFIG_DIRPATH, type=str,
-        help='main juniper config directory path')
+        help='main rajuniper config directory path')
     parser.add_argument('--verbose', '-v', default=1, action='count', help='increased verbosity')
     parser.add_argument('--port', '-p', type=int, default=settings.DEFAULT_PORT, help='http server port')
 
@@ -121,7 +121,7 @@ def main():
     else:
         setupLogging(verbosity=args.verbose)
 
-    log.info('juniper pid %s started with %s', os.getpid(), args)
+    log.info('rajuniper pid %s started with %s', os.getpid(), args)
 
     deploy_settings = get_deploy_settings()
 
@@ -132,14 +132,14 @@ def main():
 
     rp_controller = RpSdkStatelessController(rp_settings, deploy_settings,
                                              market_api,
-                                             GenericEaDriverFactory(market_api, settings))
+                                             GenericRaDriverFactory(market_api, settings))
 
     rp_server = RpSdkHighLevelServer(deploy_settings.server.bind_port, rp_controller)
 
 
-    ea_controller = Controller(args.port, args.configpath)
+    ra_controller = Controller(args.port, args.configpath)
 
-    reactor.callWhenRunning(ea_controller.start)
+    reactor.callWhenRunning(ra_controller.start)
     reactor.callWhenRunning(init_rp, rp_server, rp_settings, deploy_settings, market_api, assets_api)
 
     reactor.run()

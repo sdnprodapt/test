@@ -4,7 +4,7 @@ rm -rf logs
 mkdir logs
 cd logs
 
-containers="eajuniper mx960"
+containers="rajuniper mx960"
 for con in $containers; do
     docker logs `sed -n 2p /tmp/$con` &> $con.log
 done

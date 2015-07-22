@@ -1,11 +1,11 @@
 import copy
-from easdk.access.session import SessionAccess
-from easdk.exceps import ExecutionError
+from rasdk.access.session import SessionAccess
+from rasdk.exceps import ExecutionError
 
 from twisted.internet import defer
 
-from easdk.controller import Controller
-from easdk.bpprovif import execute as bpprov_execute
+from rasdk.controller import Controller
+from rasdk.bpprovif import execute as bpprov_execute
 from rpsdk.drivers import (
     RpSdkResourceCudDriver,
     RpSdkResourceGetDriver,
@@ -48,7 +48,7 @@ def _device(device):
     }
 
 
-class EasdkBpprovHelper(object):
+class RasdkBpprovHelper(object):
     def __init__(self, tenant_id, product_id, device_id, prid_field,
                  device_namespace_props=None, label_field=None, is_domain_manager=False):
         self.product_id = product_id
@@ -117,7 +117,7 @@ class EasdkBpprovHelper(object):
             raise RpError(code, reason)
 
 
-class EasdkBpprovListDriver(RpSdkResourceListDriver):
+class RasdkBpprovListDriver(RpSdkResourceListDriver):
     def __init__(self,
                  tenant_id,
                  product_id,
@@ -140,7 +140,7 @@ class EasdkBpprovListDriver(RpSdkResourceListDriver):
 
         self.reactor = reactor or twisted_reactor
 
-        self.helper = EasdkBpprovHelper(tenant_id,
+        self.helper = RasdkBpprovHelper(tenant_id,
                                         self.product_id,
                                         None,
                                         self.prid_field,
@@ -185,7 +185,7 @@ class EasdkBpprovListDriver(RpSdkResourceListDriver):
         defer.returnValue(result)
 
 
-class EasdkBpprovGetDriver(RpSdkResourceGetDriver):
+class RasdkBpprovGetDriver(RpSdkResourceGetDriver):
     def __init__(self,
                  device_id,
                  tenant_id,
@@ -207,7 +207,7 @@ class EasdkBpprovGetDriver(RpSdkResourceGetDriver):
 
         self.reactor = reactor or twisted_reactor
 
-        self.helper = EasdkBpprovHelper(tenant_id,
+        self.helper = RasdkBpprovHelper(tenant_id,
                                         self.product_id,
                                         self.device_id,
                                         self.prid_field,
@@ -238,7 +238,7 @@ class EasdkBpprovGetDriver(RpSdkResourceGetDriver):
         defer.returnValue(self.helper.map_props_to_market(data, True, device_id_field=self.device_id_field))
 
 
-class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
+class RasdkBpprovCudDriver(RpSdkResourceCudDriver):
     def __init__(self,
                  device_id,
                  tenant_id,
@@ -260,7 +260,7 @@ class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
 
         self.reactor = reactor or twisted_reactor
 
-        self.helper = EasdkBpprovHelper(tenant_id,
+        self.helper = RasdkBpprovHelper(tenant_id,
                                      self.product_id,
                                      self.device_id,
                                      self.prid_field,
@@ -338,7 +338,7 @@ class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
         defer.returnValue(self.helper.map_props_to_market(data, False))
 
 
-class EasdkDriverHelper(object):
+class RasdkDriverHelper(object):
     DEVICE_FIELDS = {
         "deviceVersion",
         "serialNumber",
@@ -392,13 +392,13 @@ class EasdkDriverHelper(object):
         return obj
 
 
-class EasdkDeviceGetDriver(RpSdkResourceGetDriver):
+class RasdkDeviceGetDriver(RpSdkResourceGetDriver):
     def __init__(self, tenant_id, product_id, top_down=False, resource=None, reactor=None):
-        super(EasdkDeviceGetDriver, self).__init__()
+        super(RasdkDeviceGetDriver, self).__init__()
         from twisted.internet import reactor as twisted_reactor
 
         self.reactor = reactor or twisted_reactor
-        self.helper = EasdkDriverHelper(tenant_id, product_id)
+        self.helper = RasdkDriverHelper(tenant_id, product_id)
         self.top_down = top_down
         self.resource = resource
 
@@ -411,7 +411,7 @@ class EasdkDeviceGetDriver(RpSdkResourceGetDriver):
     def get_resource(self, provider_resource_id):
 
         # Assuming that the session and the device will have same ID.
-        # Try to get the session first. If the EA is restarted, the session will be gone
+        # Try to get the session first. If the RA is restarted, the session will be gone
         # Re-create the session if we have a hold of the device resource from market,
         # and it is a managed (i.e. non-discovered) resource
         #
@@ -434,19 +434,19 @@ class EasdkDeviceGetDriver(RpSdkResourceGetDriver):
 
     @defer.inlineCallbacks
     def top_down_create_resource(self, resource):
-        cudDriver = EasdkDeviceCudDriver(self.helper.tenant_id, self.helper.product_id)
+        cudDriver = RasdkDeviceCudDriver(self.helper.tenant_id, self.helper.product_id)
         retVal = yield cudDriver.create_resource(resource)
         defer.returnValue(retVal)
 
 
-class EasdkDeviceListDriver(RpSdkResourceListDriver):
+class RasdkDeviceListDriver(RpSdkResourceListDriver):
     def __init__(self, tenant_id, product_id, reactor=None, session=None):
-        super(EasdkDeviceListDriver, self).__init__()
+        super(RasdkDeviceListDriver, self).__init__()
         self.product_id = product_id
         from twisted.internet import reactor as twisted_reactor
 
         self.reactor = reactor or twisted_reactor
-        self.helper = EasdkDriverHelper(tenant_id, product_id)
+        self.helper = RasdkDriverHelper(tenant_id, product_id)
 
         self.session = session
         self.root = Controller.instance().root
@@ -468,10 +468,10 @@ class EasdkDeviceListDriver(RpSdkResourceListDriver):
         return result
 
 
-class EasdkDeviceCudDriver(RpSdkResourceCudDriver):
+class RasdkDeviceCudDriver(RpSdkResourceCudDriver):
     def __init__(self, tenant_id, product_id, reactor=None):
         self.product_id = product_id
-        self.helper = EasdkDriverHelper(tenant_id, self.product_id)
+        self.helper = RasdkDriverHelper(tenant_id, self.product_id)
         from twisted.internet import reactor as twisted_reactor
 
         self.reactor = reactor or twisted_reactor
@@ -516,6 +516,6 @@ class EasdkDeviceCudDriver(RpSdkResourceCudDriver):
         self.helper.get_resource(obj, True)
 
     def update_resource(self, resource):
-        # EA framework does not yet support updates to devices or sessions,
+        # RA framework does not yet support updates to devices or sessions,
         # this should be modelled in the device resource type(s)
         raise NotImplementedError

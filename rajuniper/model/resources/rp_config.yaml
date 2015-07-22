@@ -48,17 +48,17 @@ domains:
     # for these properties will be passed to the RP when domains are created
     # or updated.
     properties:
-      - name: ea_url
-        title: "EA API URL"
-        description: "Specify the HTTP(S) URL of the EA API"
+      - name: ra_url
+        title: "RA API URL"
+        description: "Specify the HTTP(S) URL of the RA API"
         type: url
       - name: keyid
         title: "API Key"
-        description: "Specify the API key to authenticate against EA APIs with"
+        description: "Specify the API key to authenticate against RA APIs with"
         type: string
       - name: secret
         title: "API Secret"
-        description: "Specify the API secret to authenticate against EA APIs with"
+        description: "Specify the API secret to authenticate against RA APIs with"
         type: string
 
     # specifies configuration for resource types managed in this domain,

@@ -1,14 +1,14 @@
-FROM cyan/juniper-base
+FROM cyan/rajuniper-base
 
 WORKDIR /bp2/src/
 
 EXPOSE 22
 EXPOSE 8080
 
-ENV NBI_eajunipersim_port=22
-ENV NBI_eajunipersim_publish=True
-ENV NBI_easim_port=22
-ENV NBI_easim_typeGroup=Juniper
-ENV NBI_easim_username=admin
-ENV NBI_easim_password=admin
-ENV NBI_easim_publish=True
+ENV NBI_rajunipersim_port=22
+ENV NBI_rajunipersim_publish=True
+ENV NBI_rasim_port=22
+ENV NBI_rasim_typeGroup=Juniper
+ENV NBI_rasim_username=admin
+ENV NBI_rasim_password=admin
+ENV NBI_rasim_publish=True

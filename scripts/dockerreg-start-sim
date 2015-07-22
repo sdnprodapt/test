@@ -2,8 +2,8 @@
 PORT_MAP=
 #PORT_MAP="-p 60000:8080"
 CMD="docker run -d $PORT_MAP \
-    dockerreg.cyanoptics.com/cyan/juniper-sim \
-    bpprov-sim juniper/model/sim $1 netconf.port=22 --interface=0.0.0.0"
+    dockerreg.cyanoptics.com/cyan/rajuniper-sim \
+    bpprov-sim rajuniper/model/sim $1 netconf.port=22 --interface=0.0.0.0"
 echo $CMD
 CID=$($CMD)
 echo $CID | cut -c1-12

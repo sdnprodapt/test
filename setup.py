@@ -16,15 +16,15 @@ except ImportError:
 version = '2.0.0.dev3'
 
 setup(
-    name='juniper',
+    name='rajuniper',
     version=version,
     url='http://cyaninc.com',
     license='CYAN',
     author='Cyan',
     author_email='support@cyaninc.com',
-    description='Juniper EA',
+    description='Juniper RA',
     long_description="""\
-Juniper Rest based Adapter""",
+Juniper Resource Adapter""",
     packages=find_packages(
         exclude=(
             '.*',
@@ -43,12 +43,12 @@ Juniper Rest based Adapter""",
     install_requires=[
         'netifaces',
         'cymlrest',
-        'bpeamodels',
-        'easdk',
+        'bpramodels',
+        'rasdk',
         ],
     entry_points={
         'console_scripts': [
-            'juniper = juniper.main:main',
+            'rajuniper = rajuniper.main:main',
             ]
         },
     tests_require=[

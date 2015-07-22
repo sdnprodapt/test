@@ -17,8 +17,8 @@ from twisted.internet import defer, reactor
 from twisted.internet.task import deferLater
 from jinja2 import Environment, FileSystemLoader
 
-from easdk.controller import Controller
-from easdk.access.session import SessionAccess
+from rasdk.controller import Controller
+from rasdk.access.session import SessionAccess
 
 from rpsdk.highlevel import RpSdkDriverFactory
 from rpsdk.model import RpSdkProduct
@@ -26,13 +26,13 @@ from rpsdk.market import RpSdkMarketClient
 from rpsdk.utils.cyclonehelpers import Api, RpError
 from rpsdk.drivers.product import StaticProductListDriver
 
-from juniper.rpdrivers import (
-    EasdkBpprovCudDriver,
-    EasdkBpprovListDriver,
-    EasdkBpprovGetDriver,
-    EasdkDeviceCudDriver,
-    EasdkDeviceListDriver,
-    EasdkDeviceGetDriver
+from rajuniper.rpdrivers import (
+    RasdkBpprovCudDriver,
+    RasdkBpprovListDriver,
+    RasdkBpprovGetDriver,
+    RasdkDeviceCudDriver,
+    RasdkDeviceListDriver,
+    RasdkDeviceGetDriver
     )
 
 log = logging.getLogger(__name__)
@@ -81,13 +81,13 @@ def parse_url(url):
     else:
         return parsed.scheme, parsed.netloc, None
 
-class GenericEaDriverFactory(RpSdkDriverFactory):
-    def __init__(self, market_api, ea_settings):
+class GenericRaDriverFactory(RpSdkDriverFactory):
+    def __init__(self, market_api, ra_settings):
         self.market_api = market_api
-        self.ea_settings = ea_settings
+        self.ra_settings = ra_settings
 
-        self.resources = load_json(os.path.join(self.ea_settings.RESOURCES_DIR, 'resources.json'))
-        self.commands = load_json(os.path.join(self.ea_settings.RESOURCES_DIR, 'commands.json'))
+        self.resources = load_json(os.path.join(self.ra_settings.RESOURCES_DIR, 'resources.json'))
+        self.commands = load_json(os.path.join(self.ra_settings.RESOURCES_DIR, 'commands.json'))
 
         # mapping from domain ids to sessions
         self.domains = {}
@@ -96,8 +96,8 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
 
         self.load_commands()
 
-        if self.ea_settings.NETWORK_MANAGER_RP:
-            self.env = Environment(loader=FileSystemLoader(os.path.join(self.ea_settings.BPPROV_MODEL_DIRPATH, 'templates')))
+        if self.ra_settings.NETWORK_MANAGER_RP:
+            self.env = Environment(loader=FileSystemLoader(os.path.join(self.ra_settings.BPPROV_MODEL_DIRPATH, 'templates')))
         else:
             self.env = None
 
@@ -106,7 +106,7 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
             self.get_file(command)
 
     def get_file(self, filename):
-        filename = os.path.join(self.ea_settings.RESOURCES_DIR, filename)
+        filename = os.path.join(self.ra_settings.RESOURCES_DIR, filename)
         if filename not in self._cache:
             self._cache[filename] = load_json(filename)
         return self._cache[filename]
@@ -114,7 +114,7 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
     # def get_session_for_connection(self, root, hostname, port):
     #     def ports_for_session(session):
     #         return [session.connection[ep]['hostport']
-    #                 for ep in self.ea_settings.ENDPOINTS]
+    #                 for ep in self.ra_settings.ENDPOINTS]
 
     #     for session in root.sessions.itervalues():
     #         if session.connection.hostname == hostname and port in ports_for_session(session):
@@ -174,14 +174,14 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
     def get_driver_class(self, cmd_type, command):
         class_map = {
             'device': {
-                'cud': EasdkDeviceCudDriver,
-                'get': EasdkDeviceGetDriver,
-                'list': EasdkDeviceListDriver
+                'cud': RasdkDeviceCudDriver,
+                'get': RasdkDeviceGetDriver,
+                'list': RasdkDeviceListDriver
             },
             'bpprov': {
-                'cud': EasdkBpprovCudDriver,
-                'get': EasdkBpprovGetDriver,
-                'list': EasdkBpprovListDriver
+                'cud': RasdkBpprovCudDriver,
+                'get': RasdkBpprovGetDriver,
+                'list': RasdkBpprovListDriver
             }
         }
         return class_map[cmd_type][command]
@@ -200,8 +200,8 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
                                     device_namespace_props=command_info.get('device_namespace_props'),
                                     label_field=command_info.get('label_field'),
                                     device_id_field=command_info.get('device_id_field', None),
-                                    is_domain_manager=self.ea_settings.NETWORK_MANAGER_RP)
-            elif driver_cls == EasdkBpprovListDriver:
+                                    is_domain_manager=self.ra_settings.NETWORK_MANAGER_RP)
+            elif driver_cls == RasdkBpprovListDriver:
                 # LIST Drivers
                 driver = driver_cls(domain.tenantId,
                                     command_info['product'],
@@ -210,11 +210,11 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
                                     device_namespace_props=command_info.get('device_namespace_props'),
                                     label_field=command_info.get('label_field'),
                                     device_id_field=command_info.get('device_id_field', None),
-                                    is_domain_manager=self.ea_settings.NETWORK_MANAGER_RP)
+                                    is_domain_manager=self.ra_settings.NETWORK_MANAGER_RP)
             else:
                 raise ValueError('The driver class {} requries a device id'.format(driver_cls.__name__))
         elif command_info['type'] == 'device':
-            if driver_cls == EasdkDeviceGetDriver:
+            if driver_cls == RasdkDeviceGetDriver:
                 driver = driver_cls(domain.tenantId,
                                     command_info['product'],
                                     True,
@@ -230,14 +230,14 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
 
     @defer.inlineCallbacks
     def get_resource_cud_driver(self, domain, resource):
-        if self.ea_settings.NETWORK_MANAGER_RP:
+        if self.ra_settings.NETWORK_MANAGER_RP:
             session = yield self.get_session(domain)
             device_id = session.id
         else:
             if resource.providerResourceId:
                 device_id, _, _ = resource.providerResourceId.partition('::')
             else:
-                # This means all EA RPs will require the device field when creating a resource
+                # This means all RAs will require the device field when creating a resource
                 device_id = resource.properties.get('device')
 
         command_file = self.commands[resource.productId]
@@ -263,7 +263,7 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
 
         product = yield get_market_product(self.market_api, domain.id, productId)
 
-        if self.ea_settings.NETWORK_MANAGER_RP:
+        if self.ra_settings.NETWORK_MANAGER_RP:
             session = yield self.get_session(domain)
             device_id = session.id
         else:
@@ -290,14 +290,14 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
 
         # If the session is None the driver will list resources from all sessions
         session = None
-        if self.ea_settings.NETWORK_MANAGER_RP:
+        if self.ra_settings.NETWORK_MANAGER_RP:
             session = yield self.get_session(domain)
 
         # List is a special case because it is the only driver that needs to know what session/device
         # to list resources for. Get/CUD know what their session/session is since they are given a device_id
         if commands['type'] == 'bpprov':
             rpc_commands = {cmd: val['command'] for cmd, val in commands['commands'].iteritems()}
-            defer.returnValue(EasdkBpprovListDriver(domain.tenantId,
+            defer.returnValue(RasdkBpprovListDriver(domain.tenantId,
                                                  commands['product'],
                                                  rpc_commands,
                                                  commands['provider_resource_id_field'],
@@ -305,8 +305,8 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
                                                  label_field=commands.get('label_field'),
                                                  session=session,
                                                  device_id_field=commands.get('device_id_field', None),
-                                                 is_domain_manager=self.ea_settings.NETWORK_MANAGER_RP))
+                                                 is_domain_manager=self.ra_settings.NETWORK_MANAGER_RP))
         else:
-            defer.returnValue(EasdkDeviceListDriver(domain.tenantId,
+            defer.returnValue(RasdkDeviceListDriver(domain.tenantId,
                                                     commands['product'],
                                                     session=session))

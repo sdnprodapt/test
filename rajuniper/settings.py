@@ -2,12 +2,12 @@
 # Copyright(c) 2014, Cyan, Inc. All rights reserved.
 
 import os
-from easdk import default_settings
+from rasdk import default_settings
 
 DEFAULT_CONFIG_DIRPATH = os.path.join(os.path.dirname(__file__), 'config/dev')
 DEFAULT_PORT = 8080
 
-EA_NAME = 'juniper'
+RA_NAME = 'rajuniper'
 
 BPPROV_MODEL_DIRPATH = os.path.join(os.path.dirname(__file__), 'model')
 
@@ -44,10 +44,10 @@ ENDPOINTS = (
         'netconf'
         )
 
-ROOT_CLS = 'juniper.schema.ea.Root'
+ROOT_CLS = 'rajuniper.schema.ra.Root'
 
 CAPABILITIES_DOMAINS = list(default_settings.CAPABILITIES_DOMAINS) + \
-    ['juniper.domain.oidoperation.OidOperationDomain']
+    ['rajuniper.domain.oidoperation.OidOperationDomain']
 
 ACCESSORS = list(default_settings.ACCESSORS) + \
-    [('juniper.access.oidoperation.OidOperationAccess', {})]
+    [('rajuniper.access.oidoperation.OidOperationAccess', {})]

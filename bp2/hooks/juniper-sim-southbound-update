@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''
-This is an EXAMPLE hook to connect a sim to an ea.
+This is an EXAMPLE hook to connect a sim to an ra.
 '''
 
 import os
@@ -12,7 +12,7 @@ HOOK_SB_INTERFACE_STR = 'BP_HOOK_SOUTHBOUND_INTERFACE'
 HOOK_SB_DATA_STR = 'BP_HOOK_SOUTHBOUND_DATA'
 JUNIPER_SIM_STR = 'junipersim'
 
-EA_URL='http://0.0.0.0:8080/api/v1/sessions'
+RA_URL='http://0.0.0.0:8080/api/v1/sessions'
 
 POST_DATA = '{"authentication": {"netconf": {"username": "admin", "password": "admin"}'\
             '}, "connection": '\
@@ -35,14 +35,14 @@ if HOOK_SB_INTERFACE_STR in os.environ and HOOK_SB_DATA_STR in os.environ:
         if interface_data['state'] == 'up':
             time.sleep(1)
             print 'state up'
-            print 'URL: %s\n<<< %s >>>' % (EA_URL, POST_DATA % interface_data,)
+            print 'URL: %s\n<<< %s >>>' % (RA_URL, POST_DATA % interface_data,)
             res = requests.post(
-                    EA_URL,
+                    RA_URL,
                     data=POST_DATA % interface_data,
                     headers={'Content-Type': 'application/json'})
             print res
         else:
             print 'state down'
             res = requests.delete(
-                    EA_URL + '/%s' % (interface_data['_id'],))
+                    RA_URL + '/%s' % (interface_data['_id'],))
             print res

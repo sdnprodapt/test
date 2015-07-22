@@ -5,6 +5,6 @@ for sim in $sims; do
     ./scripts/docker-start-sim $sim mx960_1 DEBUG > /tmp/$sim
 done
 
-docker run -d --name eajuniper cyan/juniper /bin/sh -c "juniper"
-docker inspect -f '{{ .NetworkSettings.IPAddress }}' eajuniper > /tmp/eajuniper
-echo eajuniper >> /tmp/eajuniper
+docker run -d --name rajuniper cyan/rajuniper /bin/sh -c "rajuniper"
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' rajuniper > /tmp/rajuniper
+echo rajuniper >> /tmp/rajuniper

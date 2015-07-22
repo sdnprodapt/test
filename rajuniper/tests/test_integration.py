@@ -27,7 +27,7 @@ SIMS = {
     }
 }
 
-ADAPTER_SETTINGS_FILE = '/tmp/eajuniper'
+ADAPTER_SETTINGS_FILE = '/tmp/rajuniper'
 ADAPTER_API = 'http://localhost:8080/api/v1'
 
 
@@ -362,18 +362,18 @@ if __name__ == '__main__':
                                  ))
             print('{} at {}'.format(sim['device'], sim['interface']))
 
-    # Get the EA containers ports from /tmp/ea
+    # Get the RA containers ports from /tmp/ra
     with open(ADAPTER_SETTINGS_FILE, 'r') as f:
         lines = [line for line in f]
         # First line in the file is the ip of the adapter
         # Second line is the container id
         host = lines[0].strip()
         if host in {'', None}:
-            raise ValueError('ERROR: No hostname or ip given for EA')
+            raise ValueError('ERROR: No hostname or ip given for RA')
             sys.exit(1)
         port = '8080'
         ADAPTER_API = 'http://{}:{}/api/v1'.format(host, port)
-        print('EA at {}'.format(ADAPTER_API))
+        print('RA at {}'.format(ADAPTER_API))
 
     api = RestApi(ADAPTER_API)
     tries = 15

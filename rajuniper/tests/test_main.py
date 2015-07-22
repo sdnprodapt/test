@@ -2,9 +2,9 @@
 # -*- coding: UTF-8 -*-
 # Copyright(c) 2014, Cyan, Inc. All rights reserved.
 
-from easdk.conf import settings
+from rasdk.conf import settings
 
-from juniper.main import main
+from rajuniper.main import main
 from mock import patch
 
 import unittest
@@ -15,11 +15,11 @@ class test_main(unittest.TestCase):
     def tearDown(self):
         settings._configured = False
 
-    @patch('juniper.main.argparse')
-    @patch('juniper.main.setupDaemonLogging')
-    @patch('juniper.main.setupLogging')
-    @patch('juniper.main.Controller')
-    @patch('juniper.main.reactor')
+    @patch('rajuniper.main.argparse')
+    @patch('rajuniper.main.setupDaemonLogging')
+    @patch('rajuniper.main.setupLogging')
+    @patch('rajuniper.main.Controller')
+    @patch('rajuniper.main.reactor')
     def test_main(self, reactor, Controller, sL, sDL, argparse):
         main()
 

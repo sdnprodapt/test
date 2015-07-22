@@ -48,7 +48,7 @@ def southbound_update():
     if interface == 'rabbitmq':
         rabbitmq(sb_data, interface, data)
     write_southbound_data(sb_data)
-    subprocess.call('pkill -1 -x juniper'.split(' '))
+    subprocess.call('pkill -1 -x rajuniper'.split(' '))
 
 
 def main():

@@ -1,1 +1,1 @@
-recursive-include juniper *.json *.fsm *.png *.tmpl *.yang
+recursive-include rajuniper *.json *.fsm *.png *.tmpl *.yang

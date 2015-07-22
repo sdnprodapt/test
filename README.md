@@ -1,4 +1,4 @@
-Juniper Firefly Resource Adapter
+Juniper Resource Adapter
 
 ## virtualenv
 
@@ -6,11 +6,11 @@ Juniper Firefly Resource Adapter
 
 * To run the adapter in development environment:
 ```
-git clone git@github.cyanoptics.com:orchestrate/bp-ra-firefly.git bp-ra-firefly
-cd bp-ra-firefly
+git clone git@github.cyanoptics.com:orchestrate/bp-ra-juniperng.git bp-ra-juniperng
+cd bp-ra-juniperng
 make prepare-venv
 source env/bin/activate
-bprafirefly
+rajuniper
 ```
 
 * Running Tests:
@@ -23,7 +23,7 @@ make test
 To start the simulator:
 ```
 $ source env/bin/activate
-(env)$ bpprov-sim juniper/model/sim mx960 --web_port=8081 --db mx960_1
+(env)$ bpprov-sim rajuniper/model/sim mx960 --web_port=8081 --db mx960_1
 ```
 
 Now connect to the Juniper MX960 Sim via netconf(username: admin, password: admin):
@@ -67,7 +67,7 @@ In development mode, and requirements listed in requirements-src.txt are install
 
 ### Launching Simulators
 
-The simulator docker image is seperate from the main ea docker image. Launch scripts, docker-start-sim and docker-stop-sims, are provided.  The start script take a single parameter for the elementType.
+The simulator docker image is seperate from the main ra docker image. Launch scripts, docker-start-sim and docker-stop-sims, are provided.  The start script take a single parameter for the elementType.
 
 ```
 make image-sim

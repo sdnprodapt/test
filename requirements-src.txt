@@ -3,12 +3,12 @@
 #    You might later 'git remote set-url origin <git@>' if you want to
 #    easily commit from the mapped volume
 
-#-e git+git@github.cyanoptics.com:easdk/cyml.git@<branch>#egg=cyml
-#-e git+git@github.cyanoptics.com:easdk/cymlrest.git@<branch>#egg=cymlrest
-#-e git+git@github.cyanoptics.com:easdk/bp-eamodels.git@<branch>#egg=bpeamodels
-#-e git+git@github.cyanoptics.com:easdk/easdk-python.git@<branch>#egg=easdk
+#-e git+git@github.cyanoptics.com:rasdk/cyml.git@<branch>#egg=cyml
+#-e git+git@github.cyanoptics.com:rasdk/cymlrest.git@<branch>#egg=cymlrest
+#-e git+git@github.cyanoptics.com:rasdk/bp-ramodels.git@<branch>#egg=bpramodels
+#-e git+git@github.cyanoptics.com:rasdk/rasdk-python.git@<branch>#egg=rasdk
 
-#-e git+https://github.cyanoptics.com/easdk/cyml.git@<branch>#egg=cyml
-#-e git+https://github.cyanoptics.com/easdk/cymlrest.git@<branch>#egg=cymlrest
-#-e git+https://github.cyanoptics.com/easdk/bp-eamodels.git@<branch>#egg=bpeamodels
-#-e git+https://github.cyanoptics.com/easdk/easdk-python.git@master#egg=easdk
+#-e git+https://github.cyanoptics.com/rasdk/cyml.git@<branch>#egg=cyml
+#-e git+https://github.cyanoptics.com/rasdk/cymlrest.git@<branch>#egg=cymlrest
+#-e git+https://github.cyanoptics.com/rasdk/bp-ramodels.git@<branch>#egg=bpramodels
+#-e git+https://github.cyanoptics.com/rasdk/rasdk-python.git@master#egg=rasdk
