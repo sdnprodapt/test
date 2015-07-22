@@ -1,0 +1,11 @@
+export BPOCORE_IP=$(docker inspect --format="{{ .NetworkSettings.IPAddress }}" bpocore-dev)
+export DOCKER_BRIDGE_IP=$(docker inspect --format="{{ .NetworkSettings.Gateway }}" bpocore-dev)
+export MARKET_URL="http://$BPOCORE_IP:8181/bpocore/market/api/v1"
+export ASSETS_URL="http://$BPOCORE_IP:8181/bpocore/asset-manager/api/v1"
+export BPOCORE_DEV="true"
+
+ssh-keygen -R $BPOCORE_IP
+ssh-keyscan -H $BPOCORE_IP >> ~/.ssh/known_hosts
+
+alias jcurl='curl -s -H "Content-Type: application/json"'
+alias jpp='python -m json.tool'

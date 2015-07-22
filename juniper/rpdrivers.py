@@ -50,24 +50,30 @@ def _device(device):
 
 class EasdkBpprovHelper(object):
     def __init__(self, tenant_id, product_id, device_id, prid_field,
-                 device_namespace_props=None, label_field=None):
+                 device_namespace_props=None, label_field=None, is_domain_manager=False):
         self.product_id = product_id
         self.device_id = device_id
         self.prid_field = prid_field
         self.label_field = label_field
         self.tenant_id = tenant_id
+        self.is_domain_manager = is_domain_manager
         self.device_namespace_props = device_namespace_props or []
 
     def get_prid(self, provider_resource_id):
-        return provider_resource_id.partition("::")[2]
+        if not self.is_domain_manager:
+            return provider_resource_id.partition("::")[2]
+        return provider_resource_id
 
-    def map_props_to_market(self, props, discovered, device_id=None):
+    def map_props_to_market(self, props, discovered, device_id_field=None, device_id=None):
         device_id = device_id or self.device_id
-        props["device"] = device_id
-        for prop_name in self.device_namespace_props:
-            if prop_name in props:
-                props[prop_name] = "{}::{}".format(
-                    device_id, props[prop_name])
+        _device_id_field = device_id_field or 'device'
+        if device_id_field is not None or not self.is_domain_manager:
+            props[_device_id_field] = device_id
+        if not self.is_domain_manager:
+            for prop_name in self.device_namespace_props:
+                if prop_name in props:
+                    props[prop_name] = "{}::{}".format(
+                        device_id, props[prop_name])
 
         data = {
             "providerResourceId": self._get_prid_from_props(props, device_id),
@@ -83,13 +89,16 @@ class EasdkBpprovHelper(object):
         return RpSdkResource(**data)
 
     def map_props_to_domain(self, props):
-        for prop_name in self.device_namespace_props:
-            if prop_name in props.keys():
-                props[prop_name] = props[prop_name].partition(':')[2]
+        if not self.is_domain_manager:
+            for prop_name in self.device_namespace_props:
+                if prop_name in props.keys():
+                    props[prop_name] = props[prop_name].partition('::')[2]
         return props
 
     def _get_prid_from_props(self, obj, device_id):
-        return "{}::{}".format(device_id, obj[self.prid_field])
+        if not self.is_domain_manager:
+            return "{}::{}".format(device_id, obj[self.prid_field])
+        return obj[self.prid_field]
 
     @defer.inlineCallbacks
     def execute_command(self, session, command, parameters=None):
@@ -116,11 +125,17 @@ class EasdkBpprovListDriver(RpSdkResourceListDriver):
                  prid_field,
                  device_namespace_props=None,
                  label_field=None,
+                 is_domain_manager=False,
+                 device_id_field=None,
+                 session=None,
                  reactor=None):
         self.product_id = product_id
         self.rpc_commands = rpc_commands
         self.prid_field = prid_field
         self.root = Controller.instance().root
+        # The session id this driver should read from associated with
+        self.session = session
+        self.device_id_field = device_id_field
         from twisted.internet import reactor as twisted_reactor
 
         self.reactor = reactor or twisted_reactor
@@ -130,7 +145,8 @@ class EasdkBpprovListDriver(RpSdkResourceListDriver):
                                         None,
                                         self.prid_field,
                                         device_namespace_props,
-                                        label_field)
+                                        label_field,
+                                        is_domain_manager)
 
     def __repr__(self):
         return "<%s %s>" % (
@@ -143,17 +159,29 @@ class EasdkBpprovListDriver(RpSdkResourceListDriver):
         result = []
         rpc_is_list = 'list' in self.rpc_commands
         rpc_command = self.rpc_commands["list"] if rpc_is_list else self.rpc_commands["get"]
-        devices = self.root.devices
-        for device in devices.values():
-            if device.session.connectState == "CONNECTED":
-                cmd_res = yield self.helper.execute_command(device.session, rpc_command)
+        if self.session:
+            device = self.root.devices[self.session.id]
+            if self.session.connectState == "CONNECTED":
+                cmd_res = yield self.helper.execute_command(self.session, rpc_command)
                 if rpc_is_list:
-                    objs = [self.helper.map_props_to_market(obj, True, device_id=device.id)
+                    objs = [self.helper.map_props_to_market(obj, True, device_id_field=self.device_id_field, device_id=device.id)
                             for obj in cmd_res]
                     result.extend(objs)
                 else:
-                    obj = self.helper.map_props_to_market(cmd_res, True, device_id=device.id)
+                    obj = self.helper.map_props_to_market(cmd_res, True, device_id_field=self.device_id_field, device_id=device.id)
                     result.append(obj)
+        else:
+            devices = self.root.devices
+            for device in devices.values():
+                if device.session.connectState == "CONNECTED":
+                    cmd_res = yield self.helper.execute_command(device.session, rpc_command)
+                    if rpc_is_list:
+                        objs = [self.helper.map_props_to_market(obj, True, device_id_field=self.device_id_field, device_id=device.id)
+                                for obj in cmd_res]
+                        result.extend(objs)
+                    else:
+                        obj = self.helper.map_props_to_market(cmd_res, True, device_id_field=self.device_id_field, device_id=device.id)
+                        result.append(obj)
         defer.returnValue(result)
 
 
@@ -166,12 +194,15 @@ class EasdkBpprovGetDriver(RpSdkResourceGetDriver):
                  prid_field,
                  device_namespace_props=None,
                  label_field=None,
+                 device_id_field=None,
+                 is_domain_manager=False,
                  reactor=None):
         self.product_id = product_id
         self.rpc_commands = rpc_commands
         self.prid_field = prid_field
         self.device_id = device_id
         self.root = Controller.instance().root
+        self.device_id_field = device_id_field
         from twisted.internet import reactor as twisted_reactor
 
         self.reactor = reactor or twisted_reactor
@@ -181,7 +212,8 @@ class EasdkBpprovGetDriver(RpSdkResourceGetDriver):
                                         self.device_id,
                                         self.prid_field,
                                         device_namespace_props,
-                                        label_field)
+                                        label_field,
+                                        is_domain_manager)
 
     def __repr__(self):
         return "<%s %s %s>" % (
@@ -203,7 +235,7 @@ class EasdkBpprovGetDriver(RpSdkResourceGetDriver):
         }
         data = yield self.helper.execute_command(device.session, rpc_command, parameters=params)
 
-        defer.returnValue(self.helper.map_props_to_market(data, True))
+        defer.returnValue(self.helper.map_props_to_market(data, True, device_id_field=self.device_id_field))
 
 
 class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
@@ -215,11 +247,14 @@ class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
                  prid_field,
                  device_namespace_props=None,
                  label_field=None,
+                 device_id_field=None,
+                 is_domain_manager=False,
                  reactor=None):
         self.product_id = product_id
         self.rpc_commands = rpc_commands
         self.prid_field = prid_field
         self.device_id = device_id
+        self.device_id_field = device_id_field
         self.root = Controller.instance().root
         from twisted.internet import reactor as twisted_reactor
 
@@ -230,7 +265,8 @@ class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
                                      self.device_id,
                                      self.prid_field,
                                      device_namespace_props,
-                                     label_field)
+                                     label_field,
+                                     is_domain_manager)
 
     def __repr__(self):
         return "<%s %s %s>" % (
@@ -250,10 +286,14 @@ class EasdkBpprovCudDriver(RpSdkResourceCudDriver):
         if not device:
             raise RpError(404, "Device {} not found".format(self.device_id))
 
-        yield self.helper.execute_command(device.session, rpc_command, parameters=properties)
+        create_resp = yield self.helper.execute_command(device.session, rpc_command, parameters=properties)
+
+        provider_id = create_resp.get(self.prid_field)
+        if provider_id is None:
+            raise RpError(500, "Unable to determine provider ID from created resource")
+
         params = {
-            #TODO: This is not right. The ID should be harvested from the return value
-            self.prid_field: resource.properties[self.prid_field]
+            self.prid_field: provider_id
         }
         data = yield self.helper.execute_command(device.session, self.rpc_commands["get"], parameters=params)
 
@@ -400,7 +440,7 @@ class EasdkDeviceGetDriver(RpSdkResourceGetDriver):
 
 
 class EasdkDeviceListDriver(RpSdkResourceListDriver):
-    def __init__(self, tenant_id, product_id, reactor=None):
+    def __init__(self, tenant_id, product_id, reactor=None, session=None):
         super(EasdkDeviceListDriver, self).__init__()
         self.product_id = product_id
         from twisted.internet import reactor as twisted_reactor
@@ -408,6 +448,7 @@ class EasdkDeviceListDriver(RpSdkResourceListDriver):
         self.reactor = reactor or twisted_reactor
         self.helper = EasdkDriverHelper(tenant_id, product_id)
 
+        self.session = session
         self.root = Controller.instance().root
 
     def __str__(self):
@@ -415,10 +456,15 @@ class EasdkDeviceListDriver(RpSdkResourceListDriver):
 
     def list_resources(self):
         result = []
-        for device in self.root.devices.values():
-            session = device.session
-            obj = self.helper.merge_device_session_info(_device(device), _session(session))
+        if self.session:
+            device = self.root.devices[self.session.id]
+            obj = self.helper.merge_device_session_info(_device(device), _session(self.session))
             result.append(self.helper.get_resource(obj, True))
+        else:
+            for device in self.root.devices.values():
+                session = device.session
+                obj = self.helper.merge_device_session_info(_device(device), _session(session))
+                result.append(self.helper.get_resource(obj, True))
         return result
 
 

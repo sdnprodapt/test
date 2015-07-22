@@ -12,7 +12,6 @@ env
 */*/*.swp
 */*/*/*.swp
 *.egg-info
-scripts
 Makefile
 requirements-src.txt
 blueplanet

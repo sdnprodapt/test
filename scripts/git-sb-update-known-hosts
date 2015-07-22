@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh-keyscan -p 2022 -H git-ssh >> ~/.ssh/known_hosts

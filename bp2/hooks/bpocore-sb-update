@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+# Copyright(c) 2015, Cyan, Inc. All rights reserved.
+
+from bp2hookutil.etchosts import handle_southbound_update_single_provider
+import os
+import json
+from pprint import pprint as pp
+
+def main():
+    print 'southbound-update called with:'
+    for k, v in os.environ.iteritems():
+        print '    {}: {}'.format(k, v)
+    _data = os.environ.get('BP_HOOK_SOUTHBOUND_DATA')
+    print 'parsed BP_HOOK_SOUTHBOUND_DATA:'
+    if _data:
+        data = json.loads(os.environ.get('BP_HOOK_SOUTHBOUND_DATA', 'NONE'))
+        pp(data)
+    else:
+        print '    NONE'
+
+    handle_southbound_update_single_provider()
+
+
+if __name__ == '__main__':
+    main()

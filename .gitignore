@@ -5,6 +5,10 @@ __pycache__/
 # C extensions
 *.so
 
+# IntelliJ IDE specific
+.idea
+*.iml
+
 # Distribution / packaging
 .Python
 env/

@@ -9,17 +9,23 @@
 
 
 import os
-import json
+import simplejson as json
+import logging
+from urlparse import urlparse
 
-from twisted.internet import defer
+from twisted.internet import defer, reactor
+from twisted.internet.task import deferLater
+from jinja2 import Environment, FileSystemLoader
+
+from easdk.controller import Controller
+from easdk.access.session import SessionAccess
 
 from rpsdk.highlevel import RpSdkDriverFactory
 from rpsdk.model import RpSdkProduct
 from rpsdk.market import RpSdkMarketClient
 from rpsdk.utils.cyclonehelpers import Api, RpError
 from rpsdk.drivers.product import StaticProductListDriver
-# from rpsdk.drivers.eabpprov import EaBpprovCudDriver, EaBpprovListDriver, EaBpprovGetDriver
-# from rpsdk.drivers.eadevice import EaDeviceCudDriver, EaDeviceListDriver, EaDeviceGetDriver
+
 from juniper.rpdrivers import (
     EasdkBpprovCudDriver,
     EasdkBpprovListDriver,
@@ -28,6 +34,8 @@ from juniper.rpdrivers import (
     EasdkDeviceListDriver,
     EasdkDeviceGetDriver
     )
+
+log = logging.getLogger(__name__)
 
 # Get resource by Provider Resource ID from Market API.
 # Note that this returns a resource from market as-is, i.e. without any translation
@@ -65,6 +73,14 @@ def load_json(path):
         return json.load(fd)
 
 
+def parse_url(url):
+    parsed = urlparse(url)
+    if ':' in parsed.netloc:
+        host, port = parsed.netloc.split(':')
+        return parsed.scheme, host, port
+    else:
+        return parsed.scheme, parsed.netloc, None
+
 class GenericEaDriverFactory(RpSdkDriverFactory):
     def __init__(self, market_api, ea_settings):
         self.market_api = market_api
@@ -73,9 +89,17 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
         self.resources = load_json(os.path.join(self.ea_settings.RESOURCES_DIR, 'resources.json'))
         self.commands = load_json(os.path.join(self.ea_settings.RESOURCES_DIR, 'commands.json'))
 
+        # mapping from domain ids to sessions
+        self.domains = {}
+
         self._cache = {}
 
         self.load_commands()
+
+        if self.ea_settings.NETWORK_MANAGER_RP:
+            self.env = Environment(loader=FileSystemLoader(os.path.join(self.ea_settings.BPPROV_MODEL_DIRPATH, 'templates')))
+        else:
+            self.env = None
 
     def load_commands(self):
         for resource, command in self.commands.iteritems():
@@ -87,16 +111,67 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
             self._cache[filename] = load_json(filename)
         return self._cache[filename]
 
-    # def get_driver_type_for_domain(self, domain):
-    #     if domain.id in self.driver_types:
-    #         return self.driver_types[domain.id]
-    #     else:
-    #         return None
+    # def get_session_for_connection(self, root, hostname, port):
+    #     def ports_for_session(session):
+    #         return [session.connection[ep]['hostport']
+    #                 for ep in self.ea_settings.ENDPOINTS]
 
-    # def get_device_id_for_domain(self, domain):
-    #     return self.device_ids.get(domain.id, None)
+    #     for session in root.sessions.itervalues():
+    #         if session.connection.hostname == hostname and port in ports_for_session(session):
+    #             return session
+    #     return None
 
-    def get_driver_class(self, rp_type, command):
+    @defer.inlineCallbacks
+    def get_session(self, domain):
+        if domain.id not in self.domains:
+            root = Controller.instance().root
+            session_access = SessionAccess(root)
+            # TODO: Check that there isn't already a session for this hostname and port
+            # If there is associate it with the domain id and return that
+            # session = self.get_session_for_connection(root, hostname, port)
+            # if session is not None:
+            #     self.domains[domain.id] = session
+            #     log.info('Found existing session %s for domain %s', session.id, domain.id)
+            #     defer.returnValue(session)
+
+            log.info('Creating session for domain %s', domain.id)
+            session_create_params = self.get_file('session-templates.json')
+
+            scheme, hostname, hostport = parse_url(domain.accessUrl)
+            kwargs = {
+                'hostname': hostname,
+                'hostport': hostport,
+                'scheme': scheme,
+                'description': domain.description
+            }
+            kwargs.update(domain.properties)
+
+            # For now we load a jinja template that will create the session create
+            # json. I am open to other suggestions
+            template_file = session_create_params[domain.domainType]['template']
+            properties = self.env.get_template(template_file).render(**kwargs)
+            # convert unicode to utf-8 to fix simplejson not loading the properties
+            # correctly
+            if isinstance(properties, unicode):
+                properties = properties.encode('utf-8')
+            properties = json.loads(properties)
+
+            yield session_access.preCreate(properties, None)
+            session = session_access.doCreate(properties, None, root.sessions)
+            yield session_access.postCreate(session, None)
+
+            t = 0
+            while session.connectState in ['CONNECTING', 'SYNCHRONIZING']:
+                yield deferLater(reactor, 0.5, lambda: None)
+                t += 0.5
+                if t > 30:
+                    break
+
+            self.domains[domain.id] = session
+            log.info('Session %s created for domain %s', session.id, domain.id)
+        defer.returnValue(self.domains[domain.id])
+
+    def get_driver_class(self, cmd_type, command):
         class_map = {
             'device': {
                 'cud': EasdkDeviceCudDriver,
@@ -109,9 +184,9 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
                 'list': EasdkBpprovListDriver
             }
         }
-        return class_map[rp_type][command]
+        return class_map[cmd_type][command]
 
-    def make_driver(self, api, domain, command, command_info, device_id=None, resource=None):
+    def make_driver(self, domain, command, command_info, device_id=None, resource=None):
         driver_cls = self.get_driver_class(command_info['type'], command)
         if command_info['type'] == 'bpprov':
             rpc_commands = {cmd: val['command'] for cmd, val in command_info['commands'].iteritems()}
@@ -122,16 +197,20 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
                                     command_info['product'],
                                     rpc_commands,
                                     command_info['provider_resource_id_field'],
-                                    command_info.get('device_namespace_props'),
-                                    command_info.get('label_field'))
+                                    device_namespace_props=command_info.get('device_namespace_props'),
+                                    label_field=command_info.get('label_field'),
+                                    device_id_field=command_info.get('device_id_field', None),
+                                    is_domain_manager=self.ea_settings.NETWORK_MANAGER_RP)
             elif driver_cls == EasdkBpprovListDriver:
                 # LIST Drivers
                 driver = driver_cls(domain.tenantId,
                                     command_info['product'],
                                     rpc_commands,
                                     command_info['provider_resource_id_field'],
-                                    command_info.get('device_namespace_props'),
-                                    command_info.get('label_field'))
+                                    device_namespace_props=command_info.get('device_namespace_props'),
+                                    label_field=command_info.get('label_field'),
+                                    device_id_field=command_info.get('device_id_field', None),
+                                    is_domain_manager=self.ea_settings.NETWORK_MANAGER_RP)
             else:
                 raise ValueError('The driver class {} requries a device id'.format(driver_cls.__name__))
         elif command_info['type'] == 'device':
@@ -142,29 +221,32 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
                                     resource)
             else:
                 driver = driver_cls(domain.tenantId,
-                                command_info['product'])
+                                    command_info['product'])
         return driver
 
     def get_product_list_driver(self, domain):
         api = Api(domain.accessUrl, None)
         return StaticProductListDriver([make_product(domain.id, r) for r in self.resources])
 
+    @defer.inlineCallbacks
     def get_resource_cud_driver(self, domain, resource):
-        api = Api(domain.accessUrl, None)
-        if resource.providerResourceId:
-            device_id, _, _ = resource.providerResourceId.partition('::')
+        if self.ea_settings.NETWORK_MANAGER_RP:
+            session = yield self.get_session(domain)
+            device_id = session.id
         else:
-            # This means all EA RPs will require the device field when creating a resource
-            device_id = resource.properties.get('device')
+            if resource.providerResourceId:
+                device_id, _, _ = resource.providerResourceId.partition('::')
+            else:
+                # This means all EA RPs will require the device field when creating a resource
+                device_id = resource.properties.get('device')
 
         command_file = self.commands[resource.productId]
         commands = self.get_file(command_file)
 
-        return self.make_driver(api, domain, 'cud', commands, device_id=device_id)
+        defer.returnValue(self.make_driver(domain, 'cud', commands, device_id=device_id))
 
     @defer.inlineCallbacks
     def get_resource_get_driver(self, domain, provider_resource_id):
-        api = Api(domain.accessUrl, None)
 
         # From the ID alone we don't know the resource or product type
         # Need to consult market.
@@ -181,7 +263,11 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
 
         product = yield get_market_product(self.market_api, domain.id, productId)
 
-        device_id, _, _ = provider_resource_id.partition('::')
+        if self.ea_settings.NETWORK_MANAGER_RP:
+            session = yield self.get_session(domain)
+            device_id = session.id
+        else:
+            device_id, _, _ = provider_resource_id.partition('::')
 
         #device_id = resource.properties["device"]
 
@@ -191,14 +277,36 @@ class GenericEaDriverFactory(RpSdkDriverFactory):
         command_file = self.commands[product.providerProductId]
         commands = self.get_file(command_file)
 
-        driver =  self.make_driver(api, domain, 'get', commands, device_id=device_id, resource=resource)
+        driver =  self.make_driver(domain, 'get', commands, device_id=device_id, resource=resource)
         defer.returnValue(driver)
 
+    @defer.inlineCallbacks
     def get_resource_list_driver(self, domain, resource_type_uri):
-        api = Api(domain.accessUrl, None)
 
         resource_map = {r['resource_type']: r['provider_product_id'] for r in self.resources}
 
         command_file = self.commands[resource_map[resource_type_uri]]
         commands = self.get_file(command_file)
-        return self.make_driver(api, domain, 'list', commands)
+
+        # If the session is None the driver will list resources from all sessions
+        session = None
+        if self.ea_settings.NETWORK_MANAGER_RP:
+            session = yield self.get_session(domain)
+
+        # List is a special case because it is the only driver that needs to know what session/device
+        # to list resources for. Get/CUD know what their session/session is since they are given a device_id
+        if commands['type'] == 'bpprov':
+            rpc_commands = {cmd: val['command'] for cmd, val in commands['commands'].iteritems()}
+            defer.returnValue(EasdkBpprovListDriver(domain.tenantId,
+                                                 commands['product'],
+                                                 rpc_commands,
+                                                 commands['provider_resource_id_field'],
+                                                 device_namespace_props=commands.get('device_namespace_props'),
+                                                 label_field=commands.get('label_field'),
+                                                 session=session,
+                                                 device_id_field=commands.get('device_id_field', None),
+                                                 is_domain_manager=self.ea_settings.NETWORK_MANAGER_RP))
+        else:
+            defer.returnValue(EasdkDeviceListDriver(domain.tenantId,
+                                                    commands['product'],
+                                                    session=session))

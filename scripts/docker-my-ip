@@ -1,0 +1,5 @@
+#!/bin/bash
+
+awk 'NR==1 {print $1}' /etc/hosts
+# ifconfig eth0 | grep "inet addr" | awk '{print $2}' | cut -d: -f2
+# ifconfig eth0 | grep "inet addr" | awk '{split($2, arr, ":"); print arr[2]}'
