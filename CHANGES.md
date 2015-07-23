@@ -1,12 +1,7 @@
-Version 2.0.0.dev0
-------------------
+Version 0.0.1
+-------------
 
-- Added BP2 support
-- Added MX960 provisioning integration tests
-- Added Firefly support
+Initial Juniper RA (released on July 23 2015)
 
-### Bug fixes
+-Converted from Juniper EA 2.0.0.dev1
 
-- Fix MX960 not catching errors properly for sims
-- Fix L2 circuit provisioning not using the neighbor router id
-- Fix MX960 l2circuit simulator command not working
