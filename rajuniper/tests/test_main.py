@@ -21,6 +21,7 @@ class test_main(unittest.TestCase):
     @patch('rajuniper.main.Controller')
     @patch('rajuniper.main.reactor')
     def test_main(self, reactor, Controller, sL, sDL, argparse):
+        argparse.ArgumentParser().parse_args().declare_rp = False
         main()
 
 
