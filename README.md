@@ -6,7 +6,7 @@ Juniper Resource Adapter
 
 * To run the adapter in development environment:
 ```
-git clone git@github.cyanoptics.com:orchestrate/bp-ra-juniperng.git bp-ra-juniperng
+git clone git@github.cyanoptics.com:ra/bp-ra-juniperng.git bp-ra-juniperng
 cd bp-ra-juniperng
 make prepare-venv
 source env/bin/activate
