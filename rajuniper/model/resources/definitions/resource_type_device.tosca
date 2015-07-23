@@ -21,9 +21,9 @@ resourceTypes {
 
     properties {
 
-      elementType {
+      resourceType {
         type = string
-        title = "Element Type"
+        title = "Adapter Resource Type"
         description = ""
         optional = false
       }

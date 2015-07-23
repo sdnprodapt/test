@@ -10,11 +10,14 @@ from rasdk.controller import Controller
 
 from twisted.internet import reactor, defer
 
+from twisted.web import client
+client._HTTP11ClientFactory.noisy = False
+
 from rpsdk.highlevel import RpSdkStatelessController, RpSdkHighLevelServer, declare_rp
 from rpsdk.model import RpSdkSettings, RpSdkDeploymentSettings
 from rpsdk.utils.cyclonehelpers import Api
 from rpsdk.onboarding import onboard_types
-from rajuniper.rp import GenericRaDriverFactory
+from rasdk.ra import RaDriverFactory
 
 import argparse
 import os
@@ -23,6 +26,7 @@ import subprocess
 
 import logging
 log = logging.getLogger(__name__)
+
 
 def get_assets_api(orchestrate_settings):
     if orchestrate_settings.auth_scheme:
@@ -45,10 +49,11 @@ def get_market_api(orchestrate_settings):
     market_api = Api(orchestrate_settings.market_url, auth_data)
     return market_api
 
+
 @defer.inlineCallbacks
-def init_rp(rp_server, rp_settings, deploy_settings, market_api, assets_api):
+def init_rp(rp_server, rp_settings, deploy_settings, market_api, assets_api, dev):
     if deploy_settings.orchestrate.onboard_types:
-        hostname = None if 'BPOCORE_DEV' in os.environ else 'git-ssh'
+        hostname = None if dev else 'git-ssh'
         yield onboard_types(rp_settings.id,
                             rp_settings.definitions,
                             deploy_settings.identity,
@@ -63,7 +68,7 @@ def init_rp(rp_server, rp_settings, deploy_settings, market_api, assets_api):
 DOCKER_BRIDGE_IP_ENV = "DOCKER_BRIDGE_IP"
 ASSETS_URL_ENV = "ASSETS_URL"
 MARKET_URL_ENV = "MARKET_URL"
-BPOCORE_DEV_ENV = "BPOCORE_DEV"
+
 
 def check_env():
     REQUIRED_ENV_VARS = [
@@ -84,16 +89,17 @@ def check_env():
         print("Missing required environment variables (see README.md): %s" % ", ".join(missing_envs))
         sys.exit(1)
 
-def build_deploy_config():
+
+def build_deploy_config(dev):
     container_ip = subprocess.check_output(['./scripts/docker-my-ip']).strip()
     log.info('Binding rp server to {}:{}'.format(container_ip, settings.RP_BIND_PORT))
     return {
         "orchestrate": {
-            "assets_url": os.environ.get(ASSETS_URL_ENV) or 'http://bpocore/bpocore/asset-manager/api/v1',
-            "market_url": os.environ.get(MARKET_URL_ENV) or 'http://bpocore/bpocore/market/api/v1',
+            "assets_url": os.environ.get(ASSETS_URL_ENV) if dev else 'http://bpocore/bpocore/asset-manager/api/v1',
+            "market_url": os.environ.get(MARKET_URL_ENV) if dev else 'http://bpocore/bpocore/market/api/v1',
         },
         "server": {
-            "bind_address": os.environ.get(DOCKER_BRIDGE_IP_ENV) or container_ip,
+            "bind_address": os.environ.get(DOCKER_BRIDGE_IP_ENV) if dev else container_ip,
             "bind_port": settings.RP_BIND_PORT,
         },
         "identity": {
@@ -101,8 +107,11 @@ def build_deploy_config():
         }
     }
 
-def get_deploy_settings():
-    conf = build_deploy_config()
+
+def get_deploy_settings(dev):
+    if dev:
+        check_env()
+    conf = build_deploy_config(dev)
     return RpSdkDeploymentSettings.from_data(conf)
 
 
@@ -113,6 +122,10 @@ def main():
         help='main rajuniper config directory path')
     parser.add_argument('--verbose', '-v', default=1, action='count', help='increased verbosity')
     parser.add_argument('--port', '-p', type=int, default=settings.DEFAULT_PORT, help='http server port')
+    parser.add_argument('--declare-rp', dest='declare_rp', action='store_true',
+        help='Declare the adapter to bpocore and onbaord resource types')
+    parser.add_argument('--dev', '-d', action='store_true',
+        help='Start the adapter in dev mode. Get bpocore interfaces from env variables')
 
     args = parser.parse_args()
 
@@ -123,24 +136,26 @@ def main():
 
     log.info('rajuniper pid %s started with %s', os.getpid(), args)
 
-    deploy_settings = get_deploy_settings()
+    if args.declare_rp:
+        deploy_settings = get_deploy_settings(args.dev)
 
-    market_api = get_market_api(deploy_settings.orchestrate)
-    assets_api = get_assets_api(deploy_settings.orchestrate)
+        market_api = get_market_api(deploy_settings.orchestrate)
+        assets_api = get_assets_api(deploy_settings.orchestrate)
 
-    rp_settings = RpSdkSettings.from_yaml_file(settings.RP_CONFIG)
+        rp_settings = RpSdkSettings.from_yaml_file(settings.RP_CONFIG)
 
-    rp_controller = RpSdkStatelessController(rp_settings, deploy_settings,
+        rp_controller = RpSdkStatelessController(rp_settings, deploy_settings,
                                              market_api,
-                                             GenericRaDriverFactory(market_api, settings))
+                                             RaDriverFactory(market_api, settings))
 
-    rp_server = RpSdkHighLevelServer(deploy_settings.server.bind_port, rp_controller)
-
+        rp_server = RpSdkHighLevelServer(deploy_settings.server.bind_port, rp_controller)
 
     ra_controller = Controller(args.port, args.configpath)
 
     reactor.callWhenRunning(ra_controller.start)
-    reactor.callWhenRunning(init_rp, rp_server, rp_settings, deploy_settings, market_api, assets_api)
+
+    if args.declare_rp:
+        reactor.callWhenRunning(init_rp, rp_server, rp_settings, deploy_settings, market_api, assets_api, args.dev)
 
     reactor.run()
 

@@ -17,4 +17,4 @@ RUN ln -s /bp2/hooks/bpocore-sb-update /usr/local/bin/bpocore-sb-update
 ENV SBI_bpocore_southbound-update=bpocore-sb-update
 ENV SBI_git-ssh_southbound-update=bpocore-sb-update
 
-CMD ["rajuniper", "--configpath", "/tmp", "--logfile", "/bp2/log/rajuniper.log"]
+CMD ["rajuniper", "--declare-rp", "--configpath", "/tmp", "--logfile", "/bp2/log/rajuniper.log"]

@@ -554,7 +554,7 @@
               "swVersion": "JUNOS 13.3R3.6", 
               "swType": "JuniperMX960", 
               "serialNumber": "JN1160284AFA", 
-              "elementType": "JuniperMX960", 
+              "resourceType": "JuniperMX960",
               "type": "JuniperMX960", 
               "deviceVersion": "JuniperMX960"
             }

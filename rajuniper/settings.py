@@ -17,14 +17,14 @@ RP_CONFIG = os.path.join(RESOURCES_DIR, 'rp_config.yaml')
 # RP_DEPLOY_SETTINGS = os.path.join(RESOURCES_DIR, 'deploy_settings.yaml')
 RP_BIND_PORT = 9191
 
-# NETWORK_MANAGER_RP means this rp is for talking to systems that
+# DOMAIN_MANAGER_RP means this RA is for talking to systems that
 # manage other elements, eg vCenter, openstack, SAM etc.
-# If False, the RP will manage individual devices, eg Firefly, Cisco, etc.
-NETWORK_MANAGER_RP = False
+# If False, the RA will manage individual devices, eg Firefly, Cisco, etc.
+DOMAIN_MANAGER_RP = False
 
 TYPE_GROUP = 'Juniper'
 
-ELEMENT_TYPES = ['JuniperMX240',
+RESOURCE_TYPES = ['JuniperMX240',
                  'JuniperMX480',
                  'JuniperMX960',
                  'JuniperMX2010',

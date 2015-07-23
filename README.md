@@ -67,7 +67,7 @@ In development mode, and requirements listed in requirements-src.txt are install
 
 ### Launching Simulators
 
-The simulator docker image is seperate from the main ra docker image. Launch scripts, docker-start-sim and docker-stop-sims, are provided.  The start script take a single parameter for the elementType.
+The simulator docker image is seperate from the main ra docker image. Launch scripts, docker-start-sim and docker-stop-sims, are provided.  The start script take a single parameter for the resourceType.
 
 ```
 make image-sim
