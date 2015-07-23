@@ -10,8 +10,21 @@ git clone git@github.cyanoptics.com:ra/bp-ra-juniperng.git bp-ra-juniperng
 cd bp-ra-juniperng
 make prepare-venv
 source env/bin/activate
-rajuniper
+rajuniper --dev --declare-rp
 ```
+
+* Command line options
+
+ When `--declare-rp` is specified, the adapter will onboard its resource types and register itself as a Resource Provider to Orchestrate.
+
+ When `--dev` is specified, the adapter will make use the following environment variables for its operation
+
+ `DOCKER_BRIDGE_IP` specifies the ip address this adapter will advertise itself when registering to Orchestrate
+
+ `ASSETS_URL` specifies the URL for Orchestrate's Assets API. For example, `http://localhost:8181/bpocore/asset-manager/api/v1`
+
+ `MARKET_URL` specifies the URL for Orchestrate's Market API. For example, `http://localhost:8181/bpocore/market/api/v1`
+
 
 * Running Tests:
 ```
