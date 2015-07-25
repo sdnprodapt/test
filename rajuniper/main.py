@@ -59,7 +59,8 @@ def init_rp(rp_server, rp_settings, deploy_settings, market_api, assets_api, dev
                             deploy_settings.identity,
                             market_api,
                             assets_api,
-                            hostname=hostname)
+                            hostname=hostname,
+                            ui_schema=rp_settings.ui_schema)
 
     yield declare_rp(market_api, rp_settings, deploy_settings)
     rp_server.start()
