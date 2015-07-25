@@ -28,11 +28,20 @@ description: Managing Interfaces, Virtual Routers, Firewall and NAT configuratio
 # The "version" should follow semantic versioning. Currently ignored.
 version: 0.0.1
 
-# Location where RP specific definitions are stored. E.g, type definitions, UI
-# schema, etc. This value can be absolute or relative to this file however it
+# Location where RP specific type definitions are stored.
+# This value can be absolute or relative to this file however it
 # must be resolvable when deployed. If this value is null then no definitions
 # will be onboarded.
 definitions: ./definitions
+
+# Locacation where the UI schema files for the resource types and the domains are stored
+# The UI schema files for resource types should be stored in the base directory of the specified
+# location, while the UI schema files for the domains should be stored in the "domain-types"
+# subdirectory of the location.
+# This value can be absolute or relative to this file however it
+# must be resolvable when deployed. If this value is null then no UI schema
+# will be onboarded.
+ui_schema: ./ui-schema
 
 # Domain definitions specify the types of domains supported by this RP.
 # Developers must define their own domains. See
