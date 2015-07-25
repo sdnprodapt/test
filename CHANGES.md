@@ -1,3 +1,11 @@
+Version 0.0.2
+-------------
+
+Onbarding enhancements (released on July 25 2015)
+
+-Bump rpsdk dependency to 0.2.5
+-Support UI schema onboarding and onboard retries
+
 Version 0.0.1
 -------------
 
