@@ -17,7 +17,7 @@ from rpsdk.highlevel import RpSdkStatelessController, RpSdkHighLevelServer, decl
 from rpsdk.model import RpSdkSettings, RpSdkDeploymentSettings
 from rpsdk.utils.cyclonehelpers import Api
 from rpsdk.onboarding import onboard_types
-from rasdk.ra import RaDriverFactory
+from rpsdk.highlevel.ra import RaDriverFactory
 
 import argparse
 import os

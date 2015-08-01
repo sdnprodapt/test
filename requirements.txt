@@ -14,8 +14,7 @@ cyclone==1.0-rc13
 cyml==1.0.0
 cymlrest==1.3.1
 decorator==3.4.2
-#rasdk==1.5.0
-git+https://github.cyanoptics.com/jhsu/rasdk-python@rp#egg=rasdk
+rasdk==1.6.0
 enum34==1.0.4
 flake8==2.2.3
 gdfpm==0.0.1
@@ -47,7 +46,6 @@ textfsm==0.2.1
 wsgiref==0.1.2
 xmltodict==0.9.0
 zope.interface==4.1.2
-rpsdk==0.2.5
-
+rpsdk==0.2.6
 git+https://github.cyanoptics.com/bp2/bp2hookutil.git@0.1.4
 
