@@ -13,7 +13,7 @@ try:
 except ImportError:
     pass
 
-version = '0.0.3.dev0'
+version = '0.0.3'
 
 setup(
     name='rajuniper',

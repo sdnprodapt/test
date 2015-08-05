@@ -1,3 +1,10 @@
+Version 0.0.3
+-------------
+
+Use rpsdk 0.2.7 (released on August 5 2015)
+
+-A typegroup issue when forming device resources is fixed as a result
+
 Version 0.0.2
 -------------
 
