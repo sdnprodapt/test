@@ -46,6 +46,6 @@ textfsm==0.2.1
 wsgiref==0.1.2
 xmltodict==0.9.0
 zope.interface==4.1.2
-rpsdk==0.2.6
+rpsdk==0.2.7
 git+https://github.cyanoptics.com/bp2/bp2hookutil.git@0.1.4
 
