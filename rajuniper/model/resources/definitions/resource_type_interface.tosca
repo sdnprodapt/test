@@ -69,13 +69,6 @@ resourceTypes {
         description = ""
         optional = true
       }
-    
-      oper_status {
-        type = boolean 
-        title = "Operational Status Up"
-        description = ""
-        optional = true
-      }
 
       physical_interface {
         type = string
