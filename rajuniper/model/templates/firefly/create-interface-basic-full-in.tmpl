@@ -1,0 +1,18 @@
+{
+{% set props = data['properties'] %}
+{% if 'admin_status' in props %}
+    "admin_status": "{{ props['admin_status'] }}",
+{% endif %}
+{% if 'mtu' in props %}
+        "mtu": "{{ props['mtu'] }}",
+{% endif %}
+{% if 'ipv4_addresses' in props %}
+    "ipv4_addresses": [
+    {% for address in props['ipv4_addresses'] %}
+        "{{ address }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ],
+{% endif %}
+    "interface": "{{ props.name.split('.')[0] }}",
+    "unit": "{{ props.name.split('.')[1] }}"
+}

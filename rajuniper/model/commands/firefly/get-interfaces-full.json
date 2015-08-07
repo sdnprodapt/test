@@ -1,0 +1,41 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/get-interfaces-full.json"
+    ],
+    "endpoint-parameters": {
+        "command": {
+            "name": "get-interface-information"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "ports": "interface-information.physical-interface"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {
+                "paths": [
+                    "ports..logical-interface",
+                    "ports..logical-interface..address-family",
+                    "ports..logical-interface..address-family..interface-address"
+                ]
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "firefly/get-interfaces-full.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

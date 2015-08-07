@@ -1,0 +1,300 @@
+{
+    "Valid with mtu and zone": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "properties": {
+                "mtu": "1500",
+                "security_zone": "trustme",
+                "name": "ge-0/0/5.0",
+                "ipv4_addresses": [
+                    "192.168.16.1/24"
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>192.168.16.1/24</name>",
+                "</address>",
+                "<mtu>1500</mtu>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>trustme</name>",
+                "<interfaces>",
+                "<name>ge-0/0/5.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Valid with admin and two ip": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "properties": {
+                "admin_status": true,
+                "name": "ge-0/0/5.0",
+                "ipv4_addresses": [
+                    "192.168.16.1/24",
+                    "192.168.106.100/24"
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<disable operation=\"delete\"/>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>192.168.16.1/24</name>",
+                "</address>",
+                "<address>",
+                "<name>192.168.106.100/24</name>",
+                "</address>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>untrust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/5.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>http</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>https</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ssh</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>telnet</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>dhcp</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "<system-services>",
+                "<name>netconf</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<rpc-error>",
+                "<error-severity>warning</error-severity>",
+                "<error-path>[edit interfaces ge-0/0/5]</error-path>",
+                "<error-message>statement not found: </error-message>",
+                "</rpc-error>",
+                "<load-error-count>1</load-error-count>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Inactive with system services": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "properties": {
+                "admin_status": false,
+                "name": "ge-0/0/5.0",
+                "system_services": [
+                    "ping"
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<disable/>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<security>",
+                "<zones>",
+                "<security-zone>",
+                "<name>untrust</name>",
+                "<interfaces>",
+                "<name>ge-0/0/5.0</name>",
+                "<host-inbound-traffic>",
+                "<system-services>",
+                "<name>ping</name>",
+                "</system-services>",
+                "</host-inbound-traffic>",
+                "</interfaces>",
+                "</security-zone>",
+                "</zones>",
+                "</security>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

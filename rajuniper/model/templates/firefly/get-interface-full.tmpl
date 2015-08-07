@@ -1,0 +1,59 @@
+{#
+    Inputs:
+        interface: name of the interface to get
+#}
+{% set info = data['interface-information']%}
+{
+{% if 'logical-interface' in info %}
+    {% set vport = info['logical-interface'] %}
+    {% set iface, unit = vport['name'].strip().split('.', 1) %}
+    {# virtual vport #}
+    "label": "{{ vport['name']|string|trim }}",
+    "properties": {
+        "name": "{{ vport['name']|string|trim }}",
+        "physical_interface": "{{ iface }}",
+        "link_level_type": "virtual", {# This shows that this device is a logical-interface #}
+        {% if vport['address-family'] %}
+            {% for fam in vport['address-family'] %}
+                {% if fam['address-family-name'] == 'inet' %}
+        "mtu": "{{ fam['mtu'] }}",
+                    {% if fam['interface-address'] %}
+        "ipv4_addresses": [
+                    {% set ifc_addrs = fam['interface-address'] %}
+                    {% for addr in ifc_addrs %}
+                        {% set getprefix = addr.get('ifa-destination') and '/' in addr['ifa-destination'] %}
+                        {% set prefixl = addr['ifa-destination'].split('/')[1] if getprefix else '32' %}
+                        {% set address = '{}/{}'.format(addr['ifa-local'], prefixl) %}
+                        {% if not loop.first %},{% endif %}"{{ address }}"
+                    {% endfor %}
+        ],
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        "security_zone": "{{ vport['logical-interface-zone-name']|string|trim|default('') }}",
+    }
+{% elif 'physical-interface' in info %}
+    {% set port = info['physical-interface'] %}
+    {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
+    {# regular port #}
+    "label": "{{ port['name']|trim }}",
+    "properties": {
+        "name": "{{ port['name']|trim }}",
+        "link_level_type": "{{ port['link-level-type']|trim|default('') }}",
+        "speed": "{{ port['speed'] }}",
+        {# If admin-status is ever not a dict, this will be a problem #}
+        "admin_status": {{ 'true' if 'up' in port['admin-status']['#text'] else 'false' }},
+        "mtu": "{{ port['mtu']|trim|default('') }}",
+        {# Some devices have xml formatting information on their mac address and this gets around that #}
+        {% set mac = port['current-physical-address'] if 'current-physical-address' in port else '' %}
+        "mac_address": "{{ mac['#text']|trim or mac|trim }}"
+    },
+    "orchState": "{{ 'active' if 'up' in port['oper-status'] else 'inactive' }}"
+{% else %}
+    {# this is so the route translator doesnt screw up and cause a 500 error #}
+    "properties": {
+        "link_level_type": "error"
+    }
+{% endif %}
+}

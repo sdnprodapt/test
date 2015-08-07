@@ -1,0 +1,12 @@
+{
+    {% set props = data['properties'] %}
+    {% set security_zone = props['security_zone'] if 'security_zone' in props else 'untrust' %}
+    "security_zone": "{{ security_zone }}",
+    "interface": "{{ props['name'] }}",
+    {% set services = props['system_services'] if 'system_services' in props else ["http", "https", "ssh", "telnet", "dhcp", "ping", "netconf"] %}
+    "system_services": [
+        {% for service in services %}
+        "{{ service }}"{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}

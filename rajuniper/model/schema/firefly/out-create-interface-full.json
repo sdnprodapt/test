@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "create-interface out parameters schema",
+    "type": "object",
+    "properties": {
+        "orchState": {
+            "type": "string"
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the logical interface to create/edit"
+                },
+                "admin_status": {
+                    "type": [
+                        "string",
+                        "boolean"
+                    ],
+                    "description": "What to set the interfaces admin-status to. A blank string or ommitting the parameter will do nothing [True, False, '']",
+                    "default": ""
+                },
+                "mtu": {
+                    "type": [
+                        "string",
+                        "integer"
+                    ],
+                    "description": "Value to set the mtu to. A blank or ommitting the parameter string will do nothing",
+                    "default": ""
+                },
+                "ipv4_addresses": {
+                    "title": "IP Addresses",
+                    "description": "IP Addresses on this interface",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "security_zone": {
+                    "type": "string",
+                    "description": "Name of the security zone to put the interface on",
+                    "default": "untrust"
+                },
+                "screen": {
+                    "type": "string",
+                    "description": "Option security screen to apply to the zone"
+                },
+                "system_services": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of services that the security zone for the interface will allow",
+                    "default": [
+                        "http",
+                        "https",
+                        "ssh",
+                        "telnet",
+                        "netconf",
+                        "ping"
+                    ]
+                }
+            },
+            "required": ["name"]
+        }
+    },
+    "required": ["properties"]
+}
