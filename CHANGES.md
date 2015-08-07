@@ -1,3 +1,11 @@
+Version 0.0.4
+-------------
+
+Use bpprov-full driver for interfaces (released on August 7 2015)
+
+-Bump rpsdk dependency to 0.2.8
+-use bpprov-full driver for interfaces to return orchState
+
 Version 0.0.3
 -------------
 
