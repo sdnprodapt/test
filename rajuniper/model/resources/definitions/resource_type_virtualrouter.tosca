@@ -64,6 +64,71 @@ resourceTypes {
         }
         optional = true
       }
+      bgpRouting {
+        title = "BGP Routing Information"
+        description = "Properties related to BGP"
+        type = object
+        optional = true
+
+        properties {
+
+          router_id {
+            title = "BGP Router ID"
+            description = "BGP router ID of the customer (e.g., 192.168.10.254)"
+            type = string
+            format = ipv4-address
+            optional = true
+          }
+
+          router_as {
+            title = "BGP Router AS Number"
+            description = "BGP AS number of router (e.g., 65000)"
+            type = integer
+            format = bgp-as
+          }
+
+          confederation {
+            title = "BGP Confederation Information"
+            description = "BGP confederation information"
+            type = object
+            optional = true
+            properties {
+              as_number {
+                  title = "BGP Confederation AS Number"
+                  description = "BGP confederation AS number of router (e.g., 17 or 1234.24543)"
+                  type = integer
+                  format = bgp-as
+              }
+              members {
+                  title = "BGP Confederation Members"
+                  description = "BGP confederation members (e.g., 17 or 1234.24543)"
+                  type = array
+                  items.type = integer
+                  format = bgp-as
+              }
+            }
+          }
+          admin_state {
+            title = "BGP Protocol Admin State"
+            description = "BGP admin state (Enabled/Disabled)"
+            type = string
+            enum = [ "Enabled", "Disabled" ]
+            optional = true
+          }
+          description {
+            title = "BGP Description"
+            description = "description text"
+            type = string
+            optional = true
+          }
+          global_preference {
+            title = "BGP Global Preference"
+            description = "degree of preference"
+            type = integer
+            optional = true
+          }
+        }
+      }
     }
 
     capabilities {

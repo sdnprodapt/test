@@ -1,13 +1,174 @@
 {
-    "endpoint": "netconf",
-    "type": "bpprov.runners.simple.Sequence",
-    "tests": [
-        "commands/firefly/tests/create-routing-options.json"
-    ],
-    "endpoint-parameters": {
-        "template": "firefly/create-routing-options.tmpl"
+    "Multiple Routes": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1",
+                    "destination": "192.168.17.1"
+                },
+                {
+                    "next_hop": "192.168.106.1",
+                    "destination": "192.168.107.0/24"
+                }
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-options>",
+                "<static operation=\"replace\">",
+                "<route>",
+                "<name>192.168.17.1</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "<route>",
+                "<name>192.168.107.0/24</name>",
+                "<next-hop>192.168.106.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
     },
-    "out-schema": "firefly/out-create-routing-options.json",
-    "in-path": [],
-    "out-path": []
+    "Incorrect Nexthop": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1000",
+                    "destination": "192.168.17.0/24"
+                }
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-options>",
+                "<static operation=\"replace\">",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1000</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-message>invalid value '1000' in ip address: '192.168.16.1000'</error-message>",
+                "</rpc-error>",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-info>",
+                "<bad-element>192.168.16.1000</bad-element>",
+                "</error-info>",
+                "<error-message>statement creation failed</error-message>",
+                "</rpc-error>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "BGP Routing": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1000",
+                    "destination": "192.168.17.0/24"
+                }
+            ],
+            "bgpRouting": {
+                "confederation": {
+                    "members": [
+                        64512,
+                        64513
+                    ],
+                    "as_number": 64512
+                },
+                "router_as": 7777,
+                "router_id": "15.16.17.18"
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-options>",
+                "<static operation=\"replace\">",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1000</next-hop>",
+                "</route>",
+                "</static>",
+                "<router-id operation=\"replace\">15.16.17.18</router-id>",
+                "<autonomous-system operation=\"replace\">",
+                "<as-number>7777</as-number>",
+                "</autonomous-system>",
+                "<confederation operation=\"replace\">",
+                "<confederation-as>64512</confederation-as>",
+                "<members>64512</members>",
+                "<members>64513</members>",
+                "</confederation>",
+                "</routing-options>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
 }

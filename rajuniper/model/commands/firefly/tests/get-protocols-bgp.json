@@ -1,0 +1,125 @@
+{
+    "BGP Test": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<protocols>",
+                "<bgp>",
+                "<disable>True</disable>",
+                "<preference>123</preference>",
+                "<group>",
+                    "<group-name>testgroup1</group-name>",
+                    "<description>purple</description>",
+                    "<preference>222</preference>",
+                    "<type>Internal</type>",
+                    "<peer-as>61234</peer-as>",
+                    "<neighbor>",
+                        "<address>192.168.10.1</address>",
+                        "<local-address>192.168.120.1</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                    "<neighbor>",
+                        "<address>192.168.10.3</address>",
+                        "<local-address>192.168.120.3</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<group-name>testgroup2</group-name>",
+                    "<description>purple</description>",
+                    "<preference>223</preference>",
+                    "<type>External</type>",
+                    "<peer-as>61235</peer-as>",
+                    "<neighbor>",
+                        "<address>192.168.10.2</address>",
+                        "<local-address>192.168.120.2</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "</bgp>",
+                "</protocols>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "name": "Global Router",
+            "bgpRouting": {
+                "bgp_enabled": false,
+                "preference": 123,
+                "groups": [
+                    {
+                        "group_name": "testgroup1",
+                        "description": "purple",
+                        "preference": 222,
+                        "type": "Internal",
+                        "peer_as": 61234,
+                        "neighbors": [
+                            {
+                                "address": "192.168.10.1",
+                                "local_address": "192.168.120.1",
+                                "as_override": true
+                            },
+                            {
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.3",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup2",
+                        "description": "purple",
+                        "preference": 223,
+                        "type": "External",
+                        "peer_as": 61235,
+                        "neighbors": [
+                            {
+                                "address": "192.168.10.2",
+                                "local_address": "192.168.120.2",
+                                "as_override": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        } 
+    },
+    
+    "BGP Test 2": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<protocols>",
+                "<bgp>",
+                "<disable></disable>",
+                "<preference>123</preference>",
+                "<group>",
+                "<group-name>testgroup1</group-name>",
+                "<neighbor>",
+                "<address>192.168.10.1</address>",
+                "<local-address>192.168.120.1</local-address>",
+                "<as-override></as-override>",
+                "</neighbor>",
+                "</group>",
+                "</bgp>",
+                "</protocols>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "name": "Global Router",
+            "bgpRouting": {
+                "bgp_enabled": false,
+                "preference": 123
+            }
+        }
+    }
+}

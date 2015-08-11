@@ -7,6 +7,34 @@
             "next_hop": "{{route['next_hop']}}"
         }{% if not loop.last %},{% endif %}
     {% endfor %}
-    ]
+    ],
+{% endif %}
+{% if data.get('bgpRouting') is defined %}
+    {% set needComma = false %}
+    {% set bgpRouting = data['bgpRouting'] %}
+    "bgpRouting": {
+    {% if 'router_id' in bgpRouting %}
+        "router_id": "{{ bgpRouting['router_id'] }}"
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'bgpRouterAs' in bgpRouting %}
+        {% if needComma %},{% endif %}
+        "router_as": {{ bgpRouting['router_as'] }}
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'confederation' in bgpRouting %}
+        {% set confederation = bgpRouting['confederation'] %}
+        {% if needComma %},{% endif %}
+        "confederation": {
+            "as_number": {{ confederation['as_number']}},
+            "members" : [
+                {% for member in confederation['members'] %}
+                    {{ member }}{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+        {% set needComma = true %}
+    {% endif %}
+    }
 {% endif %}
 }

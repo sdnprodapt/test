@@ -2,6 +2,27 @@
     "name": "Global Router",
 {%- if data['configuration'] %}
 {%- set options = data.configuration['routing-options'] %}
+    {% if options.get('router-id') or options.get('autonomous-system') or options.get('confederation') %}
+    "bgpRouting":
+    {
+        {% if options.get('router-id') %}
+        "router_id": "{{options['router-id']}}",
+        {% endif %}
+        {% if options.get('autonomous-system') %}
+        "router_as": {{options['autonomous-system']['as-number']}},
+        {% endif %}
+        {% if options.get('confederation') %}
+        "confederation": {
+            "as_number" : {{options['confederation']['confederation-as']}},
+            "members": [
+            {%- for member in options['confederation']['members'] %}
+                {{ member }}{% if not loop.last %},{% endif %}
+            {%- endfor %}
+            ]
+        },
+        {% endif %}
+    },
+    {% endif %}
     {% if options.get('static') and options['static'].get('route') %}
     "static_routes": [
         {%- for route in options['static']['route'] %}
@@ -10,7 +31,7 @@
             "next_hop":"{{ route['next-hop'] }}"
         },
         {%- endfor %}
-    ]
+    ],
     {% endif %}
 {%- endif %}
 }
