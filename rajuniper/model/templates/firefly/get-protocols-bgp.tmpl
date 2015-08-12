@@ -1,5 +1,10 @@
 {%- macro doNeighbor(neighbor) -%}
     {%- set needCommaNeighbor = false -%}
+    {%- if neighbor.get('name') -%}
+        {%- if needCommaNeighbor -%},{%- endif -%}
+        {%- set needCommaNeighbor = true -%}
+        "neighbor_name": "{{neighbor['name']}}"
+    {%- endif -%}
     {%- if neighbor.get('address') -%}
         {%- if needCommaNeighbor -%},{%- endif -%}
         {%- set needCommaNeighbor = true -%}
@@ -29,8 +34,8 @@
 
 {%- macro doGroup(group) -%}
     {%- set needCommaGroup = false -%}
-    {%- if group.get('group-name') -%}
-        "group_name": "{{group['group-name']}}"
+    {%- if group.get('name') -%}
+        "group_name": "{{group['name']}}"
         {%- set needCommaGroup = true -%}
     {%- endif -%}
     {%- if group.get('description') %}
@@ -52,6 +57,15 @@
         {%- if needCommaGroup -%},{%- endif -%}
         {%- set needCommaGroup = true -%}
         "peer_as": {{group['peer-as']}}
+    {%- endif -%}
+    {%- if group['allow'] -%}
+        {%- if needCommaGroup -%},{%- endif -%}
+        {%- set needCommaGroup = true -%}
+        "allows": [
+            {%- for allow in group['allow'] -%}
+                {"allow_address": "{{allow}}"} {%- if not loop.last -%},{%- endif -%}
+            {%- endfor -%}
+        ]
     {%- endif -%}
     {%- if group['neighbor'] -%}
         {%- if needCommaGroup -%},{%- endif -%}
