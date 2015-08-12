@@ -99,39 +99,5 @@
                 ]
             }
         } 
-    },
-    
-    "BGP Test 2": {
-        "type": "netconf",
-        "device": {"nodeType": "JuniperFireflyPerimeter"},
-        "in-params": [
-            [
-                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
-                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
-                "<protocols>",
-                "<bgp>",
-                "<disable></disable>",
-                "<preference>123</preference>",
-                "<group>",
-                "<name>testgroup1</name>",
-                "<neighbor>",
-                "<address>192.168.10.1</address>",
-                "<local-address>192.168.120.1</local-address>",
-                "<as-override></as-override>",
-                "</neighbor>",
-                "</group>",
-                "</bgp>",
-                "</protocols>",
-                "</configuration>",
-                "</rpc-reply>"
-            ]
-        ],
-        "in-expect": {
-            "name": "Global Router",
-            "bgpRouting": {
-                "bgp_enabled": false,
-                "preference": 123
-            }
-        }
     }
 }
