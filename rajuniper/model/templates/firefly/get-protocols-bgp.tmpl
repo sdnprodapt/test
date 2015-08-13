@@ -62,9 +62,13 @@
         {%- if needCommaGroup -%},{%- endif -%}
         {%- set needCommaGroup = true -%}
         "allows": [
-            {%- for allow in group['allow'] -%}
-                {"allow_address": "{{allow}}"} {%- if not loop.last -%},{%- endif -%}
-            {%- endfor -%}
+            {%- if group['allow'] is string -%}
+                {"allow_address": "{{group['allow']}}" }
+            {%- else -%}
+                {%- for allow in group['allow'] -%}
+                    {"allow_address": "{{allow}}"} {%- if not loop.last -%},{%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
         ]
     {%- endif -%}
     {%- if group['neighbor'] -%}

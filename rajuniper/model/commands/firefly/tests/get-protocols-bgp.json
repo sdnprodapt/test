@@ -44,6 +44,20 @@
                         "<as-override>true</as-override>",
                     "</neighbor>",
                 "</group>",
+                "<group>",
+                    "<name>testgroup3</name>",
+                    "<description>purple</description>",
+                    "<preference>224</preference>",
+                    "<type>External</type>",
+                    "<peer-as>61236</peer-as>",
+                    "<allow>23.23.23.23</allow>",
+                    "<neighbor>",
+                        "<name>testneighbor4</name>",
+                        "<address>192.168.10.3</address>",
+                        "<local-address>192.168.120.4</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
                 "</bgp>",
                 "</protocols>",
                 "</configuration>",
@@ -92,6 +106,24 @@
                                 "neighbor_name": "testneighbor3",
                                 "address": "192.168.10.2",
                                 "local_address": "192.168.120.2",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup3",
+                        "description": "purple",
+                        "preference": 224,
+                        "type": "External",
+                        "peer_as": 61236,
+                        "allows": [
+                            { "allow_address": "23.23.23.23" }
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor4",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.4",
                                 "as_override": true
                             }
                         ]
