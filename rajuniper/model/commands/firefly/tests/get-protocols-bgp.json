@@ -65,10 +65,9 @@
             ]
         ],
         "in-expect": {
-            "name": "Global Router",
             "bgpRouting": {
-                "bgp_enabled": false,
-                "preference": 123,
+                "admin_state": "Disabled",
+                "global_preference": 123,
                 "groups": [
                     {
                         "group_name": "testgroup1",

@@ -86,20 +86,20 @@
     {%- endif -%}
 {%- endmacro -%}
 {
-    "name": "Global Router",
 {%- if data['configuration'] -%}
 {%- set options = data.configuration['protocols'] -%}
     {%- if options.get('bgp') -%}
         {%- set bgpOptions = options['bgp'] -%}
-        "bgpRouting":
-        {
         {%- if bgpOptions.get('disable') -%}
-            "bgp_enabled" : false,
+            "admin_state" : "Disabled",
         {%- else -%}
-            "bgp_enabled" : true,
+            "admin_state" : "Enabled",
         {%- endif -%}
+        {%- if bgpOptions.get('description') -%}
+            "description": "{{bgpOptions['description']}}",
+        {%- endif %}
         {%- if bgpOptions.get('preference') -%}
-            "preference": {{bgpOptions['preference']}},
+            "global_preference": {{bgpOptions['preference']}},
         {%- endif %}
         {%- if bgpOptions.get('group') -%}
             "groups": [
@@ -112,7 +112,6 @@
             {%- endif -%}
             ]
         {%- endif -%}
-        }
     {%- endif -%}
 {%- endif -%}
 }
