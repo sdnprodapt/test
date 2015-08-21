@@ -78,7 +78,8 @@
                 "</routing-options>",
                 "</configuration>",
                 "</rpc-reply>"
-            ]
+            ],
+            []
         ],
         "in-expect": {
             "name": "Global Router",
