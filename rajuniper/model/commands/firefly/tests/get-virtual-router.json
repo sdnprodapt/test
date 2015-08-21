@@ -98,7 +98,8 @@
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
                 "<configuration/>",
                 "</rpc-reply>"
-            ]
+            ],
+            []
         ],
         "in-expect": {
             "name": "Global Router"
