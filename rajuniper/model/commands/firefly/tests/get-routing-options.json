@@ -91,7 +91,7 @@
             "name": "Global Router"
         }
     },
-    "Single Route with BGP": {
+    "Single Route with BGP no members": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "in-params": [
@@ -126,6 +126,50 @@
                 "confederation": {
                     "as_number": 721,
                     "members": []
+                },
+                "router_as": 1234
+            }
+        }
+    },
+    "Single Route with BGP": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-options>",
+                "<router-id>11.11.11.11</router-id>",
+                "<autonomous-system><as-number>1234</as-number></autonomous-system>",
+                "<confederation>",
+                "<confederation-as>721</confederation-as>",
+                "<members>5555</members>",
+                "<members>6543</members>",
+                "</confederation>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "name": "Global Router",
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1",
+                    "destination": "192.168.17.0/24"
+                }
+            ],
+            "bgp_routing": {
+                "router_id": "11.11.11.11",
+                "confederation": {
+                    "as_number": 721,
+                    "members": [5555, 6543]
                 },
                 "router_as": 1234
             }
