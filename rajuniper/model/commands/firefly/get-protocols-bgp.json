@@ -1,0 +1,21 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/get-protocols-bgp.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/get-protocols-bgp-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "firefly/get-protocols-bgp.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

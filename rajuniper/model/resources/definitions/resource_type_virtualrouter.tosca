@@ -64,6 +64,168 @@ resourceTypes {
         }
         optional = true
       }
+      bgp_routing {
+        title = "BGP Routing Information"
+        description = "Properties related to BGP"
+        type = object
+        optional = true
+
+        properties {
+
+          router_id {
+            title = "BGP Router ID"
+            description = "BGP router ID of the customer (e.g., 192.168.10.254)"
+            type = string
+            format = ipv4-address
+            optional = true
+          }
+
+          router_as {
+            title = "BGP Router AS Number"
+            description = "BGP AS number of router (e.g., 65000)"
+            type = integer
+            format = bgp-as
+          }
+
+          confederation {
+            title = "BGP Confederation Information"
+            description = "BGP confederation information"
+            type = object
+            optional = true
+            properties {
+              as_number {
+                  title = "BGP Confederation AS Number"
+                  description = "BGP confederation AS number of router (e.g., 17 or 1234.24543)"
+                  type = integer
+                  format = bgp-as
+              }
+              members {
+                  title = "BGP Confederation Members"
+                  description = "BGP confederation members (e.g., 17 or 1234.24543)"
+                  type = array
+                  items.type = integer
+                  format = bgp-as
+              }
+            }
+          }
+        }
+      }
+      protocols_bgp {
+        title = "BGP Protocol Information"
+        description = "Properties related to BGP protocol"
+        type = object
+        optional = true
+
+        properties {
+          admin_state {
+            title = "BGP Protocol Admin State"
+            description = "BGP admin state (Enabled/Disabled)"
+            type = string
+            enum = [ "Enabled", "Disabled" ]
+            optional = true
+          }
+          description {
+            title = "BGP Description"
+            description = "description text"
+            type = string
+            optional = true
+          }
+          global_preference {
+            title = "BGP Global Preference"
+            description = "degree of preference"
+            type = integer
+            optional = true
+          }
+          groups {
+            title = "BGP Groups"
+            description = "BGP groups"
+            type = array
+            optional = true
+            properties {
+              name {
+                title = "BGP Group Name"
+                description = "group name"
+                type = string
+                optional = true
+              }
+              description {
+                title = "BGP Group Description"
+                description = "description text"
+                type = string
+                optional = true
+              }
+              preference {
+                title = "Group Preference"
+                description = "degree of preference"
+                type = integer
+                optional = true
+              }
+              type {
+                title = "BGP Group Type"
+                description = "group type"
+                type = string
+                enum = [ "internal", "external" ]
+                optional = true
+              }
+              peer_as {
+                title = "Group Peer AS Number"
+                description = "ASN of peer (e.g., 65000)"
+                type = integer
+                format = bgp-as
+              }
+              allows {
+                title = "BGP Group Dynamic Peers"
+                description = "BGP group dynamic peers"
+                type = array
+                optional = true
+                properties {
+                  allow_address {
+                    title = "BGP Dynamic Peer Address"
+                    description = "IP address of dynamic peer (e.g., 192.168.10.254)"
+                    type = string
+                    format = ipv4-address
+                    optional = true
+                  }
+                }
+              }
+              neighbors {
+                title = "BGP Group Static Peers"
+                description = "BGP group static peers"
+                type = array
+                optional = true
+                properties {
+                  name {
+                    title = "BGP Group Static Peer Name"
+                    description = "BGP group static peer name"
+                    type = string
+                    optional = true
+                  }
+                  address {
+                    title = "BGP Static Peer Address"
+                    description = "IP address of static peer (e.g., 192.168.10.254)"
+                    type = string
+                    format = ipv4-address
+                    optional = true
+                  }
+                  local_address {
+                    title = "BGP Static Peer Local Address"
+                    description = "Local IP address of static peer (e.g., 192.168.10.254)"
+                    type = string
+                    format = ipv4-address
+                    optional = true
+                  }
+                  as_override {
+                    title = "BGP Group Static Peer AS Override"
+                    description = "BGP group static peer AS override flag"
+                    type = boolean
+                    optional = true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     capabilities {

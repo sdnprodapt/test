@@ -6,6 +6,8 @@
     ],
     "endpoint-parameters": {},
     "out-path": [
+    ],
+    "in-path": [
         {
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
@@ -19,7 +21,20 @@
                     ]
                 }
             }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-protocols-bgp.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/protocols_bgp"
+                        }
+                    ]
+                }
+            }
         }
-    ],
-    "in-path": []
+    ]
 }

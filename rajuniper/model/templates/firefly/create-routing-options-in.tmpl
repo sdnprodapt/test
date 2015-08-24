@@ -1,4 +1,5 @@
 {
+{% set needComma = false %}
 {% if data.get('static_routes') %}
     "static_routes": [
     {% for route in data['static_routes']%}
@@ -8,5 +9,34 @@
         }{% if not loop.last %},{% endif %}
     {% endfor %}
     ]
+    {% set needComma = true %}
+{% endif %}
+{% if data.get('bgp_routing') is defined %}
+    {% if needComma %},{% endif %}
+    {% set bgpRouting = data['bgp_routing'] %}
+    "bgp_routing": {
+    {% if 'router_id' in bgpRouting %}
+        "router_id": "{{ bgpRouting['router_id'] }}"
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'router_as' in bgpRouting %}
+        {% if needComma %},{% endif %}
+        "router_as": {{ bgpRouting['router_as'] }}
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'confederation' in bgpRouting %}
+        {% set confederation = bgpRouting['confederation'] %}
+        {% if needComma %},{% endif %}
+        "confederation": {
+            "as_number": {{ confederation['as_number']}},
+            "members" : [
+                {% for member in confederation['members'] %}
+                    {{ member }}{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ]
+        }
+        {% set needComma = true %}
+    {% endif %}
+    }
 {% endif %}
 }

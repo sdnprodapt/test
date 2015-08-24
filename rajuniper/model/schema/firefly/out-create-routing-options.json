@@ -22,6 +22,43 @@
                     }
                 }
             }
+        },
+        "bgpRouting": {
+            "title": "BGP Configuration",
+            "description": "BGP configuration",
+            "type:": "object",
+            "properties": {
+                "router_id": {
+                    "description": "Specifies the routing device's IP address",
+                    "title": "Router identifier",
+                    "type": "string"
+                },
+                "router_as": {
+                    "description": "Specifies the routing device's AS number",
+                    "title": "Router ASN",
+                    "type": "integer"
+                },
+                "confederation": {
+                    "description": "Confederation Info",
+                    "title": "Confederation Info",
+                    "type": "object",
+                    "properties": {
+                        "as_number": {
+                            "description": "Specifies the routing device's confederation AS number",
+                            "title": "Confederation ASN",
+                            "type": "integer"
+                        },
+                        "members": {
+                            "description": "Specifies the AS numbers for the confederation members",
+                            "title": "Confederation Members",
+                            "type": "array",
+                            "items":{
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

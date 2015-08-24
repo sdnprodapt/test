@@ -21,6 +21,25 @@
                         {% endfor %}
                     </static>
                 {% endif %}
+                {% if data.get('bgp_routing') is defined %}
+                    {% if 'router_id' in data['bgp_routing'] %}
+                        <router-id operation="replace">{{ data['bgp_routing']['router_id'] }}</router-id>
+                    {% endif %}
+                    {% if 'router_as' in data['bgp_routing'] %}
+                        <autonomous-system operation="replace">
+                            <as-number>{{ data['bgp_routing']['router_as'] }}</as-number>
+                        </autonomous-system>
+                    {% endif %}
+                    {% if 'confederation' in data['bgp_routing'] %}
+                        {% set confederation = data['bgp_routing']['confederation'] %}
+                        <confederation operation="replace">
+                            <confederation-as>{{ confederation['as_number'] }}</confederation-as>
+                            {% for member in confederation['members'] %}
+                                <members>{{ member }}</members>
+                            {% endfor %}
+                        </confederation>
+                    {% endif %}
+                {% endif %}
                 </routing-options>
             </configuration>
         </config>
