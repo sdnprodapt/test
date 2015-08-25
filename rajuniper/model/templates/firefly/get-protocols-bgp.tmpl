@@ -34,8 +34,8 @@
 
 {%- macro doGroup(group) -%}
     {%- set needCommaGroup = false -%}
-    {%- if group.get('name') -%}
-        "group_name": "{{group['name']}}"
+    {%- if group.get('group_name') -%}
+        "group_name": "{{group['group_name']}}"
         {%- set needCommaGroup = true -%}
     {%- endif -%}
     {%- if group.get('description') %}

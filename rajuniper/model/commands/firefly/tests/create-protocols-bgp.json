@@ -1,0 +1,150 @@
+{
+    "BGP Test": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "protocols_bgp": {
+                "admin_state": "Disabled",
+                "description": "slimy",
+                "global_preference": 2345,
+                "groups": [
+                    {
+                        "group_name": "testgroup1",
+                        "description": "purple",
+                        "preference": 222,
+                        "type": "Internal",
+                        "peer_as": 61234,
+                        "allows": [
+                            { "allow_address": "13.13.13.13" },
+                            { "allow_address": "14.14.14.14" }
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor1",
+                                "address": "192.168.10.1",
+                                "local_address": "192.168.120.1",
+                                "as_override": true
+                            },
+                            {
+                                "neighbor_name": "testneighbor2",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.3",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup2",
+                        "description": "purple",
+                        "preference": 223,
+                        "type": "External",
+                        "peer_as": 61235,
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor3",
+                                "address": "192.168.10.2",
+                                "local_address": "192.168.120.2",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup3",
+                        "description": "purple",
+                        "preference": 224,
+                        "type": "External",
+                        "peer_as": 61236,
+                        "allows": [
+                            { "allow_address": "23.23.23.23" }
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor4",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.4",
+                                "as_override": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<protocols>",
+                "<bgp>",
+                "<disable operation=\"replace\"></disable>",
+                "<description operation=\"replace\">slimy</description>",
+                "<preference operation=\"replace\">2345</preference>",
+                "<group>",
+                    "<group_name operation=\"replace\">testgroup1</group_name>",
+                    "<description operation=\"replace\">purple</description>",
+                    "<preference operation=\"replace\">222</preference>",
+                    "<type operation=\"replace\">Internal</type>",
+                    "<peer-as operation=\"replace\">61234</peer-as>",
+                    "<allow operation=\"replace\">13.13.13.13</allow>",
+                    "<allow operation=\"replace\">14.14.14.14</allow>",
+                    "<neighbor>",
+                        "<name operation=\"replace\">testneighbor1</name>",
+                        "<address operation=\"replace\">192.168.10.1</address>",
+                        "<local-address operation=\"replace\">192.168.120.1</local-address>",
+                        "<as-override operation=\"replace\">true</as-override>",
+                    "</neighbor>",
+                    "<neighbor>",
+                        "<name operation=\"replace\">testneighbor2</name>",
+                        "<address operation=\"replace\">192.168.10.3</address>",
+                        "<local-address operation=\"replace\">192.168.120.3</local-address>",
+                        "<as-override operation=\"replace\">true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<group_name operation=\"replace\">testgroup2</group_name>",
+                    "<description operation=\"replace\">purple</description>",
+                    "<preference operation=\"replace\">223</preference>",
+                    "<type operation=\"replace\">External</type>",
+                    "<peer-as operation=\"replace\">61235</peer-as>",
+                    "<neighbor>",
+                        "<name operation=\"replace\">testneighbor3</name>",
+                        "<address operation=\"replace\">192.168.10.2</address>",
+                        "<local-address operation=\"replace\">192.168.120.2</local-address>",
+                        "<as-override operation=\"replace\">true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<group_name operation=\"replace\">testgroup3</group_name>",
+                    "<description operation=\"replace\">purple</description>",
+                    "<preference operation=\"replace\">224</preference>",
+                    "<type operation=\"replace\">External</type>",
+                    "<peer-as operation=\"replace\">61236</peer-as>",
+                    "<allow operation=\"replace\">23.23.23.23</allow>",
+                    "<neighbor>",
+                        "<name operation=\"replace\">testneighbor4</name>",
+                        "<address operation=\"replace\">192.168.10.3</address>",
+                        "<local-address operation=\"replace\">192.168.120.4</local-address>",
+                        "<as-override operation=\"replace\">true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "</bgp>",
+                "</protocols>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

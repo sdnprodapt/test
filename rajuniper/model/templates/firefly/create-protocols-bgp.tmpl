@@ -1,0 +1,85 @@
+{#
+    Inputs:
+        protocols_bgp: BGP properties to be created
+#}
+
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+        <config>
+            <configuration>
+                <protocols>
+                    <bgp>
+                    {% if data.get('protocols_bgp') is defined %}
+                        {% if 'admin_state' in data['protocols_bgp'] %}
+                            {% if data['protocols_bgp']['admin_state'] == 'Disabled' %}
+                                <disable operation="replace"></disable>
+                            {% else %}
+                                <disable operation="delete"></disable>
+                            {% endif %}
+                        {% endif %}
+                        {% if 'description' in data['protocols_bgp'] %}
+                            <description operation="replace">{{ data['protocols_bgp']['description'] }}</description>
+                        {% endif %}
+                        {% if 'global_preference' in data['protocols_bgp'] %}
+                            <preference operation="replace">{{ data['protocols_bgp']['global_preference'] }}</preference>
+                        {% endif %}
+                        {% if 'groups' in data['protocols_bgp'] %}
+                            {% for group in data['protocols_bgp']['groups'] %}
+                                <group>
+                                {% if 'group_name' in group %}
+                                    <group_name operation="replace">{{ group['group_name'] }}</group_name>
+                                {% endif %}
+                                {% if 'description' in group %}
+                                    <description operation="replace">{{ group['description'] }}</description>
+                                {% endif %}
+                                {% if 'preference' in group %}
+                                    <preference operation="replace">{{ group['preference'] }}</preference>
+                                {% endif %}
+                                {% if 'type' in group %}
+                                    <type operation="replace">{{ group['type'] }}</type>
+                                {% endif %}
+                                {% if 'peer_as' in group %}
+                                    <peer-as operation="replace">{{ group['peer_as'] }}</peer-as>
+                                {% endif %}
+                                {% if 'allows' in group %}
+                                    {% for allow in group['allows'] %}
+                                        {% if 'allow_address' in allow %}
+                                            <allow operation="replace">{{ allow['allow_address'] }}</allow>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                {% if 'neighbors' in group %}
+                                    {% for neighbor in group['neighbors'] %}
+                                        <neighbor>
+                                        {% if 'neighbor_name' in neighbor %}
+                                            <name operation="replace">{{ neighbor['neighbor_name'] }}</name>
+                                        {% endif %}
+                                        {% if 'address' in neighbor %}
+                                            <address operation="replace">{{ neighbor['address'] }}</address>
+                                        {% endif %}
+                                        {% if 'local_address' in neighbor %}
+                                            <local-address operation="replace">{{ neighbor['local_address'] }}</local-address>
+                                        {% endif %}
+                                        {% if 'as_override' in neighbor %}
+                                            {% if neighbor['as_override'] %}
+                                                <as-override operation="replace">true</as-override>
+                                            {% else %}
+                                                <as-override operation="delete"></as-override>
+                                            {% endif %}
+                                        {% endif %}
+                                        </neighbor>
+                                    {% endfor %}
+                                {% endif %}
+                                </group>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                    </bgp>
+                </protocols>
+            </configuration>
+        </config>
+    </edit-config>
+</rpc>
