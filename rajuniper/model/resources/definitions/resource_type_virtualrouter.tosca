@@ -166,7 +166,7 @@ resourceTypes {
                   title = "BGP Group Type"
                   description = "group type"
                   type = string
-                  enum = [ "Internal", "External" ]
+                  enum = [ "internal", "external" ]
                   optional = false
                 }
                 peer_as {
@@ -185,9 +185,9 @@ resourceTypes {
                     properties {
                       allow_address {
                         title = "BGP Dynamic Peer Address"
-                        description = "IP address of dynamic peer (e.g., 192.168.10.254)"
+                        description = "IP address of dynamic peer (e.g., 192.168.10.0/8)"
                         type = string
-                        format = ipv4-address
+                        format = ipv4-interface
                         optional = false
                       }
                     }

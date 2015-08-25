@@ -22,6 +22,153 @@
                     }
                 }
             }
+        },
+        "bgp_routing": {
+            "title": "BGP Configuration",
+            "description": "BGP configuration",
+            "type:": "object",
+            "properties": {
+                "router_id": {
+                    "description": "Specifies the routing device's IP address",
+                    "title": "Router identifier",
+                    "type": "string"
+                },
+                "router_as": {
+                    "description": "Specifies the routing device's AS number",
+                    "title": "Router ASN",
+                    "type": "integer"
+                },
+                "confederation": {
+                    "description": "Confederation Info",
+                    "title": "Confederation Info",
+                    "type": "object",
+                    "properties": {
+                        "as_number": {
+                            "description": "Specifies the routing device's confederation AS number",
+                            "title": "Confederation ASN",
+                            "type": "integer"
+                        },
+                        "members": {
+                            "description": "Specifies the AS numbers for the confederation members",
+                            "title": "Confederation Members",
+                            "type": "array",
+                            "items":{
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "protocols_bgp": {
+            "title": "BGP Configuration",
+            "description": "BGP configuration",
+            "type:": "object",
+            "properties": {
+                "admin_state": {
+                    "description": "Enabled or Disabled",
+                    "title": "Administrative State",
+                    "type": "string",
+                    "enum":[
+                        "Enabled",
+                        "Disabled"
+                    ]
+                },
+                "description": {
+                    "description": "Descriptive text",
+                    "title": "Description",
+                    "type": "string"
+                },
+                "global_preference": {
+                    "description": "Global preference",
+                    "title": "Global preference",
+                    "type": "integer"
+                },
+                "groups": {
+                    "description": "BGP Group Info",
+                    "title": "BGP Group Info",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "group_name": {
+                                "description": "BGP Group name",
+                                "title": "BGP Group Name",
+                                "type": "string"
+                            },
+                            "description": {
+                                "description": "Descriptive text",
+                                "title": "BGP Group Description",
+                                "type": "string"
+                            },
+                            "preference": {
+                                "description": "BGP group preference",
+                                "title": "BGP Group Preference",
+                                "type": "integer"
+                            },
+                            "type": {
+                                "description": "internal or external",
+                                "title": "BGP Group Type",
+                                "type": "string",
+                                "enum":[
+                                    "internal",
+                                    "external"
+                                ]
+                            },
+                            "peer_as": {
+                                "description": "BGP group peer ASN",
+                                "title": "BGP Group Peer ASN",
+                                "type": "integer"
+                            },
+                            "allows": {
+                                "description": "BGP Group dynamic peers",
+                                "title": "BGP Group Dynamic Peers",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "allow_address": {
+                                            "description": "address of dynamic peer",
+                                            "title": "Dynamic Peer Address",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "neighbors": {
+                                "description": "BGP Group static peers",
+                                "title": "BGP Group Static Peers",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "description": "BGP group static peer name",
+                                            "title": "BGP Group Static Peer Name",
+                                            "type": "string"
+                                        },
+                                        "address": {
+                                            "description": "IP address of static peer (e.g., 192.168.10.254)",
+                                            "title": "BGP Group Static Peer Address",
+                                            "type": "string"
+                                        },
+                                        "local_address": {
+                                            "description": "Local IP address of static peer (e.g., 192.168.10.254)",
+                                            "title": "BGP Group Static Peer Local Address",
+                                            "type": "string"
+                                        },
+                                        "as_override": {
+                                            "description": "IP address of static peer (e.g., 192.168.10.254)",
+                                            "title": "BGP group static peer AS override flag",
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

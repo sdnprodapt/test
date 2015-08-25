@@ -30,7 +30,7 @@
                             {% for group in data['protocols_bgp']['groups'] %}
                                 <group>
                                 {% if 'group_name' in group %}
-                                    <group_name operation="replace">{{ group['group_name'] }}</group_name>
+                                    <name operation="replace">{{ group['group_name'] }}</name>
                                 {% endif %}
                                 {% if 'description' in group %}
                                     <description operation="replace">{{ group['description'] }}</description>

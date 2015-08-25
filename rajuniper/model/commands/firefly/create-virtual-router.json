@@ -21,6 +21,16 @@
             }
         },
         {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "create-protocols-bgp.json",
+                "input": {
+                    "templateType": "file",
+                    "data": "firefly/create-protocols-bgp-in.tmpl"
+                }
+            }
+        },
+        {
 
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {

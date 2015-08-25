@@ -51,7 +51,7 @@
             {% if 'allows' in group %}
                 {% if groupNeedComma %},{% endif %}
                 "allows": [
-                    {% for allow in group%}
+                    {% for allow in group['allows'] %}
                     {
                         {% if 'allow_address' in allow %}
                             "allow_address": "{{ allow['allow_address'] }}"
@@ -64,26 +64,26 @@
                 {% if groupNeedComma %},{% endif %}
                 "neighbors": [
                     {% set neighborNeedComma = false %}
-                    {% for neighbor in group%}
+                    {% for neighbor in group['neighbors'] %}
                     {
                         {% if 'neighbor_name' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
-                            "neighbor_name": "{{ allow['name'] }}"
+                            "neighbor_name": "{{ neighbor['neighbor_name'] }}"
                             {% set neighborNeedComma = true %}
                         {% endif %}
                         {% if 'address' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
-                            "address": "{{ allow['address'] }}"
+                            "address": "{{ neighbor['address'] }}"
                             {% set neighborNeedComma = true %}
                         {% endif %}
                         {% if 'local_address' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
-                            "local_address": "{{ allow['local_address'] }}"
+                            "local_address": "{{ neighbor['local_address'] }}"
                             {% set neighborNeedComma = true %}
                         {% endif %}
                         {% if 'as_override' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
-                            "as_override": "{{ allow['as_override'] }}"
+                            "as_override": "{{ neighbor['as_override'] }}"
                             {% set neighborNeedComma = true %}
                         {% endif %}
                     }{% if not loop.last %},{% endif %}

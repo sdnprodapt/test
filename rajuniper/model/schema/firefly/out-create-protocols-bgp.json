@@ -54,8 +54,8 @@
                                 "title": "BGP Group Type",
                                 "type": "string",
                                 "enum":[
-                                    "Internal",
-                                    "External"
+                                    "internal",
+                                    "external"
                                 ]
                             },
                             "peer_as": {
