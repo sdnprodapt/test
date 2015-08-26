@@ -21,36 +21,36 @@
     {% if 'groups' in protocolsBgp %}
         {% if needComma %},{% endif %}
         "groups": [
-        {% set groupNeedComma = false %}
-        {% for group in data['groups']%}
+        {% for group in protocolsBgp['groups'] %}
+            {% set thisGroupNeedsComma = false %}
             {
             {% if 'group_name' in group %}
-                {% if groupNeedComma %},{% endif %}
+                {% if thisGroupNeedsComma %},{% endif %}
                 "group_name": "{{ group['group_name'] }}"
-                {% set groupdNeedComma = true %}
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             {% if 'description' in group %}
-                {% if groupNeedComma %},{% endif %}
+                {% if thisGroupNeedsComma %},{% endif %}
                 "description": "{{ group['description'] }}"
-                {% set groupdNeedComma = true %}
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             {% if 'preference' in group %}
-                {% if groupNeedComma %},{% endif %}
+                {% if thisGroupNeedsComma %},{% endif %}
                 "preference": {{ group['preference'] }}
-                {% set groupdNeedComma = true %}
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             {% if 'type' in group %}
-                {% if groupNeedComma %},{% endif %}
+                {% if thisGroupNeedsComma %},{% endif %}
                 "type": "{{ group['type'] }}"
-                {% set groupdNeedComma = true %}
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             {% if 'peer_as' in group %}
-                {% if groupNeedComma %},{% endif %}
-                "peer_as": "{{ group['peer_as'] }}"
-                {% set groupdNeedComma = true %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "peer_as": {{ group['peer_as'] }}
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             {% if 'allows' in group %}
-                {% if groupNeedComma %},{% endif %}
+                {% if thisGroupNeedsComma %},{% endif %}
                 "allows": [
                     {% for allow in group['allows'] %}
                     {
@@ -59,14 +59,15 @@
                         {% endif %}
                     }{% if not loop.last %},{% endif %}
                     {% endfor %}
-                {% set groupdNeedComma = true %}
+                ]
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             {% if 'neighbors' in group %}
-                {% if groupNeedComma %},{% endif %}
+                {% if thisGroupNeedsComma %},{% endif %}
                 "neighbors": [
-                    {% set neighborNeedComma = false %}
                     {% for neighbor in group['neighbors'] %}
                     {
+                        {% set neighborNeedComma = false %}
                         {% if 'neighbor_name' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
                             "neighbor_name": "{{ neighbor['neighbor_name'] }}"
@@ -84,17 +85,18 @@
                         {% endif %}
                         {% if 'as_override' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
-                            "as_override": "{{ neighbor['as_override'] }}"
+                            "as_override": {{ neighbor['as_override']|lower }}
                             {% set neighborNeedComma = true %}
                         {% endif %}
                     }{% if not loop.last %},{% endif %}
                     {% endfor %}
-                {% set groupdNeedComma = true %}
+                ]
+                {% set thisGroupNeedsComma = true %}
             {% endif %}
             }{% if not loop.last %},{% endif %}
-        ]
         {% set needComma = true %}
         {% endfor %}
+        ]
     {% endif %}
     }
 {% endif %}
