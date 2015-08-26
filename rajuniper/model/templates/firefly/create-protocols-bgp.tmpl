@@ -12,7 +12,7 @@
             <configuration>
                 <protocols>
                     <bgp>
-                    {% if data.get('protocols_bgp') is defined %}
+                    {% if 'protocols_bgp' in data %}
                         {% if 'admin_state' in data['protocols_bgp'] %}
                             {% if data['protocols_bgp']['admin_state'] == 'Disabled' %}
                                 <disable operation="replace"></disable>
