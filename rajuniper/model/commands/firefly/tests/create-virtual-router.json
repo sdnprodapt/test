@@ -41,6 +41,23 @@
                 "</rpc>"
             ],
             [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<protocols>",
+                "<bgp>",
+                "</bgp>",
+                "</protocols>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
                 "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
                 "<commit>",
                 "</commit>",
@@ -48,6 +65,11 @@
             ]
         ],
         "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
             [
                 "<rpc-reply>",
                 "<ok/>",
@@ -94,9 +116,20 @@
                 "</rpc>"
             ],
             [
-                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
-                "<commit>",
-                "</commit>",
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<protocols>",
+                "<bgp>",
+                "</bgp>",
+                "</protocols>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
                 "</rpc>"
             ],
             [
