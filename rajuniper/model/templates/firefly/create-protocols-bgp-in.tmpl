@@ -59,7 +59,7 @@
                     }{% if not loop.last %},{% endif %}
                     {% endfor %}
                 {% set groupdNeedComma = true %}
-            }{% if not loop.last %},{% endif %}
+            {% endif %}
             {% if 'neighbors' in group %}
                 {% if groupNeedComma %},{% endif %}
                 "neighbors": [
@@ -89,8 +89,11 @@
                     }{% if not loop.last %},{% endif %}
                     {% endfor %}
                 {% set groupdNeedComma = true %}
+            {% endif %}
             }{% if not loop.last %},{% endif %}
         ]
         {% set needComma = true %}
+        {% endfor %}
     {% endif %}
+{% endif %}
 }
