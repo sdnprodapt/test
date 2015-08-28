@@ -1,0 +1,103 @@
+{
+{% set needComma = false %}
+{% if data.get('protocols_bgp') is defined %}
+    "protocols_bgp": {
+    {% set protocolsBgp = data['protocols_bgp'] %}
+    {% if 'admin_state' in protocolsBgp %}
+        {% if needComma %},{% endif %}
+        "admin_state": "{{ protocolsBgp['admin_state'] }}"
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'description' in protocolsBgp %}
+        {% if needComma %},{% endif %}
+        "description": "{{ protocolsBgp['description'] }}"
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'global_preference' in protocolsBgp %}
+        {% if needComma %},{% endif %}
+        "global_preference": {{ protocolsBgp['global_preference'] }}
+        {% set needComma = true %}
+    {% endif %}
+    {% if 'groups' in protocolsBgp %}
+        {% if needComma %},{% endif %}
+        "groups": [
+        {% for group in protocolsBgp['groups'] %}
+            {% set thisGroupNeedsComma = false %}
+            {
+            {% if 'group_name' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "group_name": "{{ group['group_name'] }}"
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'description' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "description": "{{ group['description'] }}"
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'preference' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "preference": {{ group['preference'] }}
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'type' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "type": "{{ group['type'] }}"
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'peer_as' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "peer_as": {{ group['peer_as'] }}
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'allows' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "allows": [
+                    {% for allow in group['allows'] %}
+                    {
+                        {% if 'allow_address' in allow %}
+                            "allow_address": "{{ allow['allow_address'] }}"
+                        {% endif %}
+                    }{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'neighbors' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "neighbors": [
+                    {% for neighbor in group['neighbors'] %}
+                    {
+                        {% set neighborNeedComma = false %}
+                        {% if 'neighbor_name' in neighbor %}
+                            {% if neighborNeedComma %},{% endif %}
+                            "neighbor_name": "{{ neighbor['neighbor_name'] }}"
+                            {% set neighborNeedComma = true %}
+                        {% endif %}
+                        {% if 'address' in neighbor %}
+                            {% if neighborNeedComma %},{% endif %}
+                            "address": "{{ neighbor['address'] }}"
+                            {% set neighborNeedComma = true %}
+                        {% endif %}
+                        {% if 'local_address' in neighbor %}
+                            {% if neighborNeedComma %},{% endif %}
+                            "local_address": "{{ neighbor['local_address'] }}"
+                            {% set neighborNeedComma = true %}
+                        {% endif %}
+                        {% if 'as_override' in neighbor %}
+                            {% if neighborNeedComma %},{% endif %}
+                            "as_override": {{ neighbor['as_override']|lower }}
+                            {% set neighborNeedComma = true %}
+                        {% endif %}
+                    }{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            }{% if not loop.last %},{% endif %}
+        {% set needComma = true %}
+        {% endfor %}
+        ]
+    {% endif %}
+    }
+{% endif %}
+}

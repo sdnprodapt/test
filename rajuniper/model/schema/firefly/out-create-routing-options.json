@@ -23,7 +23,7 @@
                 }
             }
         },
-        "bgpRouting": {
+        "bgp_routing": {
             "title": "BGP Configuration",
             "description": "BGP configuration",
             "type:": "object",

@@ -1,65 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema",
-    "title": "create-virtual-router out parameters schema",
+    "title": "create-protocols-bgp out parameters schema",
     "type": "object",
     "properties": {
-        "static_routes": {
-            "title": "Static Routes",
-            "description": "Static routing table of this Virtual Router",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "destination": {
-                        "description": "Destination prefix of this static route (e.g. 192.168.1.0/24)",
-                        "title": "Destination Prefix",
-                        "type": "string"
-                    },
-                    "next_hop": {
-                        "description": "Next Hop of this static route (e.g. 10.20.30.40)",
-                        "title": "Next Hop",
-                        "type": "string"
-                    }
-                }
-            }
-        },
-        "bgp_routing": {
-            "title": "BGP Configuration",
-            "description": "BGP configuration",
-            "type:": "object",
-            "properties": {
-                "router_id": {
-                    "description": "Specifies the routing device's IP address",
-                    "title": "Router identifier",
-                    "type": "string"
-                },
-                "router_as": {
-                    "description": "Specifies the routing device's AS number",
-                    "title": "Router ASN",
-                    "type": "integer"
-                },
-                "confederation": {
-                    "description": "Confederation Info",
-                    "title": "Confederation Info",
-                    "type": "object",
-                    "properties": {
-                        "as_number": {
-                            "description": "Specifies the routing device's confederation AS number",
-                            "title": "Confederation ASN",
-                            "type": "integer"
-                        },
-                        "members": {
-                            "description": "Specifies the AS numbers for the confederation members",
-                            "title": "Confederation Members",
-                            "type": "array",
-                            "items":{
-                                "type": "integer"
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "protocols_bgp": {
             "title": "BGP Configuration",
             "description": "BGP configuration",

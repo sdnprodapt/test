@@ -14,7 +14,7 @@
                     "<name>testgroup1</name>",
                     "<description>purple</description>",
                     "<preference>222</preference>",
-                    "<type>Internal</type>",
+                    "<type>internal</type>",
                     "<peer-as>61234</peer-as>",
                     "<allow>13.13.13.13</allow>",
                     "<allow>14.14.14.14</allow>",
@@ -35,7 +35,7 @@
                     "<name>testgroup2</name>",
                     "<description>purple</description>",
                     "<preference>223</preference>",
-                    "<type>External</type>",
+                    "<type>external</type>",
                     "<peer-as>61235</peer-as>",
                     "<neighbor>",
                         "<name>testneighbor3</name>",
@@ -48,7 +48,7 @@
                     "<name>testgroup3</name>",
                     "<description>purple</description>",
                     "<preference>224</preference>",
-                    "<type>External</type>",
+                    "<type>external</type>",
                     "<peer-as>61236</peer-as>",
                     "<allow>23.23.23.23</allow>",
                     "<neighbor>",
@@ -72,7 +72,7 @@
                     "group_name": "testgroup1",
                     "description": "purple",
                     "preference": 222,
-                    "type": "Internal",
+                    "type": "internal",
                     "peer_as": 61234,
                     "allows": [
                         { "allow_address": "13.13.13.13" },
@@ -97,7 +97,7 @@
                     "group_name": "testgroup2",
                     "description": "purple",
                     "preference": 223,
-                    "type": "External",
+                    "type": "external",
                     "peer_as": 61235,
                     "neighbors": [
                         {
@@ -112,7 +112,7 @@
                     "group_name": "testgroup3",
                     "description": "purple",
                     "preference": 224,
-                    "type": "External",
+                    "type": "external",
                     "peer_as": 61236,
                     "allows": [
                         { "allow_address": "23.23.23.23" }
