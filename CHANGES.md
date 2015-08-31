@@ -1,3 +1,11 @@
+Version 0.0.5
+-------------
+
+Support BGP configuration (released on August 31 2015)
+
+-Support BGP configuration and discovery
+-Bump rpsdk dependency to 0.2.9
+
 Version 0.0.4
 -------------
 
