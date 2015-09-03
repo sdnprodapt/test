@@ -230,6 +230,20 @@ resourceTypes {
                     }
                   }
                 }
+                import_policies {
+                  title = "BGP Group Import Policies"
+                  description = "BGP group import policies"
+                  type = array
+                  items.type = string
+                  optional = true
+                }
+                export_policies {
+                  title = "BGP Group Export Policies"
+                  description = "BGP group export policies"
+                  type = array
+                  items.type = string
+                  optional = true
+                }
               }
             }
           }

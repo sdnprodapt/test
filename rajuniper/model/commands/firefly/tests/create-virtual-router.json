@@ -257,6 +257,14 @@
                         "preference": 222,
                         "type": "internal",
                         "peer_as": 61234,
+                        "import_policies": [
+                            "some_policy",
+                            "some_other_policy"
+                        ],
+                        "export_policies": [
+                            "a_policy",
+                            "another_policy"
+                        ],
                         "allows": [
                             { "allow_address": "13.13.13.13" },
                             { "allow_address": "14.14.14.14" }
@@ -363,6 +371,10 @@
                         "<local-address operation=\"replace\">192.168.120.3</local-address>",
                         "<as-override operation=\"delete\"></as-override>",
                     "</neighbor>",
+                    "<import operation=\"replace\">some_policy</import>",
+                    "<import operation=\"replace\">some_other_policy</import>",
+                    "<export operation=\"replace\">a_policy</export>",
+                    "<export operation=\"replace\">another_policy</export>",
                 "</group>",
                 "<group>",
                     "<name operation=\"replace\">testgroup2</name>",

@@ -73,6 +73,16 @@
                                         </neighbor>
                                     {% endfor %}
                                 {% endif %}
+                                {% if 'import_policies' in group %}
+                                    {% for import in group['import_policies'] %}
+                                        <import operation="replace">{{import}}</import>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if 'export_policies' in group %}
+                                    {% for export in group['export_policies'] %}
+                                        <export operation="replace">{{export}}</export>
+                                    {% endfor %}
+                                {% endif %}
                                 </group>
                             {% endfor %}
                         {% endif %}

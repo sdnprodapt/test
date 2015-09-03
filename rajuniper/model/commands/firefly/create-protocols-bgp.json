@@ -5,7 +5,8 @@
         "commands/firefly/tests/create-protocols-bgp.json"
     ],
     "endpoint-parameters": {
-        "template": "firefly/create-protocols-bgp.tmpl"
+        "template": "firefly/create-protocols-bgp.tmpl",
+        "as_object": true
     },
     "out-schema": "firefly/out-create-protocols-bgp.json",
     "in-path": [],

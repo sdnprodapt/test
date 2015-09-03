@@ -164,6 +164,10 @@
                     "<preference>222</preference>",
                     "<type>Internal</type>",
                     "<peer-as>61234</peer-as>",
+                    "<import>some_policy</import>",
+                    "<import>some_other_policy</import>",
+                    "<export>a_policy</export>",
+                    "<export>another_policy</export>",
                     "<allow>13.13.13.13</allow>",
                     "<allow>14.14.14.14</allow>",
                     "<neighbor>",
@@ -241,6 +245,14 @@
                         "allows": [
                             { "allow_address": "13.13.13.13" },
                             { "allow_address": "14.14.14.14" }
+                        ],
+                        "import_policies": [
+                            "some_policy",
+                            "some_other_policy"
+                        ],
+                        "export_policies": [
+                            "a_policy",
+                            "another_policy"
                         ],
                         "neighbors": [
                             {

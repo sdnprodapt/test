@@ -107,6 +107,22 @@
                                         }
                                     }
                                 }
+                            },
+                            "import_policies": {
+                                "description": "BGP Group import policies",
+                                "title": "BGP Group Import Policies",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "export_policies": {
+                                "description": "BGP Group export policies",
+                                "title": "BGP Group Export Policies",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
                             }
                         }
                     }
