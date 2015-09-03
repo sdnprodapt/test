@@ -93,6 +93,24 @@
                 ]
                 {% set thisGroupNeedsComma = true %}
             {% endif %}
+            {% if 'import_policies' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "import_policies": [
+                    {% for import in group['import_policies'] %}
+                        "{{import}}"{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
+            {% if 'export_policies' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "export_policies": [
+                    {% for export in group['export_policies'] %}
+                        "{{export}}"{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                ]
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
             }{% if not loop.last %},{% endif %}
         {% set needComma = true %}
         {% endfor %}

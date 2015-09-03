@@ -84,6 +84,32 @@
         {%- endif -%}
         ]
     {%- endif -%}
+    {%- if group['import'] -%}
+        {%- if needCommaGroup -%},{%- endif -%}
+        {%- set needCommaGroup = true -%}
+        "import_policies": [
+            {%- if group['import'] is string -%}
+                "{{group['import']}}"
+            {%- else -%}
+                {%- for import in group['import'] -%}
+                    "{{import}}"{%- if not loop.last -%},{%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
+        ]
+    {%- endif -%}
+    {%- if group['export'] -%}
+        {%- if needCommaGroup -%},{%- endif -%}
+        {%- set needCommaGroup = true -%}
+        "export_policies": [
+            {%- if group['export'] is string -%}
+                "{{group['export']}}"
+            {%- else -%}
+                {%- for export in group['export'] -%}
+                    "{{export}}"{%- if not loop.last -%},{%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
+        ]
+    {%- endif -%}
 {%- endmacro -%}
 {
 {%- if data['configuration'] -%}
