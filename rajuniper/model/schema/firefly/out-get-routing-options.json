@@ -1,0 +1,9 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "get-routing-options out parameters schema",
+    "type": "object",
+    "properties": {
+        "name": {"type": "string", "description": "The name of the virtual router to get"}
+    },
+    "required": ["name"]
+}

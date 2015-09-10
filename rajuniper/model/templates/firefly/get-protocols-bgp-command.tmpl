@@ -2,10 +2,15 @@
 <rpc>
     <get-configuration>
         <configuration>
-            <protocols>
-                <bgp>
-                </bgp>
-            </protocols>
+            <routing-instances>
+                <instance>
+                    <name>{{ data['name'] }}</name>
+                    <protocols>
+                        <bgp>
+                        </bgp>
+                    </protocols>
+                </instance>
+            </routing-instances>
         </configuration>
     </get-configuration>
 </rpc>

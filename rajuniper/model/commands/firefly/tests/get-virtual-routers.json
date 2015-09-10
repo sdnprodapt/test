@@ -2,37 +2,12 @@
     "Multiple Routes": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
-        "out-params": {
-            "name": "pe_router"
-        },
         "out-expect": [
             [
                 "<rpc>",
                 "<get-configuration>",
                 "<configuration>",
                 "<routing-instances>",
-                "<instance>",
-                "<name>pe_router</name>",
-                "<routing-options>",
-                "</routing-options>",
-                "</instance>",
-                "</routing-instances>",
-                "</configuration>",
-                "</get-configuration>",
-                "</rpc>"
-            ],
-            [
-                "<rpc>",
-                "<get-configuration>",
-                "<configuration>",
-                "<routing-instances>",
-                "<instance>",
-                "<name>pe_router</name>",
-                "<protocols>",
-                "<bgp>",
-                "</bgp>",
-                "</protocols>",
-                "</instance>",
                 "</routing-instances>",
                 "</configuration>",
                 "</get-configuration>",
@@ -58,17 +33,6 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
-                "</instance>",
-                "</routing-instances>",
-                "</configuration>",
-                "</rpc-reply>"
-            ],
-            [
-                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
-                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
-                "<routing-instances>",
-                "<instance>",
-                "<name>pe_router</name>",
                 "<protocols>",
                 "<bgp>",
                 "</bgp>",
@@ -79,27 +43,25 @@
                 "</rpc-reply>"
             ]
         ],
-        "in-expect": {
-            "name": "pe_router",
-            "static_routes": [
-                {
-                    "next_hop": "192.168.16.1",
-                    "destination": "192.168.17.0/24"
-                },
-                {
-                    "next_hop": "192.168.106.1",
-                    "destination": "192.168.107.0/24"
-                }
-            ],
-            "protocols_bgp": {}
-        }
+        "in-expect": [
+            {
+                "name": "pe_router",
+                "static_routes": [
+                    {
+                        "next_hop": "192.168.16.1",
+                        "destination": "192.168.17.0/24"
+                    },
+                    {
+                        "next_hop": "192.168.106.1",
+                        "destination": "192.168.107.0/24"
+                    }
+                ]
+            }
+        ]
     },
     "Single Route": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
-        "out-params": {
-            "name": "pe_router"
-        },
         "in-params": [
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
@@ -119,70 +81,41 @@
                 "</routing-instances>",
                 "</configuration>",
                 "</rpc-reply>"
-            ],
-            []
-        ],
-        "in-expect": {
-            "name": "pe_router",
-            "static_routes": [
-                {
-                    "next_hop": "192.168.16.1",
-                    "destination": "192.168.17.0/24"
-                }
             ]
-        }
+        ],
+        "in-expect": [
+            {
+                "name": "pe_router",
+                "static_routes": [
+                    {
+                        "next_hop": "192.168.16.1",
+                        "destination": "192.168.17.0/24"
+                    }
+                ]
+            }
+        ]
     },
     "No Routing Instance": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
-        "out-params": {
-            "name": "pe_router"
-        },
         "in-params": [
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
                 "<configuration/>",
                 "</rpc-reply>"
-            ],
-            []
+            ]
         ],
-        "in-expect": {
-        }
+        "in-expect": {}
     },
     "Single Route with BGP": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
-        "out-params": {
-            "name": "pe_router"
-        },
         "out-expect": [
             [
                 "<rpc>",
                 "<get-configuration>",
                 "<configuration>",
                 "<routing-instances>",
-                "<instance>",
-                "<name>pe_router</name>",
-                "<routing-options>",
-                "</routing-options>",
-                "</instance>",
-                "</routing-instances>",
-                "</configuration>",
-                "</get-configuration>",
-                "</rpc>"
-            ],
-            [
-                "<rpc>",
-                "<get-configuration>",
-                "<configuration>",
-                "<routing-instances>",
-                "<instance>",
-                "<name>pe_router</name>",
-                "<protocols>",
-                "<bgp>",
-                "</bgp>",
-                "</protocols>",
-                "</instance>",
                 "</routing-instances>",
                 "</configuration>",
                 "</get-configuration>",
@@ -207,17 +140,6 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
-                "</instance>",
-                "</routing-instances>",
-                "</configuration>",
-                "</rpc-reply>"
-            ],
-            [
-                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
-                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
-                "<routing-instances>",
-                "<instance>",
-                "<name>pe_router</name>",
                 "<protocols>",
                 "<bgp>",
                 "<disable>True</disable>",
@@ -282,94 +204,96 @@
                 "</rpc-reply>"
             ]
         ],
-        "in-expect": {
-            "name": "pe_router",
-            "static_routes": [
-                {
-                    "destination": "192.168.17.0/24",
-                    "next_hop": "192.168.16.1"
-                }
-            ],
-            "bgp_routing": {
-                "router_id": "11.11.11.11",
-                "confederation": {
-                    "as_number": 721,
-                    "members": []
-                },
-                "router_as": 1234
-            },
-            "protocols_bgp": {
-                "admin_state": "Disabled",
-                "global_preference": 123,
-                "groups": [
+        "in-expect": [
+            {
+                "name": "pe_router",
+                "static_routes": [
                     {
-                        "group_name": "testgroup1",
-                        "description": "purple",
-                        "preference": 222,
-                        "type": "Internal",
-                        "peer_as": 61234,
-                        "allows": [
-                            { "allow_address": "13.13.13.13" },
-                            { "allow_address": "14.14.14.14" }
-                        ],
-                        "import_policies": [
-                            "some_policy",
-                            "some_other_policy"
-                        ],
-                        "export_policies": [
-                            "a_policy",
-                            "another_policy"
-                        ],
-                        "neighbors": [
-                            {
-                                "neighbor_name": "testneighbor1",
-                                "address": "192.168.10.1",
-                                "local_address": "192.168.120.1",
-                                "as_override": true
-                            },
-                            {
-                                "neighbor_name": "testneighbor2",
-                                "address": "192.168.10.3",
-                                "local_address": "192.168.120.3",
-                                "as_override": true
-                            }
-                        ]
-                    },
-                    {
-                        "group_name": "testgroup2",
-                        "description": "purple",
-                        "preference": 223,
-                        "type": "External",
-                        "peer_as": 61235,
-                        "neighbors": [
-                            {
-                                "neighbor_name": "testneighbor3",
-                                "address": "192.168.10.2",
-                                "local_address": "192.168.120.2",
-                                "as_override": true
-                            }
-                        ]
-                    },
-                    {
-                        "group_name": "testgroup3",
-                        "description": "purple",
-                        "preference": 224,
-                        "type": "External",
-                        "peer_as": 61236,
-                        "allows": [
-                            { "allow_address": "23.23.23.23" }
-                        ],
-                        "neighbors": [
-                            {
-                                "neighbor_name": "testneighbor4",
-                                "address": "192.168.10.3",
-                                "local_address": "192.168.120.4",
-                                "as_override": true
-                            }
-                        ]
+                        "destination": "192.168.17.0/24",
+                        "next_hop": "192.168.16.1"
                     }
-                ]
+                ],
+                "bgp_routing": {
+                    "router_id": "11.11.11.11",
+                    "confederation": {
+                        "as_number": 721,
+                        "members": []
+                    },
+                    "router_as": 1234
+                },
+                "protocols_bgp": {
+                    "admin_state": "Disabled",
+                    "global_preference": 123,
+                    "groups": [
+                        {
+                            "group_name": "testgroup1",
+                            "description": "purple",
+                            "preference": 222,
+                            "type": "Internal",
+                            "peer_as": 61234,
+                            "allows": [
+                                { "allow_address": "13.13.13.13" },
+                                { "allow_address": "14.14.14.14" }
+                            ],
+                            "import_policies": [
+                                "some_policy",
+                                "some_other_policy"
+                            ],
+                            "export_policies": [
+                                "a_policy",
+                                "another_policy"
+                            ],
+                            "neighbors": [
+                                {
+                                    "neighbor_name": "testneighbor1",
+                                    "address": "192.168.10.1",
+                                    "local_address": "192.168.120.1",
+                                    "as_override": true
+                                },
+                                {
+                                    "neighbor_name": "testneighbor2",
+                                    "address": "192.168.10.3",
+                                    "local_address": "192.168.120.3",
+                                    "as_override": true
+                                }
+                            ]
+                        },
+                        {
+                            "group_name": "testgroup2",
+                            "description": "purple",
+                            "preference": 223,
+                            "type": "External",
+                            "peer_as": 61235,
+                            "neighbors": [
+                                {
+                                    "neighbor_name": "testneighbor3",
+                                    "address": "192.168.10.2",
+                                    "local_address": "192.168.120.2",
+                                    "as_override": true
+                                }
+                            ]
+                        },
+                        {
+                            "group_name": "testgroup3",
+                            "description": "purple",
+                            "preference": 224,
+                            "type": "External",
+                            "peer_as": 61236,
+                            "allows": [
+                                { "allow_address": "23.23.23.23" }
+                            ],
+                            "neighbors": [
+                                {
+                                    "neighbor_name": "testneighbor4",
+                                    "address": "192.168.10.3",
+                                    "local_address": "192.168.120.4",
+                                    "as_override": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
-        }
+        ]
     }
 }

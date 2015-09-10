@@ -2,10 +2,10 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/firefly/tests/get-protocols-bgp.json"
+        "commands/firefly/tests/get-virtual-routers.json"
     ],
     "endpoint-parameters": {
-        "template": "firefly/get-protocols-bgp-command.tmpl"
+        "template": "firefly/get-virtual-routers-command.tmpl"
     },
     "out-path": [
     ],
@@ -13,7 +13,7 @@
         {
             "type": "bpprov.translators.template.Json",
             "parameters": {
-                "template": "firefly/get-protocols-bgp.tmpl"
+                "template": "firefly/get-virtual-routers.tmpl"
             }
         }
     ]

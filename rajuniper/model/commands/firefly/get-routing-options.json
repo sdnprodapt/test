@@ -12,7 +12,7 @@
     "in-path": [
         {
             "type": "bpprov.translators.dict.Listify",
-            "parameters": {"paths": ["configuration.routing-options.static.route"]}
+            "parameters": {"paths": ["configuration.routing-instances..routing-options.static.route"]}
         },
         {
             "type": "bpprov.translators.template.Json",
