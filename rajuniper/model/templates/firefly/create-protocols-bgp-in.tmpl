@@ -1,7 +1,13 @@
 {
 {% set needComma = false %}
+{%- if data.get('name') is defined -%}
+    "name": "{{data['name']}}"
+    {% set needComma = true %}
+{%- endif -%}
 {% if data.get('protocols_bgp') is defined %}
+    {% if needComma %},{% endif %}
     "protocols_bgp": {
+    {% set needComma = false %}
     {% set protocolsBgp = data['protocols_bgp'] %}
     {% if 'admin_state' in protocolsBgp %}
         {% if needComma %},{% endif %}

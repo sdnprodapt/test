@@ -1,6 +1,11 @@
 {
 {% set needComma = false %}
+{%- if data.get('name') is defined -%}
+    "name": "{{data['name']}}"
+    {% set needComma = true %}
+{%- endif -%}
 {% if data.get('static_routes') %}
+    {% if needComma %},{% endif %}
     "static_routes": [
     {% for route in data['static_routes']%}
         {

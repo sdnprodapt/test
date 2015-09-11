@@ -1,8 +1,103 @@
 {
-    "Multiple Routes": {
+    "NonGlobal Multiple Routes": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
+            "name": "Some NonGlobal Router",
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1",
+                    "destination": "192.168.17.0/24"
+                },
+                {
+                    "next_hop": "192.168.106.1",
+                    "destination": "192.168.107.0/24"
+                }
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Some NonGlobal Router</name>",
+                "<routing-options>",
+                "<static operation=\"replace\">",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "<route>",
+                "<name>192.168.107.0/24</name>",
+                "<next-hop>192.168.106.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Some NonGlobal Router</name>",
+                "<protocols>",
+                "<bgp>",
+                "</bgp>",
+                "</protocols>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Global Multiple Routes": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "Global Router",
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
@@ -82,10 +177,11 @@
             ]
         ]
     },
-    "Incorrect Mask": {
+    "Global Incorrect Mask": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
+            "name": "Global Router",
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
@@ -170,10 +266,11 @@
             ]
         ]
     },
-    "Incorrect Nexthop": {
+    "NonGlobal Incorrect Nexthop": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
+            "name": "Router A1",
             "static_routes": [
                 {
                     "next_hop": "192.168.16.0/24",
@@ -190,6 +287,9 @@
                 "</target>",
                 "<config>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Router A1</name>",
                 "<routing-options>",
                 "<static operation=\"replace\">",
                 "<route>",
@@ -198,6 +298,8 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</config>",
                 "</edit-config>",
@@ -232,10 +334,11 @@
             ]
         ]
     },
-    "Multiple Routes with BGP": {
+    "NonGlobal Multiple Routes with BGP": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
+            "name": "Router A1",
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
@@ -321,6 +424,9 @@
                 "</target>",
                 "<config>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Router A1</name>",
                 "<routing-options>",
                 "<static operation=\"replace\">",
                 "<route>",
@@ -333,6 +439,8 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</config>",
                 "</edit-config>",
@@ -346,6 +454,9 @@
                 "</target>",
                 "<config>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Router A1</name>",
                 "<protocols>",
                 "<bgp>",
                 "<disable operation=\"replace\"></disable>",
@@ -399,6 +510,8 @@
                 "</group>",
                 "</bgp>",
                 "</protocols>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</config>",
                 "</edit-config>",
