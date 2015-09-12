@@ -1,5 +1,154 @@
 {
-    "BGP Test": {
+    "Global BGP Test": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "Global Router"
+        },
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<protocols>",
+                "<bgp>",
+                "<disable>True</disable>",
+                "<preference>123</preference>",
+                "<group>",
+                    "<name>testgroup1</name>",
+                    "<description>purple</description>",
+                    "<preference>222</preference>",
+                    "<type>internal</type>",
+                    "<peer-as>61234</peer-as>",
+                    "<import>some_policy</import>",
+                    "<import>some_other_policy</import>",
+                    "<export>a_policy</export>",
+                    "<export>another_policy</export>",
+                    "<allow>13.13.13.13</allow>",
+                    "<allow>14.14.14.14</allow>",
+                    "<neighbor>",
+                        "<name>testneighbor1</name>",
+                        "<address>192.168.10.1</address>",
+                        "<local-address>192.168.120.1</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                    "<neighbor>",
+                        "<name>testneighbor2</name>",
+                        "<address>192.168.10.3</address>",
+                        "<local-address>192.168.120.3</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<name>testgroup2</name>",
+                    "<description>purple</description>",
+                    "<preference>223</preference>",
+                    "<type>external</type>",
+                    "<peer-as>61235</peer-as>",
+                    "<neighbor>",
+                        "<name>testneighbor3</name>",
+                        "<address>192.168.10.2</address>",
+                        "<local-address>192.168.120.2</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<name>testgroup3</name>",
+                    "<description>purple</description>",
+                    "<preference>224</preference>",
+                    "<type>external</type>",
+                    "<peer-as>61236</peer-as>",
+                    "<allow>23.23.23.23</allow>",
+                    "<neighbor>",
+                        "<name>testneighbor4</name>",
+                        "<address>192.168.10.3</address>",
+                        "<local-address>192.168.120.4</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                    "<export>policy_to_export</export>",
+                "</group>",
+                "</bgp>",
+                "</protocols>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "admin_state": "Disabled",
+            "global_preference": 123,
+            "groups": [
+                {
+                    "group_name": "testgroup1",
+                    "description": "purple",
+                    "preference": 222,
+                    "type": "internal",
+                    "peer_as": 61234,
+                    "allows": [
+                        { "allow_address": "13.13.13.13" },
+                        { "allow_address": "14.14.14.14" }
+                    ],
+                    "import_policies": [
+                        "some_policy",
+                        "some_other_policy"
+                    ],
+                    "export_policies": [
+                        "a_policy",
+                        "another_policy"
+                    ],
+                    "neighbors": [
+                        {
+                            "neighbor_name": "testneighbor1",
+                            "address": "192.168.10.1",
+                            "local_address": "192.168.120.1",
+                            "as_override": true
+                        },
+                        {
+                            "neighbor_name": "testneighbor2",
+                            "address": "192.168.10.3",
+                            "local_address": "192.168.120.3",
+                            "as_override": true
+                        }
+                    ]
+                },
+                {
+                    "group_name": "testgroup2",
+                    "description": "purple",
+                    "preference": 223,
+                    "type": "external",
+                    "peer_as": 61235,
+                    "neighbors": [
+                        {
+                            "neighbor_name": "testneighbor3",
+                            "address": "192.168.10.2",
+                            "local_address": "192.168.120.2",
+                            "as_override": true
+                        }
+                    ]
+                },
+                {
+                    "group_name": "testgroup3",
+                    "description": "purple",
+                    "preference": 224,
+                    "type": "external",
+                    "peer_as": 61236,
+                    "allows": [
+                        { "allow_address": "23.23.23.23" }
+                    ],
+                    "neighbors": [
+                        {
+                            "neighbor_name": "testneighbor4",
+                            "address": "192.168.10.3",
+                            "local_address": "192.168.120.4",
+                            "as_override": true
+                        }
+                    ],
+                    "export_policies": [
+                        "policy_to_export"
+                    ]
+                }
+            ]
+        } 
+    },
+    "NonGlobal BGP Test": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {

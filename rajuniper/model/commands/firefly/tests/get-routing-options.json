@@ -1,5 +1,57 @@
 {
-    "Multiple Routes": {
+    "Global Multiple Routes": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "Global Router"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<routing-options>",
+                "</routing-options>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-options>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "<route>",
+                "<name>192.168.107.0/24</name>",
+                "<next-hop>192.168.106.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "name": "Global Router",
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1",
+                    "destination": "192.168.17.0/24"
+                },
+                {
+                    "next_hop": "192.168.106.1",
+                    "destination": "192.168.107.0/24"
+                }
+            ]
+        }
+    },
+    "NonGlobal Multiple Routes": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
@@ -61,7 +113,39 @@
             ]
         }
     },
-    "Single Route": {
+    "Global Single Route": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "Global Router"
+        },
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-options>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "name": "Global Router",
+            "static_routes": [
+                {
+                    "next_hop": "192.168.16.1",
+                    "destination": "192.168.17.0/24"
+                }
+            ]
+        }
+    },
+    "NonGlobal Single Route": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {

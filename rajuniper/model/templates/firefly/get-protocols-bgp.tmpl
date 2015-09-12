@@ -111,10 +111,7 @@
         ]
     {%- endif -%}
 {%- endmacro -%}
-{%- macro doInstance(instance) -%}
-{
-    {%- if instance['protocols'] -%}
-    {%- set protocols = instance['protocols'] -%}
+{%- macro doProtocols(protocols) -%}
     {%- if protocols.get('bgp') -%}
         {%- set bgp = protocols['bgp'] -%}
         {%- if bgp.get('disable') -%}
@@ -140,19 +137,30 @@
             ]
         {%- endif -%}
     {%- endif -%}
-{%- endif -%}
+{%- endmacro -%}
+{%- macro doInstance(instance) -%}
+{
+    {%- if instance['protocols'] -%}
+        {%- set protocols = instance['protocols'] -%}
+        {{doProtocols(protocols)}}
+    {%- endif -%}
 }
 {%- endmacro -%}
 
 {%- if data['configuration'] %}
-    {%- if data['configuration']['routing-instances'] %}
+    {%- if data['configuration']['protocols'] -%}
+        {%- set protocols = data['configuration']['protocols'] -%}
+        {
+        {{doProtocols(protocols)}}
+        }
+    {%- elif data['configuration']['routing-instances'] %}
         {%- if data['configuration']['routing-instances'] is mapping -%}
             {%- set instance = data['configuration']['routing-instances']['instance'] -%}
             {{doInstance(instance)}}
         {%- else -%}
             {}
         {%- endif -%}
-    {%-else -%}
+    {%- else -%}
         {}
     {%- endif %}
 {%-else -%}

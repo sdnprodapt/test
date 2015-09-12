@@ -5,8 +5,8 @@
     }
 {% endmacro %}
 {% macro doRoutingOptions(options) %}
+    {%- set needComma = false -%}
     {% if options.get('router-id') or options.get('autonomous-system') or options.get('confederation') %}
-        {%- if needComma -%},{%- endif -%}
         "bgp_routing":
         {
         {%- set needComma = false -%}
@@ -163,70 +163,86 @@
         ]
     {%- endif -%}
 {%- endmacro -%}
-{% macro doProtocols(instance) %}
-    {%- if instance['protocols'] -%}
-        {%- set protocols = instance['protocols'] -%}
-        {%- if protocols.get('bgp') -%}
-        "protocols_bgp": {
-            {%- set bgp = protocols['bgp'] -%}
-            {%- if bgp.get('disable') -%}
-                "admin_state" : "Disabled",
-            {%- else -%}
-                "admin_state" : "Enabled",
-            {%- endif -%}
-            {%- if bgp.get('description') -%}
-                "description": "{{bgp['description']}}",
-            {%- endif %}
-            {%- if bgp.get('preference') -%}
-                "global_preference": {{bgp['preference']}},
-            {%- endif %}
-            {%- if bgp.get('group') -%}
-                "groups": [
-                {%- if bgp['group'] is mapping -%}
-                    { {{ doGroup(bgp['group']) }} }
-                {%- else -%}
-                    {%- for group in bgp['group'] -%}
-                        { {{ doGroup(group) }} }{%- if not loop.last -%},{%- endif -%}
-                    {%- endfor -%}
-                {%- endif -%}
-                ]
-            {%- endif -%}
-        }
+
+{% macro doProtocols(protocols) %}
+    {%- if protocols.get('bgp') -%}
+    "protocols_bgp": {
+        {%- set bgp = protocols['bgp'] -%}
+        {%- if bgp.get('disable') -%}
+            "admin_state" : "Disabled",
+        {%- else -%}
+            "admin_state" : "Enabled",
         {%- endif -%}
+        {%- if bgp.get('description') -%}
+            "description": "{{bgp['description']}}",
+        {%- endif %}
+        {%- if bgp.get('preference') -%}
+            "global_preference": {{bgp['preference']}},
+        {%- endif %}
+        {%- if bgp.get('group') -%}
+            "groups": [
+            {%- if bgp['group'] is mapping -%}
+                { {{ doGroup(bgp['group']) }} }
+            {%- else -%}
+                {%- for group in bgp['group'] -%}
+                    { {{ doGroup(group) }} }{%- if not loop.last -%},{%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
+            ]
+        {%- endif -%}
+    }
     {%- endif -%}
 {% endmacro %}
+
 {% macro doInstance(instance) %}
     {
     "name": "{{instance.name}}"
     {%- set needComma = true -%}
-    {% if instance['routing-options'] %}
+    {%- if instance['routing-options'] -%}
         ,
-        {%- set options = instance['routing-options'] %}
-        {{doRoutingOptions(options)}}
-    {% endif %}
-    {% if instance['protocols'] %}
-        ,
-        {%- set options = instance['routing-options'] %}
-        {{doProtocols(instance)}}
-    {% endif %}
+        {{doRoutingOptions(instance['routing-options'])}}
+    {%- endif -%}
+    {%- if instance['protocols'] -%}
+        {%- if instance['protocols']['bgp'] -%}
+            ,
+            {{doProtocols(instance['protocols'])}}
+        {%- endif -%}
+    {%- endif -%}
     }
 {%- endmacro -%}
+
+{% macro doGlobalRouter() %}
+    {
+    "name": "Global Router"
+    {%- if data['configuration']['routing-options'] -%}
+        ,
+        {{doRoutingOptions(data['configuration']['routing-options'])}}
+    {%- endif -%}
+    {%- if data['configuration']['protocols'] -%}
+        {%- if data['configuration']['protocols']['bgp'] %}
+            ,
+            {{doProtocols(data['configuration']['protocols'])}}
+        {%- endif -%}
+    {%- endif -%}
+    }
+{%- endmacro -%}
+[
 {%- if data['configuration'] %}
+    {%- set needComma = false -%}
+    {%- if data['configuration']['routing-options'] or data['configuration']['protocols'] -%}
+        {{doGlobalRouter()}}
+        {%- set needComma = true -%}
+    {% endif %}
     {%- if data['configuration']['routing-instances'] %}
-        {%- if data['configuration']['routing-instances'] is mapping -%}
+        {%- if needComma -%},{%- endif -%}
+        {%- if data['configuration']['routing-instances']['instance'] is mapping -%}
             {%- set instance = data['configuration']['routing-instances']['instance'] -%}
-            [{{doInstance(instance)}}]
+            {{doInstance(instance)}}
         {%- else -%}
-            [
-            {%- for instance in data['configuration']['routing-instances'] %}
+            {%- for instance in data['configuration']['routing-instances']['instance'] %}
                 {{doInstance(instance)}}{%- if not loop.last -%},{%- endif -%}
             {%- endfor -%}
-            ]
         {%- endif -%}
-    {%- else -%}
-        {}
     {%- endif %}
-{%- else -%}
-    {}
 {%- endif %}
-
+]
