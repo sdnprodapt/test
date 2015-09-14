@@ -4,6 +4,9 @@
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
             "name": "Some NonGlobal Router",
+            "interfaces": [
+                "ge-0/0/1.0"
+            ],
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
@@ -69,6 +72,29 @@
                 "</rpc>"
             ],
             [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Some NonGlobal Router</name>",
+                "<interface operation=\"replace\">",
+                "<name operation=\"replace\">ge-0/0/1.0</name>",
+                "</interface>",
+                "<routing-options>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
                 "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
                 "<commit>",
                 "</commit>",
@@ -76,6 +102,11 @@
             ]
         ],
         "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
             [
                 "<rpc-reply>",
                 "<ok/>",
@@ -153,6 +184,19 @@
                 "</rpc>"
             ],
             [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
                 "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
                 "<commit>",
                 "</commit>",
@@ -160,6 +204,11 @@
             ]
         ],
         "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
             [
                 "<rpc-reply>",
                 "<ok/>",
@@ -271,6 +320,9 @@
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
             "name": "Router A1",
+            "interfaces": [
+                "ge-0/0/1.0"
+            ],
             "static_routes": [
                 {
                     "next_hop": "192.168.16.0/24",
@@ -339,6 +391,9 @@
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
             "name": "Router A1",
+            "interfaces": [
+                "ge-0/0/1.0"
+            ],
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
@@ -518,6 +573,29 @@
                 "</rpc>"
             ],
             [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Router A1</name>",
+                "<interface operation=\"replace\">",
+                "<name operation=\"replace\">ge-0/0/1.0</name>",
+                "</interface>",
+                "<routing-options>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
                 "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
                 "<commit>",
                 "</commit>",
@@ -525,6 +603,11 @@
             ]
         ],
         "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
             [
                 "<rpc-reply>",
                 "<ok/>",

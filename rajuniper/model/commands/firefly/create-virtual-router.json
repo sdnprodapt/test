@@ -33,6 +33,16 @@
         {
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
+                "command": "create-virtual-router-interfaces.json",
+                "input": {
+                    "templateType": "file",
+                    "data": "firefly/create-virtual-router-interfaces-in.tmpl"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
                 "command": "commit.json"
             }
         }

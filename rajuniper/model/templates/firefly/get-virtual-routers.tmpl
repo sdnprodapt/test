@@ -199,14 +199,29 @@
     "name": "{{instance.name}}"
     {%- set needComma = true -%}
     {%- if instance['routing-options'] -%}
-        ,
+        {%- if needComma -%},{%- endif -%}
         {{doRoutingOptions(instance['routing-options'])}}
+        {%- set needComma = true -%}
     {%- endif -%}
     {%- if instance['protocols'] -%}
         {%- if instance['protocols']['bgp'] -%}
-            ,
+            {%- if needComma -%},{%- endif -%}
             {{doProtocols(instance['protocols'])}}
+            {%- set needComma = true -%}
         {%- endif -%}
+    {%- endif -%}
+    {%- if instance['interface'] -%}
+        {%- if needComma -%},{%- endif -%}
+        "interfaces": [
+            {%- if instance['interface'] is mapping -%}
+                "{{instance['interface']['name']}}"
+            {%- else -%}
+                {%- for interface in instance['interface'] -%}
+                    "{{interface['name']}}"{%- if not loop.last -%},{%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
+        ]
+        {%- set needComma = true -%}
     {%- endif -%}
     }
 {%- endmacro -%}

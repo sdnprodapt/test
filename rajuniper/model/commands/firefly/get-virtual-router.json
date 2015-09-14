@@ -37,6 +37,21 @@
                     ]
                 }
             }
+        },
+        {
+            "description": "Get the interfaces of the routing instance",
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-virtual-router-interfaces.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/interfaces"
+                        }
+                    ]
+                }
+            }
         }
     ]
 }

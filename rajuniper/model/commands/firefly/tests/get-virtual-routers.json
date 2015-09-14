@@ -52,7 +52,7 @@
             }
         ]
     },
-    "NonGlobal Multiple Routes": {
+    "NonGlobal Multiple Routes Two Interfaces": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-expect": [
@@ -72,6 +72,12 @@
                 "<routing-instances>",
                 "<instance>",
                 "<name>pe_router1</name>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
+                "<interface>",
+                "<name>ge-0/0/2.0</name>",
+                "</interface>",
                 "<routing-options>",
                 "<static>",
                 "<route>",
@@ -91,6 +97,12 @@
                 "</instance>",
                 "<instance>",
                 "<name>pe_router2</name>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
+                "<interface>",
+                "<name>ge-0/0/2.0</name>",
+                "</interface>",
                 "<routing-options>",
                 "<static>",
                 "<route>",
@@ -116,6 +128,10 @@
         "in-expect": [
             {
                 "name": "pe_router1",
+                "interfaces": [
+                    "ge-0/0/1.0",
+                    "ge-0/0/2.0"
+                ],
                 "static_routes": [
                     {
                         "destination": "192.168.17.0/24",
@@ -129,6 +145,10 @@
             },
             {
                 "name": "pe_router2",
+                "interfaces": [
+                    "ge-0/0/1.0",
+                    "ge-0/0/2.0"
+                ],
                 "static_routes": [
                     {
                         "destination": "192.168.17.0/24",
@@ -229,7 +249,7 @@
             }
         ]
     },
-    "Single Route": {
+    "Single Route One Interface": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "in-params": [
@@ -239,6 +259,9 @@
                 "<routing-instances>",
                 "<instance>",
                 "<name>pe_router</name>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
                 "<routing-options>",
                 "<static>",
                 "<route>",
@@ -256,6 +279,9 @@
         "in-expect": [
             {
                 "name": "pe_router",
+                "interfaces": [
+                    "ge-0/0/1.0"
+                ],
                 "static_routes": [
                     {
                         "next_hop": "192.168.16.1",
@@ -459,7 +485,7 @@
             }
         ]
     },
-    "NonGlobal Single Route with BGP": {
+    "NonGlobal Muliple Routers Single Route with BGP": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-expect": [
@@ -478,7 +504,79 @@
                 "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
                 "<routing-instances>",
                 "<instance>",
-                "<name>pe_router</name>",
+                "<name>pe_router1</name>",
+                "<routing-options>",
+                "<router-id>11.11.11.11</router-id>",
+                "<autonomous-system><as-number>1234</as-number></autonomous-system>",
+                "<confederation><confederation-as>721</confederation-as></confederation>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "<protocols>",
+                "<bgp>",
+                "<disable>True</disable>",
+                "<preference>123</preference>",
+                "<group>",
+                    "<name>testgroup1</name>",
+                    "<description>purple</description>",
+                    "<preference>222</preference>",
+                    "<type>Internal</type>",
+                    "<peer-as>61234</peer-as>",
+                    "<import>some_policy</import>",
+                    "<import>some_other_policy</import>",
+                    "<export>a_policy</export>",
+                    "<export>another_policy</export>",
+                    "<allow>13.13.13.13</allow>",
+                    "<allow>14.14.14.14</allow>",
+                    "<neighbor>",
+                        "<name>testneighbor1</name>",
+                        "<address>192.168.10.1</address>",
+                        "<local-address>192.168.120.1</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                    "<neighbor>",
+                        "<name>testneighbor2</name>",
+                        "<address>192.168.10.3</address>",
+                        "<local-address>192.168.120.3</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<name>testgroup2</name>",
+                    "<description>purple</description>",
+                    "<preference>223</preference>",
+                    "<type>External</type>",
+                    "<peer-as>61235</peer-as>",
+                    "<neighbor>",
+                        "<name>testneighbor3</name>",
+                        "<address>192.168.10.2</address>",
+                        "<local-address>192.168.120.2</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "<group>",
+                    "<name>testgroup3</name>",
+                    "<description>purple</description>",
+                    "<preference>224</preference>",
+                    "<type>External</type>",
+                    "<peer-as>61236</peer-as>",
+                    "<allow>23.23.23.23</allow>",
+                    "<neighbor>",
+                        "<name>testneighbor4</name>",
+                        "<address>192.168.10.3</address>",
+                        "<local-address>192.168.120.4</local-address>",
+                        "<as-override>true</as-override>",
+                    "</neighbor>",
+                "</group>",
+                "</bgp>",
+                "</protocols>",
+                "</instance>",
+                "<instance>",
+                "<name>pe_router2</name>",
                 "<routing-options>",
                 "<router-id>11.11.11.11</router-id>",
                 "<autonomous-system><as-number>1234</as-number></autonomous-system>",
@@ -556,7 +654,96 @@
         ],
         "in-expect": [
             {
-                "name": "pe_router",
+                "name": "pe_router1",
+                "static_routes": [
+                    {
+                        "destination": "192.168.17.0/24",
+                        "next_hop": "192.168.16.1"
+                    }
+                ],
+                "bgp_routing": {
+                    "router_id": "11.11.11.11",
+                    "confederation": {
+                        "as_number": 721,
+                        "members": []
+                    },
+                    "router_as": 1234
+                },
+                "protocols_bgp": {
+                    "admin_state": "Disabled",
+                    "global_preference": 123,
+                    "groups": [
+                        {
+                            "group_name": "testgroup1",
+                            "description": "purple",
+                            "preference": 222,
+                            "type": "Internal",
+                            "peer_as": 61234,
+                            "allows": [
+                                { "allow_address": "13.13.13.13" },
+                                { "allow_address": "14.14.14.14" }
+                            ],
+                            "import_policies": [
+                                "some_policy",
+                                "some_other_policy"
+                            ],
+                            "export_policies": [
+                                "a_policy",
+                                "another_policy"
+                            ],
+                            "neighbors": [
+                                {
+                                    "neighbor_name": "testneighbor1",
+                                    "address": "192.168.10.1",
+                                    "local_address": "192.168.120.1",
+                                    "as_override": true
+                                },
+                                {
+                                    "neighbor_name": "testneighbor2",
+                                    "address": "192.168.10.3",
+                                    "local_address": "192.168.120.3",
+                                    "as_override": true
+                                }
+                            ]
+                        },
+                        {
+                            "group_name": "testgroup2",
+                            "description": "purple",
+                            "preference": 223,
+                            "type": "External",
+                            "peer_as": 61235,
+                            "neighbors": [
+                                {
+                                    "neighbor_name": "testneighbor3",
+                                    "address": "192.168.10.2",
+                                    "local_address": "192.168.120.2",
+                                    "as_override": true
+                                }
+                            ]
+                        },
+                        {
+                            "group_name": "testgroup3",
+                            "description": "purple",
+                            "preference": 224,
+                            "type": "External",
+                            "peer_as": 61236,
+                            "allows": [
+                                { "allow_address": "23.23.23.23" }
+                            ],
+                            "neighbors": [
+                                {
+                                    "neighbor_name": "testneighbor4",
+                                    "address": "192.168.10.3",
+                                    "local_address": "192.168.120.4",
+                                    "as_override": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "pe_router2",
                 "static_routes": [
                     {
                         "destination": "192.168.17.0/24",

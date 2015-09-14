@@ -1,0 +1,49 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/get-virtual-router-interfaces.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/get-virtual-router-interfaces-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {"paths": ["configuration.routing-instances.interface"]}
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "firefly/get-virtual-router-interfaces.tmpl",
+                "as_object": false
+            }
+        },
+        {
+            "type": "bpprov.translators.route.Branch",
+            "parameters": {
+                "choice": [
+                    {
+                        "when": "${.} == \"{}\"",
+                        "do": {
+                            "type": "bpprov.translators.template.Json",
+                            "parameters": {
+                                "templateType": "inline",
+                                "template": "{\"statusCode\": \"404\", \"reason\": \"Virtual router interfaces not found\"}"
+                            }
+                        }
+                    }
+                ],
+                "otherwise": {
+                    "type": "bpprov.translators.template.Json",
+                    "parameters": {
+                        "templateType": "inline",
+                        "template": "{{ data }}"
+                    }
+                }
+            }
+        }
+    ]
+}

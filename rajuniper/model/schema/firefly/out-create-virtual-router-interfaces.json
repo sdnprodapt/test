@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "create-virtual-router-interfaces out parameters schema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the virtual router to create or modify"
+        },
+        "interfaces": {
+            "title": "Interfaces",
+            "description": "Interfaces used by the virtual router",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

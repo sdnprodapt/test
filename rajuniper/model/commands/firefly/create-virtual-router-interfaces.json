@@ -1,0 +1,13 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/create-virtual-router-interfaces.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/create-virtual-router-interfaces.tmpl"
+    },
+    "out-schema": "firefly/out-create-virtual-router-interfaces.json",
+    "in-path": [],
+    "out-path": []
+}
