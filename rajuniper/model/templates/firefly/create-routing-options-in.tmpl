@@ -20,6 +20,7 @@
     {% if needComma %},{% endif %}
     {% set bgpRouting = data['bgp_routing'] %}
     "bgp_routing": {
+    {% set needComma = false %}
     {% if 'router_id' in bgpRouting %}
         "router_id": "{{ bgpRouting['router_id'] }}"
         {% set needComma = true %}

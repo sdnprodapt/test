@@ -20,6 +20,7 @@
                 <routing-instances>
                     <instance>
                         <name>{{routerName}}</name>
+                        <instance-type>virtual-router</instance-type>
                     {% if data.get('interfaces') is defined %}
                         {% for interface in data['interfaces'] %}
                             <interface operation="replace">
@@ -27,8 +28,6 @@
                             </interface>
                         {% endfor %}
                     {% endif %}
-                    <routing-options>
-                    </routing-options>
                 {%- if routerName != 'Global Router' -%}
                     </instance>
                 </routing-instances>

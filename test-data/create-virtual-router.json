@@ -1,0 +1,42 @@
+{
+    "command": "create-virtual-router.json",
+    "parameters": {
+        "name": "RouterABC",
+        "interfaces": [
+            "ge-0/0/3.0",
+            "ge-0/0/4.0"
+        ],
+        "static_routes": [
+            {
+                "destination": "10.0.0.0/24",
+                "next_hop": "10.173.131.1"
+            }
+        ],
+        "bgp_routing": {
+            "router_as": 650066
+        },
+        "protocols_bgp": {
+            "groups": [
+                {
+                    "group_name": "pe_routers",
+                    "import_policies": [
+                        "accept_default"
+                    ],
+                    "export_policies": [
+                        "export_static",
+                        "default_reject"
+                    ],
+                    "peer_as": 65000,
+                    "neighbors": [
+                        {
+                            "neighbor_name": "10.173.130.1"
+                        },
+                        {
+                            "neighbor_name": "10.173.130.2"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
