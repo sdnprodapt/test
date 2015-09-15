@@ -2,13 +2,21 @@
     "Multiple Routes": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "pe_router"
+        },
         "out-expect": [
             [
                 "<rpc>",
                 "<get-configuration>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<routing-options>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</get-configuration>",
                 "</rpc>"
@@ -17,10 +25,28 @@
                 "<rpc>",
                 "<get-configuration>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<protocols>",
                 "<bgp>",
                 "</bgp>",
                 "</protocols>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</get-configuration>",
                 "</rpc>"
@@ -30,6 +56,12 @@
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
                 "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
                 "<routing-options>",
                 "<static>",
                 "<route>",
@@ -42,13 +74,61 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</rpc-reply>"
             ],
-            []
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
+                "<name>pe_router</name>",
+                "<protocols>",
+                "<bgp>",
+                "</bgp>",
+                "</protocols>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
+                "<routing-options>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "<route>",
+                "<name>192.168.107.0/24</name>",
+                "<next-hop>192.168.106.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
         ],
         "in-expect": {
-            "name": "Global Router",
+            "name": "pe_router",
+            "interfaces": [
+                "ge-0/0/1.0"
+            ],
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
@@ -58,16 +138,23 @@
                     "next_hop": "192.168.106.1",
                     "destination": "192.168.107.0/24"
                 }
-            ]
+            ],
+            "protocols_bgp": {}
         }
     },
     "Single Route": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "pe_router"
+        },
         "in-params": [
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
                 "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<routing-options>",
                 "<static>",
                 "<route>",
@@ -76,24 +163,76 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</rpc-reply>"
             ],
-            []
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
+                "<name>pe_router</name>",
+                "<protocols>",
+                "<bgp>",
+                "</bgp>",
+                "</protocols>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
+                "<interface>",
+                "<name>ge-0/0/1.0</name>",
+                "</interface>",
+                "<interface>",
+                "<name>ge-0/0/2.0</name>",
+                "</interface>",
+                "<routing-options>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
         ],
         "in-expect": {
-            "name": "Global Router",
+            "name": "pe_router",
+            "interfaces": [
+                "ge-0/0/1.0",
+                "ge-0/0/2.0"
+            ],
             "static_routes": [
                 {
                     "next_hop": "192.168.16.1",
                     "destination": "192.168.17.0/24"
                 }
-            ]
+            ],
+            "protocols_bgp": {}
         }
     },
-    "No Route": {
+    "No Routing Instance": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "pe_router"
+        },
         "in-params": [
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
@@ -103,19 +242,26 @@
             []
         ],
         "in-expect": {
-            "name": "Global Router"
         }
     },
     "Single Route with BGP": {
         "type": "netconf",
         "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "pe_router"
+        },
         "out-expect": [
             [
                 "<rpc>",
                 "<get-configuration>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<routing-options>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</get-configuration>",
                 "</rpc>"
@@ -124,10 +270,28 @@
                 "<rpc>",
                 "<get-configuration>",
                 "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<protocols>",
                 "<bgp>",
                 "</bgp>",
                 "</protocols>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ],
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</get-configuration>",
                 "</rpc>"
@@ -137,6 +301,9 @@
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
                 "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<routing-options>",
                 "<router-id>11.11.11.11</router-id>",
                 "<autonomous-system><as-number>1234</as-number></autonomous-system>",
@@ -148,12 +315,17 @@
                 "</route>",
                 "</static>",
                 "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</rpc-reply>"
             ],
             [
                 "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
                 "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
                 "<protocols>",
                 "<bgp>",
                 "<disable>True</disable>",
@@ -212,12 +384,37 @@
                 "</group>",
                 "</bgp>",
                 "</protocols>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" message-id=\"2\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1434613731\" junos:changed-localtime=\"2015-06-18 07:48:51 UTC\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>pe_router</name>",
+                "<routing-options>",
+                "<router-id>11.11.11.11</router-id>",
+                "<autonomous-system><as-number>1234</as-number></autonomous-system>",
+                "<confederation><confederation-as>721</confederation-as></confederation>",
+                "<static>",
+                "<route>",
+                "<name>192.168.17.0/24</name>",
+                "<next-hop>192.168.16.1</next-hop>",
+                "</route>",
+                "</static>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
                 "</configuration>",
                 "</rpc-reply>"
             ]
         ],
         "in-expect": {
-            "name": "Global Router",
+            "name": "pe_router",
+            "interfaces": [],
             "static_routes": [
                 {
                     "destination": "192.168.17.0/24",

@@ -2,8 +2,21 @@
 <rpc>
     <get-configuration>
         <configuration>
-            <routing-options>
-            </routing-options>
+            {%- if 'name' in data -%}
+                {%- set routerName = data['name'] -%}
+            {%- else -%}
+                {%- set routerName = '' -%}
+            {%- endif -%}
+            {%- if routerName != 'Global Router' -%}
+            <routing-instances>
+                <instance>
+                    <name>{{routerName}}</name>
+            {%- endif -%}
+                    <routing-options></routing-options>
+            {%- if routerName != 'Global Router' -%}
+                </instance>
+            </routing-instances>
+            {%- endif -%}
         </configuration>
     </get-configuration>
 </rpc>

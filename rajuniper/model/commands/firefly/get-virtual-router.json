@@ -4,7 +4,9 @@
     "tests": [
         "commands/firefly/tests/get-virtual-router.json"
     ],
-    "endpoint-parameters": {},
+    "endpoint-parameters": {
+        "template": "firefly/get-virtual-router-command.tmpl"
+    },
     "out-path": [
     ],
     "in-path": [
@@ -31,6 +33,21 @@
                         {
                             "from": "/data",
                             "to": "/data/protocols_bgp"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "description": "Get the interfaces of the routing instance",
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-virtual-router-interfaces.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/interfaces"
                         }
                     ]
                 }

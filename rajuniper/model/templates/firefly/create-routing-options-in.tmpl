@@ -1,6 +1,11 @@
 {
 {% set needComma = false %}
+{%- if data.get('name') is defined -%}
+    "name": "{{data['name']}}"
+    {% set needComma = true %}
+{%- endif -%}
 {% if data.get('static_routes') %}
+    {% if needComma %},{% endif %}
     "static_routes": [
     {% for route in data['static_routes']%}
         {
@@ -15,6 +20,7 @@
     {% if needComma %},{% endif %}
     {% set bgpRouting = data['bgp_routing'] %}
     "bgp_routing": {
+    {% set needComma = false %}
     {% if 'router_id' in bgpRouting %}
         "router_id": "{{ bgpRouting['router_id'] }}"
         {% set needComma = true %}

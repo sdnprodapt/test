@@ -3,9 +3,18 @@
     "title": "create-virtual-router out parameters schema",
     "type": "object",
     "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the virtual router"
+        },
+        "interfaces": {
+            "type": "array",
+            "description": "The names of the interfaces used by this virtual router",
+            "items.type" : "string"
+        },
         "static_routes": {
             "title": "Static Routes",
-            "description": "Static routing table of this Virtual Router",
+            "description": "Static routing table of this virtual router",
             "type": "array",
             "items": {
                 "type": "object",

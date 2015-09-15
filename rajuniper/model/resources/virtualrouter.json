@@ -5,6 +5,9 @@
     "provider_resource_id_field": "name",
     "label_field": "name",
     "commands": {
+        "list": {
+            "command": "get-virtual-routers.json"
+        },
         "get": {
             "command": "get-virtual-router.json"
         },

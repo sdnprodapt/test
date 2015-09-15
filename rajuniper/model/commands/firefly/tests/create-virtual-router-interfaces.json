@@ -1,0 +1,43 @@
+{
+    "One Interface": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "name": "Some NonGlobal Router",
+            "interfaces": [
+                "ge-0/0/1.0"
+            ]
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target>",
+                "<candidate/>",
+                "</target>",
+                "<config>",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>Some NonGlobal Router</name>",
+                "<instance-type>virtual-router</instance-type>",
+                "<interface operation=\"replace\">",
+                "<name operation=\"replace\">ge-0/0/1.0</name>",
+                "</interface>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

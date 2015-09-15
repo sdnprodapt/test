@@ -1,5 +1,6 @@
 {#
     Inputs:
+        name: Name of the routing instance to modify
         protocols_bgp: BGP properties to be created
 #}
 
@@ -10,6 +11,16 @@
         </target>
         <config>
             <configuration>
+                {%- if 'name' in data -%}
+                    {%- set routerName = data['name'] -%}
+                {%- else -%}
+                    {%- set routerName = '' -%}
+                {%- endif -%}
+                {%- if routerName != 'Global Router' -%}
+                <routing-instances>
+                    <instance>
+                        <name>{{routerName}}</name>
+                {%- endif -%}
                 <protocols>
                     <bgp>
                     {% if 'protocols_bgp' in data %}
@@ -89,6 +100,10 @@
                     {% endif %}
                     </bgp>
                 </protocols>
+                {%- if routerName != 'Global Router' -%}
+                    </instance>
+                </routing-instances>
+                {%- endif -%}
             </configuration>
         </config>
     </edit-config>

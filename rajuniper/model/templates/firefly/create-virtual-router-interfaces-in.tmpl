@@ -1,0 +1,16 @@
+{
+{% set needComma = false %}
+{%- if data.get('name') is defined -%}
+    "name": "{{data['name']}}"
+    {% set needComma = true %}
+{%- endif -%}
+{% if data.get('interfaces') %}
+    {% if needComma %},{% endif %}
+    "interfaces": [
+    {% for interface in data['interfaces']%}
+         "{{interface}}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ]
+    {% set needComma = true %}
+{% endif %}
+}

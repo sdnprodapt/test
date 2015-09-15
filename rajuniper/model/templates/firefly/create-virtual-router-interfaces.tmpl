@@ -1,0 +1,39 @@
+{#
+    Inputs:
+        name: Name of the routing instance to modify
+        interfaces: Names of the interfaces used by the routing instance
+#}
+
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+        <config>
+            <configuration>
+            {%- if 'name' in data -%}
+                {%- set routerName = data['name'] -%}
+            {%- else -%}
+                {%- set routerName = '' -%}
+            {%- endif -%}
+            {%- if routerName != 'Global Router' -%}
+                <routing-instances>
+                    <instance>
+                        <name>{{routerName}}</name>
+                        <instance-type>virtual-router</instance-type>
+                    {% if data.get('interfaces') is defined %}
+                        {% for interface in data['interfaces'] %}
+                            <interface operation="replace">
+                                <name operation="replace">{{interface}}</name>
+                            </interface>
+                        {% endfor %}
+                    {% endif %}
+                {%- if routerName != 'Global Router' -%}
+                    </instance>
+                </routing-instances>
+                {%- endif -%}
+            {%- endif -%}
+            </configuration>
+        </config>
+    </edit-config>
+</rpc>

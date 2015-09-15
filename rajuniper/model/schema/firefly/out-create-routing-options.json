@@ -3,6 +3,10 @@
     "title": "create-routing-options out parameters schema",
     "type": "object",
     "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the virtual router to create or modify"
+        },
         "static_routes": {
             "title": "Static Routes",
             "description": "Static routing table",

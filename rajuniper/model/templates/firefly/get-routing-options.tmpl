@@ -1,7 +1,11 @@
-{
-"name": "Global Router",
-{%- if data['configuration'] %}
-    {%- set options = data.configuration['routing-options'] %}
+{% macro doStaticRoute(route) %}
+    {
+    "destination": "{{ route['name'] }}",
+    "next_hop":"{{ route['next-hop'] }}"
+    }
+{% endmacro %}
+{% macro doRoutingOptions(options) %}
+    {%- set needComma = false -%}
     {% if options.get('router-id') or options.get('autonomous-system') or options.get('confederation') %}
         "bgp_routing":
         {
@@ -33,14 +37,47 @@
     {% if options.get('static') and options['static'].get('route') %}
         {%- if needComma -%},{%- endif -%}
         "static_routes": [
-            {%- for route in options['static']['route'] %}
-            {
-                "destination": "{{ route.name }}",
-                "next_hop":"{{ route['next-hop'] }}"
-            }{% if not loop.last %},{% endif %}
-            {%- endfor %}
+            {%- if options['static']['route'] is mapping -%}
+                {{doStaticRoute(options['static']['route'])}}
+            {%- else -%}
+                {%- for route in options['static']['route'] %}
+                    {{doStaticRoute(route)}}
+                    {% if not loop.last %},{% endif %}
+                {%- endfor %}
+            {%- endif -%}
         ]
     {% endif %}
-{%- endif %}
-}
+{% endmacro %}
+{% macro doInstance(instance) %}
+    {
+    "name": "{{instance.name}}",
+    {% if instance['routing-options'] %}
+        {%- set options = instance['routing-options'] %}
+        {{doRoutingOptions(options)}}
+    {% endif %}
+    }
+{%- endmacro -%}
+{% macro doGlobalRoutingOptions(routingOptions) %}
+    {
+    "name": "Global Router",
+    {{doRoutingOptions(routingOptions)}}
+    }
+{%- endmacro -%}
 
+{%- if data['configuration'] %}
+    {%- if data['configuration']['routing-options'] -%}
+        {%- set routingOptions = data['configuration']['routing-options'] -%}
+        {{doGlobalRoutingOptions(routingOptions)}}
+    {%- elif data['configuration']['routing-instances'] %}
+        {%- if data['configuration']['routing-instances'] is mapping -%}
+            {%- set instance = data['configuration']['routing-instances']['instance'] -%}
+            {{doInstance(instance)}}
+        {%- else -%}
+            {}
+        {%- endif -%}
+    {%- else -%}
+        {}
+    {%- endif %}
+{%-else -%}
+    {}
+{%- endif %}

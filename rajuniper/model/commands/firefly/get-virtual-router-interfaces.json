@@ -2,22 +2,22 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/firefly/tests/get-routing-options.json"
+        "commands/firefly/tests/get-virtual-router-interfaces.json"
     ],
     "endpoint-parameters": {
-        "template": "firefly/get-routing-options-command.tmpl"
+        "template": "firefly/get-virtual-router-interfaces-command.tmpl"
     },
     "out-path": [
     ],
     "in-path": [
         {
             "type": "bpprov.translators.dict.Listify",
-            "parameters": {"paths": ["configuration.routing-instances..routing-options.static.route"]}
+            "parameters": {"paths": ["configuration.routing-instances.interface"]}
         },
         {
             "type": "bpprov.translators.template.Json",
             "parameters": {
-                "template": "firefly/get-routing-options.tmpl",
+                "template": "firefly/get-virtual-router-interfaces.tmpl",
                 "as_object": false
             }
         },
@@ -31,7 +31,7 @@
                             "type": "bpprov.translators.template.Json",
                             "parameters": {
                                 "templateType": "inline",
-                                "template": "{\"statusCode\": \"404\", \"reason\": \"Routing options not found\"}"
+                                "template": "{\"statusCode\": \"404\", \"reason\": \"Virtual router interfaces not found\"}"
                             }
                         }
                     }

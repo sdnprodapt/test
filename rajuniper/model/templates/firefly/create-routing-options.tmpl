@@ -1,6 +1,8 @@
 {#
     Inputs:
-        static_routes: static routes to be created
+        name: Name of the routing instance to modify
+        static_routes: static routes to create or modify
+        bgp_routing: BGP properties to create or modify
 #}
 
 <rpc>
@@ -10,6 +12,16 @@
         </target>
         <config>
             <configuration>
+            {%- if 'name' in data -%}
+                {%- set routerName = data['name'] -%}
+            {%- else -%}
+                {%- set routerName = '' -%}
+            {%- endif -%}
+            {%- if routerName != 'Global Router' -%}
+            <routing-instances>
+                <instance>
+                    <name>{{routerName}}</name>
+            {%- endif -%}
                 <routing-options>
                 {% if data.get('static_routes') is defined %}
                     <static operation="replace">
@@ -41,6 +53,10 @@
                     {% endif %}
                 {% endif %}
                 </routing-options>
+            {%- if routerName != 'Global Router' -%}
+                </instance>
+            </routing-instances>
+            {%- endif -%}
             </configuration>
         </config>
     </edit-config>
