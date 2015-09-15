@@ -1,6 +1,7 @@
 #!/bin/sh
 
-command=create-virtual-router.json
+#command=create-virtual-router.json
+command=delete-virtual-router.json
 
 
 session="URHVKBS34SRI37FV3L34HWEZHGU"

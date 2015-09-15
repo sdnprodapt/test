@@ -1,0 +1,33 @@
+{#
+    Inputs:
+        name: The virtual router to delete.
+#}
+
+<rpc>
+    <edit-config>
+        <target>
+            <candidate/>
+        </target>
+    <config>
+        <configuration>
+            {%- if 'name' in data -%}
+                {%- set routerName = data['name'] -%}
+            {%- else -%}
+                {%- set routerName = '' -%}
+            {%- endif -%}
+            {%- if routerName != 'Global Router' -%}
+                <routing-instances>
+                    <instance operation="delete">
+                        <name>{{routerName}}</name>
+                    </instance>
+                </routing-instances>
+            {%- else -%}
+                <routing-options operation="delete"></routing-options>
+                <protocols>
+                    <bgp operation="delete"></bgp>
+                </protocols>
+            {%- endif -%}
+        </configuration>
+    </config>
+    </edit-config>
+</rpc>

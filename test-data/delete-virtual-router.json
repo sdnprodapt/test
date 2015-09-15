@@ -1,0 +1,6 @@
+{
+    "command": "delete-virtual-router.json",
+    "parameters": {
+        "name": "RouterABC"
+    }
+}

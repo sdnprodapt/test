@@ -1,0 +1,20 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/delete-virtual-router.json"
+    ],
+    "endpoint-parameters": {
+        "template": "firefly/delete-virtual-router.tmpl"
+    },
+    "out-schema": "firefly/out-delete-virtual-router.json",
+    "out-path": [],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit.json"
+            }
+        }
+    ]
+}
