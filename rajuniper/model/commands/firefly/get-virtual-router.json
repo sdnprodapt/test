@@ -28,6 +28,13 @@
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
                 "command": "get-protocols-bgp.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "header": {},
+                    "data": {
+                        "name": "{{ header.userParam.name }}"
+                    }
+                },
                 "output": {
                     "patches": [
                         {
@@ -43,6 +50,13 @@
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
                 "command": "get-virtual-router-interfaces.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "header": {},
+                    "data": {
+                        "name": "{{ header.userParam.name }}"
+                    }
+                },
                 "output": {
                     "patches": [
                         {

@@ -7,7 +7,25 @@
     "endpoint-parameters": {
         "template": "firefly/get-routing-options-command.tmpl"
     },
+    "out-schema": "firefly/out-get-routing-options.json",
     "out-path": [
+        {
+            "type": "bpprov.translators.route.Branch",
+            "parameters": {
+                "choice": [
+                    {
+                        "when": "${name} == \"\"",
+                        "do": {
+                            "type": "bpprov.translators.template.Json",
+                            "parameters": {
+                                "templateType": "inline",
+                                "template": "{\"statusCode\": \"404\", \"reason\": \"Virtual Router name not defined\"}"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
     ],
     "in-path": [
         {
