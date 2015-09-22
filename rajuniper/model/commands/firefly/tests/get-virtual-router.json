@@ -242,6 +242,7 @@
             []
         ],
         "in-expect": {
+            "name": "Global Router"
         }
     },
     "Single Route with BGP": {

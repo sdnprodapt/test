@@ -196,6 +196,7 @@
             ]
         ],
         "in-expect": {
+            "name": "Global Router"
         }
     },
     "Single Route with BGP no members": {
