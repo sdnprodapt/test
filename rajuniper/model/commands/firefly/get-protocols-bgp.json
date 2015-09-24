@@ -9,23 +9,6 @@
     },
     "out-schema": "firefly/out-get-protocols-bgp.json",
     "out-path": [
-        {
-            "type": "bpprov.translators.route.Branch",
-            "parameters": {
-                "choice": [
-                    {
-                        "when": "${$..} missing \"name\"",
-                        "do": {
-                            "type": "bpprov.translators.template.Json",
-                            "parameters": {
-                                "templateType": "inline",
-                                "template": "{\"statusCode\": \"404\", \"reason\": \"Virtual Router name not defined\"}"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
     ],
     "in-path": [
         {

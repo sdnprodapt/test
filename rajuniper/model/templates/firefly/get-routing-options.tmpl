@@ -73,11 +73,15 @@
             {%- set instance = data['configuration']['routing-instances']['instance'] -%}
             {{doInstance(instance)}}
         {%- else -%}
-            {"name": "Global Router"}
+            {"name": "{{data['name']}}"}
         {%- endif -%}
     {%- else -%}
-        {"name": "Global Router"}
+        {"name": "{{data['name']}}"}
     {%- endif %}
 {%-else -%}
-    {"name": "Global Router"}
+    {%- if data['name'] -%}
+        {"name": "{{data['name']}}"}
+    {%- else -%}
+        {}
+    {%- endif %}
 {%- endif %}

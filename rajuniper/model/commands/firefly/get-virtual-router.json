@@ -38,7 +38,7 @@
                 "output": {
                     "patches": [
                         {
-                            "from": "/data",
+                            "from": "/data/protocols_bgp",
                             "to": "/data/protocols_bgp"
                         }
                     ]
@@ -60,8 +60,12 @@
                 "output": {
                     "patches": [
                         {
-                            "from": "/data",
+                            "from": "/data/interfaces",
                             "to": "/data/interfaces"
+                        },
+                        {
+                            "from": "/data/name",
+                            "to": "/data/name"
                         }
                     ]
                 }
