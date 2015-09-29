@@ -41,26 +41,26 @@
                             {% endif %}
                             {% if 'groups' in data['protocols_bgp'] %}
                                 {% for group in data['protocols_bgp']['groups'] %}
-                                    <group>
+                                    <group operation="replace">
                                     {% if 'group_name' in group %}
-                                        <name operation="replace">{{ group['group_name'] }}</name>
+                                        <name>{{ group['group_name'] }}</name>
                                     {% endif %}
                                     {% if 'description' in group %}
-                                        <description operation="replace">{{ group['description'] }}</description>
+                                        <description>{{ group['description'] }}</description>
                                     {% endif %}
                                     {% if 'preference' in group %}
-                                        <preference operation="replace">{{ group['preference'] }}</preference>
+                                        <preference>{{ group['preference'] }}</preference>
                                     {% endif %}
                                     {% if 'type' in group %}
-                                        <type operation="replace">{{ group['type'] }}</type>
+                                        <type>{{ group['type'] }}</type>
                                     {% endif %}
                                     {% if 'peer_as' in group %}
-                                        <peer-as operation="replace">{{ group['peer_as'] }}</peer-as>
+                                        <peer-as>{{ group['peer_as'] }}</peer-as>
                                     {% endif %}
                                     {% if 'allows' in group %}
                                         {% for allow in group['allows'] %}
                                             {% if 'allow_address' in allow %}
-                                                <allow operation="replace">{{ allow['allow_address'] }}</allow>
+                                                <allow>{{ allow['allow_address'] }}</allow>
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
@@ -68,13 +68,13 @@
                                         {% for neighbor in group['neighbors'] %}
                                             <neighbor>
                                             {% if 'neighbor_name' in neighbor %}
-                                                <name operation="replace">{{ neighbor['neighbor_name'] }}</name>
+                                                <name>{{ neighbor['neighbor_name'] }}</name>
                                             {% endif %}
                                             {% if 'address' in neighbor %}
-                                                <address operation="replace">{{ neighbor['address'] }}</address>
+                                                <address>{{ neighbor['address'] }}</address>
                                             {% endif %}
                                             {% if 'local_address' in neighbor %}
-                                                <local-address operation="replace">{{ neighbor['local_address'] }}</local-address>
+                                                <local-address>{{ neighbor['local_address'] }}</local-address>
                                             {% endif %}
                                             {% if 'as_override' in neighbor %}
                                                 {% if neighbor['as_override'] %}
@@ -88,12 +88,12 @@
                                     {% endif %}
                                     {% if 'import_policies' in group %}
                                         {% for import in group['import_policies'] %}
-                                            <import operation="replace">{{import}}</import>
+                                            <import>{{import}}</import>
                                         {% endfor %}
                                     {% endif %}
                                     {% if 'export_policies' in group %}
                                         {% for export in group['export_policies'] %}
-                                            <export operation="replace">{{export}}</export>
+                                            <export>{{export}}</export>
                                         {% endfor %}
                                     {% endif %}
                                     </group>

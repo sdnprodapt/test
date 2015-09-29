@@ -5,7 +5,6 @@
         "commands/firefly/tests/get-virtual-router.json"
     ],
     "endpoint-parameters": {
-        "template": "firefly/get-virtual-router-command.tmpl"
     },
     "out-path": [
     ],
