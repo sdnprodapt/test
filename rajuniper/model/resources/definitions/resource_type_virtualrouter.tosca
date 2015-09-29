@@ -201,7 +201,7 @@ resourceTypes {
                   items {
                     type = object
                     properties {
-                      name {
+                      neighbor_name {
                         title = "BGP Group Static Peer Name"
                         description = "BGP group static peer name"
                         type = string

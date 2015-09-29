@@ -1,9 +1,11 @@
+{
 {%- if data['configuration'] -%}
     {%- if data['configuration']['routing-instances'] %}
         {%- if data['configuration']['routing-instances'] is mapping -%}
             {%- set instance = data['configuration']['routing-instances']['instance'] -%}
+                "name": "{{instance['name']}}",
+                "interfaces": [
             {%- if instance['interface'] -%}
-                [
                 {%- if instance['interface'] is mapping -%}
                     "{{instance['interface']['name']}}"
                 {%- else -%}
@@ -12,16 +14,9 @@
                         "{{interfaceName}}"{%- if not loop.last -%},{%- endif -%}
                     {%- endfor -%}
                 {%- endif -%}
-                ]
-            {%- else -%}
-                []
             {%- endif -%}
-        {%- else -%}
-            []
+                ]
         {%- endif -%}
-    {%- else -%}
-        []
     {%- endif -%}
-{%- else -%}
-    []
 {%- endif -%}
+}

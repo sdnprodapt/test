@@ -7,6 +7,7 @@
     "endpoint-parameters": {
         "template": "firefly/get-routing-options-command.tmpl"
     },
+    "out-schema": "firefly/out-get-routing-options.json",
     "out-path": [
     ],
     "in-path": [
@@ -17,32 +18,7 @@
         {
             "type": "bpprov.translators.template.Json",
             "parameters": {
-                "template": "firefly/get-routing-options.tmpl",
-                "as_object": false
-            }
-        },
-        {
-            "type": "bpprov.translators.route.Branch",
-            "parameters": {
-                "choice": [
-                    {
-                        "when": "${.} == \"{}\"",
-                        "do": {
-                            "type": "bpprov.translators.template.Json",
-                            "parameters": {
-                                "templateType": "inline",
-                                "template": "{\"statusCode\": \"404\", \"reason\": \"Routing options not found\"}"
-                            }
-                        }
-                    }
-                ],
-                "otherwise": {
-                    "type": "bpprov.translators.template.Json",
-                    "parameters": {
-                        "templateType": "inline",
-                        "template": "{{ data }}"
-                    }
-                }
+                "template": "firefly/get-routing-options.tmpl"
             }
         }
     ]

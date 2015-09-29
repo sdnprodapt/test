@@ -29,8 +29,9 @@
                 "</rpc-reply>"
             ]
         ],
-        "in-expect": [
-                "ge-0/0/1.0"
-        ]
+        "in-expect": {
+            "name": "pe_router",
+            "interfaces": ["ge-0/0/1.0"]
+        }
     }
 }

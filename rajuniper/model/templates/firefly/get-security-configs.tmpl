@@ -1,94 +1,143 @@
-{
-{%- if data['configuration'] %}
-    {%- set security = data.configuration.security %}
-    {%- set policies = security.policies['policy'] %}
-    {%- set security_zones = security.zones['security-zone'] %}
-    "name": "Firewall",
-    {%- if policies %}
-        "policies":
-            [
-            {%- for policy in policies %}
-                {
-                "from_zone_name": "{{ policy['from-zone-name'] }}",
-                "to_zone_name": "{{ policy['to-zone-name'] }}"
-                {%- set inner_policies = policy['policy'] %}
-                {%- if inner_policies %}
-                    ,
-                    "policies":
-                    [
-                    {%- for inner_policy in inner_policies %}
-                        {
-                            "name": "{{ inner_policy.name }}",
-                            {%- if inner_policy.match %}
-                            "match": {
-                                {%- set src_addrs = inner_policy.match['source-address'] %}
-                                {%- if src_addrs %}
-                                    "source_addresses": [
-                                        {%- for src_addr in src_addrs %}
-                                        "{{ src_addr }}"{%- if not loop.last %},{%- endif %}
-                                        {%- endfor %}
-                                    ],
-                                {%- endif %}
-
-                                {%- set dst_addrs = inner_policy.match['destination-address'] %}
-                                {%- if dst_addrs %}
-                                    "destination_addresses": [
-                                        {%- for dst_addr in dst_addrs %}
-                                        "{{ dst_addr }}"{%- if not loop.last %},{%- endif %}
-                                        {%- endfor %}
-                                    ],
-                                {%- endif %}
-
-                                {%- set applications = inner_policy.match['application'] %}
-                                {%- if applications %}
-                                    "applications": [
-                                        {%- for application in applications %}
-                                        "{{ application }}"{%- if not loop.last %},{%- endif %}
-                                        {%- endfor %}
-                                    ]
-                                {%- endif %}
-
-                            },
-                            {%- endif %}
-                            "then": "{{"permit" if "permit" in inner_policy.then else "reject" if "reject" in inner_policy.then else "deny"}}"
-                        }{%- if not loop.last %},{%- endif %}
+{%- macro doInnerPolicy(inner_policy) -%}
+    "name": "{{ inner_policy.name }}",
+    {%- if inner_policy.match %}
+    "match": {
+        {%- set src_addrs = inner_policy.match['source-address'] %}
+        {%- if src_addrs %}
+            "source_addresses": [
+                {%- if src_addrs is string -%}
+                    "{{ src_addrs }}"
+                {%- else -%}
+                    {%- for src_addr in src_addrs %}
+                    "{{ src_addr }}"{%- if not loop.last %},{%- endif %}
                     {%- endfor %}
-                    ]
-                {%- endif %}
+                {%- endif -%}
+            ],
+        {%- endif %}
+
+        {%- set dst_addrs = inner_policy.match['destination-address'] %}
+        {%- if dst_addrs %}
+            "destination_addresses": [
+                {%- if dst_addrs is string -%}
+                    "{{ dst_addrs }}"
+                {%- else -%}
+                    {%- for dst_addr in dst_addrs %}
+                    "{{ dst_addr }}"{%- if not loop.last %},{%- endif %}
+                    {%- endfor %}
+                {%- endif -%}
+            ],
+        {%- endif %}
+
+        {%- set applications = inner_policy.match['application'] %}
+        {%- if applications %}
+            "applications": [
+                {%- if applications is string -%}
+                    "{{ applications }}"
+                {%- else -%}
+                    {%- for application in applications %}
+                    "{{ application }}"{%- if not loop.last %},{%- endif %}
+                    {%- endfor %}
+                {%- endif -%}
+            ]
+        {%- endif %}
+    },
+    {%- endif %}
+    "then": "{{"permit" if "permit" in inner_policy.then else "reject" if "reject" in inner_policy.then else "deny"}}"
+{%- endmacro -%}
+{%- macro doPolicy(policy) -%}
+    "from_zone_name": "{{ policy['from-zone-name'] }}",
+    "to_zone_name": "{{ policy['to-zone-name'] }}"
+    {%- set inner_policies = policy['policy'] %}
+    {%- if inner_policies %}
+        ,
+        "policies":
+        [
+        {%- if inner_policies is mapping -%}
+            {
+            {{doInnerPolicy(inner_policies)}}
+            }
+        {%- else -%}
+            {%- for inner_policy in inner_policies %}
+                {
+                {{doInnerPolicy(inner_policy)}}
                 }{%- if not loop.last %},{%- endif %}
             {%- endfor %}
-            ],
+        {%- endif -%}
+        ]
     {%- endif %}
-
-    {%- if security_zones %}
-        "security_zones":
-            [
-            {%- for security_zone in security_zones -%}
-                {
-                "name": "{{ security_zone.name }}",
-                {%- set interfaces = security_zone['interfaces'] -%}
-                {%- if interfaces %}
-                "interfaces": [
+{%- endmacro -%}
+{%- macro doSecurityZone(security_zone) -%}
+    "name": "{{ security_zone.name }}",
+    {%- if security_zone['interfaces'] %}
+        {%- set interfaces = security_zone['interfaces'] -%}
+        "interfaces": [
+            {%- if interfaces is mapping -%}
+                {%- set iface = interfaces -%}
+                "{{ iface.name }}"
+            {%- else -%}
                 {%- for iface in interfaces -%}
                     "{{ iface.name }}"{%- if not loop.last -%},{%- endif -%}
                 {%- endfor -%}
-                ],
-                {%- endif %}
-                {%- set addresses = security_zone['address-book'] -%}
-                {%- if addresses %}
-                    "addresses": [
-                    {%- for address in addresses %}
+            {%- endif %}
+        ],
+    {%- endif %}
+    {%- if security_zone['address-book'] -%}
+        {%- set addresses = security_zone['address-book'] -%}
+        "addresses": [
+            {%- if addresses is mapping -%}
+            {
+                {%- set address = addresses['address'] -%}
+                "name": "{{ address['name'] }}",
+                "ip_prefix": "{{ address['ip-prefix'] }}"
+            }
+            {%- else -%}
+                {%- for address in addresses %}
+                {
+                    "name": "{{ address.address.name }}",
+                    "ip_prefix": "{{ address.address['ip-prefix'] }}"
+                }{%- if not loop.last -%},{%- endif -%}
+                {%- endfor %}
+            {%- endif %}
+        ]
+    {%- endif %}
+{%- endmacro -%}
+{
+{%- if data['configuration'] -%}
+    {%- set security = data.configuration.security %}
+    "name": "Firewall",
+    {%- if security['policies'] and security.policies['policy'] -%}
+        {%- set policies = security.policies['policy'] %}
+        "policies":
+            [
+            {%- if policies is mapping -%}
+            {
+                {{doPolicy(policies)}}
+            }
+            {%- else -%}
+                {%- for policy in policies %}
                     {
-                        "name": "{{ address.address.name }}",
-                        "ip_prefix": "{{ address.address['ip-prefix'] }}"
-                    }{%- if not loop.last -%},{%- endif -%}
-                    {%- endfor %}
-                    ]
-                {%- endif %}
+                    {{doPolicy(policy)}}
+                    }{%- if not loop.last %},{%- endif %}
+                {%- endfor %}
+            {%- endif -%}
+            ],
+    {%- endif %}
 
-
-            }{%- if not loop.last -%},{%- endif -%}
-            {%- endfor -%}
+    {%- if security['zones'] and security.zones['security-zone'] %}
+        {%- set security_zones = security.zones['security-zone'] %}
+        "security_zones":
+            [
+            {%- if security_zones is mapping %}
+                {
+                {{doSecurityZone(security_zones)}}
+                }
+            {%- else -%}
+                {%- for security_zone in security_zones -%}
+                {
+                    {{doSecurityZone(security_zone)}}
+                }{%- if not loop.last -%},{%- endif -%}
+                {%- endfor -%}
+            {%- endif -%}
             ]
     {%- endif %}
 

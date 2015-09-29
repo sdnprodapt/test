@@ -73,79 +73,82 @@
             ]
         ],
         "in-expect": {
-            "admin_state": "Disabled",
-            "global_preference": 123,
-            "groups": [
-                {
-                    "group_name": "testgroup1",
-                    "description": "purple",
-                    "preference": 222,
-                    "type": "internal",
-                    "peer_as": 61234,
-                    "allows": [
-                        { "allow_address": "13.13.13.13" },
-                        { "allow_address": "14.14.14.14" }
-                    ],
-                    "import_policies": [
-                        "some_policy",
-                        "some_other_policy"
-                    ],
-                    "export_policies": [
-                        "a_policy",
-                        "another_policy"
-                    ],
-                    "neighbors": [
-                        {
-                            "neighbor_name": "testneighbor1",
-                            "address": "192.168.10.1",
-                            "local_address": "192.168.120.1",
-                            "as_override": true
-                        },
-                        {
-                            "neighbor_name": "testneighbor2",
-                            "address": "192.168.10.3",
-                            "local_address": "192.168.120.3",
-                            "as_override": true
-                        }
-                    ]
-                },
-                {
-                    "group_name": "testgroup2",
-                    "description": "purple",
-                    "preference": 223,
-                    "type": "external",
-                    "peer_as": 61235,
-                    "neighbors": [
-                        {
-                            "neighbor_name": "testneighbor3",
-                            "address": "192.168.10.2",
-                            "local_address": "192.168.120.2",
-                            "as_override": true
-                        }
-                    ]
-                },
-                {
-                    "group_name": "testgroup3",
-                    "description": "purple",
-                    "preference": 224,
-                    "type": "external",
-                    "peer_as": 61236,
-                    "allows": [
-                        { "allow_address": "23.23.23.23" }
-                    ],
-                    "neighbors": [
-                        {
-                            "neighbor_name": "testneighbor4",
-                            "address": "192.168.10.3",
-                            "local_address": "192.168.120.4",
-                            "as_override": true
-                        }
-                    ],
-                    "export_policies": [
-                        "policy_to_export"
-                    ]
-                }
-            ]
+            "name": "Global Router",
+            "protocols_bgp": {
+                "admin_state": "Disabled",
+                "global_preference": 123,
+                "groups": [
+                    {
+                        "group_name": "testgroup1",
+                        "description": "purple",
+                        "preference": 222,
+                        "type": "internal",
+                        "peer_as": 61234,
+                        "allows": [
+                            { "allow_address": "13.13.13.13" },
+                            { "allow_address": "14.14.14.14" }
+                        ],
+                        "import_policies": [
+                            "some_policy",
+                            "some_other_policy"
+                        ],
+                        "export_policies": [
+                            "a_policy",
+                            "another_policy"
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor1",
+                                "address": "192.168.10.1",
+                                "local_address": "192.168.120.1",
+                                "as_override": true
+                            },
+                            {
+                                "neighbor_name": "testneighbor2",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.3",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup2",
+                        "description": "purple",
+                        "preference": 223,
+                        "type": "external",
+                        "peer_as": 61235,
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor3",
+                                "address": "192.168.10.2",
+                                "local_address": "192.168.120.2",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup3",
+                        "description": "purple",
+                        "preference": 224,
+                        "type": "external",
+                        "peer_as": 61236,
+                        "allows": [
+                            { "allow_address": "23.23.23.23" }
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor4",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.4",
+                                "as_override": true
+                            }
+                        ],
+                        "export_policies": [
+                            "policy_to_export"
+                        ]
+                    }
+                ]
+            }
         } 
     },
     "NonGlobal BGP Test": {
@@ -227,79 +230,82 @@
             ]
         ],
         "in-expect": {
-            "admin_state": "Disabled",
-            "global_preference": 123,
-            "groups": [
-                {
-                    "group_name": "testgroup1",
-                    "description": "purple",
-                    "preference": 222,
-                    "type": "internal",
-                    "peer_as": 61234,
-                    "allows": [
-                        { "allow_address": "13.13.13.13" },
-                        { "allow_address": "14.14.14.14" }
-                    ],
-                    "import_policies": [
-                        "some_policy",
-                        "some_other_policy"
-                    ],
-                    "export_policies": [
-                        "a_policy",
-                        "another_policy"
-                    ],
-                    "neighbors": [
-                        {
-                            "neighbor_name": "testneighbor1",
-                            "address": "192.168.10.1",
-                            "local_address": "192.168.120.1",
-                            "as_override": true
-                        },
-                        {
-                            "neighbor_name": "testneighbor2",
-                            "address": "192.168.10.3",
-                            "local_address": "192.168.120.3",
-                            "as_override": true
-                        }
-                    ]
-                },
-                {
-                    "group_name": "testgroup2",
-                    "description": "purple",
-                    "preference": 223,
-                    "type": "external",
-                    "peer_as": 61235,
-                    "neighbors": [
-                        {
-                            "neighbor_name": "testneighbor3",
-                            "address": "192.168.10.2",
-                            "local_address": "192.168.120.2",
-                            "as_override": true
-                        }
-                    ]
-                },
-                {
-                    "group_name": "testgroup3",
-                    "description": "purple",
-                    "preference": 224,
-                    "type": "external",
-                    "peer_as": 61236,
-                    "allows": [
-                        { "allow_address": "23.23.23.23" }
-                    ],
-                    "neighbors": [
-                        {
-                            "neighbor_name": "testneighbor4",
-                            "address": "192.168.10.3",
-                            "local_address": "192.168.120.4",
-                            "as_override": true
-                        }
-                    ],
-                    "export_policies": [
-                        "policy_to_export"
-                    ]
-                }
-            ]
+            "name": "pe_router",
+            "protocols_bgp": {
+                "admin_state": "Disabled",
+                "global_preference": 123,
+                "groups": [
+                    {
+                        "group_name": "testgroup1",
+                        "description": "purple",
+                        "preference": 222,
+                        "type": "internal",
+                        "peer_as": 61234,
+                        "allows": [
+                            { "allow_address": "13.13.13.13" },
+                            { "allow_address": "14.14.14.14" }
+                        ],
+                        "import_policies": [
+                            "some_policy",
+                            "some_other_policy"
+                        ],
+                        "export_policies": [
+                            "a_policy",
+                            "another_policy"
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor1",
+                                "address": "192.168.10.1",
+                                "local_address": "192.168.120.1",
+                                "as_override": true
+                            },
+                            {
+                                "neighbor_name": "testneighbor2",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.3",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup2",
+                        "description": "purple",
+                        "preference": 223,
+                        "type": "external",
+                        "peer_as": 61235,
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor3",
+                                "address": "192.168.10.2",
+                                "local_address": "192.168.120.2",
+                                "as_override": true
+                            }
+                        ]
+                    },
+                    {
+                        "group_name": "testgroup3",
+                        "description": "purple",
+                        "preference": 224,
+                        "type": "external",
+                        "peer_as": 61236,
+                        "allows": [
+                            { "allow_address": "23.23.23.23" }
+                        ],
+                        "neighbors": [
+                            {
+                                "neighbor_name": "testneighbor4",
+                                "address": "192.168.10.3",
+                                "local_address": "192.168.120.4",
+                                "as_override": true
+                            }
+                        ],
+                        "export_policies": [
+                            "policy_to_export"
+                        ]
+                    }
+                ]
+            }
         } 
     },
     "No BGP": {
@@ -326,6 +332,8 @@
             ]
         ],
         "in-expect": {
+            "name": "pe_router",
+            "protocols_bgp": {}
         } 
     }
 }

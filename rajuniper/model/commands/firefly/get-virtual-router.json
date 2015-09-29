@@ -5,7 +5,6 @@
         "commands/firefly/tests/get-virtual-router.json"
     ],
     "endpoint-parameters": {
-        "template": "firefly/get-virtual-router-command.tmpl"
     },
     "out-path": [
     ],
@@ -28,10 +27,17 @@
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
                 "command": "get-protocols-bgp.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "header": {},
+                    "data": {
+                        "name": "{{ header.userParam.name }}"
+                    }
+                },
                 "output": {
                     "patches": [
                         {
-                            "from": "/data",
+                            "from": "/data/protocols_bgp",
                             "to": "/data/protocols_bgp"
                         }
                     ]
@@ -43,11 +49,22 @@
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
                 "command": "get-virtual-router-interfaces.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "header": {},
+                    "data": {
+                        "name": "{{ header.userParam.name }}"
+                    }
+                },
                 "output": {
                     "patches": [
                         {
-                            "from": "/data",
+                            "from": "/data/interfaces",
                             "to": "/data/interfaces"
+                        },
+                        {
+                            "from": "/data/name",
+                            "to": "/data/name"
                         }
                     ]
                 }

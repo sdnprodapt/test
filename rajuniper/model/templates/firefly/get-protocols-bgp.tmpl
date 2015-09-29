@@ -112,6 +112,7 @@
     {%- endif -%}
 {%- endmacro -%}
 {%- macro doProtocols(protocols) -%}
+"protocols_bgp": {
     {%- if protocols.get('bgp') -%}
         {%- set bgp = protocols['bgp'] -%}
         {%- if bgp.get('disable') -%}
@@ -137,32 +138,27 @@
             ]
         {%- endif -%}
     {%- endif -%}
+}
 {%- endmacro -%}
 {%- macro doInstance(instance) -%}
-{
     {%- if instance['protocols'] -%}
         {%- set protocols = instance['protocols'] -%}
         {{doProtocols(protocols)}}
     {%- endif -%}
-}
 {%- endmacro -%}
 
+{
 {%- if data['configuration'] %}
     {%- if data['configuration']['protocols'] -%}
         {%- set protocols = data['configuration']['protocols'] -%}
-        {
+        "name": "Global Router",
         {{doProtocols(protocols)}}
-        }
     {%- elif data['configuration']['routing-instances'] %}
         {%- if data['configuration']['routing-instances'] is mapping -%}
             {%- set instance = data['configuration']['routing-instances']['instance'] -%}
+            "name": "{{instance['name']}}",
             {{doInstance(instance)}}
-        {%- else -%}
-            {}
         {%- endif -%}
-    {%- else -%}
-        {}
     {%- endif %}
-{%-else -%}
-    {}
 {%- endif %}
+}
