@@ -1,3 +1,10 @@
+Version 0.0.6
+-------------
+
+Support Virtual Routers (released on September 29 2015)
+
+-Support Virtual Routers (routing instances and global router)
+
 Version 0.0.5
 -------------
 
