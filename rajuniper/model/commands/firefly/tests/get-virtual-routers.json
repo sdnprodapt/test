@@ -127,6 +127,9 @@
         ],
         "in-expect": [
             {
+                "name": "Global Router"
+            },
+            {
                 "name": "pe_router1",
                 "interfaces": [
                     "ge-0/0/1.0",
@@ -278,6 +281,9 @@
         ],
         "in-expect": [
             {
+                "name": "Global Router"
+            },
+            {
                 "name": "pe_router",
                 "interfaces": [
                     "ge-0/0/1.0"
@@ -301,7 +307,11 @@
                 "</rpc-reply>"
             ]
         ],
-        "in-expect": []
+        "in-expect": [
+            {
+                "name": "Global Router"
+            }
+        ]
     },
     "Global Single Route with BGP": {
         "type": "netconf",
@@ -653,6 +663,9 @@
             ]
         ],
         "in-expect": [
+            {
+                "name": "Global Router"
+            },
             {
                 "name": "pe_router1",
                 "static_routes": [

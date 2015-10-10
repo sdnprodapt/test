@@ -242,14 +242,10 @@
     }
 {%- endmacro -%}
 [
+{{doGlobalRouter()}}
 {%- if data['configuration'] %}
-    {%- set needComma = false -%}
-    {%- if data['configuration']['routing-options'] or data['configuration']['protocols'] -%}
-        {{doGlobalRouter()}}
-        {%- set needComma = true -%}
-    {% endif %}
     {%- if data['configuration']['routing-instances'] %}
-        {%- if needComma -%},{%- endif -%}
+        ,
         {%- if data['configuration']['routing-instances']['instance'] is mapping -%}
             {%- set instance = data['configuration']['routing-instances']['instance'] -%}
             {{doInstance(instance)}}
