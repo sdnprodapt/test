@@ -1,3 +1,11 @@
+Version 0.0.7
+-------------
+
+Fix missing global router (released on October 13 2015)
+
+### Bug Fixes
+- Fix logic of global router so it will always exist even without protocol config
+
 Version 0.0.6
 -------------
 
