@@ -1,3 +1,12 @@
+Version 0.0.8
+-------------
+
+Move to Artifactory and more discovery strategy config (released on October 26 2015)
+
+- Move to Artifactory and update dependencies
+
+- Detailed configs for discovery strategy (specifically, enable immediateDelete and API specifics)
+
 Version 0.0.7
 -------------
 
