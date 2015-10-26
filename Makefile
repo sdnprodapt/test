@@ -8,9 +8,8 @@ SIM_DIR := $(MODEL_DIR)/sim
 
 PIP := $(VENV)/bin/pip
 PYTHON := $(VENV)/bin/python
-BPFPM ?= $(VENV)/bin/bpfpm
 
-PYPI ?= 'https://pypi.cyanoptics.com/simple/'
+PYPI ?= 'https://artifactory.ciena.com/api/pypi/blueplanet-pypi/simple'
 GIT_REPO_NAME ?= $(shell basename `git remote show -n origin | grep Fetch | cut -d. -f3`)
 all: help
 
@@ -59,7 +58,7 @@ help:
 # Workaround for pyang uninstall
 	$(HIDE)rm -rf $(VENV)/lib/python2.7/site-packages/pyang*
 	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install --upgrade -i $(PYPI) -r requirements.txt --src .src
+	$(HIDE)$(PIP) install --upgrade --index-url $(PYPI) --requirement requirements.txt --src .src
 	$(HIDE)$(PIP) install -e .
 
 prepare-venv: .prepare-venv

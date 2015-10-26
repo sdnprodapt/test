@@ -57,9 +57,53 @@ domains:
     # extended to help drive specialization in the synchronization framework
     resource_types:
       - id: "juniper.resourceTypes.Device"
+        discoveryStrategy:
+          - strategyType: "sync"
+            pollingMode: "listOnly"
+            pollingSettings:
+              - pollingIntervalMs: 40000
+                immediateDeletion: true
+        apiSettings:
+          - serverTimeoutMs: 60000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.Interface"
+        discoveryStrategy:
+          - strategyType: "sync"
+            pollingMode: "listOnly"
+            pollingSettings:
+              - pollingIntervalMs: 40000
+                immediateDeletion: true
+        apiSettings:
+          - serverTimeoutMs: 60000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.VirtualRouter"
+        discoveryStrategy:
+          - strategyType: "sync"
+            pollingMode: "listOnly"
+            pollingSettings:
+              - pollingIntervalMs: 40000
+                immediateDeletion: true
+        apiSettings:
+          - serverTimeoutMs: 60000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.Firewall"
+        discoveryStrategy:
+          - strategyType: "sync"
+            pollingMode: "listOnly"
+            pollingSettings:
+              - pollingIntervalMs: 40000
+                immediateDeletion: true
+        apiSettings:
+          - serverTimeoutMs: 60000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
 
 # Relationship definitions specify how relationships between resources managed
 # by this RP are formed. See
