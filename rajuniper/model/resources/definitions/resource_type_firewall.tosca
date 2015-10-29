@@ -139,7 +139,7 @@ resourceTypes {
                         title = "Applications"
                         description = "Application names for matching"
                         type = array
-                        item.type = string
+                        items.type = string
                         optional = true
                       }
                     }
@@ -177,7 +177,7 @@ resourceTypes {
               optional = true
             }
             protocol {
-              title = "Protocol"            
+              title = "Protocol"
               description = "Transport layer protocol"
               type = string
               optional = true
