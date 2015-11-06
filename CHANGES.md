@@ -1,3 +1,10 @@
+Version 0.0.9
+-------------
+
+Fix typo in firewall definition (released on November 5 2015)
+
+- Fix typo in firewall definition
+
 Version 0.0.8
 -------------
 
