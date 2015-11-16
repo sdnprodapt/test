@@ -15,7 +15,9 @@
             "command": "create-interface-full.json"
         },
         "post": {
-            "command": "create-interface-full.json"
+            "command": "create-interface-full.json",
+            "delay_s": 10,
+            "num_tries":10
         },
         "delete": {
             "command": "delete-interface-auto.json"
