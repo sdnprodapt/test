@@ -75,8 +75,9 @@ domains:
             pollingSettings:
               - pollingIntervalMs: 40000
                 immediateDeletion: true
+                syncTimeoutMs: 100000
         apiSettings:
-          - serverTimeoutMs: 60000
+          - serverTimeoutMs: 100000
             maxConnections: 4
             maxHttpRetries: 0
             idleTimeoutMs: 3600000
