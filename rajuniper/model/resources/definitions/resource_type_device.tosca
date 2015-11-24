@@ -135,5 +135,29 @@ resourceTypes {
         optional = true
       }
     }
+
+    capabilities {
+      ifc_host {
+        title = "Interfaces"
+        description = "A device can host interfaces."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.Interface]
+      }
+
+      vr_host {
+        title = "Virtual Routers"
+        description = "A device can host virtual routers."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.VirtualRouter]
+      }
+
+      fw_host {
+        title = "Firewalls"
+        description = "A device can host Firewalls."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.Firewall]
+      }
+    }
+
   }
 }
