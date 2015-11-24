@@ -112,8 +112,8 @@ domains:
 relationships:
   - sourceTypeId: "juniper.resourceTypes.Interface"        # resource types involved in relationship
     targetTypeId: "juniper.resourceTypes.Device"
-    capabilityName: host                                                 # identifies endpoint names in relationship
-    requirementName: contained
+    capabilityName: ifc_host                                             # identifies endpoint names in relationship
+    requirementName: ifc_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
     fieldKind: "provider"                                                # identicates what the field represent
     fieldLocator: "device"                                               # the field in the resource properties identifying the far end

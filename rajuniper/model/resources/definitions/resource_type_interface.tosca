@@ -106,26 +106,26 @@ resourceTypes {
         title = "Virtual Interfaces"
         description = "A physical network interface can host virtual interfaces."
         type = Container
-        containeeTypes = [juniper.resourceTypes.Interface]
+        resourceTypes = [juniper.resourceTypes.Interface]
       }
     }
 
     requirements {
 
-      contained {
-        title = "Contained"
+      ifc_device {
+        title = "Device"
         description = "A network interface is hosted on a device."
         type = Container
         minimum = 1
         maximum = 1
-        containerTypes = [juniper.resourceTypes.Device]
+        resourceTypes = [juniper.resourceTypes.Device]
       }
 
       physical_interface {
         title = "Physical Interface"
         description = "A virtual network interface is hosted on a physical interface."
         type = Container
-        containerTypes = [juniper.resourceTypes.Interface]
+        resourceTypes = [juniper.resourceTypes.Interface]
         minimum = 0
       }
     }
