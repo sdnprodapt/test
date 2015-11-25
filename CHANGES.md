@@ -1,3 +1,12 @@
+Version 0.0.10
+--------------
+
+Support GET retries for POST command and update relationship definition (released on November 24 2015)
+
+- Support GET retries for interface during a POST
+
+- Update requirements and capabilities so it works with bpocore 1.2.1 validation 
+
 Version 0.0.9
 -------------
 
