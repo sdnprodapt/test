@@ -205,7 +205,7 @@ resourceTypes {
                         title = "BGP Group Static Peer Name"
                         description = "BGP group static peer name"
                         type = string
-                        optional = true
+                        optional = false
                       }
                       address {
                         title = "BGP Static Peer Address"
