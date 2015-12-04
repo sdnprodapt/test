@@ -1,3 +1,10 @@
+Version 0.0.11
+--------------
+
+Remove neighbor_name processing in BGP (released on December 3 2015)
+
+- Remove BGP neighbor_name processing and make the property optional
+
 Version 0.0.10
 --------------
 
