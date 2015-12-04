@@ -29,10 +29,10 @@
                     "peer_as": 65000,
                     "neighbors": [
                         {
-                            "neighbor_name": "10.173.130.1"
+                            "address": "10.173.130.1"
                         },
                         {
-                            "neighbor_name": "10.173.130.2"
+                            "address": "10.173.130.2"
                         }
                     ]
                 }

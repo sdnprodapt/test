@@ -74,11 +74,6 @@
                     {% for neighbor in group['neighbors'] %}
                     {
                         {% set neighborNeedComma = false %}
-                        {% if 'neighbor_name' in neighbor %}
-                            {% if neighborNeedComma %},{% endif %}
-                            "neighbor_name": "{{ neighbor['neighbor_name'] }}"
-                            {% set neighborNeedComma = true %}
-                        {% endif %}
                         {% if 'address' in neighbor %}
                             {% if neighborNeedComma %},{% endif %}
                             "address": "{{ neighbor['address'] }}"

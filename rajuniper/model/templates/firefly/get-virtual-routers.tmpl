@@ -52,11 +52,6 @@
 {% endmacro %}
 {%- macro doNeighbor(neighbor) -%}
     {%- set needCommaNeighbor = false -%}
-    {%- if neighbor.get('name') -%}
-        {%- if needCommaNeighbor -%},{%- endif -%}
-        {%- set needCommaNeighbor = true -%}
-        "neighbor_name": "{{neighbor['name']}}"
-    {%- endif -%}
     {%- if neighbor.get('address') -%}
         {%- if needCommaNeighbor -%},{%- endif -%}
         {%- set needCommaNeighbor = true -%}

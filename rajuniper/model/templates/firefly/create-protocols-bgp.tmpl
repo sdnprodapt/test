@@ -67,9 +67,6 @@
                                     {% if 'neighbors' in group %}
                                         {% for neighbor in group['neighbors'] %}
                                             <neighbor>
-                                            {% if 'neighbor_name' in neighbor %}
-                                                <name>{{ neighbor['neighbor_name'] }}</name>
-                                            {% endif %}
                                             {% if 'address' in neighbor %}
                                                 <address>{{ neighbor['address'] }}</address>
                                             {% endif %}
