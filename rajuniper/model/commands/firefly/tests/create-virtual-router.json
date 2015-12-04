@@ -416,13 +416,11 @@
                         ],
                         "neighbors": [
                             {
-                                "neighbor_name": "testneighbor1",
                                 "address": "192.168.10.1",
                                 "local_address": "192.168.120.1",
                                 "as_override": true
                             },
                             {
-                                "neighbor_name": "testneighbor2",
                                 "address": "192.168.10.3",
                                 "local_address": "192.168.120.3",
                                 "as_override": false
@@ -437,7 +435,6 @@
                         "peer_as": 61235,
                         "neighbors": [
                             {
-                                "neighbor_name": "testneighbor3",
                                 "address": "192.168.10.2",
                                 "local_address": "192.168.120.2",
                                 "as_override": true
@@ -513,13 +510,11 @@
                     "<allow>13.13.13.13</allow>",
                     "<allow>14.14.14.14</allow>",
                     "<neighbor>",
-                        "<name>testneighbor1</name>",
                         "<address>192.168.10.1</address>",
                         "<local-address>192.168.120.1</local-address>",
                         "<as-override operation=\"replace\"></as-override>",
                     "</neighbor>",
                     "<neighbor>",
-                        "<name>testneighbor2</name>",
                         "<address>192.168.10.3</address>",
                         "<local-address>192.168.120.3</local-address>",
                         "<as-override operation=\"delete\"></as-override>",
@@ -536,7 +531,6 @@
                     "<type>external</type>",
                     "<peer-as>61235</peer-as>",
                     "<neighbor>",
-                        "<name>testneighbor3</name>",
                         "<address>192.168.10.2</address>",
                         "<local-address>192.168.120.2</local-address>",
                         "<as-override operation=\"replace\"></as-override>",
@@ -636,10 +630,10 @@
                         "peer_as": 65000,
                         "neighbors": [
                             {
-                                "neighbor_name": "10.173.130.1"
+                                "address": "10.173.130.1"
                             },
                             {
-                                "neighbor_name": "10.173.130.2"
+                                "address": "10.173.130.2"
                             }
                         ]
                     }
@@ -693,10 +687,10 @@
                 "<name>pe_routers</name>",
                 "<peer-as>65000</peer-as>",
                 "<neighbor>",
-                "<name>10.173.130.1</name>",
+                "<address>10.173.130.1</address>",
                 "</neighbor>",
                 "<neighbor>",
-                "<name>10.173.130.2</name>",
+                "<address>10.173.130.2</address>",
                 "</neighbor>",
                 "</group>",
                 "</bgp>",
