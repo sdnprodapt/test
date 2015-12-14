@@ -57,6 +57,9 @@
                                     {% if 'peer_as' in group %}
                                         <peer-as>{{ group['peer_as'] }}</peer-as>
                                     {% endif %}
+                                    {% if 'local_as' in group %}
+                                        <local-as>{{ group['local_as'] }}</local-as>
+                                    {% endif %}
                                     {% if 'allows' in group %}
                                         {% for allow in group['allows'] %}
                                             {% if 'allow_address' in allow %}

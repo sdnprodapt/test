@@ -55,6 +55,11 @@
                 "peer_as": {{ group['peer_as'] }}
                 {% set thisGroupNeedsComma = true %}
             {% endif %}
+            {% if 'local_as' in group %}
+                {% if thisGroupNeedsComma %},{% endif %}
+                "local_as": {{ group['local_as'] }}
+                {% set thisGroupNeedsComma = true %}
+            {% endif %}
             {% if 'allows' in group %}
                 {% if thisGroupNeedsComma %},{% endif %}
                 "allows": [

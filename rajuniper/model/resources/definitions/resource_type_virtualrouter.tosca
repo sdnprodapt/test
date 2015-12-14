@@ -175,6 +175,12 @@ resourceTypes {
                   type = integer
                   format = bgp-as
                 }
+                local_as {
+                  title = "Local AS Number"
+                  description = "Local ASN (e.g., 65000)"
+                  type = integer
+                  format = bgp-as
+                }
                 allows {
                   title = "BGP Group Dynamic Peers"
                   description = "BGP group dynamic peers"
