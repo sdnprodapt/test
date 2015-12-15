@@ -180,6 +180,7 @@ resourceTypes {
                   description = "Local ASN (e.g., 65000)"
                   type = integer
                   format = bgp-as
+                  optional = true
                 }
                 allows {
                   title = "BGP Group Dynamic Peers"
