@@ -196,7 +196,6 @@
                     "<preference>223</preference>",
                     "<type>external</type>",
                     "<peer-as>61235</peer-as>",
-                    "<local-as><as-number>12346</as-number></local-as>",
                     "<neighbor>",
                         "<address>192.168.10.2</address>",
                         "<local-address>192.168.120.2</local-address>",
@@ -270,7 +269,6 @@
                         "preference": 223,
                         "type": "external",
                         "peer_as": 61235,
-                        "local_as": 12346,
                         "neighbors": [
                             {
                                 "address": "192.168.10.2",
