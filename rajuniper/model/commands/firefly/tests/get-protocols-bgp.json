@@ -19,6 +19,7 @@
                     "<preference>222</preference>",
                     "<type>internal</type>",
                     "<peer-as>61234</peer-as>",
+                    "<local-as><as-number>12345</as-number></local-as>",
                     "<import>some_policy</import>",
                     "<import>some_other_policy</import>",
                     "<export>a_policy</export>",
@@ -42,6 +43,7 @@
                     "<preference>223</preference>",
                     "<type>external</type>",
                     "<peer-as>61235</peer-as>",
+                    "<local-as><as-number>12346</as-number></local-as>",
                     "<neighbor>",
                         "<address>192.168.10.2</address>",
                         "<local-address>192.168.120.2</local-address>",
@@ -54,6 +56,7 @@
                     "<preference>224</preference>",
                     "<type>external</type>",
                     "<peer-as>61236</peer-as>",
+                    "<local-as><as-number>12347</as-number></local-as>",
                     "<allow>23.23.23.23</allow>",
                     "<neighbor>",
                         "<address>192.168.10.3</address>",
@@ -80,6 +83,7 @@
                         "preference": 222,
                         "type": "internal",
                         "peer_as": 61234,
+                        "local_as": 12345,
                         "allows": [
                             { "allow_address": "13.13.13.13" },
                             { "allow_address": "14.14.14.14" }
@@ -111,6 +115,7 @@
                         "preference": 223,
                         "type": "external",
                         "peer_as": 61235,
+                        "local_as": 12346,
                         "neighbors": [
                             {
                                 "address": "192.168.10.2",
@@ -125,6 +130,7 @@
                         "preference": 224,
                         "type": "external",
                         "peer_as": 61236,
+                        "local_as": 12347,
                         "allows": [
                             { "allow_address": "23.23.23.23" }
                         ],
@@ -166,6 +172,7 @@
                     "<preference>222</preference>",
                     "<type>internal</type>",
                     "<peer-as>61234</peer-as>",
+                    "<local-as><as-number>12345</as-number></local-as>",
                     "<import>some_policy</import>",
                     "<import>some_other_policy</import>",
                     "<export>a_policy</export>",
@@ -201,6 +208,7 @@
                     "<preference>224</preference>",
                     "<type>external</type>",
                     "<peer-as>61236</peer-as>",
+                    "<local-as><as-number>12347</as-number></local-as>",
                     "<allow>23.23.23.23</allow>",
                     "<neighbor>",
                         "<address>192.168.10.3</address>",
@@ -229,6 +237,7 @@
                         "preference": 222,
                         "type": "internal",
                         "peer_as": 61234,
+                        "local_as": 12345,
                         "allows": [
                             { "allow_address": "13.13.13.13" },
                             { "allow_address": "14.14.14.14" }
@@ -274,6 +283,7 @@
                         "preference": 224,
                         "type": "external",
                         "peer_as": 61236,
+                        "local_as": 12347,
                         "allows": [
                             { "allow_address": "23.23.23.23" }
                         ],

@@ -67,6 +67,11 @@
                                 "title": "BGP Group Peer ASN",
                                 "type": "integer"
                             },
+                            "local_as": {
+                                "description": "BGP group local ASN",
+                                "title": "BGP Group Local ASN",
+                                "type": "integer"
+                            },
                             "allows": {
                                 "description": "BGP Group dynamic peers",
                                 "title": "BGP Group Dynamic Peers",
