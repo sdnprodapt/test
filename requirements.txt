@@ -38,7 +38,7 @@ pyflakes==0.8.1
 pyparsing==2.0.3
 pysnmp==4.1.16d
 rasdk==1.11.0
-rpsdk[ra]==0.2.17
+rpsdk[ra]==0.2.18
 simplejson==3.6.5
 six==1.8.0
 textfsm==0.2.1

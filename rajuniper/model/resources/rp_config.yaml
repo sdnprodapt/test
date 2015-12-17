@@ -63,6 +63,7 @@ domains:
             pollingSettings:
               - pollingIntervalMs: 40000
                 immediateDeletion: true
+                verifyMissingList: true
         apiSettings:
           - serverTimeoutMs: 60000
             maxConnections: 4
@@ -76,6 +77,7 @@ domains:
               - pollingIntervalMs: 40000
                 immediateDeletion: true
                 syncTimeoutMs: 100000
+                verifyMissingList: true
         apiSettings:
           - serverTimeoutMs: 100000
             maxConnections: 4
@@ -88,6 +90,7 @@ domains:
             pollingSettings:
               - pollingIntervalMs: 40000
                 immediateDeletion: true
+                verifyMissingList: true
         apiSettings:
           - serverTimeoutMs: 60000
             maxConnections: 4
@@ -100,6 +103,7 @@ domains:
             pollingSettings:
               - pollingIntervalMs: 40000
                 immediateDeletion: true
+                verifyMissingList: true
         apiSettings:
           - serverTimeoutMs: 60000
             maxConnections: 4
