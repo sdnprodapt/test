@@ -1,9 +1,19 @@
+Version 0.0.17
+--------------
+Bump rpsdk version to 0.2.18 (released on December 17 2015)
+
+- Bump rpsdk version for device resource credential update support
+
 Version 0.0.16
 --------------
-Fix version numbering.
+Fix version numbering (released on December 17 2015)
 
 Version 0.0.15
+--------------
+
 Version 0.0.14
+--------------
+
 Version 0.0.13
 --------------
 
