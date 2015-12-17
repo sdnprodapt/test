@@ -1,3 +1,21 @@
+Version 0.0.16
+--------------
+Fix version numbering.
+
+Version 0.0.15
+Version 0.0.14
+Version 0.0.13
+--------------
+
+Add support for local-as in BGP groups.
+
+Version 0.0.12
+--------------
+
+Make the neighbor_name property required again (released on December 4 2015)
+
+- Make neighbor_name required again for backward compatibility before BPSO-4421 is fixed
+
 Version 0.0.11
 --------------
 

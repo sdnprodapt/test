@@ -15,6 +15,7 @@
                         "preference": 222,
                         "type": "internal",
                         "peer_as": 61234,
+                        "local_as": 12345,
                         "import_policies": [
                             "some_policy",
                             "some_other_policy"
@@ -46,6 +47,7 @@
                         "preference": 223,
                         "type": "external",
                         "peer_as": 61235,
+                        "local_as": 12346,
                         "neighbors": [
                             {
                                 "address": "192.168.10.2",
@@ -60,6 +62,7 @@
                         "preference": 224,
                         "type": "external",
                         "peer_as": 61236,
+                        "local_as": 12347,
                         "allows": [
                             { "allow_address": "23.23.23.23" }
                         ]
@@ -90,6 +93,7 @@
                     "<preference>222</preference>",
                     "<type>internal</type>",
                     "<peer-as>61234</peer-as>",
+                    "<local-as>12345</local-as>",
                     "<allow>13.13.13.13</allow>",
                     "<allow>14.14.14.14</allow>",
                     "<neighbor>",
@@ -113,6 +117,7 @@
                     "<preference>223</preference>",
                     "<type>external</type>",
                     "<peer-as>61235</peer-as>",
+                    "<local-as>12346</local-as>",
                     "<neighbor>",
                         "<address>192.168.10.2</address>",
                         "<local-address>192.168.120.2</local-address>",
@@ -125,6 +130,7 @@
                     "<preference>224</preference>",
                     "<type>external</type>",
                     "<peer-as>61236</peer-as>",
+                    "<local-as>12347</local-as>",
                     "<allow>23.23.23.23</allow>",
                 "</group>",
                 "</bgp>",
@@ -161,6 +167,7 @@
                         "preference": 222,
                         "type": "internal",
                         "peer_as": 61234,
+                        "local_as": 12345,
                         "import_policies": [
                             "some_policy",
                             "some_other_policy"
@@ -192,6 +199,7 @@
                         "preference": 223,
                         "type": "external",
                         "peer_as": 61235,
+                        "local_as": 12346,
                         "neighbors": [
                             {
                                 "address": "192.168.10.2",
@@ -206,6 +214,7 @@
                         "preference": 224,
                         "type": "external",
                         "peer_as": 61236,
+                        "local_as": 12347,
                         "allows": [
                             { "allow_address": "23.23.23.23" }
                         ]
@@ -233,6 +242,7 @@
                     "<preference>222</preference>",
                     "<type>internal</type>",
                     "<peer-as>61234</peer-as>",
+                    "<local-as>12345</local-as>",
                     "<allow>13.13.13.13</allow>",
                     "<allow>14.14.14.14</allow>",
                     "<neighbor>",
@@ -256,6 +266,7 @@
                     "<preference>223</preference>",
                     "<type>external</type>",
                     "<peer-as>61235</peer-as>",
+                    "<local-as>12346</local-as>",
                     "<neighbor>",
                         "<address>192.168.10.2</address>",
                         "<local-address>192.168.120.2</local-address>",
@@ -268,6 +279,7 @@
                     "<preference>224</preference>",
                     "<type>external</type>",
                     "<peer-as>61236</peer-as>",
+                    "<local-as>12347</local-as>",
                     "<allow>23.23.23.23</allow>",
                 "</group>",
                 "</bgp>",
@@ -302,6 +314,7 @@
                         "preference": 222,
                         "type": "internal",
                         "peer_as": 61234,
+                        "local_as": 12345,
                         "allows": [
                             { "allow_address": "13.13.13.13" },
                             { "allow_address": "14.14.14.14" }
@@ -325,6 +338,7 @@
                         "preference": 223,
                         "type": "external",
                         "peer_as": 61235,
+                        "local_as": 12346,
                         "neighbors": [
                             {
                                 "address": "192.168.10.2",
@@ -339,6 +353,7 @@
                         "preference": 224,
                         "type": "external",
                         "peer_as": 61236,
+                        "local_as": 12347,
                         "allows": [
                             { "allow_address": "23.23.23.23" }
                         ]
@@ -369,6 +384,7 @@
                     "<preference>222</preference>",
                     "<type>internal</type>",
                     "<peer-as>61234</peer-as>",
+                    "<local-as>12345</local-as>",
                     "<allow>13.13.13.13</allow>",
                     "<allow>14.14.14.14</allow>",
                     "<neighbor>",
@@ -388,6 +404,7 @@
                     "<preference>223</preference>",
                     "<type>external</type>",
                     "<peer-as>61235</peer-as>",
+                    "<local-as>12346</local-as>",
                     "<neighbor>",
                         "<address>192.168.10.2</address>",
                         "<local-address>192.168.120.2</local-address>",
@@ -400,6 +417,7 @@
                     "<preference>224</preference>",
                     "<type>external</type>",
                     "<peer-as>61236</peer-as>",
+                    "<local-as>12347</local-as>",
                     "<allow>23.23.23.23</allow>",
                 "</group>",
                 "</bgp>",

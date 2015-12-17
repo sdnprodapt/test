@@ -105,6 +105,12 @@
         {%- set needCommaGroup = true -%}
         "peer_as": {{group['peer-as']}}
     {%- endif -%}
+    {%- if group.get('local-as') -%}
+        {%- if needCommaGroup -%},{%- endif -%}
+        {%- set needCommaGroup = true -%}
+        {%- set localAs = group['local-as'] -%}
+        "local_as": {{localAs['as-number']}}
+    {%- endif -%}
     {%- if group['allow'] -%}
         {%- if needCommaGroup -%},{%- endif -%}
         {%- set needCommaGroup = true -%}
