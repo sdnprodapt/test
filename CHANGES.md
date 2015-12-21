@@ -1,3 +1,9 @@
+Version 0.0.18
+--------------
+Bump rpsdk version to 0.2.19 (released on December 21 2015)
+
+- Bump rpsdk version for no sshhaproxy platform support
+
 Version 0.0.17
 --------------
 Bump rpsdk version to 0.2.18 (released on December 17 2015)
