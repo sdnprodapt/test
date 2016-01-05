@@ -206,6 +206,7 @@
         "out-params": {
             "properties": {
                 "name": "ge-0/0/5.0",
+                "security_zone": "untrust",
                 "system_services": [
                     "http",
                     "pong"
@@ -279,6 +280,93 @@
                 "<error-message>invalid value</error-message>",
                 "</rpc-error>",
                 "<load-error-count>1</load-error-count>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Wrong MTU no zone": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperFireflyPerimeter"},
+        "out-params": {
+            "properties": {
+                "mtu": "150000",
+                "name": "ge-0/0/5.0",
+                "ipv4_addresses": [
+                    "192.168.16.1/24"
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ge-0/0/5</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>192.168.16.1/24</name>",
+                "</address>",
+                "<mtu>150000</mtu>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/12.1X47/junos\" message-id=\"9\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<source-daemon>",
+                "dcd",
+                "</source-daemon>",
+                "<error-path>",
+                "[edit interfaces ge-0/0/5 unit 0 family]",
+                "</error-path>",
+                "<error-info>",
+                "<bad-element>",
+                "inet",
+                "</bad-element>",
+                "</error-info>",
+                "<error-message>",
+                " Family MTU 150000 is too large relative to device MTU 1514; Protocol overhead should be 14",
+                "</error-message>",
+                "</rpc-error>",
+                "<rpc-error>",
+                "<error-severity>error</error-severity>",
+                "<error-message>",
+                "configuration check-out failed",
+                "</error-message>",
+                "</rpc-error>",
                 "</rpc-reply>"
             ],
             [
