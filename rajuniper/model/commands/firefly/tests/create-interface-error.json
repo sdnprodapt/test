@@ -201,6 +201,7 @@
         "device": {"nodeType": "JuniperFireflyPerimeter"},
         "out-params": {
             "name": "ge-0/0/5.0",
+            "security_zone": "untrust",
             "system_services": ["http", "pong"]
         },
         "out-expect": [
