@@ -1,3 +1,11 @@
+Version 0.0.19
+--------------
+Make zone optional in interfaces and bump rpsdk (released on January 6 2016)
+
+- If zone is not specified for an interface, will not associate with untrust anymore
+
+- Bump rpsdk to 0.2.20
+
 Version 0.0.18
 --------------
 Bump rpsdk version to 0.2.19 (released on December 21 2015)
