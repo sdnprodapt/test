@@ -21,5 +21,13 @@
     "provider_product_id": "urn:cyaninc:bp:product:firefly",
     "title": "Juniper Firefly",
     "active": false,
-    "provider_data": {}
+    "provider_data": {},
+    "constraints": {
+        "resourceType": {
+            "constant": "JuniperFireflyPerimeter"
+        },
+        "typeGroup": {
+            "constant": "/typeGroups/Juniper"
+        }
+    }
 }]
