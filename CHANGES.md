@@ -1,3 +1,14 @@
+Version 0.1.0
+-------------
+
+Support market created products (released on January 13 2016)
+
+- Bump rpsdk to 0.2.22 to support market created products on RA types
+
+- Rename resources.json to products.json
+
+- Advertise defaul device product with constraints 
+
 Version 0.0.19
 --------------
 Make zone optional in interfaces and bump rpsdk (released on January 6 2016)
