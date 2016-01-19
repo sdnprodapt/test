@@ -10,7 +10,7 @@ ENV NBI_ra_port=8080
 ENV NBI_ra_publish=True
 ENV NBI_rajuniper_port=8080
 ENV NBI_rajuniper_publish=True
-ENV SBIS=rabbitmq,bpocore,git-ssh
+ENV SBIS=rabbitmq,bpocore,git-ssh,kafka
 
 RUN ln -s /bp2/hooks/bpocore-sb-update /usr/local/bin/bpocore-sb-update
 

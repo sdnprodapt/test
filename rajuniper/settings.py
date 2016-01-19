@@ -41,7 +41,9 @@ STATIC_PATHS = {
             }
 
 ENDPOINTS = (
-        'netconf'
+        'netconf',
+        'snmp',
+        'kafka'
         )
 
 ROOT_CLS = 'rajuniper.schema.ra.Root'

@@ -1,0 +1,55 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "command": {
+            "name": "get-alarm-information"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [{
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "rajuniper.handle_alarms.check_alarm_data"
+       }
+    }, {
+        "type": "bpprov.translators.dict.ReMap",
+        "parameters": {
+            "mapping": {
+                "alarms": "alarm-information.alarm-detail"
+            }
+       }
+    }, {
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "rajuniper.handle_alarms.process_alarms"
+       }
+    }, {
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "rajuniper.handle_alarms.push_alarms",
+            "args" : {
+                "ra_name" : "rajuniper",
+                "_type" : "bp.v1.AlarmEvent",
+                "object_type" : "/bpocore/api/v1/resources",
+                "version" : 1,
+                "append_tags": true,
+                "product_type" : "urn:cyaninc:bp:product:"
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.SerialCommand",
+        "parameters" :  {
+            "command" : "/commands/kafka-alarm.json",
+            "map" : true
+        }
+    }, {
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "rajuniper.handle_alarms.sync_alarm_data"
+       }
+    }]
+}

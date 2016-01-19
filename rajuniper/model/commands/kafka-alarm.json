@@ -1,0 +1,14 @@
+{
+    "endpoint" : "kafka",
+    "type": "bpprov.runners.simple.Sequence",
+    "out-schema" : "alarm-ra.json",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "topic": "{{ data.topic }}",
+        "key" : "{{ data.key }}"
+    },
+    "out-path": [
+    ],
+    "in-path": []
+}
