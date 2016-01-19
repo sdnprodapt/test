@@ -1,3 +1,49 @@
+Version 0.1.0
+-------------
+
+Support market created products (released on January 13 2016)
+
+- Bump rpsdk to 0.2.22 to support market created products on RA types
+
+- Rename resources.json to products.json
+
+- Advertise defaul device product with constraints 
+
+Version 0.0.19
+--------------
+Make zone optional in interfaces and bump rpsdk (released on January 6 2016)
+
+- If zone is not specified for an interface, will not associate with untrust anymore
+
+- Bump rpsdk to 0.2.20
+
+Version 0.0.18
+--------------
+Bump rpsdk version to 0.2.19 (released on December 21 2015)
+
+- Bump rpsdk version for no sshhaproxy platform support
+
+Version 0.0.17
+--------------
+Bump rpsdk version to 0.2.18 (released on December 17 2015)
+
+- Bump rpsdk version for device resource credential update support
+
+Version 0.0.16
+--------------
+Fix version numbering (released on December 17 2015)
+
+Version 0.0.15
+--------------
+
+Version 0.0.14
+--------------
+
+Version 0.0.13
+--------------
+
+Add support for local-as in BGP groups.
+
 Version 0.0.12
 --------------
 

@@ -27,6 +27,7 @@
                         "default_reject"
                     ],
                     "peer_as": 65000,
+                    "local_as": 12345,
                     "neighbors": [
                         {
                             "address": "10.173.130.1"

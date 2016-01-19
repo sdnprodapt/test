@@ -22,13 +22,23 @@
             }
         },
         {
-            "type": "bpprov.translators.aggregator.Call",
+            "type": "bpprov.translators.route.Branch",
             "parameters": {
-                "command": "create-security-zone.json",
-                "input": {
-                    "templateType": "file",
-                    "data": "firefly/create-security-zone-full-in.tmpl"
-                }
+                "choice": [
+                    {
+                        "do": {
+                            "type": "bpprov.translators.aggregator.Call",
+                            "parameters": {
+                                "command": "create-security-zone.json",
+                                "input": {
+                                    "templateType": "file",
+                                    "data": "firefly/create-security-zone-full-in.tmpl"
+                                }
+                            }
+                        },
+                        "when": "${properties} contains \"security_zone\""
+                    }
+                ]
             }
         },
         {
