@@ -90,6 +90,20 @@ resourceTypes {
               }
             }
           }
+          snmp {
+            type = object
+            title = "SNMP Authentication"
+            description = ""
+            optional = false
+            properties {
+              community {
+                type = string
+                title = "Community"
+                description = "SNMP Trap community"
+                optional = false
+              }
+            }
+          }
         }
       }
 
