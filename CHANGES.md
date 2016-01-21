@@ -1,3 +1,10 @@
+Version 0.2.0
+-------------
+
+Alarm support (released on January 21 2016)
+
+- Add support for firefly alarms with kafka and snmp endpoints
+
 Version 0.1.0
 -------------
 
