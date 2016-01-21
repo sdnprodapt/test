@@ -804,6 +804,24 @@
             "buffer-utilization": 0
         }
     ],
+    "alarms": [
+        {
+            "id": "1",
+            "time": "2015-12-11 18:46:12 UTC",
+            "type": "ETHER",
+            "class": "Minor",
+            "short-description": "fe-0/0/6 Link down",
+            "description": "fe-0/0/6: Link down"
+        },
+        {
+            "id": "2",
+            "time": "2015-12-12 18:46:12 UTC",
+            "type": "ETHER",
+            "class": "Major",
+            "short-description": "fe-1/1/2 Link down",
+            "description": "fe-1/1/2: Link down"
+        }
+    ],
     "l2circuits": [],
     "l2circuitInterfaces": [],
     "firewalls": [],

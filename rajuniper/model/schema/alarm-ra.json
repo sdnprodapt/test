@@ -1,0 +1,101 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Alarm Object",
+    "type": "object",
+    "properties": {
+        "topic" : {
+            "type" : "string"
+        },
+        "key" : {
+            "type" : "string"
+        },
+        "msg" : {
+            "type" : "object",
+            "properties" : {
+                "version": { 
+                     "type": "integer",
+                     "enum":  [1]
+                },
+                "header": { 
+                    "type": "object",
+                    "properties": {
+                         "roleIds" : {
+                             "type" : "array"
+                          },
+                         "envelopeId" : {
+                             "description": "Unique ID for envelope",
+                             "type" : "string"
+                         },
+                         "timestamp" : {
+                             "type" : "string"
+                         }
+                     },
+                     "additionalProperties": false,
+                     "required" : ["roleIds", "envelopeId", "timestamp"]
+                 },
+                 "event" : {
+                    "type" : "object",
+                    "properties" : {
+                        "_type": {
+                            "enum": ["bp.v1.AlarmEvent", "bp.v1.SyncEvent"]
+                        },
+                        "op": {
+                            "enum": ["set", "clear", "start", "complete"]
+                        },
+                        "time": { 
+                            "type": "string", 
+                            "format": "date-time",
+                            "description": "time of op (set or clear)"
+                        },
+                        "id": { 
+                            "type": "string",
+                            "description": "unique id within the context of the server"
+                        },
+                        "object_type": {
+                            "type": "string",
+                            "description": "which object_type is the being synchronized. Typically this matches the kafka topic postfix, i.e. alarm"
+                        },
+                        "resource": {
+                            "type": "string",
+                            "description": "Resource (instance) name of the alarming entity"
+                        },
+                        "conditionSource": { "enum": ["NETWORK", "SYSTEM", "MANAGER"] },
+                        "server": {
+                            "type": "object",
+                            "properties": {
+                                "id": {"type": "string"},
+                                "name": {"type": "string"}
+                            },
+                            "required": ["id"]
+                        },
+                        "nativeConditionType": {
+                            "type": "string"
+                        },
+                        "nativeConditionTypeQualifier": {
+                            "type": "string"
+                        },
+                        "serviceAffecting": {
+                            "enum": ["UNKNOWN", "SERVICE_AFFECTING", "NON_SERVICE_AFFECTING"]
+                        },
+                        "additionalText": { 
+                            "type": "string",
+                            "description": "any additional text associated with the alarm" 
+                        },
+                        "severity": { 
+                            "enum": ["INDETERMINATE", "CRITICAL", "MAJOR", "MINOR", "WARNING"] 
+                        },
+                        "additionalAttributes": {
+                            "type": "object"
+                        }
+                    },
+                    "additionalProperties": false,
+                    "required": ["id", "_type"]
+                }
+            },
+            "additionalProperties": false,
+            "required" : ["version", "header", "event"]
+        }
+    },
+    "additionalProperties": false,
+    "required" : ["topic", "key", "msg"]
+}

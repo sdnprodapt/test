@@ -1,0 +1,37 @@
+{
+    "type": "bpprov.runners.simple.Event",
+    "tests": [ "commands/tests/snmp-trap.json" ],
+    "endpoint-parameters": {},
+    "in-path": [{
+        "type": "bpprov.translators.snmp.OidString",
+        "parameters": {
+            "filemap": "oidmap.json"
+        }
+    }, {
+        "type": "bpprov.translators.list.ToNestedDict",
+        "parameters": {}
+    }, {
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "rajuniper.handle_alarms.convert_alarm"
+       }
+    }, {
+        "type": "bpprov.translators.call.Function",
+        "parameters": {
+            "function": "rajuniper.handle_alarms.push_alarms",
+            "args" : {
+                "ra_name" : "rajuniper",
+                "_type" : "bp.v1.AlarmEvent",
+                "object_type" : "/bpocore/api/v1/resources",
+                "version" : 1,
+                "product_type" : "urn:cyaninc:bp:product:"
+            }
+        }
+    }, {
+        "type": "bpprov.translators.aggregator.SerialCommand",
+        "parameters" :  {
+            "command" : "/commands/kafka-alarm.json",
+            "map" : true
+        }
+    }]
+}
