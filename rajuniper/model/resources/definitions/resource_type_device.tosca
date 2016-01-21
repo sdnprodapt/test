@@ -61,6 +61,26 @@ resourceTypes {
               }
             }
           }
+          snmp {
+            type = object
+            title = "SNMP Authentication"
+            description = ""
+            optional = true
+            properties {
+              community {
+                type = string
+                title = "Community"
+                description = "SNMP Community string"
+                optional = true
+              }
+              version {
+                type = string
+                title = "Version"
+                description = "SNMP Version"
+                optional = true
+              }
+            }
+          }
         }
       }
 
@@ -86,20 +106,6 @@ resourceTypes {
                 type = integer
                 title = "NETCONF Port"
                 description = ""
-                optional = false
-              }
-            }
-          }
-          snmp {
-            type = object
-            title = "SNMP Authentication"
-            description = ""
-            optional = false
-            properties {
-              community {
-                type = string
-                title = "Community"
-                description = "SNMP Trap community"
                 optional = false
               }
             }
