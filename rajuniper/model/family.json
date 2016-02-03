@@ -23,6 +23,10 @@
         "dir": "ex4200_48t",
         "displayName": "EX4200-48T"
     },
+    "JuniperQFX5100": {
+        "dir": "qfx5100",
+        "displayName": "QFX5100"
+    },
     "JuniperFireflyPerimeter": {
         "dir": "firefly",
         "displayName": "FireflyPerimeter"

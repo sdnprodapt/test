@@ -53,7 +53,11 @@ deviceInfo = {}
 deviceInfo['name'] = inventory.xpath('//chassis/name')[0].text
 deviceInfo['serial-number'] = inventory.xpath('//serial-number')[0].text
 deviceInfo['description'] = inventory.xpath('//description')[0].text
-deviceInfo['router-id'] = configuration.xpath('//router-id')[0].text
+try:
+    deviceInfo['router-id'] = configuration.xpath('//router-id')[0].text
+except IndexError:
+    # No router-id found
+    deviceInfo['router-id'] = "NotSet"
 deviceInfo['host-name'] = software_version.xpath('//host-name')[0].text
 deviceInfo['product-model'] = software_version.xpath('//product-model')[0].text
 deviceInfo['product-name'] = software_version.xpath('//product-name')[0].text
