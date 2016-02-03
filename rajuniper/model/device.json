@@ -46,6 +46,13 @@
             ""
         ]
     },
+    "JuniperQFX5100-48S-6Q": {
+        "family": "JuniperQFX5100",
+        "dir": "qfx5100/qfx5100-48s-6q",
+        "version": [
+            ""
+        ]
+    },
     "JuniperFireflyPerimeter": {
         "family": "JuniperFireflyPerimeter",
         "dir": "firefly/firefly",

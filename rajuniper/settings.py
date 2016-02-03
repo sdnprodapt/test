@@ -30,6 +30,7 @@ RESOURCE_TYPES = ['JuniperMX240',
                  'JuniperMX2010',
                  'JuniperPTX3000',
                  'JuniperEX4200_48T',
+                 'JuniperQFX5100-48S-6Q',
                  'JuniperFireflyPerimeter']
 
 VENDOR = 'cyan'

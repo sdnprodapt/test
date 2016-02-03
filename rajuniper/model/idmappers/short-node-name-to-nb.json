@@ -16,6 +16,14 @@
         "source": "(?i)mx2010",
         "destination": "JuniperMX2010"
     }, {
+        "name": "MX240",
+        "source": "(?i)mx240",
+        "destination": "JuniperMX240"
+    }, {
+        "name": "QFX5100-48S-6Q",
+        "source": "(?i)qfx5100-48s-6q",
+        "destination": "JuniperQFX5100-48S-6Q"
+    }, {
         "name": "PTX3000",
         "source": "(?i)ptx3000",
         "destination": "JuniperPTX3000"
