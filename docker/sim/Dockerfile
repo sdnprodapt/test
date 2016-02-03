@@ -1,5 +1,11 @@
 FROM cyan/rajuniper-base
 
+# lxml dependency
+RUN apt-get update -y -q && \
+    apt-get install -y -q libxslt-dev libxml2-dev libffi-dev libssl-dev openjdk-7-jre-headless
+
+RUN pip install -i 'https://artifactory.ciena.com/api/pypi/blueplanet-pypi/simple' lxml
+
 WORKDIR /bp2/src/
 
 EXPOSE 22
