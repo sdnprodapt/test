@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/14.1R4/junos">
+<fpc-information xmlns="http://xml.juniper.net/junos/14.1R4/junos-chassis" junos:style="brief">
+<fpc>
+<slot>0</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>1</slot>
+<state>Empty</state>
+</fpc>
+<fpc>
+<slot>2</slot>
+<state>Online</state>
+<temperature junos:celsius="31">31</temperature>
+<cpu-total>14</cpu-total>
+<cpu-interrupt>5</cpu-interrupt>
+<memory-dram-size>2048</memory-dram-size>
+<memory-heap-utilization>9</memory-heap-utilization>
+<memory-buffer-utilization>14</memory-buffer-utilization>
+</fpc>
+</fpc-information>
+</rpc-reply>

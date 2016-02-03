@@ -1,0 +1,228 @@
+{
+    "deviceInfo": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "serial", "type": "string" },
+            { "name": "router-id", "type": "string" },
+            { "name": "description", "type": "string" },
+            { "name": "host-name", "type": "string" },
+            { "name": "product-model", "type": "string" },
+            { "name": "product-name", "type": "string" },
+            { "name": "junos-version", "type": "string" }
+        ]
+    },
+    "packageInfo": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "comment", "type": "string" }
+        ]
+    },
+    "interfaces": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string"},
+            { "name": "hw-address", "type": "string" },
+            { "name": "enabled", "type": "boolean", "default": true },
+            { "name": "operstatus", "type": "boolean", "default": true },
+            { "name": "description", "type": "string" },
+            { "name": "snmp-index", "type": "string" },
+            { "name": "local-index", "type": "string" },
+            { "name": "speed", "type": "string" },
+            { "name": "interface-flapped", "type": "string"},
+            { "name": "stat-input-packets", "type": "integer", "default": -1 },
+            { "name": "stat-input-bps", "type": "integer", "default": -1 },
+            { "name": "stat-input-pps", "type": "integer", "default": -1 },
+            { "name": "stat-output-packets", "type": "integer", "default": -1 },
+            { "name": "stat-output-bps", "type": "integer", "default": -1 },
+            { "name": "stat-output-pps", "type": "integer", "default": -1 },
+            { "name": "mtu", "type": "string" },
+            { "name": "encapsulation", "type": "string" },
+            { "name": "link-level-type", "type": "string" },
+            { "name": "if-device-flags", "type": "string", "default": "", "description": "; separated list of device flags" },
+            { "name": "if-media-flags", "type": "string", "default": "", "description": "; separated list of media flags" },
+            { "name": "if-config-flags", "type": "string", "default": "", "description": "; separated list of config flags" },
+            { "name": "ifd-specific-config-flags", "type": "string", "default": "", "description": "; separated list of device specific config flags" }
+        ]
+    },
+    "logicalInterfaces": {
+        "index": { "default": ["interfaceName", "name"] },
+        "fields": [
+            { "name": "name", "type": "string"},
+            { "name": "interfaceName", "type": "string", "foreignKey": { "class": "interfaces", "column": "name" } },
+            { "name": "snmp-index", "type": "string" },
+            { "name": "local-index", "type": "string" },
+            { "name": "encapsulation", "type": "string" },
+            { "name": "logical-interface-bandwidth", "type": "string" },
+            { "name": "stat-input-packets", "type": "integer", "default": -1 },
+            { "name": "stat-input-bps", "type": "integer", "default": -1 },
+            { "name": "stat-input-pps", "type": "integer", "default": -1 },
+            { "name": "stat-output-packets", "type": "integer", "default": -1 },
+            { "name": "stat-output-bps", "type": "integer", "default": -1 },
+            { "name": "stat-output-pps", "type": "integer", "default": -1 },
+            { "name": "filter-information", "type": "boolean" },
+            { "name": "if-config-flags", "type": "string", "default": "", "description": "; separated list of config flags" }
+        ]
+    },
+    "logicalInterfaceAddressFamilies": {
+        "index": { "default": ["logicalInterface", "familyName"] },
+        "fields": [
+            { "name": "familyName", "type": "string", "default": "inet" },
+            { "name": "logicalInterface", "type": "string" },
+            { "name": "mtu", "type": "string" },
+            { "name": "familyFlags", "type": "string", "default": "", "description": "; separated list of flags" },
+            { "name": "ifa-flags", "type": "string", "default": "" },
+            { "name": "ifa-destination", "type": "string" },
+            { "name": "ifa-local", "type": "string" },
+            { "name": "ifa-broadcast", "type": "string" }
+        ]
+    },
+    "interfaceUnits": {
+        "index": { "default": ["interfaceName", "unit-name"] },
+        "fields": [
+            { "name": "interfaceName", "type": "string", "foreignKey": { "class": "interfaces", "column": "name" } },
+            { "name": "unit-name", "type": "string" },
+            { "name": "unit-description", "type": "string" },
+            { "name": "unit-family-filter-tag", "type": "string" },
+            { "name": "unit-family-filter-input", "type": "string" },
+            { "name": "unit-apply-groups-except", "type": "string" }
+        ]
+    },
+    "unitApplyGroups": {
+        "index": { "default": ["interfaceName", "unitName", "applyGroup"] },
+        "fields": [
+            { "name": "interfaceName", "type": "string", "foreignKey": { "class": "interfaces", "column": "name" } },
+            { "name": "unitName", "type": "string" },
+            { "name": "applyGroup", "type": "string" }
+        ]
+    },
+    "chassisModules": {
+        "index": { "default": ["parentName", "name"] },
+        "fields": [
+            { "name": "parentName", "type": "string" },
+            { "name": "name", "type": "string" },
+            { "name": "version", "type": "string" },
+            { "name": "clei-code", "type": "string" },
+            { "name": "part-number", "type": "string" },
+            { "name": "serial-number", "type": "string" },
+            { "name": "description", "type": "string" },
+            { "name": "model-number", "type": "string" }
+        ]
+    },
+    "fpcInfo": {
+        "index": { "default": "slot" },
+        "fields": [
+            { "name": "slot", "type": "integer" },
+            { "name": "state", "type": "string" },
+            { "name": "temperature", "type": "integer" },
+            { "name": "cpu-total", "type": "integer" },
+            { "name": "cpu-interrupt", "type": "integer" },
+            { "name": "dram-size", "type": "integer" },
+            { "name": "heap-utilization", "type": "integer" },
+            { "name": "buffer-utilization", "type": "integer" }
+        ]
+    },
+    "alarms": {
+        "index": { "default": "id" },
+        "fields": [
+            { "name": "id", "type": "string" },
+            { "name": "time", "type": "string" },
+            { "name": "type", "type": "string" },
+            { "name": "class", "type": "string" },
+            { "name": "short-description", "type": "string" },
+            { "name": "description", "type": "string" }
+        ]
+    },
+    "l2circuits": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" }
+        ]
+    },
+    "l2circuitInterfaces": {
+        "index": { "default": ["circuit-name", "if-name"] },
+        "fields": [
+            { "name": "circuit-name", "type": "string" },
+            { "name": "if-name", "type": "string" },
+            { "name": "virtual-circuit-id", "type": "string" },
+            { "name": "encapsulation-type", "type": "string" }
+        ]
+    },
+    "firewalls": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "rate", "type": "string", "default": "single-rate" },
+            { "name": "color-aware", "type": "boolean", "default": false },
+            { "name": "cir", "type": "string" },
+            { "name": "cbs", "type": "string" },
+            { "name": "pbs", "type": "string" },
+            { "name": "pir", "type": "string" }
+        ]
+    },
+    "firewallFilters": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "family", "type": "string" },
+            { "name": "interface-specific", "type": "boolean" }
+        ]
+    },
+    "firewallFilterTerms": {
+        "index": { "default": ["firewallName", "name"] },
+        "fields": [
+            { "name": "firewallName", "type": "string" },
+            { "name": "name", "type": "string" },
+            { "name": "threeColorRate", "type": "string" },
+            { "name": "threeColorPolicer", "type": "string" },
+            { "name": "lossPrio", "type": "string" },
+            { "name": "forwardingClass", "type": "string" },
+            { "name": "policer", "type": "string" },
+            { "name": "action", "type": "string" }
+        ]
+    },
+    "firewallPolicers": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "if-condition", "type": "string" },
+            { "name": "bandwidth-limit", "type": "string" },
+            { "name": "burst-size-limit", "type": "string" },
+            { "name": "then-action", "type": "string" }
+        ]
+    },
+    "routingInstances": {
+        "index": { "default": "name" },
+        "fields": [
+            { "name": "name", "type": "string" },
+            { "name": "description", "type": "string" },
+            { "name": "instance-type", "type": "string" },
+            { "name": "interface-name", "type": "string" },
+            { "name": "route-distinguisher-rd-type", "type": "string" },
+            { "name": "vrf-target-import", "type": "string" },
+            { "name": "vrf-target-export", "type": "string" },
+            { "name": "forwarding-options-family-vpls-flood-input", "type": "string" },
+            { "name": "protocols-vpls-mac-table-size-limit", "type": "integer" },
+            { "name": "protocols-vpls-interface-mac-limit", "type": "integer" },
+            { "name": "protocols-vpls-tunnel-services", "type": "boolean", "default": false },
+            { "name": "protocols-vpls-site-name", "type": "string" },
+            { "name": "protocols-vpls-site-id", "type": "string" },
+            { "name": "protocols-vpls-site-interface-name", "type": "string" }
+        ]
+    },
+    "cosRoutingInstances": {
+        "index": { "default": "routingInstance" },
+        "fields": [
+            { "name": "routingInstance", "type": "string" },
+            { "name": "classifierName", "type": "string" }
+        ]
+    },
+    "cosInterfaces": {
+        "index": { "default": "interface" },
+        "fields": [
+            { "name": "interface", "type": "string" },
+            { "name": "schedulerMap", "type": "string" }
+        ]
+    }
+}

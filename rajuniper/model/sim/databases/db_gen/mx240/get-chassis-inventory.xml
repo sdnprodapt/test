@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/14.1R4/junos">
+<chassis-inventory xmlns="http://xml.juniper.net/junos/14.1R4/junos-chassis">
+<chassis junos:style="inventory">
+<name>Chassis</name>
+<serial-number>JN123E014AFC</serial-number>
+<description>MX240</description>
+<chassis-module>
+<name>Midplane</name>
+<version>REV 01</version>
+<part-number>750-047865</part-number>
+<serial-number>ACRC9562</serial-number>
+<description>Enhanced MX240 Backplane</description>
+<clei-code>COMLN10BRA</clei-code>
+<model-number>CHAS-BP3-MX240-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>FPM Board</name>
+<version>REV 04</version>
+<part-number>760-021392</part-number>
+<serial-number>ABCM4264</serial-number>
+<description>Front Panel Display</description>
+<model-number>CRAFT-MX240-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>PEM 0</name>
+<version>Rev 10</version>
+<part-number>740-029970</part-number>
+<serial-number>QCS1424U0WM</serial-number>
+<description>PS 1.4-2.52kW; 90-264V AC in</description>
+<model-number>PWR-MX480-2520-AC-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>PEM 1</name>
+<version>Rev 10</version>
+<part-number>740-029970</part-number>
+<serial-number>QCS1424U0L1</serial-number>
+<description>PS 1.4-2.52kW; 90-264V AC in</description>
+<model-number>PWR-MX480-2520-AC-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>Routing Engine 0</name>
+<version>REV 10</version>
+<part-number>740-031116</part-number>
+<serial-number>9009212728</serial-number>
+<description>RE-S-1800x4</description>
+<clei-code>COUCASYBAA</clei-code>
+<model-number>RE-S-1800X4-16G-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>Routing Engine 1</name>
+<version>REV 08</version>
+<part-number>740-031116</part-number>
+<serial-number>9009130117</serial-number>
+<description>RE-S-1800x4</description>
+<clei-code>COUCASKBAA</clei-code>
+<model-number>RE-S-1800X4-16G-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>CB 0</name>
+<version>REV 23</version>
+<part-number>750-031391</part-number>
+<serial-number>ABCY2406</serial-number>
+<description>Enhanced MX SCB</description>
+<clei-code>COUCATXBAA</clei-code>
+<model-number>SCBE-MX-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>CB 1</name>
+<version>REV 23</version>
+<part-number>750-031391</part-number>
+<serial-number>ABCY1988</serial-number>
+<description>Enhanced MX SCB</description>
+<clei-code>COUCATXBAA</clei-code>
+<model-number>SCBE-MX-S</model-number>
+</chassis-module>
+<chassis-module>
+<name>FPC 2</name>
+<version>REV 14</version>
+<part-number>750-045372</part-number>
+<serial-number>CADE6674</serial-number>
+<description>MPCE Type 3 3D</description>
+<clei-code>COUIBBNBAB</clei-code>
+<model-number>MX-MPC3E-3D</model-number>
+<chassis-sub-module>
+<name>CPU</name>
+<version>REV 10</version>
+<part-number>711-035209</part-number>
+<serial-number>CADG6579</serial-number>
+<description>HMPC PMB 2G </description>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 0</name>
+<version>REV 08</version>
+<part-number>750-033307</part-number>
+<serial-number>CADB6867</serial-number>
+<description>10X10GE SFPP</description>
+<clei-code>COUIBBJBAA</clei-code>
+<model-number>MIC3-3D-10XGE-SFPP</model-number>
+<chassis-sub-sub-module>
+<name>PIC 0</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>10X10GE SFPP</description>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 0</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038065</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 1</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2037960</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 2</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038037</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 3</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038097</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 4</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038019</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 5</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038169</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 6</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2037918</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 7</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038079</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 8</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038070</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+<chassis-sub-sub-sub-module>
+<name>Xcvr 9</name>
+<version>REV 01</version>
+<part-number>740-031981</part-number>
+<serial-number>EAN2038128</serial-number>
+<description>SFP+-10G-LR</description>
+</chassis-sub-sub-sub-module>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+<chassis-sub-module>
+<name>MIC 1</name>
+<version>REV 18</version>
+<part-number>750-043688</part-number>
+<serial-number>CADL4846</serial-number>
+<description>MS-MIC-16G</description>
+<clei-code>COUIBC4BAA</clei-code>
+<model-number>MS-MIC-16G</model-number>
+<chassis-sub-sub-module>
+<name>PIC 2</name>
+<part-number>BUILTIN</part-number>
+<serial-number>BUILTIN</serial-number>
+<description>MS-MIC-16G</description>
+</chassis-sub-sub-module>
+</chassis-sub-module>
+</chassis-module>
+<chassis-module>
+<name>Fan Tray 0</name>
+<version>REV 01</version>
+<part-number>710-030216</part-number>
+<serial-number>CACZ2058</serial-number>
+<description>Enhanced Fan Tray</description>
+<model-number>FFANTRAY-MX240-HC-S</model-number>
+</chassis-module>
+</chassis>
+</chassis-inventory>
+</rpc-reply>

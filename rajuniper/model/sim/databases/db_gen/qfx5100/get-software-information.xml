@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/14.1X53/junos">
+<multi-routing-engine-results>
+
+<multi-routing-engine-item>
+
+<re-name>fpc0</re-name>
+
+<software-information>
+<host-name>csw1-svc.se3</host-name>
+<product-model>qfx5100-48s-6q</product-model>
+<product-name>qfx5100-48s-6q</product-name>
+<junos-version>14.1X53-D30.3</junos-version>
+<package-information>
+<name>jbase</name>
+<comment>JUNOS Base OS Software Suite [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>junos</name>
+<comment>JUNOS Base OS boot [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jcrypto</name>
+<comment>JUNOS Crypto Software Suite [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jdocs</name>
+<comment>JUNOS Online Documentation [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jkernel</name>
+<comment>JUNOS Kernel Software Suite [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jpfe</name>
+<comment>JUNOS Packet Forwarding Engine Support (qfx-ex-x86-32) [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jroute</name>
+<comment>JUNOS Routing Software Suite [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jsdn-i386</name>
+<comment>JUNOS SDN Software Suite [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jswitch</name>
+<comment>JUNOS Enterprise Software Suite [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>jweb-ex</name>
+<comment>JUNOS Web Management Platform Package [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>py-base-i386</name>
+<comment>JUNOS py-base-i386 [14.1X53-D30.3]</comment>
+</package-information>
+<package-information>
+<name>JUNOS Host Software</name>
+<comment>JUNOS Host Software [14.1X53-D10_vjunos.]</comment>
+</package-information>
+</software-information>
+</multi-routing-engine-item>
+
+</multi-routing-engine-results>
+</rpc-reply>

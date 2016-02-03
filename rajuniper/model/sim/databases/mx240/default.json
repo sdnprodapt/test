@@ -1,0 +1,17 @@
+{
+    "deviceInfo": [],
+    "packageInfo": [],
+    "interfaces": [],
+    "configInterfaces": [],
+    "chassisModules": [],
+    "fpcInfo": [],
+    "alarms": [],
+    "l2circuits": [],
+    "firewalls": [],
+    "firewallFilters": [],
+    "firewallFilterTerms": [],
+    "firewallPolicers": [],
+    "routingInstances": [],
+    "cosRoutingInstances": [],
+    "cosInterfaces": []
+}
