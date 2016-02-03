@@ -43,7 +43,7 @@ resourceTypes {
       }
 
       admin_status {
-        type = boolean 
+        type = boolean
         title = "Admin State Up"
         description = ""
         optional = true
@@ -57,12 +57,12 @@ resourceTypes {
       }
 
       mac_address {
-        type = string 
+        type = string
         title = "MAC Address"
         description = ""
         optional = true
       }
-    
+
       mtu {
         type = string
         title = "MTU"
@@ -89,6 +89,14 @@ resourceTypes {
         description = "IP Addresses on this interface"
         type = array
         items.type = string
+        optional = true
+      }
+
+      vlan_ids {
+        title = "VLAN Ids"
+        description = "VLANs on this interface"
+        type = array
+        items.integer = string
         optional = true
       }
 

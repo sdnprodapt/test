@@ -1,0 +1,66 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "Policy resource type definition"
+package = juniper
+version = "1.0"
+description = "This document defines routing policy type."
+authors = ["Sonny Rasmussen (sorasmus@contractor.ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  VrfPolicy {
+    derivedFrom = Root
+    title = "VRFPolicy"
+    description = """
+    A routing policy.
+    """
+
+    properties {
+
+      name {
+        type = string
+        title = "Policy Name"
+        description = ""
+        optional = false
+      }
+
+      terms {
+        type = array
+        title = "Terms"
+        items {
+          type = object
+          properties {
+            name {
+              title = "Name"
+              description = "term name"
+              type = string
+            }
+
+            commands {
+              title = "commands"
+              description = "Term commands"
+              type = array
+              items.type = string
+            }
+          }
+        }
+      }
+    }
+
+    requirements {
+
+      policy_device {
+        title = "Device"
+        description = "A policy is hosted by the device"
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.Device]
+      }
+    }
+  }
+}
