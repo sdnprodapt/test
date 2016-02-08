@@ -1,6 +1,8 @@
 HIDE ?= @
 VENV := env
 PACKAGE := $(shell python setup.py --name)
+VERSION := $(shell python setup.py --version)
+DOCKER_REGISTRY := dockerreg.cyanoptics.com
 
 PROJECT_DIR ?= $(shell pwd)
 MODEL_DIR := $(PROJECT_DIR)/$(PACKAGE)/model
@@ -147,6 +149,15 @@ image-base-dev: image-base
 	docker run $(DEV_VOLUME_MOUNT) $(DOCKER_BP2_IGNORE) $(NAME_MAP) $(DOCKER_IMAGE_BASE) /bin/bash -c 'touch /bp2/.dev && scripts/docker-link-src'
 	docker commit $(DOCKER_CONTAINER) $(DOCKER_IMAGE_BASE):latest
 	docker rm $(DOCKER_CONTAINER)
+
+tag:
+	docker tag $(DOCKER_IMAGE) $(DOCKER_REGISTRY)/$(DOCKER_IMAGE):$(VERSION)
+
+push:
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_IMAGE):$(VERSION)
+
+clean-image:
+	-docker rmi $(DOCKER_IMAGE_BASE) $(DOCKER_IMAGE) $(DOCKER_REGISTRY)/$(DOCKER_IMAGE):$(VERSION)
 
 image: image-base
 	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_RA)
