@@ -96,7 +96,7 @@ resourceTypes {
         title = "VLAN Ids"
         description = "VLANs on this interface"
         type = array
-        items.integer = string
+        items.type = integer
         optional = true
       }
 
