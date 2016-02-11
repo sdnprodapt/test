@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source dockerdev.sh
+
+RP_ID=$(jcurl $MARKET_URL/resource-providers?q=providerId:807f05b4ff924a18bf61827e8d63b8b3 | jparse [\"items\"][0][\"id\"])
+
+cat <<EOF > /tmp/domain.json
+{
+    "accessUrl": "http://localhost:9192",
+    "address": {
+        "city": "Parker",
+        "country": "US",
+        "latitude": 33.055397033691406,
+        "longitude": -96.62194061279297,
+        "state": "TX",
+        "street": "",
+        "zip": "75002"
+    },
+    "domainType": "urn:cyaninc:bp:domain:juniper",
+    "operationMode": "normal",
+    "properties": {},
+    "rpId": "$RP_ID",
+    "title": "Juniper"
+}
+EOF
+
+jcurl -d @/tmp/domain.json $MARKET_URL/domains | jpp

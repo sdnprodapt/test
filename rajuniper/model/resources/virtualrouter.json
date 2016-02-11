@@ -1,5 +1,5 @@
 {
-    "product": "urn:cyaninc:bp:product:firefly_vr",
+    "product": "urn:cyaninc:bp:product:juniper_vr",
     "resource": "juniper.resourceTypes.VirtualRouter",
     "type": "bpprov",
     "provider_resource_id_field": "name",

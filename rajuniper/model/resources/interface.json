@@ -1,5 +1,5 @@
 {
-    "product": "urn:cyaninc:bp:product:interface",
+    "product": "urn:cyaninc:bp:product:juniper_interface",
     "resource": "juniper.resourceTypes.Interface",
     "type": "bpprov_full",
     "provider_resource_id_field": "name",

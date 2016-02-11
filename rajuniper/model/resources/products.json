@@ -1,31 +1,34 @@
 [{
     "resource_type": "juniper.resourceTypes.VirtualRouter",
-    "provider_product_id": "urn:cyaninc:bp:product:firefly_vr",
-    "title": "Firefly Virtual Router",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_vr",
+    "title": "Virtual Router",
     "active": false,
     "provider_data": {}
 }, {
     "resource_type": "juniper.resourceTypes.Firewall",
-    "provider_product_id": "urn:cyaninc:bp:product:firefly_firewall",
-    "title": "Firefly Firewall",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_firewall",
+    "title": "Firewall",
     "active": false,
     "provider_data": {}
 }, {
     "resource_type": "juniper.resourceTypes.Interface",
-    "provider_product_id": "urn:cyaninc:bp:product:interface",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_interface",
     "title": "Interface",
     "active": false,
     "provider_data": {}
 }, {
-    "resource_type": "juniper.resourceTypes.Device",
-    "provider_product_id": "urn:cyaninc:bp:product:firefly",
-    "title": "Juniper Firefly",
+    "resource_type": "juniper.resourceTypes.VRFPolicy",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_vrfpolicy",
+    "title": "VRF Policy",
     "active": false,
+    "provider_data": {}
+}, {
+    "resource_type": "juniper.resourceTypes.Device",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper",
+    "title": "Device",
+    "active": true,
     "provider_data": {},
     "constraints": {
-        "resourceType": {
-            "constant": "JuniperFireflyPerimeter"
-        },
         "typeGroup": {
             "constant": "/typeGroups/Juniper"
         }

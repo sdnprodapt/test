@@ -1,5 +1,5 @@
 {
-    "product": "urn:cyaninc:bp:product:firefly",
+    "product": "urn:cyaninc:bp:product:juniper",
     "resource": "juniper.resourceTypes.Device",
     "top_down_get": true,
     "type": "device"

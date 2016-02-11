@@ -1,5 +1,5 @@
 {
-    "product": "urn:cyaninc:bp:product:firefly_firewall",
+    "product": "urn:cyaninc:bp:product:juniper_firewall",
     "resource": "juniper.resourceTypes.Firewall",
     "type": "bpprov",
     "provider_resource_id_field": "name",
