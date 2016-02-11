@@ -25,7 +25,7 @@ resourceTypes {
         type = string
         title = "Adapter Resource Type"
         description = ""
-        optional = false
+        optional = true
       }
 
       typeGroup {
@@ -132,6 +132,7 @@ resourceTypes {
         title = "Device Version"
         description = ""
         optional = true
+        config = false
       }
 
       serialNumber {
@@ -139,6 +140,7 @@ resourceTypes {
         title = "Serial Number"
         description = ""
         optional = true
+        config = false
       }
 
       swImage {
@@ -146,6 +148,7 @@ resourceTypes {
         title = "Software Image"
         description = ""
         optional = true
+        config = false
       }
 
       swVersion {
@@ -153,6 +156,7 @@ resourceTypes {
         title = "Software Version"
         description = ""
         optional = true
+        config = false
       }
 
       swType {
@@ -160,6 +164,7 @@ resourceTypes {
         title = "Software Type"
         description = ""
         optional = true
+        config = false
       }
 
       type {
@@ -167,6 +172,7 @@ resourceTypes {
         title = "Type"
         description = ""
         optional = true
+        config = false
       }
     }
 
