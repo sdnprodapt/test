@@ -1,0 +1,49 @@
+{#
+    Inputs:
+        interface: name of the interface to craete the logical interface on
+        unit: name of the logical interface unit
+#}
+
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <interfaces>
+        <interface>
+            <name>{{ data['interface'] }}</name>
+            {% if 'admin_status' in data %}
+                {% if data.admin_status == 'True' %}
+            <disable operation="delete"/>
+                {% elif data.admin_status == 'False' %}
+            <disable/>
+                {% endif %}
+            {% endif %}
+
+            <unit>
+                <name>{{ data['unit'] }}</name>
+            {% if 'description' in data %}
+                <description>{{ data['description'] }}</description>
+            {% endif %}
+            {% if 'vlan_id' in data %}
+                <vlan-id>{{ data['vlan_id'] }}</vlan-id>
+            {% endif %}
+
+                <family>
+                    <inet>
+                        {% if data['ipv4_addresses'] %}
+                            {% for addr in data['ipv4_addresses'] %}
+                            <address>
+                                <name>{{ addr }}</name>
+                            </address>
+                            {% endfor %}
+                        {% endif %}
+                        {% if data.mtu %}
+                        <mtu>{{ data.mtu }}</mtu>
+                        {% endif %}
+                    </inet>
+                </family>
+            </unit>
+        </interface>
+    </interfaces>
+</configuration></config>
+</edit-config>
+</rpc>

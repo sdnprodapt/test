@@ -1,0 +1,72 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "Routing Instance"
+package = juniper
+version = "1.0"
+description = "This document defines routing instance type."
+authors = ["Kerry Neef (kneef@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  RoutingInstance {
+    derivedFrom = Root
+    title = "Routing Instance"
+    description = """
+    A routing instance.
+    """
+
+    properties {
+
+      device {
+        type = string
+        title = "Device"
+        description = "Identifies the device hosting this resource."
+        optional = false
+      }
+
+      name {
+        type = string
+        title = "Routing Instance Name"
+        description = ""
+        optional = false
+      }
+
+      interface {
+        type = string
+        title = "Interface"
+        description = ""
+        optional = false
+      }
+
+      vrf_import {
+        type = string
+        title = "Import Policy"
+        description = ""
+        optional = false
+      }
+
+      vrf_export {
+        type = string
+        title = "Export Policy"
+        description = ""
+        optional = false
+      }
+    }
+
+    requirements {
+
+      policy_device {
+        title = "Device"
+        description = "A routing instance is hosted by the device"
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.Device]
+      }
+    }
+  }
+}

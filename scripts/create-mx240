@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DEVICE_IP="10.0.3.240"
+DEVICE_RT="JuniperMX240"
+
+source dockerdev.sh
+
+PRODUCT_ID=$(jcurl ${MARKET_URL}/products?q=resourceTypeId:juniper.resourceTypes.Device | jparse [\"items\"][0][\"id\"])
+
+cat <<EOF > /tmp/resource.json
+{
+"productId": "${PRODUCT_ID}",
+"label": "MX240",
+"discovered": false,
+"properties": {
+    "typeGroup": "/typeGroups/Juniper",
+    "resourceType": "${DEVICE_RT}",
+    "authentication": {"netconf": {"username": "automate", "password": "Aut0m@t3"}},
+    "connection": {"hostname": "${DEVICE_IP}", "netconf": {"hostport": 22}}
+}
+}
+EOF
+
+jcurl -d @/tmp/resource.json ${MARKET_URL}/resources | jpp
+
+rm -f /tmp/resource.json

@@ -2,5 +2,7 @@
     "urn:cyaninc:bp:product:juniper_vr": "virtualrouter.json",
     "urn:cyaninc:bp:product:juniper_firewall": "firewall.json",
     "urn:cyaninc:bp:product:juniper_interface": "interface.json",
+    "urn:cyaninc:bp:product:juniper_vrfpolicy": "vrfpolicy.json",
+    "urn:cyaninc:bp:product:juniper_routinginstance": "routinginstance.json",
     "urn:cyaninc:bp:product:juniper": "device.json"
 }

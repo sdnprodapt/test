@@ -1,0 +1,24 @@
+{
+    "product": "urn:cyaninc:bp:product:juniper_routinginstance",
+    "resource": "juniper.resourceTypes.RoutingInstance",
+    "type": "bpprov",
+    "provider_resource_id_field": "name",
+    "label_field": "name",
+    "commands": {
+        "list": {
+            "command": "get-routinginstances.json"
+        },
+        "get": {
+            "command": "get-routinginstance.json"
+        },
+        "put": {
+            "command": "create-routinginstance.json"
+        },
+        "post": {
+            "command": "create-routinginstance.json"
+        },
+        "delete": {
+            "command": "delete-routinginstance.json"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+INTERFACE_NAME="ae0.2172"
+
+source dockerdev.sh
+
+RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.Interface\&q=label:$INTERFACE_NAME | jparse [\"items\"][0][\"id\"])
+
+jcurl -X DELETE ${MARKET_URL}/resources/${RESOURCE_ID}

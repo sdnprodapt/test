@@ -1,0 +1,17 @@
+{
+{% if 'admin_status' in data %}
+    "admin_status": "{{ data['admin_status'] }}",
+{% endif %}
+{% if 'mtu' in data %}
+        "mtu": "{{ data['mtu'] }}",
+{% endif %}
+{% if 'ipv4_addresses' in data %}
+    "ipv4_addresses": [
+    {% for address in data['ipv4_addresses'] %}
+        "{{ address }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+    ],
+{% endif %}
+    "interface": "{{ data.name.split('.')[0] }}",
+    "unit": "{{ data.name.split('.')[1] }}"
+}
