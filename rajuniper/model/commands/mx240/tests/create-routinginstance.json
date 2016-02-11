@@ -1,0 +1,56 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "properties": {
+                "name": "RI-VRF-Internet-2",
+                "interface": "ae0.2172",
+                "vrf_import": "IMPORT-FROM-AUTOMATE",
+                "vrf_export": "EXPORT-TO-AUTOMATE"
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<instance_name>RI-VRF-Internet-2</instance_name>",
+                "<interface>",
+                "<interface_name>ae0.2172</interface_name>",
+                "</interface>",
+                "<vrf-import>",
+                "<value>IMPORT-FROM-AUTOMATE</value>",
+                "</vrf-import>",
+                "<vrf-export>",
+                "<value>EXPORT-TO-AUTOMATE</value>",
+                "</vrf-export>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

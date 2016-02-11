@@ -1,0 +1,63 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "properties": {
+                "name": "ae0.2172",
+                "description": "Internet Connection For Automation project",
+                "vlan_ids": [
+                    2172
+                ],
+                "ipv4_addresses": [
+                    "64.191.192.113/28"
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>2172</name>",
+                "<description>Internet Connection For Automation project</description>",
+                "<vlan-id>2172</vlan-id>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>64.191.192.113/28</name>",
+                "</address>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

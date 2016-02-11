@@ -1,0 +1,79 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx240/tests/get-interface-full.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx240/get-interface-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {
+                "paths": [
+                    "interface-information.logical-interface.address-family",
+                    "interface-information.logical-interface.address-family..interface-address"
+                ]
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "mx240/get-interface-full.tmpl",
+                "as_object": true
+            }
+        },
+        {
+            "type": "bpprov.translators.route.Case",
+            "parameters": {
+                "field": "${properties.link_level_type}",
+                "choice": {
+                    "error": {
+                        "type": "bpprov.translators.template.Json",
+                        "parameters": {
+                            "templateType": "inline",
+                            "template": "{\"statusCode\": \"404\", \"reason\": \"Interface not found\"}"
+                        }
+                    },
+                    "virtual": {
+                        "type": "bpprov.translators.aggregator.Call",
+                        "parameters": {
+                            "command": "get-interface-full.json",
+                            "input": {
+                                "templateType": "json-dict",
+                                "header": {},
+                                "data": {
+                                    "name": "{{ data.properties.physical_interface }}"
+                                }
+                            },
+                            "output": {
+                                "patches": [
+                                    {
+                                        "from": "/data/properties/mac_address",
+                                        "to": "/data/properties/mac_address"
+                                    },
+                                    {
+                                        "from": "/data/properties/admin_status",
+                                        "to": "/data/properties/admin_status"
+                                    },
+                                    {
+                                        "from": "/data/orchState",
+                                        "to": "/data/orchState"
+                                    },
+                                    {
+                                        "from": "/data/properties/speed",
+                                        "to": "/data/properties/speed"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "otherwise": {"type": "bpprov.translators.list.Null"}
+            }
+        }
+    ]
+}

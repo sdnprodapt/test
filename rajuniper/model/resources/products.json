@@ -14,12 +14,18 @@
     "resource_type": "juniper.resourceTypes.Interface",
     "provider_product_id": "urn:cyaninc:bp:product:juniper_interface",
     "title": "Interface",
+    "active": true,
+    "provider_data": {}
+}, {
+    "resource_type": "juniper.resourceTypes.VrfPolicy",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_vrfpolicy",
+    "title": "VRF Policy",
     "active": false,
     "provider_data": {}
 }, {
-    "resource_type": "juniper.resourceTypes.VRFPolicy",
-    "provider_product_id": "urn:cyaninc:bp:product:juniper_vrfpolicy",
-    "title": "VRF Policy",
+    "resource_type": "juniper.resourceTypes.RoutingInstance",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_routinginstance",
+    "title": "Routing Instance",
     "active": false,
     "provider_data": {}
 }, {

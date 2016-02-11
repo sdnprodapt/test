@@ -1,0 +1,22 @@
+{#
+    Inputs:
+        interface: name of the interface to add/modify the security zone
+        security_zone: name of the security zone to modify
+#}
+
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <security>
+        <zones>
+            <security-zone>
+                <name>{{ data['security_zone'] }}</name>
+                <interfaces operation="delete">
+                    <name>{{ data['interface'] }}</name>
+                </interfaces>
+            </security-zone>
+        </zones>
+    </security>
+</configuration></config>
+</edit-config>
+</rpc>

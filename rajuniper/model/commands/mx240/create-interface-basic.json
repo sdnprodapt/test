@@ -1,0 +1,12 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx240/tests/create-interface-basic.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx240/create-interface-basic.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}

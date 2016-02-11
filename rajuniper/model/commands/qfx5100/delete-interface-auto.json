@@ -1,0 +1,52 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/delete-interface-auto.json"
+    ],
+    "endpoint-parameters": {
+    },
+    "out-schema": "firefly/out-delete-interface.json",
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-interface.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "data": {
+                        "name": "{{ data.name }}"
+                    }
+                },
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data/name",
+                            "to": "/data/name"
+                        },
+                        {
+                            "from": "/data/security_zone",
+                            "to": "/data/security_zone"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "delete-interface-complete.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "data": {
+                        "name": "{{ data.name }}",
+                        "security_zone": "{{ data.security_zone }}"
+                    }
+                },
+                "output": {}
+            }
+        }
+    ]
+}

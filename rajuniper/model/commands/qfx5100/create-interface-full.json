@@ -1,0 +1,52 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/firefly/tests/create-interface-full.json",
+        "commands/firefly/tests/create-interface-full-error.json"
+    ],
+    "endpoint-parameters": {
+    },
+    "out-schema": "firefly/out-create-interface-full.json",
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "create-interface-basic.json",
+                "input": {
+                    "templateType": "file",
+                    "data": "firefly/create-interface-basic-full-in.tmpl"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.route.Branch",
+            "parameters": {
+                "choice": [
+                    {
+                        "do": {
+                            "type": "bpprov.translators.aggregator.Call",
+                            "parameters": {
+                                "command": "create-security-zone.json",
+                                "input": {
+                                    "templateType": "file",
+                                    "data": "firefly/create-security-zone-full-in.tmpl"
+                                }
+                            }
+                        },
+                        "when": "${properties} contains \"security_zone\""
+                    }
+                ]
+            }
+        },
+        {
+
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit.json"
+            }
+        }
+    ]
+}
