@@ -1,0 +1,39 @@
+{# Work in progress... #}
+{% set stmts = data['stmts'] %}
+[
+{% for stmt in stmts %}
+    {% set name = stmt['name']|string|trim %}
+    {% set from = stmt['from'] %}
+    {% set then = stmt['then'] %}
+    {
+        "label": "{{ name }}",
+        "properties": {
+            "name": "{{ name }}",
+            "from": {
+            {% if 'route-filter' in from %}
+                {% set rf = from['route-filter'] %}
+                "route_filter": {
+                {% if 'address' in rf %}
+                    "address": "{{ rf['address'] }}"{% if rf|length > 1 %},{% endif %}
+                {% endif %}
+                {% if 'exact' in rf %}
+                    "exact": true
+                {% endif %}
+                }
+            {% elif 'exact' in from %}
+                "exact": true
+            {% endif %}
+            },
+            "then": {
+            {% if 'community' in then %}
+                "community": {
+                }
+            {% elif 'accept' in then %}
+                "accept": true
+            {% endif %}
+            }
+        },
+        "orchState": "active"
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+]

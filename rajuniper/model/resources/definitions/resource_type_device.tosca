@@ -197,6 +197,13 @@ resourceTypes {
         type = Container
         resourceTypes = [juniper.resourceTypes.Firewall]
       }
+
+      vp_host {
+        title = "VRF Policies"
+        description = "A device can host VRF policies."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.VrfPolicy]
+      }
     }
 
   }

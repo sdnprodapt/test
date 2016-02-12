@@ -129,7 +129,7 @@ resourceTypes {
 
     requirements {
 
-      policy_device {
+      vp_device {
         title = "Device"
         description = "A policy is hosted by the device"
         type = Container
