@@ -6,7 +6,7 @@
     "label_field": "name",
     "commands": {
         "list": {
-            "command": "get-vrfpolicys.json"
+            "command": "get-empty-list.json"
         },
         "get": {
             "command": "get-vrfpolicy.json"
