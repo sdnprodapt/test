@@ -1,0 +1,31 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "IMPORT-FROM-AUTOMATE"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<policy-options>",
+                "<policy-statement operation=\"delete\">",
+                "<policy_name>IMPORT-FROM-AUTOMATE</policy_name>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

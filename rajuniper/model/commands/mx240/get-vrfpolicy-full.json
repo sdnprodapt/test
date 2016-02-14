@@ -2,11 +2,10 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
+        "commands/mx240/tests/get-vrfpolicy-full.json"
     ],
     "endpoint-parameters": {
-        "command": {
-            "name": "get-interface-information"
-        }
+        "template": "mx240/get-vrfpolicy-full-command.tmpl"
     },
     "out-path": [
     ],
@@ -15,7 +14,7 @@
             "type": "bpprov.translators.dict.ReMap",
             "parameters": {
                 "mapping": {
-                    "ports": "interface-information.physical-interface"
+                    "policy-statement": "data.configuration.policy-options.policy-statement"
                 }
             }
         },
@@ -23,17 +22,14 @@
             "type": "bpprov.translators.dict.Listify",
             "parameters": {
                 "paths": [
-                    "ports",
-                    "ports..logical-interface",
-                    "ports..logical-interface..address-family",
-                    "ports..logical-interface..address-family..interface-address"
+                    "policy-statement..term"
                 ]
             }
         },
         {
             "type": "bpprov.translators.template.Json",
             "parameters": {
-                "template": "mx240/get-interfaces-full.tmpl",
+                "template": "mx240/get-vrfpolicy-full.tmpl",
                 "as_object": true
             }
         }

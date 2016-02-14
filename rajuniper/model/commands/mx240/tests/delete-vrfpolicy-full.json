@@ -1,0 +1,56 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "IMPORT-FROM-AUTOMATE"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<policy-options>",
+                "<policy-statement operation=\"delete\">",
+                "<policy_name>IMPORT-FROM-AUTOMATE</policy_name>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns:junos=\"http://xml.juniper.net/junos/14.1R4/junos\" message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit-results>",
+                "<routing-engine junos:style=\"show-name\">",
+                "<name>re0</name>",
+                "<commit-check-success/>",
+                "</routing-engine>",
+                "<routing-engine junos:style=\"show-name\">",
+                "<name>re1</name>",
+                "<commit-success/>",
+                "</routing-engine>",
+                "<routing-engine junos:style=\"show-name\">",
+                "<name>re0</name>",
+                "<commit-success/>",
+                "</routing-engine>",
+                "</commit-results>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

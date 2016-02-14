@@ -1,0 +1,119 @@
+{
+    "Export Success": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "properties": {
+                "name": "EXPORT-TO-AUTOMATE",
+                "terms": [
+                    {
+                        "name": "FROM-Internet-VRF",
+                        "from": {
+                            "route_filter": {
+                                "address": "0.0.0.0/0",
+                                "exact": true
+                            }
+                        },
+                        "then": {
+                            "community": {
+                                "community_name": "RT-UP2",
+                                "operation": "add"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<policy-options>",
+                "<policy-statement>",
+                "<policy_name>EXPORT-TO-AUTOMATE</policy_name>",
+                "<term>",
+                "<term_name>FROM-Internet-VRF</term_name>",
+                "<from>",
+                "<route-filter>",
+                "<address>0.0.0.0/0</address>",
+                "<exact/>",
+                "</route-filter>",
+                "</from>",
+                "<then>",
+                "<community>",
+                "<add/>",
+                "<community_name>RT-UP2</community_name>",
+                "</community>",
+                "</then>",
+                "</term>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Import Success": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "properties": {
+                "name": "IMPORT-FROM-AUTOMATE",
+                "terms": [
+                    {
+                        "name": "FROM-POC",
+                        "from": {
+                            "community": "RT-DOWN2"
+                        },
+                        "then": {
+                            "accept": true
+                        }
+                    }
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<policy-options>",
+                "<policy-statement>",
+                "<policy_name>IMPORT-FROM-AUTOMATE</policy_name>",
+                "<term>",
+                "<term_name>FROM-POC</term_name>",
+                "<from>",
+                "<community>",
+                "<value>RT-DOWN2</value>",
+                "</community>",
+                "</from>",
+                "<then>",
+                "<accept/>",
+                "</then>",
+                "</term>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

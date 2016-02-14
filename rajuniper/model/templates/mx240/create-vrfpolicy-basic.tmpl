@@ -1,0 +1,45 @@
+{#
+    Inputs:
+        name: policy statement name
+        terms: list of policy terms
+#}
+{% set ps = data.properties %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <policy-options>
+        <policy-statement>
+            <policy_name>{{ ps.name }}</policy_name>
+            {% for term in ps.terms %}
+            <term>
+                <term_name>{{ term.name }}</term_name>
+                <from>
+                    {% if 'route_filter' in term.from %}
+                    <route-filter>
+                        <address>{{ term.from.route_filter.address  }}</address>
+                        {% if term.from.route_filter.exact %}<exact/>{% endif %}
+                    </route-filter>
+                    {% elif 'community' in term.from %}
+                    <community>
+                        <value>{{ term.from.community }}</value>
+                    </community>
+                    {% endif %}
+                </from>
+                <then>
+                    {% if 'community' in term.then %}
+                    <community>
+                        <{{ term.then.community.operation }}/>
+                        <community_name>{{ term.then.community.community_name }}</community_name>
+                    </community>
+                    {% elif 'accept' in term.then %}
+                    <accept/>
+                    {% endif %}
+                </then>
+            </term>
+            {% endfor %}
+        </policy-statement>
+    </policy-options>
+</configuration></config>
+</edit-config>
+</rpc>

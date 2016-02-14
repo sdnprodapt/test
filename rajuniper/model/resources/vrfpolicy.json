@@ -1,7 +1,7 @@
 {
     "product": "urn:cyaninc:bp:product:juniper_vrfpolicy",
     "resource": "juniper.resourceTypes.VrfPolicy",
-    "type": "bpprov",
+    "type": "bpprov_full",
     "provider_resource_id_field": "name",
     "label_field": "name",
     "commands": {
@@ -9,16 +9,16 @@
             "command": "get-empty-list.json"
         },
         "get": {
-            "command": "get-vrfpolicy.json"
+            "command": "get-vrfpolicy-full.json"
         },
         "put": {
-            "command": "create-vrfpolicy.json"
+            "command": "create-vrfpolicy-full.json"
         },
         "post": {
-            "command": "create-vrfpolicy.json"
+            "command": "create-vrfpolicy-full.json"
         },
         "delete": {
-            "command": "delete-vrfpolicy.json"
+            "command": "delete-vrfpolicy-full.json"
         }
     }
 }

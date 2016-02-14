@@ -1,0 +1,148 @@
+{
+    "IMPORT": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "IMPORT-FROM-AUTOMATE"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-config>",
+                "<source><running/></source>",
+                "<filter type=\"subtree\">",
+                "<configuration>",
+                "<policy-options>",
+                "<policy-statement>",
+                "<name>IMPORT-FROM-AUTOMATE</name>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration>",
+                "</filter>",
+                "</get-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R4/junos\">",
+                "<data>",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:commit-seconds=\"1455301221\" junos:commit-localtime=\"2016-02-12 10:20:21 PST\" junos:commit-user=\"automate\">",
+                "<policy-options>",
+                "<policy-statement>",
+                "<name>IMPORT-FROM-AUTOMATE</name>",
+                "<term>",
+                "<name>FROM-POC</name>",
+                "<from>",
+                "<community>RT-DOWN2</community>",
+                "</from>",
+                "<then>",
+                "<accept/>",
+                "</then>",
+                "</term>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration>",
+                "</data>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "label": "VRF Policy: IMPORT-FROM-AUTOMATE",
+            "orchState": "active",
+            "properties": {
+                "name": "IMPORT-FROM-AUTOMATE",
+                "terms": [
+                    {
+                        "name": "FROM-POC",
+                        "from": {
+                            "community": "RT-DOWN2"
+                        },
+                        "then": {
+                            "accept": true
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Export": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "EXPORT-TO-AUTOMATE"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-config>",
+                "<source><running/></source>",
+                "<filter type=\"subtree\">",
+                "<configuration>",
+                "<policy-options>",
+                "<policy-statement>",
+                "<name>EXPORT-TO-AUTOMATE</name>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration>",
+                "</filter>",
+                "</get-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R4/junos\">",
+                "<data>",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:commit-seconds=\"1455307267\" junos:commit-localtime=\"2016-02-12 12:01:07 PST\" junos:commit-user=\"automate\">",
+                "<policy-options>",
+                "<policy-statement>",
+                "<name>EXPORT-TO-AUTOMATE</name>",
+                "<term>",
+                "<name>FROM-Internet-VRF</name>",
+                "<from>",
+                "<route-filter>",
+                "<address>0.0.0.0/0</address>",
+                "<exact/>",
+                "</route-filter>",
+                "</from>",
+                "<then>",
+                "<community>",
+                "<add/>",
+                "<community-name>RT-UP2</community-name>",
+                "</community>",
+                "</then>",
+                "</term>",
+                "</policy-statement>",
+                "</policy-options>",
+                "</configuration>",
+                "</data>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "label": "VRF Policy: EXPORT-TO-AUTOMATE",
+            "orchState": "active",
+            "properties": {
+                "name": "EXPORT-TO-AUTOMATE",
+                "terms": [
+                    {
+                        "name": "FROM-Internet-VRF",
+                        "from": {
+                            "route_filter": {
+                                "address": "0.0.0.0/0",
+                                "exact": true
+                            }
+                        },
+                        "then": {
+                            "community": {
+                                "community_name": "RT-UP2",
+                                "operation": "add"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

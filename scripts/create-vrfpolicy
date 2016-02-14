@@ -1,21 +1,37 @@
 #!/bin/bash
 
-${DEVICE_RT:-""}
+INSTANCE_NAME="EXPORT-TO-AUTOMATE-CIENA-TEST"
 
 source dockerdev.sh
 
-PRODUCT_ID=$(jcurl ${MARKET_URL}/products?q=resourceTypeId:juniper.resourceTypes.Device | jparse [\"items\"][0][\"id\"])
+PRODUCT_ID=$(jcurl ${MARKET_URL}/products?q=resourceTypeId:juniper.resourceTypes.VrfPolicy | jparse [\"items\"][0][\"id\"])
+DEVICE_RID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.Device\&label=MX240 | jparse [\"items\"][0][\"id\"])
 
 cat <<EOF > /tmp/resource.json
 {
 "productId": "${PRODUCT_ID}",
-"label": "A Juniper Device",
+"label": "VRF Policy: ${INSTANCE_NAME}",
 "discovered": false,
 "properties": {
-    "typeGroup": "/typeGroups/Juniper",
-    "resourceType": "${DEVICE_RT}",
-    "authentication": {"netconf": {"username": "admin", "password": "admin"}},
-    "connection": {"hostname": "${DEVICE_IP}", "netconf": {"hostport": 22}}
+    "device": "${DEVICE_RID}",
+    "name": "${INSTANCE_NAME}",
+    "terms": [
+    {
+        "name": "FROM-Internet-VRF",
+        "from": {
+            "route_filter": {
+                "address": "0.0.0.0/0",
+                "exact": true
+            }
+        },
+        "then": {
+            "community": {
+                "community_name": "RT-UP2",
+                "operation": "add"
+            }
+        }
+    }
+    ]
 }
 }
 EOF
