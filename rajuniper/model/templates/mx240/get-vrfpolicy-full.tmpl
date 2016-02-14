@@ -1,0 +1,62 @@
+{% set ps = data['policy-statement'] %}
+{% set name = ps['name']|string|trim %}
+{% set terms = ps['term'] %}
+{
+    "label": "VRF Policy: {{ name }}",
+    "properties": {
+        "name": "{{ name }}",
+        "terms": [
+            {% for term in terms %}
+            {
+                {% set from = term.from %}
+                {% set then = term.then %}
+                "name": "{{ term.name }}",
+                {% if from %}
+                "from": {
+                    {% set community = from.community %}
+                    {% set rf = from['route-filter'] %}
+                    {% if community %}
+                    "community": "{{ community }}"
+                    {% elif rf %}
+                    "route_filter": {
+                        {% if 'address' in rf %}
+                        "address": "{{ rf['address'] }}"{% if rf|length > 1 %},{% endif %}
+                        {% endif %}
+                        {% if 'exact' in rf %}
+                        "exact": true
+                        {% endif %}
+                    }
+                    {% endif %}
+                },
+                {% endif %}
+                {% if then %}
+                "then": {
+                    {% set community = then.community %}
+                    {% if community %}
+                    "community": {
+                        "community_name": "{{ community["community-name"] }}",
+                        {% if "=" in community %}
+                        "operation": "="
+                        {% elif "set" in community %}
+                        "operation": "set"
+                        {% elif "+" in community %}
+                        "operation": "+"
+                        {% elif "add" in community %}
+                        "operation": "add"
+                        {% elif "-" in community %}
+                        "operation": "-"
+                        {% elif "delete" in community %}
+                        "operation": "delete"
+                        {% endif %}
+                    }
+                    {% elif 'accept' in then %}
+                    "accept": true
+                    {% endif %}
+                }
+                {% endif %}
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        ]
+    },
+    "orchState": "active"
+}

@@ -20,7 +20,7 @@
     "resource_type": "juniper.resourceTypes.VrfPolicy",
     "provider_product_id": "urn:cyaninc:bp:product:juniper_vrfpolicy",
     "title": "VRF Policy",
-    "active": false,
+    "active": true,
     "provider_data": {}
 }, {
     "resource_type": "juniper.resourceTypes.RoutingInstance",

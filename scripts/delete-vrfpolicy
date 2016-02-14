@@ -1,0 +1,9 @@
+#!/bin/bash
+
+INSTANCE_LABEL="VRF%20Policy:%20EXPORT-TO-AUTOMATE-CIENA-TEST"
+
+source dockerdev.sh
+
+RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.VrfPolicy\&q=label:$INSTANCE_LABEL | jparse [\"items\"][0][\"id\"])
+
+jcurl -X DELETE ${MARKET_URL}/resources/${RESOURCE_ID}

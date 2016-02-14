@@ -1,0 +1,12 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx240/tests/create-vrfpolicy-basic.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx240/create-vrfpolicy-basic.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}
