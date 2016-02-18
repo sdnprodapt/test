@@ -204,6 +204,13 @@ resourceTypes {
         type = Container
         resourceTypes = [juniper.resourceTypes.VrfPolicy]
       }
+
+      ri_host {
+        title = "Routing Instances"
+        description = "A device can host routing instances."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.RoutingInstance]
+      }
     }
 
   }

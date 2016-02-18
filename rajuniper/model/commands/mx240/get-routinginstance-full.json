@@ -1,0 +1,28 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx240/tests/get-routinginstance-full.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx240/get-routinginstance-full-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "instance": "data.configuration.routing-instances.instance"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "mx240/get-routinginstance-full.tmpl"
+            }
+        }
+    ]
+}
