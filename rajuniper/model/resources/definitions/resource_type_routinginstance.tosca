@@ -22,44 +22,60 @@ resourceTypes {
     properties {
 
       device {
-        type = string
         title = "Device"
         description = "Identifies the device hosting this resource."
+        type = string
         optional = false
       }
 
       name {
-        type = string
         title = "Routing Instance Name"
         description = ""
+        type = string
         optional = false
       }
 
-      interface {
-        type = string
-        title = "Interface"
-        description = ""
-        optional = false
-      }
+      operation {
+        title = "Operation"
+        description = "Allows add/remove from existing routing instances."
+        type = object
+        properties  {
+          action {
+            title = "Action"
+            description = "Action to perform: add or remove."
+            type = string
+            enum = [ "add", "remove" ]
+            optional = false
+          }
 
-      vrf_import {
-        type = string
-        title = "Import Policy"
-        description = ""
-        optional = false
-      }
+          interface {
+            title = "Interface"
+            description = ""
+            type = string
+            optional = true
+          }
 
-      vrf_export {
-        type = string
-        title = "Export Policy"
-        description = ""
-        optional = false
+          vrf_import {
+            title = "Import Policy"
+            description = ""
+            type = string
+            optional = true
+          }
+
+          vrf_export {
+            title = "Export Policy"
+            description = ""
+            type = string
+            optional = true
+          }
+        }
+        optional = true
       }
     }
 
     requirements {
 
-      policy_device {
+      ri_device {
         title = "Device"
         description = "A routing instance is hosted by the device"
         type = Container

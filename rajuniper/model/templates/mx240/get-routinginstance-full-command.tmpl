@@ -1,0 +1,14 @@
+<rpc>
+<get-config>
+<source><running/></source>
+<filter type="subtree">
+<configuration>
+    <routing-instances>
+        <instance>
+            <name>{{ data.name }}</name>
+        </instance>
+    </routing-instances>
+</configuration>
+</filter>
+</get-config>
+</rpc>

@@ -48,7 +48,7 @@
             ]
         ],
         "in-expect": {
-            "label": "VRF Policy: IMPORT-FROM-AUTOMATE",
+            "label": "IMPORT-FROM-AUTOMATE",
             "orchState": "active",
             "properties": {
                 "name": "IMPORT-FROM-AUTOMATE",
@@ -121,7 +121,7 @@
             ]
         ],
         "in-expect": {
-            "label": "VRF Policy: EXPORT-TO-AUTOMATE",
+            "label": "EXPORT-TO-AUTOMATE",
             "orchState": "active",
             "properties": {
                 "name": "EXPORT-TO-AUTOMATE",

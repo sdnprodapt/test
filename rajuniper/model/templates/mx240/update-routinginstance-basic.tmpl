@@ -1,0 +1,32 @@
+{#
+    Inputs:
+        name: policy statement name
+        operation: setttings to add or remove from the instance
+#}
+{% set name = data.properties.name %}
+{% set operation = data.properties.operation %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <routing-instances>
+        <instance>
+            <instance_name>{{ name }}</instance_name>
+        {% if operation.action == "add" %}
+            <interface>
+                <interface_name>{{ operation.interface }}</interface_name>
+            </interface>
+            <vrf-import>{{ operation.vrf_import }}</vrf-import>
+            <vrf-export>{{ operation.vrf_export }}</vrf-export>
+        {% elif operation.action == "remove" %}
+            <interface operation="delete">
+                <interface_name>{{ operation.interface }}</interface_name>
+            </interface>
+            <vrf-import operation="delete">{{ operation.vrf_import }}</vrf-import>
+            <vrf-export operation="delete">{{ operation.vrf_export }}</vrf-export>
+        {% endif %}
+        </instance>
+    </routing-instances>
+</configuration></config>
+</edit-config>
+</rpc>

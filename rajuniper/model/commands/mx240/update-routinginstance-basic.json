@@ -1,0 +1,12 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx240/tests/update-routinginstance-basic.json"
+    ],
+    "endpoint-parameters": {
+        "template": "mx240/update-routinginstance-basic.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}

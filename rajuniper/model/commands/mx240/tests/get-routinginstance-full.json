@@ -1,0 +1,80 @@
+{
+    "Success": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "RI-VRF-Internet-2"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-config>",
+                "<source><running/></source>",
+                "<filter type=\"subtree\">",
+                "<configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<name>RI-VRF-Internet-2</name>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</filter>",
+                "</get-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R4/junos\">",
+                "<data>",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:commit-seconds=\"1455743417\" junos:commit-localtime=\"2016-02-17 13:10:17 PST\" junos:commit-user=\"automate\">",
+                "<routing-instances>",
+                "<instance>",
+                "<name>RI-VRF-Internet-2</name>",
+                "<description>to router EMA for Internet-2 connection</description>",
+                "<instance-type>vrf</instance-type>",
+                "<interface>",
+                "<name>ae0.2169</name>",
+                "</interface>",
+                "<interface>",
+                "<name>ae0.2172</name>",
+                "</interface>",
+                "<interface>",
+                "<name>ae0.4000</name>",
+                "</interface>",
+                "<route-distinguisher>",
+                "<rd-type>65503:4000</rd-type>",
+                "</route-distinguisher>",
+                "<vrf-import>IMPORT-FROM-POC-2</vrf-import>",
+                "<vrf-import>IMPORT-FROM-AUTOMATE</vrf-import>",
+                "<vrf-import>IMPORT-FROM-AUTOMATE-POC1</vrf-import>",
+                "<vrf-export>EXPORT-TO-POC-2</vrf-export>",
+                "<vrf-export>DEFAULT_ACCEPT</vrf-export>",
+                "<vrf-export>EXPORT-TO-AUTOMATE</vrf-export>",
+                "<vrf-export>EXPORT-TO-AUTOMATE-POC1</vrf-export>",
+                "<routing-options>",
+                "<static>",
+                "<route>",
+                "<name>0.0.0.0/0</name>",
+                "<next-hop>4.35.246.169</next-hop>",
+                "</route>",
+                "</static>",
+                "<auto-export>",
+                "</auto-export>",
+                "</routing-options>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration>",
+                "</data>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "label": "RI-VRF-Internet-2",
+            "orchState": "active",
+            "properties": {
+                "name": "RI-VRF-Internet-2"
+            }
+        }
+    }
+}

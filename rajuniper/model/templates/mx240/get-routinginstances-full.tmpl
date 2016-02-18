@@ -1,0 +1,13 @@
+{% set instances = data.instances %}
+[
+{% for instance in instances %}
+    {% set name = instance.name %}
+    {
+        "label": "{{ name }}",
+        "orchState": "active",
+        "properties": {
+            "name": "{{ name }}"
+        }
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+]

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source dockerdev.sh
+
+RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.RoutingInstance\&q=label:RI-VRF-Internet-2 | jparse [\"items\"][0][\"id\"])
+
+cat <<EOF > /tmp/update.json
+{
+"properties": {
+    "operation": {
+        "action": "add",
+        "interface": "ae0.2172",
+        "vrf_export": "EXPORT-TO-AUTOMATE-POC1",
+        "vrf_import": "IMPORT-FROM-AUTOMATE-POC1"
+
+    }
+}
+}
+EOF
+
+jcurl -X PATCH -d @/tmp/update.json $MARKET_URL/resources/$RESOURCE_ID | jpp

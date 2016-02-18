@@ -97,6 +97,20 @@ domains:
             maxConnections: 4
             maxHttpRetries: 0
             idleTimeoutMs: 3600000
+      - id: "juniper.resourceTypes.RoutingInstance"
+        discoveryStrategy:
+          - strategyType: "sync"
+            pollingMode: "listOnly"
+            pollingSettings:
+              - pollingIntervalMs: 40000
+                immediateDeletion: true
+                syncTimeoutMs: 100000
+                verifyMissingList: true
+        apiSettings:
+          - serverTimeoutMs: 100000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
 #      - id: "juniper.resourceTypes.VirtualRouter"
 #        discoveryStrategy:
 #          - strategyType: "sync"
@@ -139,16 +153,23 @@ relationships:
     targetTypeId: "juniper.resourceTypes.Device"
     capabilityName: vp_host                                # identifies endpoint names in relationship
     requirementName: vp_device
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
+    fieldKind: "provider"                                  # identicates what the field represent
+    fieldLocator: "device"                                 # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.Interface"
+    targetTypeId: "juniper.resourceTypes.Interface"
+    capabilityName: virtual_interfaces                     # identifies endpoint names in relationship
+    requirementName: physical_interface
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
+    fieldKind: "provider"                                  # identicates what the field represent
+    fieldLocator: "physical_interface"                     # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.RoutingInstance"  # resource types involved in relationship
+    targetTypeId: "juniper.resourceTypes.Device"
+    capabilityName: ri_host                                # identifies endpoint names in relationship
+    requirementName: ri_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
     fieldKind: "provider"                                                # identicates what the field represent
     fieldLocator: "device"                                               # the field in the resource properties identifying the far end
-#  - sourceTypeId: "juniper.resourceTypes.Interface"
-#    targetTypeId: "juniper.resourceTypes.Interface"
-#    capabilityName: virtual_interfaces                                   # identifies endpoint names in relationship
-#    requirementName: physical_interface
-#    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
-#    fieldKind: "provider"                                                # identicates what the field represent
-#    fieldLocator: "physical_interface"                                   # the field in the resource properties identifying the far end
 #  - sourceTypeId: "juniper.resourceTypes.VirtualRouter"
 #    targetTypeId: "juniper.resourceTypes.Device"
 #    capabilityName: vr_host                                              # identifies endpoint names in relationship

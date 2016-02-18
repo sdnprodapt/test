@@ -1,0 +1,90 @@
+{
+    "Add": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperMX240"
+        },
+        "out-params": {
+            "properties": {
+                "name": "RI-VRF-Internet-2",
+                "operation": {
+                    "action": "add",
+                    "interface": "ae0.2172",
+                    "vrf_import": "IMPORT-FROM-AUTOMATE-POC1",
+                    "vrf_export": "EXPORT-TO-AUTOMATE-POC1"
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<instance_name>RI-VRF-Internet-2</instance_name>",
+                "<interface>",
+                "<interface_name>ae0.2172</interface_name>",
+                "</interface>",
+                "<vrf-import>IMPORT-FROM-AUTOMATE-POC1</vrf-import>",
+                "<vrf-export>EXPORT-TO-AUTOMATE-POC1</vrf-export>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Remove": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperMX240"
+        },
+        "out-params": {
+            "properties": {
+                "name": "RI-VRF-Internet-2",
+                "operation": {
+                    "action": "remove",
+                    "interface": "ae0.2172",
+                    "vrf_import": "IMPORT-FROM-AUTOMATE-POC1",
+                    "vrf_export": "EXPORT-TO-AUTOMATE-POC1"
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<instance_name>RI-VRF-Internet-2</instance_name>",
+                "<interface operation=\"delete\">",
+                "<interface_name>ae0.2172</interface_name>",
+                "</interface>",
+                "<vrf-import operation=\"delete\">IMPORT-FROM-AUTOMATE-POC1</vrf-import>",
+                "<vrf-export operation=\"delete\">EXPORT-TO-AUTOMATE-POC1</vrf-export>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}
