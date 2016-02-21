@@ -1,0 +1,65 @@
+{
+    "Success": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperQFX5100-48S-6Q"},
+        "out-params": {
+            "name": "ae0.0"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-config>",
+                "<source><running/></source>",
+                "<filter type=\"subtree\">",
+                "<configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration>",
+                "</filter>",
+                "</get-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1X53/junos\">",
+                "<data>",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:commit-seconds=\"1456015842\" junos:commit-localtime=\"2016-02-20 16:50:42 PST\" junos:commit-user=\"automate\">",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<interface-mode>trunk</interface-mode>",
+                "<vlan>",
+                "<members>EXTERNAL-IN</members>",
+                "<members>AUTOMATE-INET</members>",
+                "<members>AUTOMATE-X</members>",
+                "</vlan>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration>",
+                "</data>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "label": "ae0.0",
+            "orchState": "active",
+            "properties": {
+                "name": "ae0.0"
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{% set interface = data.interface %}
+{
+    "label": "{{ interface.name }}.{{ interface.unit.name }}",
+    "orchState": "active",
+    "properties": {
+        "name": "{{ interface.name }}.{{ interface.unit.name }}"
+    }
+}

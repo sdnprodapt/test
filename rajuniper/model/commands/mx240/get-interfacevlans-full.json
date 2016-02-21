@@ -4,7 +4,6 @@
     "tests": [
     ],
     "endpoint-parameters": {
-        "template": "mx240/get-policy-options-command.tmpl"
     },
     "out-path": [
     ],

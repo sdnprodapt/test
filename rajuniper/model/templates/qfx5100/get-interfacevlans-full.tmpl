@@ -1,0 +1,17 @@
+{% set interfaces = data.interfaces %}
+[
+{% for interface in interfaces %}
+    {% set name = interface.name %}
+    {% if "ae" in name %}
+        {% for u in interface.unit %}
+    {
+        "label": "{{ name }}.{{ u.name }}",
+        "orchState": "active",
+        "properties": {
+            "name": "{{ name }}.{{ u.name }}"
+        }
+    }{% if not loop.last %},{% endif %}
+        {% endfor %}{% if not loop.last %},{% endif %}
+    {% endif %}
+{% endfor %}
+]

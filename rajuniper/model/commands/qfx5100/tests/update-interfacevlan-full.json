@@ -1,0 +1,240 @@
+{
+    "Add Single": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperQFX5100-48S-6Q"
+        },
+        "out-params": {
+            "properties": {
+                "name": "ae0.0",
+                "operation": {
+                    "action": "add",
+                    "vlans": [1111]
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<vlan>",
+                "<members>1111</members>",
+                "</vlan>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Add Multiple": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperQFX5100-48S-6Q"
+        },
+        "out-params": {
+            "properties": {
+                "name": "ae0.0",
+                "operation": {
+                    "action": "add",
+                    "vlans": [1111, 2222]
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<vlan>",
+                "<members>1111</members>",
+                "<members>2222</members>",
+                "</vlan>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Remove Single": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperQFX5100-48S-6Q"
+        },
+        "out-params": {
+            "properties": {
+                "name": "ae0.0",
+                "operation": {
+                    "action": "remove",
+                    "vlans": [1111]
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<vlan>",
+                "<members operation=\"delete\">1111</members>",
+                "</vlan>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    },
+    "Remove Multiple": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperQFX5100-48S-6Q"
+        },
+        "out-params": {
+            "properties": {
+                "name": "ae0.0",
+                "operation": {
+                    "action": "remove",
+                    "vlans": [1111, 2222]
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<vlan>",
+                "<members operation=\"delete\">1111</members>",
+                "<members operation=\"delete\">2222</members>",
+                "</vlan>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{% set interface, unit = data.name.split('.') %}
+<rpc>
+<get-config>
+<source><running/></source>
+<filter type="subtree">
+<configuration>
+    <interfaces>
+        <interface>
+            <name>{{ interface }}</name>
+            <unit>
+                <name>{{ unit }}</name>
+            </unit>
+        </interface>
+    </interfaces>
+</configuration>
+</filter>
+</get-config>
+</rpc>

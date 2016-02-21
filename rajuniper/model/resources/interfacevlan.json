@@ -1,0 +1,18 @@
+{
+    "product": "urn:cyaninc:bp:product:juniper_interfacevlan",
+    "resource": "juniper.resourceTypes.InterfaceVlan",
+    "type": "bpprov_full",
+    "provider_resource_id_field": "name",
+    "label_field": "name",
+    "commands": {
+        "list": {
+            "command": "get-interfacevlans-full.json"
+        },
+        "get": {
+            "command": "get-interfacevlan-full.json"
+        },
+        "put": {
+            "command": "update-interfacevlan-full.json"
+        }
+    }
+}
