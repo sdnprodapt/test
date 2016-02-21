@@ -1,0 +1,35 @@
+{#
+    Inputs:
+        name: interface name
+        operation: setttings to add or remove from the instance
+#}
+{% set interface, unit = data.properties.name.split('.') %}
+{% set operation = data.properties.operation %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <interfaces>
+        <interface>
+            <name>{{ interface }}</name>
+            <unit>
+                <name>{{ unit }}</name>
+                <family>
+                    <ethernet-switching>
+                        <vlan>
+                {% for v in operation.vlans %}
+                    {% if operation.action == "add" %}
+                            <members>{{ v }}</members>
+                    {% elif operation.action == "remove" %}
+                            <members operation="delete">{{ v }}</members>
+                    {% endif %}
+                {% endfor %}
+                        </vlan>
+                    </ethernet-switching>
+                </family>
+            </unit>
+        </interface>
+    </interfaces>
+</configuration></config>
+</edit-config>
+</rpc>

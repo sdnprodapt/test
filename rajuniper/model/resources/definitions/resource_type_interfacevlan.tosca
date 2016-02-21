@@ -1,0 +1,75 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "Interface VLAN"
+package = juniper
+version = "1.0"
+description = "This document defines interface vlan type which acts as a helper to add/remove vlans from an interface."
+authors = ["Kerry Neef (kneef@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  InterfaceVlan {
+    derivedFrom = Root
+    title = "Interface VLAN"
+    description = """
+        A helper resource used to add/remove VLAN members from an interface.
+    """
+
+    properties {
+
+      device {
+        title = "Device"
+        description = "Identifies the device hosting this resource."
+        type = string
+        optional = false
+      }
+
+      name {
+        title = "Interface Name"
+        description = ""
+        type = string
+        optional = false
+      }
+
+      operation {
+        title = "Operation"
+        description = "Allows add/remove from existing routing instances."
+        type = object
+        properties  {
+          action {
+            title = "Action"
+            description = "Action to perform: add or remove."
+            type = string
+            enum = [ "add", "remove" ]
+            optional = false
+          }
+
+          vlans {
+            title = "VLAN Members"
+            description = "VLANs to add/remove."
+            type = array
+            items.type = integer
+            optional = false
+          }
+        }
+        optional = true
+      }
+    }
+
+    requirements {
+
+      iv_device {
+        title = "Device"
+        description = "An routing instance is hosted by the device"
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.Device]
+      }
+    }
+  }
+}

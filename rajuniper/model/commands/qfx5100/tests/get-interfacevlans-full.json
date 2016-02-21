@@ -1,0 +1,134 @@
+{
+    "All Instances": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperQFX5100-48S-6Q"},
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-configuration>",
+                "<configuration>",
+                "<interfaces/>",
+                "</configuration>",
+                "</get-configuration>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1X53/junos\">",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:changed-seconds=\"1456015843\" junos:changed-localtime=\"2016-02-20 16:50:43 PST\">",
+                "<interfaces>",
+                "<interface>",
+                "<name>ae0</name>",
+                "<description>br1-svc.se3</description>",
+                "<aggregated-ether-options>",
+                "<lacp>",
+                "<active/>",
+                "</lacp>",
+                "</aggregated-ether-options>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<interface-mode>trunk</interface-mode>",
+                "<vlan>",
+                "<members>EXTERNAL-IN</members>",
+                "<members>AUTOMATE-INET</members>",
+                "<members>AUTOMATE-X</members>",
+                "</vlan>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "<interface>",
+                "<name>ae1</name>",
+                "<description>esxi1-svc.se3</description>",
+                "<aggregated-ether-options>",
+                "<lacp>",
+                "<active/>",
+                "</lacp>",
+                "</aggregated-ether-options>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<ethernet-switching>",
+                "<interface-mode>trunk</interface-mode>",
+                "<vlan>",
+                "<members>EXTERNAL-OUT</members>",
+                "<members>EXTERNAL-IN</members>",
+                "</vlan>",
+                "<storm-control>",
+                "<profile-name>default</profile-name>",
+                "</storm-control>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "<interface>",
+                "<name>ae2</name>",
+                "<description>esxi2-svc.se3</description>",
+                "<aggregated-ether-options>",
+                "<lacp>",
+                "<active/>",
+                "</lacp>",
+                "</aggregated-ether-options>",
+                "<unit inactive=\"inactive\">",
+                "<name>0</name>",
+                "<family inactive=\"inactive\">",
+                "<ethernet-switching>",
+                "<interface-mode>trunk</interface-mode>",
+                "<vlan>",
+                "<members>2222</members>",
+                "<members>AUTOMATE-INET</members>",
+                "<members>AUTOMATE-X</members>",
+                "</vlan>",
+                "<storm-control>",
+                "<profile-name>default</profile-name>",
+                "</storm-control>",
+                "</ethernet-switching>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "<interface>",
+                "<name>em0</name>",
+                "<unit>",
+                "<name>0</name>",
+                "<family>",
+                "<inet>",
+                "<address>",
+                "<name>172.20.161.84/24</name>",
+                "</address>",
+                "</inet>",
+                "</family>",
+                "</unit>",
+                "</interface>",
+                "</interfaces>",
+                "</configuration>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": [
+            {
+                "label": "ae0.0",
+                "orchState": "active",
+                "properties": {
+                    "name": "ae0.0"
+                }
+            },
+            {
+                "label": "ae1.0",
+                "orchState": "active",
+                "properties": {
+                    "name": "ae1.0"
+                }
+            },
+            {
+                "label": "ae2.0",
+                "orchState": "active",
+                "properties": {
+                    "name": "ae2.0"
+                }
+            }
+        ]
+    }
+}

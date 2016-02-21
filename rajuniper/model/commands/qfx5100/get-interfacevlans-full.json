@@ -1,0 +1,36 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/qfx5100/tests/get-interfacevlans-full.json"
+    ],
+    "endpoint-parameters": {
+        "template": "qfx5100/get-interfacevlans-full-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "interfaces": "configuration.interfaces.interface"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.dict.Listify",
+            "parameters": {
+                "paths": [
+                    "interfaces..unit"
+                ]
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "qfx5100/get-interfacevlans-full.tmpl"
+            }
+        }
+    ]
+}

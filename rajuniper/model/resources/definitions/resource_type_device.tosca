@@ -211,6 +211,13 @@ resourceTypes {
         type = Container
         resourceTypes = [juniper.resourceTypes.RoutingInstance]
       }
+
+      iv_host {
+        title = "Interface VLAN"
+        description = "A device can host interface VLAN instances."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.InterfaceVlan]
+      }
     }
 
   }

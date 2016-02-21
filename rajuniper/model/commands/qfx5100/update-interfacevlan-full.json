@@ -1,0 +1,26 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/qfx5100/tests/update-interfacevlan-full.json"
+    ],
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "update-interfacevlan-basic.json"
+            }
+        },
+        {
+
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit.json"
+            }
+        }
+    ]
+}

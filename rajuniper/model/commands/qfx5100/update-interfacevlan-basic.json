@@ -1,0 +1,12 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/qfx5100/tests/update-interfacevlan-basic.json"
+    ],
+    "endpoint-parameters": {
+        "template": "qfx5100/update-interfacevlan-basic.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}

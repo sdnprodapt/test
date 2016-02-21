@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source dockerdev.sh
+
+RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.InterfaceVlan\&q=label:ae2.0 | jparse [\"items\"][0][\"id\"])
+
+cat <<EOF > /tmp/update.json
+{
+"properties": {
+    "operation": {
+        "action": "remove",
+        "vlans": [ 1111 ]
+
+    }
+}
+}
+EOF
+
+jcurl -X PATCH -d @/tmp/update.json $MARKET_URL/resources/$RESOURCE_ID | jpp
