@@ -35,6 +35,12 @@
     "active": true,
     "provider_data": {}
 }, {
+    "resource_type": "juniper.resourceTypes.VlanIdentifier",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_vlanidentifier",
+    "title": "VLAN Identifier",
+    "active": true,
+    "provider_data": {}
+}, {
     "resource_type": "juniper.resourceTypes.Device",
     "provider_product_id": "urn:cyaninc:bp:product:juniper",
     "title": "Device",

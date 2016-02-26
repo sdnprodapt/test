@@ -1,0 +1,14 @@
+{% set vlan = data.properties %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <vlans>
+        <vlan>
+            <name>{{ vlan.name }}</name>
+            <vlan-id>{{ vlan.vlan_ids[0] }}</vlan-id>
+        </vlan>
+    </vlans>
+</configuration></config>
+</edit-config>
+</rpc>

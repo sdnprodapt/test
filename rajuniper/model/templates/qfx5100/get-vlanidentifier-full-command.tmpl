@@ -1,0 +1,14 @@
+<rpc>
+<get-config>
+<source><running/></source>
+<filter type="subtree">
+<configuration>
+    <vlans>
+        <vlan>
+            <name>{{ data.name }}</name>
+        </vlan>
+    </vlans>
+</configuration>
+</filter>
+</get-config>
+</rpc>

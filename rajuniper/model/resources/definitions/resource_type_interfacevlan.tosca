@@ -52,7 +52,7 @@ resourceTypes {
             title = "VLAN Members"
             description = "VLANs to add/remove."
             type = array
-            items.type = integer
+            items.type = string
             optional = false
           }
         }

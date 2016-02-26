@@ -1,0 +1,59 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "VlanIdentifier"
+package = juniper
+version = "1.0"
+description = "This document defines the vlan identifier type."
+authors = ["Kerry Neef (kneef@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  VlanIdentifier {
+    derivedFrom = Root
+    title = "Vlan Identifier"
+    description = """
+    A vlan identifier instance.
+    """
+
+    properties {
+
+      device {
+        title = "Device"
+        description = "Identifies the device hosting this resource."
+        type = string
+        optional = false
+      }
+
+      name {
+        title = "Vlan Name"
+        description = ""
+        type = string
+        optional = false
+      }
+
+      vlan_ids {
+        title = "VLAN Ids"
+        description = "Vlan identified by this resource."
+        type = array
+        items.type = integer
+        optional = false
+      }
+    }
+
+    requirements {
+
+      vi_device {
+        title = "Device"
+        description = "A vlan identifier is hosted by the device"
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.Device]
+      }
+    }
+  }
+}

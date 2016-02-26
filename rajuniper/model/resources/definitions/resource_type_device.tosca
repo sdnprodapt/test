@@ -218,6 +218,13 @@ resourceTypes {
         type = Container
         resourceTypes = [juniper.resourceTypes.InterfaceVlan]
       }
+
+      vi_host {
+        title = "VLAN Identifier"
+        description = "A device can host interface VLAN identifier instances."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.VlanIdentifier]
+      }
     }
 
   }

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+NAME="AUTOMATE-INET-POC1111"
+
+source dockerdev.sh
+
+RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.VlanIdentifier\&q=label:$NAME | jparse [\"items\"][0][\"id\"])
+
+jcurl -X DELETE ${MARKET_URL}/resources/${RESOURCE_ID}

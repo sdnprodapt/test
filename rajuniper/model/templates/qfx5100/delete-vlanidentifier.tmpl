@@ -1,0 +1,11 @@
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+  <vlans>
+    <vlan operation="delete">
+      <name>{{ data.name }}</name>
+    </vlan>
+  </vlans>
+</configuration></config>
+</edit-config>
+</rpc>

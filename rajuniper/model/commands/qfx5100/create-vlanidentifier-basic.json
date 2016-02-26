@@ -1,0 +1,12 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/qfx5100/tests/create-vlanidentifier-basic.json"
+    ],
+    "endpoint-parameters": {
+        "template": "qfx5100/create-vlanidentifier-basic.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}

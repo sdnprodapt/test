@@ -1,0 +1,32 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperQFX5100-48S-6Q"},
+        "out-params": {
+            "name": "AUTOMATE-INET-POC1111"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<vlans>",
+                "<vlan operation=\"delete\">",
+                "<name>AUTOMATE-INET-POC1111</name>",
+                "</vlan>",
+                "</vlans>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

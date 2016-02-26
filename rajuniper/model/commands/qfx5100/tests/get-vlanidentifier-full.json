@@ -1,0 +1,53 @@
+{
+    "IMPORT": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "AUTOMATE-INET"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<get-config>",
+                "<source><running/></source>",
+                "<filter type=\"subtree\">",
+                "<configuration>",
+                "<vlans>",
+                "<vlan>",
+                "<name>AUTOMATE-INET</name>",
+                "</vlan>",
+                "</vlans>",
+                "</configuration>",
+                "</filter>",
+                "</get-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1X53/junos\">",
+                "<data>",
+                "<configuration xmlns=\"http://xml.juniper.net/xnm/1.1/xnm\" junos:commit-seconds=\"1456465226\" junos:commit-localtime=\"2016-02-25 21:40:26 PST\" junos:commit-user=\"automate\">",
+                "<vlans>",
+                "<vlan>",
+                "<name>AUTOMATE-INET</name>",
+                "<vlan-id>2761</vlan-id>",
+                "</vlan>",
+                "</vlans>",
+                "</configuration>",
+                "</data>",
+                "</rpc-reply>"
+            ]
+        ],
+        "in-expect": {
+            "label": "AUTOMATE-INET",
+            "orchState": "active",
+            "properties": {
+                "name": "AUTOMATE-INET",
+                "vlan_ids": [
+                    2761
+                ]
+            }
+        }
+    }
+}
