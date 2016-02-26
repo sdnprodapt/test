@@ -1,0 +1,29 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/qfx5100/tests/get-vlanidentifier-full.json"
+    ],
+    "endpoint-parameters": {
+        "template": "qfx5100/get-vlanidentifier-full-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.dict.ReMap",
+            "parameters": {
+                "mapping": {
+                    "vlan": "data.configuration.vlans.vlan"
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "qfx5100/get-vlanidentifier-full.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

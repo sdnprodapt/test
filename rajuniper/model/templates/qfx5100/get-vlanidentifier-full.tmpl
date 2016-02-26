@@ -1,0 +1,11 @@
+{% set vlan = data.vlan %}
+{
+    "label": "{{ vlan.name }}",
+    "orchState": "active",
+    "properties": {
+        "name": "{{ vlan.name }}",
+        "vlan_ids": [
+            {{ vlan["vlan-id"] }}
+        ]
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "product": "urn:cyaninc:bp:product:juniper_vlanidentifier",
+    "resource": "juniper.resourceTypes.VlanIdentifier",
+    "type": "bpprov_full",
+    "provider_resource_id_field": "name",
+    "label_field": "name",
+    "commands": {
+        "list": {
+            "command": "get-empty-list.json"
+        },
+        "get": {
+            "command": "get-vlanidentifier-full.json"
+        },
+        "put": {
+            "command": "create-vlanidentifier-full.json"
+        },
+        "post": {
+            "command": "create-vlanidentifier-full.json"
+        },
+        "delete": {
+            "command": "delete-vlanidentifier-full.json"
+        }
+    }
+}

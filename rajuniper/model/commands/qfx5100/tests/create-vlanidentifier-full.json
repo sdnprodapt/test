@@ -1,0 +1,49 @@
+{
+    "Success": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperQFX5100-48S-6Q"},
+        "out-params": {
+            "properties": {
+                "name": "AUTOMATE-INET-POC1111",
+                "vlan_ids": [
+                    1111
+                ]
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<vlans>",
+                "<vlan>",
+                "<name>AUTOMATE-INET-POC1111</name>",
+                "<vlan-id>1111</vlan-id>",
+                "</vlan>",
+                "</vlans>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}

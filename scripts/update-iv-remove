@@ -2,6 +2,8 @@
 
 source dockerdev.sh
 
+VLAN_ID="AUTOMATE-INET-POC1111"
+
 RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.InterfaceVlan\&q=label:ae2.0 | jparse [\"items\"][0][\"id\"])
 
 cat <<EOF > /tmp/update.json
@@ -9,8 +11,7 @@ cat <<EOF > /tmp/update.json
 "properties": {
     "operation": {
         "action": "remove",
-        "vlans": [ 1111 ]
-
+        "vlans": [ "$VLAN_ID" ]
     }
 }
 }

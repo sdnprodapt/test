@@ -9,7 +9,7 @@
                 "name": "ae0.0",
                 "operation": {
                     "action": "add",
-                    "vlans": [1111]
+                    "vlans": ["AUTOMATE-INET-POC1111"]
                 }
             }
         },
@@ -27,7 +27,7 @@
                 "<family>",
                 "<ethernet-switching>",
                 "<vlan>",
-                "<members>1111</members>",
+                "<members>AUTOMATE-INET-POC1111</members>",
                 "</vlan>",
                 "</ethernet-switching>",
                 "</family>",
@@ -57,7 +57,7 @@
                 "name": "ae0.0",
                 "operation": {
                     "action": "add",
-                    "vlans": [1111, 2222]
+                    "vlans": ["1111", "2222"]
                 }
             }
         },
@@ -106,7 +106,7 @@
                 "name": "ae0.0",
                 "operation": {
                     "action": "remove",
-                    "vlans": [1111]
+                    "vlans": ["AUTOMATE-INET-POC1111"]
                 }
             }
         },
@@ -124,7 +124,7 @@
                 "<family>",
                 "<ethernet-switching>",
                 "<vlan>",
-                "<members operation=\"delete\">1111</members>",
+                "<members operation=\"delete\">AUTOMATE-INET-POC1111</members>",
                 "</vlan>",
                 "</ethernet-switching>",
                 "</family>",
@@ -154,7 +154,7 @@
                 "name": "ae0.0",
                 "operation": {
                     "action": "remove",
-                    "vlans": [1111, 2222]
+                    "vlans": ["1111", "2222"]
                 }
             }
         },
