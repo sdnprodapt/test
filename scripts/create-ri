@@ -1,0 +1,60 @@
+#!/bin/bash
+
+INSTANCE_NAME="RI-AUTOMATE-POCTEST"
+
+source dockerdev.sh
+
+PRODUCT_ID=$(jcurl ${MARKET_URL}/products?q=resourceTypeId:juniper.resourceTypes.RoutingInstance | jparse [\"items\"][0][\"id\"])
+DEVICE_RID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.Device\&label=MX240 | jparse [\"items\"][0][\"id\"])
+
+cat <<EOF > /tmp/resource.json
+{
+"productId": "${PRODUCT_ID}",
+"label": "${INSTANCE_NAME}",
+"discovered": false,
+"properties": {
+    "device": "${DEVICE_RID}",
+    "name": "${INSTANCE_NAME}",
+    "description": "SVC AUTOMATION PROJECT",
+    "instance_type": "vrf",
+    "interfaces": [
+        "xe-2/0/1.2172",
+        "ae0.2172"
+    ],
+    "route_distinguisher": "65503:2171",
+    "vrf_import": [ "IMPORT-FROM-INTERNET-2" ],
+    "vrf_export": [
+        "EXPORT-TO-INTERNET-2",
+        "DEFAULT_ACCEPT"
+    ],
+    "routing_options": {
+        "auto_export": true
+    },
+    "protocols_bgp": {
+        "groups": [
+            {
+                "group_name": "EXT_AUTOMATE",
+                "type": "external",
+                "local_address": "169.254.249.2",
+                "local_as": 64999,
+                "neighbors": [
+                    {
+                        "neighbor_name": "169.254.249.1",
+                        "description": "To_AWS_VPC",
+                        "peer_as": 7224,
+                        "authentication_key": "$9$7Hds2.mTQF68XNVYoDj0B1hyKLX-dwg-dPT36u0SreKxd4oZHkmM8Nbs4GUq.P5F/tuOcSl"
+                    }
+                ],
+                "export_policies": [
+                    "DEFAULT_ACCEPT_direct"
+                ]
+            }
+        ]
+    }
+}
+}
+EOF
+
+jcurl -d @/tmp/resource.json ${MARKET_URL}/resources | jpp
+
+rm -f /tmp/resource.json

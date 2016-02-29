@@ -80,6 +80,13 @@ resourceTypes {
                   type = string
                   optional = true
                 }
+
+                protocol {
+                  title = "Protocol"
+                  description = "Protocol from which route was learned"
+                  type = string
+                  optional = true
+                }
               }
               optional = true
             }

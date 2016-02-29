@@ -1,0 +1,9 @@
+#!/bin/bash
+
+INSTANCE_LABEL="RI-AUTOMATE-POCTEST"
+
+source dockerdev.sh
+
+RESOURCE_ID=$(jcurl $MARKET_URL/resources?resourceTypeId=juniper.resourceTypes.RoutingInstance\&q=label:$INSTANCE_LABEL | jparse [\"items\"][0][\"id\"])
+
+jcurl -X DELETE ${MARKET_URL}/resources/${RESOURCE_ID}

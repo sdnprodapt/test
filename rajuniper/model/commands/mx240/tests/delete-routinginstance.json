@@ -1,0 +1,32 @@
+{
+    "Successful": {
+        "type": "netconf",
+        "device": {"nodeType": "JuniperMX240"},
+        "out-params": {
+            "name": "RI-AUTOMATE"
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config>",
+                "<target><candidate/></target>",
+                "<config><configuration>",
+                "<routing-instances>",
+                "<instance operation=\"delete\">",
+                "<name>RI-AUTOMATE</name>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}
