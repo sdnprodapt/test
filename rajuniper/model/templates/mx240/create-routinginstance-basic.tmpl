@@ -1,0 +1,82 @@
+{% set name = data.properties.name %}
+{% set p = data.properties %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <routing-instances>
+        <instance>
+            <name>{{ name }}</name>
+        {% if p.description %}
+            <description>{{ p.description }}</description>
+        {% endif %}
+        {% if p.instance_type %}
+            <instance-type>{{ p.instance_type }}</instance-type>
+        {% endif %}
+        {% for i in p.interfaces %}
+            <interface>
+                <name>{{ i }}</name>
+            </interface>
+        {% endfor %}
+        {% if p.route_distinguisher %}
+            <route-distinguisher>
+                <rd-type>{{ p.route_distinguisher }}</rd-type>
+            </route-distinguisher>
+        {% endif %}
+        {% for vi in p.vrf_import %}
+            <vrf-import>{{ vi }}</vrf-import>
+        {% endfor %}
+        {% for ve in p.vrf_export %}
+            <vrf-export>{{ ve }}</vrf-export>
+        {% endfor %}
+        {%  if p.routing_options %}
+            <routing-options>
+            {% if p.routing_options.auto_export %}
+                <auto-export/>
+            {% endif %}
+            </routing-options>
+        {% endif %}
+        {% if p.protocols_bgp %}
+            <protocols>
+                <bgp>
+                {% for g in p.protocols_bgp.groups %}
+                    <group>
+                        <name>{{ g.group_name }}</name>
+                        <type>{{ g.type  }}</type>
+                    {% if g.local_address %}
+                        <local-address>{{ g.local_address }}</local-address>
+                    {% endif %}
+                    {% for ep in g.export_policies %}
+                        <export>{{ ep }}</export>
+                    {% endfor %}
+                    {% if g.local_as %}
+                        <local-as>
+                            <as-number>{{ g.local_as }}</as-number>
+                        </local-as>
+                    {% endif %}
+                    {% if g.neighbors %}
+                        {% for n in g.neighbors %}
+                        <neighbor>
+                            <name>{{ n.neighbor_name }}</name>
+                        {% if n.description %}
+                            <description>{{ n.description }}</description>
+                        {% endif %}
+                        {% if n.peer_as %}
+                            <peer-as>{{ n.peer_as }}</peer-as>
+                        {% endif %}
+                        {% if n.authentication_key %}
+                            <authentication-key>{{ n.authentication_key }}</authentication-key>
+                        {% endif %}
+                        </neighbor>
+                        {% endfor %}
+                    {% endif %}
+                    </group>
+                {% endfor %}
+                </bgp>
+            </protocols>
+        {% endif %}
+        </instance>
+    </routing-instances>
+</configuration></config>
+</edit-config>
+</rpc>

@@ -1,0 +1,31 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+        "commands/mx240/tests/delete-routinginstance-full.json"
+    ],
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "delete-routinginstance.json",
+                "input": {
+                    "templateType": "json-dict",
+                    "data": {
+                        "name": "{{ data.name }}"
+                    }
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit.json"
+            }
+        }
+    ]
+}

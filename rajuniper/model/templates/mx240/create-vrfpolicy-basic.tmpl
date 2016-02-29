@@ -24,6 +24,10 @@
                     <community>
                         <value>{{ term.from.community }}</value>
                     </community>
+                    {% elif 'protocol' in term.from %}
+                    <protocol>
+                        <value>{{ term.from.protocol }}</value>
+                    </protocol>
                     {% endif %}
                 </from>
                 <then>

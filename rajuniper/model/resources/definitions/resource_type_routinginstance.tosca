@@ -35,11 +35,161 @@ resourceTypes {
         optional = false
       }
 
+      description {
+        title = "Description"
+        description = ""
+        type = string
+        optional = true
+      }
+
+      instance_type {
+        title = "Instance Type"
+        description = ""
+        type = string
+        optional = true
+      }
+
+      interfaces {
+        title = "Interface"
+        description = ""
+        type = array
+        items.type = string
+        optional = true
+      }
+
+      route_distinguisher {
+        title = "Route Distinguisher"
+        description = "Number in (16 bit:32 bit) or (32 bit 'L':16 bit) or (IP address:16 bit) format"
+        type = string
+        optional = true
+      }
+
+      vrf_import {
+        title = "Import Policy"
+        description = ""
+        type = array
+        items.type = string
+        optional = true
+      }
+
+      vrf_export {
+        title = "Export Policy"
+        description = ""
+        type = array
+        items.type = string
+        optional = true
+      }
+
+      routing_options {
+        title = "Routing Options"
+        description = ""
+        type = object
+        properties {
+          auto_export {
+            title = "Auto Export"
+            description = ""
+            type = boolean
+            optional = true
+          }
+        }
+        optional = true
+      }
+
+      protocols_bgp {
+        title = "BGP Protocol Information"
+        description = "Properties related to BGP protocol"
+        type = object
+        optional = true
+
+        properties {
+          groups {
+            title = "BGP Groups"
+            description = "BGP groups"
+            type = array
+            optional = true
+            items {
+              type = object
+              properties {
+                group_name {
+                  title = "BGP Group Name"
+                  description = "group name"
+                  type = string
+                  optional = false
+                }
+                type {
+                  title = "BGP Group Type"
+                  description = "Group type"
+                  type = string
+                  enum = [ "internal", "external" ]
+                  optional = false
+                }
+                local_address {
+                  title = "Local Address"
+                  description = ""
+                  type = string
+                  optional = true
+                }
+                local_as {
+                  title = "Local AS Number"
+                  description = "Local ASN (e.g., 65000)"
+                  type = integer
+                  format = bgp-as
+                  optional = true
+                }
+                neighbors {
+                  title = "BGP Group Static Peers"
+                  description = "BGP group static peers"
+                  type = array
+                  optional = true
+                  items {
+                    type = object
+                    properties {
+                      neighbor_name {
+                        title = "BGP Group Static Peer Name"
+                        description = "BGP group static peer name"
+                        type = string
+                        optional = false
+                      }
+                      description {
+                        title = "Description"
+                        description = ""
+                        type = string
+                        optional = true
+                      }
+                      peer_as {
+                        title = "Peer AS Number"
+                        description = "Peer ASN"
+                        type = integer
+                        format = bgp-as
+                        optional = true
+                      }
+                      authentication_key {
+                        title = "Authentication Key"
+                        description = "MD5 authentication key"
+                        type = string
+                        optional = true
+                      }
+                    }
+                  }
+                }
+                export_policies {
+                  title = "BGP Group Export Policies"
+                  description = "BGP group export policies"
+                  type = array
+                  items.type = string
+                  optional = true
+                }
+              }
+            }
+          }
+        }
+      }
+
       operation {
         title = "Operation"
         description = "Allows add/remove from existing routing instances."
         type = object
-        properties  {
+        properties {
           action {
             title = "Action"
             description = "Action to perform: add or remove."

@@ -13,6 +13,12 @@
         },
         "put": {
             "command": "update-routinginstance-full.json"
+        },
+        "post": {
+            "command": "create-routinginstance-full.json"
+        },
+        "delete": {
+            "command": "delete-routinginstance-full.json"
         }
     }
 }
