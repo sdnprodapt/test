@@ -7,7 +7,7 @@
             "pattern": "<error-severity>error</error-severity>"
         }, 
         {
-            "command": "<config>", 
+            "command": "<(config|commit)>",
             "match-reason": "<error-message>(.*?)</error-message>", 
             "onError": [
                 {
