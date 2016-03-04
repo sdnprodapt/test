@@ -1,0 +1,96 @@
+{
+    "Missing policy statement": {
+        "type": "netconf",
+        "device": {
+            "nodeType": "JuniperMX240"
+        },
+        "out-params": {
+            "properties": {
+                "name": "RI-VRF-Internet-2",
+                "operation": {
+                    "action": "add",
+                    "interface": "ae0.2172",
+                    "vrf_import": "IMPORT-FROM-AUTOMATE-POC1",
+                    "vrf_export": "EXPORT-TO-AUTOMATE-POC1"
+                }
+            }
+        },
+        "out-expect": [
+            [
+                "<rpc>",
+                "<edit-config><target><candidate/></target>",
+                "<config><configuration>",
+                "<routing-instances>",
+                "<instance>",
+                "<instance_name>RI-VRF-Internet-2</instance_name>",
+                "<interface>",
+                "<interface_name>ae0.2172</interface_name>",
+                "</interface>",
+                "<vrf-import>IMPORT-FROM-AUTOMATE-POC1</vrf-import>",
+                "<vrf-export>EXPORT-TO-AUTOMATE-POC1</vrf-export>",
+                "</instance>",
+                "</routing-instances>",
+                "</configuration></config>",
+                "</edit-config>",
+                "</rpc>"
+            ],
+            [
+                "<rpc message-id=\"0\" xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">",
+                "<commit>",
+                "</commit>",
+                "</rpc>"
+            ],
+            [
+                "<rpc><discard-changes/></rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R4/junos\">",
+                "<commit-results>",
+                "<routing-engine junos:style=\"show-name\">",
+                "<name>re0</name>",
+                "<rpc-error>",
+                "<error-type>protocol</error-type>",
+                "<error-tag>operation-failed</error-tag>",
+                "<error-severity>error</error-severity>",
+                "<source-daemon>",
+                "rpd",
+                "</source-daemon>",
+                "<error-path>",
+                "[edit]",
+                "</error-path>",
+                "<error-info>",
+                "<bad-element>",
+                "policy-options",
+                "</bad-element>",
+                "</error-info>",
+                "<error-message>",
+                "Policy error: Policy bad-entry referenced but not defined",
+                "</error-message>",
+                "</rpc-error>",
+                "<rpc-error>",
+                "<error-type>protocol</error-type>",
+                "<error-tag>operation-failed</error-tag>",
+                "<error-severity>error</error-severity>",
+                "<error-message>",
+                "configuration check-out failed",
+                "</error-message>",
+                "</rpc-error>",
+                "</routing-engine>",
+                "</commit-results>",
+                "</rpc-reply>"
+            ],
+            [
+                "<rpc-reply>",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+    }
+}
