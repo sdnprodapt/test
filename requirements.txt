@@ -53,7 +53,7 @@ pyparsing==2.0.3
 pysnmp==4.1.16d
 python-json-logger==0.1.2
 rasdk==1.11.0
-rpsdk[ra]==0.2.22
+rpsdk[ra]==0.3.8
 simplejson==3.6.5
 six==1.8.0
 statsd==3.2.1

@@ -1,0 +1,38 @@
+{
+    "juniper.resourceTypes.SessionProfile": {
+        "cssClass": "session-profile",
+        "fieldGroups": [
+            {
+                "name": "Type Group",
+                "description": "Type group setting.",
+                "fields": {
+                    "typeGroup": {
+                        "label": "RA Type Group",
+                        "description": "This value is supplied by the RA and should generally not be changed."
+                    }
+                }
+            },
+            {
+                "name": "Authentication",
+                "description": "Authentication parameters.",
+                "fields": {
+                    "authentication.netconf.username": {"label": "NETCONF Username"},
+                    "authentication.netconf.password": {"label": "NETCONF Password"},
+                    "authentication.snmp.community": {"label": "SNMP Community"},
+                    "authentication.snmp.version": {
+                        "type": "select",
+                        "label": "SNMP Version"
+                    }
+                }
+            },
+            {
+                "name": "Connection",
+                "description": "Connection parameters.",
+                "fields": {
+                    "connection.netconf.hostport": {"label": "NETCONF Host Port"},
+                    "connection.snmp.hostport": {"label": "SNMP Host Port"}
+                }
+            }
+        ]
+    }
+}

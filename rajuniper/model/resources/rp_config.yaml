@@ -56,7 +56,7 @@ domains:
     # currently only the id must be specified but in this future may be
     # extended to help drive specialization in the synchronization framework
     resource_types:
-      - id: "juniper.resourceTypes.Device"
+      - id: "juniper.resourceTypes.NetworkFunction"
         discoveryStrategy:
           - strategyType: "sync"
             pollingMode: "listOnly"
@@ -69,6 +69,12 @@ domains:
             maxConnections: 4
             maxHttpRetries: 0
             idleTimeoutMs: 3600000
+      - id: "juniper.resourceTypes.SessionProfile"
+        discoveryStrategy:
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
       - id: "juniper.resourceTypes.Interface"
         discoveryStrategy:
           - strategyType: "sync"
@@ -171,14 +177,14 @@ domains:
 # https://github.cyanoptics.com/Orchestrate/rpsdk-python for more details.
 relationships:
   - sourceTypeId: "juniper.resourceTypes.Interface"        # resource types involved in relationship
-    targetTypeId: "juniper.resourceTypes.Device"
+    targetTypeId: "juniper.resourceTypes.NetworkFunction"
     capabilityName: ifc_host                               # identifies endpoint names in relationship
     requirementName: ifc_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
     fieldKind: "provider"                                  # identicates what the field represent
     fieldLocator: "device"                                 # the field in the resource properties identifying the far end
   - sourceTypeId: "juniper.resourceTypes.VrfPolicy"        # resource types involved in relationship
-    targetTypeId: "juniper.resourceTypes.Device"
+    targetTypeId: "juniper.resourceTypes.NetworkFunction"
     capabilityName: vp_host                                # identifies endpoint names in relationship
     requirementName: vp_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
@@ -192,35 +198,35 @@ relationships:
 #    fieldKind: "provider"                                  # identicates what the field represent
 #    fieldLocator: "physical_interface"                     # the field in the resource properties identifying the far end
   - sourceTypeId: "juniper.resourceTypes.RoutingInstance"  # resource types involved in relationship
-    targetTypeId: "juniper.resourceTypes.Device"
+    targetTypeId: "juniper.resourceTypes.NetworkFunction"
     capabilityName: ri_host                                # identifies endpoint names in relationship
     requirementName: ri_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
     fieldKind: "provider"                                  # identicates what the field represent
     fieldLocator: "device"                                 # the field in the resource properties identifying the far end
   - sourceTypeId: "juniper.resourceTypes.InterfaceVlan"    # resource types involved in relationship
-    targetTypeId: "juniper.resourceTypes.Device"
+    targetTypeId: "juniper.resourceTypes.NetworkFunction"
     capabilityName: iv_host                                # identifies endpoint names in relationship
     requirementName: iv_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
     fieldKind: "provider"                                  # identicates what the field represent
     fieldLocator: "device"                                 # the field in the resource properties identifying the far end
   - sourceTypeId: "juniper.resourceTypes.VlanIdentifier"   # resource types involved in relationship
-    targetTypeId: "juniper.resourceTypes.Device"
+    targetTypeId: "juniper.resourceTypes.NetworkFunction"
     capabilityName: vi_host                                # identifies endpoint names in relationship
     requirementName: vi_device
     relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
     fieldKind: "provider"                                  # identicates what the field represent
     fieldLocator: "device"                                 # the field in the resource properties identifying the far end
 #  - sourceTypeId: "juniper.resourceTypes.VirtualRouter"
-#    targetTypeId: "juniper.resourceTypes.Device"
+#    targetTypeId: "juniper.resourceTypes.NetworkFunction"
 #    capabilityName: vr_host                                              # identifies endpoint names in relationship
 #    requirementName: vr_device
 #    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship
 #    fieldKind: "provider"                                                # identicates what the field represent
 #    fieldLocator: "device"                                               # the field in the resource properties identifying the far end
 #  - sourceTypeId: "juniper.resourceTypes.Firewall"
-#    targetTypeId: "juniper.resourceTypes.Device"
+#    targetTypeId: "juniper.resourceTypes.NetworkFunction"
 #    capabilityName: fw_host                                              # identifies endpoint names in relationship
 #    requirementName: fw_device
 #    relationshipTypeId: "tosca.relationshipTypes.HostedOn"   # identifies type of relationship

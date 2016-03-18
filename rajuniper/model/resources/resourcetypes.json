@@ -1,6 +1,7 @@
 {
     "resource_types": [
-        "resources/definitions/resource_type_device.tosca",
+        "resources/definitions/resource_type_tpefre_networkfunction.tosca",
+        "resources/definitions/resource_type_session_profile.tosca",
         "resources/definitions/resource_type_firewall.tosca",
         "resources/definitions/resource_type_virtualrouter.tosca",
         "resources/definitions/resource_type_interface.tosca",
