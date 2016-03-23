@@ -1,0 +1,133 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "Session template resource type definition"
+package = juniper
+version = "1.0"
+description = "This document defines the session template resource."
+authors = ["Kerry Neef (kneef@ciena.com)"]
+
+imports {
+  BaseSessionProfile = tosca.resourceTypes.SessionProfile
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  SessionProfile {
+    derivedFrom = BaseSessionProfile
+    title = "Session Profile"
+    description = """
+    Supplies information needed to establish a session to a Juniper network function device.
+    """
+
+    properties {
+
+      id {
+        type = string
+        title = "Id"
+        description = "ID assigned by the resource provider."
+        optional = true
+        config = false
+      }
+
+      typeGroup {
+        type = string
+        title = "Type Group"
+        description = ""
+        optional = false
+        default = "/typeGroups/Juniper"
+      }
+
+      authentication {
+        type = object
+        title = "Authentication Info"
+        description = ""
+        optional = true
+        properties {
+          netconf {
+            type = object
+            title = "NETCONF Authentication"
+            description = ""
+            optional = true
+            default = {}
+            properties {
+              username {
+                type = string
+                title = "Username"
+                description = ""
+                optional = false
+              }
+              password {
+                type = string
+                title = "Password"
+                description = ""
+                optional = false
+              }
+            }
+          }
+          snmp {
+            type = object
+            title = "SNMP Authentication"
+            description = ""
+            optional = true
+            default = {}
+            properties {
+              community {
+                type = string
+                title = "Community"
+                description = "SNMP Community string"
+                optional = false
+              }
+              version {
+                type = string
+                title = "Version"
+                description = "SNMP Version"
+                optional = false
+                enum = [v1, v2c, v3]
+                default = "v2c"
+              }
+            }
+          }
+        }
+      }
+
+      connection {
+        type = object
+        title = "Connection Info"
+        description = ""
+        optional = false
+        properties {
+          netconf {
+            type = object
+            title = "NETCONF Connection Info"
+            description = ""
+            optional = true
+            properties {
+              hostport {
+                type = integer
+                title = "NETCONF Port"
+                description = ""
+                optional = false
+                default = 22
+              }
+            }
+          }
+          snmp {
+            type = object
+            title = "SNMP Connection Info"
+            description = ""
+            optional = true
+            properties {
+              hostport {
+                type = integer
+                title = "SNMP Port"
+                description = ""
+                optional = false
+                default = 161
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

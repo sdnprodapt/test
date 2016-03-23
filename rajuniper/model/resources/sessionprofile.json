@@ -1,0 +1,10 @@
+{
+    "product": "urn:cyaninc:bp:product:juniper_sessionprofile",
+    "resource": "juniper.resourceTypes.SessionProfile",
+    "type": "null",
+    "provider_resource_id_field": "id",
+    "device_namespace_props": [],
+    "label_field": "",
+    "commands": {
+    }
+}

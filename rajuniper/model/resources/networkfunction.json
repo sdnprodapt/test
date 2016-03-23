@@ -1,0 +1,11 @@
+{
+    "product": "urn:cyaninc:bp:product:juniper",
+    "resource": "juniper.resourceTypes.NetworkFunction",
+    "top_down_get": true,
+    "type": "device",
+    "commands": {
+        "get": {
+            "command": "show-device.json"
+        }
+    }
+}

@@ -6,5 +6,6 @@
     "urn:cyaninc:bp:product:juniper_routinginstance": "routinginstance.json",
     "urn:cyaninc:bp:product:juniper_interfacevlan": "interfacevlan.json",
     "urn:cyaninc:bp:product:juniper_vlanidentifier": "vlanidentifier.json",
-    "urn:cyaninc:bp:product:juniper": "device.json"
+    "urn:cyaninc:bp:product:juniper_sessionprofile": "sessionprofile.json",
+    "urn:cyaninc:bp:product:juniper": "networkfunction.json"
 }

@@ -1,0 +1,25 @@
+{
+    "juniper.resourceTypes.NetworkFunction": {
+        "cssClass": "network-function",
+        "fieldGroups": [
+            {
+                "name": "Equipment",
+                "description": "Enter information about the equipment implementing the network function.",
+                "fields": {
+                    "sessionProfile": {
+                        "label": "Session Profile",
+                        "type": "select",
+                        "resourceType": "juniper.resourceTypes.SessionProfile"
+                    },
+                    "ipAddress": {
+                        "label": "Host Name / IP Address"
+                    },
+                    "resourceType": {
+                        "label": "Resource Type",
+                        "help": "The expected equipment type may be supplied to detect equipment mismatch."
+                    }
+                }
+            }
+        ]
+    }
+}

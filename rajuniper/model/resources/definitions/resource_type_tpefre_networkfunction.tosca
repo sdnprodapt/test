@@ -1,0 +1,79 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "Juniper Network Function"
+package     = juniper
+version     = "1.0"
+description = "This document defines the NetworkFunction resource type as specialized for the Juniper RA."
+authors     = [ "Kerry Neef (kneef@ciena.com)"]
+
+imports {
+    BaseNetworkFunction = tosca.resourceTypes.NetworkFunction
+    Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+    NetworkFunction {
+        derivedFrom = BaseNetworkFunction
+        title = "NF"
+        description = """
+            NetworkFunction (FC) represents a specialized Processing Construct
+            relating to Network functions. Network Functions includes physical networking
+            equipment, such as switches, routers and repeaters, but also relates to virtualized
+            network functions, such as EMSs, virtual routers and virtual switches.
+        """
+
+        properties {
+        }
+
+        capabilities {
+          ifc_host {
+            title = "Interfaces"
+            description = "A device can host interfaces."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.Interface]
+          }
+
+          vr_host {
+            title = "Virtual Routers"
+            description = "A device can host virtual routers."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.VirtualRouter]
+          }
+
+          fw_host {
+            title = "Firewalls"
+            description = "A device can host Firewalls."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.Firewall]
+          }
+
+          vp_host {
+            title = "VRF Policies"
+            description = "A device can host VRF policies."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.VrfPolicy]
+          }
+
+          ri_host {
+            title = "Routing Instances"
+            description = "A device can host routing instances."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.RoutingInstance]
+          }
+
+          iv_host {
+            title = "Interface VLAN"
+            description = "A device can host interface VLAN instances."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.InterfaceVlan]
+          }
+
+          vi_host {
+            title = "VLAN Identifier"
+            description = "A device can host interface VLAN identifier instances."
+            type = Container
+            resourceTypes = [juniper.resourceTypes.VlanIdentifier]
+          }
+        }
+    }
+}

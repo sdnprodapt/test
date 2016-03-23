@@ -52,7 +52,7 @@ resourceTypes {
         type = Container
         minimum = 1
         maximum = 1
-        resourceTypes = [juniper.resourceTypes.Device]
+        resourceTypes = [juniper.resourceTypes.NetworkFunction]
       }
     }
   }

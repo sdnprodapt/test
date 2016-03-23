@@ -41,9 +41,15 @@
     "active": true,
     "provider_data": {}
 }, {
-    "resource_type": "juniper.resourceTypes.Device",
+    "resource_type": "juniper.resourceTypes.SessionProfile",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_sessionprofile",
+    "title": "Session Profile",
+    "active": true,
+    "provider_data": {}
+}, {
+    "resource_type": "juniper.resourceTypes.NetworkFunction",
     "provider_product_id": "urn:cyaninc:bp:product:juniper",
-    "title": "Device",
+    "title": "Network Function",
     "active": true,
     "provider_data": {},
     "constraints": {
