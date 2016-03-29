@@ -43,6 +43,12 @@ definitions: ./definitions
 # will be onboarded.
 ui_schema: ./ui-schema
 
+# Base resources types that are onboarded by an application image and may not be immediately available.
+dependent_types: [
+  'tosca.resourceTypes.NetworkFunction',
+  'tosca.resourceTypes.SessionProfile'
+]
+
 # Domain definitions specify the types of domains supported by this RP.
 # Developers must define their own domains. See
 # https://github.cyanoptics.com/Orchestrate/rpsdk-python for more details. The
