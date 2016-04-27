@@ -132,6 +132,36 @@ resourceTypes {
           }
         }
       }
+
+      from {
+        title = "From"
+        description = "From entry"
+        type = object
+        properties {
+          protocol {
+            title = "Protocol"
+            description = "Protocol from which route was learned"
+            type = string
+            optional = true
+          }
+        }
+        optional = true
+      }
+
+      then {
+        title = "Then"
+        description = "Then entry"
+        type = object
+        properties {
+          accept {
+            title = "Accept"
+            description = "Accept"
+            type = boolean
+            optional = true
+          }
+        }
+        optional = true
+      }
     }
 
     requirements {
