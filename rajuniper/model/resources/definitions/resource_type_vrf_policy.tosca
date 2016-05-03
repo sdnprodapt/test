@@ -38,6 +38,7 @@ resourceTypes {
       terms {
         type = array
         title = "Terms"
+        optional = true
         items {
           type = object
           properties {
