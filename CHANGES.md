@@ -1,3 +1,10 @@
+Version 0.3.0.R1
+----------------
+
+Equinix support (released on May 6 2016)
+
+- Add support for Equinix use cases
+
 Version 0.2.0
 -------------
 
