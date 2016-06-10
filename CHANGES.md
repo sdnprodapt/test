@@ -1,3 +1,11 @@
+Version 0.3.0.R2
+----------------
+
+JuniperRA with latest rasdk (released on Jun 9 2016)
+
+- Upgrade sdk versions (rasdk=1.22.0, bpprov=1.29.1, rpsdk=0.5.0, cymlrest=0.9.0) for netconf endpoint fixes
+- Take out snmp parameters since not being used for equinix
+
 Version 0.3.0.R1
 ----------------
 
