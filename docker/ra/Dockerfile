@@ -18,4 +18,4 @@ ENV SBI_bpocore_southbound-update=bpocore-sb-update
 ENV SBI_git-ssh_southbound-update=bpocore-sb-update
 ENV SBI_kafka_southbound-update=bpocore-sb-update
 
-CMD ["rajuniper", "--declare-rp", "--configpath", "/tmp", "--logfile", "/bp2/log/rajuniper.log"]
+CMD ["rajuniper", "--no-clustering", "--declare-rp", "--configpath", "/tmp", "--logfile", "/bp2/log/rajuniper.log"]

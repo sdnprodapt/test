@@ -5,11 +5,6 @@
         "rx_delimiter": "]]>]]>\n" 
     },
     "snmp": {
-        "hostport": 1162,
-        "version": "v2c",
-        "community": "public",
-        "trapCommand": "snmp-trap.json",
-        "transport": "bpprov.components.snmp.Direct"
     },
     "kafka": {
         "hostname" : "kafka"
