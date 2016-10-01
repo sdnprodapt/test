@@ -1,0 +1,26 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [{
+          "type" : "bpprov.translators.template.Json",
+           "parameters" : {
+               "templateType" : "file",
+               "template" : "reate-vrfpolicy-basic-ws.tmpl",
+               "as_object" : true
+            }
+           },
+        {
+
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit.json"
+            }
+        }
+    ]
+}

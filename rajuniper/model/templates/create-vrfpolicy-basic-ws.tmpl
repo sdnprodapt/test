@@ -1,0 +1,67 @@
+{#
+    Inputs:
+        name: policy statement name
+        terms: list of policy terms
+#}
+{% set ps = data.properties %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <policy-options>
+        <policy-statement>
+            {% for policy in ps.policies %}
+            <policy_name>{{ policy.name }}</policy_name>
+            {% if (policy.terms is defined) and policy.terms %}
+                {% for term in policy.terms %}
+                <term>
+                    <term_name>{{ term.name }}</term_name>
+                    <from>
+                        {% if 'community' in term.from %}
+                        <community>
+                            <value>{{ term.from.community }}</value>
+                        </community>
+                        {% elif 'protocol' in term.from %}
+                        <protocol>
+                             {% for value in term.protocol %}
+                             <{{ value }}></{{ value }}>
+                             {% endfor %}
+                        </protocol>
+                        {% elif 'prefix-list-filter' in term.from %}
+                        <prefix-list-filter>
+                             {% for value in term.prefix-list-filter %}
+                             {% if 'name' in value %}
+                             <list_name>{{ name }}</list_name>
+                             {% endif %}
+                             <{{ value }}></{{ value }}>
+                             {% endfor %}
+                        </prefix-list-filter>
+                        {% endif %}
+                    </from>
+                    <then>
+                        {% if 'community' in term.then %}
+                        <community>
+                            <{{ term.then.community.operation }}/>
+                            <community_name>{{ term.then.community.community_name }}</community_name>
+                        </community>
+                        {% elif 'accept' in term.then %}
+                        <accept/>
+                        {% elif 'reject' in term.then %}
+                        <reject/>
+                        {% endif %}
+                    </then>
+                </term>
+                {% endfor %}
+                {% endif %}
+             {% endfor %}
+        </policy-statement>
+        <community>
+            <community_name>{{ ps.community.community_name }}</community_name>
+            <members>
+                 <value>{{ ps.community.community_member }}</value>
+            </members>
+        </community>
+    </policy-options>
+</configuration></config>
+</edit-config>
+</rpc>

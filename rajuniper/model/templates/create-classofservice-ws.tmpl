@@ -1,0 +1,52 @@
+{#
+    NOTE:If COS==FALSE,QOSPRFILE will not be supplied, inatead we have to use M-Q-100sd
+        PARENTINT: name of the interface to create the logical interface on
+#}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <class-of-service>
+         <traffic-control-profiles>
+		     <name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</name>
+             <scheduler-map>{{ data.QOSPROFILE }}</scheduler-map>
+             <shaping-rate>
+                 <rate>{{ data.BANDWIDTHMBPS }}m</rate>
+             </shaping-rate>
+             <guaranteed-rate>
+                 <rate>{{ data.BANDWIDTHMBPS }}m</rate>
+             </guaranteed-rate>
+         </traffic-control-profiles>
+         <interfaces>
+              <interface-set>
+                  <name>{{ data.INTSETNAME }}</name>
+                  <output-traffic-control-profile>
+                      <profile-name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</profile-name>
+                  </output-traffic-control-profile>
+              </interface-set>
+              <interface>
+                  <name>{{ data.PARENTINT }}</name>
+                  <unit>
+                      <name>{{ data.L3VPNVLAN }}</name>
+                      <classifiers>
+                          <dscp>
+                              <name>CUSTOMER_DSCP_CLASSIFIER_EF</name>
+                          </dscp>
+                      </classifiers>
+                  </unit>
+              {% if data.FOOTPRINT == 'PAE' %}
+                  <unit>
+                       <name>{{ data.ENIDVLAN }}</name>
+                       <classifiers>
+                           <dscp>
+                               <name>CUSTOMER_DSCP_CLASSIFIER_NONEF</name>
+                           </dscp>
+                       </classifiers>
+                  </unit>
+              {% endif %}
+              </interface>
+         </interfaces>
+    </class-of-service>
+</configuration></config>
+</edit-config>
+</rpc>

@@ -1,8 +1,13 @@
-{
-    "type": "{{ data.nodeType.replace('/', '-') }}",
+{#
     "resourceType": "{{ data.nodeType.replace('/', '-') }}",
-    "serialNumber": "{{ data.nodeSerialNumber }}",
     "deviceVersion": "{{ data.nodeType.replace('/', '-') }}",
+    "type": "{{ data.nodeType.replace('/', '-') }}",
+#}
+{
+    "type": "JuniperMX240",
+    "resourceType": "JuniperMX240",
+    "serialNumber": "{{ data.nodeSerialNumber }}",
+    "deviceVersion": "JuniperMX240",
     "swType": "{{ data.nodeType.replace('/', '-') }}",
     "swImage": "{{ data.iosVersion }}",
     "swVersion": "{{ data.iosVersion }}"

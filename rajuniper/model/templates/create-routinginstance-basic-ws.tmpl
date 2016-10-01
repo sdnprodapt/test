@@ -1,0 +1,93 @@
+{#
+    NOTE:
+    1. <interface>
+         <name>{{ data['PARENTINT'] }}.{{ data['L3VPNVLAN'] }}</name>
+        </interface>
+    2.   <vrf-import>{{ data.CUSTOMERPOLICY }}-IMPORT</vrf-import>
+         <vrf-export>{{ data.CUSTOMERPOLICY }}-EXPORT</vrf-export>
+    More than one value is allowed here.Please handle it
+#}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <routing-instances>
+        <instance>
+            <name>{{ data['L3VPNNAME'] }}</name>
+        {% if data.description %}
+            <description>{{ data['L3VPNVLANDESCR'] }}</description>
+        {% endif %}
+            <instance-type>vrf</instance-type>
+            <interface>
+                <name>{{ data['PARENTINT'] }}.{{ data['L3VPNVLAN'] }}</name>
+            </interface>
+        {% if data.ROUTEDISTINGUISHER %}
+            <route-distinguisher>
+                <rd-type>{{ data.ROUTEDISTINGUISHER }}</rd-type>
+            </route-distinguisher>
+        {% endif %}
+        {% if data.FOOTPRINT == 'PAE' %}
+            <vrf-import>{{ data.CUSTOMERPOLICY }}-IMPORT</vrf-import>
+            <vrf-export>{{ data.CUSTOMERPOLICY }}-EXPORT</vrf-export>
+        {% endif %}
+            <vrf-target>
+                 <community>target:{{ data.ROUTETARGET }}</community>
+            </vrf-target>
+            <vrf-table-label><source-class-usage></source-class-usage></vrf-table-label>
+        {%  if data.routing_options %}
+            <routing-options>
+                <static>
+                {% for g in data.L3VPNLAN %}
+                    <route>
+                        <name>{{ g.L3VPNLAN }}{{ g.L3VPNLANCIDR }}</name>
+                        <nexthop>{{ g.L3VPNNEXTHOPIP }}</nexthop>
+                    </route>
+                {% endfor %}
+                </static>
+             </routing-options>
+        {% endif %}
+        {% if data.ROUTING == 'BGP' %}
+            <protocols>
+                <bgp>
+                {% for g in p.protocols_bgp.groups %}
+                    <group>
+                        <name>{{ g.CUSTOMERBGPGROUP }}</name>
+                        <type>external</type>
+                        <local-address>local_address</local-address>
+                        <peer-as>{{ g.L3VPNCUSTOMERASN }}</peer-as>
+                        <as-override></as-override>
+                    {% if g.neighbors %}
+                        {% for n in g.neighbors %}
+                        <neighbor>
+                            <name>{{ n.L3VPNCUSTOMERPEER }}</name>
+                        {% if n.authentication_key %}
+                            <authentication-key>{{ n.L3VPNBGPPASSWORD }}</authentication-key>
+                        {% endif %}
+                        </neighbor>
+                        <family>
+                            <inet>
+                                <unicast>
+                                    <prefix-limit>
+                                        <maximum>2000</maximum>
+                                         <teardown>
+                                              <limit-threshold>80</limit-threshold>
+                                               <idle-timeout>
+                                                   <timeout>15</timeout>
+                                               </idle-timeout>
+                                          </teardown>
+                                    </prefix-limit>
+                                </unicast>
+                            </inet>
+                        </family>
+                        {% endfor %}
+                    {% endif %}
+                    </group>
+                {% endfor %}
+                </bgp>
+            </protocols>
+        {% endif %}
+        </instance>
+    </routing-instances>
+</configuration></config>
+</edit-config>
+</rpc>

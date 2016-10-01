@@ -1,0 +1,94 @@
+{#
+    Inputs:
+        PARENTINT: name of the interface to create the logical interface on
+#}
+
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <interfaces>
+         <interface-set>
+              <interface-set-name>{{ data['INTSETNAME'] }}</interface-set-name>
+              <interface>
+                   <name>{{ data['PARENTINT'] }}</name>
+                   <unit>
+                        <name>{{ data['L3VPNVLAN'] }}</name>
+                   </unit>
+                   {% if data.FOOTPRINT == 'PAE' %}
+                   <unit>
+                        <name>{{ data['ENIDVLAN'] }}</name>
+                   </unit>
+                   {% endif %}
+              </interface>
+         </interface-set>
+         <interface>
+              <name>{{ data['PARENTINT'] }}</name>
+              {% if data.WAN == 'FULLETHERNET' %}
+                  {% if 'INTDESCRIPTION' in data %}
+                  <description>{{ data['INTDESCRIPTION'] }}</description>
+                  {% endif %}
+                  <per-unit-scheduler/>
+                  <stacked-vlan-tagging/>
+                  <encapsulation>flexible-ethernet-services</encapsulation>
+              {% endif %}
+              <unit>
+                  <name>{{ data['L3VPNVLAN'] }}</name>
+                  {% if 'L3VPNVLANDESCR' in data %}
+                  <description>{{ data['L3VPNVLANDESCR'] }}</description>
+                  {% endif %}
+                  {% if data.WAN == 'FULLETHERNET' %}
+                  <vlan-id>{{ data['L3VPNVLAN'] }}</vlan-id>
+                  {% elif data.WAN == 'ETHERNET' %}
+                  <vlan-tags>
+                      <outer>{{ data['WINVLAN'] }}</outer>
+                      <inner>200</inner>
+                  </vlan-tags>
+                  {% endif %}
+                  <family>
+                      <inet>
+                          <address>
+                              <name>{{ data['L3VPNWAN'] }}{{ data['L3VPNCIDR'] }}</name>
+                          </address>
+                          {% if data.COS == 'FALSE' %}
+                          <filter>
+                              <input>
+                                    <filter-name>NON_QOS_CUSTOMER_TRAFFIC_ALLOW_BOGON</filter-name>
+                              </input>
+                          </filter>
+                          {% endif %}
+                    </inet>
+                  </family>
+              </unit>
+              <unit>
+                  <name>{{ data['ENIDVLAN'] }}</name>
+                  {% if 'ENIDVLANDESCR' in data %}
+                  <description>{{ data['ENIDVLANDESCR'] }}</description>
+                  {% endif %}
+                  {% if data.WAN == 'FULLETHERNET' %}
+                  <vlan-id>{{ data['ENIDVLAN'] }}</vlan-id>
+                  {% elif data.WAN == 'ETHERNET' %}
+                  <vlan-tags>
+                      <outer>{{ data['WINVLAN'] }}</outer>
+                      <inner>200</inner>
+                  </vlan-tags>
+                  {% endif %}
+                  {% if data.FOOTPRINT == 'PAE' %}
+                  <encapsulation>vlan-bridge</encapsulation>
+                  {% endif %}
+                  {% if data.FOOTPRINT == 'WIN' %}
+                  <family>
+                      <inet>
+                          <filter>
+                              <input>
+                                    <filter-name>NON_QOS_CUSTOMER_TRAFFIC</filter-name>
+                              </input>
+                          </filter>
+                    </inet>
+                  </family>
+                  {% endif %}
+            </unit>
+        </interface>
+    </interfaces>
+</configuration></config>
+</edit-config>
+</rpc>
