@@ -37,7 +37,7 @@
         {%  if data.routing_options %}
             <routing-options>
                 <static>
-                {% for g in data.L3VPNLAN %}
+                {% for g in data.ROUTINGOPTIONS %}
                     <route>
                         <name>{{ g.L3VPNLAN }}{{ g.L3VPNLANCIDR }}</name>
                         <nexthop>{{ g.L3VPNNEXTHOPIP }}</nexthop>
@@ -49,14 +49,13 @@
         {% if data.ROUTING == 'BGP' %}
             <protocols>
                 <bgp>
-                {% for g in p.protocols_bgp.groups %}
+                {% for g in data.BGPGROUPS %}
                     <group>
                         <name>{{ g.CUSTOMERBGPGROUP }}</name>
                         <type>external</type>
-                        <local-address>local_address</local-address>
                         <peer-as>{{ g.L3VPNCUSTOMERASN }}</peer-as>
                         <as-override></as-override>
-                    {% if g.neighbors %}
+                    {% if g.NEIGHBORS %}
                         {% for n in g.neighbors %}
                         <neighbor>
                             <name>{{ n.L3VPNCUSTOMERPEER }}</name>
@@ -64,6 +63,8 @@
                             <authentication-key>{{ n.L3VPNBGPPASSWORD }}</authentication-key>
                         {% endif %}
                         </neighbor>
+                        {% endfor %}
+                    {% endif %}
                         <family>
                             <inet>
                                 <unicast>
@@ -79,8 +80,6 @@
                                 </unicast>
                             </inet>
                         </family>
-                        {% endfor %}
-                    {% endif %}
                     </group>
                 {% endfor %}
                 </bgp>

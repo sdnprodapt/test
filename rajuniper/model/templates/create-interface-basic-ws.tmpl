@@ -31,6 +31,37 @@
                   <stacked-vlan-tagging/>
                   <encapsulation>flexible-ethernet-services</encapsulation>
               {% endif %}
+               <unit>
+                  <name>{{ data['ENIDVLAN'] }}</name>
+                  {% if 'ENIDVLANDESCR' in data %}
+                  <description>{{ data['ENIDVLANDESCR'] }}</description>
+                  {% endif %}
+                  {% if data.WAN == 'FULLETHERNET' %}
+                  <vlan-id>{{ data['ENIDVLAN'] }}</vlan-id>
+                  {% elif data.WAN == 'ETHERNET' %}
+                  <vlan-tags>
+                      <outer>{{ data['WINVLAN'] }}</outer>
+                      <inner>310</inner>
+                  </vlan-tags>
+                  {% endif %}
+                  {% if data.FOOTPRINT == 'PAE' %}
+                  <encapsulation>vlan-bridge</encapsulation>
+                  {% endif %}
+                  {% if data.FOOTPRINT == 'WIN' %}
+                  <family>
+                      <inet>
+                          <address>
+                              <name>{{ data['ENIDWAN'] }}{{ data['ENIDCIDR'] }}</name>
+                          </address>
+                          <filter>
+                              <input>
+                                    <filter-name>NON_QOS_CUSTOMER_TRAFFIC</filter-name>
+                              </input>
+                          </filter>
+                    </inet>
+                  </family>
+                  {% endif %}
+              </unit>
               <unit>
                   <name>{{ data['L3VPNVLAN'] }}</name>
                   {% if 'L3VPNVLANDESCR' in data %}
@@ -59,34 +90,6 @@
                     </inet>
                   </family>
               </unit>
-              <unit>
-                  <name>{{ data['ENIDVLAN'] }}</name>
-                  {% if 'ENIDVLANDESCR' in data %}
-                  <description>{{ data['ENIDVLANDESCR'] }}</description>
-                  {% endif %}
-                  {% if data.WAN == 'FULLETHERNET' %}
-                  <vlan-id>{{ data['ENIDVLAN'] }}</vlan-id>
-                  {% elif data.WAN == 'ETHERNET' %}
-                  <vlan-tags>
-                      <outer>{{ data['WINVLAN'] }}</outer>
-                      <inner>200</inner>
-                  </vlan-tags>
-                  {% endif %}
-                  {% if data.FOOTPRINT == 'PAE' %}
-                  <encapsulation>vlan-bridge</encapsulation>
-                  {% endif %}
-                  {% if data.FOOTPRINT == 'WIN' %}
-                  <family>
-                      <inet>
-                          <filter>
-                              <input>
-                                    <filter-name>NON_QOS_CUSTOMER_TRAFFIC</filter-name>
-                              </input>
-                          </filter>
-                    </inet>
-                  </family>
-                  {% endif %}
-            </unit>
         </interface>
     </interfaces>
 </configuration></config>

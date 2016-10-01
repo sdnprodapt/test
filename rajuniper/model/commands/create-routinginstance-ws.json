@@ -8,18 +8,16 @@
     "out-path": [
     ],
     "in-path": [{
-          "type" : "bpprov.translators.template.Json",
-           "parameters" : {
-               "templateType" : "file",
-               "template" : "create-routinginstance-basic-ws.tmpl",
-               "as_object" : true
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "create-routinginstance-basic-ws.json"
             }
-           },
+        },
         {
 
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "command": "commit.json"
+                "command": "commit-ws.json"
             }
         }
     ]

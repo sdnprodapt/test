@@ -18,7 +18,7 @@
 
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "command": "commit.json"
+                "command": "commit-ws.json"
             }
         }
     ]
