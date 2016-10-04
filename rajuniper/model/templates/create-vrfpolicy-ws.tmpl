@@ -1,0 +1,84 @@
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <policy-options>
+        <policy-statement>
+        	<policy_name>{{ data.CUSTOMERPOLICY }}-EXPORT</policy_name>
+			<term>
+			        <term_name>MGMT-routes</term_name>
+				    <from>
+                         <protocol>direct</protocol>
+                         <prefix-list-filter>
+				             <list_name>MGMT_NETWORKS</list_name>
+                             <orlonger></orlonger>
+                             <reject></reject>
+				         </prefix-list-filter>
+                         <prefix-list-filter>
+				              <list_name>PAETEC-CPE-MGMT</list_name>
+                              <orlonger></orlonger>
+				         </prefix-list-filter>
+				    </from>
+				    <then>
+                         <community>
+                              <add></add>
+					          <community_name>MGMT-Paetec-411</community_name>
+				         </community>
+				    </then>
+				 </term>
+				 <term>
+			        <term_name>CUST-routes</term_name>
+				    <from>
+                         <protocol>static</protocol>
+                         <protocol>direct</protocol>
+                         <protocol>bgp</protocol>
+				    </from>
+				     <then>
+                          <community>
+                              <add></add>
+					          <community_name>L3VPN-CIENA-MDSO-TEST1</community_name>
+				          </community>
+				          <accept/>
+				     </then>
+				 </term>
+				 <term>
+			         <term_name>REJECT</term_name>
+				     <then>
+				         <reject/>
+				     </then>
+                 </term>
+              </policy-statement>
+              <policy-statement>
+             <policy_name>{{ data.CUSTOMERPOLICY }}-IMPORT</policy_name>
+			     <term>
+			          <term_name>Routes</term_name>
+				      <from>
+                           <protocol>bgp</protocol>
+                           <community>
+				                 <value>CUSTOMERCOMMUNITY</value>
+				           </community>
+                           <community>
+				                 <value>MGMT-Paetec-911</value>
+				           </community>
+				       </from>
+				       <then>
+				           <accept/>
+				       </then>
+				  </term>
+				 <term>
+			        <term_name>REJECT</term_name>
+				     <then>
+				           <reject/>
+				      </then>
+			    </term>
+			</policy-statement>
+                 <community>
+                     <community_name>{{ data.CUSTOMERCOMMUNITY }}</community_name>
+                     <members>
+                          <value>target:{{ data.ROUTEDISTINGUISHER }}</value>
+                      </members>
+                 </community>
+		</policy-options>
+</configuration></config>
+</edit-config>
+</rpc>

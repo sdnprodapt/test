@@ -1,25 +1,18 @@
 {
-    "endpoint": "null",
+    "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
     ],
     "endpoint-parameters": {
+         "template": "create-vrfpolicy-ws.tmpl"
     },
     "out-path": [
     ],
-    "in-path": [{
-          "type" : "bpprov.translators.template.Json",
-           "parameters" : {
-               "templateType" : "file",
-               "template" : "reate-vrfpolicy-basic-ws.tmpl",
-               "as_object" : true
-            }
-           },
+    "in-path": [
         {
-
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "command": "commit.json"
+                "command": "commit-ws.json"
             }
         }
     ]

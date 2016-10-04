@@ -1,19 +1,14 @@
 {
-    "endpoint": "null",
+    "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
     ],
     "endpoint-parameters": {
+        "template": "create-classofservice-ws.tmpl"
     },
     "out-path": [
     ],
     "in-path": [
-        {
-            "type": "bpprov.translators.aggregator.Call",
-            "parameters": {
-                "command": "create-classofservice-basic-ws.json"
-            }
-        },
         {
 
             "type": "bpprov.translators.aggregator.Call",
