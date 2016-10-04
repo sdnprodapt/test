@@ -1,0 +1,58 @@
+{
+    "device": "/data/device",
+    "creator_id": "/dependents/0",
+    "vrf": {
+        "name": "/data/extension/vrf/name",
+        "description": "/data/extension/vrf/name",
+        "address-family": {
+            "ipv4": {
+                "unicast": {
+                    "input": {
+                        "import": {
+                            "route-target": "/data/extension/vrf/address-family/0/af/import/route-target"
+                        },
+                        "export": {
+                            "route-target": "/data/extension/vrf/address-family/0/af/export/route-target"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "router": {
+        "as-number": "/data/attachment/connection/routing-protocols/0/bgp/as-number",
+        "type": "/data/attachment/connection/routing-protocols/0/type",
+        "vrf": {
+            "name": "/data/extension/vrf/name",
+            "rd": "/data/attachment/connection/routing-protocols/0/bgp/route-distinguisher"
+        }
+    },
+    "interface": {
+        "name": "/data/extension/interface/name",
+        "encapsulation": {
+            "dot1q": {
+                "vlan-id": "/data/extension/interface/dot1q",
+                "second-dot1q": {
+                    "vlan-id": "/data/extension/interface/second-dot1q"
+                }
+            }
+        },
+        "ipv4": {
+            "network": "/data/extension/interface/address",
+            "unreachable": "",
+            "verify": {
+                "unicast": {
+                    "reachable-via": {
+                        "rx": {
+                            "allow-self-ping": ""
+                        }
+                    }
+                }
+            }
+        },
+        "bandwidth": "/data/service/svc-bandwidth",
+        "vrf": {
+            "name": "/data/extension/vrf/name"
+        }
+    }
+}

@@ -1,0 +1,243 @@
+module cyan-host-asr9k {
+    namespace "http://cyan.com/ns/cyan/alex/1.0";
+    prefix alex;
+
+    import cyan-extensions {
+        prefix "cb";
+    }
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization "cyan";
+    description
+        "Test 001 Description";
+
+    revision 2015-02-25 {
+        description "First revision.";
+    }
+
+    list host {
+        cb:on-commit "commit.json";
+        key name;
+        leaf name {
+            type string;
+        }
+        list interface {
+            key name;
+            leaf name {
+                type string;
+            }
+
+            container encapsulation {
+                container dot1q {
+                    leaf vlan-id {
+                        type uint32;
+                    }
+                    container second-dot1q {
+                        leaf vlan-id {
+                            type uint32;
+                        }
+                    }
+                }
+            }
+
+            leaf bandwidth {
+                type uint64;
+            }
+
+            container vrf {
+                leaf name {
+                    type string;
+                }
+            }
+
+            container ipv4 {
+                leaf network {
+                    type inet:ipv4-prefix;
+                }
+
+                leaf unreachable {
+                    type string;
+                }
+                container verify {
+                    container unicast {
+                        container reachable-via {
+                            container rx {
+                                leaf allow-self-ping {
+                                    type string;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            container service-policy {
+                container input {
+                    leaf name {
+                        type string;
+                    }
+                    container shared-policy-instance {
+                        leaf name {
+                            type string;
+                        }
+                    }
+                }
+                container output {
+                    leaf name {
+                        type string;
+                    }
+                    container shared-policy-instance {
+                        leaf name {
+                            type string;
+                        }
+                    }
+                }
+            }
+
+            cb:on-post "create-interface-vrf.json";
+            cb:on-get "list-interfaces.json";
+            cb:on-delete "delete-interface.json";
+            cb:on-put "modify-interface.json";
+
+        }
+
+
+        container router {
+            list bgp {
+                cb:on-post "create-route.json";
+                cb:on-get "list-route.json";
+                cb:on-delete "delete-route.json";
+                cb:on-put "create-route.json";
+
+                key "as-number";
+
+                leaf as-number {
+                    type uint32;
+                }
+
+                leaf type {
+                    type string;
+                }
+
+                list vrf {
+                    cb:on-post "add-bgp-vrf.json";
+                    cb:on-get "list-bgp-vrf.json";
+                    cb:on-delete "remove-bgp-vrf.json";
+                    cb:on-put "update-bgp-vrf.json";
+
+                    key "name";
+                    leaf name {
+                        type leafref {
+                        path "/host/vrf/name";
+                     }
+                    }
+
+                    leaf rd {
+                        type string;
+                    }
+                    container address-family {
+                        container ipv4 {
+                            container unicast {
+                                container redistribute {
+                                    leaf connected {
+                                        type string;
+                                    }
+                                    leaf static {
+                                        type string;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            container static {
+                container address-family {
+                    container ipv4 {
+                        list unicast {
+                            key network;
+
+                            leaf network {
+                                type string;
+                            }
+
+                            container interface {
+                                leaf name {
+                                    type string;
+                                }
+
+                                leaf next-hop {
+                                    type string;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        list vrf {
+            key "name";
+
+            leaf name {
+                type string;
+            }
+            leaf description {
+                type string;
+            }
+
+            container address-family {
+                container ipv4 {
+                    container unicast {
+                        container input {
+                            container import {
+                                leaf route-target {
+                                    type string;
+                                }
+                            }
+                            container export {
+                                leaf route-target {
+                                    type string;
+                                }
+                            }
+                        }
+                        leaf network {
+                            type string;
+                        }
+                        container interface {
+                            leaf name {
+                                type string;
+                            }
+
+                            leaf next-hop {
+                                type string;
+                            }
+                        }
+                    }
+                }
+            }
+            cb:on-post "create-vrf.json";
+            cb:on-get "list-vrf.json";
+            cb:on-delete "delete-vrf.json";
+            cb:on-put "modify-vrf.json";
+        }
+
+
+        container "service-policy" {
+            container input {
+                 leaf "name" {
+                    type string;
+                 }
+                 container shared-policy-instance {
+                    leaf "instance" {
+                        type string;
+                    }
+
+                 }
+            }
+        }
+    }
+}

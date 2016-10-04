@@ -1,0 +1,231 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "L3VPN Device Model definition"
+package = juniper
+version = "1.0"
+description = "This document defines the L3 VPN model"
+authors = ["rpolu (rpolu@ciena.com)"]
+
+imports {
+  BaseService = tosca.resourceTypes.BaseService
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  L3VPN {
+    derivedFrom = BaseService
+    title = "L3VPN"
+    description = """
+    Representation of juniper's l3 service model on a juniper Network Function
+    """
+
+    properties {
+
+      vpn-id {
+        title = "VPN ID"
+        description = "Unique identifier for the service resource."
+        type = integer
+        optional = false
+      }
+
+      device {
+        type = string
+        title = "Device"
+        description = "Identifies the RA device containing the resource."
+        optional = false
+      }
+
+      tpe {
+        type = string
+        title = "TerminationPoint resource Id"
+        description = "Identifies the interface service is associated with"
+        optional = false
+      }
+
+      service {
+        title = "Service Parameters"
+        description = "Service Parameters"
+        type = object
+        properties {
+          svc-bandwidth {
+            title = "bandwidth"
+            description = "bandwidth"
+            type = integer
+            format = uint64
+          }
+        }
+      }
+
+      extension {
+        title = "BGP Routing Information"
+        description = "TBF"
+        type = object
+        optional = true
+
+        properties {
+          interface {
+            title = "Interface"
+            description = "Port configuration for L3VPN"
+            type = object
+            properties {
+              name {
+                title = "Interface Name"
+                description = "Interface Name"
+                type = string
+              }
+
+              dot1q {
+                title = "dot1q encapsulation"
+                description = "tunneling on the trunk"
+                type = integer
+                minimum = 1
+                maximum = 4096
+                optional = true
+              }
+
+              second-dot1q {
+                title = "second-dot1q encapsulation"
+                description = "Second tunneling on the trunk"
+                type = integer
+                minimum = 1
+                maximum = 4096
+                optional = true
+              }
+
+              address {
+                title = "Network Address"
+                description = "Network Address"
+                type = string
+              }
+            }
+          }
+
+          vrf {
+            title = "Vrf"
+            description = "Virtual Routing"
+            type = object
+            properties {
+                name {
+                  title = "vrf name"
+                  description = "name of vrf"
+                  type = string
+                  optional = true
+                }
+                address-family {
+                    title = "address family list"
+                    description = "address family BGP/OSPF/Static Route"
+                    type = array
+                    items {
+                        type = object
+                        additionalProperties = false
+                        properties {
+                            type {
+                                title = "type of routing protocol"
+                                description = "Routing protocol type"
+                                type = string
+                                optional = true
+                            }
+                            af {
+                                title = "address family"
+                                description = "address family"
+                                type = object
+                                properties {
+                                    import {
+                                        title = "import route target"
+                                        description = "import route target"
+                                        type = object
+                                        properties {
+                                          route-target {
+                                            title = "route-target"
+                                            description = "route-target"
+                                            type = string
+                                          }
+                                        }
+                                      }
+                                    export {
+                                      title = "export route target"
+                                      description = "export route target"
+                                      type = object
+                                      properties {
+                                        route-target {
+                                          title = "route-target"
+                                          description = "route-target"
+                                          type = string
+                                        }
+                                      }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+          }
+        }
+      }
+
+      attachment {
+        title = "Additional Information"
+        description = "TBF"
+        type = object
+        optional = true
+
+        properties {
+          connection {
+            title = "Connection parameters"
+            description = "Port configuration for L3VPN"
+            type = object
+            properties {
+
+              routing-protocols {
+                title = "RP"
+                description = "Routing protocol"
+                type = array
+                items {
+                    type = object
+                    additionalProperties = false
+                    properties {
+                      type {
+                        title = "type of routing protocol"
+                        description = "Routing protocol type"
+                        type = string
+                        optional = true
+                      }
+
+                      bgp {
+                        title = "BGP Parameters"
+                        description = "BGP Parameters"
+                        type = object
+                        properties {
+                          as-number {
+                            title = "Description"
+                            description = "String description"
+                            type = integer
+                            format = uint32
+                            optional = true
+                          }
+
+                          address-family {
+                            title = "Address family"
+                            description = "address family"
+                            type = string
+                          }
+
+                          route-distinguisher {
+                            title = "dot1q"
+                            description = "tunneling on the trunk"
+                            type = string
+                          }
+
+                        }
+                      }
+                    }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -66,6 +66,12 @@ help:
 prepare-venv: .prepare-venv
 	$(HIDE)$(PIP) install -r requirements-src.txt --src .src --exists-action i
 
+fresh-venv:
+	-$(HIDE)rm -rf $(VENV)
+	$(HIDE)virtualenv $(VENV)
+	$(HIDE)$(PIP) install -i $(PYPI) -e .
+	$(HIDE)$(PIP) install -i $(PYPI) -r requirements-host.txt
+
 requirements:
 	$(HIDE)$(PIP) uninstall -y $(PACKAGE)
 	$(HIDE)$(PIP) freeze > requirements.txt

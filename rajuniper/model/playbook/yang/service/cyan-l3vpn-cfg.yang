@@ -1,0 +1,259 @@
+module cyan-l3vpn-cfg {
+    namespace "http://cyan.com/ns/cyan/l3vpn/1.0";
+    prefix cyan;
+
+    import cyan-extensions {
+        prefix "cb";
+    }
+
+    import ietf-inet-types {
+        prefix inet;
+    }
+
+    organization "cyan";
+    description
+        "Cyan L3VPN single Node service configuration description";
+
+    revision 2015-07-02 {
+        description "First revision.";
+    }
+
+    identity routing-protocol-type {
+        description
+         "Base identity for routing-protocol type.";
+    }
+
+    identity bgp {
+        base routing-protocol-type;
+        description
+         "Identity for BGP protocol type.";
+    }
+
+    identity static {
+        base routing-protocol-type;
+        description
+         "Identity for static routing protocol type.";
+    }
+
+    identity address-allocation-type {
+        description
+         "Base identity for address-allocation-type
+         for PE-CE link.";
+    }
+
+    identity address-family {
+        description
+        "Base identity from which identities describing address
+        families are derived.";
+    }
+
+    identity ipv4-unicast {
+        base address-family;
+        description
+        "ipv4-unicast address family.";
+    }
+
+    list host {
+        cb:on-commit "rest-commit.json";
+        key name;
+
+        leaf name {
+            type string;
+        }
+
+        list l3-vpn {
+
+            key vpn-id;
+
+            leaf vpn-id {
+                type uint32;
+            }
+
+            leaf name {
+                type string;
+            }
+            leaf device {
+                type string;
+            }
+            leaf customer-name {
+                type string;
+            }
+            leaf type {
+                type string;
+            }
+            leaf structure {
+                type string;
+            }
+            leaf tpe {
+                type string;
+            }
+
+            container location {
+                leaf city-code {
+                    type string;
+                    description
+                     "City of the site.";
+                }
+                leaf country-code {
+                    type string;
+                    description
+                     "Country of the site.";
+                }
+                description
+                    "Location of the site.";
+            }
+
+            container attachment {
+                container connection {
+                    container ipv4 {
+                        leaf address-allocation-type {
+                            type identityref {
+                                base address-allocation-type;
+                            }
+                            description
+                             "Defines how addresses are allocated.
+                             Need to be detailed further.";
+                        }
+                        leaf subnet-prefix {
+                            type inet:ipv4-prefix;
+                            description
+                             "Interco subnet.";
+                        }
+                        description
+                         "IPv4 specific parameters";
+
+                    }
+                    list routing-protocols {
+                        key type;
+
+                        leaf type {
+                            type identityref {
+                                base routing-protocol-type;
+                            }
+                            description
+                             "Type of routing protocol.";
+                        }
+
+                        container bgp {
+                            when "type = 'bgp'" {
+                                description
+                                 "Only applies when protocol is BGP.";
+                            }
+
+                            leaf vrf {
+                                type string;
+                            }
+
+                            leaf as-number {
+                                type uint32;
+                            }
+
+                            leaf route-distinguisher {
+                                type string;
+                            }
+
+                            leaf address-family {
+                                type identityref {
+                                    base address-family;
+                                }
+                                description
+                                 "Address family to be activated.";
+                            }
+                            description
+                             "BGP specific configuration.";
+                        }
+
+                        description
+                         "List of routing protocols used on the site. Need to be augmented.";
+                    }
+                    description
+                     "Defines connection parameters.";
+                }
+
+
+                description
+                 "Parameters of the attachement.";
+            }
+
+            container service {
+
+                leaf svc-bandwidth {
+                    type uint32;
+                    units bps;
+                    description
+                     "Service bandwidth of the connection.";
+                }
+                leaf svc-mtu {
+                    type uint16;
+                    units bytes;
+                    description
+                     "MTU at service level.";
+                }
+
+                description
+                 "Service parameters on the attachment.";
+            }
+
+        container extension {
+                container interface {
+                    leaf name {
+                        type string;
+                    }
+
+                    leaf dot1q {
+                        type uint32;
+                    }
+
+                    leaf second-dot1q {
+                        type uint32;
+                    }
+
+                    leaf address {
+                        type inet:ipv4-prefix;
+                    }
+                }
+
+                container vrf {
+                    leaf name {
+                        type string;
+                    }
+                    leaf description {
+                        type string;
+                    }
+
+                    list address-family {
+                        key type;
+
+                        leaf type {
+                            type identityref {
+                                base routing-protocol-type;
+                            }
+                            description
+                             "Type of routing protocol.";
+                        }
+
+                    container af {
+                            when "type = 'ipv4-unicast'" {
+                                description
+                                 "Only applies af is ipv4-unicast";
+                            }
+                            container import {
+                                leaf route-target {
+                                    type string;
+                                }
+                            }
+                            container export {
+                                leaf route-target {
+                                    type string;
+                                }
+                            }
+                        }
+                    }
+                }
+           }
+        cb:on-post "create-l3vpn.json";
+        cb:on-delete "delete-l3vpn.json";
+        cb:on-get "list-l3vpn.json";
+        }
+    }
+}
