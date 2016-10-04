@@ -41,7 +41,7 @@
                   {% elif data.WAN == 'ETHERNET' %}
                   <vlan-tags>
                       <outer>{{ data['WINVLAN'] }}</outer>
-                      <inner>320</inner>
+                      <inner>310</inner>
                   </vlan-tags>
                   {% endif %}
                   {% if data.FOOTPRINT == 'PAE' %}
@@ -72,7 +72,7 @@
                   {% elif data.WAN == 'ETHERNET' %}
                   <vlan-tags>
                       <outer>{{ data['WINVLAN'] }}</outer>
-                      <inner>220</inner>
+                      <inner>200</inner>
                   </vlan-tags>
                   {% endif %}
                   <family>
