@@ -78,7 +78,7 @@ PLAYBOOK_MASTER_CLI_BANNER = 'RA Netconf Service Playbook\n'
 PLAYBOOK_SLAVE_CONFIGDIR = os.path.join('yang', 'device')
 PLAYBOOK_SLAVE_WEBPORT = 8088
 # TBD: use juniper device yang model
-PLAYBOOK_SLAVE_MODULES = 'cyan-host-asr9k.yang'
+PLAYBOOK_SLAVE_MODULES = 'cyan_host_juniper.yang'
 PLAYBOOK_SLAVE_NETCONF = True
 
 PLAYBOOK_SLAVE_CLI_PORT = 7001
