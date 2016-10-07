@@ -36,7 +36,7 @@
 				     <then>
                           <community>
                               <add></add>
-					          <community_name>L3VPN-CIENA-MDSO-TEST1</community_name>
+					          <community_name>{{ data.CUSTOMERCOMMUNITY }}</community_name>
 				          </community>
 				          <accept/>
 				     </then>
@@ -55,7 +55,7 @@
 				      <from>
                            <protocol>bgp</protocol>
                            <community>
-				                 <value>CUSTOMERCOMMUNITY</value>
+				                 <value>{{ data.CUSTOMERCOMMUNITY }}</value>
 				           </community>
                            <community>
 				                 <value>MGMT-Paetec-911</value>

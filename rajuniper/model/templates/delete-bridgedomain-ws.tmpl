@@ -1,0 +1,18 @@
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <bridge-domains>
+        <domain>
+            <name>{{ data.ENIDBRIDGE }}</name>
+            <interface>
+                <name>{{ data.PARENTINT }}</name>
+                <unit operation="delete">
+                   <name>{{ data.ENIDVLAN }}</name>
+                </unit>
+            </interface>
+       </domain>
+    </bridge-domains>
+</configuration></config>
+</edit-config>
+</rpc>
