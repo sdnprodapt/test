@@ -1,5 +1,5 @@
 module cyan_host_juniper {
-    namespace "http://cyan.com/ns/cyan/alex/1.0";
+    namespace "http://cyan.com/ns/cyan/mu/1.0";
     prefix mu;
 
     import cyan-extensions {
@@ -20,10 +20,10 @@ module cyan_host_juniper {
 
        description "Interface configuration";
 
-       cb:on-post "create-interface-vrf.json";
-       cb:on-get "list-interfaces.json";
-       cb:on-delete "delete-interface.json";
-       cb:on-put "modify-interface.json";
+       cb:on-post "create-interface-ws.json";
+       cb:on-get "get-interface.json";
+       cb:on-delete "delete-interface-ws.json";
+       cb:on-put "create-interface-ws.json";
 
        list interface-set {
          key name;
@@ -219,6 +219,12 @@ module cyan_host_juniper {
      }
      
     container routing-instances {
+
+           cb:on-post "create-routinginstance-ws.json";
+           cb:on-get "get-routinginstance-full.json";
+           cb:on-delete "delete-routinginstance-ws.json";
+           cb:on-put "create-routinginstance-ws.json";
+
            list instance {
               key "name";
 
@@ -383,6 +389,12 @@ module cyan_host_juniper {
          }
        }
     container policy-options {
+
+         cb:on-post "create-vrfpolicy-ws.json";
+         cb:on-get "get-vrfpolicy-full.json";
+         cb:on-delete "delete-vrfpolicy-ws.json";
+         cb:on-put "create-vrfpolicy-ws.json";
+
          list policy-statement {
            key policy_name;
            description "Routing policy";
@@ -594,6 +606,13 @@ module cyan_host_juniper {
          }
     }
     container class-of-service {
+
+       cb:on-post "create-classofservice-ws.json";
+       cb:on-get "get-classofservice.json";
+       cb:on-delete "delete-classofservice-ws.json";
+       cb:on-put "create-classofservice-ws.json";
+
+
        list traffic-control-profiles {
            key "name";
            leaf name {
@@ -676,6 +695,12 @@ module cyan_host_juniper {
          }
     }
     container bridge-domains {
+
+       cb:on-post "create-bridgedomain-ws.json";
+       cb:on-get "get-bridgedomain.json";
+       cb:on-delete "delete-bridgedomain-ws.json";
+       cb:on-put "create-bridgedomain.json";
+
        list domain {
              key "name";
              leaf name {
@@ -692,6 +717,6 @@ module cyan_host_juniper {
                     type string ;
                  }
               }
-            }
        }
+    }
 }
