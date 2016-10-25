@@ -1,0 +1,13 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "rest",
+    "endpoint-parameters": {
+        "httpParams": {
+            "method": "POST"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

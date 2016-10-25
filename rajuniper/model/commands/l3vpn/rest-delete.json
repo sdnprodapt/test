@@ -1,0 +1,13 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "rest",
+    "endpoint-parameters": {
+        "httpParams": {
+            "method": "DELETE"
+        }
+    },
+    "out-path": [
+    ],
+    "in-path": [
+    ]
+}

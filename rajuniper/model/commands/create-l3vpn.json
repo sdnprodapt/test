@@ -8,7 +8,7 @@
     ],
     "out-path": [
         {
-            "type": "racisco.translators.jsonpath.JsonPointerTranslator",
+            "type": "rajuniper.translators.jsonpath.JsonPointerTranslator",
             "parameters": {
                 "converter": "/playbook/converters/l3vpn.json"
             }

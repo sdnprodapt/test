@@ -1,0 +1,21 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "null",
+    "endpoint-parameters": {
+    },
+    "tests": [
+        "commands/tests/l3vpn.json"
+    ],
+    "out-path": [
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "l3vpn.tmpl",
+                "as_object": true
+            }
+        }
+    ],
+    "in-path": [
+        
+    ]
+}

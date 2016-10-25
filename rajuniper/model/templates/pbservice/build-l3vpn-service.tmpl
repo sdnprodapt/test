@@ -1,0 +1,65 @@
+{% set interfaces = data.interface %}
+{% set routes = data.routes %}
+{% set vrfs = data.vrf %}
+{% set comma = "" %}
+
+[{% for key, interface in interfaces.iteritems()%}
+{% if key in routes and key in vrfs %}
+    {{ comma }}
+    {% set comma = "," %}
+    {
+        "tpe": "{{header.device}}::{{interface.name.split('.')[0]}}",
+        "service": {
+            "svc-bandwidth": {{interface.bandwidth}}
+        },
+        "extension": {
+            "interface": {
+                {%if "dot1q" in data%}
+                "dot1q": {{data.dot1q["vlan-id"]}},
+                {%if "second-dot1q" in interface.encapsulation.dot1q%}
+                "second-dot1q": {{interface.encapsulation["second-dot1q"]["vlan-id"]}},
+                {%endif%}
+                {%endif%}
+                "name": "{{interface.name}}",
+                "address": "{{interface.ipv4.network.split(' ')[0]}}"
+            },
+            "vrf": {
+                "address-family": [
+                {% set af = vrfs[key]["address-family"] %}
+                    {
+                        "type": "{{routes[key]["type"]}}",
+                        "af": {
+                            "import": {
+                                "route-target": "{{af.values()[0].values()[0]["input"]["import"]["route-target"]}}"
+                            },
+                            "export": {
+                                "route-target": "{{af.values()[0].values()[0]["input"]["export"]["route-target"]}}"
+                            }
+                        }
+                    }
+                ],
+                "name": "{{vrfs[key]["name"]}}"
+            }
+        },
+        "vpn-id": {{routes[key]["vrf"]["rd"].split(':')[1]}},
+        "attachment": {
+            "connection": {
+                "routing-protocols": [
+                    {
+                        "{{routes[key]["type"]}}": {
+                            "as-number": {{routes[key]["as-number"]}},
+                            "route-distinguisher": "{{routes[key]["vrf"]["rd"]}}",
+                            "address-family": "ipv4-unicast"
+                        },
+                        "type": "{{routes[key]["type"]}}"
+                    }
+                ]
+            }
+        },
+        "device": "{{header.device}}",
+        "type": "NetworkService",
+        "structure": "singlepoint",
+        "name": "svc2"
+    }
+{% endif %}
+{% endfor %}]

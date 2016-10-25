@@ -1,0 +1,9 @@
+{ "vrf" : [
+{% for vrf in data %}
+{ 
+{%for key, value in vrf.iteritems() %}
+    "{{key}}":"{{value}}"{%if not loop.last%},{%endif%}
+{%endfor%}
+}{%if not loop.last%},{%endif%}
+{%endfor%}]
+}

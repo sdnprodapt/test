@@ -1,0 +1,29 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "rest",
+    "endpoint-parameters": {
+    },
+    "out-path": [
+        {
+            "type": "rajuniper.translators.device.SessionId",
+            "parameters": {
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "pbservice/list-bgp-vrf.tmpl",
+                "as_object": true
+            }
+        }
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "pbservice/list-bgp-vrf-format.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}
