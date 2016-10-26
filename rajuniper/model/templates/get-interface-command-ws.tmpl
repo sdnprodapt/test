@@ -1,5 +1,17 @@
 <rpc>
-    <get-interface-information>
-        <interface-name>{{ data['name'] }}</interface-name>
-    </get-interface-information>
+<get-config>
+<source><running/></source>
+<filter type="subtree">
+<configuration>
+    <interfaces>
+         <interface-set>
+              <interface-set-name>{{ data['INTSETNAME'] }}</interface-set-name>
+         </interface-set>
+        <interface>
+            <name>{{ data['PARENTINT'] }}</name>
+        </interface>
+    </interfaces>
+</configuration>
+</filter>
+</get-config>
 </rpc>

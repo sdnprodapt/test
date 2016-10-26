@@ -5,8 +5,14 @@
     <configuration>
         <policy-options>
             <policy-statement>
-                <name>{{ data.name }}</name>
+                <name>{{ data.CUSTOMERPOLICY }}-IMPORT</name>
             </policy-statement>
+            <policy-statement>
+                <name>{{ data.CUSTOMERPOLICY }}-EXPORT</name>
+            </policy-statement>
+             <community>
+                 <community_name>{{ data.CUSTOMERCOMMUNITY }}</community_name>
+             </community>
         </policy-options>
     </configuration>
 </filter>
