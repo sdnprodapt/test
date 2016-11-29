@@ -1,51 +1,59 @@
-{#
-    NOTE:If COS==FALSE,QOSPRFILE will not be supplied, instead we have to use M-Q-100sd
-        PARENTINT: name of the interface to create the logical interface on
-#}
 <rpc>
 <edit-config>
 <target><candidate/></target>
 <config><configuration>
     <class-of-service>
+         {% for traffic_control_profile_data in data["traffic-control-profiles"] %}
          <traffic-control-profiles>
-		     <name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</name>
-             <scheduler-map>{{ data.QOSPROFILE }}</scheduler-map>
+             <name>{{ traffic_control_profile_data["name"] }}</name>
+             {% if traffic_control_profile_data["scheduler-map"] %}
+             <scheduler-map>{{ traffic_control_profile_data["scheduler-map"] }}</scheduler-map>
+             {% endif %}
+             {% if traffic_control_profile_data["shaping-rate"]["rate"] %}
              <shaping-rate>
-                 <rate>{{ data.BANDWIDTHMBPS }}m</rate>
+                 <rate>{{ traffic_control_profile_data["shaping-rate"]["rate"] }}</rate>
              </shaping-rate>
+             {% endif %}
+             {% if traffic_control_profile_data["guaranteed-rate"]["rate"] %}
              <guaranteed-rate>
-                 <rate>{{ data.BANDWIDTHMBPS }}m</rate>
+                 <rate>{{ traffic_control_profile_data["guaranteed-rate"]["rate"] }}</rate>
              </guaranteed-rate>
+             {% endif %}
          </traffic-control-profiles>
+         {% endfor %}
+         {% if data["interfaces"] %}
          <interfaces>
+              {% for interface_set_data in data["interfaces"]["interface-set"] %}
               <interface-set>
-                  <name>{{ data.INTSETNAME }}</name>
+                  <name>{{ interface_set_data["name"] }}</name>
+                  {% if interface_set_data["output-traffic-control-profile"]["profile-name"] %}
                   <output-traffic-control-profile>
-                      <profile-name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</profile-name>
+                      <profile-name>{{ interface_set_data["output-traffic-control-profile"]["profile-name"] }}</profile-name>
                   </output-traffic-control-profile>
+                  {% endif %}
               </interface-set>
+              {% endfor %}
+              {% for interface_data in data["interfaces"]["interface"] %}
               <interface>
-                  <name>{{ data.PARENTINT }}</name>
+                  <name>{{ interface_data["name"] }}</name>
+                  {% for unit_data in interface_data["unit"] %}
                   <unit>
-                      <name>{{ data.L3VPNVLAN }}</name>
+                      <name>{{ unit_data["name"] }}</name>
+                      {% if unit_data["classifiers"] %}
                       <classifiers>
+                          {% for dscp_data in unit_data["dscp"]%}
                           <dscp>
-                              <name>CUSTOMER_DSCP_CLASSIFIER_EF</name>
+                              <name>{{ dscp_data["name"] }}</name>
                           </dscp>
+                          {% endfor %}
                       </classifiers>
-                  </unit>
-              {% if data.FOOTPRINT == 'PAE' %}
-                  <unit>
-                       <name>{{ data.ENIDVLAN }}</name>
-                       <classifiers>
-                           <dscp>
-                               <name>CUSTOMER_DSCP_CLASSIFIER_NONEF</name>
-                           </dscp>
-                       </classifiers>
-                  </unit>
-              {% endif %}
+                      {% endif %}
+                   </unit>
+                  {% endfor %}
               </interface>
+              {% endfor %}
          </interfaces>
+         {% endif %}
     </class-of-service>
 </configuration></config>
 </edit-config>
