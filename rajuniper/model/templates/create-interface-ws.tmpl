@@ -7,90 +7,77 @@
 <edit-config><target><candidate/></target>
 <config><configuration>
     <interfaces>
+         {% for intf_set_data in data["interfaces"]["interface-set"] %}
          <interface-set>
-              <interface-set-name>{{ data['INTSETNAME'] }}</interface-set-name>
+              <interface-set-name>{{ intf_set_data["name"] }}</interface-set-name>
+              {% for interface_data in intf_set_data["interface"] %}
               <interface>
-                   <name>{{ data['PARENTINT'] }}</name>
+                   <name>{{ interface_data["name"] }}</name>
+                   {% for unit_data in interface_data["unit"] %}
                    <unit>
-                        <name>{{ data['L3VPNVLAN'] }}</name>
+                        <name>{{ unit_data["name"] }}</name>
                    </unit>
-                   {% if data.FOOTPRINT == 'PAE' %}
-                   <unit>
-                        <name>{{ data['ENIDVLAN'] }}</name>
-                   </unit>
-                   {% endif %}
+                   {% endfor %}
               </interface>
+              {% endfor %}
          </interface-set>
+         {% endfor %}
+         {% for interface_data in data["interface"]%}
          <interface>
-              <name>{{ data['PARENTINT'] }}</name>
-              {% if data.WAN == 'FULLETHERNET' %}
-                  {% if 'INTDESCRIPTION' in data %}
-                  <description>{{ data['INTDESCRIPTION'] }}</description>
-                  {% endif %}
-                  <per-unit-scheduler/>
-                  <vlan-tagging/>
-                  <encapsulation>flexible-ethernet-services</encapsulation>
+              <name>{{ interface_data["name"] }}</name>
+              {% if interface_data["description"] %}
+              <description>{{ interface_data["description"] }}</description>
               {% endif %}
+              {% if interface_data["vlan_tag_mode"] %}
+              <{{interface_data["vlan_tag_mode"] }}/>
+              {% endif %}
+              {% if interface_data["scheduler_type"] %}
+              <{{interface_data["scheduler_type"] }}/>
+              {% endif %}
+              {% if interface_data["encapsulation"] %}
+              <encapsulation>{{ interface_data["encapsulation"] }}</encapsulation>
+              {% endif %}
+              {% for unit_data in interface_data["unit"]%}
                <unit>
-                  <name>{{ data['ENIDVLAN'] }}</name>
-                  {% if 'ENIDVLANDESCR' in data %}
-                  <description>{{ data['ENIDVLANDESCR'] }}</description>
+                  <name>{{ unit_data["name"] }}</name>
+                  {% if unit_data["description"] %}
+                  <description>{{ unit_data["description"]  }}</description>
                   {% endif %}
-                  {% if data.WAN == 'FULLETHERNET' %}
-                  <vlan-id>{{ data['ENIDVLAN'] }}</vlan-id>
-                  {% elif data.WAN == 'ETHERNET' %}
+                  {% if unit_data["vlan-id"] %}
+                  <vlan-id>{{ unit_data["vlan-id"] }}</vlan-id>
+                  {% elif unit_data["vlan-tags"] %}
                   <vlan-tags>
-                      <outer>{{ data['WINVLAN'] }}</outer>
-                      <inner>{{ data['ENIDINNERVLAN'] }}</inner>
+                      <outer>{{ unit_data["vlan-tags"]["outer"] }}</outer>
+                      {% if unit_data["vlan-tags"]["inner"] %}
+                      <inner>{{ unit_data["vlan-tags"]["inner"] }}</inner>
+                      {% endif %}
                   </vlan-tags>
                   {% endif %}
-                  {% if data.FOOTPRINT == 'PAE' %}
-                  <encapsulation>vlan-bridge</encapsulation>
+                  {% if unit_data["encapsulation"] %}
+                  <encapsulation>{{ unit_data["encapsulation"] }}</encapsulation>
                   {% endif %}
-                  {% if data.FOOTPRINT == 'WIN' %}
+                  {% if unit_data["family"]["inet"] %}
                   <family>
-                      <inet>
+                    <inet>
+                          {% for address_data in unit_data["family"]["inet"]["address"] %}
                           <address>
-                              <name>{{ data['ENIDWAN'] }}{{ data['ENIDCIDR'] }}</name>
+                              <name>{{ address_data["name"] }}</name>
                           </address>
+                          {% endif %}
+                          {% if unit_data["family"]["inet"]["filter"]["input"] %}
                           <filter>
                               <input>
-                                    <filter-name>NON_QOS_CUSTOMER_TRAFFIC</filter-name>
-                              </input>
-                          </filter>
-                    </inet>
-                  </family>
-                  {% endif %}
-              </unit>
-              <unit>
-                  <name>{{ data['L3VPNVLAN'] }}</name>
-                  {% if 'L3VPNVLANDESCR' in data %}
-                  <description>{{ data['L3VPNVLANDESCR'] }}</description>
-                  {% endif %}
-                  {% if data.WAN == 'FULLETHERNET' %}
-                  <vlan-id>{{ data['L3VPNVLAN'] }}</vlan-id>
-                  {% elif data.WAN == 'ETHERNET' %}
-                  <vlan-tags>
-                      <outer>{{ data['WINVLAN'] }}</outer>
-                      <inner>{{ data['L3VPNINNERVLAN'] }}</inner>
-                  </vlan-tags>
-                  {% endif %}
-                  <family>
-                      <inet>
-                          <address>
-                              <name>{{ data['L3VPNWAN'] }}{{ data['L3VPNCIDR'] }}</name>
-                          </address>
-                          {% if data.COS == 'FALSE' %}
-                          <filter>
-                              <input>
-                                    <filter-name>NON_QOS_CUSTOMER_TRAFFIC_ALLOW_BOGON</filter-name>
+                                    <filter-name>{{ unit_data["family"]["inet"]["filter"]["input"]["name"] }}</filter-name>
                               </input>
                           </filter>
                           {% endif %}
                     </inet>
                   </family>
+                  {% endif %}
               </unit>
+              {% endfor %}
         </interface>
+        {% endfor %}
     </interfaces>
 </configuration></config>
 </edit-config>

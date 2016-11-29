@@ -116,6 +116,15 @@ module cyan_host_juniper {
                 }
             }
 
+            leaf encapsulation {
+                 description "Physical link-layer encapsulation";
+                 type enumeration {
+                   enum flexible-ethernet-services {
+                       description "Allows per-unit Ethernet encapsulation configuration";
+                   }
+                 }
+               }
+
             list unit {
                 key name;
                 description "Logical interface";
@@ -132,12 +141,12 @@ module cyan_host_juniper {
                 }
 
                 leaf encapsulation {
-                    description "Physical link-layer encapsulation";
-                    type enumeration {
-                        enum flexible-ethernet-services {
-                            description "Allows per-unit Ethernet encapsulation configuration";
-                        }
-                    }
+                  description "Logical link-layer encapsulation";
+                  type enumeration {
+                      enum vlan-bridge {
+                          description "VLAN layer-2 bridging";
+                      }
+                   }
                 }
 
                 choice vlan_choice {
@@ -293,8 +302,8 @@ module cyan_host_juniper {
                             leaf name {
                             type string;
                         }
-                        choice next_hop {
-                            leaf-list next-hop {
+                        choice nexthop {
+                            leaf-list nexthop {
                                 type string;
                             }
                             leaf reject {
@@ -528,6 +537,18 @@ module cyan_host_juniper {
                             }
                         }
                     }
+
+                    leaf default-action {
+                    description "Set default policy action";
+                    type enumeration {
+                       enum accept {
+                          description "Accept a route";
+                       }
+                       enum reject {
+                           description "Reject a route";
+                       }
+                     }
+                   }
                 }
                 container then {
                     description "Actions to take if 'from' and 'to' conditions match";

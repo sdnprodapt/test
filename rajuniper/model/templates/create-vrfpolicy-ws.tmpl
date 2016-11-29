@@ -3,82 +3,65 @@
 <target><candidate/></target>
 <config><configuration>
     <policy-options>
+        {% for policy_statement_info in data["policy-statement"]%}
         <policy-statement>
-        	<policy_name>{{ data.CUSTOMERPOLICY }}-EXPORT</policy_name>
-			<term>
-			        <term_name>MGMT-routes</term_name>
-				    <from>
-                         <protocol>direct</protocol>
-                         <prefix-list-filter>
-				             <list_name>MGMT_NETWORKS</list_name>
-                             <orlonger></orlonger>
-                             <reject></reject>
-				         </prefix-list-filter>
-                         <prefix-list-filter>
-				              <list_name>PAETEC-CPE-MGMT</list_name>
-                              <orlonger></orlonger>
-				         </prefix-list-filter>
-				    </from>
-				    <then>
+            <policy_name>{{ policy_statement_info["policy_name"] }}</policy_name>
+            {% for term_data in data["term"] %}
+            <term>
+                    <term_name>{{term_data["term_name"]}}</term_name>
+                    {% if term_data["from"] %}
+                    {% set from_data = term_data["from"]%}
+                    <from>
+                         {% for protocol_info in from_data["protocol"]%}
+                         <protocol>{{protocol_info}}</protocol>
+                         {% endfor %}
+                         {% for community in from_data["community"] %}
                          <community>
-                              <add></add>
-					          <community_name>MGMT-Paetec-411</community_name>
-				         </community>
-				    </then>
-				 </term>
-				 <term>
-			        <term_name>CUST-routes</term_name>
-				    <from>
-                         <protocol>static</protocol>
-                         <protocol>direct</protocol>
-                         <protocol>bgp</protocol>
-				    </from>
-				     <then>
-                          <community>
-                              <add></add>
-					          <community_name>{{ data.CUSTOMERCOMMUNITY }}</community_name>
-				          </community>
-				          <accept/>
-				     </then>
-				 </term>
-				 <term>
-			         <term_name>REJECT</term_name>
-				     <then>
-				         <reject/>
-				     </then>
-                 </term>
-              </policy-statement>
-              <policy-statement>
-             <policy_name>{{ data.CUSTOMERPOLICY }}-IMPORT</policy_name>
-			     <term>
-			          <term_name>Routes</term_name>
-				      <from>
-                           <protocol>bgp</protocol>
-                           <community>
-				                 <value>{{ data.CUSTOMERCOMMUNITY }}</value>
-				           </community>
-                           <community>
-				                 <value>MGMT-Paetec-911</value>
-				           </community>
-				       </from>
-				       <then>
-				           <accept/>
-				       </then>
-				  </term>
-				 <term>
-			        <term_name>REJECT</term_name>
-				     <then>
-				           <reject/>
-				      </then>
-			    </term>
-			</policy-statement>
-                 <community>
-                     <community_name>{{ data.CUSTOMERCOMMUNITY }}</community_name>
-                     <members>
-                          <value>target:{{ data.ROUTEDISTINGUISHER }}</value>
-                      </members>
-                 </community>
-		</policy-options>
+                            <value>{{ community }}</value>
+                         </community>
+                         {% endfor %}
+                         {% for prefix_list_filter_data in from_data["prefix-list-filter"] %}
+                         <prefix-list-filter>
+                             <list_name>{{prefix_list_filter_data["list_name"]}}</list_name>
+                             {% if prefix_list_filter_data["modifier"] %}
+                             <{{prefix_list_filter_data["modifier"]}}></{{prefix_list_filter_data["modifier"]}}>
+                             {% endif %}
+                         </prefix-list-filter>
+                         {% endfor %}
+                         {% if from_data["default-action"] %}
+                         <{{from_data["default-action"]}}/>
+                         {% endif %}
+                    </from>
+                    {% endif %}
+                    {% if term_data["then"] %}
+                    <then>
+                         {% for community_data in term_data["then"]["community"] %}
+                         <community>
+                              {% for action_name in community_data["community-action"].keys() %}
+                              <{{action_name}}></{{action_name}}>
+                              {% endfor %}
+                              <community_name>community_data["community-name"]</community_name>
+                         </community>
+                         {% endfor %}
+                    </then>
+                    {% endif %}
+            </term>
+            {% endfor %}
+        </policy-statement>
+        {% endfor %}
+        {% for community_data in data["community"]%}
+         <community>
+             <community_name>{{ community_data["community_name"] }}</community_name>
+             {% if community_data["members"] %}
+             <members>
+                  {% for member in community_data["members"] %}
+                  <value>{{ member }}</value>
+                  {% endfor %}
+             </members>
+             {% endif %}
+         </community>
+         {% endfor %}
+    </policy-options>
 </configuration></config>
 </edit-config>
 </rpc>
