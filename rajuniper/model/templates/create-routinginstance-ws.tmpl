@@ -1,91 +1,113 @@
-{#
-    NOTE:
-    1. <interface>
-         <name>{{ data['PARENTINT'] }}.{{ data['L3VPNVLAN'] }}</name>
-        </interface>
-    2.   <vrf-import>{{ data.CUSTOMERPOLICY }}-IMPORT</vrf-import>
-         <vrf-export>{{ data.CUSTOMERPOLICY }}-EXPORT</vrf-export>
-    More than one value is allowed here.Please handle it
-#}
 <rpc>
 <edit-config>
 <target><candidate/></target>
 <config><configuration>
     <routing-instances>
+    {% for instance_data in data["instance"] %}
         <instance>
-            <name>{{ data['L3VPNNAME'] }}</name>
-        {% if data.description %}
-            <description>{{ data['L3VPNVLANDESCR'] }}</description>
+            <name>{{ instance_data["name"] }}</name>
+        {% if instance_data["description"] %}
+            <description>{{ instance_data["description"] }}</description>
         {% endif %}
-            <instance-type>vrf</instance-type>
+        {% if instance_data["instance-type"] %}
+            <instance-type>{{ instance_data["instance-type"] }}</instance-type>
+        {% endif %}
+        {% for interface in instance_data["interface"] %}
             <interface>
-                <name>{{ data['PARENTINT'] }}.{{ data['L3VPNVLAN'] }}</name>
+                <name>{{ interface["name"] }}</name>
             </interface>
-        {% if data.ROUTEDISTINGUISHER %}
+        {% endfor %}
+        {% if instance_data["route-distinguisher"]["rd-type"] %}
             <route-distinguisher>
-                <rd-type>{{ data.ROUTEDISTINGUISHER }}</rd-type>
+                <rd-type>{{ instance_data["route-distinguisher"]["rd-type"] }}</rd-type>
             </route-distinguisher>
         {% endif %}
-        {% if data.FOOTPRINT == 'PAE' %}
-            <vrf-import>{{ data.CUSTOMERPOLICY }}-IMPORT</vrf-import>
-            <vrf-export>{{ data.CUSTOMERPOLICY }}-EXPORT</vrf-export>
-        {% endif %}
+        {% for import_policy in instance_data["vrf-import"] %}
+            <vrf-import>{{ import_policy }}</vrf-import>
+        {% endfor %}
+        {% for export_policy in instance_data["vrf-export"] %}
+            <vrf-export>{{ export_policy }}</vrf-export>
+        {% endfor %}
+        {% if instance_data["vrf-target"]["community"] %}
             <vrf-target>
-                 <community>target:{{ data.ROUTETARGET }}</community>
+                 <community>{{ instance_data["vrf-target"]["community"] }}</community>
             </vrf-target>
-            <vrf-table-label><source-class-usage></source-class-usage></vrf-table-label>
-        {%  if data.routing_options %}
+        {% endif %}
+        {% if instance_data["vrf-table-label"]["source-class-usage"] %}
+                 <vrf-table-label><source-class-usage></source-class-usage></vrf-table-label>
+        {% endif %}
+        {%  if instance_data["routing_options"]["static"] %}
             <routing-options>
                 <static>
-                {% for g in data.ROUTINGOPTIONS %}
+                {% for route in instance_data["route"] %}
                     <route>
-                        <name>{{ g.L3VPNLAN }}{{ g.L3VPNLANCIDR }}</name>
-                        <nexthop>{{ g.L3VPNNEXTHOPIP }}</nexthop>
+                        <name>{{ route["name"] }}</name>
+                        <nexthop>{{ route["nexthop"] }}</nexthop>
                     </route>
                 {% endfor %}
                 </static>
              </routing-options>
         {% endif %}
-        {% if data.ROUTING == 'BGP' %}
+        {% if instance_data["protocols"]["bgp"] %}
             <protocols>
                 <bgp>
-                {% for g in data.BGPGROUPS %}
+                {% for group in instance_data["group"] %}
                     <group>
-                        <name>{{ g.CUSTOMERBGPGROUP }}</name>
-                        <type>external</type>
-                        <peer-as>{{ g.L3VPNCUSTOMERASN }}</peer-as>
+                    {% if group["name"] %}
+                        <name>{{ group["name"] }}</name>
+                    {% endif %}
+                    {% if group["type"] %}
+                        <type>{{ group["type"] }}</type>
+                    {% endif %}
+                    {% if group["peer-as"] %}
+                        <peer-as>{{ group["peer-as"] }}</peer-as>
+                    {% endif %}
+                    {% if group["as-override"] %}
                         <as-override></as-override>
-                    {% if g.NEIGHBORS %}
-                        {% for n in g.neighbors %}
+                    {% endif %}
+                    {% for neighbor in group["neighbor"] %}
                         <neighbor>
-                            <name>{{ n.L3VPNCUSTOMERPEER }}</name>
-                        {% if n.authentication_key %}
-                            <authentication-key>{{ n.L3VPNBGPPASSWORD }}</authentication-key>
+                        {% if neighbor["address"] %}
+                            <name>{{ neighbor["address"] }}</name>
+                        {% endif %}
+                        {% if neighbor["authentication-key"] %}
+                            <authentication-key>{{ neighbor["authentication-key"] }}</authentication-key>
                         {% endif %}
                         </neighbor>
-                        {% endfor %}
-                    {% endif %}
+                    {% endfor %}
+                    {% if instance_data["family"]["inet"]["unicast"]["prefix-limit"] %}
+                    {% set prefix-limit = instance_data["family"]["inet"]["unicast"]["prefix-limit"] %}
                         <family>
                             <inet>
                                 <unicast>
                                     <prefix-limit>
-                                        <maximum>2000</maximum>
+                                    {% if prefix-limit["maximum"] %}
+                                        <maximum>{{ prefix-limit["maximum"] }}</maximum>
+                                    {% endif %}
+                                    {% if prefix-limit["teardown"] %}
                                          <teardown>
-                                              <limit-threshold>80</limit-threshold>
+                                         {% if prefix-limit["teardown"]["limit-threshold"] %}
+                                              <limit-threshold>{{ prefix-limit["teardown"]["limit-threshold"] }}</limit-threshold>
+                                         {% endif %}
+                                         {% if prefix-limit["teardown"]["idle-timeout"] %}
                                                <idle-timeout>
-                                                   <timeout>15</timeout>
+                                                   <timeout>{{ prefix-limit["teardown"]["idle-timeout"] }}</timeout>
                                                </idle-timeout>
+                                          {% endif %}
                                           </teardown>
+                                     {% endif %}
                                     </prefix-limit>
                                 </unicast>
                             </inet>
                         </family>
+                     {% endif %}
                     </group>
                 {% endfor %}
                 </bgp>
             </protocols>
         {% endif %}
         </instance>
+    {% endfor %}
     </routing-instances>
 </configuration></config>
 </edit-config>
