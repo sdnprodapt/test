@@ -135,6 +135,11 @@ module cyan_host_juniper {
                     }
                 }
 
+                leaf bandwidth {
+                    description "Logical unit bandwidth (informational only)";
+                    type string;
+                }
+
                 leaf description {
                     description "Text description of interface";
                     type string;
@@ -210,6 +215,14 @@ module cyan_host_juniper {
                                      description "Name of the filter";
                                      type string;
                                      mandatory true;
+                                }
+                            }
+
+                            container output {
+                                description "Filter to be applied to received packets";
+                                leaf name {
+                                     description "Name of the filter";
+                                     type string;
                                 }
                             }
                         }
@@ -296,6 +309,39 @@ module cyan_host_juniper {
                 }
             }
             container routing-options {
+                 leaf auto-export {
+                    description "Export routes between routing instances";
+                    type empty;
+                 }
+                 container maximum-prefixes {
+                     description "Maximum number of prefixes";
+                     leaf limit {
+                         description "Maximum number of prefixes";
+                         type uint32 {
+                             range "1 .. 4294967295";
+                         }
+                     }
+                     choice log_type {
+                         leaf threshold {
+                             description "Percentage of limit at which to start generating warnings";
+                             type uint32 {
+                                range "1 .. 100";
+                             }
+                         }
+                         leaf log-only {
+                             description "Generate warning messages only";
+                             type empty;
+                         }
+                     }
+                     leaf log-interval {
+                         description "Minimum interval between log messages";
+                         units "seconds";
+                         type uint32 {
+                             range "5 .. 86400";
+                         }
+                     }
+                 }
+
                 container static {
                     list route {
                         key "name";
@@ -390,6 +436,22 @@ module cyan_host_juniper {
                                 type string {
                                     length "1 .. 126";
                                 }
+                            }
+                            leaf as-override {
+                                description "Replace neighbor AS number with our AS number";
+                                type empty;
+                            }
+                            leaf peer-as {
+                                description " Autonomous system number in plain number or 'higher 16bits'.'Lower 16 bits' (asdot notation) format";
+                                type string {
+                                    pattern "[0-9]+(.[0-9]+)?" {
+                                        error-message "Use format 'x' or 'x.y' to specify number 'x' (Range 1 .. 4294967295) or number with higher 2 bytes 'x' (Range 0 .. 65535) and lower 2 bytes 'y' (Range 0 .. 65535) respectively";
+                                    }
+                                }
+                            }
+                            leaf local-address {
+                                description "Address of neighbor";
+                                type ipaddr;
                             }
                         }
                     }
@@ -609,6 +671,35 @@ module cyan_host_juniper {
                             }
                         }
                     }
+                    container next-hop {
+                        description "Set the address of the next-hop router";
+                        choice nexthop_value {
+                            leaf self {
+                                description "Use a local address as the next-hop address";
+                                type empty;
+                            }
+                            leaf peer-address {
+                                description "Use the remote peer address as the next-hop address";
+                                type empty;
+                            }
+                            leaf address {
+                                description "Next-hop address";
+                                type ipaddr;
+                            }
+                            leaf reject {
+                                description "Use a reject next hop";
+                                type empty;
+                            }
+                            leaf discard {
+                                description "Use a discard next hop";
+                                type empty;
+                            }
+                            leaf next-table {
+                                description "Perform a forwarding lookup in the specified table";
+                                type string;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -633,7 +724,31 @@ module cyan_host_juniper {
         cb:on-delete "delete-classofservice-ws.json";
         cb:on-put "create-classofservice-ws.json";
 
+        list routing-instances {
+            key instance_name;
 
+            description "Apply CoS options to routing instances with VRF table label";
+            leaf instance_name {
+                description "Routing instance name (or wildcard)";
+                type string {
+                    pattern "!(([*]{1,})|(__.*__)|(.{129,}))" {
+                        error-message "Must be a non-reserved string of 128 characters or less";
+                    }
+                }
+            }
+            container classifiers {
+                description "Classifiers applied to incoming packets";
+                container exp {
+                    description "EXP classifier";
+                    leaf classifier-name {
+                        description "Name of classifier to be applied";
+                        type string {
+                            length "1 .. 64";
+                        }
+                    }
+                }
+            }
+        }
         list traffic-control-profiles {
             key "name";
             leaf name {

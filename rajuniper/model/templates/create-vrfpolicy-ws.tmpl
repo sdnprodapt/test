@@ -43,6 +43,13 @@
                               <community_name>community_data["community-name"]</community_name>
                          </community>
                          {% endfor %}
+                         {% if term_data["then"]["next-hop"] %}
+                            <next-hop>
+                                {% if term_data["then"]["next-hop"]["self"] %}
+                                <self/>
+                                {% endif %}
+                            </next-hop>
+                         {% endif %}
                     </then>
                     {% endif %}
             </term>

@@ -3,6 +3,18 @@
 <target><candidate/></target>
 <config><configuration>
     <class-of-service>
+         {% for routing_instance_data in data["routing-instances"] %}
+         <routing-instances>
+            <instance_name>{{ routing_instance_data["instance_name"] }}</instance_name>
+            {% if routing_instance_data["classifiers"]["exp"]["classifier-name"] %}
+            <classifiers>
+                <exp>
+                    <classifier-name>{{ routing_instance_data["classifiers"]["exp"]["classifier-name"] }}</classifier-name>
+                </exp>
+            <classifiers>
+            {% endif %}
+         </routing-instances>
+         {% endfor %}
          {% for traffic_control_profile_data in data["traffic-control-profiles"] %}
          <traffic-control-profiles>
              <name>{{ traffic_control_profile_data["name"] }}</name>

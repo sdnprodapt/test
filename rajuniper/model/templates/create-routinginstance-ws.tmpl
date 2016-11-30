@@ -36,16 +36,32 @@
         {% if instance_data["vrf-table-label"]["source-class-usage"] %}
                  <vrf-table-label><source-class-usage></source-class-usage></vrf-table-label>
         {% endif %}
-        {%  if instance_data["routing_options"]["static"] %}
+        {%  if instance_data["routing_options"] %}
             <routing-options>
+                {% if instance_data["routing_options"]["auto-export"] %}
+                <auto-export/>
+                {% endif %}
+                {%  if instance_data["routing_options"]["maximum-prefixes"] %}
+                {% set maximum_prefixes_data = instance_data["routing_options"]["maximum-prefixes"] %}
+                <maximum-prefixes>
+                    {%  if maximum_prefixes_data["limit"] %}
+                    <limit>{{maximum_prefixes_data["limit"]}}</limit>
+                    {% endif %}
+                    {%  if maximum_prefixes_data["threshold"] %}
+                    <threshold>{{maximum_prefixes_data["threshold"]}}</threshold>
+                    {% endif %}
+                </maximum-prefixes>
+                {% endif %}
+                {%  if instance_data["routing_options"]["static"] %}
                 <static>
-                {% for route in instance_data["route"] %}
+                {% for route in instance_data["routing_options"]["static"]["route"] %}
                     <route>
                         <name>{{ route["name"] }}</name>
                         <nexthop>{{ route["nexthop"] }}</nexthop>
                     </route>
                 {% endfor %}
                 </static>
+                {% endif %}
              </routing-options>
         {% endif %}
         {% if instance_data["protocols"]["bgp"] %}
@@ -72,6 +88,15 @@
                         {% endif %}
                         {% if neighbor["authentication-key"] %}
                             <authentication-key>{{ neighbor["authentication-key"] }}</authentication-key>
+                        {% endif %}
+                        {% if neighbor["peer-as"] %}
+                            <peer-as>{{ group["peer-as"] }}</peer-as>
+                        {% endif %}
+                        {% if neighbor["as-override"] %}
+                            <as-override></as-override>
+                        {% endif %}
+                        {% if neighbor["local-address"] %}
+                            <local-address>{{ neighbor["local-address"] }}</local-address>
                         {% endif %}
                         </neighbor>
                     {% endfor %}

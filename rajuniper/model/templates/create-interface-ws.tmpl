@@ -43,6 +43,9 @@
                   {% if unit_data["description"] %}
                   <description>{{ unit_data["description"]  }}</description>
                   {% endif %}
+                  {% if unit_data["bandwidth"] %}
+                  <bandwidth>{{ unit_data["bandwidth"]  }}</bandwidth>
+                  {% endif %}
                   {% if unit_data["vlan-id"] %}
                   <vlan-id>{{ unit_data["vlan-id"] }}</vlan-id>
                   {% elif unit_data["vlan-tags"] %}
@@ -64,11 +67,18 @@
                               <name>{{ address_data["name"] }}</name>
                           </address>
                           {% endif %}
-                          {% if unit_data["family"]["inet"]["filter"]["input"] %}
+                          {% if unit_data["family"]["inet"]["filter"] %}
                           <filter>
+                              {% if unit_data["family"]["inet"]["filter"]["input"] %}
                               <input>
                                     <filter-name>{{ unit_data["family"]["inet"]["filter"]["input"]["name"] }}</filter-name>
                               </input>
+                              {% endif %}
+                              {% if unit_data["family"]["inet"]["filter"]["output"] %}
+                              <output>
+                                    <filter-name>{{ unit_data["family"]["inet"]["filter"]["output"]["name"] }}</filter-name>
+                              </output>
+                              {% endif %}
                           </filter>
                           {% endif %}
                     </inet>
