@@ -1,93 +1,45 @@
-{#
-    Inputs:
-        PARENTINT: name of the interface to create the logical interface on
-#}
-
+{% set data= data['L3VPN']['extension']['interface'] %}
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
     <interfaces>
-         {% for intf_set_data in data["interfaces"]["interface-set"] %}
-         <interface-set>
-              <interface-set-name>{{ intf_set_data["name"] }}</interface-set-name>
-              {% for interface_data in intf_set_data["interface"] %}
-              <interface>
-                   <name>{{ interface_data["name"] }}</name>
-                   {% for unit_data in interface_data["unit"] %}
-                   <unit>
-                        <name>{{ unit_data["name"] }}</name>
-                   </unit>
-                   {% endfor %}
-              </interface>
-              {% endfor %}
-         </interface-set>
-         {% endfor %}
-         {% for interface_data in data["interface"]%}
          <interface>
-              <name>{{ interface_data["name"] }}</name>
-              {% if interface_data["description"] %}
-              <description>{{ interface_data["description"] }}</description>
-              {% endif %}
-              {% if interface_data["vlan_tag_mode"] %}
-              <{{interface_data["vlan_tag_mode"] }}/>
-              {% endif %}
-              {% if interface_data["scheduler_type"] %}
-              <{{interface_data["scheduler_type"] }}/>
-              {% endif %}
-              {% if interface_data["encapsulation"] %}
-              <encapsulation>{{ interface_data["encapsulation"] }}</encapsulation>
-              {% endif %}
-              {% for unit_data in interface_data["unit"]%}
+              <name>{{ data['name'] }}</name>
                <unit>
-                  <name>{{ unit_data["name"] }}</name>
-                  {% if unit_data["description"] %}
-                  <description>{{ unit_data["description"]  }}</description>
+                  <name>{{ data['l3vpnVlan'] }}</name>
+                  {% if data['description'] %}
+                  <description>{{ data['description'] }}</description>
                   {% endif %}
-                  {% if unit_data["bandwidth"] %}
-                  <bandwidth>{{ unit_data["bandwidth"]  }}</bandwidth>
+                  {% if data['bandwidth'] %}
+                  <bandwidth>{{ data['bandwidth'] }}</bandwidth>
                   {% endif %}
-                  {% if unit_data["vlan-id"] %}
-                  <vlan-id>{{ unit_data["vlan-id"] }}</vlan-id>
-                  {% elif unit_data["vlan-tags"] %}
-                  <vlan-tags>
-                      <outer>{{ unit_data["vlan-tags"]["outer"] }}</outer>
-                      {% if unit_data["vlan-tags"]["inner"] %}
-                      <inner>{{ unit_data["vlan-tags"]["inner"] }}</inner>
-                      {% endif %}
-                  </vlan-tags>
+                  {% if data['vlan-id'] %}
+                  <vlan-id>{{ data['vlan-id'] }}</vlan-id>
                   {% endif %}
-                  {% if unit_data["encapsulation"] %}
-                  <encapsulation>{{ unit_data["encapsulation"] }}</encapsulation>
-                  {% endif %}
-                  {% if unit_data["family"]["inet"] %}
                   <family>
-                    <inet>
-                          {% for address_data in unit_data["family"]["inet"]["address"] %}
+                      <inet>
+                          {% if data['address'] %}
                           <address>
-                              <name>{{ address_data["name"] }}</name>
+                              <name>{{ data['address'] }}</name>
                           </address>
                           {% endif %}
-                          {% if unit_data["family"]["inet"]["filter"] %}
                           <filter>
-                              {% if unit_data["family"]["inet"]["filter"]["input"] %}
+                              {% if data['inputServicePolicy'] %}
                               <input>
-                                    <filter-name>{{ unit_data["family"]["inet"]["filter"]["input"]["name"] }}</filter-name>
+                                    <filter-name>{{ data['inputServicePolicy'] }}</filter-name>
                               </input>
                               {% endif %}
-                              {% if unit_data["family"]["inet"]["filter"]["output"] %}
+                              {% if data['outputServicePolicy'] %}
                               <output>
-                                    <filter-name>{{ unit_data["family"]["inet"]["filter"]["output"]["name"] }}</filter-name>
+                                    <filter-name>{{ data['outputServicePolicy'] }}</filter-name>
                               </output>
                               {% endif %}
                           </filter>
-                          {% endif %}
                     </inet>
                   </family>
                   {% endif %}
               </unit>
-              {% endfor %}
         </interface>
-        {% endfor %}
     </interfaces>
 </configuration></config>
 </edit-config>

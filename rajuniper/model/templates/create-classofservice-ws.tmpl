@@ -1,17 +1,19 @@
+{% set class_of_service_data = data['L3VPN']['attachment']['class-of-service'] %}
+
 <rpc>
 <edit-config>
 <target><candidate/></target>
 <config><configuration>
     <class-of-service>
-         {% for routing_instance_data in data["routing-instances"] %}
+         {% for routing_instance_data in class_of_service_data["routing-instance"] %}
          <routing-instances>
-            <instance_name>{{ routing_instance_data["instance_name"] }}</instance_name>
-            {% if routing_instance_data["classifiers"]["exp"]["classifier-name"] %}
+            <instance_name>{{ routing_instance_data["name"] }}</instance_name>
+            {% if routing_instance_data["classifier-name"] %}
             <classifiers>
                 <exp>
-                    <classifier-name>{{ routing_instance_data["classifiers"]["exp"]["classifier-name"] }}</classifier-name>
+                    <classifier-name>{{ routing_instance_data["classifier-name"] }}</classifier-name>
                 </exp>
-            <classifiers>
+            </classifiers>
             {% endif %}
          </routing-instances>
          {% endfor %}

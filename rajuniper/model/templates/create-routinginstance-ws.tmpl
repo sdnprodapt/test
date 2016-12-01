@@ -1,9 +1,11 @@
+{% set routing_instance_data = data['L3VPN']['attachment']['routing-instance'] %}
+
 <rpc>
 <edit-config>
 <target><candidate/></target>
 <config><configuration>
     <routing-instances>
-    {% for instance_data in data["instance"] %}
+    {% set instance_data = routing_instance_data %}
         <instance>
             <name>{{ instance_data["name"] }}</name>
         {% if instance_data["description"] %}
@@ -14,12 +16,12 @@
         {% endif %}
         {% for interface in instance_data["interface"] %}
             <interface>
-                <name>{{ interface["name"] }}</name>
+                <name>{{ interface }}</name>
             </interface>
         {% endfor %}
-        {% if instance_data["route-distinguisher"]["rd-type"] %}
+        {% if instance_data["route-distinguisher"] %}
             <route-distinguisher>
-                <rd-type>{{ instance_data["route-distinguisher"]["rd-type"] }}</rd-type>
+                <rd-type>{{ instance_data["route-distinguisher"] }}</rd-type>
             </route-distinguisher>
         {% endif %}
         {% for import_policy in instance_data["vrf-import"] %}
@@ -33,8 +35,8 @@
                  <community>{{ instance_data["vrf-target"]["community"] }}</community>
             </vrf-target>
         {% endif %}
-        {% if instance_data["vrf-table-label"]["source-class-usage"] %}
-                 <vrf-table-label><source-class-usage></source-class-usage></vrf-table-label>
+        {% if instance_data["vrf-table-label"] %}
+                 <vrf-table-label></vrf-table-label>
         {% endif %}
         {%  if instance_data["routing_options"] %}
             <routing-options>
@@ -64,10 +66,10 @@
                 {% endif %}
              </routing-options>
         {% endif %}
-        {% if instance_data["protocols"]["bgp"] %}
+        {% if instance_data["protocols_bgp"] %}
             <protocols>
                 <bgp>
-                {% for group in instance_data["group"] %}
+                {% for group in instance_data["groups"] %}
                     <group>
                     {% if group["name"] %}
                         <name>{{ group["name"] }}</name>
@@ -81,7 +83,10 @@
                     {% if group["as-override"] %}
                         <as-override></as-override>
                     {% endif %}
-                    {% for neighbor in group["neighbor"] %}
+                    {% for export_policy in group["export_policy"] %}
+                        <export>export_policy</export>
+                    {% endfor %}
+                    {% for neighbor in group["neighbors"] %}
                         <neighbor>
                         {% if neighbor["address"] %}
                             <name>{{ neighbor["address"] }}</name>
@@ -90,7 +95,7 @@
                             <authentication-key>{{ neighbor["authentication-key"] }}</authentication-key>
                         {% endif %}
                         {% if neighbor["peer-as"] %}
-                            <peer-as>{{ group["peer-as"] }}</peer-as>
+                            <peer-as>{{ neighbor["peer-as"] }}</peer-as>
                         {% endif %}
                         {% if neighbor["as-override"] %}
                             <as-override></as-override>
@@ -132,7 +137,6 @@
             </protocols>
         {% endif %}
         </instance>
-    {% endfor %}
     </routing-instances>
 </configuration></config>
 </edit-config>

@@ -1,14 +1,15 @@
+{% set policy_info = data['L3VPN']['extension']['VrfPolicy'] %}
 <rpc>
 <edit-config>
 <target><candidate/></target>
 <config><configuration>
     <policy-options>
-        {% for policy_statement_info in data["policy-statement"]%}
+        {% for policy in policy_info["policy-statement"] %}
         <policy-statement>
-            <policy_name>{{ policy_statement_info["policy_name"] }}</policy_name>
-            {% for term_data in data["term"] %}
+            <policy_name>{{ policy["name"] }}</policy_name>
+            {% for term_data in policy["terms"] %}
             <term>
-                    <term_name>{{term_data["term_name"]}}</term_name>
+                    <term_name>{{term_data["name"]}}</term_name>
                     {% if term_data["from"] %}
                     {% set from_data = term_data["from"]%}
                     <from>
@@ -28,8 +29,11 @@
                              {% endif %}
                          </prefix-list-filter>
                          {% endfor %}
-                         {% if from_data["default-action"] %}
-                         <{{from_data["default-action"]}}/>
+                         {% if from_data["accept"] %}
+                         <accept/>
+                         {% endif %}
+                         {% if from_data["reject"] %}
+                         <reject/>
                          {% endif %}
                     </from>
                     {% endif %}
@@ -37,10 +41,10 @@
                     <then>
                          {% for community_data in term_data["then"]["community"] %}
                          <community>
-                              {% for action_name in community_data["community-action"].keys() %}
-                              <{{action_name}}></{{action_name}}>
-                              {% endfor %}
-                              <community_name>community_data["community-name"]</community_name>
+                              {% if community_data["operation"] %}
+                              <{{community_data["operation"]}}></{{community_data["operation"]}}>
+                              {% endif %}
+                              <community_name>community_data["community_name"]</community_name>
                          </community>
                          {% endfor %}
                          {% if term_data["then"]["next-hop"] %}
@@ -50,13 +54,19 @@
                                 {% endif %}
                             </next-hop>
                          {% endif %}
+                         {% if from_data["accept"] %}
+                         <accept/>
+                         {% endif %}
+                         {% if from_data["reject"] %}
+                         <reject/>
+                         {% endif %}
                     </then>
                     {% endif %}
             </term>
             {% endfor %}
         </policy-statement>
         {% endfor %}
-        {% for community_data in data["community"]%}
+        {% for community_data in policy_info["community"]%}
          <community>
              <community_name>{{ community_data["community_name"] }}</community_name>
              {% if community_data["members"] %}
