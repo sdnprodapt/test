@@ -1,0 +1,35 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "rest",
+    "endpoint-parameters": {
+    },
+    "out-path": [
+        {
+            "type": "rajuniper.translators.device.SessionId",
+            "parameters": {
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "pbservice/list-bgp.tmpl",
+                "as_object": true
+            }
+        }
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.SerialCommand",
+            "parameters": {
+                "command": "pbservice/list-bgp-vrf.json",
+                "update": true
+            }
+        },{
+            "type": "rajuniper.translators.uniquekey.UniqueKeyTranslator",
+            "parameters": {
+                "key": "/name",
+                "from-child": "vrf"
+            }
+        }
+    ]
+}

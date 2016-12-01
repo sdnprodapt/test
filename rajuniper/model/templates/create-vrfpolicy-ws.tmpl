@@ -1,0 +1,84 @@
+{% set policy_info = data['L3VPN']['extension']['VrfPolicy'] %}
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <policy-options>
+        {% for policy in policy_info["policy-statement"] %}
+        <policy-statement>
+            <policy_name>{{ policy["name"] }}</policy_name>
+            {% for term_data in policy["terms"] %}
+            <term>
+                    <term_name>{{term_data["name"]}}</term_name>
+                    {% if term_data["from"] %}
+                    {% set from_data = term_data["from"]%}
+                    <from>
+                         {% for protocol_info in from_data["protocol"]%}
+                         <protocol>{{protocol_info}}</protocol>
+                         {% endfor %}
+                         {% for community in from_data["community"] %}
+                         <community>
+                            <value>{{ community }}</value>
+                         </community>
+                         {% endfor %}
+                         {% for prefix_list_filter_data in from_data["prefix-list-filter"] %}
+                         <prefix-list-filter>
+                             <list_name>{{prefix_list_filter_data["list_name"]}}</list_name>
+                             {% if prefix_list_filter_data["modifier"] %}
+                             <{{prefix_list_filter_data["modifier"]}}></{{prefix_list_filter_data["modifier"]}}>
+                             {% endif %}
+                         </prefix-list-filter>
+                         {% endfor %}
+                         {% if from_data["accept"] %}
+                         <accept/>
+                         {% endif %}
+                         {% if from_data["reject"] %}
+                         <reject/>
+                         {% endif %}
+                    </from>
+                    {% endif %}
+                    {% if term_data["then"] %}
+                    <then>
+                         {% for community_data in term_data["then"]["community"] %}
+                         <community>
+                              {% if community_data["operation"] %}
+                              <{{community_data["operation"]}}></{{community_data["operation"]}}>
+                              {% endif %}
+                              <community_name>community_data["community_name"]</community_name>
+                         </community>
+                         {% endfor %}
+                         {% if term_data["then"]["next-hop"] %}
+                            <next-hop>
+                                {% if term_data["then"]["next-hop"]["self"] %}
+                                <self/>
+                                {% endif %}
+                            </next-hop>
+                         {% endif %}
+                         {% if from_data["accept"] %}
+                         <accept/>
+                         {% endif %}
+                         {% if from_data["reject"] %}
+                         <reject/>
+                         {% endif %}
+                    </then>
+                    {% endif %}
+            </term>
+            {% endfor %}
+        </policy-statement>
+        {% endfor %}
+        {% for community_data in policy_info["community"]%}
+         <community>
+             <community_name>{{ community_data["community_name"] }}</community_name>
+             {% if community_data["members"] %}
+             <members>
+                  {% for member in community_data["members"] %}
+                  <value>{{ member }}</value>
+                  {% endfor %}
+             </members>
+             {% endif %}
+         </community>
+         {% endfor %}
+    </policy-options>
+</configuration></config>
+</edit-config>
+</rpc>

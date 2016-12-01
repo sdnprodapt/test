@@ -1,0 +1,103 @@
+module cyan-host {
+    namespace "http://cyan.com/ns/cyan/alex/1.0";
+    prefix alex;
+
+    import cyan-extensions {
+        prefix "cb";
+    }
+
+    organization "cyan";
+    description
+        "Test 001 Description";
+
+    revision 2015-02-25 {
+        description "First revision.";
+    }
+
+    list host {
+        key name;
+        leaf name {
+            type string;
+        }
+        list interface {
+            key name;
+            leaf name {
+                type string;
+            }
+            leaf adminState {
+                type string;
+            }
+            cb:on-post "create-interface.json";
+            cb:on-get "get-all-interface.json";
+            cb:on-delete "delete-interface.json";
+            cb:on-put "create-interface.json";
+
+            container servicePolicy {
+                container input {
+                    leaf name {
+                        type leafref {
+                            path '/host/policymap/name';
+                        }
+                    }
+                }
+
+                container output {
+                    leaf name {
+                        type leafref {
+                            path '/host/policymap/name';
+                        }
+                    }
+                }
+            }
+        }
+
+        list policymap {
+            key "name";
+
+            leaf name {
+                type string;
+            }
+
+            list classes {
+                key "class";
+
+                leaf "class" {
+                    type leafref {
+                        path '/host/classmap/name';
+                    }
+                }
+                leaf "shaping" {
+                    type string;
+                }
+                container cir {
+                    leaf type {
+                        type string;
+                    }
+                    leaf percent {
+                        type uint16;
+                    }
+                }
+            }
+            cb:on-post "create-policymap.json";
+            cb:on-get "get-policymap.json";
+            cb:on-delete "delete-policymap.json";
+            cb:on-put "create-policymap.json";
+        }
+
+        list classmap {
+            key "name";
+
+            leaf "name" {
+                type string;
+            }
+
+            leaf "description" {
+                type string;
+            }
+            cb:on-post "create-classmap.json";
+            cb:on-get "get-all-classmap.json";
+            cb:on-delete "delete-classmap.json";
+            cb:on-put "create-classmap.json";
+        }
+    }
+}

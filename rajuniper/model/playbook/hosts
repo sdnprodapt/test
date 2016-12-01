@@ -1,0 +1,1 @@
+localhost     cyan_connection=netconf netconf_username=admin netconf_password=secret netconf_hostport=2222 swVersion=4.5.6.7s serialNumber=2837982731 type=vCPE

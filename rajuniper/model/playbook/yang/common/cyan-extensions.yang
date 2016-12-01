@@ -1,0 +1,33 @@
+module cyan-extensions {
+
+    namespace "http://cyan.com/ns/cyan/extensions/1.0";
+    prefix cyan;
+
+    organization "cyan";
+
+    description
+        "This is example of CYAN extension module. It add definitions
+         of callback functions to be called by processor when object
+         data has changed.";
+
+    extension on-post {
+        argument "name";
+    }
+
+    extension on-get {
+        argument "name";
+    }
+
+    extension on-put {
+        argument "name";
+    }
+
+    extension on-delete {
+        argument "name";
+    }
+
+    extension on-commit {
+        argument "name";
+    }
+
+}

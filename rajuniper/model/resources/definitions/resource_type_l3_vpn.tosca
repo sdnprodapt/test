@@ -1,0 +1,817 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "L3VPN Device Model definition"
+package = ciscong
+version = "1.0"
+description = "This document defines the L3 VPN model"
+authors = ["rpolu (rpolu@ciena.com)"]
+
+imports {
+  BaseService = tosca.resourceTypes.BaseService
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+    L3VPN {
+        derivedFrom = BaseService
+        title = "L3VPN"
+        description = """
+        Representation of cisco l3 service model on a cisco Network Function
+        """
+
+        properties {
+
+              vpn-id {
+                title = "VPN ID"
+                description = "Unique identifier for the service resource."
+                type = integer
+                optional = false
+              }
+
+              device {
+                type = string
+                title = "Device"
+                description = "Identifies the RA device containing the resource."
+                optional = false
+              }
+
+              tpe {
+                type = string
+                title = "TerminationPoint resource Id"
+                description = "Identifies the interface service is associated with"
+                optional = false
+              }
+
+              service {
+                title = "Service Parameters"
+                description = "Service Parameters"
+                type = object
+                properties {
+                  svc-bandwidth {
+                    title = "bandwidth"
+                    description = "bandwidth"
+                    type = integer
+                    format = uint64
+                  }
+                }
+              }
+
+              extension {
+                title = "BGP Routing Information"
+                description = "TBF"
+                type = object
+                optional = true
+
+                properties {
+                    interface {
+                        title = "Interface"
+                        description = "Port configuration for L3VPN"
+                        type = object
+                        properties {
+                            name {
+                                title = "Interface Name"
+                                description = "Interface Name"
+                                type = string
+                            }
+
+                            vlanTagMode {
+                                title = "Interface Vlan Tagging Mode"
+                                description = "Interface Vlan Tagging Mode"
+                                type = string
+                                optional = true
+                            }
+
+                            schedulerType {
+                                title = "Interface scheduler type"
+                                description = "Interface scheduler type"
+                                type = string
+                                optional = true
+                            }
+
+                            encapsulation {
+                                title = "Physical link-layer encapsulation"
+                                description = "Physical link-layer encapsulation"
+                                type = string
+                                optional = true
+                            }
+
+                            l3vpnVlan {
+                                title = "Logical interface"
+                                description = "Logical interface"
+                                type = integer
+                                optional = false
+                            }
+
+                            description {
+                                title = "Logical Interface description"
+                                description = "Logical Interface description"
+                                type = string
+                            }
+
+                            bandwidth {
+                                title = "Interface Bandwidth"
+                                description = "Interface Bandwidth"
+                                type = integer
+                                optional = true
+                            }
+
+                            logicalEncapsulation {
+                                title = "Logical link-layer encapsulation"
+                                description = "Logical link-layer encapsulation"
+                                type = string
+                                optional = true
+                            }
+
+                            vlan-id {
+                                title = "Virtual LAN identifier value for 802.1q VLAN tags"
+                                description = "Virtual LAN identifier value for 802.1q VLAN tags"
+                                type = integer
+                                minimum = 1
+                                maximum = 4096
+                                optional = true
+                            }
+
+                            dot1q {
+                                title = "dot1q encapsulation"
+                                description = "tunneling on the trunk"
+                                type = integer
+                                minimum = 1
+                                maximum = 4096
+                                optional = true
+                            }
+
+                            second-dot1q {
+                                title = "second-dot1q encapsulation"
+                                description = "Second tunneling on the trunk"
+                                type = integer
+                                minimum = 1
+                                maximum = 4096
+                                optional = true
+                            }
+
+                            address {
+                                title = "Network Address"
+                                description = "Network Address"
+                                type = string
+                            }
+
+                            inputServicePolicy {
+                                title = "Filter to be applied to received packets"
+                                description = "Filter to be applied to received packets"
+                                type = string
+                                optional = true
+                            }
+
+                            outputServicePolicy {
+                                title = "Filter to be applied to outgoing packets"
+                                description = "Filter to be applied to outgoing packets"
+                                type = string
+                                optional = true
+                            }
+                        }
+                    }
+
+                    vrf {
+                        title = "Vrf"
+                        description = "Virtual Routing"
+                        type = object
+                        properties {
+                            name {
+                                title = "vrf name"
+                                description = "name of vrf"
+                                type = string
+                                optional = true
+                            }
+                            address-family {
+                                title = "address family list"
+                                description = "address family BGP/OSPF/Static Route"
+                                type = array
+                                items {
+                                    type = object
+                                    additionalProperties = false
+                                    properties {
+                                        type {
+                                            title = "type of routing protocol"
+                                            description = "Routing protocol type"
+                                            type = string
+                                            optional = true
+                                        }
+                                        af {
+                                            title = "address family"
+                                            description = "address family"
+                                            type = object
+                                            properties {
+                                                import {
+                                                    title = "import route target"
+                                                    description = "import route target"
+                                                    type = object
+                                                    properties {
+                                                        route-target {
+                                                            title = "route-target"
+                                                            description = "route-target"
+                                                            type = string
+                                                        }
+                                                    }
+                                                }
+                                                export {
+                                                    title = "export route target"
+                                                    description = "export route target"
+                                                    type = object
+                                                    properties {
+                                                        route-target {
+                                                            title = "route-target"
+                                                            description = "route-target"
+                                                            type = string
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    VrfPolicy {
+                        derivedFrom = Root
+                        title = "VRFPolicy"
+                        description = "A routing policy."
+                        properties {
+                            device {
+                                type = string
+                                title = "Device"
+                                description = "Identifies the device hosting this VRF policy."
+                                optional = false
+                            }
+
+                            name {
+                                type = string
+                                title = "Policy Name"
+                                description = ""
+                                optional = false
+                            }
+                            community {
+                                title = "Community"
+                                description = "BGP community properties associated with a route"
+                                type = array
+                                items{
+                                    properties {
+                                        type = object
+                                        community_name {
+                                            title = "BGP Community"
+                                            description = "Name to identify a BGP community"
+                                            type = string
+                                            optional = false
+                                        }
+
+                                        members {
+                                            title = "Community Members"
+                                            description = ""
+                                            type = array
+                                            items.type = string
+                                            optional = true
+                                        }
+                                    }
+                                }
+                                optional = true
+                            }
+                            policy-statement {
+                                title = "VRF policy statement"
+                                type = array
+                                items{
+                                    type  = object
+                                    properties{
+                                        terms {
+                                            type = array
+                                            title = "Terms"
+                                            optional = true
+                                            items {
+                                                type = object
+                                                properties {
+                                                    name {
+                                                        title = "Name"
+                                                        description = "term name"
+                                                        type = string
+                                                    }
+
+                                                    from {
+                                                        title = "From"
+                                                        description = "From entry"
+                                                        type = object
+                                                        properties {
+                                                            route_filter {
+                                                                title = "Route Filter"
+                                                                description = "List of routes to match"
+                                                                type = object
+                                                                properties {
+                                                                    address {
+                                                                        title = "Address"
+                                                                        description = "Address/Mask - n.n.n.n/mm"
+                                                                        type = string
+                                                                        optional = false
+                                                                    }
+
+                                                                    exact {
+                                                                        title = "Exact"
+                                                                        description = "Exactly match the prefix length"
+                                                                        type = boolean
+                                                                        optional = true
+                                                                    }
+                                                                }
+                                                                optional = true
+                                                            }
+
+                                                            community {
+                                                                title = "Community"
+                                                                description = "BGP Community"
+                                                                type = array
+                                                                items.type = string
+                                                                optional = true
+                                                            }
+
+                                                            protocol {
+                                                                title = "Protocol"
+                                                                description = "Protocol from which route was learned"
+                                                                type = array
+                                                                items.type = string
+                                                                optional = true
+                                                            }
+
+                                                            prefix_list_filter {
+                                                                title = "Prefix-list-filter"
+                                                                description = "List of prefix-list-filters to match"
+                                                                type = object
+                                                                properties {
+                                                                    name {
+                                                                        title = "List name"
+                                                                        description = "List name"
+                                                                        type = string
+                                                                        optional = false
+                                                                    }
+
+                                                                    modifier {
+                                                                        title = "Modifier"
+                                                                        description = "Modifier"
+                                                                        type = String
+                                                                        optional = true
+                                                                    }
+                                                                }
+                                                                optional = true
+                                                            }
+
+                                                            accept {
+                                                                title = "Accept"
+                                                                description = "Accept"
+                                                                type = boolean
+                                                                optional = true
+                                                            }
+
+                                                            reject {
+                                                                title = "Reject"
+                                                                description = "Reject"
+                                                                type = boolean
+                                                                optional = true
+                                                            }
+                                                        }
+                                                        optional = true
+                                                    }
+
+                                                    then {
+                                                        title = "Then"
+                                                        description = "Then entry"
+                                                        type = object
+                                                        properties {
+                                                            community {
+                                                                title = "Community"
+                                                                description = "BGP community properties associated with a route"
+                                                                type = object
+                                                                properties {
+                                                                    community_name {
+                                                                        title = "BGP Community"
+                                                                        description = "Name to identify a BGP community"
+                                                                        type = string
+                                                                        optional = false
+                                                                    }
+
+                                                                    operation {
+                                                                        title = "Operation"
+                                                                        description = "Community operation"
+                                                                        type = string
+                                                                        enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                                                        optional = false
+                                                                    }
+
+                                                                }
+                                                                optional = true
+                                                            }
+
+                                                            next-hop {
+                                                                title = "Next-hop"
+                                                                description = ""
+                                                                type = object
+                                                                properties {
+                                                                    self {
+                                                                        title = "Self"
+                                                                        description = "Self"
+                                                                        type = boolean
+                                                                        optional = true
+                                                                    }
+                                                                }
+                                                                optional = true
+                                                            }
+                                                            accept {
+                                                                title = "Accept"
+                                                                description = "Accept"
+                                                                type = boolean
+                                                                optional = true
+                                                            }
+
+                                                            reject {
+                                                                title = "Reject"
+                                                                description = "Reject"
+                                                                type = boolean
+                                                                optional = true
+                                                            }
+                                                        }
+                                                        optional = true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            attachment {
+                title = "Additional Information"
+                description = "TBF"
+                type = object
+                optional = true
+
+                properties {
+                    connection {
+                        title = "Connection parameters"
+                        description = "Port configuration for L3VPN"
+                        type = object
+                        properties {
+                            routing-protocols {
+                                title = "RP"
+                                description = "Routing protocol"
+                                type = array
+                                items {
+                                    type = object
+                                    additionalProperties = false
+                                    properties {
+                                        type {
+                                            title = "type of routing protocol"
+                                            description = "Routing protocol type"
+                                            type = string
+                                            optional = true
+                                        }
+
+                                        bgp {
+                                            title = "BGP Parameters"
+                                            description = "BGP Parameters"
+                                            type = object
+                                            properties {
+                                                as-number {
+                                                    title = "Description"
+                                                    description = "String description"
+                                                    type = integer
+                                                    format = uint32
+                                                    optional = true
+                                                }
+
+                                                address-family {
+                                                    title = "Address family"
+                                                    description = "address family"
+                                                    type = string
+                                                }
+
+                                                route-distinguisher {
+                                                    title = "dot1q"
+                                                    description = "tunneling on the trunk"
+                                                    type = string
+                                                }
+                                            }
+                                        }
+
+                                        static {
+                                            title = "Static Route Parameters"
+                                            description = "Static Route Parameters"
+                                            type = object
+                                            optional = true
+                                            properties {
+                                                vrfname {
+                                                    title = "VrfName"
+                                                    description = "String description"
+                                                    type = string
+                                                    optional = true
+                                                }
+
+                                                prefixmask {
+                                                    title = "Prefix Mask"
+                                                    description = "Prefix Mask"
+                                                    type = string
+                                                    optional = true
+                                                }
+
+                                                ipaddress {
+                                                    title = "IpAddress"
+                                                    description = "IpAddress"
+                                                    type = string
+                                                    optional = true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            class-of-service {
+                                derivedFrom = Root
+                                title = "class-of-service"
+                                description = "class of service."
+
+                                properties {
+                                    device {
+                                        title = "Device"
+                                        description = "Identifies the device hosting this resource."
+                                        type = string
+                                        optional = false
+                                    }
+
+                                    routing-instance {
+                                        title = "routing-instance"
+                                        description = ""
+                                        type = array
+                                        optional = true
+                                        items {
+                                            type = object
+                                            properties {
+                                                name {
+                                                    title = "Name"
+                                                    description = ""
+                                                    type = string
+                                                    optional = false
+                                                }
+                                                classifier-name {
+                                                    title = "classifier-name"
+                                                    description = ""
+                                                    type = integer
+                                                    optional = true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            routing-instance {
+                                derivedFrom = Root
+                                title = "Routing Instance"
+                                description = "A routing instance."
+
+                                properties {
+
+                                    device {
+                                        title = "Device"
+                                        description = "Identifies the device hosting this resource."
+                                        type = string
+                                        optional = false
+                                    }
+
+                                    name {
+                                        title = "Routing Instance Name"
+                                        description = ""
+                                        type = string
+                                        optional = false
+                                    }
+
+                                    description {
+                                        title = "Description"
+                                        description = ""
+                                        type = string
+                                        optional = true
+                                    }
+
+                                    instance-type {
+                                        title = "Instance Type"
+                                        description = ""
+                                        type = string
+                                        optional = true
+                                    }
+
+                                    interface {
+                                        title = "Interface"
+                                        description = ""
+                                        type = array
+                                        items.type = string
+                                        optional = true
+                                    }
+
+                                    route-distinguisher {
+                                        title = "Route Distinguisher"
+                                        description = "Number in (16 bit:32 bit) or (32 bit L:16 bit) or (IP address:16 bit) format"
+                                        type = string
+                                        optional = true
+                                    }
+
+                                    vrf-import {
+                                        title = "Import Policy"
+                                        description = ""
+                                        type = array
+                                        items.type = string
+                                        optional = true
+                                    }
+
+                                    vrf-export {
+                                        title = "Export Policy"
+                                        description = ""
+                                        type = array
+                                        items.type = string
+                                        optional = true
+                                    }
+
+                                    vrf-table-label {
+                                        title = "VRF Table"
+                                        description = ""
+                                        type = string
+                                        optional = true
+                                    }
+
+                                    routing-options {
+                                        title = "Routing Options"
+                                        description = ""
+                                        type = object
+                                        properties {
+                                            auto_export {
+                                                title = "Auto Export"
+                                                description = ""
+                                                type = boolean
+                                                optional = true
+                                            }
+                                            route {
+                                                title = "Route"
+                                                description = ""
+                                                type = array
+                                                optional = true
+                                                items {
+                                                    type = object
+                                                    properties {
+                                                        name {
+                                                            title = "Name"
+                                                            description = ""
+                                                            type = string
+                                                            optional = false
+                                                        }
+                                                        next-hop {
+                                                            title = "Next-hop"
+                                                            description = ""
+                                                            type = string
+                                                            optional = false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            maximum-prefixes {
+                                                title = "Maximum prefixes"
+                                                description = ""
+                                                type = object
+                                                properties {
+                                                    limit {
+                                                        title = "Maximum number of prefixes"
+                                                        description = ""
+                                                        type = integer
+                                                        optional = true
+                                                    }
+                                                    threshold {
+                                                        title = "Percentage of limit at which to start generating warnings"
+                                                        description = ""
+                                                        type = integer
+                                                        optional = true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        optional = true
+                                    }
+
+                                    protocols_bgp {
+                                        title = "BGP Protocol Information"
+                                        description = "Properties related to BGP protocol"
+                                        type = object
+                                        optional = true
+
+                                        properties {
+                                            groups {
+                                                title = "BGP Groups"
+                                                description = "BGP groups"
+                                                type = array
+                                                optional = true
+                                                items {
+                                                    type = object
+                                                    properties {
+                                                        name {
+                                                            title = "BGP Group Name"
+                                                            description = "group name"
+                                                            type = string
+                                                            optional = false
+                                                        }
+                                                        type {
+                                                            title = "BGP Group Type"
+                                                            description = "Group type"
+                                                            type = string
+                                                            enum = [ "internal", "external" ]
+                                                            optional = false
+                                                        }
+                                                        as-override {
+                                                            title = "as-override"
+                                                            description = ""
+                                                            type = string
+                                                            optional = true
+                                                        }
+                                                        peer-as {
+                                                            title = "Peer AS Number"
+                                                            description = "Peer ASN"
+                                                            type = integer
+                                                            format = bgp-as
+                                                            optional = true
+                                                        }
+                                                        local-address {
+                                                            title = "Local Address"
+                                                            description = ""
+                                                            type = string
+                                                            optional = true
+                                                        }
+                                                        local_as {
+                                                            title = "Local AS Number"
+                                                            description = "Local ASN (e.g., 65000)"
+                                                            type = integer
+                                                            format = bgp-as
+                                                            optional = true
+                                                        }
+                                                        neighbors {
+                                                            title = "BGP Group Static Peers"
+                                                            description = "BGP group static peers"
+                                                            type = array
+                                                            optional = true
+                                                            items {
+                                                                type = object
+                                                                properties {
+                                                                    local-address {
+                                                                        title = "BGP Group Static Peer Name"
+                                                                        description = "BGP group static peer name"
+                                                                        type = string
+                                                                        optional = false
+                                                                    }
+                                                                    description {
+                                                                        title = "Description"
+                                                                        description = ""
+                                                                        type = string
+                                                                        optional = true
+                                                                    }
+                                                                    peer-as {
+                                                                        title = "Peer AS Number"
+                                                                        description = "Peer ASN"
+                                                                        type = integer
+                                                                        format = bgp-as
+                                                                        optional = true
+                                                                    }
+                                                                    authentication_key {
+                                                                        title = "Authentication Key"
+                                                                        description = "MD5 authentication key"
+                                                                        type = string
+                                                                        optional = true
+                                                                    }
+                                                                    as-override {
+                                                                        title = "as-override"
+                                                                        description = ""
+                                                                        type = string
+                                                                        optional = true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        export_policies {
+                                                            title = "BGP Group Export Policies"
+                                                            description = "BGP group export policies"
+                                                            type = array
+                                                            items.type = string
+                                                            optional = true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

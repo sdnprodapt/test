@@ -8,6 +8,7 @@
         "resources/definitions/resource_type_vrf_policy.tosca",
         "resources/definitions/resource_type_routinginstance.tosca",
         "resources/definitions/resource_type_vlanidentifier.tosca",
-        "resources/definitions/resource_type_interfacevlan.tosca"
+        "resources/definitions/resource_type_interfacevlan.tosca",
+        "resources/definitions/resource_type_l3_vpn.tosca"
     ]
 }

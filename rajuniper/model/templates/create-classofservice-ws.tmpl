@@ -1,0 +1,74 @@
+{% set class_of_service_data = data['L3VPN']['attachment']['class-of-service'] %}
+
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+    <class-of-service>
+         {% for routing_instance_data in class_of_service_data["routing-instance"] %}
+         <routing-instances>
+            <instance_name>{{ routing_instance_data["name"] }}</instance_name>
+            {% if routing_instance_data["classifier-name"] %}
+            <classifiers>
+                <exp>
+                    <classifier-name>{{ routing_instance_data["classifier-name"] }}</classifier-name>
+                </exp>
+            </classifiers>
+            {% endif %}
+         </routing-instances>
+         {% endfor %}
+         {% for traffic_control_profile_data in data["traffic-control-profiles"] %}
+         <traffic-control-profiles>
+             <name>{{ traffic_control_profile_data["name"] }}</name>
+             {% if traffic_control_profile_data["scheduler-map"] %}
+             <scheduler-map>{{ traffic_control_profile_data["scheduler-map"] }}</scheduler-map>
+             {% endif %}
+             {% if traffic_control_profile_data["shaping-rate"]["rate"] %}
+             <shaping-rate>
+                 <rate>{{ traffic_control_profile_data["shaping-rate"]["rate"] }}</rate>
+             </shaping-rate>
+             {% endif %}
+             {% if traffic_control_profile_data["guaranteed-rate"]["rate"] %}
+             <guaranteed-rate>
+                 <rate>{{ traffic_control_profile_data["guaranteed-rate"]["rate"] }}</rate>
+             </guaranteed-rate>
+             {% endif %}
+         </traffic-control-profiles>
+         {% endfor %}
+         {% if data["interfaces"] %}
+         <interfaces>
+              {% for interface_set_data in data["interfaces"]["interface-set"] %}
+              <interface-set>
+                  <name>{{ interface_set_data["name"] }}</name>
+                  {% if interface_set_data["output-traffic-control-profile"]["profile-name"] %}
+                  <output-traffic-control-profile>
+                      <profile-name>{{ interface_set_data["output-traffic-control-profile"]["profile-name"] }}</profile-name>
+                  </output-traffic-control-profile>
+                  {% endif %}
+              </interface-set>
+              {% endfor %}
+              {% for interface_data in data["interfaces"]["interface"] %}
+              <interface>
+                  <name>{{ interface_data["name"] }}</name>
+                  {% for unit_data in interface_data["unit"] %}
+                  <unit>
+                      <name>{{ unit_data["name"] }}</name>
+                      {% if unit_data["classifiers"] %}
+                      <classifiers>
+                          {% for dscp_data in unit_data["dscp"]%}
+                          <dscp>
+                              <name>{{ dscp_data["name"] }}</name>
+                          </dscp>
+                          {% endfor %}
+                      </classifiers>
+                      {% endif %}
+                   </unit>
+                  {% endfor %}
+              </interface>
+              {% endfor %}
+         </interfaces>
+         {% endif %}
+    </class-of-service>
+</configuration></config>
+</edit-config>
+</rpc>

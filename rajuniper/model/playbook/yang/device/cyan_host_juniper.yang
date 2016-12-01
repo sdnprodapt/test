@@ -1,0 +1,855 @@
+module cyan_host_juniper {
+    namespace "http://cyan.com/ns/cyan/mu/1.0";
+    prefix mu;
+
+    import cyan-extensions {
+        prefix "cb";
+    }
+
+    organization "cyan";
+
+    description
+        "Test 001 Description";
+
+    revision 2015-10-06 {
+        description "First revision.";
+    }
+    
+    container interfaces {
+        description "Interface configuration";
+
+        list interface-set {
+            description "Logical interface set configuration";
+            key name;
+
+            leaf name {
+                description "(null)";
+                type enumeration {
+                    enum $junos-interface-set-name {
+                        description "Dynamic profile interface set";
+                    }
+                    enum interface-set-name {
+                        description "Interface set name";
+                    }
+                    enum $junos-svlan-interface-set-name {
+                        description "Dynamic profile svlan Interface set name";
+                    }
+                    enum $junos-tagged-vlan-interface-set-name {
+                        description "Dynamic profile tagged vlan Interface set name";
+                    }
+                }
+            }
+            list interface {
+                description "One or more interfaces that belong to interface set";
+                key name;
+
+                leaf name {
+                    description "Interface name";
+                    type string;
+                }
+                list unit {
+                    description "One or more logical interface unit numbers";
+                    key name;
+
+                    leaf name {
+                        description "Unit number";
+                        type uint32 {
+                            range "0 .. 1073741823";
+                        }
+                    }
+                }
+            }
+        }
+
+        list interface {
+            description "One or more interfaces that belong to interface set";
+            key name;
+
+            cb:on-post "create-interface-ws.json";
+            cb:on-get "get-interface.json";
+            cb:on-delete "delete-interface-ws.json";
+            cb:on-put "create-interface-ws.json";
+
+            leaf name {
+                description "Interface name";
+                type string;
+            }
+
+            choice vlan_tag_mode {
+                leaf vlan-tagging {
+                    description "802.1q VLAN tagging support";
+                    type empty;
+                }
+                leaf stacked-vlan-tagging {
+                    description "Stacked 802.1q VLAN tagging support";
+                    type empty;
+                }
+                leaf flexible-vlan-tagging {
+                    description "Support for no tagging, or single and double 802.1q VLAN tagging";
+                    type empty;
+                }
+                leaf vlan-vci-tagging {
+                    description "CCC for VLAN Q-in-Q and ATM VPI/VCI interworking";
+                    type empty;
+                }
+            }
+
+            choice scheduler_type {
+                leaf per-unit-scheduler {
+                    description "Enable subunit queuing on Frame Relay or VLAN IQ interface";
+                    type empty;
+                }
+                container hierarchical-scheduler {
+                    presence "enable hierarchical-scheduler";
+                    description "Enable hierarchical scheduling";
+                    leaf maximum-hierarchy-levels {
+                        description "Maximum hierarchy levels";
+                        type uint32 {
+                            range 2;
+                        }
+                    }
+
+                    leaf implicit-hierarchy {
+                        description "Implicit hierarchy (follows interface hierarchy)";
+                        type empty;
+                    }
+                }
+            }
+
+            leaf encapsulation {
+                 description "Physical link-layer encapsulation";
+                 type enumeration {
+                   enum flexible-ethernet-services {
+                       description "Allows per-unit Ethernet encapsulation configuration";
+                   }
+                 }
+               }
+
+            list unit {
+                key name;
+                description "Logical interface";
+                leaf name {
+                    description "(null)";
+                    type uint32 {
+                        range "1 .. 4294967295";
+                    }
+                }
+
+                leaf bandwidth {
+                    description "Logical unit bandwidth (informational only)";
+                    type string;
+                }
+
+                leaf description {
+                    description "Text description of interface";
+                    type string;
+                }
+
+                leaf encapsulation {
+                  description "Logical link-layer encapsulation";
+                  type enumeration {
+                      enum vlan-bridge {
+                          description "VLAN layer-2 bridging";
+                      }
+                   }
+                }
+
+                choice vlan_choice {
+                    leaf vlan-id {
+                    description "Virtual LAN identifier value for 802.1q VLAN tags";
+                        type enumeration {
+                            enum none {
+                                description "No 802.1q VLAN identifier";
+                            }
+                            enum vlan-id {
+                                description "Vlan identifier";
+                            }
+                        }
+                    }
+
+                    container vlan-tags {
+                        presence "enable vlan-tags";
+                        description "IEEE 802.1q tags";
+                        leaf outer {
+                            description "[tpid.]vlan-id, tpid format is 0xNNNN and is optional";
+                            type enumeration {
+                                enum $junos-stacked-vlan-id {
+                                    description "Dynamic profile outer stacked vlan identifier";
+                                }
+                                enum $junos-vlan-id {
+                                    description "Dynamic profile outer vlan identifier";
+                                }
+                                enum outer {
+                                    description "[tpid.]vlan-id, tpid format is 0xNNNN and is optional";
+                                }
+                            }
+                            mandatory true;
+                        }
+                        choice inner_choice {
+                            leaf inner {
+                                description "[tpid.]vlan-id, tpid format is 0xNNNN and is optional";
+                                type enumeration {
+                                    enum $junos-vlan-id {
+                                        description "Dynamic profile inner vlan identifier";
+                                    }
+                                    enum inner {
+                                        description "[tpid.]vlan-id, tpid format is 0xNNNN and is optional";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                container family {
+                    description "Protocol family";
+                    container inet {
+                        presence "enable inet";
+                        description "IPv4 parameters";
+
+                        container filter {
+                            description "Packet filtering";
+
+                            container input {
+                                description "Filter to be applied to received packets";
+                                leaf name {
+                                     description "Name of the filter";
+                                     type string;
+                                     mandatory true;
+                                }
+                            }
+
+                            container output {
+                                description "Filter to be applied to received packets";
+                                leaf name {
+                                     description "Name of the filter";
+                                     type string;
+                                }
+                            }
+                        }
+                        list address {
+                            key name;
+                            description "Interface address/destination prefix";
+                            leaf name{
+                                type string;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    container routing-instances {
+        list instance {
+            key "name";
+
+            cb:on-post "create-routinginstance-ws.json";
+            cb:on-get "get-routinginstance-full.json";
+            cb:on-delete "delete-routinginstance-ws.json";
+            cb:on-put "create-routinginstance-ws.json";
+
+            leaf name {
+                type string {
+                    pattern "!((__.*__)|(all)|(.*[ ].*)|()|(.{129,}))" {
+                        error-message "Must be a non-reserved string of 128 characters or less with no spaces.";
+                    }
+                }
+            }
+
+            leaf description {
+                type string {
+                    pattern ".{1,255}" {
+                      error-message "Must be a string of 255 characters or less";
+                   }
+                }
+            }
+
+            leaf instance-type {
+                type enumeration {
+                    enum vrf{
+                        description "Virtual routing forwarding instance";
+                    }
+                }
+            }
+
+            list interface {
+                key "name";
+                leaf name {
+                    type string;
+                }
+            }
+
+            container route-distinguisher {
+                leaf rd-type {
+                    type string {
+                        pattern "[0-9.]+L?:[0-9]+" {
+                            error-message "Use format 'x:y' where 'x' is an AS number followed by an optional 'L' (To indicate 4 byte AS), or an IP address and 'y' is a number. e.g. 123456L:100";
+                        }
+                    }
+                }
+            }
+            leaf-list vrf-import {
+                type string;
+            }
+            leaf-list vrf-export {
+                type string;
+            }
+            container vrf-target {
+                leaf community {
+                    type string {
+                        pattern "[a-z]+:[0-9.]+L?:[0-9]+" {
+                            error-message "Use format 'target:x:y' where 'x' is an AS number followed by an optional 'L' (To indicate 4 byte AS), or an IP address and 'y' is a number. e.g. target:123456L:100";
+                        }
+                    }
+                }
+            }
+            container vrf-table-label {
+                leaf source-class-usage {
+                    type empty;
+                }
+            }
+            container routing-options {
+                 leaf auto-export {
+                    description "Export routes between routing instances";
+                    type empty;
+                 }
+                 container maximum-prefixes {
+                     description "Maximum number of prefixes";
+                     leaf limit {
+                         description "Maximum number of prefixes";
+                         type uint32 {
+                             range "1 .. 4294967295";
+                         }
+                     }
+                     choice log_type {
+                         leaf threshold {
+                             description "Percentage of limit at which to start generating warnings";
+                             type uint32 {
+                                range "1 .. 100";
+                             }
+                         }
+                         leaf log-only {
+                             description "Generate warning messages only";
+                             type empty;
+                         }
+                     }
+                     leaf log-interval {
+                         description "Minimum interval between log messages";
+                         units "seconds";
+                         type uint32 {
+                             range "5 .. 86400";
+                         }
+                     }
+                 }
+
+                container static {
+                    list route {
+                        key "name";
+                            leaf name {
+                            type string;
+                        }
+                        choice nexthop {
+                            leaf-list nexthop {
+                                type string;
+                            }
+                            leaf reject {
+                                type empty;
+                            }
+                            leaf discard {
+                                type empty;
+                            }
+                            leaf receive {
+                                type empty;
+                            }
+                            leaf next-table {
+                                type string;
+                            }
+                        }
+                    }
+                }
+            }
+            container protocols {
+                container bgp {
+                    list group {
+                        key "name";
+                        leaf name {
+                            type string;
+                        }
+                        leaf type {
+                            type enumeration {
+                                enum internal;
+                                enum external;
+                            }
+                        }
+                        leaf-list export {
+                            type string;
+                        }
+                        leaf peer-as {
+                             type string {
+                                 pattern "[0-9]+(.[0-9]+)?" {
+                                 error-message "Use format 'x' or 'x.y' to specify number 'x' (Range 1 .. 4294967295) or number with higher 2 bytes 'x' (Range 0 .. 65535) and lower 2 bytes 'y' (Range 0 .. 65535) respectively";
+                                 }
+                             }
+                        }
+                        leaf as-override {
+                            type empty;
+                        }
+                        container family {
+                            container inet {
+                                container unicast {
+                                    container prefix-limit {
+                                        leaf maximum {
+                                            type uint32 {
+                                                range "1 .. 4294967295";
+                                            }
+                                        }
+                                        container teardown {
+                                            leaf limit-threshold {
+                                                type uint32 {
+                                                    range "1 .. 100";
+                                                }
+                                            }
+                                            container idle-timeout {
+                                                choice idle-parm {
+                                                    leaf forever {
+                                                        type empty;
+                                                    }
+                                                    leaf timeout {
+                                                        type uint32 {
+                                                            range "1 .. 2400";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        list neighbor {
+                            key address;
+                            leaf address {
+                                type string;
+                            }
+                            leaf authentication-key {
+                                type string {
+                                    length "1 .. 126";
+                                }
+                            }
+                            leaf as-override {
+                                description "Replace neighbor AS number with our AS number";
+                                type empty;
+                            }
+                            leaf peer-as {
+                                description " Autonomous system number in plain number or 'higher 16bits'.'Lower 16 bits' (asdot notation) format";
+                                type string {
+                                    pattern "[0-9]+(.[0-9]+)?" {
+                                        error-message "Use format 'x' or 'x.y' to specify number 'x' (Range 1 .. 4294967295) or number with higher 2 bytes 'x' (Range 0 .. 65535) and lower 2 bytes 'y' (Range 0 .. 65535) respectively";
+                                    }
+                                }
+                            }
+                            leaf local-address {
+                                description "Address of neighbor";
+                                type ipaddr;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    container policy-options {
+        list policy-statement {
+            key policy_name;
+
+            cb:on-post "create-vrfpolicy-ws.json";
+            cb:on-get "get-vrfpolicy-full.json";
+            cb:on-delete "delete-vrfpolicy-ws.json";
+            cb:on-put "create-vrfpolicy-ws.json";
+
+            description "Routing policy";
+            leaf policy_name {
+                description "Name to identify a policy filter";
+                type string;
+            }
+            list term {
+                key term_name;
+                description "Policy term";
+                leaf term_name {
+                    type string;
+                }
+                container from {
+                    description "Conditions to match the source of a route";
+                    leaf-list protocol {
+                        description "Protocol from which route was learned";
+                        type enumeration {
+                            enum aggregate {
+                                description "Aggregate routes";
+                            }
+                            enum bgp {
+                                description "BGP";
+                            }
+                            enum direct {
+                                description "Directly connected routes";
+                            }
+                            enum dvmrp {
+                                description "Distance Vector Multicast Routing Protocol";
+                            }
+                            enum isis {
+                                description "Intermediate System-to-Intermediate System";
+                            }
+                            enum esis {
+                                description "End System-to-Intermediate System";
+                            }
+                            enum l2circuit {
+                                description "Layer 2 circuits";
+                            }
+                            enum l2vpn {
+                                description "Layer 2 MPLS virtual private networks";
+                            }
+                            enum local {
+                                description "Local system addresses";
+                            }
+                            enum ospf {
+                                description "Open Shortest Path First";
+                            }
+                            enum ospf2 {
+                                description "Open Shortest Path First Version 2";
+                            }
+                            enum ospf3 {
+                                description "Open Shortest Path First Version 3";
+                            }
+                            enum pim {
+                                description "Protocol Independent Multicast";
+                            }
+                            enum rip {
+                                description "Routing Information Protocol";
+                            }
+                            enum ripng {
+                                description "Routing Information Protocol next generation";
+                            }
+                            enum static {
+                                description "Statically defined addresses";
+                            }
+                            enum arp {
+                                description "Addresses learned from ARP";
+                            }
+                            enum frr {
+                                description "Addresses created by Host Fast Re-route";
+                            }
+                            enum mpls {
+                                description "Multiprotocol Label Switching";
+                            }
+                            enum ldp {
+                                description "Label Distribution Protocol";
+                            }
+                            enum rsvp {
+                                description "Resource Reservation Protocol";
+                            }
+                            enum msdp {
+                                description "Multicast Source Discovery Protocol";
+                            }
+                            enum route-target {
+                                description "Local route target VPN membership";
+                            }
+                            enum access {
+                                description "Access server routes";
+                            }
+                            enum access-internal {
+                                description "Internal routes to directly connected clients";
+                            }
+                            enum anchor {
+                                description "Anchor routes connected to UEs";
+                            }
+                            enum bgp-static {
+                                description "BGP static routes";
+                            }
+                            enum vpls {
+                                description "Virtual Private LAN Service";
+                            }
+                            enum evpn {
+                                description "Ethernet VPN Service";
+                            }
+                        }
+                    }
+                    leaf-list community {
+                        description "BGP community";
+                        type string;
+                    }
+                    list prefix-list-filter {
+                        key list_name;
+                        description "List of prefix-list-filters to match";
+                        leaf list_name {
+                        description "Name of prefix-list of routes to match";
+                        type string;
+                        }
+                        choice modifier {
+                            leaf exact {
+                                description "Exactly match the prefix length";
+                                type empty;
+                            }
+                            leaf longer {
+                                description "Mask is greater than the prefix length";
+                                type empty;
+                            }
+                            leaf orlonger {
+                                description "Mask is greater than or equal to the prefix length";
+                                type empty;
+                            }
+                        }
+                    }
+
+                    leaf default-action {
+                    description "Set default policy action";
+                    type enumeration {
+                       enum accept {
+                          description "Accept a route";
+                       }
+                       enum reject {
+                           description "Reject a route";
+                       }
+                     }
+                   }
+                }
+                container then {
+                    description "Actions to take if 'from' and 'to' conditions match";
+
+                    list community {
+                        key "community-name";
+                        description "BGP community properties associated with a route";
+                        choice community-action {
+                            leaf equal-literal {
+                                description "Set the BGP communities in the route";
+                                type empty;
+                            }
+                            leaf set {
+                                description "Set the BGP communities in the route";
+                                type empty;
+                            }
+                            leaf plus-literal {
+                                description "Add BGP communities to the route";
+                                type empty;
+                            }
+                            leaf add {
+                                description "Add BGP communities to the route";
+                                type empty;
+                            }
+                            leaf minus-literal {
+                                description "Remove BGP communities from the route";
+                                type empty;
+                            }
+                            leaf delete {
+                                description "Remove BGP communities from the route";
+                                type empty;
+                            }
+                        }
+                        leaf community-name {
+                            description "Name to identify a BGP community";
+                            type string;
+                        }
+                    }
+                    leaf default-action {
+                        description "TBD: Set default policy action";
+                        type enumeration {
+                            enum accept {
+                                description "Accept a route";
+                            }
+                            enum reject {
+                                description "Reject a route";
+                            }
+                        }
+                    }
+                    leaf accept_reject {
+                        description "TBD:";
+                        type enumeration {
+                            enum accept {
+                                description "Accept a route";
+                            }
+                            enum reject {
+                                description "Reject a route";
+                            }
+                        }
+                    }
+                    container next-hop {
+                        description "Set the address of the next-hop router";
+                        choice nexthop_value {
+                            leaf self {
+                                description "Use a local address as the next-hop address";
+                                type empty;
+                            }
+                            leaf peer-address {
+                                description "Use the remote peer address as the next-hop address";
+                                type empty;
+                            }
+                            leaf address {
+                                description "Next-hop address";
+                                type ipaddr;
+                            }
+                            leaf reject {
+                                description "Use a reject next hop";
+                                type empty;
+                            }
+                            leaf discard {
+                                description "Use a discard next hop";
+                                type empty;
+                            }
+                            leaf next-table {
+                                description "Perform a forwarding lookup in the specified table";
+                                type string;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        list community {
+            key community_name;
+            description "BGP community information";
+            leaf community_name {
+                description "Name to identify BGP community";
+                type string;
+            }
+            leaf-list members {
+                description "Community members";
+                type string;
+            }
+        }
+    }
+
+    container class-of-service {
+        cb:on-post "create-classofservice-ws.json";
+        cb:on-get "get-classofservice.json";
+        cb:on-delete "delete-classofservice-ws.json";
+        cb:on-put "create-classofservice-ws.json";
+
+        list routing-instances {
+            key instance_name;
+
+            description "Apply CoS options to routing instances with VRF table label";
+            leaf instance_name {
+                description "Routing instance name (or wildcard)";
+                type string {
+                    pattern "!(([*]{1,})|(__.*__)|(.{129,}))" {
+                        error-message "Must be a non-reserved string of 128 characters or less";
+                    }
+                }
+            }
+            container classifiers {
+                description "Classifiers applied to incoming packets";
+                container exp {
+                    description "EXP classifier";
+                    leaf classifier-name {
+                        description "Name of classifier to be applied";
+                        type string {
+                            length "1 .. 64";
+                        }
+                    }
+                }
+            }
+        }
+        list traffic-control-profiles {
+            key "name";
+            leaf name {
+                type string {
+                    length "1 .. 64";
+                }
+            }
+            leaf scheduler-map {
+                type string {
+                    length "1 .. 64";
+                }
+            }
+            container shaping-rate {
+                choice shaping_rate_choice {
+                    leaf rate {
+                        type string;
+                    }
+                    leaf percent {
+                        type uint32 {
+                            range "1 .. 100";
+                        }
+                    }
+                }
+            }
+            container guaranteed-rate {
+                choice guaranteed_rate_choice {
+                    leaf rate {
+                        type string;
+                    }
+                    leaf percent {
+                        type uint32 {
+                            range "1 .. 100";
+                        }
+                    }
+                }
+            }
+        }
+
+        container interfaces {
+            list interface-set {
+                key "name";
+                leaf name {
+                    type string {
+                        length "1 .. 64";
+                    }
+                }
+                container output-traffic-control-profile {
+                    leaf profile-name {
+                        type string {
+                            length "1 .. 64";
+                        }
+                    }
+                }
+            }
+            list interface {
+                key "name";
+                leaf name {
+                    type string;
+                }
+                list unit {
+                    key name;
+                    leaf name {
+                        type uint32 {
+                            range "0 .. 1073741823";
+                        }
+                    }
+
+                    container classifiers {
+                        list dscp {
+                            key "name";
+                            leaf name {
+                                type string {
+                                    length "1 .. 64";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    container bridge-domains {
+        cb:on-post "create-bridgedomain-ws.json";
+        cb:on-get "get-bridgedomain.json";
+        cb:on-delete "delete-bridgedomain-ws.json";
+        cb:on-put "create-bridgedomain.json";
+        list domain {
+            key "name";
+            leaf name {
+                type string {
+                    pattern "!((__.*__)|(.{129,})|(.*[+].*))" {
+                        error-message "Must be a non-reserved string of 128 characters or less";
+                    }
+                }
+            }
+            list interface {
+                key "name";
+                leaf name {
+                    type string ;
+                }
+            }
+        }
+    }
+}

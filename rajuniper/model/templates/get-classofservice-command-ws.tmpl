@@ -1,0 +1,22 @@
+<rpc>
+<get-config>
+<source><running/></source>
+<filter type="subtree">
+<configuration>
+    <class-of-service>
+        <traffic-control-profiles>
+		    <name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</name>
+		</traffic-control-profiles>
+        <interfaces>
+            <interface-set>
+                <interface-set-name>{{ data['INTSETNAME'] }}</interface-set-name>
+            </interface-set>
+            <interface>
+                <name>{{ data['PARENTINT'] }}</name>
+            </interface>
+        </interfaces>
+    </class-of-service>
+</configuration>
+</filter>
+</get-config>
+</rpc>

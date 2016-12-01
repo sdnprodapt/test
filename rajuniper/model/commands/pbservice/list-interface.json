@@ -1,0 +1,27 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "rest",
+    "endpoint-parameters": {
+    },
+    "out-path": [
+        {
+            "type": "rajuniper.translators.device.SessionId",
+            "parameters": {
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "pbservice/list-interface.tmpl",
+                "as_object": true
+            }
+        }],
+    "in-path": [
+        {
+            "type": "rajuniper.translators.uniquekey.UniqueKeyTranslator",
+            "parameters": {
+                "key": "/vrf/name"
+            }
+        }
+    ]
+}

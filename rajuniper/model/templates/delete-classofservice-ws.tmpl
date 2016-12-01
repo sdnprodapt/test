@@ -1,0 +1,36 @@
+{#
+    Inputs:
+        INTERFACENAME: The interface to delete. If the interface has a unit, it will delete that unit. If it doesn't, all units are deleted
+#}
+
+<rpc>
+<edit-config>
+<target><candidate/></target>
+<config><configuration>
+        <class-of-service>
+            <traffic-control-profiles operation="delete">
+		         <name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</name>
+            </traffic-control-profiles>
+            <interfaces>
+                <interface-set operation="delete">
+                  <name>{{ data.INTSETNAME }}</name>
+                </interface-set>
+            {% set iface, unit = data['INTERFACENAME'].split('.', 1) if '.' in data['INTERFACENAME'] else (data['INTERFACENAME'], None) %}
+            {% if unit %}
+                <interface>
+                    <name>{{ iface }}</name>
+                    <unit operation="delete">
+                        <name>{{ unit }}</name>
+                    </unit>
+                </interface>
+            {% else %}
+                <interface operation="delete">
+                    <name>{{ iface }}</name>
+                </interface>
+            {% endif %}
+            </interfaces>
+           </class-of-service>
+        </configuration>
+    </config>
+    </edit-config>
+</rpc>

@@ -1,0 +1,19 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "template": "create-routinginstance-ws.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit-ws.json"
+            }
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Dict generator from a list with a key",
+    "type": "object",
+    "properties": {
+        "key": { "type": "string" },
+        "from-child": { "type": "string" }
+    },
+    "additionalProperties": false,
+    "required": ["key"]
+}

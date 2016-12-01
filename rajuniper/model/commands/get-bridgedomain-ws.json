@@ -1,0 +1,10 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [],
+    "endpoint-parameters": {
+        "template": "get-bridgedomain-command-ws.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}

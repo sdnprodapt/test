@@ -1,0 +1,39 @@
+{% macro encode_path(path) -%}
+    {{ path|replace(".", "%2E")|
+            replace("/", "%2F")|
+            replace(":", "%3A")|
+            replace(" ", "%20") }}
+{%- endmacro %}
+
+{% macro convert_data(data_dict) %}
+    { {% for key, value in data_dict.iteritems() recursive %}
+        {% if key is number %} {{key}} {% else %} "{{key}}" {% endif %}:
+        {% if value is mapping %}{ {{ loop(value.iteritems()) }} }
+        {% elif value is number %}{{ value }}
+        {% else %} "{{value}}"{% endif %}
+        {% if not loop.last %}, {%endif%}
+      {% endfor %}
+    }
+{% endmacro %}
+{% set device = data.pop("device") %}
+{% set creator_id = data.pop("creator_id") %}
+{
+    "asynchronous": false,
+    "commands": [
+        {% for file, fdata in data.iteritems() %}
+            {% if file == "policy-options" %}{% set policy_options_data = fdata.pop("policy-options") %}{% endif %}
+            {
+                "name": "{{ "create-" ~ file }}",
+                "filename": "{{ "/commands/l3vpn/rest-post.json"}}",
+                "params": { "data": { "params": {{ convert_data(fdata) }},
+                                      "path": {% if file == "policy-options" %}
+                                                "/host/{{device}}/{{file}}/{{encode_path(fdata["policy_name"])}}?creator_id={{creator_id}}"
+                                               {% else %} "/host/{{device}}/{{file}}/{{encode_path(fdata["name"])}}?creator_id={{creator_id}}"
+                                               {% endif %} 
+                                      }
+                           }
+            }
+            {% if not loop.last %},{% endif %}
+        {% endfor%}
+    ]
+}

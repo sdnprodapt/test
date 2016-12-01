@@ -1,0 +1,31 @@
+{#
+    Inputs:
+        interface: The interface to delete. If the interface has a unit, it will delete that unit. If it doesn't, all units are deleted
+#}
+
+<rpc>
+<edit-config>
+<target>
+   <candidate/>
+</target>
+    <config>
+        <configuration>
+            <interfaces>
+            {% set iface, unit = data['INTERFACENAME'].split('.', 1) if '.' in data['INTERFACENAME'] else (data['INTERFACENAME'], None) %}
+            {% if unit %}
+                <interface>
+                    <name>{{ iface }}</name>
+                    <unit operation="delete">
+                        <name>{{ unit }}</name>
+                    </unit>
+                </interface>
+            {% else %}
+                <interface operation="delete">
+                    <name>{{ iface }}</name>
+                </interface>
+            {% endif %}
+            </interfaces>
+        </configuration>
+    </config>
+    </edit-config>
+</rpc>

@@ -1,0 +1,46 @@
+{% set data= data['L3VPN']['extension']['interface'] %}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+    <interfaces>
+         <interface>
+              <name>{{ data['name'] }}</name>
+               <unit>
+                  <name>{{ data['l3vpnVlan'] }}</name>
+                  {% if data['description'] %}
+                  <description>{{ data['description'] }}</description>
+                  {% endif %}
+                  {% if data['bandwidth'] %}
+                  <bandwidth>{{ data['bandwidth'] }}</bandwidth>
+                  {% endif %}
+                  {% if data['vlan-id'] %}
+                  <vlan-id>{{ data['vlan-id'] }}</vlan-id>
+                  {% endif %}
+                  <family>
+                      <inet>
+                          {% if data['address'] %}
+                          <address>
+                              <name>{{ data['address'] }}</name>
+                          </address>
+                          {% endif %}
+                          <filter>
+                              {% if data['inputServicePolicy'] %}
+                              <input>
+                                    <filter-name>{{ data['inputServicePolicy'] }}</filter-name>
+                              </input>
+                              {% endif %}
+                              {% if data['outputServicePolicy'] %}
+                              <output>
+                                    <filter-name>{{ data['outputServicePolicy'] }}</filter-name>
+                              </output>
+                              {% endif %}
+                          </filter>
+                    </inet>
+                  </family>
+                  {% endif %}
+              </unit>
+        </interface>
+    </interfaces>
+</configuration></config>
+</edit-config>
+</rpc>

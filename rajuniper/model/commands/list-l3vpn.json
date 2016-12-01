@@ -1,0 +1,41 @@
+{
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint": "null",
+    "endpoint-parameters": {
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.branch.FanOut",
+            "parameters": {
+                "commands": [
+                    {
+                        "filename": "pbservice/list-bgp.json",
+                        "name": "routes"
+                    },
+                    {
+                        "filename": "pbservice/list-interface.json",
+                        "name": "interface"
+                    },
+                    {
+                        "filename": "pbservice/list-vrf.json",
+                        "name": "vrf"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "rajuniper.translators.device.SessionId",
+            "parameters": {
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "asr9k/pbservice/build-l3vpn-service.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}
