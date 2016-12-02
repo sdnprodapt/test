@@ -1,0 +1,30 @@
+{
+    "product": "urn:cyaninc:bp:product:l3vpn",
+    "resource": "juniper.resourceTypes.L3VPN",
+    "type": "playbook",
+    "provider_resource_id_field": "extension.interface.name",
+    "device_namespace_props": [],
+    "label_field": "name",
+    "commands": {
+        "post": {
+            "schema": "/host/l3-vpn",
+            "schema_props": ["device_id", "extension.interface.name"]
+        },
+        "put": {
+            "schema": "/host/l3-vpn",
+            "schema_props": ["device_id", "extension.interface.name"]
+        },
+        "get": {
+            "schema": "/host/l3-vpn",
+            "schema_props": ["device_id", "extension.interface.name"]
+        },
+        "list": {
+            "schema": "/host/l3-vpn",
+            "schema_props": ["device_id"]
+        },
+        "delete": {
+            "schema": "/host/l3-vpn",
+            "schema_props": ["device_id", "extension.interface.name"]
+        }
+    }
+}
