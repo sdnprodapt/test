@@ -1,4 +1,4 @@
-{% set routing_instance_data = data['L3VPN']['attachment']['routing-instance'] %}
+{% set routing_instance_data = data['L3VPN']['attachment']['connection']['routing-instance'] %}
 
 <rpc>
 <edit-config>
@@ -30,7 +30,7 @@
         {% for export_policy in instance_data["vrf-export"] %}
             <vrf-export>{{ export_policy }}</vrf-export>
         {% endfor %}
-        {% if instance_data["vrf-target"]["community"] %}
+        {% if instance_data["vrf-target"] %}
             <vrf-target>
                  <community>{{ instance_data["vrf-target"]["community"] }}</community>
             </vrf-target>
@@ -69,7 +69,7 @@
         {% if instance_data["protocols_bgp"] %}
             <protocols>
                 <bgp>
-                {% for group in instance_data["groups"] %}
+                {% for group in instance_data["protocols_bgp"]["groups"] %}
                     <group>
                     {% if group["name"] %}
                         <name>{{ group["name"] }}</name>
@@ -105,23 +105,23 @@
                         {% endif %}
                         </neighbor>
                     {% endfor %}
-                    {% if instance_data["family"]["inet"]["unicast"]["prefix-limit"] %}
-                    {% set prefix-limit = instance_data["family"]["inet"]["unicast"]["prefix-limit"] %}
+                    {% if instance_data["family"] %}
+                    {% set prefix_limit = instance_data["family"]["inet"]["unicast"]["prefix-limit"] %}
                         <family>
                             <inet>
                                 <unicast>
                                     <prefix-limit>
-                                    {% if prefix-limit["maximum"] %}
-                                        <maximum>{{ prefix-limit["maximum"] }}</maximum>
+                                    {% if prefix_limit["maximum"] %}
+                                        <maximum>{{ prefix_limit["maximum"] }}</maximum>
                                     {% endif %}
-                                    {% if prefix-limit["teardown"] %}
+                                    {% if prefix_limit["teardown"] %}
                                          <teardown>
-                                         {% if prefix-limit["teardown"]["limit-threshold"] %}
-                                              <limit-threshold>{{ prefix-limit["teardown"]["limit-threshold"] }}</limit-threshold>
+                                         {% if prefix_limit["teardown"]["limit-threshold"] %}
+                                              <limit-threshold>{{ prefix_limit["teardown"]["limit-threshold"] }}</limit-threshold>
                                          {% endif %}
-                                         {% if prefix-limit["teardown"]["idle-timeout"] %}
+                                         {% if prefix_limit["teardown"]["idle-timeout"] %}
                                                <idle-timeout>
-                                                   <timeout>{{ prefix-limit["teardown"]["idle-timeout"] }}</timeout>
+                                                   <timeout>{{ prefix_limit["teardown"]["idle-timeout"] }}</timeout>
                                                </idle-timeout>
                                           {% endif %}
                                           </teardown>

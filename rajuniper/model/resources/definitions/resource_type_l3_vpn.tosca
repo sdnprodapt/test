@@ -72,7 +72,13 @@ resourceTypes {
                                 description = "Interface Name"
                                 type = string
                             }
-
+                            operation {
+                                title = "Operation"
+                                description = "Community operation"
+                                type = string
+                                enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                optional = true
+                            }
                             vlanTagMode {
                                 title = "Interface Vlan Tagging Mode"
                                 description = "Interface Vlan Tagging Mode"
@@ -243,12 +249,6 @@ resourceTypes {
                                 optional = false
                             }
 
-                            name {
-                                type = string
-                                title = "Policy Name"
-                                description = ""
-                                optional = false
-                            }
                             community {
                                 title = "Community"
                                 description = "BGP community properties associated with a route"
@@ -280,6 +280,12 @@ resourceTypes {
                                 items{
                                     type  = object
                                     properties{
+                                        name {
+                                            type = string
+                                            title = "Policy Name"
+                                            description = ""
+                                            optional = false
+                                        }
                                         terms {
                                             type = array
                                             title = "Terms"
@@ -383,23 +389,26 @@ resourceTypes {
                                                             community {
                                                                 title = "Community"
                                                                 description = "BGP community properties associated with a route"
-                                                                type = object
-                                                                properties {
-                                                                    community_name {
-                                                                        title = "BGP Community"
-                                                                        description = "Name to identify a BGP community"
-                                                                        type = string
-                                                                        optional = false
-                                                                    }
+                                                                type = array
+                                                                items {
+                                                                    type = object
+                                                                    properties {
+                                                                        community_name {
+                                                                            title = "BGP Community"
+                                                                            description = "Name to identify a BGP community"
+                                                                            type = string
+                                                                            optional = false
+                                                                        }
 
-                                                                    operation {
-                                                                        title = "Operation"
-                                                                        description = "Community operation"
-                                                                        type = string
-                                                                        enum = [ "=", "set", "+", "add", "-", "delete" ]
-                                                                        optional = false
-                                                                    }
+                                                                        operation {
+                                                                            title = "Operation"
+                                                                            description = "Community operation"
+                                                                            type = string
+                                                                            enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                                                            optional = false
+                                                                        }
 
+                                                                    }
                                                                 }
                                                                 optional = true
                                                             }
@@ -728,7 +737,7 @@ resourceTypes {
                                                         as-override {
                                                             title = "as-override"
                                                             description = ""
-                                                            type = string
+                                                            type = boolean
                                                             optional = true
                                                         }
                                                         peer-as {
@@ -765,6 +774,12 @@ resourceTypes {
                                                                         type = string
                                                                         optional = false
                                                                     }
+                                                                    address {
+                                                                        title = "Address"
+                                                                        description = "Address"
+                                                                        type = string
+                                                                        optional = false
+                                                                    }
                                                                     description {
                                                                         title = "Description"
                                                                         description = ""
@@ -787,7 +802,7 @@ resourceTypes {
                                                                     as-override {
                                                                         title = "as-override"
                                                                         description = ""
-                                                                        type = string
+                                                                        type = boolean
                                                                         optional = true
                                                                     }
                                                                 }

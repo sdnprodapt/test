@@ -1,10 +1,13 @@
 {% set data= data['L3VPN']['extension']['interface'] %}
+{% set interface_operation = "" if data["operation"] is not defined else "operation='"+data['operation']+"'"%}
+{% set iface, unit = data['name'].split('.', 1) if '.' in data['name'] else (data['name'], None) %}
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
     <interfaces>
          <interface>
               <name>{{ data['name'] }}</name>
+              {% if interface_operation %}
                <unit>
                   <name>{{ data['l3vpnVlan'] }}</name>
                   {% if data['description'] %}
@@ -37,8 +40,8 @@
                           </filter>
                     </inet>
                   </family>
-                  {% endif %}
               </unit>
+              {% endif %}
         </interface>
     </interfaces>
 </configuration></config>

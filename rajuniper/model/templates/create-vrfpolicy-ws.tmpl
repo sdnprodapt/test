@@ -44,7 +44,7 @@
                               {% if community_data["operation"] %}
                               <{{community_data["operation"]}}></{{community_data["operation"]}}>
                               {% endif %}
-                              <community_name>community_data["community_name"]</community_name>
+                              <community_name>{{ community_data["community_name"] }}</community_name>
                          </community>
                          {% endfor %}
                          {% if term_data["then"]["next-hop"] %}
@@ -54,10 +54,10 @@
                                 {% endif %}
                             </next-hop>
                          {% endif %}
-                         {% if from_data["accept"] %}
+                         {% if term_data["then"]["accept"] %}
                          <accept/>
                          {% endif %}
-                         {% if from_data["reject"] %}
+                         {% if term_data["then"]["reject"] %}
                          <reject/>
                          {% endif %}
                     </then>
