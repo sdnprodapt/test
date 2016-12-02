@@ -1,8 +1,5 @@
+{% macro get_vrfpolicy_xml_config(data) %}
 {% set policy_info = data['L3VPN']['extension']['VrfPolicy'] %}
-<rpc>
-<edit-config>
-<target><candidate/></target>
-<config><configuration>
     <policy-options>
         {% for policy in policy_info["policy-statement"] %}
         <policy-statement>
@@ -44,7 +41,7 @@
                               {% if community_data["operation"] %}
                               <{{community_data["operation"]}}></{{community_data["operation"]}}>
                               {% endif %}
-                              <community_name>community_data["community_name"]</community_name>
+                              <community_name>{{ community_data["community_name"] }}</community_name>
                          </community>
                          {% endfor %}
                          {% if term_data["then"]["next-hop"] %}
@@ -54,10 +51,10 @@
                                 {% endif %}
                             </next-hop>
                          {% endif %}
-                         {% if from_data["accept"] %}
+                         {% if term_data["then"]["accept"] %}
                          <accept/>
                          {% endif %}
-                         {% if from_data["reject"] %}
+                         {% if term_data["then"]["reject"] %}
                          <reject/>
                          {% endif %}
                     </then>
@@ -79,6 +76,4 @@
          </community>
          {% endfor %}
     </policy-options>
-</configuration></config>
-</edit-config>
-</rpc>
+{% endmacro %}

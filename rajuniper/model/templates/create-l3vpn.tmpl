@@ -1,0 +1,14 @@
+{% from "create-interface-ws.tmpl" import get_interface_xml_config%}
+{% from "create-vrfpolicy-ws.tmpl" import get_vrfpolicy_xml_config%}
+{% from "create-routinginstance-ws.tmpl" import get_routing_instance_xml_config%}
+{% from "create-classofservice-ws.tmpl" import get_class_of_service_xml_config%}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+{{ get_interface_xml_config(data)|indent(4) }}
+{{ get_routing_instance_xml_config(data)|indent(4) }}
+{{ get_vrfpolicy_xml_config(data)|indent(4) }}
+{{ get_class_of_service_xml_config(data)|indent(4) }}
+</configuration></config>
+</edit-config>
+</rpc>

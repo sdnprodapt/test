@@ -1,12 +1,13 @@
 "$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
 title = "L3VPN Device Model definition"
-package = ciscong
+package = juniper
 version = "1.0"
 description = "This document defines the L3 VPN model"
 authors = ["rpolu (rpolu@ciena.com)"]
 
 imports {
   BaseService = tosca.resourceTypes.BaseService
+  Root = tosca.resourceTypes.Root
   Container = tosca.capabilityTypes.Container
 }
 
@@ -15,7 +16,7 @@ resourceTypes {
         derivedFrom = BaseService
         title = "L3VPN"
         description = """
-        Representation of cisco l3 service model on a cisco Network Function
+        Representation of juniper l3 service model on a juniper Network Function
         """
 
         properties {
@@ -72,7 +73,13 @@ resourceTypes {
                                 description = "Interface Name"
                                 type = string
                             }
-
+                            operation {
+                                title = "Operation"
+                                description = "Community operation"
+                                type = string
+                                enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                optional = true
+                            }
                             vlanTagMode {
                                 title = "Interface Vlan Tagging Mode"
                                 description = "Interface Vlan Tagging Mode"
@@ -232,9 +239,9 @@ resourceTypes {
                         }
                     }
                     VrfPolicy {
-                        derivedFrom = Root
                         title = "VRFPolicy"
                         description = "A routing policy."
+                        type = object
                         properties {
                             device {
                                 type = string
@@ -243,19 +250,13 @@ resourceTypes {
                                 optional = false
                             }
 
-                            name {
-                                type = string
-                                title = "Policy Name"
-                                description = ""
-                                optional = false
-                            }
                             community {
                                 title = "Community"
                                 description = "BGP community properties associated with a route"
                                 type = array
                                 items{
+                                    type = object
                                     properties {
-                                        type = object
                                         community_name {
                                             title = "BGP Community"
                                             description = "Name to identify a BGP community"
@@ -280,6 +281,12 @@ resourceTypes {
                                 items{
                                     type  = object
                                     properties{
+                                        name {
+                                            type = string
+                                            title = "Policy Name"
+                                            description = ""
+                                            optional = false
+                                        }
                                         terms {
                                             type = array
                                             title = "Terms"
@@ -351,7 +358,7 @@ resourceTypes {
                                                                     modifier {
                                                                         title = "Modifier"
                                                                         description = "Modifier"
-                                                                        type = String
+                                                                        type = string
                                                                         optional = true
                                                                     }
                                                                 }
@@ -383,23 +390,26 @@ resourceTypes {
                                                             community {
                                                                 title = "Community"
                                                                 description = "BGP community properties associated with a route"
-                                                                type = object
-                                                                properties {
-                                                                    community_name {
-                                                                        title = "BGP Community"
-                                                                        description = "Name to identify a BGP community"
-                                                                        type = string
-                                                                        optional = false
-                                                                    }
+                                                                type = array
+                                                                items {
+                                                                    type = object
+                                                                    properties {
+                                                                        community_name {
+                                                                            title = "BGP Community"
+                                                                            description = "Name to identify a BGP community"
+                                                                            type = string
+                                                                            optional = false
+                                                                        }
 
-                                                                    operation {
-                                                                        title = "Operation"
-                                                                        description = "Community operation"
-                                                                        type = string
-                                                                        enum = [ "=", "set", "+", "add", "-", "delete" ]
-                                                                        optional = false
-                                                                    }
+                                                                        operation {
+                                                                            title = "Operation"
+                                                                            description = "Community operation"
+                                                                            type = string
+                                                                            enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                                                            optional = false
+                                                                        }
 
+                                                                    }
                                                                 }
                                                                 optional = true
                                                             }
@@ -530,10 +540,9 @@ resourceTypes {
                                 }
                             }
                             class-of-service {
-                                derivedFrom = Root
                                 title = "class-of-service"
                                 description = "class of service."
-
+                                type = object
                                 properties {
                                     device {
                                         title = "Device"
@@ -568,10 +577,9 @@ resourceTypes {
                                 }
                             }
                             routing-instance {
-                                derivedFrom = Root
                                 title = "Routing Instance"
                                 description = "A routing instance."
-
+                                type = object
                                 properties {
 
                                     device {
@@ -728,7 +736,7 @@ resourceTypes {
                                                         as-override {
                                                             title = "as-override"
                                                             description = ""
-                                                            type = string
+                                                            type = boolean
                                                             optional = true
                                                         }
                                                         peer-as {
@@ -765,6 +773,12 @@ resourceTypes {
                                                                         type = string
                                                                         optional = false
                                                                     }
+                                                                    address {
+                                                                        title = "Address"
+                                                                        description = "Address"
+                                                                        type = string
+                                                                        optional = false
+                                                                    }
                                                                     description {
                                                                         title = "Description"
                                                                         description = ""
@@ -787,7 +801,7 @@ resourceTypes {
                                                                     as-override {
                                                                         title = "as-override"
                                                                         description = ""
-                                                                        type = string
+                                                                        type = boolean
                                                                         optional = true
                                                                     }
                                                                 }
