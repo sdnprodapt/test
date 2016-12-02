@@ -1,9 +1,5 @@
+{% macro get_routing_instance_xml_config(data) %}
 {% set routing_instance_data = data['L3VPN']['attachment']['connection']['routing-instance'] %}
-
-<rpc>
-<edit-config>
-<target><candidate/></target>
-<config><configuration>
     <routing-instances>
     {% set instance_data = routing_instance_data %}
         <instance>
@@ -138,6 +134,4 @@
         {% endif %}
         </instance>
     </routing-instances>
-</configuration></config>
-</edit-config>
-</rpc>
+{% endmacro %}

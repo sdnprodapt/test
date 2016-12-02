@@ -1,8 +1,5 @@
+{% macro get_vrfpolicy_xml_config(data) %}
 {% set policy_info = data['L3VPN']['extension']['VrfPolicy'] %}
-<rpc>
-<edit-config>
-<target><candidate/></target>
-<config><configuration>
     <policy-options>
         {% for policy in policy_info["policy-statement"] %}
         <policy-statement>
@@ -79,6 +76,4 @@
          </community>
          {% endfor %}
     </policy-options>
-</configuration></config>
-</edit-config>
-</rpc>
+{% endmacro %}

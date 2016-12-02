@@ -1,25 +1,17 @@
 {
-    "type": "bpprov.runners.simple.Sequence",
-    "endpoint": "null",
-    "endpoint-parameters": {
+	"endpoint": "netconf",
+	"type": "bpprov.runners.simple.Sequence",
+	"tests": [],
+	"endpoint-parameters": {
+        "template": "create-l3vpn.tmpl"
     },
-    "tests": [
-        "commands/tests/create-l3vpn.json"
-    ],
-    "out-path": [
+	"in-path": [
         {
-            "type": "rajuniper.translators.jsonpath.JsonPointerTranslator",
+            "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "converter": "/playbook/converters/l3vpn.json"
-            }
-        },
-        {
-            "type": "bpprov.translators.branch.FanOutRunner",
-            "parameters": {
-                "filename": "/commands/l3vpn/l3vpn.json"
+                "command": "commit-ws.json"
             }
         }
     ],
-    "in-path": [
-    ]
+	"out-path": []
 }

@@ -1,9 +1,7 @@
+{% macro get_interface_xml_config(data) %}
 {% set data= data['L3VPN']['extension']['interface'] %}
 {% set interface_operation = "" if data["operation"] is not defined else "operation='"+data['operation']+"'"%}
 {% set iface, unit = data['name'].split('.', 1) if '.' in data['name'] else (data['name'], None) %}
-<rpc>
-<edit-config><target><candidate/></target>
-<config><configuration>
     <interfaces>
          <interface>
               <name>{{ data['name'] }}</name>
@@ -44,6 +42,4 @@
               {% endif %}
         </interface>
     </interfaces>
-</configuration></config>
-</edit-config>
-</rpc>
+{% endmacro %}
