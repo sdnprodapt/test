@@ -7,5 +7,6 @@
     "urn:cyaninc:bp:product:juniper_interfacevlan": "interfacevlan.json",
     "urn:cyaninc:bp:product:juniper_vlanidentifier": "vlanidentifier.json",
     "urn:cyaninc:bp:product:juniper_sessionprofile": "sessionprofile.json",
-    "urn:cyaninc:bp:product:juniper": "networkfunction.json"
+    "urn:cyaninc:bp:product:juniper": "networkfunction.json",
+    "urn:cyaninc:bp:product:juniper_l3vpn": "l3vpn.json"
 }

@@ -1,6 +1,6 @@
 {
    "product": "urn:ciena:bp:product:juniper_l3vpn",
-   "resource": "juniper.resourceTypes.l3vpn",
+   "resource": "juniper.resourceTypes.L3VPN",
    "label_field" : "name",
    "type": "bpprov",
    "provider_resource_id_field": "vpn-id",

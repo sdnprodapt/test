@@ -58,7 +58,7 @@
         }
     }
 }, {
-    "resource_type": "juniper.resourceTypes.l3vpn",
+    "resource_type": "juniper.resourceTypes.L3VPN",
     "provider_product_id": "urn:cyaninc:bp:product:juniper_l3vpn",
     "title": "Layer 3 Virtual Private Network Service",
     "active": false,

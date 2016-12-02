@@ -62,6 +62,12 @@ domains:
     # currently only the id must be specified but in this future may be
     # extended to help drive specialization in the synchronization framework
     resource_types:
+      - id: "juniper.resourceTypes.L3VPN"
+        discoveryStrategy:
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
       - id: "juniper.resourceTypes.NetworkFunction"
         discoveryStrategy:
           - strategyType: "sync"
