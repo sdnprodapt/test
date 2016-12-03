@@ -1,0 +1,241 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "L2Circuit"
+package = juniper
+version = "1.0"
+description = "This document defines the L2 Circuit Endpoint Configuration type."
+authors = ["John Wice (jwice@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  L2Circuit {
+    derivedFrom = Root
+    title = "L2 Circuit Endpoint Conf"
+    description = """
+    A L2 Circuit configuration instance.
+    """
+
+    properties {
+
+      device {
+        title = "Device"
+        description = "Identifies the device hosting this resource."
+        type = string
+        optional = false
+      }
+
+      name {
+        title = "Name"
+        description = ""
+        type = string
+        optional = true #generated value
+      }
+
+      description {
+        title = "L2 Circuit Description"
+        description = ""
+        type = string
+        optional = true
+      }
+
+      encapsulation-type {
+        title = "Encapsulation Type"
+        description = ""
+        type = string
+        optional = false
+      }
+
+      virtual-circuit-id {
+        title = "Virtual Circuit ID"
+        description = ""
+        type = string
+        optional = false
+      }
+
+      interface {
+        title = "Interface"
+        description = "Interface this configuration is connected to"
+        type = string
+        optional = false
+      }
+
+      neighbor {
+        title = "Neighbor"
+        description = "Neighbor this configuration is connected to"
+        type = string
+        optional = false
+      }
+
+      ignore-mtu-mismatch {
+        title = "Ignore MTU Mismatch"
+        description = "Whether to ignore mismatched MTUs"
+        type = boolean
+        optional = true
+      }
+      
+      extension {
+        title = "BGP Routing Information"
+        description = "TBF"
+        type = object
+        optional = true
+
+        properties {
+          interface {
+            title = "Interface"
+            description = "Port configuration for L3VPN"
+            type = object
+            properties {
+
+              device {
+                type = string
+                title = "Device"
+                description = "Identifies the device hosting this interface."
+                optional = false
+              }
+
+              name {
+                type = string
+                title = "Interface Name"
+                description = ""
+                optional = false
+              }
+        
+              description {
+                type = string
+                title = "Interface Description"
+                description = ""
+                optional = true
+              }
+        
+              admin_status {
+                type = boolean
+                title = "Admin State Up"
+                description = ""
+                optional = true
+              }
+        
+              link_level_type {
+                type = string
+                enum = ["virtual", "Adaptive-Services", "Logical-tunnel", "Ethernet", "Flexible-Ethernet", "Ethernet-CCC", "Loopback"],
+                description = ""
+                optional = true
+              }
+              
+              encapsulation {
+                title = Encapsulation
+                type = string
+                description = ""
+                optional = true
+              }
+        
+              mac_address {
+                type = string
+                title = "MAC Address"
+                description = ""
+                optional = true
+              }
+        
+              mtu {
+                type = string
+                title = "MTU"
+                description = ""
+                optional = true
+              }
+        
+              physical_interface {
+                type = string
+                title = "Physical Interface"
+                optional = true
+                description = ""
+              }
+        
+              speed {
+                type = string
+                title = "Speed"
+                description = ""
+                optional = true
+              }
+        
+              ipv4_addresses {
+                title = "IP Addresses"
+                description = "IP Addresses on this interface"
+                type = array
+                items.type = string
+                optional = true
+              }
+              
+              vlan_id {
+                title = "VLAN ID"
+                description = "VLAN of this virtual interface"
+                type = integer
+                optional = true
+              }
+        
+              vlan_ids {
+                title = "VLAN Ids"
+                description = "VLANs on this interface"
+                type = array
+                items.type = integer
+                optional = true
+              }
+              
+              flexible-vlan-tagging {
+                title = "Flexible VLAN Tagging"
+                description = "Is flexible vlan tagging turned on on this interface"
+                type = boolean
+                optional = true
+              }
+        
+              apply-groups-except {
+                title = "Apply Groups Except"
+                description = ""
+                type = array
+                items.type = string
+                optional = true
+              }
+        
+              ccc_filter {
+                type = string
+                title = "CCC Filter"
+                description = "CCC Filter associated to this interface"
+                optional = true
+              }
+        
+              security_zone {
+                type = string
+                title = "Security Zone"
+                description = "Security Zone of this interface"
+                optional = true
+              }
+            }
+          }
+        }
+      }   
+    }
+
+    requirements {
+      l2c_device {
+        title = "Device"
+        description = "A network interface is hosted on a device."
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.NetworkFunction]
+      }
+
+      interface {
+        title = "Physical Interface"
+        description = "A L2 Circuit is connected to an interface."
+        type = tosca.capabilityTypes.Endpoint
+        resourceTypes = [juniper.resourceTypes.Interface]
+        minimum = 1
+        maximum = 1
+      }
+    }
+    
+  }
+}

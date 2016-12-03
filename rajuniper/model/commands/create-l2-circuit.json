@@ -1,0 +1,32 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint-parameters": {
+        
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "create-l2-circuit-config.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/output"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "create-l2-circuit.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

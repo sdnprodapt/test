@@ -63,4 +63,11 @@
     "title": "Layer 3 Virtual Private Network Service",
     "active": false,
     "provider_data": {}
+},
+{
+    "resource_type": "juniper.resourceTypes.L2Circuit",
+    "provider_product_id": "urn:cyaninc:bp:product:l2_circuit",
+    "title": "Layer 2 Virtual Private Network Service",
+    "active": false,
+    "provider_data": {}
 }]

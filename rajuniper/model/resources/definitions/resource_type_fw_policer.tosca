@@ -1,0 +1,76 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "FW Policer"
+package = juniper
+version = "1.0"
+description = "This document defines the Firewall Policer type."
+authors = ["John Wice (jwice@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  FWPolicer {
+    derivedFrom = Root
+    title = "Firewall Policer"
+    description = """
+    A Firewall Policer instance.
+    """
+
+    properties {
+
+      device {
+        title = "Device"
+        description = "Identifies the device hosting this resource."
+        type = string
+        optional = false
+      }
+
+      name {
+        title = "Name"
+        description = ""
+        type = string
+        optional = true #generated value
+      }
+
+      bandwidth-limit {
+        title = "Bandwidth Limit"
+        description = ""
+        type = string
+        optional = true
+      }
+
+      burst-size-limit {
+        title = "Burst Size Limit"
+        description = ""
+        type = string
+        optional = true
+      }
+
+    }
+
+    capabilities {
+      cccfilter_policer {
+        title = "Policer for filter"
+        description = "A firewall policer can be used in a CCC Filter"
+        type = tosca.capabilityTypes.Feature 
+        resourceTypes = [juniper.resourceTypes.CCCFilter]
+      }
+    }
+
+    requirements {
+      fwp_device {
+        title = "Device"
+        description = "A Firewall Policer is hosted on a device."
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.NetworkFunction]
+      }
+
+    }
+    
+  }
+}

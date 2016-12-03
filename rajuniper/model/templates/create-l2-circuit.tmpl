@@ -1,0 +1,11 @@
+{% if data is haspath('output','ok') %}
+{
+    "label": "{{ data.properties.name }}",
+    "properties": {
+        "name": "{{ data.properties.neighbor }}:{{ data.properties.interface }}"
+    },
+    "orchState": "{{ 'active' if data is haspath('output','ok') else 'inactive' }}"
+}
+{% else %}
+{{ data.output | to_json }}
+{% endif %}

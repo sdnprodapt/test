@@ -1,0 +1,77 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "CCC Filter"
+package = juniper
+version = "1.0"
+description = "This document defines the CCC Filter type."
+authors = ["John Wice (jwice@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  CCCFilter {
+    derivedFrom = Root
+    title = "Firewall CCC Filter"
+    description = """
+    A Firewall CCC Filter instance.
+    """
+
+    properties {
+
+      device {
+        title = "Device"
+        description = "Identifies the device hosting this resource."
+        type = string
+        optional = false
+      }
+
+      name {
+        title = "Name"
+        description = ""
+        type = string
+        optional = true #generated value
+      }
+
+      policer {
+        title = "Policer"
+        description = ""
+        type = string
+        optional = true
+      }
+
+    }
+
+    capabilities {
+      cccf_interface {
+        title = "Interface using filter"
+        description = "A filter can be used on an interface"
+        type = tosca.capabilityTypes.Container 
+        resourceTypes = [juniper.resourceTypes.Interface]
+      }
+    }
+
+    requirements {
+      cccf_device {
+        title = "Device"
+        description = "A CCC Filter is hosted on a device."
+        type = Container
+        minimum = 1
+        maximum = 1
+        resourceTypes = [juniper.resourceTypes.NetworkFunction]
+      }
+
+      policer {
+        title = "Firewall Policer"
+        description = "A CCC Filter can use a policer."
+        type = tosca.capabilityTypes.Feature
+        minimum = 0
+        resourceTypes = [juniper.resourceTypes.FWPolicer]
+      }
+
+    }
+    
+  }
+}

@@ -51,7 +51,14 @@ resourceTypes {
 
       link_level_type {
         type = string
-        enum = ["virtual", "Adaptive-Services", "Logical-tunnel", "Ethernet"],
+        enum = ["virtual", "Adaptive-Services", "Logical-tunnel", "Ethernet", "Flexible-Ethernet", "Ethernet-CCC", "Loopback"],
+        description = ""
+        optional = true
+      }
+      
+      encapsulation {
+        title = Encapsulation
+        type = string
         description = ""
         optional = true
       }
@@ -91,12 +98,41 @@ resourceTypes {
         items.type = string
         optional = true
       }
+      
+      vlan_id {
+        title = "VLAN ID"
+        description = "VLAN of this virtual interface"
+        type = integer
+        optional = true
+      }
 
       vlan_ids {
         title = "VLAN Ids"
         description = "VLANs on this interface"
         type = array
         items.type = integer
+        optional = true
+      }
+      
+      flexible-vlan-tagging {
+        title = "Flexible VLAN Tagging"
+        description = "Is flexible vlan tagging turned on on this interface"
+        type = boolean
+        optional = true
+      }
+
+      apply-groups-except {
+        title = "Apply Groups Except"
+        description = ""
+        type = array
+        items.type = string
+        optional = true
+      }
+
+      ccc_filter {
+        type = string
+        title = "CCC Filter"
+        description = "CCC Filter associated to this interface"
         optional = true
       }
 
@@ -116,6 +152,12 @@ resourceTypes {
         type = Container
         resourceTypes = [juniper.resourceTypes.Interface]
       }
+      l2circuit_endpoint {
+        title = "L2 Circuit Endpoint"
+        description = "An interface can be an endpoint for a L2 Circuit"
+        type = tosca.capabilityTypes.Endpoint
+        resourceTypes = [juniper.resourceTypes.L2Circuit]
+      }
     }
 
     requirements {
@@ -134,6 +176,14 @@ resourceTypes {
         description = "A virtual network interface is hosted on a physical interface."
         type = Container
         resourceTypes = [juniper.resourceTypes.Interface]
+        minimum = 0
+      }
+      
+      ccc_filter {
+        title = "CCC Filter"
+        description = "A network interface can use a filter."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.CCCFilter]
         minimum = 0
       }
     }

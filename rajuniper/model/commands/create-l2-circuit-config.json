@@ -1,0 +1,25 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "endpoint-parameters": {
+        "template": "create-l2-circuit-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "createCOMMIT.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data/commit-results",
+                            "to": "/data/commit-results"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
