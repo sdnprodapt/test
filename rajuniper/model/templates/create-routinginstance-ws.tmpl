@@ -1,5 +1,5 @@
 {% macro get_routing_instance_xml_config(data) %}
-{% set routing_instance_data = data['L3VPN']['attachment']['connection']['routing-instance'] %}
+{% set routing_instance_data = data['attachment']['connection']['routing-instance'] %}
     <routing-instances>
     {% set instance_data = routing_instance_data %}
         <instance>

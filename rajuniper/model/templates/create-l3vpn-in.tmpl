@@ -1,0 +1,9 @@
+{% if "ok" in data["output"] %}
+{
+    "label": "{{ data['properties']['vpn-id'] }}",
+    "properties": {{ data["properties"] | to_json }},
+    "orchState": "active"
+}
+{% else %}
+{{ data["properties"] | to_json }}
+{% endif %}

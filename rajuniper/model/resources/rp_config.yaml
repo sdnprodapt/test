@@ -68,6 +68,12 @@ domains:
               pollingMode: "noPolling"
               pollingSettings:
                 - immediateDeletion: true
+      - id: "juniper.resourceTypes.L2Circuit"
+        discoveryStrategy:
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
       - id: "juniper.resourceTypes.NetworkFunction"
         discoveryStrategy:
           - strategyType: "sync"

@@ -1,0 +1,17 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [],
+    "endpoint-parameters": {
+        "template": "create-l3vpn.tmpl"
+    },
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit-ws.json"
+            }
+        }
+    ],
+    "out-path": []
+}
