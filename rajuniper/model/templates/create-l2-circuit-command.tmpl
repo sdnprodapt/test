@@ -14,9 +14,17 @@
                     {% if data is haspath('properties','ignore-mtu-mismatch') and data['properties']['ignore-mtu-mismatch'] %}
                     <ignore-mtu-mismatch/>
                     {% endif %}
+                    {% if data is haspath('properties','encapsulation-type') and data['properties']['encapsulation-type'] %}
                     <encapsulation-type>{{ data['properties']['encapsulation-type'] }}</encapsulation-type>
+                    {% endif %}
+                    {# TBD could not find tag in XML #}
                     <no-control-word/>
-                    <mtu>9216</mtu>
+                    {% if data is haspath('properties','mtu') %}
+                    <mtu>{{ data['properties']['mtu'] }}</mtu>
+                    {% endif %}
+                    {% if data is haspath('properties','ignore-encapsulation-mismatch') and data['properties']['ignore-encapsulation-mismatch'] %}
+                    <ignore-encapsulation-mismatch/>
+                    {% endif %}
                 </interface>
             </neighbor>
         </l2circuit>
