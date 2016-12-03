@@ -5,5 +5,10 @@
     "orchState": "active"
 }
 {% else %}
-{{ data["properties"] | to_json }}
+{
+    "label": "{{ data['properties']['vpn-id'] }}",
+    "properties": {{ data["properties"] | to_json }},
+    "orchState": "failed",
+    "reason": "{{ data['output'] }}"
+}
 {% endif %}
