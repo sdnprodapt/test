@@ -16,23 +16,8 @@
 {% if 'description' in props %}
     "description": "{{ props.description }}",
 {% endif %}
-{% if "ccc_filter" in props %}
-    "ccc_filter": {
-    {% if props["ccc_filter"]["input"] %}
-    "input": [
-    {% for input_filter in props["ccc_filter"]["input"] %}
-    "{{input_filter}}"{% if not loop.last %},{% endif %}
-    {% endfor %}
-    ],
-    {% endif %}
-    {% if props["ccc_filter"]["output"] %}
-    "output": [
-    {% for output_filter in props["ccc_filter"]["output"] %}
-    "{{output_filter}}"{% if not loop.last %},{% endif %}
-    {% endfor %}
-    ]
-    {% endif %}
-    },
+{% if "ccc_policer" in props %}
+    "ccc_policer": {{props["ccc_policer"] | to_json }},
 {% endif %}
 {% if 'vlan_ids' in props %}
     "vlan_id": "{{ props.vlan_ids[0] }}",

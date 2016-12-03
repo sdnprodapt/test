@@ -27,24 +27,16 @@
                 <vlan-id>{{ data['vlan_id'] }}</vlan-id>
             {% endif %}
             <family>
-                {% if data["ccc_filter"] %}
+                {% if data["ccc_policer"] %}
                  <ccc>
-                    <filter>
-                        {% if data["ccc_filter"]["input"] %}
-                        <input-list>
-                            {% for input_filter in data["ccc_filter"]["input"] %}
-                            <filter-name>{{ input_filter }}</filter-name>
-                            {% endfor %}
-                        </input-list>
+                    <policer>
+                        {% if data["ccc_policer"]["input"] %}
+                        <input>{{ data["ccc_policer"]["input"] }}</input>
                         {% endif %}
-                        {% if data["ccc_filter"]["output"] %}
-                        <output-list>
-                            {% for output_filter in data["ccc_filter"]["output"] %}
-                            <filter-name>{{ output_filter }}</filter-name>
-                            {% endfor %}
-                        </output-list>
+                        {% if data["ccc_policer"]["output"] %}
+                        <output>{{ data["ccc_policer"]["output"]}}</output>
                         {% endif %}
-                    </filter>
+                    </policer>
                  </ccc>
                 {% else %}
                 <inet>

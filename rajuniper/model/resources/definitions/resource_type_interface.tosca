@@ -128,25 +128,28 @@ resourceTypes {
         items.type = string
         optional = true
       }
-
       ccc_filter {
-        type = object
+        type = string
         title = "CCC Filter"
         description = "CCC Filter associated to this interface"
         optional = true
+      }
+      ccc_policer {
+        type = object
+        title = "CCC Policer"
+        description = "CCC Policer"
+        optional = true
         properties{
             input {
-                title = "Input list"
-                description = "Input list"
-                type = array
-                items.type = string
+                title = "Input policer"
+                description = "Input policer"
+                type = string
                 optional = true
             }
             output {
-                title = "Output list"
-                description = "Output list"
-                type = array
-                items.type = string
+                title = "Output policer"
+                description = "Output policer"
+                type = string
                 optional = true
             }
         }
@@ -194,7 +197,13 @@ resourceTypes {
         resourceTypes = [juniper.resourceTypes.Interface]
         minimum = 0
       }
-
+      ccc_filter {
+        title = "CCC Filter"
+        description = "A network interface can use a filter."
+        type = Container
+        resourceTypes = [juniper.resourceTypes.CCCFilter]
+        minimum = 0
+      }
     }
 
   }
