@@ -5,7 +5,6 @@
     <interfaces>
          <interface>
               <name>{{ data['name'] }}</name>
-              {% if interface_operation %}
                <unit>
                   <name>{{ data['l3vpnVlan'] }}</name>
                   {% if data['description'] %}
@@ -39,7 +38,6 @@
                     </inet>
                   </family>
               </unit>
-              {% endif %}
         </interface>
     </interfaces>
 {% endmacro %}

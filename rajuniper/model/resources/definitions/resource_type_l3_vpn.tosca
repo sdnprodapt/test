@@ -20,7 +20,13 @@ resourceTypes {
         """
 
         properties {
-
+              name {
+                type = string
+                title = "Name"
+                description = ""
+                optional = true
+                config = true
+              }
               vpn-id {
                 title = "VPN ID"
                 description = "Unique identifier for the service resource."
@@ -181,6 +187,7 @@ resourceTypes {
                         title = "Vrf"
                         description = "Virtual Routing"
                         type = object
+                        optional = true
                         properties {
                             name {
                                 title = "vrf name"
@@ -347,6 +354,7 @@ resourceTypes {
                                                                 title = "Prefix-list-filter"
                                                                 description = "List of prefix-list-filters to match"
                                                                 type = object
+                                                                optional = true
                                                                 properties {
                                                                     name {
                                                                         title = "List name"
@@ -470,6 +478,7 @@ resourceTypes {
                                 title = "RP"
                                 description = "Routing protocol"
                                 type = array
+                                optional = true
                                 items {
                                     type = object
                                     additionalProperties = false
@@ -568,7 +577,7 @@ resourceTypes {
                                                 classifier-name {
                                                     title = "classifier-name"
                                                     description = ""
-                                                    type = integer
+                                                    type = string
                                                     optional = true
                                                 }
                                             }
