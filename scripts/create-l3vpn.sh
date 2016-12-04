@@ -5,7 +5,7 @@ INSTANCE_NAME=123
 source dockerdev.sh
 
 PRODUCT_ID=$(jcurl ${MARKET_URL}/products?q=resourceTypeId:juniper.resourceTypes.L3VPN | jparse [\"items\"][0][\"id\"])
-DEVICE_RID=$(jcurl ${MARKET_URL}/resources?resourceTypeId=juniper.resourceTypes.NetworkFunction\&label=jun_89 | jparse [\"items\"][0][\"id\"])
+DEVICE_RID=$(jcurl ${MARKET_URL}/resources?resourceTypeId=juniper.resourceTypes.NetworkFunction\&label=jun_89 | jparse [\"items\"][0][\"providerResourceId\"])
 
 cat <<EOF > l3vpn_123.json
 {
