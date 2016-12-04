@@ -128,12 +128,31 @@ resourceTypes {
         items.type = string
         optional = true
       }
-
       ccc_filter {
         type = string
         title = "CCC Filter"
         description = "CCC Filter associated to this interface"
         optional = true
+      }
+      ccc_policer {
+        type = object
+        title = "CCC Policer"
+        description = "CCC Policer"
+        optional = true
+        properties{
+            input {
+                title = "Input policer"
+                description = "Input policer"
+                type = string
+                optional = true
+            }
+            output {
+                title = "Output policer"
+                description = "Output policer"
+                type = string
+                optional = true
+            }
+        }
       }
 
       security_zone {
@@ -178,7 +197,6 @@ resourceTypes {
         resourceTypes = [juniper.resourceTypes.Interface]
         minimum = 0
       }
-      
       ccc_filter {
         title = "CCC Filter"
         description = "A network interface can use a filter."

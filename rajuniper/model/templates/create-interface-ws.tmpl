@@ -1,11 +1,10 @@
 {% macro get_interface_xml_config(data) %}
-{% set data= data['L3VPN']['extension']['interface'] %}
+{% set data= data['extension']['interface'] %}
 {% set interface_operation = "" if data["operation"] is not defined else "operation='"+data['operation']+"'"%}
 {% set iface, unit = data['name'].split('.', 1) if '.' in data['name'] else (data['name'], None) %}
     <interfaces>
          <interface>
               <name>{{ data['name'] }}</name>
-              {% if interface_operation %}
                <unit>
                   <name>{{ data['l3vpnVlan'] }}</name>
                   {% if data['description'] %}
@@ -39,7 +38,6 @@
                     </inet>
                   </family>
               </unit>
-              {% endif %}
         </interface>
     </interfaces>
 {% endmacro %}

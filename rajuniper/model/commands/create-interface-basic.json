@@ -1,0 +1,11 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+        "template": "create-interface-basic.tmpl"
+    },
+    "out-path": [],
+    "in-path": []
+}

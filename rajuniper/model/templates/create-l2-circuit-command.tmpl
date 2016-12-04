@@ -6,17 +6,26 @@
             <neighbor>
                 <name>{{ data.properties.neighbor }}</name>
                 <interface>
-                    <name>{{ data.properties.interface }}</name>
-                    {% if data is haspath('properties','description') %}
-                    <description>{{ data.properties.description }}</description>
+                    {% set data = data["properties"] %}
+                    <name>{{ data.interface }}</name>
+                    {% if data["description"] %}
+                    <description>{{ data["description"]}}</description>
                     {% endif %}
-                    <virtual-circuit-id>{{ data['properties']['virtual-circuit-id'] }}</virtual-circuit-id>
-                    {% if data is haspath('properties','ignore-mtu-mismatch') and data['properties']['ignore-mtu-mismatch'] %}
+                    <virtual-circuit-id>{{ data['virtual-circuit-id'] }}</virtual-circuit-id>
+                    {% if data['ignore-mtu-mismatch'] %}
                     <ignore-mtu-mismatch/>
                     {% endif %}
-                    <encapsulation-type>{{ data['properties']['encapsulation-type'] }}</encapsulation-type>
+                    {% if data['encapsulation-type'] %}
+                    <encapsulation-type>{{ data['encapsulation-type'] }}</encapsulation-type>
+                    {% endif %}
+                    {# TBD could not find tag in XML #}
                     <no-control-word/>
-                    <mtu>9216</mtu>
+                    {% if data['mtu'] %}
+                    <mtu>{{ data['mtu'] }}</mtu>
+                    {% endif %}
+                        {% if data['ignore-encapsulation-mismatch'] %}
+                    <ignore-encapsulation-mismatch/>
+                    {% endif %}
                 </interface>
             </neighbor>
         </l2circuit>

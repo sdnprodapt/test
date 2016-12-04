@@ -1,13 +1,14 @@
 {
    "product": "urn:ciena:bp:product:juniper_l3vpn",
    "resource": "juniper.resourceTypes.L3VPN",
-   "label_field" : "name",
-   "type": "bpprov",
+   "label_field" : "vpn-id",
+   "type": "bpprov_full",
    "provider_resource_id_field": "vpn-id",
    "device_namespace_props": [],
    "commands": {
        "post": {
-           "command": "create-l3vpn.json"
+           "command": "create-l3vpn.json",
+           "returns_resource": true
        },
        "delete": {
            "command": "delete-l3vpn.json"
