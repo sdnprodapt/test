@@ -1,11 +1,14 @@
-{% if data is haspath('output','ok') %}
+{% if "ok" in data["output"] %}
 {
-    "label": "{{ data.properties.name }}",
-    "properties": {
-        "name": "{{ data.properties.neighbor }}:{{ data.properties.interface }}"
-    },
-    "orchState": "{{ 'active' if data is haspath('output','ok') else 'inactive' }}"
+    "label": "{{ data['properties']['vpn-id'] }}",
+    "properties": {{ data["properties"] | to_json }},
+    "orchState": "active"
 }
 {% else %}
-{{ data.output | to_json }}
+{
+    "label": "{{ data['properties']['vpn-id'] }}",
+    "properties": {{ data["properties"] | to_json }},
+    "orchState": "failed",
+    "reason": "{{ data['output'] }}"
+}
 {% endif %}

@@ -1,10 +1,13 @@
 {% macro get_interface_xml_config(data) %}
 {% set data= data['extension']['interface'] %}
-{% set interface_operation = "" if data["operation"] is not defined else "operation='"+data['operation']+"'"%}
-{% set iface, unit = data['name'].split('.', 1) if '.' in data['name'] else (data['name'], None) %}
+{% set interface_operation = data['operation'] %}
     <interfaces>
          <interface>
-              <name>{{ data['name'] }}</name>
+               <name>{{ data['name'] }}</name>
+               {% if interface_operation == "delete" %}
+               <unit operation="delete" >
+                  <name>{{ data['l3vpnVlan'] }}</name>
+               {% else %}
                <unit>
                   <name>{{ data['l3vpnVlan'] }}</name>
                   {% if data['description'] %}
@@ -16,7 +19,22 @@
                   {% if data['vlan-id'] %}
                   <vlan-id>{{ data['vlan-id'] }}</vlan-id>
                   {% endif %}
+                  {% if data['logicalEncapsulation'] %}
+                  <encapsulation>{{ data['logicalEncapsulation'] }}</encapsulation>
+                  {% endif %}
                   <family>
+                  {% if data["ccc_policer"] %}
+                      <ccc>
+                          <policer>
+                          {% if data["ccc_policer"]["input"] %}
+                            <input>{{ data["ccc_policer"]["input"] }}</input>
+                          {% endif %}
+                          {% if data["ccc_policer"]["output"] %}
+                            <output>{{ data["ccc_policer"]["output"]}}</output>
+                          {% endif %}
+                          </policer>
+                      </ccc>
+                  {% else %}
                       <inet>
                           {% if data['address'] %}
                           <address>
@@ -35,8 +53,10 @@
                               </output>
                               {% endif %}
                           </filter>
-                    </inet>
+                       </inet>
+                   {% endif %}
                   </family>
+              {% endif %}
               </unit>
         </interface>
     </interfaces>

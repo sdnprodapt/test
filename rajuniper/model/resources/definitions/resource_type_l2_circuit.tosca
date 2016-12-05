@@ -35,6 +35,13 @@ resourceTypes {
         optional = true #generated value
       }
 
+      vpn-id {
+        title = "VPN ID"
+        description = "Unique identifier for the service resource."
+        type = integer
+        optional = false
+      }
+
       description {
         title = "L2 Circuit Description"
         description = ""
@@ -70,11 +77,175 @@ resourceTypes {
         optional = false
       }
 
+      mtu {
+        title = "MTU"
+        description = "MTU"
+        type = integer
+        optional = true
+      }
+
       ignore-mtu-mismatch {
         title = "Ignore MTU Mismatch"
         description = "Whether to ignore mismatched MTUs"
         type = boolean
         optional = true
+      }
+
+      no-control-word {
+        title = "No control word"
+        description = "Whether control word should not be present"
+        type = boolean
+        optional = true
+      }
+
+      ignore-encapsulation-mismatch {
+        title = "Ignore encapsulation Mismatch"
+        description = "Whether to ignore mismatched encapsulations"
+        type = boolean
+        optional = true
+      }
+
+      extension {
+        title = "BGP Routing Information"
+        description = "TBF"
+        type = object
+        optional = true
+
+        properties {
+            interface {
+                title = "Interface"
+                description = "Port configuration for L3VPN"
+                type = object
+                properties {
+                    name {
+                        title = "Interface Name"
+                        description = "Interface Name"
+                        type = string
+                    }
+                    operation {
+                        title = "Operation"
+                        description = "Community operation"
+                        type = string
+                        enum = [ "=", "set", "+", "add", "-", "delete" ]
+                        optional = true
+                    }
+                    vlanTagMode {
+                        title = "Interface Vlan Tagging Mode"
+                        description = "Interface Vlan Tagging Mode"
+                        type = string
+                        optional = true
+                    }
+
+                    schedulerType {
+                        title = "Interface scheduler type"
+                        description = "Interface scheduler type"
+                        type = string
+                        optional = true
+                    }
+
+                    encapsulation {
+                        title = "Physical link-layer encapsulation"
+                        description = "Physical link-layer encapsulation"
+                        type = string
+                        optional = true
+                    }
+
+                    l3vpnVlan {
+                        title = "Logical interface"
+                        description = "Logical interface"
+                        type = integer
+                        optional = false
+                    }
+
+                    description {
+                        title = "Logical Interface description"
+                        description = "Logical Interface description"
+                        type = string
+                    }
+
+                    bandwidth {
+                        title = "Interface Bandwidth"
+                        description = "Interface Bandwidth"
+                        type = integer
+                        optional = true
+                    }
+
+                    logicalEncapsulation {
+                        title = "Logical link-layer encapsulation"
+                        description = "Logical link-layer encapsulation"
+                        type = string
+                        optional = true
+                    }
+
+                    vlan-id {
+                        title = "Virtual LAN identifier value for 802.1q VLAN tags"
+                        description = "Virtual LAN identifier value for 802.1q VLAN tags"
+                        type = integer
+                        minimum = 1
+                        maximum = 4096
+                        optional = true
+                    }
+
+                    dot1q {
+                        title = "dot1q encapsulation"
+                        description = "tunneling on the trunk"
+                        type = integer
+                        minimum = 1
+                        maximum = 4096
+                        optional = true
+                    }
+
+                    second-dot1q {
+                        title = "second-dot1q encapsulation"
+                        description = "Second tunneling on the trunk"
+                        type = integer
+                        minimum = 1
+                        maximum = 4096
+                        optional = true
+                    }
+
+                    address {
+                        title = "Network Address"
+                        description = "Network Address"
+                        type = string
+                    }
+
+                    inputServicePolicy {
+                        title = "Filter to be applied to received packets"
+                        description = "Filter to be applied to received packets"
+                        type = string
+                        optional = true
+                    }
+
+                    outputServicePolicy {
+                        title = "Filter to be applied to outgoing packets"
+                        description = "Filter to be applied to outgoing packets"
+                        type = string
+                        optional = true
+                    }
+                    ccc_policer {
+                        type = object
+                        title = "CCC Policer"
+                        description = "CCC Policer"
+                        optional = true
+                        properties{
+                            input {
+                                title = "Input policer"
+                                description = "Input policer"
+                                type = string
+                                optional = true
+                            }
+                            output {
+                                title = "Output policer"
+                                description = "Output policer"
+                                type = string
+                                optional = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
       }
     }
 
@@ -97,6 +268,6 @@ resourceTypes {
         maximum = 1
       }
     }
-    
+
   }
 }
