@@ -1,7 +1,12 @@
 {% macro get_vrfpolicy_xml_config(data) %}
 {% set policy_info = data['extension']['VrfPolicy'] %}
-    <policy-options>
-        {% for policy in policy_info["policy-statement"] %}
+<policy-options>
+    {% for policy in policy_info["policy-statement"] %}
+    {% set policy_statement_operation = policy['operation'] %}
+    {% if policy_statement_operation == "delete" %}
+        <policy-statement operation="delete" >
+            <policy_name>{{ policy["name"] }}</policy_name>
+    {% else %}
         <policy-statement>
             <policy_name>{{ policy["name"] }}</policy_name>
             {% for term_data in policy["terms"] %}
@@ -61,9 +66,15 @@
                     {% endif %}
             </term>
             {% endfor %}
-        </policy-statement>
-        {% endfor %}
-        {% for community_data in policy_info["community"]%}
+    {% endif %}
+     </policy-statement>
+    {% endfor %}
+    {% for community_data in policy_info["community"]%}
+    {% set community_operation = community_data['operation'] %}
+        {% if community_operation == "delete" %}
+         <community operation="delete" >
+             <community_name>{{ community_data["community_name"] }}</community_name>
+        {% else %}
          <community>
              <community_name>{{ community_data["community_name"] }}</community_name>
              {% if community_data["members"] %}
@@ -73,7 +84,8 @@
                   {% endfor %}
              </members>
              {% endif %}
+         {% endif %}
          </community>
-         {% endfor %}
-    </policy-options>
+     {% endfor %}
+</policy-options>
 {% endmacro %}

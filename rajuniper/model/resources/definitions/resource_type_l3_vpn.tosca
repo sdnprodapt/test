@@ -81,7 +81,7 @@ resourceTypes {
                             }
                             operation {
                                 title = "Operation"
-                                description = "Community operation"
+                                description = "Operation"
                                 type = string
                                 enum = [ "=", "set", "+", "add", "-", "delete" ]
                                 optional = true
@@ -264,6 +264,13 @@ resourceTypes {
                                 items{
                                     type = object
                                     properties {
+                                         operation {
+                                            title = "Operation"
+                                            description = "Operation"
+                                            type = string
+                                            enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                            optional = true
+                                        }
                                         community_name {
                                             title = "BGP Community"
                                             description = "Name to identify a BGP community"
@@ -293,6 +300,13 @@ resourceTypes {
                                             title = "Policy Name"
                                             description = ""
                                             optional = false
+                                        }
+                                        operation {
+                                            title = "Operation"
+                                            description = "Operation"
+                                            type = string
+                                            enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                            optional = true
                                         }
                                         terms {
                                             type = array
@@ -574,6 +588,13 @@ resourceTypes {
                                                     type = string
                                                     optional = false
                                                 }
+                                                operation {
+                                                    title = "Operation"
+                                                    description = "Operation"
+                                                    type = string
+                                                    enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                                    optional = true
+                                                }
                                                 classifier-name {
                                                     title = "classifier-name"
                                                     description = ""
@@ -603,6 +624,14 @@ resourceTypes {
                                         description = ""
                                         type = string
                                         optional = false
+                                    }
+
+                                    operation {
+                                        title = "Operation"
+                                        description = "Operation"
+                                        type = string
+                                        enum = [ "=", "set", "+", "add", "-", "delete" ]
+                                        optional = true
                                     }
 
                                     description {
