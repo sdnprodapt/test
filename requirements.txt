@@ -43,7 +43,7 @@ persistentfsm==1.0.2
 pexpect==4.0.1
 pickleshare==0.5
 pika==0.9.14
-playbook==2.0.0
+#playbook==2.0.0
 psutil==2.0.0
 ptyprocess==0.5
 pyang==1.7
