@@ -1,7 +1,7 @@
 afkak==1.0.0
 attrs==16.2.0
 beautifulsoup4==4.3.2
-bp2hookutil==1.0.0.post0
+bp2hookutil==3.2.0
 bpfrelease==0.2.7
 bpprov==1.29.1
 bpramodels==1.4.0
@@ -43,7 +43,7 @@ persistentfsm==1.0.2
 pexpect==4.0.1
 pickleshare==0.5
 pika==0.9.14
-playbook==2.0.0.dev129
+playbook==2.0.0
 psutil==2.0.0
 ptyprocess==0.5
 pyang==1.7
