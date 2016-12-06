@@ -10,15 +10,7 @@
         {
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "command": "createCOMMIT.json",
-                "output": {
-                    "patches": [
-                        {
-                            "from": "/data/commit-results",
-                            "to": "/data/commit-results"
-                        }
-                    ]
-                }
+                "command": "commit-ws.json"
             }
         }
     ]
