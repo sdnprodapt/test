@@ -43,7 +43,6 @@ Juniper Resource Adapter""",
     install_requires=[
         'netifaces',
         'cymlrest',
-        'playbook',
         'bpprov[netconf]',
         'bpramodels',
         'rasdk',
