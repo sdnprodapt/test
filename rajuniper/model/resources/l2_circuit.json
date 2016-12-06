@@ -7,8 +7,11 @@
     "commands": {
         "post": {
             "command": "create-l2-circuit.json",
-            "delay_s": 10,
-            "num_tries":10
+            "returns_resource": true
+        },
+        "put": {
+           "command": "create-l2-circuit.json",
+           "returns_resource": true
         },
         "delete": {
             "command": "delete-l2-circuit.json"
