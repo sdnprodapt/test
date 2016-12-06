@@ -105,6 +105,14 @@ resourceTypes {
         optional = true
       }
 
+      operation {
+         title = "Operation"
+         description = "operation"
+         type = string
+         enum = [ "delete" ]
+         optional = true
+      }
+
       extension {
         title = "BGP Routing Information"
         description = "TBF"
@@ -124,9 +132,9 @@ resourceTypes {
                     }
                     operation {
                         title = "Operation"
-                        description = "Community operation"
+                        description = "operation"
                         type = string
-                        enum = [ "=", "set", "+", "add", "-", "delete" ]
+                        enum = [ "delete" ]
                         optional = true
                     }
                     vlanTagMode {
@@ -154,7 +162,7 @@ resourceTypes {
                         title = "Logical interface"
                         description = "Logical interface"
                         type = integer
-                        optional = false
+                        optional = true
                     }
 
                     description {

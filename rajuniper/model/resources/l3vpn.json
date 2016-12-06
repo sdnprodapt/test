@@ -10,6 +10,10 @@
            "command": "create-l3vpn.json",
            "returns_resource": true
        },
+       "put": {
+           "command": "create-l3vpn.json",
+           "returns_resource": true
+       },
        "delete": {
            "command": "delete-l3vpn.json"
        }

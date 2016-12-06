@@ -5,6 +5,11 @@
 {{ get_interface_xml_config(data['properties']) | indent(4)}}
     <protocols>
         <l2circuit>
+         {% set neighbor_operation = data['properties']['operation'] %}
+         {% if neighbor_operation == "delete" %}
+            <neighbor operation="delete" >
+                <name>{{ data['properties']['neighbor'] }}</name>
+         {% else %}
             <neighbor>
                 <name>{{ data.properties.neighbor }}</name>
                 <interface>
@@ -31,6 +36,7 @@
                     <ignore-encapsulation-mismatch/>
                     {% endif %}
                 </interface>
+            {% endif %}
             </neighbor>
         </l2circuit>
     </protocols>
