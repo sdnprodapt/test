@@ -31,7 +31,6 @@ cat <<EOF > l2vpn_124.json
 					"description": "TANA-ML2-32-2-Gandhinager-H-Way-2048k-TATA-COMMUNICATION-LIMITED-737905-050213",
 					"logicalEncapsulation": "vlan-ccc",
 					"vlan-id": 3395,
-					"address": "10.100.0.1/30",
 					"ccc_policer":{
 						"input": "2048k",
 						"output": "2048k"

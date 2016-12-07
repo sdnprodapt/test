@@ -166,6 +166,7 @@ resourceTypes {
                                 title = "Network Address"
                                 description = "Network Address"
                                 type = string
+                                optional = true
                             }
 
                             inputServicePolicy {
@@ -265,6 +266,7 @@ resourceTypes {
                         title = "VRFPolicy"
                         description = "A routing policy."
                         type = object
+                        optional = true
                         properties {
                             device {
                                 type = string
@@ -503,6 +505,7 @@ resourceTypes {
                         title = "Connection parameters"
                         description = "Port configuration for L3VPN"
                         type = object
+                        optional = true
                         properties {
                             routing-protocols {
                                 title = "RP"
@@ -582,6 +585,7 @@ resourceTypes {
                                 title = "class-of-service"
                                 description = "class of service."
                                 type = object
+                                optional = true
                                 properties {
                                     device {
                                         title = "Device"
@@ -626,6 +630,7 @@ resourceTypes {
                                 title = "Routing Instance"
                                 description = "A routing instance."
                                 type = object
+                                optional = true
                                 properties {
 
                                     device {
