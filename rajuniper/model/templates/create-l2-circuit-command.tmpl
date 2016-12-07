@@ -14,7 +14,7 @@
                 <name>{{ data.properties.neighbor }}</name>
                 <interface>
                     {% set data = data["properties"] %}
-                    <name>{{ data.interface }}</name>
+                    <name>{{ data["interface-name"] }}</name>
                     {% if data["description"] %}
                     <description>{{ data["description"]}}</description>
                     {% endif %}
