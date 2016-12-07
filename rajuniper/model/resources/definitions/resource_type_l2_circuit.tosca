@@ -63,7 +63,7 @@ resourceTypes {
         optional = false
       }
 
-      interface {
+      interface-name {
         title = "Interface"
         description = "Interface this configuration is connected to"
         type = string
@@ -216,6 +216,7 @@ resourceTypes {
                         title = "Network Address"
                         description = "Network Address"
                         type = string
+                        optional = true
                     }
 
                     inputServicePolicy {
