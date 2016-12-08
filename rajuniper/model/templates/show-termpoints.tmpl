@@ -9,7 +9,7 @@
     if (port['name']|string|trim).startswith(xe_port) or
     (port['name']|string|trim).startswith(ge_port) or
     (port['name']|string|trim).startswith(et_port) recursive %}
-    {% set ptp =  port['name']|string|trim|replace("-","-0-", 1) %}
+    {% set ptp =  port['name']|string|trim %}
     {% set label =  port['name']|string|trim %}
     {% set speed =  port['speed']|string|trim %}
     {% set strip_len = (name|length)-3 %}

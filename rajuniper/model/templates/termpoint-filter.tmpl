@@ -1,0 +1,10 @@
+[
+{% for port in data%}
+{
+    "id": "{{port["id"]}}",
+    "name": "{{port["name"]}}",
+    "serviceState": "{{port["serviceState"]}}",
+    "containedCTPs": {{port["containedCTPs"] | to_json }}
+}{% if not loop.last%},{% endif %}
+{% endfor %}
+]

@@ -1,13 +1,14 @@
 {% macro get_interface_xml_config(data) %}
+{% from "utils.tmpl" import convert_tp_to_native_name%}
 {% set data= data['extension']['interface'] %}
 {% set interface_operation = data['operation'] %}
     <interfaces>
          <interface>
-               <name>{{ data['name'] }}</name>
-               {% if interface_operation == "delete" %}
+               <name>{{ convert_tp_to_native_name(data['name']) }}</name>
+               {% if interface_operation == "delete" -%}
                <unit operation="delete" >
                   <name>{{ data['l3vpnVlan'] }}</name>
-               {% else %}
+               {%- else -%}
                <unit>
                   <name>{{ data['l3vpnVlan'] }}</name>
                   {% if data['description'] %}
@@ -23,7 +24,7 @@
                   <encapsulation>{{ data['logicalEncapsulation'] }}</encapsulation>
                   {% endif %}
                   <family>
-                  {% if data["ccc_policer"] %}
+                  {% if data["ccc_policer"] -%}
                       <ccc>
                           <policer>
                           {% if data["ccc_policer"]["input"] %}
@@ -34,7 +35,7 @@
                           {% endif %}
                           </policer>
                       </ccc>
-                  {% else %}
+                  {%- else -%}
                       <inet>
                           {% if data['address'] %}
                           <address>
@@ -42,21 +43,21 @@
                           </address>
                           {% endif %}
                           <filter>
-                              {% if data['inputServicePolicy'] %}
+                              {% if data['inservicePolicy'] %}
                               <input>
-                                    <filter-name>{{ data['inputServicePolicy'] }}</filter-name>
+                                    <filter-name>{{ data['inservicePolicy'] }}</filter-name>
                               </input>
                               {% endif %}
-                              {% if data['outputServicePolicy'] %}
+                              {% if data['outservicePolicy'] %}
                               <output>
-                                    <filter-name>{{ data['outputServicePolicy'] }}</filter-name>
+                                    <filter-name>{{ data['outservicePolicy'] }}</filter-name>
                               </output>
                               {% endif %}
                           </filter>
                        </inet>
-                   {% endif %}
+                   {%- endif %}
                   </family>
-              {% endif %}
+              {%- endif %}
               </unit>
         </interface>
     </interfaces>

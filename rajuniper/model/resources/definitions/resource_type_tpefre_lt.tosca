@@ -1,0 +1,55 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "Termination point resource type definition"
+package = juniper
+version = "1.0"
+description = "This document defines a termination point type."
+authors = ["Kerry Neef (kerry.neef@cyaninc.com)"]
+
+imports {
+  BaseLayerTermination = tosca.resourceTypes.PhysicalOpticalLayerTermination
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+
+  PhysicalOpticalLayerTermination {
+    derivedFrom = BaseLayerTermination
+    title = "Juniper Termination Point"
+    description = """
+    A service endpoint.
+    """
+
+    properties {
+      device {
+        type = string
+        title = "Device"
+        description = "Identifies the RA device containing the resource."
+        optional = false
+      }
+
+      id {
+        type = string
+        title = "ID"
+        description = "Identifies the termpoint"
+        optional = false
+      }
+
+      partOfTpe {
+        type = string
+        title = "PartOfTPE"
+        description = "Identifies the termpoint"
+        optional = false
+      }
+    }
+    requirements {
+
+      containedInTpe {
+        title = "Contained"
+        description = "A termination point is contained by a device."
+        type = Container
+        minimum = 1
+        resourceTypes = [juniper.resourceTypes.TerminationPoint]
+      }
+    }
+  }
+}

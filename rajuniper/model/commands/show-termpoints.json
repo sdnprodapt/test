@@ -25,6 +25,12 @@
                 "template": "show-termpoints.tmpl",
                 "as_object": true
             }
+        },{
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "termpoint-filter.tmpl",
+                "as_object": true
+            }
         }
     ]
 }
