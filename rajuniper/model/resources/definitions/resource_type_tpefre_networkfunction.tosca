@@ -74,6 +74,13 @@ resourceTypes {
             type = Container
             resourceTypes = [juniper.resourceTypes.VlanIdentifier]
           }
+
+          boundedBy {
+                title = "Termination Points"
+                description = "A network function contains Termination Points"
+                type = Container
+                resourceTypes = [ juniper.resourceTypes.TerminationPoint ]
+            }
         }
     }
 }

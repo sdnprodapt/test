@@ -46,7 +46,10 @@ ui_schema: ./ui-schema
 # Base resources types that are onboarded by an application image and may not be immediately available.
 dependent_types: [
   'tosca.resourceTypes.NetworkFunction',
-  'tosca.resourceTypes.SessionProfile'
+  'tosca.resourceTypes.SessionProfile',
+  'tosca.resourceTypes.TerminationPointEncapsulation',
+  'tosca.resourceTypes.PhysicalOpticalLayerTermination',
+  'tosca.resourceTypes.BaseService'
 ]
 
 # Domain definitions specify the types of domains supported by this RP.
@@ -123,13 +126,10 @@ domains:
             idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.RoutingInstance"
         discoveryStrategy:
-          - strategyType: "sync"
-            pollingMode: "listOnly"
-            pollingSettings:
-              - pollingIntervalMs: 300000
-                immediateDeletion: true
-                syncTimeoutMs: 100000
-                verifyMissingList: true
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
         apiSettings:
           - serverTimeoutMs: 100000
             maxConnections: 4
@@ -163,6 +163,12 @@ domains:
             maxConnections: 4
             maxHttpRetries: 0
             idleTimeoutMs: 3600000
+      - id: "juniper.resourceTypes.TerminationPoint"
+        discoveryStrategy:
+           - strategyType: "sync"
+             pollingMode: "listOnly"
+             pollingSettings:
+               - pollingIntervalMs: 120000
 #      - id: "juniper.resourceTypes.VirtualRouter"
 #        discoveryStrategy:
 #          - strategyType: "sync"
@@ -236,6 +242,21 @@ relationships:
     relationshipTypeId: "tosca.relationshipTypes.HostedOn" # identifies type of relationship
     fieldKind: "provider"                                  # identicates what the field represent
     fieldLocator: "device"                                 # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.L3VPN"  # resource types involved in relationship
+    targetTypeId: "juniper.resourceTypes.TerminationPoint"
+    capabilityName: hostedFC                               # identifies endpoint names in relationship
+    requirementName: BoundingTPE
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn"  # identifies type of relationship
+    fieldKind: "provider"                                   # identicates what the field represent
+    fieldLocator: "tpe"                                  # the field in the resource properties identifying the far end
+  - sourceTypeId: "juniper.resourceTypes.TerminationPoint"  # resource types involved in relationship
+    targetTypeId: "juniper.resourceTypes.NetworkFunction"
+    capabilityName: boundedBy                               # identifies endpoint names in relationship
+    requirementName: contained
+    relationshipTypeId: "tosca.relationshipTypes.HostedOn"  # identifies type of relationship
+    fieldKind: "provider"                                   # identicates what the field represent
+    fieldLocator: "device"                                  # the field in the resource properties identifying the far end
+
 #  - sourceTypeId: "juniper.resourceTypes.VirtualRouter"
 #    targetTypeId: "juniper.resourceTypes.NetworkFunction"
 #    capabilityName: vr_host                                              # identifies endpoint names in relationship

@@ -1,4 +1,5 @@
-{% from "create-interface-ws.tmpl" import get_interface_xml_config%}
+{% from "create-interface-ws.tmpl" import get_interface_xml_config %}
+{% from "utils.tmpl" import convert_tp_to_native_name %}
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
@@ -6,15 +7,15 @@
     <protocols>
         <l2circuit>
          {% set neighbor_operation = data['properties']['operation'] %}
-         {% if neighbor_operation == "delete" %}
+         {% if neighbor_operation == "delete" -%}
             <neighbor operation="delete" >
                 <name>{{ data['properties']['neighbor'] }}</name>
-         {% else %}
+         {%- else -%}
             <neighbor>
                 <name>{{ data.properties.neighbor }}</name>
                 <interface>
                     {% set data = data["properties"] %}
-                    <name>{{ data["interface-name"] }}</name>
+                    <name>{{ convert_tp_to_native_name(data["interface-name"]) }}</name>
                     {% if data["description"] %}
                     <description>{{ data["description"]}}</description>
                     {% endif %}
@@ -36,7 +37,7 @@
                     <ignore-encapsulation-mismatch/>
                     {% endif %}
                 </interface>
-            {% endif %}
+            {%- endif %}
             </neighbor>
         </l2circuit>
     </protocols>

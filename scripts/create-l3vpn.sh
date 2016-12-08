@@ -22,13 +22,13 @@ cat <<EOF > l3vpn_123.json
 
             "extension": {
                 "interface": {
-                    "name": "ge-0/0/1",
+                    "name": "ge-0-0-1",
                     "l3vpnVlan": 500,
                     "description": "NAPC-ML3-6-1-MUMBAI-20480K-NATIONAL-PAYMENTS",
                     "bandwidth": 20480,
                     "vlan-id": 500,
-                    "inputServicePolicy": "in_STANDARD_20480",
-                    "outputServicePolicy": "out_STANDARD_20480",
+                    "inservicePolicy": "in_STANDARD_20480",
+                    "outservicePolicy": "out_STANDARD_20480",
                     "address": "10.100.0.1/30"
                 },
                 "VrfPolicy": {
@@ -112,7 +112,7 @@ cat <<EOF > l3vpn_123.json
                         "device": "${DEVICE_RID}",
                         "name": "NATIONAL-PAYMENT-6-H",
                         "instance-type": "vrf",
-                        "interface": ["ge-0/0/1.500"],
+                        "interface": ["ge-0-0-1.500"],
                         "route-distinguisher": "9730:20160912",
                         "vrf-import": ["NATIONAL-PAYMENT-6-H-import"],
                         "vrf-export": ["NATIONAL-PAYMENT-6-H-export"],

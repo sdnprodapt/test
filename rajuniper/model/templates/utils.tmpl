@@ -1,0 +1,8 @@
+{% macro convert_tp_to_native_name(name) -%}
+{%- set name_parts = name|split('-') -%}
+{% if name_parts|length == 4 -%}
+{{ name_parts[0]+'-'+name_parts[1:4]|join('/') }}
+{%- else -%}
+{{name}}
+{%- endif %}
+{%- endmacro %}

@@ -169,14 +169,14 @@ resourceTypes {
                                 optional = true
                             }
 
-                            inputServicePolicy {
+                            inservicePolicy {
                                 title = "Filter to be applied to received packets"
                                 description = "Filter to be applied to received packets"
                                 type = string
                                 optional = true
                             }
 
-                            outputServicePolicy {
+                            outservicePolicy {
                                 title = "Filter to be applied to outgoing packets"
                                 description = "Filter to be applied to outgoing packets"
                                 type = string
@@ -198,10 +198,17 @@ resourceTypes {
                                 optional = true
                             }
 
+                            remote-as{
+                              title = "Remote AS Number"
+                              description = "String description"
+                              type = string
+                              optional = true
+                            }
+
                             maximum-prefix {
                               title = "maximum prefix"
                               description = "maximum prefix"
-                              type = integer
+                              type = string
                               optional = true
                             }
 
@@ -235,6 +242,7 @@ resourceTypes {
                                                     title = "import route target"
                                                     description = "import route target"
                                                     type = object
+                                                    optional = true
                                                     properties {
                                                         route-target {
                                                             title = "route-target"
@@ -247,6 +255,7 @@ resourceTypes {
                                                     title = "export route target"
                                                     description = "export route target"
                                                     type = object
+                                                    optional = true
                                                     properties {
                                                         route-target {
                                                             title = "route-target"
@@ -262,6 +271,43 @@ resourceTypes {
                             }
                         }
                     }
+
+                    vrrp {
+                        title = "Router VRRP"
+                        description = "virtual router route protection for L3VPN"
+                        type = object
+                        optional = true
+                        properties {
+                          vrrp-number {
+                            title = "VRRP Number"
+                            description = "VRRP Number"
+                            type = string
+                            optional = true
+                          }
+
+                          priority {
+                            title = "VRRP Priority"
+                            description = "VRRP Priority"
+                            type = string
+                            optional = true
+                          }
+
+                          address-ip {
+                            title = "VRRP Address IP"
+                            description = "VRRP Address IP"
+                            type = string
+                            optional = true
+                          }
+
+                          preempt-delay {
+                            title = "VRRP Preempt Delay"
+                            description = "VRRP Preempt Delay"
+                            type = string
+                            optional = true
+                          }
+                        }
+                      }
+
                     VrfPolicy {
                         title = "VRFPolicy"
                         description = "A routing policy."
@@ -546,6 +592,7 @@ resourceTypes {
                                                     title = "dot1q"
                                                     description = "tunneling on the trunk"
                                                     type = string
+                                                    optional = true
                                                 }
                                             }
                                         }

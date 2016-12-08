@@ -1,0 +1,16 @@
+{
+    "product": "urn:cyaninc:bp:product:juniper:terminationpoint",
+    "resource": "juniper.resourceTypes.TerminationPoint",
+    "type": "bpprov",
+    "provider_resource_id_field": "name",
+    "device_namespace_props": ["id"],
+    "label_field": "name",
+    "commands": {
+        "list": {
+            "command": "show-termpoints.json"
+        },
+        "get": {
+            "command": "show-termpoints.json"
+        }
+    }
+}

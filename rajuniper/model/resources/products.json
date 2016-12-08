@@ -63,11 +63,16 @@
     "title": "Layer 3 Virtual Private Network Service",
     "active": true,
     "provider_data": {}
-},
-{
+}, {
     "resource_type": "juniper.resourceTypes.L2Circuit",
     "provider_product_id": "urn:cyaninc:bp:product:juniper_l2_circuit",
     "title": "Layer 2 Virtual Private Network Service",
+    "active": true,
+    "provider_data": {}
+}, {
+    "resource_type": "juniper.resourceTypes.TerminationPoint",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper:terminationpoint",
+    "title": "Termination Point",
     "active": true,
     "provider_data": {}
 }]

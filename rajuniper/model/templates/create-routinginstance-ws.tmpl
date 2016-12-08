@@ -1,11 +1,12 @@
 {% macro get_routing_instance_xml_config(data) %}
+{% from "utils.tmpl" import convert_tp_to_native_name%}
 {% set instance_data = data['attachment']['connection']['routing-instance'] %}
 {% set instance_operation = instance_data['operation'] %}
 <routing-instances>
-    {% if instance_operation == "delete" %}
+    {% if instance_operation == "delete" -%}
         <instance operation="delete" >
             <name>{{ instance_data["name"] }}</name>
-    {% else %}
+    {%- else -%}
         <instance>
             <name>{{ instance_data["name"] }}</name>
         {% if instance_data["description"] %}
@@ -16,7 +17,7 @@
         {% endif %}
         {% for interface in instance_data["interface"] %}
             <interface>
-                <name>{{ interface }}</name>
+                <name>{{ convert_tp_to_native_name(interface) }}</name>
             </interface>
         {% endfor %}
         {% if instance_data["route-distinguisher"] %}
@@ -136,7 +137,7 @@
                 </bgp>
             </protocols>
         {% endif %}
-    {% endif %}
+    {%- endif %}
         </instance>
     </routing-instances>
 {% endmacro %}

@@ -1,24 +1,24 @@
 {% macro get_class_of_service_xml_config(data) %}
 {% set class_of_service_data = data['attachment']['connection']['class-of-service'] %}
     <class-of-service>
-         {% for routing_instance_data in class_of_service_data["routing-instance"] %}
+         {% for routing_instance_data in class_of_service_data["routing-instance"] -%}
          {% set instance_operation = routing_instance_data['operation'] %}
-         {% if instance_operation == "delete" %}
+         {%- if instance_operation == "delete" -%}
          <routing-instances operation="delete" >
             <instance_name>{{ routing_instance_data["name"] }}</instance_name>
-         {% else %}
+         {%- else -%}
          <routing-instances>
             <instance_name>{{ routing_instance_data["name"] }}</instance_name>
-            {% if routing_instance_data["classifier-name"] %}
+            {% if routing_instance_data["classifier-name"] -%}
             <classifiers>
                 <exp>
                     <classifier-name>{{ routing_instance_data["classifier-name"] }}</classifier-name>
                 </exp>
             </classifiers>
-            {% endif %}
-         {% endif %}
+            {%- endif %}
+         {%- endif %}
          </routing-instances>
-         {% endfor %}
+         {%- endfor -%}
          {% for traffic_control_profile_data in data["traffic-control-profiles"] %}
          <traffic-control-profiles>
              <name>{{ traffic_control_profile_data["name"] }}</name>
@@ -69,6 +69,6 @@
               </interface>
               {% endfor %}
          </interfaces>
-         {% endif %}
+         {%- endif -%}
     </class-of-service>
 {% endmacro %}

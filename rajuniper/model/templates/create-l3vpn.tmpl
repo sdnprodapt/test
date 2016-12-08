@@ -6,18 +6,18 @@
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
-{% if l3vpn_data.get('extension', {}).get('interface', None) %}
+{%- if l3vpn_data.get('extension', {}).get('interface', None) -%}
 {{ get_interface_xml_config(l3vpn_data)|indent(4) }}
-{% endif %}
-{% if l3vpn_data.get('attachment', {}).get('connection', {}).get('routing-instance', None) %}
+{%- endif -%}
+{% if l3vpn_data.get('attachment', {}).get('connection', {}).get('routing-instance', None) -%}
 {{ get_routing_instance_xml_config(l3vpn_data)|indent(4) }}
-{% endif %}
-{% if l3vpn_data.get('extension', {}).get('VrfPolicy', None) %}
+{%- endif -%}
+{% if l3vpn_data.get('extension', {}).get('VrfPolicy', None) -%}
 {{ get_vrfpolicy_xml_config(l3vpn_data)|indent(4) }}
-{% endif %}
-{% if l3vpn_data.get('attachment', {}).get('connection', {}).get('class-of-service', None) %}
+{%- endif -%}
+{% if l3vpn_data.get('attachment', {}).get('connection', {}).get('class-of-service', None) -%}
 {{ get_class_of_service_xml_config(l3vpn_data)|indent(4) }}
-{% endif %}
+{%- endif %}
 </configuration></config>
 </edit-config>
 </rpc>
