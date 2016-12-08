@@ -1,5 +1,5 @@
 {
-   "product": "urn:ciena:bp:product:juniper_l3vpn",
+   "product": "urn:cyaninc:bp:product:juniper_l3vpn",
    "resource": "juniper.resourceTypes.L3VPN",
    "label_field" : "vpn-id",
    "type": "bpprov_full",
