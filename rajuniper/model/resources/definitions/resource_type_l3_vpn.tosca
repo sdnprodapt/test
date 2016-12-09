@@ -119,6 +119,7 @@ resourceTypes {
                                 title = "Logical Interface description"
                                 description = "Logical Interface description"
                                 type = string
+                                optional = true
                             }
 
                             bandwidth {
@@ -292,6 +293,13 @@ resourceTypes {
                             optional = true
                           }
 
+                          priority-decrement {
+                            title = "VRRP Priority decrement"
+                            description = "VRRP Priority decrement"
+                            type = string
+                            optional = true
+                          }
+                          
                           address-ip {
                             title = "VRRP Address IP"
                             description = "VRRP Address IP"
