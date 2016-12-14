@@ -170,6 +170,20 @@ resourceTypes {
                                 optional = true
                             }
 
+                            reverse_path_forwarding {
+                                title = "allow-self-ping"
+                                description = "allow-self-ping"
+                                type = string
+                                optional = true
+                            }
+
+                            ICMP_unreachable_disable {
+                                title = "unreachables"
+                                description = "unreachables"
+                                type = string
+                                optional = true
+                            }
+
                             inservicePolicy {
                                 title = "Filter to be applied to received packets"
                                 description = "Filter to be applied to received packets"
@@ -292,14 +306,14 @@ resourceTypes {
                             type = string
                             optional = true
                           }
-
+                          
                           priority-decrement {
                             title = "VRRP Priority decrement"
                             description = "VRRP Priority decrement"
                             type = string
                             optional = true
                           }
-                          
+
                           address-ip {
                             title = "VRRP Address IP"
                             description = "VRRP Address IP"
@@ -594,6 +608,7 @@ resourceTypes {
                                                     title = "Address family"
                                                     description = "address family"
                                                     type = string
+                                                    optional = true
                                                 }
 
                                                 route-distinguisher {
@@ -845,7 +860,7 @@ resourceTypes {
                                                             description = "Group type"
                                                             type = string
                                                             enum = [ "internal", "external" ]
-                                                            optional = false
+                                                            optional = true
                                                         }
                                                         as-override {
                                                             title = "as-override"
