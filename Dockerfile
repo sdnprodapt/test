@@ -13,7 +13,6 @@ ADD requirements.txt /bp2/src/
 RUN pip install -i 'https://artifactory.ciena.com/api/pypi/blueplanet-pypi/simple' -r requirements.txt
 
 ADD bp2/hooks /bp2/hooks
-RUN ln -s /bp2/hooks/southbound-update /usr/local/bin/southbound-update
 
 ADD . /bp2/src/
 RUN pip install -e .
