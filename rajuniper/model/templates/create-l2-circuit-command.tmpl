@@ -3,7 +3,9 @@
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
+{% if data.get('extension', {}).get('interface', None) %}
 {{ get_interface_xml_config(data['properties']) | indent(4)}}
+{% endif %}
     <protocols>
         <l2circuit>
          {% set neighbor_operation = data['properties']['operation'] %}
