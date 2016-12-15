@@ -14,13 +14,13 @@ BPPROV_MODEL_DIRPATH = os.path.join(os.path.dirname(__file__), 'model')
 RESOURCES_DIR = os.path.join(BPPROV_MODEL_DIRPATH, 'resources')
 DEFINITIONS_DIR = os.path.join(RESOURCES_DIR, 'definitions')
 RP_CONFIG = os.path.join(RESOURCES_DIR, 'rp_config.yaml')
-# RP_DEPLOY_SETTINGS = os.path.join(RESOURCES_DIR, 'deploy_settings.yaml')
-RP_BIND_PORT = 9191
 
 # DOMAIN_MANAGER_RP means this RA is for talking to systems that
 # manage other elements, eg vCenter, openstack, SAM etc.
 # If False, the RA will manage individual devices, eg Firefly, Cisco, etc.
 DOMAIN_MANAGER_RP = False
+
+USE_KAFKA = True
 
 TYPE_GROUP = 'Juniper'
 
@@ -52,5 +52,3 @@ ROOT_CLS = 'rajuniper.schema.ra.Root'
 CAPABILITIES_DOMAINS = list(default_settings.CAPABILITIES_DOMAINS) + \
     ['rajuniper.domain.oidoperation.OidOperationDomain']
 
-ACCESSORS = list(default_settings.ACCESSORS) + \
-    [('rajuniper.access.oidoperation.OidOperationAccess', {})]

@@ -1,8 +1,12 @@
+#
+# Module: Makefile
+#
+# Copyright(c) 2014, Cyan, Inc. All rights reserved.
+#
+
 HIDE ?= @
 VENV := env
 PACKAGE := $(shell python setup.py --name)
-VERSION := $(shell python setup.py --version)
-DOCKER_REGISTRY := dockerreg.cyanoptics.com
 
 PROJECT_DIR ?= $(shell pwd)
 MODEL_DIR := $(PROJECT_DIR)/$(PACKAGE)/model
@@ -10,61 +14,73 @@ SIM_DIR := $(MODEL_DIR)/sim
 
 PIP := $(VENV)/bin/pip
 PYTHON := $(VENV)/bin/python
+BPFPM ?= bpfpm
 
 PYPI ?= 'https://artifactory.ciena.com/api/pypi/blueplanet-pypi/simple'
+
+TOOLKIT_IMAGE_NAME ?= $(shell docker images | grep devops-toolkit | awk '{ print $$1 }')
+TOOLKIT_IMAGE_VERSION ?= $(shell docker images | grep devops-toolkit | awk '{ print $$2 }')
+TOOLKIT_IMAGE ?= $(TOOLKIT_IMAGE_NAME):$(TOOLKIT_IMAGE_VERSION)
+TOOLKIT_DIR ?= $(PROJECT_DIR)/.devops-toolkit
+
 GIT_REPO_NAME ?= $(shell basename `git remote show -n origin | grep Fetch | cut -d. -f3`)
+
 all: help
+
+include bp2.mk
 
 clean:
 	rm -rf *.deb
-	rm -rf blueplanet/extern
 	rm -rf build
 	rm -rf dist
 	rm -rf *.egg
 	rm -rf *.pyc
 	rm -rf env
 
-help:
+basic-help:
 	@echo "  help         this list"
 	@echo "  clean        delete temporary files"
+
+env-help:
 	@echo " --------------------------------------------------------"
 	@echo "/ virtualenv backed commands                            /"
 	@echo "--------------------------------------------------------"
+	@echo "  import-toolkit extract python packages from distributed devops-toolkit docker image"
+	@echo "  toolkit-venv install requirements-host and self into virtualenv ./env, use toolkit packages"
 	@echo "  prepare-venv install requirements and self into virtualenv ./env"
+	@echo "  fresh-venv   prepare a virtualenv without locked requirements"
 	@echo "  test         run unit tests, model tests, and sim tests"
 	@echo "  utest        run unit tests"
+	@echo "  test-flake8  run flake8 tests"
+	@echo "  test-sim     run simulator tests"
 	@echo "  coverage     run unit tests with code coverage reporting"
 	@echo "  requirements generate new requirements.txt"
 	@echo "  release      release version with bpfrelease"
-	@echo " --------------------------------------------------------"
-	@echo "/ docker backed commands                                /"
-	@echo "--------------------------------------------------------"
-	@echo "  image        build image"
-	@echo "  image-dev    build image, mount src, install editable"
-	@echo "  run          run container (interactive)"
-	@echo "  start        start container (detached)"
-	@echo "  stop         stop container (detached)"
-	@echo "  restart      restart container (detached)"
-	@echo "  enter        enter running container bash"
-	@echo "  interact     enter new container bash"
-	@echo "  dtest        run unit tests with code coverage reporting, model, sim, and flake8 tests"
-	@echo "  dcoverage    run unit tests with code coverage reporting"
-	@echo "  dtest-flake8 run flake8 tests"
-	@echo "  dconfigure   TeamCity target, prepare for testing, runs image"
-	@echo "  dutest       TeamCity target, for unittest, runs dtest"
-	@echo "  ditest       TeamCity target, for integration tests"
+
+help: basic-help env-help bp2-help
 
 # virtualenv related commands
 #
-.prepare-venv:
-# Workaround for pyang uninstall
-	$(HIDE)rm -rf $(VENV)/lib/python2.7/site-packages/pyang*
-	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install --upgrade --index-url $(PYPI) --requirement requirements.txt --src .src
-	$(HIDE)$(PIP) install -e .
+#
+import-toolkit:
+	docker run -i --rm -v $(PWD):/bp2/src $(TOOLKIT_IMAGE) import-toolkit
 
-prepare-venv: .prepare-venv
-	$(HIDE)$(PIP) install -r requirements-src.txt --src .src --exists-action i
+toolkit-venv:
+	$(HIDE)virtualenv $(VENV)
+	$(HIDE)$(PIP) install --find-links=$(TOOLKIT_DIR) \
+		-r requirements-host.txt \
+		-e .
+
+prepare-venv:
+	$(HIDE)virtualenv $(VENV)
+	$(HIDE)$(PIP) install --upgrade -i $(PYPI) -r requirements.txt
+	$(HIDE)$(PIP) install -i $(PYPI) -e .
+
+fresh-venv:
+	-$(HIDE)rm -rf $(VENV)
+	$(HIDE)virtualenv $(VENV)
+	$(HIDE)$(PIP) install -i $(PYPI) -e .
+	$(HIDE)$(PIP) install -i $(PYPI) -r requirements-host.txt
 
 requirements:
 	$(HIDE)$(PIP) uninstall -y $(PACKAGE)
@@ -73,6 +89,7 @@ requirements:
 
 release:
 	$(HIDE)$(VENV)/bin/bpfrelease --organization ra --repository $(GIT_REPO_NAME) --project .
+	$(HIDE)$(VENV)/bin/gdfpm $(DOCKER_IMAGE) $(shell $(VENV)/bin/bpfrelease --project-version)
 
 test: utest test-model-commands test-model-validate test-model-error test-sim test-flake8
 
@@ -96,139 +113,3 @@ test-sim:
 
 coverage:
 	$(HIDE)$(VENV)/bin/nosetests --with-coverage --cover-erase --cover-package $(PACKAGE)
-
-BP_DEB_DIR := $(PROJECT_DIR)/blueplanet/extern
-BP_DEB_BASE := $(BP_DEB_DIR)/python-$(PACKAGE)
-
-# docker related commands
-#
-DOCKER_RUN_ARGS ?= -ti --rm
-PASS_THROUGH_ENV := $(if $(EXTRA_ENV),$(shell python -c 'print "--env "," --env ".join("$(EXTRA_ENV)".split(";"))'))
-DOCKER_RUN := docker run $(DOCKER_RUN_ARGS) $(PASS_THROUGH_ENV)
-DOCKER_BUILD_EXTRA ?=
-DOCKER_BUILD := docker build $(DOCKER_BUILD_EXTRA)
-DOCKER_CMD ?= $(PACKAGE) --declare-rp --configpath /tmp
-DOCKER_IMAGE ?= cyan/$(PACKAGE)
-DOCKER_IMAGE_BASE := cyan/$(PACKAGE)-base
-DOCKER_IMAGE_SIM := cyan/$(PACKAGE)-sim
-DOCKERFILE_RA := docker/ra
-DOCKERFILE_SIM := docker/sim
-DOCKER_CONTAINER := $(PACKAGE)
-DOCKER_PUBLISH ?= -p 8184:8080 -p 1162:1162/udp
-DOCKER_MOUNT :=
-DOCKER_SRC := /bp2/src
-DOCKER_BP2_IGNORE_ENV := \
-	-e "BP2_IGNORE=True"
-DOCKER_BP2_IGNORE_RUN := $(DOCKER_RUN) $(DOCKER_BP2_IGNORE_ENV)
-DOCKER_APP_ENV ?=
-DMODEL_DIR := $(PACKAGE)/model
-DSIM_DIR := $(DMODEL_DIR)/sim
-
-NAME_MAP := --name="$(DOCKER_CONTAINER)"
-
-OS := $(shell uname)
-ifeq ($(OS), Darwin)
-# assumes here you are tunneled from a mac through the vm, and that your dev root
-# is mapped to /vagrant, meaning you should see ls ../Vagrantfile from where this
-# Makefile is.
-DEV_HOST_BASE ?= /vagrant/$(shell pwd | xargs basename)
-else
-DEV_HOST_BASE ?= $(shell pwd)
-endif
-DEV_VOLUME_MOUNT := -v $(DEV_HOST_BASE):$(DOCKER_SRC)
-
-image-base:
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE_BASE) .
-
-image-base-dev: image-base
-	docker rm $(DOCKER_CONTAINER) 2>&1 >/dev/null || true
-# create an easter egg file /bp2/.dev in the image so we know it
-# is a dev image.  Then just run a script to install any libs and
-# link your mounted code.
-# unfortunately this line overwrites the default CMD, hence we always specify.
-	docker run $(DEV_VOLUME_MOUNT) $(DOCKER_BP2_IGNORE) $(NAME_MAP) $(DOCKER_IMAGE_BASE) /bin/bash -c 'touch /bp2/.dev && scripts/docker-link-src'
-	docker commit $(DOCKER_CONTAINER) $(DOCKER_IMAGE_BASE):latest
-	docker rm $(DOCKER_CONTAINER)
-
-tag:
-	docker tag $(DOCKER_IMAGE) $(DOCKER_REGISTRY)/$(DOCKER_IMAGE):$(VERSION)
-
-push:
-	docker push $(DOCKER_REGISTRY)/$(DOCKER_IMAGE):$(VERSION)
-
-clean-image:
-	-docker rmi $(DOCKER_IMAGE_BASE) $(DOCKER_IMAGE) $(DOCKER_REGISTRY)/$(DOCKER_IMAGE):$(VERSION)
-
-image: image-base
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_RA)
-
-image-dev: image-base-dev
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE) $(DOCKERFILE_RA)
-
-image-sim: image-base
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE_SIM) $(DOCKERFILE_SIM)
-
-image-sim-dev: image-base-dev
-	$(DOCKER_BUILD) -t $(DOCKER_IMAGE_SIM) $(DOCKERFILE_SIM)
-
-# if we have a /bp2/.dev, then this is a dev image
-DEV_CHECK = /bin/bash -c 'if [ -f /bp2/.dev ]; then echo "$(DEV_VOLUME_MOUNT)"; fi'
-dev-check:
-	$(eval DEV_CHECK_OUT := $(shell $(DOCKER_RUN) $(DOCKER_BP2_IGNORE) $(DOCKER_IMAGE) $(DEV_CHECK)))
-
-finalize-mount: dev-check
-	$(eval FINAL_MOUNT := $(DOCKER_MOUNT) $(DEV_CHECK_OUT))
-
-run: finalize-mount
-	$(DOCKER_RUN) $(FINAL_MOUNT) $(NAME_MAP) $(DOCKER_PUBLISH) $(DOCKER_APP_ENV) $(DOCKER_IMAGE) $(DOCKER_CMD)
-
-start: finalize-mount
-	docker run -d $(FINAL_MOUNT) $(NAME_MAP) $(DOCKER_PUBLISH) $(DOCKER_APP_ENV) $(DOCKER_IMAGE) $(DOCKER_CMD)
-
-stop:
-	docker stop $(DOCKER_CONTAINER)
-	docker rm $(DOCKER_CONTAINER) || true
-
-restart: stop start
-
-enter:
-	docker exec -ti $(DOCKER_CONTAINER) '/bin/bash'
-
-interact: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) '/bin/bash'
-
-dtest: dcoverage dtest-model-commands dtest-model-validate dtest-model-error dtest-sim dtest-flake8
-
-dtest-flake8: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) flake8 $(PACKAGE)
-
-dcoverage: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) nosetests -v --with-coverage --cover-erase --cover-package $(PACKAGE)
-
-dtest-model-validate: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli validate $(DMODEL_DIR)
-
-dtest-model-commands: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli test $(DMODEL_DIR)
-
-dtest-model-error: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli test-error $(DMODEL_DIR)
-
-dtest-sim: finalize-mount
-	$(DOCKER_BP2_IGNORE_RUN) $(FINAL_MOUNT) $(DOCKER_IMAGE) bpprov-cli test-sim $(DSIM_DIR)
-
-### TeamCity Targets
-
-dconfigure: image
-
-dutest: dtest
-
-ditest:
-	$(HIDE)$(PROJECT_DIR)/scripts/integration-start
-	$(HIDE)$(VENV)/bin/python $(PACKAGE)/tests/test_integration.py
-
-ditest-log:
-	$(HIDE)$(PROJECT_DIR)/scripts/integration-log
-
-ditest-stop:
-	$(HIDE)$(PROJECT_DIR)/scripts/integration-stop

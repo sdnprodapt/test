@@ -57,6 +57,8 @@ domains:
   - id: "urn:cyaninc:bp:domain:juniper"
     title: "Juniper"                                      # max 32 chars
     description: "Domain for managing Juniper devices"
+    domain_settings:
+          - connection_status: true
 
     # specifies configuration for resource types managed in this domain,
     # currently only the id must be specified but in this future may be
