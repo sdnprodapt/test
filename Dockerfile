@@ -1,4 +1,4 @@
-FROM dockerreg.cyanoptics.com/cyan/trusty-python:0.2.2-0
+FROM artifactory.ciena.com/blueplanet/trusty-python:0.2.2-0 
 
 RUN apt-get update -y -q && \
     apt-get install -y -q libxslt-dev libxml2-dev libffi-dev libssl-dev 
