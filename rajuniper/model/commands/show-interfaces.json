@@ -2,7 +2,6 @@
     "endpoint": "netconf",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/tests/show-interfaces.json"
     ],
     "endpoint-parameters": {
         "command": {

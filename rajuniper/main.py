@@ -6,9 +6,9 @@ from rasdk.engine import run
 
 
 def main():
-   os.environ.setdefault('RASDK_SETTINGS_MODULE', 'rajuniper.settings')
-   run()
+    os.environ.setdefault('RASDK_SETTINGS_MODULE', 'rajuniper.settings')
+    run()
 
 
 if __name__ == '__main__':
-   main()
+    main()

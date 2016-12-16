@@ -51,4 +51,3 @@ ROOT_CLS = 'rajuniper.schema.ra.Root'
 
 CAPABILITIES_DOMAINS = list(default_settings.CAPABILITIES_DOMAINS) + \
     ['rajuniper.domain.oidoperation.OidOperationDomain']
-
