@@ -2,6 +2,7 @@ afkak==2.2.0
 attrs==16.0.0
 autobahn==0.14.1
 backports.shutil-get-terminal-size==1.0.0
+beautifulsoup4==4.3.2
 bp2hookutil==3.2.0
 bpfrelease==0.2.7
 bpprov==1.43.0
@@ -68,4 +69,5 @@ traitlets==4.2.1
 twigjack==4.1.2
 Twisted==16.2.0
 txaio==2.5.1
+xmltodict==0.9.0
 zope.interface==4.2.0
