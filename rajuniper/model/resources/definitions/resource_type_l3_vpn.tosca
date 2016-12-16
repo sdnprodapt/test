@@ -84,7 +84,7 @@ resourceTypes {
                                 title = "Operation"
                                 description = "Operation"
                                 type = string
-                                enum = [ "delete" ]
+                                enum = [ "delete", "add" ]
                                 optional = true
                             }
                             vlanTagMode {
@@ -339,7 +339,7 @@ resourceTypes {
                                             title = "Operation"
                                             description = "Operation"
                                             type = string
-                                            enum = [ "delete" ]
+                                            enum = [ "delete", "add" ]
                                             optional = true
                                         }
                                         community_name {
@@ -376,7 +376,7 @@ resourceTypes {
                                             title = "Operation"
                                             description = "Operation"
                                             type = string
-                                            enum = [ "delete" ]
+                                            enum = [ "delete", "add" ]
                                             optional = true
                                         }
                                         terms {
@@ -667,7 +667,7 @@ resourceTypes {
                                                     title = "Operation"
                                                     description = "Operation"
                                                     type = string
-                                                    enum = [ "delete" ]
+                                                    enum = [ "delete", "add"  ]
                                                     optional = true
                                                 }
                                                 classifier-name {
@@ -706,7 +706,7 @@ resourceTypes {
                                         title = "Operation"
                                         description = "Operation"
                                         type = string
-                                        enum = [ "delete" ]
+                                        enum = [ "delete", "add" ]
                                         optional = true
                                     }
 

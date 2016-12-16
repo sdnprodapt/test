@@ -109,7 +109,7 @@ resourceTypes {
          title = "Operation"
          description = "operation"
          type = string
-         enum = [ "delete" ]
+         enum = [ "delete", "add" ]
          optional = true
       }
 
@@ -134,7 +134,7 @@ resourceTypes {
                         title = "Operation"
                         description = "operation"
                         type = string
-                        enum = [ "delete" ]
+                        enum = [ "delete", "add" ]
                         optional = true
                     }
                     vlanTagMode {
@@ -182,15 +182,6 @@ resourceTypes {
                         title = "Logical link-layer encapsulation"
                         description = "Logical link-layer encapsulation"
                         type = string
-                        optional = true
-                    }
-
-                    vlan-id {
-                        title = "Virtual LAN identifier value for 802.1q VLAN tags"
-                        description = "Virtual LAN identifier value for 802.1q VLAN tags"
-                        type = integer
-                        minimum = 1
-                        maximum = 4096
                         optional = true
                     }
 
