@@ -60,7 +60,7 @@ resourceTypes {
         title = "Virtual Circuit ID"
         description = ""
         type = string
-        optional = false
+        optional = true
       }
 
       interface-name {

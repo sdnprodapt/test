@@ -1,24 +1,26 @@
 {% macro get_interface_xml_config(data) %}
 {% from "utils.tmpl" import convert_tp_to_native_name%}
+{% set svc_bandwidth = data.get('service', {}).get('svc-bandwidth', None) %}
 {% set data= data['extension']['interface'] %}
 {% set interface_operation = data['operation'] %}
+{% set interface_name, unit_name = data['name'].split('.') %}
     <interfaces>
          <interface>
-               <name>{{ convert_tp_to_native_name(data['name']) }}</name>
+               <name>{{ convert_tp_to_native_name(interface_name) }}</name>
                {% if interface_operation == "delete" -%}
                <unit operation="delete" >
-                  <name>{{ data['l3vpnVlan'] }}</name>
+                  <name>{{ unit_name }}</name>
                {%- else -%}
                <unit>
-                  <name>{{ data['l3vpnVlan'] }}</name>
+                  <name>{{ unit_name }}</name>
                   {% if data['description'] %}
                   <description>{{ data['description'] }}</description>
                   {% endif %}
-                  {% if data['bandwidth'] %}
-                  <bandwidth>{{ data['bandwidth'] }}</bandwidth>
+                  {% if svc_bandwidth %}
+                  <bandwidth>{{ svc_bandwidth }}</bandwidth>
                   {% endif %}
-                  {% if data['vlan-id'] %}
-                  <vlan-id>{{ data['vlan-id'] }}</vlan-id>
+                  {% if data['dot1q'] %}
+                  <vlan-id>{{ data['dot1q'] }}</vlan-id>
                   {% endif %}
                   {% if data['logicalEncapsulation'] %}
                   <encapsulation>{{ data['logicalEncapsulation'] }}</encapsulation>

@@ -108,13 +108,6 @@ resourceTypes {
                                 optional = true
                             }
 
-                            l3vpnVlan {
-                                title = "Logical interface"
-                                description = "Logical interface"
-                                type = integer
-                                optional = true
-                            }
-
                             description {
                                 title = "Logical Interface description"
                                 description = "Logical Interface description"
@@ -122,26 +115,11 @@ resourceTypes {
                                 optional = true
                             }
 
-                            bandwidth {
-                                title = "Interface Bandwidth"
-                                description = "Interface Bandwidth"
-                                type = integer
-                                optional = true
-                            }
 
                             logicalEncapsulation {
                                 title = "Logical link-layer encapsulation"
                                 description = "Logical link-layer encapsulation"
                                 type = string
-                                optional = true
-                            }
-
-                            vlan-id {
-                                title = "Virtual LAN identifier value for 802.1q VLAN tags"
-                                description = "Virtual LAN identifier value for 802.1q VLAN tags"
-                                type = integer
-                                minimum = 1
-                                maximum = 4096
                                 optional = true
                             }
 
@@ -209,6 +187,13 @@ resourceTypes {
                             name {
                                 title = "vrf name"
                                 description = "name of vrf"
+                                type = string
+                                optional = true
+                            }
+
+                            description {
+                                title = "VRF description"
+                                description = "VRF description"
                                 type = string
                                 optional = true
                             }
