@@ -98,13 +98,10 @@ domains:
                 - immediateDeletion: true
       - id: "juniper.resourceTypes.Interface"
         discoveryStrategy:
-          - strategyType: "sync"
-            pollingMode: "listOnly"
-            pollingSettings:
-              - pollingIntervalMs: 300000
-                immediateDeletion: true
-                syncTimeoutMs: 100000
-                verifyMissingList: true
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
         apiSettings:
           - serverTimeoutMs: 100000
             maxConnections: 4
@@ -112,13 +109,10 @@ domains:
             idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.VrfPolicy"
         discoveryStrategy:
-          - strategyType: "sync"
-            pollingMode: "listOnly"
-            pollingSettings:
-              - pollingIntervalMs: 300000
-                immediateDeletion: true
-                syncTimeoutMs: 100000
-                verifyMissingList: true
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
         apiSettings:
           - serverTimeoutMs: 100000
             maxConnections: 4
@@ -137,13 +131,10 @@ domains:
             idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.InterfaceVlan"
         discoveryStrategy:
-          - strategyType: "sync"
-            pollingMode: "listOnly"
-            pollingSettings:
-              - pollingIntervalMs: 300000
-                immediateDeletion: true
-                syncTimeoutMs: 100000
-                verifyMissingList: true
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
         apiSettings:
           - serverTimeoutMs: 100000
             maxConnections: 4
@@ -151,13 +142,10 @@ domains:
             idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.VlanIdentifier"
         discoveryStrategy:
-          - strategyType: "sync"
-            pollingMode: "listOnly"
-            pollingSettings:
-              - pollingIntervalMs: 40000
-                immediateDeletion: true
-                syncTimeoutMs: 100000
-                verifyMissingList: true
+            - strategyType: "async"
+              pollingMode: "noPolling"
+              pollingSettings:
+                - immediateDeletion: true
         apiSettings:
           - serverTimeoutMs: 100000
             maxConnections: 4

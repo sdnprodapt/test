@@ -21,7 +21,9 @@
                     {% if data["description"] %}
                     <description>{{ data["description"]}}</description>
                     {% endif %}
+                    {% if data['virtual-circuit-id'] %}
                     <virtual-circuit-id>{{ data['virtual-circuit-id'] }}</virtual-circuit-id>
+                    {% endif %}
                     {% if data['ignore-mtu-mismatch'] %}
                     <ignore-mtu-mismatch/>
                     {% endif %}

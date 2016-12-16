@@ -39,13 +39,13 @@
         {% if instance_data["vrf-table-label"] %}
                  <vrf-table-label></vrf-table-label>
         {% endif %}
-        {%  if instance_data["routing_options"] %}
+        {%  if instance_data["routing-options"] %}
             <routing-options>
-                {% if instance_data["routing_options"]["auto-export"] %}
+                {% if instance_data.get("routing-options", {}).get("auto_export", None) %}
                 <auto-export/>
                 {% endif %}
-                {%  if instance_data["routing_options"]["maximum-prefixes"] %}
-                {% set maximum_prefixes_data = instance_data["routing_options"]["maximum-prefixes"] %}
+                {%  if instance_data["routing-options"]["maximum-prefixes"] %}
+                {% set maximum_prefixes_data = instance_data["routing-options"]["maximum-prefixes"] %}
                 <maximum-prefixes>
                     {%  if maximum_prefixes_data["limit"] %}
                     <limit>{{maximum_prefixes_data["limit"]}}</limit>
@@ -55,9 +55,9 @@
                     {% endif %}
                 </maximum-prefixes>
                 {% endif %}
-                {%  if instance_data["routing_options"]["static"] %}
+                {%  if instance_data["routing-options"]["static"] %}
                 <static>
-                {% for route in instance_data["routing_options"]["static"]["route"] %}
+                {% for route in instance_data["routing-options"]["static"]["route"] %}
                     <route>
                         <name>{{ route["name"] }}</name>
                         <nexthop>{{ route["nexthop"] }}</nexthop>
@@ -84,8 +84,8 @@
                     {% if group["as-override"] %}
                         <as-override></as-override>
                     {% endif %}
-                    {% for export_policy in group["export_policy"] %}
-                        <export>export_policy</export>
+                    {% for export_policy in group["export_policies"] %}
+                        <export>{{ export_policy }}</export>
                     {% endfor %}
                     {% for neighbor in group["neighbors"] %}
                         <neighbor>
