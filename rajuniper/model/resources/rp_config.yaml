@@ -43,6 +43,9 @@ definitions: ./definitions
 # will be onboarded.
 ui_schema: ./ui-schema
 
+# New schemas
+ddui_schema: "./ddui-schema"
+
 # Base resources types that are onboarded by an application image and may not be immediately available.
 dependent_types: [
   'tosca.resourceTypes.NetworkFunction',

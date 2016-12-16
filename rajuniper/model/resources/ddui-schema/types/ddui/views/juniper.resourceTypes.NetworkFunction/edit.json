@@ -1,0 +1,47 @@
+{
+  "type": "form",
+  "version": "2.0",
+  "cells": [
+    {
+      "children": [
+        {
+          "model": "label"
+        },
+        {
+          "model": "description"
+        },
+        {
+          "model": "autoClean"
+        }
+      ],
+      "label": "General"
+    },
+    {
+      "label": "Equipment",
+      "children": [
+        {
+          "model": "properties.sessionProfile",
+          "label": "Session Profile",
+          "renderer": {
+            "name": "select",
+            "options": {
+              "modelType": "resource",
+              "query": {
+                "resourceTypeId": "juniper.resourceTypes.SessionProfile"
+              }
+            }
+          }
+        },
+        {
+          "model": "properties.ipAddress",
+          "label": "Host Name / IP Address"
+        },
+        {
+          "model": "properties.resourceType",
+          "label": "Resource Type",
+          "description": "The expected equipment type may be supplied to detect equipment mismatch."
+        }
+      ]
+    }
+  ]
+}
