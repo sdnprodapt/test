@@ -129,9 +129,6 @@ DOCKER_BP2_IGNORE_RUN := $(DOCKER_RUN) $(DOCKER_BP2_IGNORE_ENV)
 DOCKER_APP_ENV ?=
 DMODEL_DIR := $(PACKAGE)/model
 DSIM_DIR := $(DMODEL_DIR)/sim
-TAGS := $(shell python setup.py --version)
-REGISTRY ?= artifactory.ciena.com/blueplanet
-
 
 NAME_MAP := --name="$(DOCKER_CONTAINER)"
 
@@ -230,7 +227,7 @@ dtest-sim: finalize-mount
 
 dconfigure: image
 
-dutest: dteam-City-args dtest
+dutest: dtest
 
 ditest:
 	$(HIDE)$(PROJECT_DIR)/scripts/integration-start
@@ -241,18 +238,3 @@ ditest-log:
 
 ditest-stop:
 	$(HIDE)$(PROJECT_DIR)/scripts/integration-stop
-
-dteam-City-args:
-	@echo "Running Team City Setup $(DOCKER_CONTAINER)"
-	$(eval DOCKER_RUN_ARGS = -i --rm)
-	$(eval DOCKER_RUN = docker run $(DOCKER_RUN_ARGS) $(PASS_THROUGH_ENV))
-	$(eval DOCKER_BP2_IGNORE_RUN = $(DOCKER_RUN) $(DOCKER_BP2_IGNORE_ENV))
-	@echo "Docker Values Have been Set"
-	@echo "Docker BP2 Ignore Run is $(DOCKER_BP2_IGNORE_RUN)"
-
-######################################Tagging###################################
-tag: image
-	$(foreach tag, ${TAGS}, docker tag -f $(DOCKER_IMAGE):latest $(REGISTRY)/$(PACKAGE):${tag} &&) true
-
-push: tag
-	$(foreach tag, ${TAGS}, docker push $(REGISTRY)/$(PACKAGE):${tag} &&) true
