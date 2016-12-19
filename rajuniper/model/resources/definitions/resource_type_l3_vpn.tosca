@@ -219,6 +219,13 @@ resourceTypes {
                               optional = true
                             }
 
+                            discovered {
+                                title = "VRF deletion flag"
+                                description = "VRF deletion flag"
+                                type = string
+                                optional = true
+                            }
+
                             address-family {
                                 title = "address family list"
                                 description = "address family BGP/OSPF/Static Route"
@@ -249,6 +256,14 @@ resourceTypes {
                                                             description = "route-target"
                                                             type = string
                                                         }
+
+                                                        route-policy {
+                                                            title = "route-policy"
+                                                            description = "route-policy"
+                                                            type = string
+                                                            optional = true
+                                                        }
+
                                                     }
                                                 }
                                                 export {
@@ -261,6 +276,13 @@ resourceTypes {
                                                             title = "route-target"
                                                             description = "route-target"
                                                             type = string
+                                                        }
+
+                                                        route-policy {
+                                                            title = "route-policy"
+                                                            description = "route-policy"
+                                                            type = string
+                                                            optional = true
                                                         }
                                                     }
                                                 }
@@ -597,8 +619,29 @@ resourceTypes {
                                                 }
 
                                                 route-distinguisher {
-                                                    title = "dot1q"
+                                                    title = "route-distinguisher"
                                                     description = "tunneling on the trunk"
+                                                    type = string
+                                                    optional = true
+                                                }
+
+                                                bgp-neighbor-description {
+                                                    title = "BGP Neighbor Description"
+                                                    description = "neighbor description"
+                                                    type = string
+                                                    optional = true
+                                                }
+
+                                                in-route-policy {
+                                                    title = "in-route-policy"
+                                                    description = "in-route-policy"
+                                                    type = string
+                                                    optional = true
+                                                }
+
+                                                out-route-policy {
+                                                    title = "out-route-policy"
+                                                    description = "out-route-policy"
                                                     type = string
                                                     optional = true
                                                 }

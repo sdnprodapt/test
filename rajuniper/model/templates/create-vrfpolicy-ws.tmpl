@@ -78,11 +78,11 @@
          <community>
              <community_name>{{ community_data["community_name"] }}</community_name>
              {% if community_data["members"] %}
+             {% for member in community_data["members"] %}
              <members>
-                  {% for member in community_data["members"] %}
                   <value>{{ member }}</value>
-                  {% endfor %}
              </members>
+             {% endfor %}
              {% endif %}
          {%- endif %}
          </community>
