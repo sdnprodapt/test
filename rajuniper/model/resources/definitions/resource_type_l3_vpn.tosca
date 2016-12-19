@@ -219,6 +219,13 @@ resourceTypes {
                               optional = true
                             }
 
+                            discovered {
+                                title = "VRF deletion flag"
+                                description = "VRF deletion flag"
+                                type = string
+                                optional = true
+                            }
+
                             address-family {
                                 title = "address family list"
                                 description = "address family BGP/OSPF/Static Route"
@@ -614,6 +621,13 @@ resourceTypes {
                                                 route-distinguisher {
                                                     title = "route-distinguisher"
                                                     description = "tunneling on the trunk"
+                                                    type = string
+                                                    optional = true
+                                                }
+
+                                                bgp-neighbor-description {
+                                                    title = "BGP Neighbor Description"
+                                                    description = "neighbor description"
                                                     type = string
                                                     optional = true
                                                 }
