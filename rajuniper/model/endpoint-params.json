@@ -1,6 +1,6 @@
 {
     "netconf": {
-        "commandTimeout": 20,
+        "commandTimeout": 300,
         "reconnectPeriod": 30,
         "rx_delimiter": "]]>]]>\n" 
     },

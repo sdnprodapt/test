@@ -71,12 +71,24 @@ domains:
               pollingMode: "noPolling"
               pollingSettings:
                 - immediateDeletion: true
+                  syncTimeoutMs: 310000
+        apiSettings:
+          - serverTimeoutMs: 300000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.L2Circuit"
         discoveryStrategy:
             - strategyType: "async"
               pollingMode: "noPolling"
               pollingSettings:
                 - immediateDeletion: true
+                  syncTimeoutMs: 310000
+        apiSettings:
+          - serverTimeoutMs: 300000
+            maxConnections: 4
+            maxHttpRetries: 0
+            idleTimeoutMs: 3600000
       - id: "juniper.resourceTypes.NetworkFunction"
         discoveryStrategy:
           - strategyType: "sync"
@@ -156,7 +168,8 @@ domains:
            - strategyType: "sync"
              pollingMode: "listOnly"
              pollingSettings:
-               - pollingIntervalMs: 120000
+               - pollingIntervalMs: 300000
+                 syncTimeoutMs: 310000
 #      - id: "juniper.resourceTypes.VirtualRouter"
 #        discoveryStrategy:
 #          - strategyType: "sync"
