@@ -4,17 +4,11 @@
 <filter type="subtree">
 <configuration>
     <class-of-service>
-        <traffic-control-profiles>
-		    <name>{{ data.BANDWIDTHMBPS }}M-{{ data.QOSPROFILE }}-egress</name>
-		</traffic-control-profiles>
-        <interfaces>
-            <interface-set>
-                <interface-set-name>{{ data['INTSETNAME'] }}</interface-set-name>
-            </interface-set>
-            <interface>
-                <name>{{ data['PARENTINT'] }}</name>
-            </interface>
-        </interfaces>
+        <routing-instances>
+        {% if data['name'] %}
+        <name>{{ data['name'] }}</name>
+        {% endif %}
+        </routing-instances>
     </class-of-service>
 </configuration>
 </filter>
