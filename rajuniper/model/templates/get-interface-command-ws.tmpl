@@ -4,12 +4,16 @@
 <filter type="subtree">
 <configuration>
     <interfaces>
-         <interface-set>
-              <interface-set-name>{{ data['INTSETNAME'] }}</interface-set-name>
-         </interface-set>
+        {% if data['interface-set-name'] %}
+        <interface-set>
+              <interface-set-name>{{ data['interface-set-name'] }}</interface-set-name>
+        </interface-set>
+        {% endif %}
+        {% if data['name'] %}
         <interface>
-            <name>{{ data['PARENTINT'] }}</name>
+            <name>{{ data['name'] }}</name>
         </interface>
+        {% endif %}
     </interfaces>
 </configuration>
 </filter>

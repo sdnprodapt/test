@@ -4,9 +4,9 @@
 <filter type="subtree">
 <configuration>
     <routing-instances>
-        <instance>
-            <name>{{ data.name }}</name>
-        </instance>
+     {% if data['name'] %}
+     <name>{{ data['name'] }}</name>
+     {% endif %}
     </routing-instances>
 </configuration>
 </filter>

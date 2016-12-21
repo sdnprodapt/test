@@ -4,15 +4,16 @@
 <filter type="subtree">
     <configuration>
         <policy-options>
+           {% if data['statement-name'] %}
             <policy-statement>
-                <name>{{ data.CUSTOMERPOLICY }}-IMPORT</name>
+                 <name>{{ data['statement-name'] }}</name>
             </policy-statement>
-            <policy-statement>
-                <name>{{ data.CUSTOMERPOLICY }}-EXPORT</name>
-            </policy-statement>
+           {% endif %}
+           {% if data['community-name'] %}
              <community>
-                 <community_name>{{ data.CUSTOMERCOMMUNITY }}</community_name>
+                 <community_name>{{ data['community-name'] }}</community_name>
              </community>
+           {% endif %}
         </policy-options>
     </configuration>
 </filter>
