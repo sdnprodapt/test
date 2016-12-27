@@ -1,12 +1,12 @@
 {% if "ok" in data["output"] %}
 {
-    "label": "{{ data['properties']['vpn-id'] }}",
+    "label": "{{ data['properties']['extension']['interface']['name'] }}",
     "properties": {{ data["properties"] | to_json }},
     "orchState": "active"
 }
 {% else %}
 {
-    "label": "{{ data['properties']['vpn-id'] }}",
+    "label": "{{ data['properties']['extension']['interface']['name'] }}",
     "properties": {{ data["properties"] | to_json }},
     "orchState": "failed",
     "reason": "{{ data['output'] }}"
