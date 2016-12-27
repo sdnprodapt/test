@@ -219,14 +219,14 @@ resourceTypes {
                               optional = true
                             }
 
-                            network-address {
+                            network_address {
                                title = "Network address"
                                description = "Network address"
                                type = string
                                optional = true
                             }
 
-                            loopback-address {
+                            loopback_address {
                                title = "loopback address"
                                description = "loopback address"
                                type = string
