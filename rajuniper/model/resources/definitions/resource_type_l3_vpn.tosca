@@ -31,7 +31,7 @@ resourceTypes {
                 title = "VPN ID"
                 description = "Unique identifier for the service resource."
                 type = integer
-                optional = false
+                optional = true
               }
 
               device {
@@ -219,6 +219,27 @@ resourceTypes {
                               optional = true
                             }
 
+                            network-address {
+                               title = "Network address"
+                               description = "Network address"
+                               type = string
+                               optional = true
+                            }
+
+                            loopback-address {
+                               title = "loopback address"
+                               description = "loopback address"
+                               type = string
+                               optional = true
+                            }
+
+                            prefix-set-name {
+                               title = "Prefix Set Name"
+                               description = "Prefix Set Name"
+                               type = string
+                               optional = true
+                            }
+
                             discovered {
                                 title = "VRF deletion flag"
                                 description = "VRF deletion flag"
@@ -244,6 +265,7 @@ resourceTypes {
                                             title = "address family"
                                             description = "address family"
                                             type = object
+                                            optional = true
                                             properties {
                                                 import {
                                                     title = "import route target"
@@ -255,6 +277,7 @@ resourceTypes {
                                                             title = "route-target"
                                                             description = "route-target"
                                                             type = string
+                                                            optional = true
                                                         }
 
                                                         route-policy {
@@ -276,6 +299,7 @@ resourceTypes {
                                                             title = "route-target"
                                                             description = "route-target"
                                                             type = string
+                                                            optional = true
                                                         }
 
                                                         route-policy {

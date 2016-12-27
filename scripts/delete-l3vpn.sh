@@ -1,7 +1,5 @@
 #!/bin/bash
 
-INSTANCE_NAME=123
-
 source dockerdev.sh
 
 PRODUCT_ID=$(jcurl ${MARKET_URL}/products?q=resourceTypeId:juniper.resourceTypes.L3VPN | jparse [\"items\"][0][\"id\"])
@@ -10,10 +8,11 @@ DEVICE_RID=$(jcurl ${MARKET_URL}/resources?resourceTypeId=juniper.resourceTypes.
 cat <<EOF > l3vpn_123.json
 {
 "productId": "${PRODUCT_ID}",
-"label": "${INSTANCE_NAME}",
 "discovered": false,
+"tenantId": "7c7da24e-d2af-35c7-8f6d-d8d16c7f0738",
+"providerResourceId": "UL65XFNDW6JNDHLSFDY6I36A4OE::ge-0-0-1.500",
+ "id": "58622df2-19b6-4fe8-a1e1-f728fffbd151",
 "properties":{
-            "vpn-id": ${INSTANCE_NAME},
             "device": "${DEVICE_RID}",
             "tpe": "some_interface",
             "service":{
@@ -22,11 +21,9 @@ cat <<EOF > l3vpn_123.json
 
             "extension": {
                 "interface": {
-                    "name": "ge-0-0-1",
-                    "l3vpnVlan": 500,
+                    "name": "ge-0-0-1.500",
                     "description": "NAPC-ML3-6-1-MUMBAI-20480K-NATIONAL-PAYMENTS",
-                    "bandwidth": 20480,
-                    "vlan-id": 500,
+                    "dot1q": 500,
                     "inservicePolicy": "in_STANDARD_20480",
                     "outservicePolicy": "out_STANDARD_20480",
                     "operation" : "delete",

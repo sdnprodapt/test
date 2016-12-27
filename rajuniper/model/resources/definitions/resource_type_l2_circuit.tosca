@@ -39,7 +39,7 @@ resourceTypes {
         title = "VPN ID"
         description = "Unique identifier for the service resource."
         type = integer
-        optional = false
+        optional = true
       }
 
       description {
