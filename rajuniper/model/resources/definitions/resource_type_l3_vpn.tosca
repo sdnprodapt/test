@@ -233,7 +233,7 @@ resourceTypes {
                                optional = true
                             }
 
-                            prefix-set-name {
+                            prefix_set_name {
                                title = "Prefix Set Name"
                                description = "Prefix Set Name"
                                type = string
