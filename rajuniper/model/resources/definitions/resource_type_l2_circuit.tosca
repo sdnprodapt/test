@@ -169,6 +169,7 @@ resourceTypes {
                         title = "Logical Interface description"
                         description = "Logical Interface description"
                         type = string
+                        optional = true
                     }
 
                     bandwidth {
