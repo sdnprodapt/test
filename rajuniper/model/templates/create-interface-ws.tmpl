@@ -25,6 +25,7 @@
                   {% if data['logicalEncapsulation'] %}
                   <encapsulation>{{ data['logicalEncapsulation'] }}</encapsulation>
                   {% endif %}
+                  {% if data["ccc_policer"]  or data['address'] or data['inservicePolicy'] or data['outservicePolicy'] -%}
                   <family>
                   {% if data["ccc_policer"] -%}
                       <ccc>
@@ -38,12 +39,14 @@
                           </policer>
                       </ccc>
                   {%- else -%}
+                      {% if data['address'] or data['inservicePolicy'] or data['outservicePolicy'] -%}
                       <inet>
                           {% if data['address'] %}
                           <address>
                               <name>{{ data['address'] }}</name>
                           </address>
                           {% endif %}
+                          {% if data['inservicePolicy'] or data['outservicePolicy'] -%}
                           <filter>
                               {% if data['inservicePolicy'] %}
                               <input>
@@ -56,9 +59,12 @@
                               </output>
                               {% endif %}
                           </filter>
+                          {% endif %}
                        </inet>
+                       {%- endif %}
                    {%- endif %}
                   </family>
+                  {% endif %}
               {%- endif %}
               </unit>
         </interface>
