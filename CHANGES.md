@@ -1,3 +1,7 @@
+##Version 16.10.EQIX.4
+
+* Upgraded the bpprov version to 1.48.0 for netconf endpoint reconnection issue (BPSO-38947).
+
 ##Version 16.10.EQIX.3
 
 * Fixed UI view schemas so that edit is now working with label fields.  All other fields are not editable according to tosca.
