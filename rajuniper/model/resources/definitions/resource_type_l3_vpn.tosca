@@ -150,15 +150,22 @@ resourceTypes {
 
                             reverse_path_forwarding {
                                 title = "allow-self-ping"
-                                description = "allow-self-ping"
-                                type = string
+                                description = "Enables the router to ping out an interface"
+                                type = boolean
                                 optional = true
                             }
 
                             ICMP_unreachable_disable {
                                 title = "unreachables"
                                 description = "unreachables"
-                                type = string
+                                type = boolean
+                                optional = true
+                            }
+
+                            allow-default {
+                                title = "allow-self-ping"
+                                description = "Enables the matching of default routes"
+                                type = boolean
                                 optional = true
                             }
 
@@ -196,27 +203,6 @@ resourceTypes {
                                 description = "VRF description"
                                 type = string
                                 optional = true
-                            }
-
-                            remote-as{
-                              title = "Remote AS Number"
-                              description = "String description"
-                              type = string
-                              optional = true
-                            }
-
-                            maximum-prefix {
-                              title = "maximum prefix"
-                              description = "maximum prefix"
-                              type = string
-                              optional = true
-                            }
-
-                            neighbor-ip {
-                              title = "vrf neighbor ip"
-                              description = "vrf neighbor ip address"
-                              type = string
-                              optional = true
                             }
 
                             network_address {
@@ -276,7 +262,8 @@ resourceTypes {
                                                         route-target {
                                                             title = "route-target"
                                                             description = "route-target"
-                                                            type = string
+                                                            type = array
+                                                            items.type = string
                                                             optional = true
                                                         }
 
@@ -298,7 +285,8 @@ resourceTypes {
                                                         route-target {
                                                             title = "route-target"
                                                             description = "route-target"
-                                                            type = string
+                                                            type = array
+                                                            items.type = string
                                                             optional = true
                                                         }
 
@@ -306,6 +294,26 @@ resourceTypes {
                                                             title = "route-policy"
                                                             description = "route-policy"
                                                             type = string
+                                                            optional = true
+                                                        }
+                                                    }
+                                                }
+                                                maximum-prefix {
+                                                    title = "Maximum prefixes"
+                                                    description = ""
+                                                    type = object
+                                                    properties {
+                                                        limit {
+                                                            title = "Maximum number of prefixes"
+                                                            description = ""
+                                                            type = integer
+                                                            optional = true
+                                                        }
+
+                                                        mid-thresh {
+                                                            title = "Percentage of limit at which to start generating warnings"
+                                                            description = ""
+                                                            type = integer
                                                             optional = true
                                                         }
                                                     }
@@ -327,21 +335,21 @@ resourceTypes {
                           vrrp-number {
                             title = "VRRP Number"
                             description = "VRRP Number"
-                            type = string
+                            type = integer
                             optional = true
                           }
 
                           priority {
                             title = "VRRP Priority"
                             description = "VRRP Priority"
-                            type = string
+                            type = integer
                             optional = true
                           }
                           
                           priority-decrement {
                             title = "VRRP Priority decrement"
                             description = "VRRP Priority decrement"
-                            type = string
+                            type = integer
                             optional = true
                           }
 
@@ -355,7 +363,7 @@ resourceTypes {
                           preempt-delay {
                             title = "VRRP Preempt Delay"
                             description = "VRRP Preempt Delay"
-                            type = string
+                            type = integer
                             optional = true
                           }
                         }
@@ -642,6 +650,20 @@ resourceTypes {
                                                     optional = true
                                                 }
 
+                                                remote-as{
+                                                    title = "Remote AS Number"
+                                                    description = "String description"
+                                                    type = integer
+                                                    optional = true
+                                                }
+
+                                                neighbor-ip {
+                                                    title = "vrf neighbor ip"
+                                                    description = "vrf neighbor ip address"
+                                                    type = string
+                                                    optional = true
+                                                }
+
                                                 route-distinguisher {
                                                     title = "route-distinguisher"
                                                     description = "tunneling on the trunk"
@@ -667,6 +689,61 @@ resourceTypes {
                                                     title = "out-route-policy"
                                                     description = "out-route-policy"
                                                     type = string
+                                                    optional = true
+                                                }
+
+                                                redistribute {
+                                                title = "Redistribute"
+                                                description = ""
+                                                type = object
+                                                optional = true
+                                                    properties {
+                                                        static {
+                                                            title = "static"
+                                                            description = "static"
+                                                            type = boolean
+                                                            optional = true
+                                                        }
+                                                        connected {
+                                                            title = "connected"
+                                                            description = "connected"
+                                                            type = boolean
+                                                            optional = true
+                                                        }
+                                                    }
+                                                }
+
+                                                maximum-prefix {
+                                                title = "Maximum prefixes"
+                                                description = ""
+                                                type = object
+                                                optional=true
+                                                    properties {
+                                                        limit {
+                                                            title = "Maximum number of prefixes"
+                                                            description = "maximum prefix"
+                                                            type = integer
+                                                            optional = true
+                                                        }
+                                                        threshold {
+                                                            title = "Percentage of limit at which to start generating warnings"
+                                                            description = ""
+                                                            type = integer
+                                                            optional = true
+                                                        }
+                                                        timeout {
+                                                            title = "restart-timeout"
+                                                            description = "Time interval (min) after which peering session will be reestablish"
+                                                            type = integer
+                                                            optional = true
+                                                        }
+                                                    }
+                                                }
+
+                                                as-override {
+                                                    title = "as-override"
+                                                    description = ""
+                                                    type = boolean
                                                     optional = true
                                                 }
                                             }
