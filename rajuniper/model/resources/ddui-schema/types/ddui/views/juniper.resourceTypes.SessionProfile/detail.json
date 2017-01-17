@@ -1,0 +1,64 @@
+{
+  "type": "detail",
+  "version": "2.0",
+  "cells": [
+    {
+      "children": [
+        {
+          "model": "label"
+        },
+        {
+          "model": "description"
+        },
+        {
+          "model": "autoClean"
+        }
+      ],
+      "label": "General"
+    },
+    {
+      "label": "Type Group",
+      "children": [
+        {
+          "model": "properties.typeGroup",
+          "label": "RA Type Group",
+          "description": "This value is supplied by the RA and should generally not be changed."
+        }
+      ]
+    },
+    {
+      "label": "Authentication",
+      "children": [
+        {
+          "model": "properties.authentication.netconf.username",
+          "label": "NETCONF Username"
+        },
+        {
+          "model": "properties.authentication.netconf.password",
+          "label": "NETCONF Password"
+        },
+        {
+          "model": "properties.authentication.snmp.community",
+          "label": "SNMP Community"
+        },
+        {
+          "model": "properties.authentication.snmp.version",
+          "label": "SNMP Version"
+        }
+      ]
+    },
+    {
+      "label": "Connection",
+      "children": [
+        {
+          "model": "properties.connection.netconf.hostport",
+          "label": "NETCONF Host Port"
+        },
+        {
+          "model": "properties.connection.snmp.hostport",
+          "label": "SNMP Host Port"
+        }
+      ]
+    }
+  ]
+}
