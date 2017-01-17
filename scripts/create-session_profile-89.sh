@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE_IP="10.60.10.90"
+DEVICE_IP="10.121.19.69"
 
 source dockerdev.sh
 
@@ -14,8 +14,8 @@ cat <<EOF > session_profile.json
 "properties": {
     "authentication": {
         "netconf": {
-            "username": "admin",
-            "password": "Meni0908"
+            "username": "root",
+            "password": "Juniper"
         },
         "snmp": {
             "community": "public",

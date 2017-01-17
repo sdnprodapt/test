@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE_IP="10.60.10.90"
+DEVICE_IP="10.121.19.69"
 
 source dockerdev.sh
 
