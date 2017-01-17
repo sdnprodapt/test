@@ -2,6 +2,10 @@ FROM cyan/rajuniper-base
 
 RUN mkdir -p /bp2/log
 
+# lxml dependency
+RUN apt-get update -y -q
+RUN apt-get install -y -q libxslt-dev libxml2-dev libffi-dev libssl-dev openjdk-7-jre-headless
+
 WORKDIR /bp2/src/
 
 EXPOSE 8080
