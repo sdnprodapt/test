@@ -4,7 +4,7 @@
     "endpoint-parameters": {
     },
     "tests": [
-        "commands/tests/l3vpn.json"
+
     ],
     "out-path": [
         {

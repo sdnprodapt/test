@@ -12,6 +12,9 @@
             "onError": [
                 {
                     "write": "<rpc><discard-changes/></rpc>"
+                },
+                {
+                    "write": "<rpc><unlock-configuration></unlock-configuration></rpc>"
                 }
             ], 
             "pattern": "<error-severity>error</error-severity>"

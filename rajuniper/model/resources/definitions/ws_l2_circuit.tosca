@@ -1,0 +1,274 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "L3VPN Device Model definition"
+package = juniper
+version = "1.0"
+description = "This document defines the L2 circuit (pseudowire and local corssconnect) model for Windstream"
+authors = ["rHari Pabbati (hpabbati@ciena.com)"]
+
+imports {
+  BaseService = tosca.resourceTypes.BaseService
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+    WS_L2Circuit {
+        derivedFrom = BaseService
+        title = "L2Circuit"
+        description = """
+        Representation of juniper l2 circuit model on a juniper Network Function for Windstream
+        """
+
+        properties {
+
+            rate {
+                title = "Rate"
+                description = "Rate of the l2circuit defined in Mbps"
+                type = integer
+                optional = false
+                config = true
+            }
+
+            notes {
+                title = "Notes"
+                description = "A comment or notes about this l2 circuit"
+                type = string
+                optional = true
+                config = true
+            }
+
+            accountNum {
+                type = string
+                title = "AccountNum"
+                description = "Account number of the customer who is using this circuit"
+                optional = false
+                config = true
+            }
+
+            customerName {
+                type = string
+                title = "Customer Name"
+                description = "Name of customer who is using this circuit"
+                optional = false
+                config = true
+            }
+
+            VCID {
+                title = "VCID"
+                description = "Globally unique numeric identifier required for each E-Line. Must be the same on both the A and Z PE routers"
+                type = integer
+                optional = false
+            }
+
+            remotePEName {
+                type = string
+                title = "Name of remote PE node"
+                description = "Name of remote PE node - applicable for Pseudowires"
+                optional = true
+            }
+
+            localPEName {
+                type = string
+                title = "Name of local PE node"
+                description = "Name of local PE node - applicable for local cross connects"
+                optional = true
+            }
+
+            description {
+                title = "Description"
+                description = "Description of this circuit.  It is composed using customer name, rate, VCID and remotePE name using a particular WS standard"
+                type = string
+                optional = true
+                output = true
+            }
+
+            aEndParentInterface {
+                type = string
+                description = "Name of parent interface facing transport domain (T-POTS).  It is A side if there two transport domains.  This will be a LAG."
+                title = "A End Parent Interface"
+                optional = false
+            }
+
+            zEndParentInterface {
+                type = string
+                description = "Name of parent interface facing transport domain (T-POTS). It is Z side if there two transport domains.  This will be a LAG."
+                title = "Z End Parent Interface"
+                optional = true
+            }
+
+            aEndServiceTag {
+                title = "A End S-TAG"
+                description = "Top level 802.1ad VLAN ID on the customer Ethernet frame coming from the transport domain.  If there are two domains then the A side of it.  Values from 2 to 4094"
+                type = integer
+                format = uint32
+                optional = false
+            }
+
+            zEndServiceTag
+                title = "Z End S-TAG"
+                description = "Top level 802.1ad VLAN ID on the customer Ethernet frame coming from the transport domain.  If there are two domains then the Z side of it.  Values from 2 to 4094"
+                type = integer
+                format = uint32
+                optional = true
+            }
+
+            extension {
+                title = "Extended object information"
+                description = "Extended object information such as interface and class-of-service"
+                type = object
+                optional = true
+
+                properties {
+                    interface {
+                        title = "Interface"
+                        description = "Port configuration for L2 circuit"
+                        type = object
+                        optional = true
+                        properties {
+                            aEndSubInterfaceName {
+                                title = "Unit/SubInterface Name"
+                                description = "This will be same as S-TAG (A End S-TAG)"
+                                type = string
+                                optional = true
+                            }
+                            zEndSubInterfaceName {
+                                title = "Unit/SubInterface Name"
+                                description = "This will be same as Z end S-TAG"
+                                type = string
+                                optional = true
+                            }
+                            description {
+                                title = "Description"
+                                description = "Description of this customer/transport domain facing interface.  It is composed using account number, rate and notes using a particular WS standard"
+                                type = string
+                                optional = true
+                                output = true
+                            }
+                            encapsulation {
+                                title = "Ethernet VLAN encapsulation"
+                                description = "Ethernet VLAN encapsulation - vlan-ccc for Juniper "
+                                type = string
+                                optional = true
+                            }
+                            classificationTag {
+                                title = "Interface Vlan Classification Tag"
+                                description = "Interface Vlan Classification Tag - outer for Juniper"
+                                type = string
+                                optional = true
+                            }
+                            TPID {
+                                title = "TPID"
+                                description = "TPID for outer tag - 0x88a8 for Juniper and dot1ad for Cisco"
+                                type = string
+                                optional = true
+                            }
+                            swap {
+                                title = "Swap"
+                                description = "Whether to swap vlanid in transport domain S-TAG with new vlanid going towards MPLS core and vice-versa while preserviing 802.p bits - True"
+                                type = boolean
+                                optional = true
+                            }
+                            swapVlanId {
+                                title = "VLAN ID"
+                                description = "VLAN ID used in S-TAG in the core to preserve 802.1p values - 4000 WS fixed value"
+                                type = integer
+                                format = uint32
+                                optional = true
+                            }
+                            swapTPID {
+                                title = "TPID"
+                                description = "TPID used in S-TAG in the core and S-TAG in transport domain- 0x88a8 and dot1ad for Cisco"
+                                type = string
+                                optional = true
+                            }
+                            family {
+                                title = "Family"
+                                description = "Family - ccc"
+                                type = string
+                                optional = true
+                            }
+                            mtu {
+                                type = integer
+                                title = "MTU"
+                                description = "MTU - 9192 - used in Cisco devices"
+                                optional = true
+                            }
+                        }
+                    }
+
+                    cos {
+                        title = "COS"
+                        description = "Class of Service"
+                        type = object
+                        optional = true
+                        properties {
+                            aEndSubInterfaceName {
+                                title = "Unit/SubInterface Name"
+                                description = "This will be same as S-TAG (A End S-TAG)"
+                                type = string
+                                optional = true
+                            }
+                            zEndSubInterfaceName {
+                                title = "Unit/SubInterface Name"
+                                description = "This will be same as Z End S-TAG"
+                                type = string
+                                optional = true
+                            }
+                            outputTCP {
+                                type = string
+                                title = "Output TCP"
+                                description = "Output traffic control profile name - ELINE_TCP for Juniper and Q-50mc-25bc-25sd-E for Cisco devices"
+                                optional = TRUE
+                            }
+                            classifierType {
+                                type = string
+                                title = "Classifier Type"
+                                description = "Classifier Type - ieee-802.1"
+                                optional = true
+                            }
+                            classifierName {
+                                type = string
+                                title = "Classifier Name"
+                                description = "Classifier Name - CUSTOMER_PBIT_CLASSIFIER_NONEF for Juniper and and mark-exp-ingress-cos-nonef for Cisco devices"
+                                optional = true
+                            }
+                        }
+                    }
+                        
+                    pseudowire {
+                        title = "pseudowire"
+                        description = "Pseudowire neighbor interface configuration properties"
+                        type = object
+                        optional = true
+                        properties {
+                            remotePELoopbackIP {
+                                type = string
+                                title = "Loopback IP of remote PE node"
+                                description = "Loopback IP address of remote PE node"
+                                optional = false
+                            }
+                            controlWord {
+                                type = boolean
+                                title = "Control Word Enabled"
+                                description = "Control Word Enabled to avoid incorrect LAG hasing - True"
+                                optional = true
+                            }
+                            mtu {
+                                type = integer
+                                title = "MTU"
+                                description = "MTU - 9178 - used in Juniper devices"
+                                optional = true
+                            }
+                            encapType {
+                                type = string
+                                title = "Encapsulation Type"
+                                description = "Encapsulation Type - ethernet"
+                                optional = true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

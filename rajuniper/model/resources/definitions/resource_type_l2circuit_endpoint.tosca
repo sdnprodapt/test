@@ -1,0 +1,150 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "L2 Circuit Endpoint Configuration"
+package = juniper
+version = "1.0"
+description = "This document defines the L2 circuit configuration (pseudowire and local cross connect) model on a single PE router"
+authors = ["Hari Pabbati (hpabbati@ciena.com)"]
+
+imports {
+  BaseService = tosca.resourceTypes.BaseService
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+    L2CircuitEndpoint {
+        derivedFrom = BaseService
+        title = "WS L2Circuit"
+        description = """
+        Representation of l2 circuit model (pseudowire and local cross connect) on Juniper and Cisco devices in Windstream's usecase.
+        """
+
+        properties {
+            serviceType {
+                title = "Service Type"
+                description = "Type of service for which current PE router is being configured.  Either E-LINE, E-ACCESS"
+                type = string
+                enum = [ E-LINE, E-ACCESS ]
+                optional = false
+                default = E-LINE
+            }
+
+            rate {
+                title = "Rate"
+                description = "Rate of the l2circuit defined in Mbps"
+                type = integer
+                optional = false
+                config = true
+            }
+
+            VCID {
+                title = "VCID"
+                description = "Globally unique numeric identifier required for each E-Line. Must be the same on both the A and Z PE routers"
+                type = integer
+                optional = false
+            }
+
+            remotePEName {
+                type = string
+                title = "Name of remote PE node"
+                description = "Name of remote PE node - applicable for Pseudowires"
+                optional = true
+            }
+
+            device {
+                type = string
+                title = "Name of local PE node"
+                description = "Name of local PE node - applicable for local cross connects"
+                optional = true
+            }
+
+            description {
+                title = "Description"
+                description = "Description of this circuit.  It is composed using customer name, rate, VCID and remotePE name using a particular WS standard"
+                type = string
+                optional = false
+            }
+
+            interfaces {
+                description = "List of interfaces to configure.  Only 1 in the case of Pseudowire and 2 in the case of local cross connect"
+                type = array
+                optional = false
+                items {
+                    type = object
+                    additionalProperties = false
+                    properties {
+                        name {
+                            type = string
+                            description = "Name of interface.  It can be logical (aggregated) or physical"
+                            title = "A End Parent Interface"
+                            optional = false
+                        }
+                        isENNI {
+                            type = boolean
+                            description = "Indicates if the current interface is a ENNI port.  If not then it is INNI facing transport domain"
+                            title = "Z End Parent Interface"
+                            optional = false
+                        }
+                        serviceVlanid {
+                            title = "A End S-TAG"
+                            description = "Top level 802.1ad VLAN ID on the customer Ethernet frame coming from the transport domain.  Values from 2 to 4094"
+                            type = integer
+                            format = vlan-id
+                            optional = false
+                        }
+                        subInterface {
+                            type = juniper.propertyTypes.subInterfaceInfo
+                        }
+
+                    }
+                }
+            }
+
+            pseudowire {
+                title = "pseudowire"
+                description = "Pseudowire neighbor interface configuration properties"
+                type = object
+                optional = true
+                properties {
+                    remotePELoopbackIP {
+                        type = string
+                        title = "Loopback IP of remote PE node"
+                        description = "Loopback IP address of remote PE node"
+                        optional = false
+                        format = ipv4-address
+                    }
+                    controlWord {
+                        type = boolean
+                        title = "Control Word Enabled"
+                        description = "Control Word Enabled to avoid incorrect LAG hasing - True"
+                        optional = true
+                        default = true
+                    }
+                    mtu {
+                        type = integer
+                        title = "MTU"
+                        description = "MTU - 9178 - used in Juniper devices"
+                        optional = true
+                        default = 9178
+                    }
+                    encapType {
+                        type = string
+                        title = "Encapsulation Type"
+                        description = "Encapsulation Type - ethernet"
+                        optional = true
+                        default = "ethernet"
+                    }
+                }
+            }
+        }
+
+        capabilities {
+            OAM {
+                title = "OAM"
+                description = "A L2 service endpoint has OAM capabilities via OAM object" 
+                type = Container
+                resourceTypes = [juniper.resourceTypes.L2CircuitOAM]
+            }
+        }
+    }
+}

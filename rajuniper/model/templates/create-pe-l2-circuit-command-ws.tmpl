@@ -1,0 +1,12 @@
+{%- from "create-pe-interface-ws.tmpl" import get_pe_interface_xml_config -%}
+{%- from "create-pe-cos-ws.tmpl" import get_pe_cos_xml_config -%}
+{%- from "create-pe-cc-ws.tmpl" import get_pe_cc_xml_config -%}
+<rpc>
+<edit-config><target><candidate/></target>
+<config><configuration>
+{{- get_pe_interface_xml_config(data) | indent(4) }}
+{{- get_pe_cos_xml_config(data) | indent(4)}}
+{{- get_pe_cc_xml_config(data) | indent(4)}}
+</configuration></config>
+</edit-config>
+</rpc>

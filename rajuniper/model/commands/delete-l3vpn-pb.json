@@ -7,8 +7,7 @@
     },
     "tests": 
     [
-        "commands/tests/delete-l3vpn.json"
-    ],
+     ],
     "out-path": 
     [
         {

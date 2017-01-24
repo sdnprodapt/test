@@ -1,0 +1,160 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "Common property types for Infinera domain model"
+package     = juniper
+version     = "1.0"
+description = "This document defines common types related to windstream MEF services."
+authors     = [ "Hari Pabbati (hpabbati@.ciena.com)" ]
+
+
+propertyTypes {
+    subInterfaceInfo {
+        title = "SubInterface/unit object information"
+        description = "SubInterface/unit object information such as cos"
+        type = object
+        optional = true
+        properties {
+            name {
+                title = "Unit/SubInterface Name"
+                description = "This will be same as S-TAG or serviceVlanid"
+                type = string
+                optional = false
+            }
+            description {
+                title = "Description"
+                description = "Description of this customer/transport domain facing interface.  It is composed using account number, rate and notes using a particular WS standard"
+                type = string
+                optional = false
+            }
+            encapsulation {
+                title = "Ethernet VLAN encapsulation"
+                description = "Ethernet VLAN encapsulation - vlan-ccc for Juniper "
+                type = string
+                optional = true
+                default = "vlan-ccc"
+            }
+            classificationTag {
+                title = "Interface Vlan Classification Tag"
+                description = "Interface Vlan Classification Tag - outer for Juniper"
+                type = string
+                optional = true
+                default = "outer"
+            }
+            TPID {
+                title = "TPID"
+                description = "TPID for outer tag - 0x88a8 for Juniper and dot1ad for Cisco.  Used in classification"
+                type = string
+                optional = true
+                default = "0x88a8"
+            }
+            vlanOp {
+                title = "VLAN Operation"
+                description = "VLAN operation to be performed"
+                type = object
+                optional = true
+                properties {
+                    operation {
+                        title = "Operation"
+                        description = "Operation to be performed on/with S-TAG.  Only swap vlanid in transport domain S-TAG with new vlanid going towards MPLS core and vice-versa while preserviing 802.p bits is supported"
+                        type = string
+                        enum = [ swap, push, pop ]
+                        optional = true
+                        default = swap
+                    }
+                    vlanid {
+                        title = "VLAN ID"
+                        description = "VLAN ID used in S-TAG in the core to preserve 802.1p values - 4000 WS fixed value"
+                        type = integer
+                        format = vlan-id 
+                        optional = true
+                        default = 4000
+                    }
+                    TPID {
+                        title = "TPID"
+                        description = "TPID used in S-TAG in the core and S-TAG in transport domain- 0x88a8 and dot1ad for Cisco"
+                        type = string
+                        optional = true
+                        default = "0x88a8"
+                    }
+                }
+            }
+            family {
+                title = "Family"
+                description = "Family - ccc"
+                type = string
+                optional = true
+                default = "ccc"
+            }
+            inputPolicer {
+                title = "Input Policer"
+                description = "Input Policer at the same rate as the service - only for ENNI"
+                type = boolean
+                optional = true
+                default = true
+            }
+            mtu {
+                type = integer
+                title = "MTU"
+                description = "MTU - 9192 - used in Cisco devices"
+                optional = true
+                default = "9192"
+            }
+            outputTCP {
+                type = string
+                title = "Output TCP"
+                description = "Output traffic control profile name - ELINE_TCP (for E-Line) and EACCESS-TCP (for E-Access) for Juniper and Q-50mc-25bc-25sd-E (for INNI, Eline) and EACCESS-UNI-EGRESS-POLICY (for INNI, EAccess) for Cisco devices"
+                optional = true
+                default = "ELINE_TCP"
+            }
+            classifiers {
+                description = "List of classifiers to configure.  Only 1 is supported currently"
+                type = array
+                optional = true
+                items {
+                    type = object
+                    additionalProperties = false
+                    properties {
+                        name {
+                            type = string
+                            title = "Classifier Name"
+                            description = "Classifier Name - ieee-802.1"
+                            optional = true
+                            default = "ieee-802.1"
+                        }
+                        value {
+                            type = string
+                            title = "Classifier Value"
+                            description = "Classifier Value - CUSTOMER_PBIT_CLASSIFIER_NONEF (for INNI) CUSTOMER_PBIT_CLASSIFIER_MEF23_1 (for ENNI) for Juniper and mark-exp-ingress-cos-nonef (for INNI, Eline) EACCESS-UNI-INGRESS-POLICY (for INNI, EAccess) and <rate>M-EACCISS-ENNI-INGRESS-POLICY (ENNI, EAccess) for Cisco devices"
+                            optional = true
+                            default = "CUSTOMER_PBIT_CLASSIFIER_NONEF"
+                        }
+                    }
+                }
+            }
+            rewriteRules {
+                description = "List of rewrite rules to configure.  Only for E-Access services and only 1 is supported currently"
+                type = array
+                optional = true
+                items {
+                    type = object
+                    additionalProperties = false
+                    properties {
+                        name {
+                            type = string
+                            title = "Rule Name"
+                            description = "Rule Name - ieee-802.1"
+                            optional = true
+                            default = "ieee-802.1"
+                        }
+                        value {
+                            type = string
+                            title = "Rule Value"
+                            description = "Rule Value - EACCESS-UNI-REWRITE (for INNI) and EACCESS-ENNI-REWRITE (for ENNI) for Juniper and  no additional rules for Cisco devices"
+                            optional = true
+                            default = "EACCESS-UNI-REWRITE"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

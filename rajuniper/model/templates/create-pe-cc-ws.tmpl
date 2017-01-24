@@ -1,0 +1,32 @@
+{%- macro get_pe_cc_xml_config(data) %}
+{%- set interfaces = data['interfaces'] %}
+        <protocols>
+            <l2circuit>
+                {%- if interfaces|length > 1 %}
+                <local-switching>
+                    <interface>
+                        <name>{{data['interfaces'][0]['name']}}.{{data['interfaces'][0]['serviceVlanid']}}</name>
+                        <end-interface>
+                            <interface>{{data['interfaces'][1]['name']}}.{{data['interfaces'][1]['serviceVlanid']}}</interface>
+                        </end-interface>
+                        <description>{{data['description']}}</description>
+                    </interface>
+                </local-switching>
+                {%- else %}
+                <neighbor>
+                    <name>{{data['pseudowire']['remotePELoopbackIP']}}</name>
+                    <interface>
+                        <name>{{data['interfaces'][0]['name']}}.{{data['interfaces'][0]['serviceVlanid']}}</name>
+                        <virtual-circuit-id>{{data['VCID']}}</virtual-circuit-id>
+                        <description>{{data['description']}}</description>
+                        {%- if data['pseudowire']['controlWord'] %}
+                        <control-word/>
+                        {%- endif %}
+                        <mtu>{{data['pseudowire']['mtu']}}</mtu>
+                        <encapsulation-type>{{data['pseudowire']['encapType']}}</encapsulation-type>
+                    </interface>
+                </neighbor>
+                {%- endif %}
+            </l2circuit>
+        </protocols>
+{%- endmacro %}

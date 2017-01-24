@@ -1,0 +1,68 @@
+{
+    "Delete UNI PE Eline L2 Local Cross Connect Circuit": {
+        "type": "netconf",
+        "out-params": {
+			"serviceType":"E-LINE",
+			"interfaces":[{
+				"name":"ae3",
+				"isENNI":false,
+				"subInterface":{
+						"name":"721"
+				}
+			},
+			{
+				"name":"ae4",
+				"isENNI":false,
+				"subInterface":{
+						"name":"3055"
+				}
+			}],
+			"pseudowire":{
+				"remotePELoopbackIP":"4.4.4.1"
+			}
+        },
+        "out-expect": [
+            [
+            "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n            <interfaces>\n                <interface>\n                    <name>ae3</name>\n                    <unit operation = \"delete\">\n                        <name>721</name>\n                    </unit>\n                </interface>\n                <interface>\n                    <name>ae4</name>\n                    <unit operation = \"delete\">\n                        <name>3055</name>\n                    </unit>\n                </interface>\n            </interfaces>\n        <class-of-service>\n                <interfaces>\n                    <interface>\n                    <name>ae3</name>\n                    <unit operation = \"delete\">\n                        <name>721</name>\n                        </unit>\n                    </interface>\n                    <interface>\n                    <name>ae4</name>\n                    <unit operation = \"delete\">\n                        <name>3055</name>\n                        </unit>\n                    </interface>\n                </interfaces>\n            </class-of-service>\n            <protocols>\n                <l2circuit>\n                    <local-switching>\n                        <interface operation = \"delete\">\n                            <name>ae3.721</name>\n                        </interface>\n                    </local-switching>\n                </l2circuit>\n            </protocols>\n</configuration></config>\n</edit-config>\n</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
+    },
+    "Delete UNI PE Eline L2 Pseudowire Cross Connect Circuit": {
+        "type": "netconf",
+        "out-params": {
+			"serviceType":"E-LINE",
+			"interfaces":[{
+				"name":"ae3",
+				"isENNI":false,
+				"subInterface":{
+						"name":"721"
+				}
+			}],
+			"pseudowire":{
+				"remotePELoopbackIP":"4.4.4.1"
+			}
+        },
+        "out-expect": [
+            [
+            "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n            <interfaces>\n                <interface>\n                    <name>ae3</name>\n                    <unit operation = \"delete\">\n                        <name>721</name>\n                    </unit>\n                </interface>\n            </interfaces>\n        <class-of-service>\n                <interfaces>\n                    <interface>\n                    <name>ae3</name>\n                    <unit operation = \"delete\">\n                        <name>721</name>\n                        </unit>\n                    </interface>\n                </interfaces>\n            </class-of-service>\n            <protocols>\n                <l2circuit>\n                    <neighbor>\n                        <name>4.4.4.1</name>\n                        <interface operation = \"delete\">\n                            <name>ae3.721</name>\n                        </interface>\n                    </neighbor>\n                </l2circuit>\n            </protocols>\n</configuration></config>\n</edit-config>\n</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
+    }
+
+}
