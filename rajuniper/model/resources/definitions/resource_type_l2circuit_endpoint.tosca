@@ -2,7 +2,7 @@
 title = "L2 Circuit Endpoint Configuration"
 package = juniper
 version = "1.0"
-description = "This document defines the L2 circuit configuration (pseudowire and local cross connect) model on a single PE router."
+description = "This document defines the L2 circuit configuration (pseudowire and local cross connect) model on a single PE router"
 authors = ["Hari Pabbati (hpabbati@ciena.com)"]
 
 imports {

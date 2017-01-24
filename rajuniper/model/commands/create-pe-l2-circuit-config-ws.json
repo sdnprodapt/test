@@ -1,0 +1,16 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+     "commands/tests/create-pe-l2-circuit-ws.json"
+    ],
+    "endpoint-parameters": {
+        "template": "create-pe-l2-circuit-command-ws.tmpl"
+    },
+    "out-path": [
+
+    ],
+    "in-path": [
+
+    ]
+}

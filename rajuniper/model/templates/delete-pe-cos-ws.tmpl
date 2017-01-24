@@ -1,0 +1,28 @@
+{%- macro get_pe_cos_xml_config_delete(data) %}
+{%- set interfaces = data['interfaces'] %}
+    <class-of-service>
+            <interfaces>
+{%- set index = 0 %}
+{%- for interface_ops in interfaces %}
+{%- set interface_subinterface_ops = interface_ops['subInterface'] %}
+{%- if index == 0 %}
+                <interface>
+                <name>{{interface_ops['name']}}</name>
+                <unit operation = "delete">
+                    <name>{{interface_subinterface_ops['name']}}</name>
+                    </unit>
+                </interface>
+{%- else %}
+            <interfaces>
+                <interface>
+                <name>{{interface_ops['name']}}</name>
+                <unit operation = "delete">
+                    <name>{{interface_subinterface_ops['name']}}</name>
+                    </unit>
+                </interface>
+{%- endif %}
+{%- set index = index + 1 %}
+{%- endfor %}
+            </interfaces>
+        </class-of-service>
+{%- endmacro %}
