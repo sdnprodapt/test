@@ -1,0 +1,97 @@
+"$schema" = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title = "L2 Circuit Endpoint Configuration"
+package = juniper
+version = "1.0"
+description = "This document defines the L2 circuit configuration (pseudowire and local cross connect) model on a single PE router"
+authors = ["Hari Pabbati (hpabbati@ciena.com)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  Container = tosca.capabilityTypes.Container
+}
+
+resourceTypes {
+    
+    L2CircuitOAM {
+        derivedFrom = Root
+        title = "L2Circuit OAM"
+        description = """
+        Representation of OAM configuration model for E-Access services (pseudowire and local cross connect) on Juniper and Cisco devices in Windstream's usecase.
+        """
+
+        properties {
+            
+
+            MDName {
+                type = string
+                title = "Maintenance Domain name"
+                description = "Maintenance Domain name.  IN windstream it is EACCESS-MD3"
+                optional = false
+                default = EACCESS-MD3
+            }
+
+            MAName {
+                type = string
+                title = "Maintenance Association name"
+                description = "Maintenance Association name.  In windstream it is composed using VCID as in EACCESS-MA-<VCID>"
+                optional = false
+            }
+
+            CCMInterval {
+                title = "CCM Interval"
+                description = "Continuity check Message Interval"
+                type = integer
+                format = uint32
+                optional = true
+                default = 10
+            }
+
+            interfaceName {
+                type = string
+                description = "Name of interface.  It can be logical (aggregated) or physical.  In WS it is ENNI interface"
+                title = "ENNI Interface"
+                optional = false
+            }
+
+            serviceVlanid {
+                title = "S-TAG"
+                description = "Top level 802.1ad VLAN ID on the interface.  Values from 2 to 4094"
+                type = integer
+                format = vlan-id
+                optional = false
+            }
+
+            MEPID {
+                title = "MEPID"
+                description = "Maintenamce Endpoint ID.  It is same as serviceVlanid"
+                type = string
+                optional = false
+            }
+
+            isUPDirection {
+                type = boolean
+                title = "UP Direction"
+                description = "Is the MEP direction UP.  If false then it is DOWN MEP"
+                optional = true
+                default = true
+            }
+
+            autoDiscovery {
+                type = boolean
+                title = "Auto Discovery"
+                description = "Auto Discovery"
+                optional = true
+                default = true
+            }
+        }
+
+        requirements {
+            connectsToEndpoint {
+                title = "Connect to L2CircuitEndpoint"
+                description = "A OAM object is connected to L2CircuitEndpoint object."
+                type = Container        
+                resourceTypes = [juniper.resourceTypes.L2CircuitEndpoint]
+            }
+        }
+    }
+}
