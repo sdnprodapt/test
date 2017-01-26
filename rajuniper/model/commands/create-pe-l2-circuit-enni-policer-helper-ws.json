@@ -1,0 +1,62 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+    },
+    "out-path": [
+
+    ],
+    "in-path": [
+       {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-pe-l2-circuit-enni-policer-config-ws.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/output"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.call.Function",
+            "description": "Check if the given ENNI policer is configured",
+            "parameters": {
+                "function": "rajuniper.command_utils.check_pe_firewall_policer_config"
+            }
+
+        },
+        {
+            "type": "bpprov.translators.route.Branch",
+            "parameters": {
+                "choice": [{
+                    "when" : "${policerConfig} == \"False\"}",
+                    "do": {
+                        "type": "bpprov.translators.aggregator.Call",
+                        "description": "Configure policer profile",
+                        "parameters": {
+                            "command": "create-pe-l2-circuit-enni-policer-config-helper-ws.json",
+                            "input": {
+                              "templateType": "inline",
+                              "data": "{{ data | to_json }}"
+                            },
+                            "output": {
+                                "patches": [{
+                                    "from": "/data",
+                                    "to": "/data/output"
+                                }]
+                            }
+                        }
+
+                    }
+                }]
+            }
+        }
+
+    ]
+}
