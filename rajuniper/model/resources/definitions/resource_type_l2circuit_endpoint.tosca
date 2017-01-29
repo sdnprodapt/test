@@ -93,7 +93,7 @@ resourceTypes {
                             optional = false
                         }
                         subInterface {
-                            type = juniper.propertyTypes.subInterfaceInfo
+                            propertyType = juniper.propertyTypes.subInterfaceInfo
                         }
 
                     }
