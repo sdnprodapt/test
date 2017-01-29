@@ -1,0 +1,21 @@
+{%- macro get_pe_cc_xml_config_delete(data) %}
+{%- set interfaces = data['interfaces'] %}
+        <protocols>
+            <l2circuit>
+                {%- if interfaces|length > 1 %}
+                <local-switching>
+                    <interface operation = "delete">
+                        <name>{{data['interfaces'][0]['name']}}.{{data['interfaces'][0]['subInterface']['name']}}</name>
+                    </interface>
+                </local-switching>
+                {%- else %}
+                <neighbor>
+                    <name>{{data['pseudowire']['remotePELoopbackIP']}}</name>
+                    <interface operation = "delete">
+                        <name>{{data['interfaces'][0]['name']}}.{{data['interfaces'][0]['subInterface']['name']}}</name>
+                    </interface>
+                </neighbor>
+                {%- endif %}
+            </l2circuit>
+        </protocols>
+{%- endmacro %}

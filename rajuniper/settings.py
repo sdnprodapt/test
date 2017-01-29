@@ -43,7 +43,6 @@ STATIC_PATHS = {
 
 ENDPOINTS = (
         'netconf',
-        'snmp',
         'kafka'
         )
 
