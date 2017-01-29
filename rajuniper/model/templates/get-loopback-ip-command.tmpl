@@ -1,0 +1,20 @@
+<rpc>
+<get-config>
+<source><running/></source>
+    <filter type="subtree">
+        <configuration>
+          <interfaces>
+            <interface>
+                <name>lo0</name>
+                <unit>
+                    <name>0</name>
+                    <family>
+                       <inet></inet>
+                    </family>
+                </unit>
+            </interface>
+          </interfaces>
+        </configuration>
+    </filter>
+</get-config>
+</rpc>

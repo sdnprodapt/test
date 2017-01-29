@@ -10,13 +10,15 @@
                 <name>{{interface_ops['name']}}</name>
                 <unit>
                     <name>{{interface_subinterface_ops['name']}}</name>
+                        {%- if (interface_ops['isENNI'] == False) %}
                         <output-traffic-control-profile>
                             {%- if (data['serviceType'] == 'E-LINE') %}
                             <profile-name>{{interface_subinterface_ops['outputTCP']}}</profile-name>
-                            {%- elif (interface_ops['isENNI'] == False) %}
+                            {%- else %}
                             <profile-name>EACCESS-TCP</profile-name>
                             {%- endif %}
                         </output-traffic-control-profile>
+                        {%- endif %}
                         <classifiers>
                             {%- if (interface_subinterface_ops['classifiers'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>
@@ -32,11 +34,7 @@
                         <rewrite-rules>
                             {%- if (interface_subinterface_ops['rewriteRules'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>
-                            {%- if (interface_ops['isENNI'] == False) %}
                             <rewrite-rule-name>{{interface_subinterface_ops['rewriteRules'][0]['value']}}</rewrite-rule-name>
-                            {%- else %}
-                            <rewrite-rule-name>EACCESS-ENNI-REWRITE</rewrite-rule-name>
-                            {%- endif %}
                             </ieee-802.1>
                             {%- endif %}
                         </rewrite-rules>
@@ -49,13 +47,15 @@
                 <name>{{interface_ops['name']}}</name>
                 <unit>
                     <name>{{interface_subinterface_ops['name']}}</name>
+                        {%- if (interface_ops['isENNI'] == False) %}
                         <output-traffic-control-profile>
                             {%- if (data['serviceType'] == 'E-LINE') %}
                             <profile-name>{{interface_subinterface_ops['outputTCP']}}</profile-name>
-                            {%- elif (interface_ops['isENNI'] == False) %}
+                            {%- else %}
                             <profile-name>EACCESS-TCP</profile-name>
                             {%- endif %}
                         </output-traffic-control-profile>
+                        {%- endif %}
                         <classifiers>
                             {%- if (interface_subinterface_ops['classifiers'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>
@@ -71,11 +71,7 @@
                         <rewrite-rules>
                             {%- if (interface_subinterface_ops['rewriteRules'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>
-                            {%- if (interface_ops['isENNI'] == False) %}
                             <rewrite-rule-name>{{interface_subinterface_ops['rewriteRules'][0]['value']}}</rewrite-rule-name>
-                            {%- else %}
-                            <rewrite-rule-name>EACCESS-ENNI-REWRITE</rewrite-rule-name>
-                            {%- endif %}
                             </ieee-802.1>
                             {%- endif %}
                         </rewrite-rules>

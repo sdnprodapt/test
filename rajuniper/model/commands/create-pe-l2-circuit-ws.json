@@ -26,7 +26,7 @@
                         "type": "bpprov.translators.aggregator.Call",
                         "description": "Check for ENNI interface policer config and configure policer profile",
                         "parameters": {
-                            "command": "create-pe-l2-circuit-enni-policer-ws.json",
+                            "command": "create-pe-l2-circuit-enni-policer-helper-ws.json",
                             "input": {
                               "templateType": "inline",
                               "data": "{{ data | to_json }}"

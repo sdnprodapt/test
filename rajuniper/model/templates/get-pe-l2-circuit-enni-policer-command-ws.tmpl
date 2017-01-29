@@ -1,0 +1,12 @@
+<rpc>
+<get-config>
+<source><running/></source>
+    <filter type="subtree">
+        <configuration>
+			<firewall>
+				<policer>{{data['rate']}}Meg</policer>
+			</firewall>
+        </configuration>
+    </filter>
+</get-config>
+</rpc>

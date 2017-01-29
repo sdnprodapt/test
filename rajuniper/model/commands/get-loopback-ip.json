@@ -1,0 +1,29 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+
+    ],
+    "endpoint-parameters": {
+        "template": "get-loopback-ip-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.call.Function",
+            "description": "Get the loopback IP",
+            "parameters": {
+                "function": "rajuniper.command_utils.get_loopback_ip"
+            }
+
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "get-loopback-ip.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

@@ -153,5 +153,103 @@
             ]
         ]
 
+    },
+      "Create UNI PE EAccess L2 Local Cross Connect Circuit": {
+        "type": "netconf",
+        "out-params": {
+            "serviceType":"E-ACCESS",
+            "VCID":12345679,
+            "rate":30,
+            "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
+            "remotePEName":"KVM0-vMX2",
+            "device":"KVM0-vMX1",
+            "interfaces":[
+               {
+                  "name":"ae3",
+                  "isENNI":false,
+                  "serviceVlanid":721,
+                  "subInterface":{
+                     "name":"721",
+                     "description":"CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]",
+                     "encapsulation":"vlan-ccc",
+                     "classificationTag":"outer",
+                     "TPID":"0x88a8",
+                     "vlanOp":{
+                        "operation":"swap",
+                        "vlanid":4000,
+                        "TPID":"0x88a8"
+                     },
+                     "family":"family-ccc",
+                     "inputPolicer":false,
+                     "mtu":9192,
+                     "outputTCP":"EACCESS-TCP",
+                     "classifiers":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"CUSTOMER_PBIT_CLASSIFIER_NONEF"
+                        }
+                     ],
+                     "rewriteRules":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"EACCESS-UNI-REWRITE"
+                        }
+                     ]
+                  }
+               },
+               {
+                  "name":"ge-0/0/3",
+                  "isENNI":true,
+                  "serviceVlanid":3055,
+                  "subInterface":{
+                     "name":"3055",
+                     "description":"CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]",
+                     "encapsulation":"vlan-ccc",
+                     "classificationTag":"outer",
+                     "TPID":"0x88a8",
+                     "vlanOp":{
+                        "operation":"swap",
+                        "vlanid":4000,
+                        "TPID":"0x88a8"
+                     },
+                     "family":"family-ccc",
+                     "inputPolicer":true,
+                     "mtu":9192,
+                     "outputTCP":"ELINE_TCP",
+                     "classifiers":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"CUSTOMER_PBIT_CLASSIFIER_NONEF"
+                        }
+                     ],
+                     "rewriteRules":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"EACCESS-ENNI-REWRITE"
+                        }
+                     ]
+                  }
+               }
+            ],
+            "pseudowire":{
+               "remotePELoopbackIP":"4.4.4.1",
+               "controlWord":true,
+               "mtu":9178,
+               "encapType":"Ethernet"
+            }
+        },
+        "out-expect": [
+            [
+            "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n            <interfaces>\n                <interface>\n                    <name>ae3</name>\n                    <unit>\n                        <name>721</name>\n                        <description>CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]</description>\n                        <encapsulation>vlan-ccc</encapsulation>\n                        <vlan-tags>\n                            <outer>0x88a8.721</outer>\n                        </vlan-tags>\n                        <input-vlan-map>\n                            <swap/>\n                            <tag-protocol-id>0x88a8</tag-protocol-id>\n                            <vlan-id>4000</vlan-id>\n                        </input-vlan-map>\n                        <output-vlan-map>\n                            <swap/>\n                            <tag-protocol-id>0x88a8</tag-protocol-id>\n                        </output-vlan-map>\n                        <family>\n                            <ccc>\n                            </ccc>\n                        </family>\n                    </unit>\n                </interface>\n                <interface>\n                    <name>ge-0/0/3</name>\n                    <unit>\n                        <name>3055</name>\n                        <description>CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]</description>\n                        <encapsulation>vlan-ccc</encapsulation>\n                        <vlan-tags>\n                            <outer>0x88a8.3055</outer>\n                        </vlan-tags>\n                        <input-vlan-map>\n                            <swap/>\n                            <tag-protocol-id>0x88a8</tag-protocol-id>\n                            <vlan-id>4000</vlan-id>\n                        </input-vlan-map>\n                        <output-vlan-map>\n                            <swap/>\n                            <tag-protocol-id>0x88a8</tag-protocol-id>\n                        </output-vlan-map>\n                        <family>\n                            <ccc>\n                                <policer>\n                                   <input>30Meg</input>\n                                </policer>\n                            </ccc>\n                        </family>\n                    </unit>\n                </interface>\n            </interfaces>\n        <class-of-service>\n                <interfaces>\n                    <interface>\n                    <name>ae3</name>\n                    <unit>\n                        <name>721</name>\n                            <output-traffic-control-profile>\n                                <profile-name>EACCESS-TCP</profile-name>\n                            </output-traffic-control-profile>\n                            <classifiers>\n                                <ieee-802.1>\n                                <classifier-name>CUSTOMER_PBIT_CLASSIFIER_NONEF</classifier-name>\n                                </ieee-802.1>\n                            </classifiers>\n                            <rewrite-rules>\n                                <ieee-802.1>\n                                <rewrite-rule-name>EACCESS-UNI-REWRITE</rewrite-rule-name>\n                                </ieee-802.1>\n                            </rewrite-rules>\n                        </unit>\n                    </interface>\n                    <interface>\n                    <name>ge-0/0/3</name>\n                    <unit>\n                        <name>3055</name>\n                            <classifiers>\n                                <ieee-802.1>\n                                <classifier-name>CUSTOMER_PBIT_CLASSIFIER_MEF23_1</classifier-name>\n                                </ieee-802.1>\n                            </classifiers>\n                            <rewrite-rules>\n                                <ieee-802.1>\n                                <rewrite-rule-name>EACCESS-ENNI-REWRITE</rewrite-rule-name>\n                                </ieee-802.1>\n                            </rewrite-rules>\n                        </unit>\n                    </interface>\n                </interfaces>\n            </class-of-service>\n            <protocols>\n                <l2circuit>\n                    <local-switching>\n                        <interface>\n                            <name>ae3.721</name>\n                            <end-interface>\n                                <interface>ge-0/0/3.3055</interface>\n                            </end-interface>\n                            <description>EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1</description>\n                        </interface>\n                    </local-switching>\n                </l2circuit>\n            </protocols>\n</configuration></config>\n</edit-config>\n</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
     }
 }
