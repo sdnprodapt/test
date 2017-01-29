@@ -1,0 +1,9 @@
+{% if "loopback_ip" in data %}
+{
+    "loopbackIp": {{data['loopback_ip'] | to_json}}
+}
+{% else %}
+{
+    "reason": "No Loopback IP found"
+}
+{% endif %}

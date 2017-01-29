@@ -11,7 +11,14 @@
 }
 {% else %}
 {
-    {{- data | to_json-}},
+    "serviceType": {{data['serviceType'] | to_json}},
+    "VCID": {{data['VCID'] | to_json}},
+    "rate": {{data['rate'] | to_json}},
+    "description":{{data['description'] | to_json}},
+    "remotePEName":{{data['remotePEName'] | to_json}},
+	"device":{{data['device'] | to_json}},
+	"interfaces":{{data['interfaces'] | to_json}},
+	"pseudowire":{{data['pseudowire'] | to_json}},
     "reason": "{{ data['output'] }}"
 }
 {% endif %}
