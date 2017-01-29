@@ -1,0 +1,20 @@
+{
+   "product": "urn:cyaninc:bp:product:juniper_l2circuitendpoint",
+   "resource": "juniper.resourceTypes.L2CircuitEndpoint",
+   "type": "bpprov",
+   "provider_resource_id_field": "VCID",
+   "device_namespace_props": [],
+   "commands": {
+       "post": {
+           "command": "create-pe-l2-circuit-ws.json",
+           "returns_resource": true
+       },
+       "put": {
+           "command": "update-pe-l2-circuit-ws.json",
+           "returns_resource": true
+       },
+       "delete": {
+           "command": "delete-pe-l2-circuit-ws.json"
+       }
+   }
+}

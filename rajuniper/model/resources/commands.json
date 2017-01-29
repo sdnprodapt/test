@@ -10,5 +10,7 @@
     "urn:cyaninc:bp:product:juniper_sessionprofile": "sessionprofile.json",
     "urn:cyaninc:bp:product:juniper": "networkfunction.json",
     "urn:cyaninc:bp:product:juniper_l3vpn": "l3vpn.json",
-    "urn:cyaninc:bp:product:juniper:terminationpoint": "terminationpoint.json"
+    "urn:cyaninc:bp:product:juniper:terminationpoint": "terminationpoint.json",
+    "urn:cyaninc:bp:product:juniper_l2circuitendpoint": "l2circuit_endpoint.json",
+    "urn:cyaninc:bp:product:juniper_l2circuitoam": "l2circuit_oam.json"
 }
