@@ -175,6 +175,24 @@ domains:
              pollingSettings:
                - pollingIntervalMs: 300000
                  syncTimeoutMs: 310000
+      - id: "juniper.resourceTypes.L2CircuitEndpoint"
+        discoveryStrategy:
+            - strategyType: "sync"
+              pollingMode: "getOnly"
+              pollingSettings:
+                - pollingIntervalMs: 120000
+                  immediateDeletion: true
+                  syncTimeoutMs: 120000
+                  verifyMissingList: false   
+      - id: "juniper.resourceTypes.L2CircuitOAM"
+        discoveryStrategy:
+            - strategyType: "sync"
+              pollingMode: "getOnly"
+              pollingSettings:
+                - pollingIntervalMs: 120000
+                  immediateDeletion: true
+                  syncTimeoutMs: 120000
+                  verifyMissingList: false   
 #      - id: "juniper.resourceTypes.VirtualRouter"
 #        discoveryStrategy:
 #          - strategyType: "sync"

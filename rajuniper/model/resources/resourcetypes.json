@@ -11,6 +11,8 @@
         "resources/definitions/resource_type_interfacevlan.tosca",
         "resources/definitions/resource_type_l3_vpn.tosca",
         "resources/definitions/resource_type_l2_circuit.tosca",
-        "resources/definitions/resource_type_tpefre_tpe.tosca"
+        "resources/definitions/resource_type_tpefre_tpe.tosca",
+        "resources/definitions/resource_type_l2circuit_endpoint.tosca",
+        "resources/definitions/resource_type_l2circuit_oam.tosca"
     ]
 }

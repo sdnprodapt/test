@@ -1,0 +1,20 @@
+{
+   "product": "urn:cyaninc:bp:product:juniper_oam",
+   "resource": "juniper.resourceTypes.L2CircuitOAM",
+   "type": "bpprov",
+   "provider_resource_id_field": "MAName",
+   "device_namespace_props": [],
+   "commands": {
+       "post": {
+           "command": "create-pe-l2-circuit-oam-ws.json",
+           "returns_resource": true
+       },
+       "put": {
+           "command": "create-pe-l2-circuit-oam-ws.json",
+           "returns_resource": true
+       },
+       "delete": {
+           "command": "delete-pe-l2-circuit-oam-ws.json"
+       }
+   }
+}

@@ -75,4 +75,16 @@
     "title": "Termination Point",
     "active": true,
     "provider_data": {}
+}, {
+    "resource_type": "juniper.resourceTypes.L2CircuitEndpoint",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_l2circuitendpoint",
+    "title": "L2Circuit Endpoint Config for Windstream",
+    "active": true,
+    "provider_data": {}
+}, {
+    "resource_type": "juniper.resourceTypes.L2CircuitOAM",
+    "provider_product_id": "urn:cyaninc:bp:product:juniper_l2circuitoam",
+    "title": "L2Circuit OAM Config for Windstream",
+    "active": true,
+    "provider_data": {}
 }]
