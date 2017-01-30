@@ -36,14 +36,6 @@
         {
           "model": "properties.authentication.netconf.password",
           "label": "NETCONF Password"
-        },
-        {
-          "model": "properties.authentication.snmp.community",
-          "label": "SNMP Community"
-        },
-        {
-          "model": "properties.authentication.snmp.version",
-          "label": "SNMP Version"
         }
       ]
     },
@@ -53,10 +45,6 @@
         {
           "model": "properties.connection.netconf.hostport",
           "label": "NETCONF Host Port"
-        },
-        {
-          "model": "properties.connection.snmp.hostport",
-          "label": "SNMP Host Port"
         }
       ]
     }

@@ -64,29 +64,6 @@ resourceTypes {
               }
             }
           }
-          snmp {
-            type = object
-            title = "SNMP Authentication"
-            description = ""
-            optional = true
-            default = {}
-            properties {
-              community {
-                type = string
-                title = "Community"
-                description = "SNMP Community string"
-                optional = false
-              }
-              version {
-                type = string
-                title = "Version"
-                description = "SNMP Version"
-                optional = false
-                enum = [v1, v2c, v3]
-                default = "v2c"
-              }
-            }
-          }
         }
       }
 
@@ -108,21 +85,6 @@ resourceTypes {
                 description = ""
                 optional = false
                 default = 22
-              }
-            }
-          }
-          snmp {
-            type = object
-            title = "SNMP Connection Info"
-            description = ""
-            optional = true
-            properties {
-              hostport {
-                type = integer
-                title = "SNMP Port"
-                description = ""
-                optional = false
-                default = 161
               }
             }
           }
