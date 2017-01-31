@@ -1,0 +1,9 @@
+{% if "vlan_ids" in data %}
+
+{{data['vlan_ids'] | to_json}}
+
+{% else %}
+{
+    "reason": "Error getting used VLANs for interface {{data['interface']}}"
+}
+{% endif %}

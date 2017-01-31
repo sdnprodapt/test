@@ -1,0 +1,29 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+
+    ],
+    "endpoint-parameters": {
+        "template": "get-interface-command.tmpl"
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.call.Function",
+            "description": "Determine the used VLAN IDs in the given physical or aggregated interface",
+            "parameters": {
+                "function": "rajuniper.command_utils.get_interface_used_vlans"
+            }
+
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "get-interface-used-vlans.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}
