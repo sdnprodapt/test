@@ -5,7 +5,7 @@
 
     ],
     "endpoint-parameters": {
-        "template": "get-interface-command-ws.tmpl"
+        "template": "get-interface-command.tmpl"
     },
     "out-path": [
     ],

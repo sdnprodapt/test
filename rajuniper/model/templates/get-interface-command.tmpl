@@ -1,0 +1,16 @@
+<rpc>
+<get-config>
+<source><running/></source>
+<filter type="subtree">
+<configuration>
+    <interfaces>
+        {% if data['interface'] %}
+        <interface>
+            <name>{{ data['interface'] }}</name>
+        </interface>
+        {% endif %}
+    </interfaces>
+</configuration>
+</filter>
+</get-config>
+</rpc>

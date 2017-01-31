@@ -58,5 +58,5 @@ def get_interface_used_vlans(data):
                     used_vlans.append(unit['vlan-id'])
                 if 'vlan-tags' in unit:
                     used_vlans.append((unit['vlan-tags']['outer']).split('.')[-1])
-        data['vlan_ids'] = list(set(used_vlans))
+        data['vlan_ids'] = [int(vlan) for vlan in list(set(used_vlans))]
     return data
