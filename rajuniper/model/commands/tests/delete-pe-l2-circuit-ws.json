@@ -63,6 +63,76 @@
             ]
         ]
 
+    },
+    "Delete UNI PE EAccess L2 Local Cross Connect Circuit": {
+        "type": "netconf",
+        "out-params": {
+            "serviceType":"E-ACCESS",
+            "interfaces":[
+               {
+                  "name":"ae3",
+                  "isENNI":false,
+                  "subInterface":{
+                     "name":"721"
+                  }
+               },
+               {
+                  "name":"ge-0/0/3",
+                  "isENNI":true,
+                  "subInterface":{
+                     "name":"3055"
+                  }
+               }
+            ],
+            "pseudowire":{
+               "remotePELoopbackIP":"4.4.4.1"
+            }
+        },
+        "out-expect": [
+            [
+            "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n            <interfaces>\n                <interface>\n                    <name>ae3</name>\n                    <unit operation = \"delete\">\n                        <name>721</name>\n                    </unit>\n                </interface>\n                <interface>\n                    <name>ge-0/0/3</name>\n                    <unit operation = \"delete\">\n                        <name>3055</name>\n                    </unit>\n                </interface>\n            </interfaces>\n        <class-of-service>\n                <interfaces>\n                    <interface>\n                    <name>ae3</name>\n                    <unit operation = \"delete\">\n                        <name>721</name>\n                        </unit>\n                    </interface>\n                    <interface>\n                    <name>ge-0/0/3</name>\n                    <unit operation = \"delete\">\n                        <name>3055</name>\n                        </unit>\n                    </interface>\n                </interfaces>\n            </class-of-service>\n            <protocols>\n                <l2circuit>\n                    <local-switching>\n                        <interface operation = \"delete\">\n                            <name>ae3.721</name>\n                        </interface>\n                    </local-switching>\n                </l2circuit>\n            </protocols>\n</configuration></config>\n</edit-config>\n</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
+    },
+    "Delete UNI PE EAccess L2 Pseudowire Cross Connect Circuit": {
+        "type": "netconf",
+        "out-params": {
+            "serviceType":"E-ACCESS",
+            "interfaces":[
+               {
+                  "name":"ge-0/0/3",
+                  "isENNI":true,
+                  "subInterface":{
+                     "name":"3055"
+                  }
+               }
+            ],
+            "pseudowire":{
+               "remotePELoopbackIP":"4.4.4.2"
+            }
+        },
+        "out-expect": [
+            [
+            "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n            <interfaces>\n                <interface>\n                    <name>ge-0/0/3</name>\n                    <unit operation = \"delete\">\n                        <name>3055</name>\n                    </unit>\n                </interface>\n            </interfaces>\n        <class-of-service>\n                <interfaces>\n                    <interface>\n                    <name>ge-0/0/3</name>\n                    <unit operation = \"delete\">\n                        <name>3055</name>\n                        </unit>\n                    </interface>\n                </interfaces>\n            </class-of-service>\n            <protocols>\n                <l2circuit>\n                    <neighbor>\n                        <name>4.4.4.2</name>\n                        <interface operation = \"delete\">\n                            <name>ge-0/0/3.3055</name>\n                        </interface>\n                    </neighbor>\n                </l2circuit>\n            </protocols>\n</configuration></config>\n</edit-config>\n</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
     }
+
 
 }
