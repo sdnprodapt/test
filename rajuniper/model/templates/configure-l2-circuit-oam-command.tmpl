@@ -1,0 +1,36 @@
+<rpc>
+<edit-config><target><candidate/></target>
+	<config><configuration>
+		<protocols>
+		    <oam>
+		        <ethernet>
+		            <connectivity-fault-management>
+		                <maintenance-domain>
+		                    <name>{{data['MDName']}}</name>
+		                    <maintenance-association>
+		                        <name>{{data['MAName']}}</name>
+		                        <continuity-check>
+		                            <interval>10s</interval>
+		                        </continuity-check>
+		                        <mep>
+		                            <name>{{data['serviceVlanid']}}</name>
+		                            <interface>{{data['interfaceName']}}.{{data['serviceVlanid']}}</interface>
+                                    {%- if(data['isUPDirection']) %}
+                                        <direction>up</direction>
+                                    {%- else %}
+                                        <direction>down</direction>
+                                    {%- endif %}
+                                    {%- if(data['autoDiscovery']) %}
+                                        <auto-discovery>
+                                        </auto-discovery>
+                                    {%- endif %}
+		                        </mep>
+		                    </maintenance-association>
+		                </maintenance-domain>
+		            </connectivity-fault-management>
+		        </ethernet>
+		    </oam>
+		</protocols>
+	</configuration></config>
+	</edit-config>
+</rpc>

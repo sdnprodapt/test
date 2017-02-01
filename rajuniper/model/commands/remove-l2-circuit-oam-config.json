@@ -1,0 +1,16 @@
+{
+    "endpoint": "netconf",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+     "commands/tests/remove-l2-circuit-oam.json"
+    ],
+    "endpoint-parameters": {
+        "template": "remove-l2-circuit-oam-command.tmpl"
+    },
+    "out-path": [
+
+    ],
+    "in-path": [
+
+    ]
+}

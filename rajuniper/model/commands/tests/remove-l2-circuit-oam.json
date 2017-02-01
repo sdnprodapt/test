@@ -1,0 +1,29 @@
+{
+    "Remove OAM on EAccess L2 Circuit on ENNI Interface": {
+        "type": "netconf",
+        "out-params": {
+          "MDName": "EACCESS-MD3",
+          "MAName": "EACCESS-MA-12345678",
+          "CCMInterval": 10,
+          "interfaceName": "ge-0/0/3",
+          "serviceVlanid":3055,
+          "MEPID":"1",
+          "isUPDirection": true,
+          "autoDiscovery": true
+        },
+        "out-expect": [
+            [
+            "<rpc>\n<edit-config><target><candidate/></target>\n\t<config><configuration>\n\t\t<protocols>\n\t\t    <oam>\n\t\t        <ethernet>\n\t\t            <connectivity-fault-management>\n\t\t                <maintenance-domain>\n\t\t                    <name>EACCESS-MD3</name>\n\t\t                    <maintenance-association operation=\"delete\">\n\t\t                        <name>EACCESS-MA-12345678</name>\n\t\t                        </maintenance-association>\n\t\t                </maintenance-domain>\n\t\t            </connectivity-fault-management>\n\t\t        </ethernet>\n\t\t    </oam>\n\t\t</protocols>\n\t</configuration></config>\n\t</edit-config>\n</rpc>"
+            ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
+    }
+
+}
