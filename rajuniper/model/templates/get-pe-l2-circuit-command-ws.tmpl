@@ -5,20 +5,39 @@
             <configuration>
                 <protocols>
                     <l2circuit>
+                        {% if data['interface'] or data['description'] %}
                         <neighbor>
-                            {% if data['interface'] %}
                             <interface>
+                                {% if data['interface'] %}
                                 <name>{{ data['interface'] }}</name>
+                                {% endif %}
+
+                                {% if data['description'] %}
+                                <description>{{ data['description'] }}</description>
+                                {% endif %}
                             </interface>
-                            {% endif %}
                         </neighbor>
+                        {% endif %}
+
+                        {% if data['interface'] or data['end-interface'] or data['description'] %}
                         <local-switching>
-                            {% if data['interface'] %}
                             <interface>
+                                {% if data['interface'] %}
                                 <name>{{ data['interface'] }}</name>
+                                {% endif %}
+
+                                {% if data['end-interface'] %}
+                                <end-interface>
+                                    <interface>{{ data['end-interface'] }}</interface>
+                                </end-interface>
+                                {% endif %}
+
+                                {% if data['description'] %}
+                                <description>{{ data['description'] }}</description>
+                                {% endif %}
                             </interface>
-                            {% endif %}
                         </local-switching>
+                        {% endif %}
                     </l2circuit>
                 </protocols>
             </configuration>
