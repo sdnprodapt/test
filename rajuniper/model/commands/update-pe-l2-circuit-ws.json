@@ -1,0 +1,86 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+    ],
+    "endpoint-parameters": {
+
+    },
+    "out-path": [
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.call.Function",
+            "description": "Convert ENNI flag type boolean to string",
+            "parameters": {
+                "function": "rajuniper.command_utils.convert_enni_flag_bool_string"
+            }
+
+        },
+        {
+            "type": "bpprov.translators.route.Branch",
+            "parameters": {
+                "choice": [{
+                    "when" : "${ENNI} == \"True\"}",
+                    "do": {
+                        "type": "bpprov.translators.aggregator.Call",
+                        "description": "Check for ENNI interface policer config and configure policer profile",
+                        "parameters": {
+                            "command": "create-pe-l2-circuit-enni-policer-helper-ws.json",
+                            "input": {
+                              "templateType": "inline",
+                              "data": "{{ data | to_json }}"
+                            },
+                            "output": {
+                                "patches": [{
+                                    "from": "/data",
+                                    "to": "/data/output"
+                                }]
+                            }
+                        }
+
+                    }
+                }]
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "lock-config-ws.json"
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "create-pe-l2-circuit-config-ws.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/output"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "commit-ws.json"
+            }
+        },
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "unlock-config-ws.json"
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "create-pe-l2-circuit-ws.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}
