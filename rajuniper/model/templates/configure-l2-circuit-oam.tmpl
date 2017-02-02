@@ -1,0 +1,24 @@
+{% if "ok" in data["output"] %}
+{
+    "MDName": {{data['MDName'] | to_json}},
+    "MAName": {{data['MAName'] | to_json}},
+    "CCMInterval": {{data['CCMInterval'] | to_json}},
+    "interfaceName":{{data['interfaceName'] | to_json}},
+    "serviceVlanid":{{data['serviceVlanid'] | to_json}},
+	"MEPID":{{data['MEPID'] | to_json}},
+	"isUPDirection":{{data['isUPDirection'] | to_json}},
+	"autoDiscovery":{{data['autoDiscovery'] | to_json}}
+}
+{% else %}
+{
+    "MDName": {{data['MDName'] | to_json}},
+    "MAName": {{data['MAName'] | to_json}},
+    "CCMInterval": {{data['CCMInterval'] | to_json}},
+    "interfaceName":{{data['interfaceName'] | to_json}},
+    "serviceVlanid":{{data['serviceVlanid'] | to_json}},
+	"MEPID":{{data['MEPID'] | to_json}},
+	"isUPDirection":{{data['isUPDirection'] | to_json}},
+	"autoDiscovery":{{data['autoDiscovery'] | to_json}}
+    "reason": "{{ data['output'] }}"
+}
+{% endif %}
