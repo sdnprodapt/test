@@ -15,6 +15,9 @@
        },
        "delete": {
            "command": "delete-pe-l2-circuit-ws.json"
+       },
+       "get": {
+           "command": "get-pe-l2-circuit-ws.json"
        }
    }
 }

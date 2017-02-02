@@ -1,0 +1,27 @@
+<rpc>
+    <get-config>
+        <source><running/></source>
+        <filter type="subtree">
+            <configuration>
+                <protocols>
+                    <l2circuit>
+                        <neighbor>
+                            {% if data['interface'] %}
+                            <interface>
+                                <name>{{ data['interface'] }}</name>
+                            </interface>
+                            {% endif %}
+                        </neighbor>
+                        <local-switching>
+                            {% if data['interface'] %}
+                            <interface>
+                                <name>{{ data['interface'] }}</name>
+                            </interface>
+                            {% endif %}
+                        </local-switching>
+                    </l2circuit>
+                </protocols>
+            </configuration>
+        </filter>
+    </get-config>
+</rpc>

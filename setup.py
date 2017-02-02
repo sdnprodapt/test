@@ -42,9 +42,7 @@ Juniper Resource Adapter""",
     include_package_data=True,
     install_requires=[
         'netifaces',
-        'cymlrest',
         'bpprov[netconf]',
-        'bpramodels',
         'rasdk',
         ],
     entry_points={
