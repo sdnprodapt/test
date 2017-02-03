@@ -52,7 +52,7 @@
         {
             "type": "bpprov.translators.aggregator.Call",
             "parameters": {
-                "command": "create-pe-l2-circuit-config-ws.json",
+                "command": "update-pe-l2-circuit-config-ws.json",
                 "output": {
                     "patches": [
                         {
