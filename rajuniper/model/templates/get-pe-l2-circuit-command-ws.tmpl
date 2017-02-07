@@ -1,55 +1,10 @@
+{%- from "create-pe-cc-ws.tmpl" import get_pe_cc_xml_config -%}
 <rpc>
     <get-config>
         <source><running/></source>
         <filter type="subtree">
             <configuration>
-                <protocols>
-                    <l2circuit>
-                        {% if data['interface'] or data['description'] or data['virtual-circuit-id'] or data['l2-circuit-name'] %}
-                        <neighbor>
-                            {% if data['interface'] or data['description'] or data['virtual-circuit-id'] %}
-                            <interface>
-                                {% if data['interface'] %}
-                                <name>{{ data['interface'] }}</name>
-                                {% endif %}
-
-                                {% if data['description'] %}
-                                <description>{{ data['description'] }}</description>
-                                {% endif %}
-
-                                {% if data['virtual-circuit-id'] %}
-                                <virtual-circuit-id>{{ data['virtual-circuit-id'] }}</virtual-circuit-id>
-                                {% endif %}
-                            </interface>
-                            {% endif %}
-
-                            {% if data['l2-circuit-name'] %}
-                            <name>{{ data['l2-circuit-name'] }}</name>
-                            {% endif %}
-                        </neighbor>
-                        {% endif %}
-
-                        {% if data['interface'] or data['end-interface'] or data['description'] %}
-                        <local-switching>
-                            <interface>
-                                {% if data['interface'] %}
-                                <name>{{ data['interface'] }}</name>
-                                {% endif %}
-
-                                {% if data['end-interface'] %}
-                                <end-interface>
-                                    <interface>{{ data['end-interface'] }}</interface>
-                                </end-interface>
-                                {% endif %}
-
-                                {% if data['description'] %}
-                                <description>{{ data['description'] }}</description>
-                                {% endif %}
-                            </interface>
-                        </local-switching>
-                        {% endif %}
-                    </l2circuit>
-                </protocols>
+{{- get_pe_cc_xml_config(data) | indent(4)}}
             </configuration>
         </filter>
     </get-config>
