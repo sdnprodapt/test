@@ -1,0 +1,11 @@
+{%- from "create-pe-cc-ws.tmpl" import get_pe_cc_xml_config -%}
+<rpc>
+    <get-config>
+        <source><running/></source>
+        <filter type="subtree">
+            <configuration>
+{{- get_pe_cc_xml_config(data) | indent(4)}}
+            </configuration>
+        </filter>
+    </get-config>
+</rpc>

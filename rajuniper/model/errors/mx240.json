@@ -1,9 +1,9 @@
 {
     "patterns": [
         {
-            "command": "<get[\\w-]>", 
-            "match-reason": "<error-message>(.*?)</error-message>", 
-            "onError": [], 
+            "command": "<get[\\w-]>",
+            "match-reason": "<error-message>(.*?)</error-message>",
+            "onError": [],
             "pattern": "<error-severity>error</error-severity>"
         }, 
         {
@@ -18,6 +18,14 @@
                 }
             ], 
             "pattern": "<error-severity>error</error-severity>"
+        },
+        {
+            "command": "<l2circuit>",
+            "override-reason": "Configuration not found",
+            "onError": [],
+            "pattern": "<configuration>\\n</configuration>",
+            "error-dict": {"statusCode": 404}
         }
+
     ]
 }
