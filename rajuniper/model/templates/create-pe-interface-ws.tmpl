@@ -1,10 +1,8 @@
 {%- macro get_pe_interface_xml_config(data) %}
 {%- set interfaces = data['interfaces'] %}
         <interfaces>
-{%- set index = 0 %}
 {%- for interface_ops in interfaces %}
 {%- set interface_subinterface_ops = interface_ops['subInterface'] %}
-{%- if index == 0 %}
             <interface>
                 <name>{{interface_ops['name']}}</name>
                 <unit>
@@ -42,46 +40,6 @@
                     </family>
                 </unit>
             </interface>
-{%- else %}
-            <interface>
-                <name>{{interface_ops['name']}}</name>
-                <unit>
-                    <name>{{interface_subinterface_ops['name']}}</name>
-                    <description>{{interface_subinterface_ops['description']}}</description>
-                    <encapsulation>{{interface_subinterface_ops['encapsulation']}}</encapsulation>
-                    {%- if (interface_subinterface_ops.get('classificationTag', 'None') == 'outer') %}
-                    <vlan-tags>
-                        <outer>{{interface_subinterface_ops['TPID']}}.{{interface_ops['serviceVlanid']}}</outer>
-                    </vlan-tags>
-                    {%- endif %}
-                    <input-vlan-map>
-                        {%- if (interface_subinterface_ops.get('vlanOp', {}).get('operation','None') == 'swap') %}
-                        <swap/>
-                        {%- endif %}
-                        <tag-protocol-id>{{interface_subinterface_ops['vlanOp']['TPID']}}</tag-protocol-id>
-                        <vlan-id>{{interface_subinterface_ops['vlanOp']['vlanid']}}</vlan-id>
-                    </input-vlan-map>
-                    <output-vlan-map>
-                        {%- if (interface_subinterface_ops.get('vlanOp', {}).get('operation','None') == 'swap') %}
-                        <swap/>
-                        {%- endif %}
-                        <tag-protocol-id>{{interface_subinterface_ops['vlanOp']['TPID']}}</tag-protocol-id>
-                    </output-vlan-map>
-                    <family>
-                        {%- if (interface_subinterface_ops.get('family', 'None') == 'family-ccc') %}
-                        <ccc>
-                            {%- if ((interface_subinterface_ops['inputPolicer'] == True) and (interface_ops['isENNI'] == True)) %}
-                            <policer>
-                               <input>{{data['rate']}}Meg</input>
-                            </policer>
-                            {%- endif %}
-                        </ccc>
-                        {%- endif %}
-                    </family>
-                </unit>
-            </interface>
-{%- endif %}
-{%- set index = index + 1 %}
 {%- endfor %}
         </interfaces>
 {%- endmacro %}
