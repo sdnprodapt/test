@@ -24,6 +24,13 @@
                     ]
                 }
             }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "create-pe-l2-circuit-ws.tmpl",
+                "as_object": true
+            }
         }
     ]
 }
