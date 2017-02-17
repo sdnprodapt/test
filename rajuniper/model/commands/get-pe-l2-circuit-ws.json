@@ -1,0 +1,36 @@
+{
+    "endpoint": "null",
+    "type": "bpprov.runners.simple.Sequence",
+    "tests": [
+
+    ],
+    "endpoint-parameters": {
+
+    },
+    "out-path": [
+
+    ],
+    "in-path": [
+        {
+            "type": "bpprov.translators.aggregator.Call",
+            "parameters": {
+                "command": "get-pe-l2-circuit-config-ws.json",
+                "output": {
+                    "patches": [
+                        {
+                            "from": "/data",
+                            "to": "/data/output"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "bpprov.translators.template.Json",
+            "parameters": {
+                "template": "create-pe-l2-circuit-ws.tmpl",
+                "as_object": true
+            }
+        }
+    ]
+}

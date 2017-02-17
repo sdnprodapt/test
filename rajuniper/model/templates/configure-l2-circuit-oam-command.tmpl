@@ -10,7 +10,7 @@
 		                    <maintenance-association>
 		                        <name>{{data['MAName']}}</name>
 		                        <continuity-check>
-		                            <interval>10s</interval>
+		                            <interval>{{data['CCMInterval']}}s</interval>
 		                        </continuity-check>
 		                        <mep>
 		                            <name>{{data['serviceVlanid']}}</name>
