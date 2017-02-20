@@ -1,3 +1,6 @@
+##Version 16.10.WS.7
+* fixed an error in returning data after creating service
+
 ##Version 16.10.WS.6
 * Update code to have eline,eaccess services create,delete,update,get APIs implmented.  Release a new image
 
