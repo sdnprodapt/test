@@ -14,7 +14,8 @@
            "returns_resource": true
        },
        "delete": {
-           "command": "delete-pe-l2-circuit-oam-ws.json"
+           "command": "delete-pe-l2-circuit-oam-ws.json",
+           "send_resource": true
        }
    }
 }

@@ -186,8 +186,8 @@ domains:
                   verifyMissingList: false   
       - id: "juniper.resourceTypes.L2CircuitOAM"
         discoveryStrategy:
-            - strategyType: "sync"
-              pollingMode: "getOnly"
+            - strategyType: "async"
+              pollingMode: "noPolling"
               pollingSettings:
                 - pollingIntervalMs: 120000
                   immediateDeletion: false

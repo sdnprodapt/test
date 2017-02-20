@@ -12,7 +12,7 @@
        "get": {
             "command": "get-pe-l2-circuit-ws.json",
             "send_resource": true
-        }
+        },
        "put": {
            "command": "update-pe-l2-circuit-ws.json",
            "returns_resource": true
