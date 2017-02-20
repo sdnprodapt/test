@@ -1,2 +1,5 @@
 {%- set temp = data.pop("output",None) %}
+{%- if 'ENNI' in data %}
+{%- set temp = data.pop("ENNI",None) %}
+{%- endif %}
 {{data | to_json}}
