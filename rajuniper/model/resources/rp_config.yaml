@@ -181,7 +181,7 @@ domains:
               pollingMode: "getOnly"
               pollingSettings:
                 - pollingIntervalMs: 120000
-                  immediateDeletion: false
+                  immediateDeletion: true
                   syncTimeoutMs: 120000
                   verifyMissingList: false   
       - id: "juniper.resourceTypes.L2CircuitOAM"
