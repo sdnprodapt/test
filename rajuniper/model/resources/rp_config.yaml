@@ -180,8 +180,10 @@ domains:
             - strategyType: "sync"
               pollingMode: "getOnly"
               pollingSettings:
-                - pollingIntervalMs: 120000
-                  immediateDeletion: true
+                - pollingIntervalMs: 240000
+                  immediateDeletion: false
+                  deletePollingIntervalMs: 30000
+                  deletePollingLimit: 2
                   syncTimeoutMs: 120000
                   verifyMissingList: false   
       - id: "juniper.resourceTypes.L2CircuitOAM"
@@ -190,7 +192,7 @@ domains:
               pollingMode: "noPolling"
               pollingSettings:
                 - pollingIntervalMs: 120000
-                  immediateDeletion: false
+                  immediateDeletion: true
                   syncTimeoutMs: 120000
                   verifyMissingList: false   
 #      - id: "juniper.resourceTypes.VirtualRouter"

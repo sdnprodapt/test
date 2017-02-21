@@ -1,3 +1,6 @@
+##Version 16.10.WS.8
+* changed rp_config setting for delete
+
 ##Version 16.10.WS.7
 * fixed an error in returning data after creating service
 
