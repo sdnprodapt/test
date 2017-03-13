@@ -20,7 +20,13 @@ resourceTypes {
         """
 
         properties {
-            
+
+           device {
+                type = string
+                title = "Device"
+                description = "Identifies the RA device containing the resource."
+                optional = false
+            }
 
             MDName {
                 type = string

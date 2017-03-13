@@ -10,7 +10,7 @@
                     <name>{{interface_subinterface_ops['name']}}</name>
                         {%- if (interface_ops['isENNI'] == False) %}
                         <output-traffic-control-profile>
-                            {%- if (data['serviceType'] == 'E-LINE') %}
+                            {%- if (data['serviceType'] == 'ELINE') %}
                             <profile-name>{{interface_subinterface_ops['outputTCP']}}</profile-name>
                             {%- else %}
                             <profile-name>EACCESS-TCP</profile-name>
@@ -28,7 +28,7 @@
                             </ieee-802.1>
                             {%- endif %}
                         </classifiers>
-                        {%- if (data['serviceType'] == 'E-ACCESS') %}
+                        {%- if (data['serviceType'] == 'EACCESS') %}
                         <rewrite-rules>
                             {%- if (interface_subinterface_ops['rewriteRules'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>

@@ -2,7 +2,7 @@
     "Create UNI PE Eline L2 Local Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-            "serviceType":"E-LINE",
+            "serviceType":"ELINE",
             "VCID": 12345679,
             "rate": 40,
             "description":"ELINE:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
@@ -91,7 +91,7 @@
     "Create UNI PE Eline L2 Pseudowire Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-            "serviceType":"E-LINE",
+            "serviceType":"ELINE",
             "VCID":12345679,
             "rate":40,
             "description":"ELINE:BOBSBAITANDTACK:20M:92832724:KVM0-vMX2",
@@ -157,7 +157,7 @@
       "Create UNI PE EAccess L2 Local Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-            "serviceType":"E-ACCESS",
+            "serviceType":"EACCESS",
             "VCID":12345679,
             "rate":30,
             "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
@@ -255,7 +255,7 @@
       "Create UNI PE EAccess L2 Pseudo-wire Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-            "serviceType":"E-ACCESS",
+            "serviceType":"EACCESS",
             "VCID":12345679,
             "rate":20,
             "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX2",

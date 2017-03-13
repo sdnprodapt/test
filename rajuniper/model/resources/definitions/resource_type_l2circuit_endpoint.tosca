@@ -24,9 +24,9 @@ resourceTypes {
                 title = "Service Type"
                 description = "Type of service for which current PE router is being configured.  Either E-LINE, E-ACCESS"
                 type = string
-                enum = [ E-LINE, E-ACCESS ]
+                enum = [ ELINE, EACCESS ]
                 optional = false
-                default = E-LINE
+                default = ELINE
             }
 
             rate {

@@ -2,7 +2,7 @@
     "Delete UNI PE Eline L2 Local Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-			"serviceType":"E-LINE",
+			"serviceType":"ELINE",
 			"interfaces":[{
 				"name":"ae3",
 				"isENNI":false,
@@ -38,7 +38,7 @@
     "Delete UNI PE Eline L2 Pseudowire Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-			"serviceType":"E-LINE",
+			"serviceType":"ELINE",
 			"interfaces":[{
 				"name":"ae3",
 				"isENNI":false,
@@ -67,7 +67,7 @@
     "Delete UNI PE EAccess L2 Local Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-            "serviceType":"E-ACCESS",
+            "serviceType":"EACCESS",
             "interfaces":[
                {
                   "name":"ae3",
@@ -105,7 +105,7 @@
     "Delete UNI PE EAccess L2 Pseudowire Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-            "serviceType":"E-ACCESS",
+            "serviceType":"EACCESS",
             "interfaces":[
                {
                   "name":"ge-0/0/3",

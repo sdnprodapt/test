@@ -13,7 +13,7 @@
 		                            <interval>{{data['CCMInterval']}}s</interval>
 		                        </continuity-check>
 		                        <mep>
-		                            <name>{{data['serviceVlanid']}}</name>
+		                            <name>{{data['MEPID']}}</name>
 		                            <interface>{{data['interfaceName']}}.{{data['serviceVlanid']}}</interface>
                                     {%- if(data['isUPDirection']) %}
                                         <direction>up</direction>
