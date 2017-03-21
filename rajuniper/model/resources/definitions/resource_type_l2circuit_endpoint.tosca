@@ -29,6 +29,15 @@ resourceTypes {
                 default = ELINE
             }
 
+            COS {
+                title = "Class of Service"
+                description = "Class of Service name of this service. Real Time (5), Mission Critical (3), Satndard Data (1)"
+                type = string
+                enum = [ RT, MC, SD ]
+                optional = false
+                default = SD
+            }
+
             rate {
                 title = "Rate"
                 description = "Rate of the l2circuit defined in Mbps"
@@ -96,6 +105,40 @@ resourceTypes {
                             propertyType = juniper.propertyTypes.subInterfaceInfo
                         }
 
+                        policer {
+                            title = "Policer"
+                            description = "Bandwidth Policing configuration properties"
+                            type = object
+                            optional = true
+                            properties {
+                               cir {
+                                   title = "CIR"
+                                   description = "This attribute denotes the Committed Information Rate that limits the average rate of frames that will be de-clared Green. In bits Mega per second."
+                                   type = integer
+                                   optional = true
+                                }
+
+                               cbs {
+                                   title = "CBS"
+                                   description = "This attribute denotes the Committed Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Green, in bytes,"
+                                   type = integer
+                                   optional = true
+                               }
+                               eir {
+                                   title = "EIR"
+                                   description = "This attribute denotes the Excess Information Rate that limits the average rate of frames that will be de-clared Yellow. In bits Mega per second."
+                                   type = integer
+                                   optional = true
+                                }
+
+                               ebs {
+                                   title = "EBS"
+                                   description = "This attribute denotes the Excess Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Yellow, in bytes,"
+                                   type = integer
+                                   optional = true
+                               }
+                            }
+                        }
                     }
                 }
             }

@@ -33,13 +33,36 @@ resourceTypes {
                 title = "Maintenance Domain name"
                 description = "Maintenance Domain name.  IN windstream it is EACCESS-MD3"
                 optional = false
-                default = EACCESS-MD3
+                default = WIN-MD3
             }
 
             MAName {
                 type = string
                 title = "Maintenance Association name"
-                description = "Maintenance Association name.  In windstream it is composed using VCID as in EACCESS-MA-<VCID>"
+                description = "Maintenance Association name."
+                optional = false
+            }
+
+            MDLevel {
+                title = "Maintenance Domain Level"
+                description = "Maintenance Domain Level.  In windstream it is 3"
+                type = integer
+                format = uint32
+                optional = true
+                default = 3
+            }
+
+            CircuitId {
+                type = string
+                title = "Name of the EVC"
+                description = "Name of the EVC for which OAM is being provisioned"
+                optional = false
+            }
+
+            VCID {
+                title = "VCID"
+                description = "Globally unique numeric identifier required for each E-Line. Must be the same on both the A and Z PE routers"
+                type = integer
                 optional = false
             }
 
@@ -89,6 +112,15 @@ resourceTypes {
                 optional = true
                 default = true
             }
+
+            COS {
+                title = "Class of Service"
+                description = "Class of Service name of this service. Real Time (5), Mission Critical (3), Satndard Data (1)"
+                type = string
+                enum = [ RT, MC, SD ]
+                optional = false
+                default = SD
+            }   
         }
 
         requirements {
