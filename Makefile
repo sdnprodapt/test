@@ -5,35 +5,35 @@
 #
 
 HIDE ?= @
-VENV := env
-PACKAGE := $(shell python setup.py --name)
+VENV ?= env
 
-PROJECT_DIR ?= $(shell pwd)
-MODEL_DIR := $(PROJECT_DIR)/$(PACKAGE)/model
-SIM_DIR := $(MODEL_DIR)/sim
-
-PIP := $(VENV)/bin/pip
-PYTHON := $(VENV)/bin/python
-BPFPM ?= bpfpm
+PIP ?= $(VENV)/bin/pip
+PYTHON ?= $(VENV)/bin/python
+INVOKE ?= $(VENV)/bin/dtk-invoke
 
 PYPI ?= 'https://artifactory.ciena.com/api/pypi/blueplanet-pypi/simple'
 
-TOOLKIT_IMAGE_NAME ?= $(shell docker images | grep devops-toolkit | awk '{ print $$1 }')
-TOOLKIT_IMAGE_VERSION ?= $(shell docker images | grep devops-toolkit | awk '{ print $$2 }')
-TOOLKIT_IMAGE ?= $(TOOLKIT_IMAGE_NAME):$(TOOLKIT_IMAGE_VERSION)
-TOOLKIT_DIR ?= $(PROJECT_DIR)/.devops-toolkit
-
-GIT_REPO_NAME ?= $(shell basename `git remote show -n origin | grep Fetch | cut -d. -f3`)
+TOOLKIT_DIR ?= '$(DEVOPS_TOOLKIT)/.devops-toolkit'
+IS_DEVOPS_TOOLKIT := $(shell env | grep DEVOPS_TOOLKIT)
+EMPTY = 
+ifeq ($(IS_DEVOPS_TOOLKIT), $(EMPTY))
+# internal user
+PIP_PYPI := -i $(PYPI)
+PIP_FIND_LINKS :=
+else
+# external user
+PIP_PYPI :=
+PIP_FIND_LINKS := --find-links=$(TOOLKIT_DIR)
+endif
 
 all: help
-
-include bp2.mk
 
 clean:
 	rm -rf *.deb
 	rm -rf build
 	rm -rf dist
 	rm -rf *.egg
+	rm -rf *.egg-info
 	rm -rf *.pyc
 	rm -rf env
 
@@ -45,71 +45,53 @@ env-help:
 	@echo " --------------------------------------------------------"
 	@echo "/ virtualenv backed commands                            /"
 	@echo "--------------------------------------------------------"
-	@echo "  import-toolkit extract python packages from distributed devops-toolkit docker image"
-	@echo "  toolkit-venv install requirements-host and self into virtualenv ./env, use toolkit packages"
-	@echo "  prepare-venv install requirements and self into virtualenv ./env"
+	@echo "  prepare-venv install requirements and self into virtualenv $(VENV)"
 	@echo "  fresh-venv   prepare a virtualenv without locked requirements"
-	@echo "  test         run unit tests, model tests, and sim tests"
-	@echo "  utest        run unit tests"
-	@echo "  test-flake8  run flake8 tests"
-	@echo "  test-sim     run simulator tests"
-	@echo "  coverage     run unit tests with code coverage reporting"
-	@echo "  requirements generate new requirements.txt"
-	@echo "  release      release version with bpfrelease"
 
-help: basic-help env-help bp2-help
+ifneq ("$(wildcard $(INVOKE))","")
+INVOKE_HELP := $(INVOKE) -h
+else
+INVOKE_HELP := 
+endif
+
+help: basic-help env-help
+	@echo ""
+	$(HIDE) $(INVOKE_HELP)
 
 # virtualenv related commands
-#
-#
-import-toolkit:
-	docker run -i --rm -v $(PWD):/bp2/src $(TOOLKIT_IMAGE) import-toolkit
-
-toolkit-venv:
-	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install --find-links=$(TOOLKIT_DIR) \
-		-r requirements-host.txt \
-		-e .
-
 prepare-venv:
-	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install --upgrade -i $(PYPI) -r requirements.txt
-	$(HIDE)$(PIP) install -i $(PYPI) -e .
+	$(HIDE)virtualenv $(VENV) --no-pip
+	$(HIDE)$(VENV)/bin/easy_install pip==9.0.1
+	$(HIDE)$(PIP) install $(PIP_FIND_LINKS) $(PIP_PYPI) -c requirements.txt dtk-invoke
+	$(INVOKE) prepare-venv
 
 fresh-venv:
-	-$(HIDE)rm -rf $(VENV)
-	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install -i $(PYPI) -e .
-	$(HIDE)$(PIP) install -i $(PYPI) -r requirements-host.txt
+	$(HIDE)rm -rf $(VENV)
+	$(HIDE)virtualenv $(VENV) --no-pip
+	$(HIDE)$(VENV)/bin/easy_install pip==9.0.1
+	$(HIDE)$(PIP) install $(PIP_FIND_LINKS) $(PIP_PYPI) dtk-invoke
+	$(INVOKE) fresh-venv
 
-requirements:
-	$(HIDE)$(PIP) uninstall -y $(PACKAGE)
-	$(HIDE)$(PIP) freeze > requirements.txt
-	$(HIDE)$(PIP) install -e .
 
-release:
-	$(HIDE)$(VENV)/bin/bpfrelease --organization ra --repository $(GIT_REPO_NAME) --project .
-	$(HIDE)$(VENV)/bin/gdfpm $(DOCKER_IMAGE) $(shell $(VENV)/bin/bpfrelease --project-version)
+# Legacy targets provided for convenience.
+# Please prefer main targets above or dtk-invoke directly
 
-test: utest test-model-commands test-model-validate test-model-error test-sim test-flake8
+toolkit-venv:
+	$(HIDE)$(MAKE) prepare-venv
 
-utest:
-	$(HIDE)$(VENV)/bin/nosetests -v
+test:
+	$(HIDE)$(INVOKE) test
 
-test-flake8:
-	$(HIDE)$(VENV)/bin/flake8 $(PACKAGE)
+image:
+	$(HIDE)$(INVOKE) image
 
-test-model-validate:
-	$(HIDE)$(VENV)/bin/bpprov-cli validate $(MODEL_DIR)
+dconfigure:
+	$(HIDE)$(INVOKE) image
 
-test-model-commands:
-	$(HIDE)$(VENV)/bin/bpprov-cli test $(MODEL_DIR)
+dtest:
+	$(HIDE)$(INVOKE) dtest
 
-test-model-error:
-	$(HIDE)$(VENV)/bin/bpprov-cli test-error $(MODEL_DIR)
+dutest:
+	$(HIDE)$(INVOKE) dtest
 
-test-sim:
-	$(HIDE)$(VENV)/bin/bpprov-cli test-sim $(SIM_DIR)
-
-coverage:
-	$(HIDE)$(VENV)/bin/nosetests --with-coverage --cover-erase --cover-package $(PACKAGE)
+ditest:

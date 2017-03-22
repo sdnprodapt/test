@@ -2,8 +2,7 @@
     "endpoint": "null",
     "type": "bpprov.runners.simple.Sequence",
     "tests": [
-        "commands/mx240/tests/update-routinginstance-full.json",
-        "commands/mx240/tests/update-routinginstance-full-errors.json"
+        "commands/mx240/tests/update-routinginstance-full.json"
     ],
     "endpoint-parameters": {
     },

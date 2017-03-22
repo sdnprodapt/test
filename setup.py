@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
-import sys
 import os
 
 # Allow to run setup.py from another directory.
@@ -13,7 +12,7 @@ try:
 except ImportError:
     pass
 
-version = '16.10.WS.8'
+version = '17.2.WS.1'
 
 setup(
     name='rajuniper',

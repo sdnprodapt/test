@@ -26,6 +26,7 @@ def get_path_value(element, path, default=None):
         return v[0]
     return default
 
+
 configuration = load_xml('{}/get-configuration.xml'.format(args.dir))
 interfaces = load_xml('{}/get-interface-information.xml'.format(args.dir))
 inventory = load_xml('{}/get-chassis-inventory.xml'.format(args.dir))
@@ -101,6 +102,7 @@ def get_chassis_module(module, parent_name, path):
     for el in module.xpath(next_path):
         next_parent_name = ':'.join([parent_name, name]) if parent_name != '' else name
         get_chassis_module(el, next_parent_name, next_path)
+
 
 chassis_modules = inventory.xpath('//chassis-module')
 for cm in chassis_modules:
@@ -239,5 +241,6 @@ def strip_ws(obj):
         return obj.strip()
     else:
         return obj
+
 
 json.dump(strip_ws(db), open('{}/db.json'.format(args.dir), 'w'), indent=4)
