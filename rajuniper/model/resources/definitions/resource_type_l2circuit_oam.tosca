@@ -31,7 +31,7 @@ resourceTypes {
             MDName {
                 type = string
                 title = "Maintenance Domain name"
-                description = "Maintenance Domain name.  IN windstream it is EACCESS-MD3"
+                description = "Maintenance Domain name.  In windstream it is WIN-MD3"
                 optional = false
                 default = WIN-MD3
             }
@@ -48,7 +48,7 @@ resourceTypes {
                 description = "Maintenance Domain Level.  In windstream it is 3"
                 type = integer
                 format = uint32
-                optional = true
+                optional = false
                 default = 3
             }
 
@@ -115,7 +115,7 @@ resourceTypes {
 
             COS {
                 title = "Class of Service"
-                description = "Class of Service name of this service. Real Time (5), Mission Critical (3), Satndard Data (1)"
+                description = "Class of Service name of this service. Real Time (RT=4), Mission Critical (MC=2), Satndard Data (SD=0)"
                 type = string
                 enum = [ RT, MC, SD ]
                 optional = false
