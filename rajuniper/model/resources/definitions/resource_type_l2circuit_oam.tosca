@@ -41,6 +41,7 @@ resourceTypes {
                 title = "Maintenance Association name"
                 description = "Maintenance Association name."
                 optional = false
+				
             }
 
             MDLevel {
@@ -95,6 +96,7 @@ resourceTypes {
                 description = "Maintenamce Endpoint ID.  It is same as serviceVlanid"
                 type = string
                 optional = false
+				default = 1
             }
 
             isUPDirection {

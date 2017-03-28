@@ -1,0 +1,16 @@
+{
+   "authentication":{
+      "netconf":{
+         "username":"blueplanet",
+         "password":"Orche5tr8!"
+      }
+   },
+   "connection":{
+      "hostname":"localhost",
+      "netconf":{
+         "hostport":2221
+      }
+   },
+   "typeGroup":"/typeGroups/Juniper",
+   "id":"1"
+}

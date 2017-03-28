@@ -72,15 +72,15 @@ toolkit-venv:
 		-e .
 
 prepare-venv:
-	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install --upgrade -i $(PYPI) -r requirements.txt
-	$(HIDE)$(PIP) install -i $(PYPI) -e .
+	$(HIDE)virtualenv $(VENV) --always-copy
+	$(HIDE)$(PIP) install --upgrade --find-links=$(TOOLKIT_DIR) -r requirements.txt
+	$(HIDE)$(PIP) install --find-links=$(TOOLKIT_DIR) -e .
 
 fresh-venv:
 	-$(HIDE)rm -rf $(VENV)
 	$(HIDE)virtualenv $(VENV)
-	$(HIDE)$(PIP) install -i $(PYPI) -e .
-	$(HIDE)$(PIP) install -i $(PYPI) -r requirements-host.txt
+	$(HIDE)$(PIP) install --find-links=$(TOOLKIT_DIR) -e .
+	$(HIDE)$(PIP) install --find-links=$(TOOLKIT_DIR) -r requirements-host.txt
 
 requirements:
 	$(HIDE)$(PIP) uninstall -y $(PACKAGE)

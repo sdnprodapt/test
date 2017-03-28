@@ -20,11 +20,32 @@
                         <classifiers>
                             {%- if (interface_subinterface_ops['classifiers'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>
-                            {%- if (interface_ops['isENNI'] == False) %}
-                            <classifier-name>{{interface_subinterface_ops['classifiers'][0]['value']}}</classifier-name>
-                            {%- else %}
-                            <classifier-name>CUSTOMER_PBIT_CLASSIFIER_MEF23_1</classifier-name>
-                            {%- endif %}
+							{# start changes for SDN-864#}
+								{%- if (data['COS'] == 'RT') %}
+								<classifier-name>EACCESS_ENNI_RT</classifier-name>
+								<forwarding-class>
+								<name>medium</name>
+									<loss-priority>high</loss-priority>
+									<code-points>[ 000 001 010 011 100 101 110 111 ]</code-points>
+								</forwarding-class>
+								{%- endif %}
+								{%- if (data['COS'] == 'MC') %}
+								<classifier-name>EACCESS_ENNI_MC</classifier-name>
+								<forwarding-class>
+								<name>medium-low</name>
+									<loss-priority>high</loss-priority>
+									<code-points>[ 000 001 010 011 100 101 110 111 ]</code-points>
+								</forwarding-class>
+								{%- endif %}
+								{%- if (data['COS'] == 'SD') %}
+								<classifier-name>EACCESS_ENNI_SD</classifier-name>
+								<forwarding-class>
+								<name>low</name>
+									<loss-priority>low</loss-priority>
+									<code-points>[ 000 001 010 011 100 101 110 111 ]</code-points>
+								</forwarding-class>
+								{%- endif %}
+								{# end changes for SDN-864#}
                             </ieee-802.1>
                             {%- endif %}
                         </classifiers>

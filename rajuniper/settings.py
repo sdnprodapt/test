@@ -14,6 +14,7 @@ BPPROV_MODEL_DIRPATH = os.path.join(os.path.dirname(__file__), 'model')
 RESOURCES_DIR = os.path.join(BPPROV_MODEL_DIRPATH, 'resources')
 DEFINITIONS_DIR = os.path.join(RESOURCES_DIR, 'definitions')
 RP_CONFIG = os.path.join(RESOURCES_DIR, 'rp_config.yaml')
+RP_BIND_PORT = 9192
 
 # DOMAIN_MANAGER_RP means this RA is for talking to systems that
 # manage other elements, eg vCenter, openstack, SAM etc.

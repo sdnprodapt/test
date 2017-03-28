@@ -6,11 +6,9 @@
         <name>{{data['rate']}}Meg</name>
         <if-exceeding>
             <bandwidth-limit>{{data['rate']}}m</bandwidth-limit>
-            {%- if data['rate'] <= 100 %}
-                <burst-size-limit>64k</burst-size-limit>
-            {%- else %}
-                <burst-size-limit>128k</burst-size-limit>
-            {%- endif %}
+			{# start changes for SDN-864 #}
+            <burst-size-limit>{{data['interfaces'][0]['policer']['cbs']}}</burst-size-limit>
+			{# end changes for SDN-864 #}
         </if-exceeding>
         <then>
             <discard/>

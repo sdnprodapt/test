@@ -1,4 +1,4 @@
-afkak==2.2.0
+afkak==2.4.0
 attrs==16.0.0
 autobahn==0.14.1
 backports.shutil-get-terminal-size==1.0.0
@@ -59,9 +59,9 @@ pysnmp===4.1.16d
 python-dateutil==2.5.3
 python-json-logger==0.1.2
 PyYAML==3.11
-rasdk==2.2.1
+rasdk==2.3.0
 requests==2.11.1
-rpsdk==1.0.0
+rpsdk==0.6.6
 service-identity==16.0.0
 simplegeneric==0.8.1
 simplejson==3.8.2
