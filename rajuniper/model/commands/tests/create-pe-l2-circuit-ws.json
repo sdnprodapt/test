@@ -158,6 +158,7 @@
         "type": "netconf",
         "out-params": {
             "serviceType":"EACCESS",
+            "COS":"SD",
             "VCID":12345679,
             "rate":30,
             "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
@@ -195,6 +196,12 @@
                            "value":"EACCESS-UNI-REWRITE"
                         }
                      ]
+                  },
+                   "policer":{
+                  	"cir":1,
+                  	"cbs":2,
+                  	"eir":3,
+                  	"ebs":4
                   }
                },
                {
@@ -228,6 +235,12 @@
                            "value":"EACCESS-ENNI-REWRITE"
                         }
                      ]
+                  },
+                  "policer":{
+                  	"cir":1,
+                  	"cbs":2,
+                  	"eir":3,
+                  	"ebs":4
                   }
                }
             ],
@@ -256,6 +269,7 @@
         "type": "netconf",
         "out-params": {
             "serviceType":"EACCESS",
+            "COS":"SD",
             "VCID":12345679,
             "rate":20,
             "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX2",
@@ -293,6 +307,12 @@
                            "value":"EACCESS-UNI-REWRITE"
                         }
                      ]
+                  },
+                   "policer":{
+                  	"cir":1,
+                  	"cbs":2,
+                  	"eir":3,
+                  	"ebs":4
                   }
                }
             ],
