@@ -1,3 +1,4 @@
+{%- set interfaces = data['interfaces'] %}
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
@@ -5,12 +6,12 @@
     <policer>
         <name>{{data['rate']}}Meg</name>
         <if-exceeding>
-         {%- if (data['interfaces'][0]['isENNI'] == True) %}
-            <bandwidth-limit>{{data['interfaces'][0]['policer']['cir']}}m</bandwidth-limit>
-			{# start changes for SDN-864 #}
-            <burst-size-limit>{{data['interfaces'][0]['policer']['cbs']}}</burst-size-limit>
-			{# end changes for SDN-864 #}
-		{%- endif %}
+        {%- for interface_ops in interfaces %}
+        	{%- if (interface_ops['isENNI'] == True) %}
+            <bandwidth-limit>{{interface_ops['policer']['cir']}}m</bandwidth-limit>
+           	<burst-size-limit>{{interface_ops['policer']['cbs']}}</burst-size-limit>
+			{%- endif %}
+		{%- endfor %}
         </if-exceeding>
         <then>
             <discard/>
