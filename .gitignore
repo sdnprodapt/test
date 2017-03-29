@@ -68,3 +68,4 @@ target/
 
 #devops-toolkit package cache
 .devops-toolkit
+.project

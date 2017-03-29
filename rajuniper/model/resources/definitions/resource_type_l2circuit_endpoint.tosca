@@ -36,6 +36,7 @@ resourceTypes {
                 enum = [ RT, MC, SD ]
                 optional = false
                 default = SD
+                updatable = true
             }
 
             rate {
@@ -44,6 +45,7 @@ resourceTypes {
                 type = integer
                 optional = false
                 config = true
+                updatable = true
             }
 
             VCID {
@@ -72,6 +74,7 @@ resourceTypes {
                 description = "Description of this circuit.  It is composed using customer name, rate, VCID and remotePE name using a particular WS standard"
                 type = string
                 optional = false
+                updatable = true
             }
 
             interfaces {
@@ -110,12 +113,14 @@ resourceTypes {
                             description = "Bandwidth Policing configuration properties"
                             type = object
                             optional = true
+                            updatable = true
                             properties {
                                cir {
                                    title = "CIR"
                                    description = "This attribute denotes the Committed Information Rate that limits the average rate of frames that will be declared Green in Mega bits per second."
                                    type = integer
                                    optional = false
+                                   updatable = true
                                 }
 
                                cbs {
@@ -123,12 +128,14 @@ resourceTypes {
                                    description = "This attribute denotes the Committed Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Green, in bytes,"
                                    type = integer
                                    optional = false
+                                   updatable = true
                                }
                                eir {
                                    title = "EIR"
                                    description = "This attribute denotes the Excess Information Rate that limits the average rate of frames that will be de-clared Yellow. In bits Mega per second."
                                    type = integer
                                    optional = true
+                                   updatable = true
                                 }
 
                                ebs {
@@ -136,6 +143,7 @@ resourceTypes {
                                    description = "This attribute denotes the Excess Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Yellow, in bytes,"
                                    type = integer
                                    optional = true
+                                   updatable = true
                                }
                             }
                         }

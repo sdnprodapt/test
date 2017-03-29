@@ -25,6 +25,7 @@ bp2-help:
 
 # docker related commands
 #
+PACKAGE := $(shell python setup.py --name)
 DOCKER_RUN_ARGS ?= -ti --rm
 PASS_THROUGH_ENV := $(if $(EXTRA_ENV),$(shell python -c 'print "--env "," --env ".join("$(EXTRA_ENV)".split(";"))'))
 DOCKER_RUN := docker run $(DOCKER_RUN_ARGS) $(PASS_THROUGH_ENV)
@@ -144,7 +145,7 @@ dutest: dteam-City-args dtest
 ditest:
 
 ###Tagging
-tag: image
+tag: 
 	$(foreach tag, ${TAGS}, docker tag -f $(DOCKER_IMAGE):latest $(REGISTRY)/$(PACKAGE):${tag} &&) true
 
 push: tag
