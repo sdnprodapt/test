@@ -3,17 +3,21 @@
         "type": "netconf",
         "out-params": {
           "MDName": "WIN-MD3",
-          "MAName": "WIN-MA-12345678",
+          "MAName": "3055AR202002_3",
           "CCMInterval": 10,
           "interfaceName": "ge-0/0/3",
           "serviceVlanid":3055,
           "MEPID":"1",
           "isUPDirection": true,
-          "autoDiscovery": true
+          "autoDiscovery": true,
+		  "MDLevel":3,
+		  "CircuitId":"AR/KEGS/202002/WCI",
+		  "VCID":"39378901",
+		  "COS":"SD"
         },
         "out-expect": [
             [
-            "<rpc>\n<edit-config><target><candidate/></target>\n\t<config><configuration>\n\t\t<protocols>\n\t\t    <oam>\n\t\t        <ethernet>\n\t\t            <connectivity-fault-management>\n\t\t                <maintenance-domain>\n\t\t                    <name>WIN-MD3</name>\n\t\t                    <maintenance-association>\n\t\t                        <name>WIN-MA-12345678</name>\n\t\t                        <continuity-check>\n\t\t                            <interval>10s</interval>\n\t\t                        </continuity-check>\n\t\t                        <mep>\n\t\t                            <name>3055</name>\n\t\t                            <interface>ge-0/0/3.3055</interface>\n                                        <direction>up</direction>\n                                        <auto-discovery>\n                                        </auto-discovery>\n\t\t                        </mep>\n\t\t                    </maintenance-association>\n\t\t                </maintenance-domain>\n\t\t            </connectivity-fault-management>\n\t\t        </ethernet>\n\t\t    </oam>\n\t\t</protocols>\n\t</configuration></config>\n\t</edit-config>\n</rpc>"
+            "<rpc>\n<edit-config><target><candidate/></target>\n\t<config><configuration>\n\t\t<protocols>\n\t\t    <oam>\n\t\t        <ethernet>\n\t\t            <connectivity-fault-management>\n\t\t                <maintenance-domain>\n\t\t                    <name>WIN-MD3</name>\n\t\t  <level>3</level>\n\t\t                  <maintenance-association>\n\t\t                        <name>WIN-MA-12345678</name>\n\t\t                        <continuity-check>\n\t\t                            <interval>10s</interval>\n\t\t                        </continuity-check>\n\t\t                        <mep>\n\t\t                            <name>3055</name>\n\t\t                            <interface>ge-0/0/3.3055</interface>\n                                        <direction>up</direction>\n                                        <auto-discovery>\n                                        </auto-discovery>\n\t\t                        </mep>\n\t\t                    </maintenance-association>\n\t\t                </maintenance-domain>\n\t\t            </connectivity-fault-management>\n\t\t        </ethernet>\n\t\t    </oam>\n\t\t</protocols>\n\t</configuration></config>\n\t</edit-config>\n</rpc>"
             ]
         ],
         "in-params": [
