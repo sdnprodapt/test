@@ -158,7 +158,6 @@
         "type": "netconf",
         "out-params": {
             "serviceType":"EACCESS",
-            "COS":"SD",
             "VCID":12345679,
             "rate":30,
             "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
@@ -269,7 +268,6 @@
         "type": "netconf",
         "out-params": {
             "serviceType":"EACCESS",
-            "COS":"SD",
             "VCID":12345679,
             "rate":20,
             "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX2",

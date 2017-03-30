@@ -20,9 +20,11 @@
                         <classifiers>
                             {%- if (interface_subinterface_ops['classifiers'][0]['name'] == 'ieee-802.1') %}
                             <ieee-802.1>
-							{# start changes for SDN-864#}
-								<classifier-name>EACCESS_ENNI_{{data['COS']}}</classifier-name>
-							{# end changes for SDN-864#}
+                            {%- if (interface_ops['isENNI'] == False) %}
+                            <classifier-name>{{interface_subinterface_ops['classifiers'][0]['value']}}</classifier-name>
+                            {%- else %}
+                            <classifier-name>CUSTOMER_PBIT_CLASSIFIER_MEF23_1</classifier-name>
+                            {%- endif %}
                             </ieee-802.1>
                             {%- endif %}
                         </classifiers>
