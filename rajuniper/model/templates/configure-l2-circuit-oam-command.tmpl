@@ -17,7 +17,7 @@
 									<hold-interval>3</hold-interval>
 		                        </continuity-check>
 		                        <mep>
-									<name>1</name>
+									<name>{{data['MEPID']}}</name>
 		                            <interface>{{data['interfaceName']}}.{{data['serviceVlanid']}}</interface>
                                     {%- if(data['isUPDirection']) %}
                                         <direction>up</direction>
