@@ -1,21 +1,22 @@
+{%- set interfaces = data['interfaces'] %}
 <rpc>
 <edit-config><target><candidate/></target>
 <config><configuration>
 <firewall>
+    {%- for interface_ops in interfaces %}
     <policer>
-        <name>{{data['rate']}}Meg</name>
+        <name>{{interface_ops['policer']['cir']}}Meg</name>
         <if-exceeding>
-            <bandwidth-limit>{{data['rate']}}m</bandwidth-limit>
-            {%- if data['rate'] <= 100 %}
-                <burst-size-limit>64k</burst-size-limit>
-            {%- else %}
-                <burst-size-limit>128k</burst-size-limit>
-            {%- endif %}
+        	{%- if (interface_ops['isENNI'] == True) %}
+            <bandwidth-limit>{{interface_ops['policer']['cir']}}m</bandwidth-limit>
+           	<burst-size-limit>{{interface_ops['policer']['cbs']}}</burst-size-limit>
+			{%- endif %}
         </if-exceeding>
         <then>
             <discard/>
         </then>
     </policer>
+	{%- endfor %}
 </firewall>
 </configuration></config>
 </edit-config>
