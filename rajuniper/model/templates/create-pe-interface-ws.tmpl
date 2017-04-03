@@ -32,7 +32,7 @@
                         <ccc>
                             {%- if ((interface_subinterface_ops['inputPolicer'] == True) and (interface_ops['isENNI'] == True)) %}
                             <policer>
-                               <input>{{data['rate']}}Meg</input>
+                               <input>{{interface_ops['policer']['cir']}}Meg</input>
                             </policer>
                             {%- endif %}
                         </ccc>

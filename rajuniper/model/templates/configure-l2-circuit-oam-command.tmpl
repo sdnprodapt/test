@@ -7,19 +7,32 @@
 		            <connectivity-fault-management>
 		                <maintenance-domain>
 		                    <name>{{data['MDName']}}</name>
+		                    <level>{{data['MDLevel']}}</level>	
+		                    <name-format>character-string</name-format>	                 
 		                    <maintenance-association>
 		                        <name>{{data['MAName']}}</name>
+								<short-name-format>character-string</short-name-format>
 		                        <continuity-check>
 		                            <interval>{{data['CCMInterval']}}s</interval>
+									<hold-interval>3</hold-interval>
 		                        </continuity-check>
 		                        <mep>
-		                            <name>{{data['MEPID']}}</name>
+									<name>{{data['MEPID']}}</name>
 		                            <interface>{{data['interfaceName']}}.{{data['serviceVlanid']}}</interface>
                                     {%- if(data['isUPDirection']) %}
                                         <direction>up</direction>
                                     {%- else %}
                                         <direction>down</direction>
                                     {%- endif %}
+									{%- if(data['COS'] == 'RT') %}
+										<priority>4</priority>
+									{%- endif %}
+									{%- if(data['COS'] == 'MC') %}
+										<priority>2</priority>
+									{%- endif %}
+									{%- if(data['COS'] == 'SD') %}
+										<priority>0</priority>
+									{%- endif %}
                                     {%- if(data['autoDiscovery']) %}
                                         <auto-discovery>
                                         </auto-discovery>
