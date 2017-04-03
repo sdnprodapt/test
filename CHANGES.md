@@ -1,3 +1,9 @@
+##Version 17.2.WS.2
+* Updated tosca file with updatable=true for prperties that are updatable.
+
+##Version 17.2.WS.1
+* Updated RA to work with 17.2 devops toolkit and updated all packages to 17.2 BP
+
 ##Version 16.10.WS.8
 * changed rp_config setting for delete
 

@@ -1,14 +1,10 @@
-# from the docker container, git@ will not work for the initial clone
-#    (unless you installed your credentials) so use https in that case.  
-#    You might later 'git remote set-url origin <git@>' if you want to
-#    easily commit from the mapped volume
-
-#-e git+git@github.cyanoptics.com:rasdk/cyml.git@<branch>#egg=cyml
-#-e git+git@github.cyanoptics.com:rasdk/cymlrest.git@<branch>#egg=cymlrest
-#-e git+git@github.cyanoptics.com:rasdk/bp-ramodels.git@<branch>#egg=bpramodels
-#-e git+git@github.cyanoptics.com:rasdk/rasdk-python.git@<branch>#egg=rasdk
-
-#-e git+https://github.cyanoptics.com/rasdk/cyml.git@<branch>#egg=cyml
-#-e git+https://github.cyanoptics.com/rasdk/cymlrest.git@<branch>#egg=cymlrest
-#-e git+https://github.cyanoptics.com/rasdk/bp-ramodels.git@<branch>#egg=bpramodels
-#-e git+https://github.cyanoptics.com/rasdk/rasdk-python.git@master#egg=rasdk
+# This file allows you to install python libraries you are developing
+# into the docker image.
+# The libraries should installed as editable (-e passed)
+# the editable library is typically cloned under a .src directory first
+# e.g. `git clone https/github.cyanoptics.com/rasdk/rasdk-python.git .src/rasdk`
+# next you want to make a docker image with the library installed so you add
+# the requirements line to this file.
+# e.g. `-e .src/rasdk`
+# now run `make image-dev` to make a docker image which with install
+# that library such that it is still editable in your development environment

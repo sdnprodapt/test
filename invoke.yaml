@@ -1,0 +1,24 @@
+# these are the possible values for hide (--hide)
+#  -  null hides nothing
+#  - 'out' hides stdout
+#  - 'err' hides stderr
+#  - 'both' hides stderr and stdout
+
+run:
+    hide: null
+    echo: true
+    # pty: false
+
+# container_port should be a string matching the entire `-p` argument and value you would pass to `docker run`
+# ex. container_port: '-p 8080:8080'                    to expose one port
+# ex. container_port: '-p 8080:8080 -p 9000:9000'       to expose multiple ports
+
+dtk:
+    # container_mount: ''
+    # container_name: ''
+    # container_port: ''
+    # docker_build_extra: ''
+    # docker_cmd: ''
+    # docker_run_args: ''
+    # sim-dir: ''
+    venv: 'env'

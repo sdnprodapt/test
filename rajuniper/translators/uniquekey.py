@@ -9,7 +9,6 @@
 
 from jsonpointer import resolve_pointer
 from bpprov.translators.base import Translator
-from bpprov.components.base import RouteData
 
 
 import os
@@ -44,7 +43,6 @@ class UniqueKeyTranslator(Translator):
                     output[keyvalue] = data
         route_data.data = output
         return route_data
-
 
 
 if __name__ == '__main__':

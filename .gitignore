@@ -65,3 +65,7 @@ target/
 *.swp
 
 .src
+
+#devops-toolkit package cache
+.devops-toolkit
+.project

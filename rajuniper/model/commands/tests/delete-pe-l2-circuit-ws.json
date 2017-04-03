@@ -2,24 +2,24 @@
     "Delete UNI PE Eline L2 Local Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-			"serviceType":"ELINE",
-			"interfaces":[{
-				"name":"ae3",
-				"isENNI":false,
-				"subInterface":{
-						"name":"721"
-				}
-			},
-			{
-				"name":"ae4",
-				"isENNI":false,
-				"subInterface":{
-						"name":"3055"
-				}
-			}],
-			"pseudowire":{
-				"remotePELoopbackIP":"4.4.4.1"
-			}
+            "serviceType":"ELINE",
+            "interfaces":[{
+                "name":"ae3",
+                "isENNI":false,
+                "subInterface":{
+                        "name":"721"
+                }
+            },
+            {
+                "name":"ae4",
+                "isENNI":false,
+                "subInterface":{
+                        "name":"3055"
+                }
+            }],
+            "pseudowire":{
+                "remotePELoopbackIP":"4.4.4.1"
+            }
         },
         "out-expect": [
             [
@@ -38,17 +38,17 @@
     "Delete UNI PE Eline L2 Pseudowire Cross Connect Circuit": {
         "type": "netconf",
         "out-params": {
-			"serviceType":"ELINE",
-			"interfaces":[{
-				"name":"ae3",
-				"isENNI":false,
-				"subInterface":{
-						"name":"721"
-				}
-			}],
-			"pseudowire":{
-				"remotePELoopbackIP":"4.4.4.1"
-			}
+            "serviceType":"ELINE",
+            "interfaces":[{
+                "name":"ae3",
+                "isENNI":false,
+                "subInterface":{
+                        "name":"721"
+                }
+            }],
+            "pseudowire":{
+                "remotePELoopbackIP":"4.4.4.1"
+            }
         },
         "out-expect": [
             [

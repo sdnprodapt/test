@@ -18,11 +18,11 @@ ENV RASDK_SETTINGS_MODULE=rajuniper.settings \
     SBIS=kafka,statsd,bpocore,git-ssh \
     BP2HOOK_heartbeat=/bin/true \
     BP2HOOK_peer-status=bp2-peer-depart \
-    BP2HOOK_peer-update=/bin/true
+    BP2HOOK_peer-update=/bin/true \
+    BP2HOOK_southbound-update=rasdk-southbound-update
 
-RUN cat /dev/zero | ssh-keygen -q -N ""
-RUN git config --global user.name rajuniper
-RUN git config --global user.email rajuniper@ciena.com
-RUN ln -s /usr/local/bin/rasdk-southbound-update /usr/local/bin/southbound-update
+RUN ssh-keygen -t rsa -f /root/.ssh/id_rsa -q -N "" && \
+    git config --global user.name rajuniper && \
+    git config --global user.email rajuniper@ciena.com
 
-CMD ["rajuniper", "--no-clustering", "--configpath", "/dev/shm", "--logfile", "/bp2/log/rajuniper.log"]
+CMD ["rajuniper", "--configpath", "/dev/shm", "--logfile", "/bp2/log/rajuniper.log", "--kafka"]
