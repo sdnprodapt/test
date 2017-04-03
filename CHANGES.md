@@ -1,3 +1,6 @@
+##Version 17.2.WS.3
+* Merged fixes related to updated requirements and develop/172 branch into master
+
 ##Version 17.2.WS.2
 * Updated tosca file with updatable=true for prperties that are updatable.
 

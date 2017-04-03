@@ -3,7 +3,7 @@
         "type": "netconf",
         "out-params": {
             "serviceType":"ELINE",
-			"COS":"SD",
+            "COS":"SD",
             "VCID": 12345679,
             "rate": 40,
             "description":"ELINE:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
@@ -93,7 +93,7 @@
         "type": "netconf",
         "out-params": {
             "serviceType":"ELINE",
-			"COS":"SD",
+            "COS":"SD",
             "VCID":12345679,
             "rate":40,
             "description":"ELINE:BOBSBAITANDTACK:20M:92832724:KVM0-vMX2",
@@ -200,10 +200,10 @@
                      ]
                   },
                    "policer":{
-                  	"cir":1,
-                  	"cbs":2,
-                  	"eir":3,
-                  	"ebs":4
+                       "cir":1,
+                       "cbs":2,
+                       "eir":3,
+                       "ebs":4
                   }
                },
                {
@@ -239,10 +239,10 @@
                      ]
                   },
                   "policer":{
-                  	"cir":1,
-                  	"cbs":2,
-                  	"eir":3,
-                  	"ebs":4
+                      "cir":1,
+                      "cbs":2,
+                      "eir":3,
+                      "ebs":4
                   }
                }
             ],
@@ -311,10 +311,10 @@
                      ]
                   },
                    "policer":{
-                  	"cir":1,
-                  	"cbs":2,
-                  	"eir":3,
-                  	"ebs":4
+                       "cir":1,
+                       "cbs":2,
+                       "eir":3,
+                       "ebs":4
                   }
                }
             ],
