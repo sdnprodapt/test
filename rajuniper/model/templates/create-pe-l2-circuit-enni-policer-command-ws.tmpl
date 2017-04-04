@@ -4,18 +4,18 @@
 <config><configuration>
 <firewall>
     {%- for interface_ops in interfaces %}
+	{%- if (interface_ops['isENNI'] == True) %}
     <policer>
         <name>{{interface_ops['policer']['cir']}}Meg</name>
         <if-exceeding>
-        	{%- if (interface_ops['isENNI'] == True) %}
-            <bandwidth-limit>{{interface_ops['policer']['cir']}}m</bandwidth-limit>
-           	<burst-size-limit>{{interface_ops['policer']['cbs']}}</burst-size-limit>
-			{%- endif %}
+       	    <bandwidth-limit>{{interface_ops['policer']['cir']}}m</bandwidth-limit>
+           	<burst-size-limit>{{interface_ops['policer']['cbs']}}</burst-size-limit>		
         </if-exceeding>
         <then>
             <discard/>
         </then>
     </policer>
+	{%- endif %}
 	{%- endfor %}
 </firewall>
 </configuration></config>
