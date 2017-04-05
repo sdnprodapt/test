@@ -1,0 +1,184 @@
+{
+    "Configure Firewall Policer on WIN L2 Local Cross Connect Circuit on ENNI Interface": {
+        "type": "netconf",
+        "out-params": {
+            "serviceType":"EACCESS",
+            "COS":"SD",
+            "VCID":12345679,
+            "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX1",
+            "remotePEName":"KVM0-vMX2",
+            "device":"KVM0-vMX1",
+            "interfaces":[
+               {
+                  "name":"ae3",
+                  "isENNI":false,
+                  "serviceVlanid":721,
+                  "subInterface":{
+                     "name":"721",
+                     "description":"CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]",
+                     "encapsulation":"vlan-ccc",
+                     "classificationTag":"outer",
+                     "TPID":"0x88a8",
+                     "vlanOp":{
+                        "operation":"swap",
+                        "vlanid":4000,
+                        "TPID":"0x88a8"
+                     },
+                     "family":"family-ccc",
+                     "inputPolicer":false,
+                     "mtu":9192,
+                     "outputTCP":"EACCESS-TCP",
+                     "classifiers":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"CUSTOMER_PBIT_CLASSIFIER_NONEF"
+                        }
+                     ],
+                     "rewriteRules":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"EACCESS-UNI-REWRITE"
+                        }
+                     ]
+                  },
+                   "policer":{
+                  	"cir":1,
+                  	"cbs":2,
+                  	"eir":3,
+                  	"ebs":4
+                  }
+               },
+               {
+                  "name":"ge-0/0/3",
+                  "isENNI":true,
+                  "serviceVlanid":3055,
+                  "subInterface":{
+                     "name":"3055",
+                     "description":"CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]",
+                     "encapsulation":"vlan-ccc",
+                     "classificationTag":"outer",
+                     "TPID":"0x88a8",
+                     "vlanOp":{
+                        "operation":"swap",
+                        "vlanid":4000,
+                        "TPID":"0x88a8"
+                     },
+                     "family":"family-ccc",
+                     "inputPolicer":true,
+                     "mtu":9192,
+                     "outputTCP":"ELINE_TCP",
+                     "classifiers":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"CUSTOMER_PBIT_CLASSIFIER_NONEF"
+                        }
+                     ],
+                     "rewriteRules":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"EACCESS-ENNI-REWRITE"
+                        }
+                     ]
+                  },
+                  "policer":{
+                  	"cir":1,
+                  	"cbs":2,
+                  	"eir":3,
+                  	"ebs":4
+                  }
+               }
+            ],
+            "pseudowire":{
+               "remotePELoopbackIP":"4.4.4.1",
+               "controlWord":true,
+               "mtu":9178,
+               "encapType":"Ethernet"
+            }
+        },
+        "out-expect": [
+            [
+				"<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n<firewall>\n\t<policer>\n\t<name>1Meg</name>\n<if-exceeding>\n\t<bandwidth-limit>1m</bandwidth-limit>\n<burst-size-limit>2</burst-size-limit>\n</if-exceeding>\n<then>\n\t<discard/>\n</then>\n</policer>\n</firewall>\n</configuration></config>\n</edit-config>\n</rpc>" ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
+    },
+    
+    "Configure Firewall Policer on WIN L2 Pseudowire Cross Connect Circuit on ENNI Interface": {
+        "type": "netconf",
+        "out-params": {
+            "serviceType":"EACCESS",
+            "COS":"SD",
+            "VCID":12345679,
+            "description":"EACCESS:BOBSBAITANDTACK:20M:92832724:KVM0-vMX2",
+            "remotePEName":"KVM0-vMX2",
+            "device":"KVM0-vMX1",
+            "interfaces":[
+               {
+                  "name":"ge-0/0/3",
+                  "isENNI":true,
+                  "serviceVlanid":3055,
+                  "subInterface":{
+                     "name":"3055",
+                     "description":"CUST:null:null:%12345678%:20M:[E-ACCESS:Bobs Bait and Tackle Shops]",
+                     "encapsulation":"vlan-ccc",
+                     "classificationTag":"outer",
+                     "TPID":"0x88a8",
+                     "vlanOp":{
+                        "operation":"swap",
+                        "vlanid":4000,
+                        "TPID":"0x88a8"
+                     },
+                     "family":"family-ccc",
+                     "inputPolicer":true,
+                     "mtu":9192,
+                     "outputTCP":"ELINE_TCP",
+                     "classifiers":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"CUSTOMER_PBIT_CLASSIFIER_NONEF"
+                        }
+                     ],
+                     "rewriteRules":[
+                        {
+                           "name":"ieee-802.1",
+                           "value":"EACCESS-UNI-REWRITE"
+                        }
+                     ]
+                  },
+                   "policer":{
+                  	"cir":1,
+                  	"cbs":2,
+                  	"eir":3,
+                  	"ebs":4
+                  }
+               }
+            ],
+            "pseudowire":{
+               "remotePELoopbackIP":"4.4.4.2",
+               "controlWord":true,
+               "mtu":9178,
+               "encapType":"ethernet"
+            }
+        },
+        "out-expect": [
+            [
+				"<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n<firewall>\n\t<policer>\n\t<name>1Meg</name>\n<if-exceeding>\n\t<bandwidth-limit>1m</bandwidth-limit>\n<burst-size-limit>2</burst-size-limit>\n</if-exceeding>\n<then>\n\t<discard/>\n</then>\n</policer>\n</firewall>\n</configuration></config>\n</edit-config>\n</rpc>" ]
+        ],
+        "in-params": [
+            [
+                "<rpc-reply xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\" xmlns:junos=\"http://xml.juniper.net/junos/14.1R6/junos\">",
+                "<ok/>",
+                "</rpc-reply>"
+            ]
+        ]
+
+    }
+    
+
+}
