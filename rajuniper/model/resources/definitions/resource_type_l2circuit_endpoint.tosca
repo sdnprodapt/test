@@ -39,15 +39,6 @@ resourceTypes {
                 updatable = true
             }
 
-            rate {
-                title = "Rate"
-                description = "Rate of the l2circuit defined in Mbps"
-                type = integer
-                optional = false
-                config = true
-                updatable = true
-            }
-
             VCID {
                 title = "VCID"
                 description = "Globally unique numeric identifier required for each E-Line. Must be the same on both the A and Z PE routers"

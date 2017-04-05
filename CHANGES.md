@@ -1,3 +1,6 @@
+##Version 17.2.WS.4
+* Updated more unit test cases.
+
 ##Version 17.2.WS.3
 * Merged fixes related to updated requirements and develop/172 branch into master
 

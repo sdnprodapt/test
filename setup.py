@@ -12,7 +12,7 @@ try:
 except ImportError:
     pass
 
-version = '17.2.WS.3'
+version = '17.2.WS.4'
 
 setup(
     name='rajuniper',

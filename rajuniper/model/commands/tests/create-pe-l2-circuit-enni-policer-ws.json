@@ -42,10 +42,10 @@
                      ]
                   },
                    "policer":{
-                  	"cir":1,
-                  	"cbs":2,
-                  	"eir":3,
-                  	"ebs":4
+                    "cir":1,
+                    "cbs":2,
+                    "eir":3,
+                    "ebs":4
                   }
                },
                {
@@ -81,10 +81,10 @@
                      ]
                   },
                   "policer":{
-                  	"cir":1,
-                  	"cbs":2,
-                  	"eir":3,
-                  	"ebs":4
+                    "cir":1,
+                    "cbs":2,
+                    "eir":3,
+                    "ebs":4
                   }
                }
             ],
@@ -97,7 +97,7 @@
         },
         "out-expect": [
             [
-				"<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n<firewall>\n\t<policer>\n\t<name>1Meg</name>\n<if-exceeding>\n\t<bandwidth-limit>1m</bandwidth-limit>\n<burst-size-limit>2</burst-size-limit>\n</if-exceeding>\n<then>\n\t<discard/>\n</then>\n</policer>\n</firewall>\n</configuration></config>\n</edit-config>\n</rpc>" ]
+                "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n<firewall>\n\t<policer>\n\t<name>1Meg</name>\n<if-exceeding>\n\t<bandwidth-limit>1m</bandwidth-limit>\n<burst-size-limit>2</burst-size-limit>\n</if-exceeding>\n<then>\n\t<discard/>\n</then>\n</policer>\n</firewall>\n</configuration></config>\n</edit-config>\n</rpc>" ]
         ],
         "in-params": [
             [
@@ -152,10 +152,10 @@
                      ]
                   },
                    "policer":{
-                  	"cir":1,
-                  	"cbs":2,
-                  	"eir":3,
-                  	"ebs":4
+                    "cir":1,
+                    "cbs":2,
+                    "eir":3,
+                    "ebs":4
                   }
                }
             ],
@@ -168,7 +168,7 @@
         },
         "out-expect": [
             [
-				"<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n<firewall>\n\t<policer>\n\t<name>1Meg</name>\n<if-exceeding>\n\t<bandwidth-limit>1m</bandwidth-limit>\n<burst-size-limit>2</burst-size-limit>\n</if-exceeding>\n<then>\n\t<discard/>\n</then>\n</policer>\n</firewall>\n</configuration></config>\n</edit-config>\n</rpc>" ]
+                "<rpc>\n<edit-config><target><candidate/></target>\n<config><configuration>\n<firewall>\n\t<policer>\n\t<name>1Meg</name>\n<if-exceeding>\n\t<bandwidth-limit>1m</bandwidth-limit>\n<burst-size-limit>2</burst-size-limit>\n</if-exceeding>\n<then>\n\t<discard/>\n</then>\n</policer>\n</firewall>\n</configuration></config>\n</edit-config>\n</rpc>" ]
         ],
         "in-params": [
             [
