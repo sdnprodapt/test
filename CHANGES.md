@@ -1,3 +1,6 @@
+##Version 17.2.WS.5
+* Updated tosca file so that policer is updatable
+
 ##Version 17.2.WS.4
 * Updated more unit test cases.
 

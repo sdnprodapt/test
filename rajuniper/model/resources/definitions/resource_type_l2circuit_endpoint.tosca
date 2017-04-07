@@ -72,6 +72,7 @@ resourceTypes {
                 description = "List of interfaces to configure.  Only 1 in the case of Pseudowire and 2 in the case of local cross connect"
                 type = array
                 optional = false
+                updatable = true
                 items {
                     type = object
                     additionalProperties = false
