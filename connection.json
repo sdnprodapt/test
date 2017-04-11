@@ -1,6 +1,7 @@
 {
    "authentication":{
       "netconf":{
+
          "username":"blueplanet",
          "password":"Orche5tr8!"
       }
