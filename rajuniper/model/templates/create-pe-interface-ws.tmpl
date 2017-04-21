@@ -18,14 +18,14 @@
                         {%- if (interface_subinterface_ops.get('vlanOp', {}).get('operation','None') == 'swap') %}
                         <swap/>
                         {%- endif %}
-                        <tag-protocol-id>{{interface_subinterface_ops['vlanOp']['TPID']}}</tag-protocol-id>
+                        <tag-protocol-id>{{interface_subinterface_ops['TPID']}}</tag-protocol-id>
                         <vlan-id>{{interface_subinterface_ops['vlanOp']['vlanid']}}</vlan-id>
                     </input-vlan-map>
                     <output-vlan-map>
                         {%- if (interface_subinterface_ops.get('vlanOp', {}).get('operation','None') == 'swap') %}
                         <swap/>
                         {%- endif %}
-                        <tag-protocol-id>{{interface_subinterface_ops['vlanOp']['TPID']}}</tag-protocol-id>
+                        <tag-protocol-id>{{interface_subinterface_ops['TPID']}}</tag-protocol-id>
                     </output-vlan-map>
                     <family>
                         {%- if (interface_subinterface_ops.get('family', 'None') == 'family-ccc') %}

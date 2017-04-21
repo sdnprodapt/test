@@ -21,8 +21,7 @@
                      "TPID":"0x88a8",
                      "vlanOp":{
                         "operation":"swap",
-                        "vlanid":4000,
-                        "TPID":"0x88a8"
+                        "vlanid":4000
                      },
                      "family":"family-ccc",
                      "inputPolicer":false,
@@ -60,8 +59,7 @@
                      "TPID":"0x88a8",
                      "vlanOp":{
                         "operation":"swap",
-                        "vlanid":4000,
-                        "TPID":"0x88a8"
+                        "vlanid":4000
                      },
                      "family":"family-ccc",
                      "inputPolicer":true,
@@ -131,8 +129,7 @@
                      "TPID":"0x88a8",
                      "vlanOp":{
                         "operation":"swap",
-                        "vlanid":4000,
-                        "TPID":"0x88a8"
+                        "vlanid":4000
                      },
                      "family":"family-ccc",
                      "inputPolicer":true,
