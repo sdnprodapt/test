@@ -68,13 +68,6 @@ propertyTypes {
                         optional = true
                         default = 4000
                     }
-                    TPID {
-                        title = "TPID"
-                        description = "TPID used in S-TAG in the core and S-TAG in transport domain- 0x88a8 and dot1ad for Cisco"
-                        type = string
-                        optional = true
-                        default = "0x88a8"
-                    }
                 }
             }
             family {
