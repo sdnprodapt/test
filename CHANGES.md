@@ -1,3 +1,6 @@
+##Version 17.2.WS.6
+* Updated with TPID changes.  Only one TPID in sub-interface
+
 ##Version 17.2.WS.5
 * Updated tosca file so that policer is updatable
 
