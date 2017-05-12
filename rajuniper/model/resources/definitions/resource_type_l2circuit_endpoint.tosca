@@ -42,7 +42,7 @@ resourceTypes {
             VCID {
                 title = "VCID"
                 description = "Globally unique numeric identifier required for each E-Line. Must be the same on both the A and Z PE routers"
-                type = integer
+                type = string
                 optional = false
             }
 
