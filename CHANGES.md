@@ -1,3 +1,6 @@
+##Version 17.2.WS.7
+* Updated VCID to string
+
 ##Version 17.2.WS.6
 * Updated with TPID changes.  Only one TPID in sub-interface
 
