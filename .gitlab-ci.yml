@@ -1,19 +1,8 @@
-before_script:
-  - sudo su
-  - cd /home/vagrant/shared/bp-ra-juniper-ws 
-  - echo "Clean Enviornment"
-  - make clean
-  - echo "Build Enviornment- Prepare RA"
-  - make TOOLKIT_DIR=/home/vagrant/.devops-toolkit prepare-venv
-  - echo "Running a test cases - starts"
-  - make test
-  - echo "Running a test cases - ends"
-  - echo "Deploying & Running RA-Juniper"
-#  - env/bin/rajuniper --dev --declare-rp --no-clustering
-  - env/bin/rajuniper 1>/home/vagrant/shared/bp-ra-juniper-ws/temp 2>&1 &
 
 stages:
   - build_deploy
+  - Code_review
+  
 build_&_deploy_app:
   stage: build_deploy
   environment:
@@ -21,6 +10,26 @@ build_&_deploy_app:
     url: http://192.168.20.21
   tags:
     - ra-juniper
+  script:
+    - sudo su
+    - cd /home/vagrant/shared/bp-ra-juniper-ws 
+    - echo "Clean Enviornment"
+    - make clean
+    - echo "Build Enviornment- Prepare RA"
+    - make TOOLKIT_DIR=/home/vagrant/.devops-toolkit prepare-venv
+    - echo "Running a test cases - starts"
+    - make test
+    - echo "Running a test cases - ends"
+    - echo "Deploying & Running RA-Juniper"
+#  - env/bin/rajuniper --dev --declare-rp --no-clustering
+    - env/bin/rajuniper 1>/home/vagrant/shared/bp-ra-juniper-ws/temp 2>&1 &  
+    - exit
+
+
+SonarQube_Preview_Mode:
+  stage:Code_review
+  tags:
+   - ra-juniper
   script:
     - cd /home/vagrant/shared/bp-ra-juniper-ws
     - URL="http://192.168.25.21:9000"
@@ -43,5 +52,4 @@ build_&_deploy_app:
     - eval $COMMAND
     - fi
     - exit
-
-
+    
