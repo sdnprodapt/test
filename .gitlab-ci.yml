@@ -1,49 +1,3 @@
-SonarQube_Preview_Mode:  
-    stage: build_deploy
-    script:
-#     -  cd /home/vagrant/bp-ra-juniper-test-master-6d61196fd5ed7c57196ecf16165b5e7e3472135d
-     - cd /home/vagrant/shared/bp-ra-juniper-ws
-     - URL="http://192.168.25.21:9000"
-     - USER="admin"
-     - PASSWORD="admin"
-# #    - SONAR_PROJECT_KEY="org.sonarqube:sonarqube-scanner"
-     - SONAR_PROJECT_VERSION="1.0"
-#  #  - SONAR_PROJECT_NAME="Example of SonarQube Scanner Usage"
-     - SONAR_PROJECT_NAME="sonar_gitlab"
-     - SONAR_PROJECT_KEY="sonarqube_gitlab"
-     - SONAR_ANALYSIS_MODE="preview"
-     - if [ -z "$SONAR_PROJECT_KEY" ]; then
-     - echo "Undefined \"projectKey\"" && exit 1
-     - else
-     - COMMAND="/home/vagrant/sonar-scanner-3.0.1.733-linux/bin/sonar-scanner -Dsonar.host.url=\"$URL\" -Dsonar.login=\"$USER\" -Dsonar.password=\"$PASSWORD\" -Dsonar.projectKey=\"$SONAR_PROJECT_KEY\""
-#    - if [ ! -z "$SONAR_PROJECT_VERSION" ]; then
-#    - COMMAND="$COMMAND -Dsonar.projectVersion=\"$SONAR_PROJECT_VERSION\"" 
-#    - fi
-#    - if [ ! -z "$SONAR_PROJECT_NAME" ]; then
-#    - COMMAND="$COMMAND -Dsonar.projectName=\"$SONAR_PROJECT_NAME\""
-#    - fi
-#    - if [ ! -z $CI_BUILD_REF ]; then
-#    - COMMAND="$COMMAND -Dsonar.gitlab.commit_sha=\"$CI_BUILD_REF\""
-#    - fi
-#    - if [ ! -z $CI_BUILD_REF_NAME ]; then
-#    - COMMAND="$COMMAND -Dsonar.gitlab.ref_name=\"$CI_BUILD_REF_NAME\""
-#    - fi
-#    - if [ ! -z $SONAR_BRANCH ]; then
-#    - COMMAND="$COMMAND -Dsonar.branch=\"$SONAR_BRANCH\""
-#    - fi
-     - if [ ! -z $SONAR_ANALYSIS_MODE ]; then
-     - COMMAND="$COMMAND -Dsonar.analysis.mode=\"$SONAR_ANALYSIS_MODE\""
-     - if [ $SONAR_ANALYSIS_MODE="preview" ]; then
-     - COMMAND="$COMMAND -Dsonar.issuesReport.console.enable=true"
-     - fi
-     - fi
-     - eval $COMMAND
-     - fi
- #    - /home/vagrant/sonar-scanner-3.0.1.733-linux/bin/sonar-scanner
-    
-
-
-
 before_script:
   - sudo su
   - cd /home/vagrant/shared/bp-ra-juniper-ws 
@@ -68,6 +22,26 @@ build_&_deploy_app:
   tags:
     - ra-juniper
   script:
+    - cd /home/vagrant/shared/bp-ra-juniper-ws
+    - URL="http://192.168.25.21:9000"
+    - USER="admin"
+    - PASSWORD="admin"
+    - SONAR_PROJECT_VERSION="1.0"
+    - SONAR_PROJECT_NAME="sonar_gitlab"
+    - SONAR_PROJECT_KEY="sonarqube_gitlab"
+    - SONAR_ANALYSIS_MODE="preview"
+    - if [ -z "$SONAR_PROJECT_KEY" ]; then
+    - echo "Undefined \"projectKey\"" && exit 1
+    - else
+    - COMMAND="/home/vagrant/sonar-scanner-3.0.1.733-linux/bin/sonar-scanner -Dsonar.host.url=\"$URL\" -Dsonar.login=\"$USER\" -Dsonar.password=\"$PASSWORD\" -Dsonar.projectKey=\"$SONAR_PROJECT_KEY\""
+    - if [ ! -z $SONAR_ANALYSIS_MODE ]; then
+    - COMMAND="$COMMAND -Dsonar.analysis.mode=\"$SONAR_ANALYSIS_MODE\""
+    - if [ $SONAR_ANALYSIS_MODE="preview" ]; then
+    - COMMAND="$COMMAND -Dsonar.issuesReport.console.enable=true"
+    - fi
+    - fi
+    - eval $COMMAND
+    - fi
     - exit
 
 
