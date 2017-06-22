@@ -11,11 +11,11 @@ build_&_deploy_app:
     - ra-juniper
   script:
     - sudo su
-    - cd /home/vagrant/shared/bp-ra-juniper-ws 
-    -	export BPOCORE_IP=$(docker inspect --format="{{ .NetworkSettings.IPAddress }}" bpocore-dev)
-    -	export DOCKER_BRIDGE_IP=$(docker inspect --format="{{ .NetworkSettings.Gateway }}" bpocore-dev)
-    -	export MARKET_URL="http://$BPOCORE_IP:8181/bpocore/market/api/v1" 
-    -	export ASSETS_URL=http://$BPOCORE_IP:8181/bpocore/asset-manager/api/v1
+    - cd /home/vagrant/shared/bp-ra-juniper-ws
+    - export BPOCORE_IP=$(docker inspect --format="{{ .NetworkSettings.IPAddress }}" bpocore-dev)
+    - export DOCKER_BRIDGE_IP=$(docker inspect --format="{{ .NetworkSettings.Gateway }}" bpocore-dev)
+    - export MARKET_URL="http://$BPOCORE_IP:8181/bpocore/market/api/v1"
+    - export ASSETS_URL=http://$BPOCORE_IP:8181/bpocore/asset-manager/api/v1
     - echo "Clean Enviornment"
     - make clean
     - echo "Build Enviornment- Prepare RA"
